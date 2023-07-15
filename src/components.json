@@ -1,0 +1,135 @@
+[
+  {
+    "name": "Badges",
+    "status": "🟡"
+  },
+  {
+    "name": "Bottom app bar",
+    "status": "❌"
+  },
+  {
+    "name": "Bottom sheets",
+    "status": "❌"
+  },
+  {
+    "name": "Buttons",
+    "children": [
+      {
+        "name": "Button",
+        "status": "✅"
+      },
+      {
+        "name": "FAB",
+        "status": "✅"
+      },
+      {
+        "name": "Icon button",
+        "status": "✅"
+      },
+      {
+        "name": "Segmented button",
+        "status": "🟡"
+      }
+    ]
+  },
+  {
+    "name": "Cards",
+    "status": "❌"
+  },
+  {
+    "name": "Carousel",
+    "status": "✅"
+  },
+  {
+    "name": "Checkbox",
+    "status": "✅"
+  },
+  {
+    "name": "Chips",
+    "status": "✅"
+  },
+  {
+    "name": "Date pickers",
+    "status": "❌"
+  },
+  {
+    "name": "Dialogs",
+    "status": "✅"
+  },
+  {
+    "name": "Divider",
+    "status": "✅"
+  },
+  {
+    "name": "Lists",
+    "status": "✅"
+  },
+  {
+    "name": "Menus",
+    "status": "✅"
+  },
+  {
+    "name": "Select",
+    "status": "✅"
+  },
+  {
+    "name": "Navigation bar",
+    "status": "🟡"
+  },
+  {
+    "name": "Navigation drawer",
+    "status": "🟡"
+  },
+  {
+    "name": "Navigation rail",
+    "status": "❌"
+  },
+  {
+    "name": "Progress indicators",
+    "status": "✅"
+  },
+  {
+    "name": "Radio button",
+    "status": "✅"
+  },
+  {
+    "name": "Search",
+    "status": "❌"
+  },
+  {
+    "name": "Slide sheets",
+    "status": "❌"
+  },
+  {
+    "name": "Sliders",
+    "status": "✅"
+  },
+  {
+    "name": "Snackbar",
+    "status": "❌"
+  },
+  {
+    "name": "Switch",
+    "status": "✅"
+  },
+  {
+    "name": "Tabs",
+    "status": "✅"
+  },
+  {
+    "name": "Text fields",
+    "status": "✅"
+  },
+  {
+    "name": "Time pickers",
+    "status": "❌"
+  },
+  {
+    "name": "Tooltips",
+    "status": "❌"
+  },
+  {
+    "name": "Top app bar",
+    "status": "❌"
+  }
+]
