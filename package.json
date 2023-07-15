@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -11,6 +11,12 @@
     "material design 3"
   ],
   "description": "React Tailwind CSS Material Design 3 Component Library",
+  "homepage": "https://actifyjs.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actifyjs/actify.git",
+    "directory": "packages/components"
+  },
   "files": [
     "lib"
   ],
