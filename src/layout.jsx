@@ -17,14 +17,14 @@ const Layout = ({ children }) => {
               component.children.map((child, index) => (
                 <ListItemLink
                   key={index}
-                  headline={child.name + child.status}
+                  headline={child.name + (child.status || '')}
                   to={`/${component.name.toLowerCase()}/` + child.name.toLowerCase().split(' ').join('-')}
                 />
               ))
             ) : (
               <ListItemLink
                 key={index}
-                headline={component.name + component.status}
+                headline={component.name + (component.status || '')}
                 to={'/' + component.name.toLowerCase().split(' ').join('-')}
               />
             )

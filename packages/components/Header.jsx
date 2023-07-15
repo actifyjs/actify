@@ -7,10 +7,31 @@ import Button from '@/packages/components/Button'
 import Spacer from '@/packages/components/Spacer'
 import Dropdown from '@/packages/components/Dropdown'
 import SwitchTheme from '@/packages/components/SwitchTheme'
+import { Palette } from 'lucide-react'
+import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const Header = forwardRef((props, ref) => {
   const { app, setDrawer } = useApp()
   const { onClick, children, className, ...rest } = props
+
+  const randomColor = () => {
+    const letters = '0123456789ABCDEF'
+    let color = '#'
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)]
+    }
+    return color
+  }
+  const handleUpdateTheme = () => {
+    updateTheme(
+      {
+        // set a new primary color (and optionally any other colors in your theme)
+        primary: randomColor()
+      },
+      // second argument is your chosen dark mode strategy (usually 'media' or 'class')
+      'class'
+    )
+  }
 
   return (
     <header
@@ -45,6 +66,12 @@ const Header = forwardRef((props, ref) => {
         </button>
         <Spacer />
         <SwitchTheme className="block md:hidden" />
+        <button
+          onClick={handleUpdateTheme}
+          className="inline-flex h-9 w-9 items-center rounded-md p-2 text-sm hover:bg-on-surface hover:bg-opacity-5"
+        >
+          <Palette />
+        </button>
         <div className="hidden w-full md:block md:w-auto">
           <ul className="flex flex-row gap-2 font-medium">
             <li>
