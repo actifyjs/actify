@@ -7,12 +7,13 @@ export default () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      updateTheme(
-        {
-          primary: primaryColor
-        },
-        'class'
-      )
+      primaryColor &&
+        updateTheme(
+          {
+            primary: primaryColor
+          },
+          'class'
+        )
     }, 200)
     return () => {
       clearTimeout(timer)
