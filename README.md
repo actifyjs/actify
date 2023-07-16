@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://actifyjs.com" target="_blank">
+  <a href="https://actifyjs.com">
     <img alt="Actify Logo" width="100" src="https://actifyjs.com/actify.svg">
   </a>
 </p>
