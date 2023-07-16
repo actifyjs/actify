@@ -30,7 +30,7 @@ export default () => {
             </span>
           </Button>
         </Link>
-        <Link to="/why-actify">
+        <Link to="/getting-started/why-actify">
           <Button color="secondary">
             <span slot="icon" className="flex items-center">
               <HelpCircle />
