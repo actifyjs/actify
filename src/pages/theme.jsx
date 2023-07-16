@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'react'
-import debounce from '@/packages/utils/debounce'
 import Button from '@/packages/components/Button'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 export default () => {
-  const [primaryColor, setPrimaryColor] = useState('#006a6a')
+  const [primaryColor, setPrimaryColor] = useState('')
 
   useEffect(() => {
-    debounce(changeTheme(primaryColor), 300)
+    const timer = setTimeout(() => {
+      updateTheme(
+        {
+          primary: primaryColor
+        },
+        'class'
+      )
+    }, 200)
+    return () => {
+      clearTimeout(timer)
+    }
   }, [primaryColor])
 
-  const changeTheme = (color) => {
-    updateTheme(
-      {
-        primary: color
-      },
-      'class'
-    )
-  }
   const exportColors = () => {
     const body = getComputedStyle(document.body)
     const colorVaribles = [
@@ -122,7 +123,6 @@ export default () => {
             <div className="text-lg">Primary:</div>
             <input
               type="color"
-              value={primaryColor}
               onChange={(e) => setPrimaryColor(e.target.value)}
               className="interactive-bg-surface h-9 w-24 cursor-pointer rounded-md px-1 py-0.5 shadow"
             />
