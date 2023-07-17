@@ -6,15 +6,16 @@ import Code from '@/packages/components/Code'
 
 export default () => {
   const { name } = useParams()
+  const [attributes, setAttributes] = useState('')
   const [markdown, setMarkdown] = useState('')
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/docs/getting-started/${name}.md`)
-      const text = await response.text()
-      setMarkdown(text)
+    async function loadData() {
+      const { attributes, markdown } = await import(`../../docs/getting-started/${name}.md`)
+      setAttributes(attributes)
+      setMarkdown(markdown)
     }
-    fetchData()
+    loadData()
   }, [name])
 
   return (

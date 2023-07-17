@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import pages from 'vite-plugin-pages'
 import react from '@vitejs/plugin-react'
 import { name, peerDependencies } from './package.json'
+import mdPlugin, { Mode } from 'vite-plugin-markdown'
 
 // set @ alias to current directory
 const resolve = {
@@ -38,6 +39,6 @@ export default defineConfig(({ mode }) => {
   }
   return {
     resolve,
-    plugins: [react(), pages()]
+    plugins: [react(), pages(), mdPlugin({ mode: [Mode.MARKDOWN] })]
   }
 })
