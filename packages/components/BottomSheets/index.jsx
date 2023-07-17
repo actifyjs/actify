@@ -21,7 +21,7 @@ const BottomSheets = () => {
   }
 
   return (
-    <div className="elevation-1">
+    <div>
       <div className="pointer-events-none fixed inset-0 z-50 bg-surface/80"></div>
       <div
         style={{

@@ -1,12 +1,15 @@
-import React from 'react'
-import { MdMenu } from '@material/web/menu/menu'
-import { createComponent } from '@lit-labs/react'
+import React, { forwardRef } from 'react'
+import '@material/web/menu/menu'
 
-const Menu = createComponent({
-  react: React,
-  tagName: 'md-menu',
-  elementClass: MdMenu,
-  displayName: 'Actify.Menu'
+const Menu = forwardRef((props, ref) => {
+  const { children, ...rest } = props
+  return (
+    <md-menu ref={ref} {...rest}>
+      {children}
+    </md-menu>
+  )
 })
+
+Menu.displayName = 'Actify.Menu'
 
 export default Menu

@@ -362,11 +362,6 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@lit-labs/react@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/@lit-labs/react/-/react-1.2.1.tgz#5b421502cdf68a3639dec431318eeed2285f1c0e"
-  integrity sha512-DiZdJYFU0tBbdQkfwwRSwYyI/mcWkg3sWesKRsHUd4G+NekTmmeq9fzsurvcKTNVa0comNljwtg4Hvi1ds3V+A==
-
 "@lit-labs/ssr-dom-shim@^1.0.0", "@lit-labs/ssr-dom-shim@^1.1.0":
   version "1.1.1"
   resolved "https://registry.npmjs.org/@lit-labs/ssr-dom-shim/-/ssr-dom-shim-1.1.1.tgz#64df34e2f12e68e78ac57e571d25ec07fa460ca9"
@@ -1137,11 +1132,6 @@ hast-util-whitespace@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmmirror.com/hast-util-whitespace/-/hast-util-whitespace-2.0.1.tgz#0ec64e257e6fc216c7d14c8a1b74d27d650b4557"
   integrity sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==
-
-hex-rgb@^4.1.0:
-  version "4.3.0"
-  resolved "https://registry.npmmirror.com/hex-rgb/-/hex-rgb-4.3.0.tgz#af5e974e83bb2fefe44d55182b004ec818c07776"
-  integrity sha512-Ox1pJVrDCyGHMG9CFg1tmrRUMRPRsAWYc/PinY0XzJU4K7y7vjNoLKIQ7BR5UJMCxNN8EM1MNDmHWA/B3aZUuw==
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -2386,13 +2376,6 @@ tailwind-mode-aware-colors@^1.2.3:
   integrity sha512-Fb9CNWauNjBBMJFWvg2pVFFm9KsKjrsq15cIqFbifoIjA74khmUYBMLI6zeovwm0oDpEbrB4muX5QOx0JB5/mQ==
   dependencies:
     color "^4.2.3"
-
-tailwindcss-elevation@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmmirror.com/tailwindcss-elevation/-/tailwindcss-elevation-2.0.0.tgz#144a163d3cdc43c0f5db55e234e4d7a75f4f0456"
-  integrity sha512-ejQ9bCTiilb/aOF2l9fLF9sWGc2QvxepePTGlLIxGZzJpRYKODf1tJlIN51W9ho4tXD2GKbBb10jd3bKm3THKQ==
-  dependencies:
-    hex-rgb "^4.1.0"
 
 tailwindcss@^3.3.2:
   version "3.3.2"

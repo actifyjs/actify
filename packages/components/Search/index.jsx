@@ -3,7 +3,7 @@ import { cn } from '@/packages/utils'
 import { cva } from 'class-variance-authority'
 import { Menu, Search as SearchIcon } from 'lucide-react'
 
-const variants = cva('flex items-center px-4 py-1 h-14 elevation-3 rounded-full bg-black/5 dark:bg-white/5', {
+const variants = cva('flex items-center px-4 py-1 h-14 rounded-full bg-black/5 dark:bg-white/5', {
   variants: {
     variant: {}
   },

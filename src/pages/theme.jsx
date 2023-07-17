@@ -54,11 +54,13 @@ export default () => {
     for (let i = 0; i < colorVaribles.length; i++) {
       colors[colorVaribles[i]] = body.getPropertyValue(colorVaribles[i])
     }
-    const blob = new Blob([JSON.stringify(colors)], { type: 'application/json' })
+    const cssString = ':root' + JSON.stringify(colors).replace(/"/g, '').replace(/,/g, ';')
+
+    const blob = new Blob([cssString], { type: 'text/css' })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
-    link.download = 'actify-color-theme.json'
+    link.download = 'actify-color-theme.css'
     link.click()
     URL.revokeObjectURL(url)
   }

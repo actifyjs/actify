@@ -2,7 +2,7 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import pages from 'vite-plugin-pages'
 import react from '@vitejs/plugin-react'
-import packageJson from './package.json'
+import { name, peerDependencies } from './package.json'
 
 // set @ alias to current directory
 const resolve = {
@@ -20,15 +20,16 @@ export default defineConfig(({ mode }) => {
       build: {
         outDir: 'lib',
         lib: {
-          entry: path.resolve(__dirname, 'packages/components/index.js'),
-          name: packageJson.name,
-          fileName: packageJson.name
+          name,
+          fileName: name,
+          entry: path.resolve(__dirname, 'packages/components/index.js')
         },
         rollupOptions: {
-          external: [...Object.keys(packageJson.peerDependencies)],
+          external: [...Object.keys(peerDependencies)],
           output: {
             globals: {
-              react: 'React'
+              react: 'React',
+              'react-dom': 'ReactDOM'
             }
           }
         }

@@ -1,12 +1,15 @@
-import React from 'react'
-import { createComponent } from '@lit-labs/react'
-import { MdMenuItemLink } from '@material/web/menu/menu-item-link'
+import React, { forwardRef } from 'react'
+import '@material/web/menu/menu-item-link'
 
-const MenuItemLink = createComponent({
-  react: React,
-  tagName: 'md-menu-item-link',
-  elementClass: MdMenuItemLink,
-  displayName: 'Actify.MenuItemLink'
+const MenuItemLink = forwardRef((props, ref) => {
+  const { children, ...rest } = props
+  return (
+    <md-menu-item-link ref={ref} {...rest}>
+      {children}
+    </md-menu-item-link>
+  )
 })
+
+MenuItemLink.displayName = 'Actify.MenuItemLink'
 
 export default MenuItemLink

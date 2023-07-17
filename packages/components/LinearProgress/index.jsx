@@ -1,12 +1,10 @@
-import React from 'react'
-import { createComponent } from '@lit-labs/react'
-import { MdLinearProgress } from '@material/web/linearprogress/linear-progress'
+import React, { forwardRef } from 'react'
+import '@material/web/linearprogress/linear-progress'
 
-const LinearProgress = createComponent({
-  react: React,
-  tagName: 'md-linear-progress',
-  elementClass: MdLinearProgress,
-  displayName: 'Actify.LinearProgress'
+const LinearProgress = forwardRef((props, ref) => {
+  return <md-linear-progress {...props} ref={ref} />
 })
+
+LinearProgress.displayName = 'Actify.LinearProgress'
 
 export default LinearProgress

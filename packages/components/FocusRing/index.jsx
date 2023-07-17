@@ -1,11 +1,11 @@
-import React from 'react'
-import { createComponent } from '@lit-labs/react'
-import { MdFocusRing } from '@material/web/focus/focus-ring'
+import React, { forwardRef } from 'react'
+import '@material/web/focus/focus-ring'
 
-const FocusRing = createComponent({
-  react: React,
-  tagName: 'md-focus-ring',
-  elementClass: MdFocusRing
+const FocusRing = forwardRef((props, ref) => {
+  const { ...rest } = props
+  return <md-focus-ring ref={ref} {...rest} />
 })
+
+FocusRing.displayName = 'Actify.FocusRing'
 
 export default FocusRing
