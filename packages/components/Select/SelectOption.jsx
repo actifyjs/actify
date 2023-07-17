@@ -1,12 +1,10 @@
-import React from 'react'
-import { createComponent } from '@lit-labs/react'
-import { MdSelectOption } from '@material/web/select/select-option'
+import React, { forwardRef } from 'react'
+import '@material/web/select/select-option'
 
-const SelectOption = createComponent({
-  react: React,
-  tagName: 'md-select-option',
-  elementClass: MdSelectOption,
-  displayName: 'Actify.SelectOption'
+const SelectOption = forwardRef((props, ref) => {
+  return <md-select-option ref={ref} {...props} />
 })
+
+SelectOption.displayName = 'Actify.SelectOption'
 
 export default SelectOption
