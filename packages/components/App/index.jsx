@@ -30,7 +30,7 @@ const App = forwardRef((props, ref) => {
           '--md-sys-color-on-secondary-container': '#fff',
           ...style
         }}
-        className={twMerge('w-full min-w-[360px] bg-surface text-on-surface', className)}
+        className={twMerge('w-full bg-surface text-on-surface', className)}
       >
         {children}
       </div>

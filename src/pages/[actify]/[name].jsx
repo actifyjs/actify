@@ -2,26 +2,29 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import Code from '@/packages/components/Code'
 
 export default () => {
-  const { name } = useParams()
+  const params = useParams()
   const [attributes, setAttributes] = useState('')
   const [markdown, setMarkdown] = useState('')
 
   useEffect(() => {
     async function loadData() {
-      const { attributes, markdown } = await import(`../../docs/getting-started/${name}.md`)
+      const docPath = `../../docs/${params.actify}/${params.name}.md`
+      const { attributes, markdown } = await import(docPath)
       setAttributes(attributes)
       setMarkdown(markdown)
     }
     loadData()
-  }, [name])
+  }, [params])
 
   return (
     <ReactMarkdown
-      className="prose dark:prose-invert prose-pre:m-0 prose-pre:p-0"
+      className="prose max-w-full dark:prose-invert prose-pre:p-0 [&_pre]:!mb-0"
       children={markdown}
+      rehypePlugins={[rehypeRaw]}
       remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
       components={{
         code({ node, inline, className, children, ...props }) {

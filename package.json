@@ -56,6 +56,7 @@
     "react-markdown": "^8.0.7",
     "react-router-dom": "^6.14.1",
     "react-spring": "^9.7.2",
+    "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "tailwind-material-colors": "^1.0.1",
     "tailwind-merge": "^1.13.2",

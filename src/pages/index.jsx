@@ -22,7 +22,7 @@ export default () => {
       </div>
       <p className="text-center text-4xl font-extrabold ">React Material Design 3 Components Library</p>
       <div className="flex justify-center gap-2">
-        <Link to="/get-started">
+        <Link to="/getting-started/installation">
           <Button trailing-icon>
             Get Started
             <span slot="icon" className="flex items-center">

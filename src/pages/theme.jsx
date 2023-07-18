@@ -1,26 +1,61 @@
 import { useEffect, useState } from 'react'
+import Code from '@/packages/components/Code'
 import Button from '@/packages/components/Button'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
+const codeBlock = `
+:root {
+  --color-primary: 156 65 60;
+  --color-primary-container: 255 218 214;
+  --color-on-primary: 255 255 255;
+  --color-on-primary-container: 65 0 3;
+  --color-secondary: 119 86 83;
+  --color-secondary-container: 255 218 214;
+  --color-on-secondary: 255 255 255;
+  --color-on-secondary-container: 44 21 19;
+  --color-tertiary: 114 91 46;
+  --color-tertiary-container: 254 222 166;
+  --color-on-tertiary: 255 255 255;
+  --color-on-tertiary-container: 38 25 0;
+  --color-error: 186 26 26;
+  --color-error-container: 255 218 214;
+  --color-on-error: 255 255 255;
+  --color-on-error-container: 65 0 2;
+  --color-outline: 133 115 113;
+  --color-background: 255 251 255;
+  --color-on-background: 32 26 25;
+  --color-surface: 255 251 255;
+  --color-on-surface: 32 26 25;
+  --color-surface-variant: 245 221 219;
+  --color-on-surface-variant: 83 67 66;
+  --color-inverse-surface: 54 47 46;
+  --color-inverse-primary: 255 179 173;
+  --color-outline-variant: 216 194 191;
+}
+`
+
 export default () => {
+  const [cssString, setCssString] = useState('')
   const [primaryColor, setPrimaryColor] = useState('')
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      primaryColor &&
+      if (primaryColor) {
         updateTheme(
           {
             primary: primaryColor
           },
           'class'
         )
+      }
+      getColors()
     }, 200)
     return () => {
       clearTimeout(timer)
     }
   }, [primaryColor])
 
-  const exportColors = () => {
+  const getColors = () => {
     const body = getComputedStyle(document.body)
     const colorVaribles = [
       '--color-primary',
@@ -50,12 +85,15 @@ export default () => {
       '--color-inverse-primary',
       '--color-outline-variant'
     ]
-    let colors = {}
+    let colors = ':root{\n'
     for (let i = 0; i < colorVaribles.length; i++) {
-      colors[colorVaribles[i]] = body.getPropertyValue(colorVaribles[i])
+      colors += `${colorVaribles[i]}: ${body.getPropertyValue(colorVaribles[i])};\n`
     }
-    const cssString = ':root' + JSON.stringify(colors).replace(/"/g, '').replace(/,/g, ';')
+    colors += '}'
+    setCssString(colors)
+  }
 
+  const exportColors = () => {
     const blob = new Blob([cssString], { type: 'text/css' })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
@@ -66,7 +104,7 @@ export default () => {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="space-y-4">
       <details className="rounded-lg border border-outline/20 bg-tertiary-container bg-opacity-30 px-4 py-2" open>
         <summary className="cursor-pointer text-lg font-medium">Color palette</summary>
         <div className="my-2 flex flex-wrap whitespace-nowrap">
@@ -118,7 +156,6 @@ export default () => {
           <div className="current w-1/4 px-2 py-1 text-on-tertiary-container">current</div>
         </div>
       </details>
-      <Button onClick={exportColors}>export colors</Button>
       <details className="mb-8 rounded-lg border border-outline/20 bg-tertiary-container bg-opacity-30 px-4 py-2" open>
         <summary className="cursor-pointer text-lg font-medium">Try dynamic color</summary>
         <div className="mt-2 space-y-4">
@@ -144,6 +181,14 @@ export default () => {
           </div>
         </div>
       </details>
+      <Button onClick={exportColors}>Export Colors</Button>
+      <article className="prose">
+        <h4>How to use?</h4>
+        <p>Change the primary color, if the color you like, click export colors button</p>
+        <p>Copy the css code and paste in your project main css file</p>
+        <h4>Here is a live css code</h4>
+        <Code language="css">{cssString}</Code>
+      </article>
     </div>
   )
 }
