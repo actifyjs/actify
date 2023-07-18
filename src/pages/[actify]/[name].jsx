@@ -9,13 +9,29 @@ import Button from '@/packages/components/Button'
 
 export default () => {
   const params = useParams()
-  const [attributes, setAttributes] = useState('')
   const [markdown, setMarkdown] = useState('')
+
+  const EditOnGitHub = () => {
+    return (
+      markdown && (
+        <Button
+          variant="text"
+          target="_blank"
+          trailing-icon
+          href={`https://github.com/actifyjs/actify/blob/main/src/docs/${params.actify}/${params.name}.md`}
+        >
+          Edit this page on GitHub
+          <div slot="icon" className="flex items-center">
+            <Pencil />
+          </div>
+        </Button>
+      )
+    )
+  }
 
   useEffect(() => {
     async function loadData() {
       const { attributes, markdown } = await import(`../../docs/${params.actify}/${params.name}.md`)
-      setAttributes(attributes)
       setMarkdown(markdown)
       document.title = attributes.title + '- Actify'
     }
@@ -42,17 +58,7 @@ export default () => {
           }
         }}
       />
-      <Button
-        variant="text"
-        target="_blank"
-        trailing-icon
-        href={`https://github.com/actifyjs/actify/blob/main/src/docs/${params.actify}/${params.name}.md`}
-      >
-        Edit this page on GitHub
-        <div slot="icon" className="flex items-center">
-          <Pencil />
-        </div>
-      </Button>
+      <EditOnGitHub />
     </>
   )
 }
