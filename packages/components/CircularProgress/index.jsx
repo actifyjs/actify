@@ -1,8 +1,10 @@
 import React, { forwardRef } from 'react'
 import '@material/web/circularprogress/circular-progress'
+import { removeFalseValue } from '@/packages/utils'
 
 const CircularProgress = forwardRef((props, ref) => {
-  return <md-circular-progress {...props} ref={ref} />
+  const attributes = removeFalseValue(props)
+  return <md-circular-progress {...attributes} ref={ref} />
 })
 
 CircularProgress.displayName = 'Actify.CircularProgress'
