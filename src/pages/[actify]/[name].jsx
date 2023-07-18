@@ -17,6 +17,7 @@ export default () => {
       const { attributes, markdown } = await import(`../../docs/${params.actify}/${params.name}.md`)
       setAttributes(attributes)
       setMarkdown(markdown)
+      document.title = attributes.title + '- Actify'
     }
     loadData()
   }, [params])

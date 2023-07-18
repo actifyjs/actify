@@ -3,37 +3,6 @@ import Code from '@/packages/components/Code'
 import Button from '@/packages/components/Button'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
-const codeBlock = `
-:root {
-  --color-primary: 156 65 60;
-  --color-primary-container: 255 218 214;
-  --color-on-primary: 255 255 255;
-  --color-on-primary-container: 65 0 3;
-  --color-secondary: 119 86 83;
-  --color-secondary-container: 255 218 214;
-  --color-on-secondary: 255 255 255;
-  --color-on-secondary-container: 44 21 19;
-  --color-tertiary: 114 91 46;
-  --color-tertiary-container: 254 222 166;
-  --color-on-tertiary: 255 255 255;
-  --color-on-tertiary-container: 38 25 0;
-  --color-error: 186 26 26;
-  --color-error-container: 255 218 214;
-  --color-on-error: 255 255 255;
-  --color-on-error-container: 65 0 2;
-  --color-outline: 133 115 113;
-  --color-background: 255 251 255;
-  --color-on-background: 32 26 25;
-  --color-surface: 255 251 255;
-  --color-on-surface: 32 26 25;
-  --color-surface-variant: 245 221 219;
-  --color-on-surface-variant: 83 67 66;
-  --color-inverse-surface: 54 47 46;
-  --color-inverse-primary: 255 179 173;
-  --color-outline-variant: 216 194 191;
-}
-`
-
 export default () => {
   const [cssString, setCssString] = useState('')
   const [primaryColor, setPrimaryColor] = useState('')
@@ -49,7 +18,7 @@ export default () => {
         )
       }
       getColors()
-    }, 200)
+    }, 10)
     return () => {
       clearTimeout(timer)
     }

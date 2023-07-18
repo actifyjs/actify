@@ -1,3 +1,7 @@
+---
+title: Installation
+---
+
 # Installation
 
 #### To get started with Actify, simply paste the following code into you terminal:

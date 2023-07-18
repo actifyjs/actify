@@ -1,3 +1,7 @@
+---
+title: Why Actify
+---
+
 # Introduction
 
 ## What is Actify?
