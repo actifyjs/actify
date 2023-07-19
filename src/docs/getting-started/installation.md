@@ -16,8 +16,24 @@ yarn add actity
 
 #### In your pages or components, you can import and use it, for example:
 
+- React project
+
 ```jsx
 import { Button } from 'actify'
+
+export default () => {
+  return <Button>Hello Actify</Button>
+}
+```
+
+- Next.js project
+
+```jsx
+import dynamic from 'next/dynamic'
+
+const Button = dynamic(() => import('actify').then((res) => res.Button), {
+  ssr: false
+})
 
 export default () => {
   return <Button>Hello Actify</Button>

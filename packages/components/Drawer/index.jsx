@@ -34,7 +34,7 @@ const Drawer = forwardRef((props, ref) => {
           transform: `${app.drawer ? 'translateX(0)' : 'translateX(-100%)'}`
         }}
         className={twMerge(
-          'fixed bottom-0 left-0 right-auto z-50 max-w-full overflow-y-auto overflow-x-hidden shadow duration-200 will-change-transform lg:flex lg:translate-x-0 lg:flex-col',
+          'fixed bottom-0 left-0 right-auto z-50 max-w-full overflow-y-auto overflow-x-hidden shadow duration-200 will-change-transform md:z-10 lg:flex lg:translate-x-0 lg:flex-col',
           className
         )}
       >

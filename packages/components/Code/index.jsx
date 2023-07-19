@@ -44,8 +44,8 @@ const Code = (props) => {
           <div className="h-3 w-3 rounded-full bg-[#26c63e]"></div>
         </div>
         <div className="mt-2 flex cursor-pointer gap-2 text-white opacity-0 transition-opacity hover:text-white/75 group-hover:opacity-100">
-          {copyResult || language}
-          <Copy onClick={copyCode} />
+          <span className="text-sm">{copyResult}</span>
+          <Copy size={20} onClick={copyCode} />
         </div>
       </div>
 

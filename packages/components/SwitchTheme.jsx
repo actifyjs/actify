@@ -1,20 +1,37 @@
 import { twMerge } from 'tailwind-merge'
 import { Sun, Moon } from 'lucide-react'
-import { forwardRef, useState } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 
 const SwitchTheme = forwardRef((props, ref) => {
   const { className, ...rest } = props
   const [mode, setMode] = useState('') // dark mode
 
+  const initTheme = () => {
+    const classList = document.querySelector('html').classList
+    const dark = classList.contains('dark')
+    if (dark) {
+      setMode('dark')
+      document.documentElement.setAttribute('data-color-mode', 'dark')
+    } else {
+      setMode('light')
+      document.documentElement.setAttribute('data-color-mode', 'light')
+    }
+  }
+  useEffect(() => {
+    initTheme()
+  }, [])
+
   const toggleTheme = () => {
     const classList = document.querySelector('html').classList
-    const _mode = classList.contains('dark') ? 'dark' : ''
-    setMode(_mode)
     classList.toggle('dark')
-    if (_mode == 'dark') {
-      localStorage.theme = 'light'
+    if (mode == 'dark') {
+      setMode('light')
+      localStorage.setItem('theme', 'light')
+      document.documentElement.setAttribute('data-color-mode', 'light')
     } else {
-      localStorage.theme = 'dark'
+      setMode('dark')
+      localStorage.setItem('theme', 'dark')
+      document.documentElement.setAttribute('data-color-mode', 'dark')
     }
   }
 
