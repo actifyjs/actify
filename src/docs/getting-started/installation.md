@@ -2,8 +2,6 @@
 title: Installation
 ---
 
-# Installation
-
 #### To get started with Actify, simply paste the following code into you terminal:
 
 ```shell
@@ -16,7 +14,8 @@ yarn add actity
 
 #### In your pages or components, you can import and use it, for example:
 
-- React project
+<details>
+<summary>React project</summary>
 
 ```jsx
 import { Button } from 'actify'
@@ -26,7 +25,10 @@ export default () => {
 }
 ```
 
-- Next.js project
+</details>
+
+<details>
+<summary>Next.js project</summary>
 
 ```jsx
 import dynamic from 'next/dynamic'
@@ -39,3 +41,5 @@ export default () => {
   return <Button>Hello Actify</Button>
 }
 ```
+
+</details>

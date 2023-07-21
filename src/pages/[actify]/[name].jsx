@@ -6,6 +6,7 @@ import rehypeRaw from 'rehype-raw'
 import Code from '@/packages/components/Code'
 import { Pencil } from 'lucide-react'
 import Button from '@/packages/components/Button'
+import Usage from '@/src/components/Usage'
 
 export default () => {
   const params = useParams()
@@ -46,6 +47,7 @@ export default () => {
         rehypePlugins={[rehypeRaw]}
         remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
         components={{
+          pre: ({ children }) => <>{children}</>, // remove pre tag
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')
             return !inline && match ? (
@@ -55,7 +57,8 @@ export default () => {
                 {children}
               </code>
             )
-          }
+          },
+          usage: ({ node, children, ...rest }) => <Usage {...rest} />
         }}
       />
       <EditOnGitHub />
