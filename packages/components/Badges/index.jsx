@@ -1,55 +1,24 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import { cn } from '@/packages/utils'
-import { cva } from 'class-variance-authority'
+import '@material/web/labs/badge/badge'
 
-const variants = {
-  color: {
-    primary: ' bg-primary',
-    secondary: ' bg-secondary',
-    accent: ' bg-accent',
-    error: ' bg-error',
-    info: ' bg-info',
-    success: ' bg-success',
-    warning: ' bg-warning'
+import { setColor } from '@/packages/utils'
+
+const Badge = forwardRef((props, ref) => {
+  const { style, color, value, className, ...rest } = props
+  let styles = { ...style }
+  if (color) {
+    styles['--md-badge-color'] = setColor(color)
+    styles['--md-badge-large-color'] = setColor(color)
   }
-}
-const defaultVariants = {
-  color: 'error'
-}
+  const number = isNaN(parseInt(value)) ? '' : parseInt(value)
 
-const dotVariants = cva('absolute right-1 top-1 z-50 h-[6px] w-[6px] rounded-full', {
-  variants,
-  defaultVariants
+  return <md-badge ref={ref} value={number > 999 ? '999+' : number} {...rest} class={className} style={{ ...styles }} />
 })
 
-const contentVariants = cva(
-  'absolute text-white -right-1 -top-1 z-50 max-h-4 w-fit overflow-hidden rounded-full bg-current px-1 text-[3px]',
-  {
-    variants,
-    defaultVariants
-  }
-)
-
-const Badge = (props) => {
-  const { dot, color, content, children, className, ...rest } = props
-  const number = isNaN(parseInt(content)) ? '' : parseInt(content)
-
-  return (
-    <div {...rest} className="relative w-fit">
-      {children}
-      {dot ? (
-        <div className={cn(dotVariants({ color, className }))}></div>
-      ) : (
-        <div className={cn(contentVariants({ color, className }))}>{number > 999 ? '999+' : number}</div>
-      )}
-    </div>
-  )
-}
-
 Badge.propTypes = {
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  color: PropTypes.oneOf(['primary', 'secondary', 'accent', 'error', 'info', 'success', 'warning'])
+  color: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }
 
 export default Badge

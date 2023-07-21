@@ -19,7 +19,7 @@ export default () => {
           variant="text"
           target="_blank"
           trailing-icon
-          href={`https://github.com/actifyjs/actify/blob/main/src/docs/${params.actify}/${params.name}.md`}
+          href={`https://github.com/actifyjs/actify/blob/main/src/docs/components/${params.actify}/${params.name}.md`}
         >
           Edit this page on GitHub
           <div slot="icon" className="flex items-center">
@@ -32,7 +32,7 @@ export default () => {
 
   useEffect(() => {
     async function loadData() {
-      const { attributes, markdown } = await import(`../../docs/${params.actify}/${params.name}.md`)
+      const { attributes, markdown } = await import(`./../../../docs/components/${params.actify}/${params.name}.md`)
       setMarkdown(markdown)
       document.title = attributes.title + `- ${params.actify} | Actify`
     }
