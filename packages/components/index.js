@@ -22,6 +22,7 @@ import CircularProgress from './CircularProgress'
 import RadioButton from './RadioButton'
 import Ripple from './Ripple'
 import Select from './Select'
+import SelectOption from './Select/SelectOption'
 import Slider from './Sliders'
 import Switch from './Switch'
 import Tabs from './Tabs'
@@ -52,6 +53,7 @@ export {
   RadioButton,
   Ripple,
   Select,
+  SelectOption,
   Slider,
   Switch,
   Tabs,
