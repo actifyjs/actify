@@ -51,11 +51,11 @@ const Button = forwardRef((props, ref) => {
 })
 
 Button.propTypes = {
+  color: PropTypes.string,
   variant: PropTypes.oneOf(['elevated', 'filled', 'tonal', 'outlined', 'text'])
 }
 
 Button.defaultProps = {
-  color: 'primary',
   variant: 'filled'
 }
 
