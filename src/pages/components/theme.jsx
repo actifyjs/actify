@@ -1,7 +1,37 @@
 import { useEffect, useState } from 'react'
 import Code from '@/packages/components/Code'
 import Button from '@/packages/components/Button'
+import All from '../examples/all'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
+
+const colorVaribles = [
+  '--color-primary',
+  '--color-on-primary',
+  '--color-primary-container',
+  '--color-on-primary-container',
+  '--color-secondary',
+  '--color-on-secondary',
+  '--color-secondary-container',
+  '--color-on-secondary-container',
+  '--color-tertiary',
+  '--color-on-tertiary',
+  '--color-tertiary-container',
+  '--color-on-tertiary-container',
+  '--color-error',
+  '--color-on-error',
+  '--color-error-container',
+  '--color-on-error-container',
+  '--color-background',
+  '--color-on-background',
+  '--color-surface',
+  '--color-on-surface',
+  '--color-surface-variant',
+  '--color-on-surface-variant',
+  '--color-inverse-surface',
+  '--color-on-inverse-surface',
+  '--color-outline',
+  '--color-inverse-primary'
+]
 
 export default () => {
   const [cssString, setCssString] = useState('')
@@ -26,34 +56,6 @@ export default () => {
 
   const getColors = () => {
     const body = getComputedStyle(document.body)
-    const colorVaribles = [
-      '--color-primary',
-      '--color-primary-container',
-      '--color-on-primary',
-      '--color-on-primary-container',
-      '--color-secondary',
-      '--color-secondary-container',
-      '--color-on-secondary',
-      '--color-on-secondary-container',
-      '--color-tertiary',
-      '--color-tertiary-container',
-      '--color-on-tertiary',
-      '--color-on-tertiary-container',
-      '--color-error',
-      '--color-error-container',
-      '--color-on-error',
-      '--color-on-error-container',
-      '--color-outline',
-      '--color-background',
-      '--color-on-background',
-      '--color-surface',
-      '--color-on-surface',
-      '--color-surface-variant',
-      '--color-on-surface-variant',
-      '--color-inverse-surface',
-      '--color-inverse-primary',
-      '--color-outline-variant'
-    ]
     let colors = ':root{\n'
     for (let i = 0; i < colorVaribles.length; i++) {
       colors += `${colorVaribles[i]}: ${body.getPropertyValue(colorVaribles[i])};\n`
@@ -74,59 +76,25 @@ export default () => {
 
   return (
     <div className="space-y-4">
-      <details className="rounded-lg border border-outline/20 bg-tertiary-container bg-opacity-30 px-4 py-2" open>
-        <summary className="cursor-pointer text-lg font-medium">Color palette</summary>
-        <div className="my-2 flex flex-wrap whitespace-nowrap">
-          <div className="w-1/4 bg-primary px-2 py-1 text-on-primary">primary</div>
-          <div className="w-1/4 bg-on-primary px-2 py-1 text-primary">on-primary</div>
-          <div className="w-1/4 bg-primary-container px-2 py-1 text-on-primary-container">primary-container</div>
-          <div className="w-1/4 bg-on-primary-container px-2 py-1 text-primary-container">on-primary-container</div>
-        </div>
-        <div className="mb-2 flex flex-wrap whitespace-nowrap">
-          <div className="w-1/4 bg-secondary px-2 py-1 text-on-secondary">secondary</div>
-          <div className="w-1/4 bg-on-secondary px-2 py-1 text-secondary">on-secondary</div>
-          <div className="w-1/4 bg-secondary-container px-2 py-1 text-on-secondary-container">secondary-container</div>
-          <div className="w-1/4 bg-on-secondary-container px-2 py-1 text-secondary-container">
-            on-secondary-container
+      <p className="text-xl">Color palette</p>
+      <div className="grid grid-cols-2 gap-4 rounded-lg border border-outline/20 bg-tertiary-container bg-opacity-30 p-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+        {colorVaribles.map((item, index) => (
+          <div
+            key={index}
+            className={`grid h-10 place-content-center rounded-lg bg-${item.slice(8)} ${
+              /^on-/.test(item.slice(8)) ? 'text-' + item.slice(11) : 'text-on-' + item.slice(8)
+            }`}
+          >
+            {item.slice(8)}
           </div>
-        </div>
-        <div className="mb-2 flex flex-wrap whitespace-nowrap">
-          <div className="w-1/4 bg-tertiary px-2 py-1 text-on-tertiary">tertiary</div>
-          <div className="w-1/4 bg-on-tertiary px-2 py-1 text-tertiary">on-tertiary</div>
-          <div className="w-1/4 bg-tertiary-container px-2 py-1 text-on-tertiary-container">tertiary-container</div>
-          <div className="w-1/4 bg-on-tertiary-container px-2 py-1 text-tertiary-container">on-tertiary-container</div>
-        </div>
-        <div className="mb-2 flex flex-wrap whitespace-nowrap">
-          <div className="w-1/4 bg-error px-2 py-1 text-on-error">error</div>
-          <div className="w-1/4 bg-on-error px-2 py-1 text-error">on-error</div>
-          <div className="w-1/4 bg-error-container px-2 py-1 text-on-error-container">error-container</div>
-          <div className="w-1/4 bg-on-error-container px-2 py-1 text-error-container">on-error-container</div>
-        </div>
-        <div className="mb-2 flex flex-wrap whitespace-nowrap">
-          <div className="w-1/4 bg-background px-2 py-1 text-on-background">background</div>
-          <div className="w-1/4 bg-on-background px-2 py-1 text-background">on-background</div>
-          <div className="w-1/4 bg-surface px-2 py-1 text-on-surface">surface</div>
-          <div className="w-1/4 bg-on-surface px-2 py-1 text-surface">on-surface</div>
-        </div>
-        <div className="mb-2 flex flex-wrap whitespace-nowrap">
-          <div className="w-1/4 bg-surface-variant px-2 py-1 text-on-surface-variant">surface-variant</div>
-          <div className="w-1/4 bg-on-surface-variant px-2 py-1 text-surface-variant">on-surface-variant</div>
-          <div className="w-1/4 bg-inverse-surface px-2 py-1 text-on-inverse-surface">inverse-surface</div>
-          <div className="w-1/4 bg-on-inverse-surface px-2 py-1 text-inverse-surface">on-inverse-surface</div>
-        </div>
-        <div className="mb-2 flex flex-wrap whitespace-nowrap">
-          <div className="w-1/4 bg-outline px-2 py-1 text-on-surface">outline</div>
-          <div className="w-1/4 bg-inverse-primary px-2 py-1 text-on-surface">inverse-primary</div>
-          <div className="w-1/4 bg-black px-2 py-1 text-white">black</div>
-          <div className="w-1/4 bg-white px-2 py-1 text-black">white</div>
-        </div>
-        <div className="mb-2 flex flex-wrap whitespace-nowrap">
-          <div className="transparent w-1/4 px-2 py-1 text-outline">transparent</div>
-          <div className="current w-1/4 px-2 py-1 text-on-tertiary-container">current</div>
-        </div>
-      </details>
-      <details className="mb-8 rounded-lg border border-outline/20 bg-tertiary-container bg-opacity-30 px-4 py-2" open>
-        <summary className="cursor-pointer text-lg font-medium">Try dynamic color</summary>
+        ))}
+        <div className="grid h-10 place-content-center rounded-lg bg-black text-white">black</div>
+        <div className="grid h-10 place-content-center rounded-lg bg-white text-black">white</div>
+        <div className="grid h-10 place-content-center rounded-lg text-outline">transparent</div>
+        <div className="grid h-10 place-content-center rounded-lg text-on-tertiary-container">current</div>
+      </div>
+      <p className="text-xl">Try dynamic color</p>
+      <div className="flex items-center gap-4">
         <div className="mt-2 space-y-4">
           <label className="flex items-center gap-2">
             <div className="text-lg">Primary:</div>
@@ -136,21 +104,11 @@ export default () => {
               className="interactive-bg-surface h-9 w-24 cursor-pointer rounded-md px-1 py-0.5 shadow"
             />
           </label>
-          <div className="flex items-center gap-2">
-            <label className="contents">
-              <div className="text-lg font-bold">Secondary:</div>
-            </label>
-            <button className="interactive-bg-surface rounded-md px-4 py-2 font-medium shadow">Choose</button>
-          </div>
-          <div className="flex items-center gap-2">
-            <label className="contents">
-              <div className="text-lg font-bold">Tertiary:</div>
-            </label>
-            <button className="interactive-bg-surface rounded-md px-4 py-2 font-medium shadow">Choose</button>
-          </div>
         </div>
-      </details>
-      <Button onClick={exportColors}>Export Colors</Button>
+        <Button onClick={exportColors}>Export Colors</Button>
+      </div>
+      <p className="text-xl">Components live</p>
+      <All />
       <article className="prose">
         <h4>How to use?</h4>
         <p>Change the primary color, if the color you like, click export colors button</p>

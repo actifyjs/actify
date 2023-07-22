@@ -26,6 +26,7 @@ import SelectOption from './Select/SelectOption'
 import Slider from './Sliders'
 import Switch from './Switch'
 import Tabs from './Tabs'
+import Tab from './Tabs/Tab'
 import TextField from './TextFields'
 
 export {
@@ -57,5 +58,6 @@ export {
   Slider,
   Switch,
   Tabs,
+  Tab,
   TextField
 }
