@@ -83,7 +83,7 @@ const Header = forwardRef((props, ref) => {
                 items={[
                   {
                     headline: 'Get Started',
-                    to: '/get-started'
+                    to: '/getting-started/installation'
                   },
                   {
                     headline: 'Examples',
