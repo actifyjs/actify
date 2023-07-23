@@ -1,17 +1,4 @@
----
-title: Switch
----
-
-# Switch
-
-## Switches toggle the state of an item on or off
-
-# Usage
-
-<usage name="switch"></usage>
-
-```jsx
-import { Switch } from 'actify'
+import { Switch } from '@/packages/components'
 
 export default () => {
   return (
@@ -26,7 +13,7 @@ export default () => {
         <Switch disabled />
       </div>
 
-      <div className="mt-4 flex flex-col gap-2">
+      <div className="mt-4 flex gap-2">
         <label className="flex items-center gap-2">
           <Switch color="primary" />
           <span>with label</span>
@@ -39,4 +26,3 @@ export default () => {
     </>
   )
 }
-```

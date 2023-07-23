@@ -1,17 +1,4 @@
----
-title: Chips
----
-
-# Chips
-
-## Chips help people enter information, make selections, filter content, or trigger actions
-
-# Usage
-
-<usage name="chips"></usage>
-
-```jsx
-import { Chip } from 'actify'
+import { Chip } from '@/packages/components'
 
 export default () => {
   return (
@@ -23,4 +10,3 @@ export default () => {
     </div>
   )
 }
-```

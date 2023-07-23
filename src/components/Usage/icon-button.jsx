@@ -1,22 +1,9 @@
----
-title: Icon buttons
----
-
-# Icon buttons
-
-## Icon buttons help people take minor actions with one tap
-
-# Usage
-
-<usage name="icon-button"></usage>
-
-```jsx
-import { IconButton } from 'actify'
+import { IconButton } from '@/packages/components'
 import { Menu } from 'lucide-react'
 
 export default () => {
   return (
-    <>
+    <div className="flex items-center gap-4">
       <IconButton>
         <Menu />
       </IconButton>
@@ -36,7 +23,6 @@ export default () => {
           />
         </svg>
       </IconButton>
-    </>
+    </div>
   )
 }
-```

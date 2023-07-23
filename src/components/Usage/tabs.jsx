@@ -1,19 +1,6 @@
----
-title: Tabs
----
-
-# Tabs
-
-## Tabs organize content across different screens and views
-
-# Usage
-
-<usage name="tabs"></usage>
-
-```jsx
 import { useState } from 'react'
-import { Tabs, Tab, TabContent } from 'actify'
 import { Home, User2, Settings2 } from 'lucide-react'
+import { Tabs, Tab, TabContent } from '@/packages/components'
 
 const TabContent1 = () => {
   return <img className="pointer-events-none mx-auto select-none" src="https://picsum.photos/800/600?1" />
@@ -53,4 +40,3 @@ export default () => {
     </div>
   )
 }
-```

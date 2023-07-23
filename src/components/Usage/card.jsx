@@ -1,17 +1,4 @@
----
-title: Cards
----
-
-# Cards
-
-## Cards display content and actions about a single subject
-
-# Usage
-
-<usage name="card"></usage>
-
-```jsx
-import { Button, Card } from 'actify'
+import { Button, Card } from '@/packages/components'
 
 export default () => {
   return (
@@ -25,4 +12,3 @@ export default () => {
     </div>
   )
 }
-```

@@ -1,21 +1,8 @@
----
-title: Checkbox
----
-
-# Checkbox
-
-## Checkboxes let users select one or more items from a list, or turn an item on or off
-
-# Usage
-
-<usage name="checkbox"></usage>
-
-```jsx
-import { Checkbox } from 'actify'
+import { Checkbox } from '@/packages/components'
 
 export default () => {
   return (
-    <>
+    <div className="flex gap-4">
       <label className="flex items-center">
         <Checkbox />
         <span>primary</span>
@@ -36,7 +23,6 @@ export default () => {
         <Checkbox disabled color="warning" />
         <span>disabled</span>
       </label>
-    </>
+    </div>
   )
 }
-```

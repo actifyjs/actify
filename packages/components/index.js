@@ -1,5 +1,8 @@
 import Badge from './Badges'
 import Card from './Cards'
+import Carousel from './Carousel'
+import CarouselItem from './Carousel/CarouselItem'
+import Snackbar from './Snackbar'
 import NavigationBar from './NavigationBar'
 import Button from './Button'
 import Fab from './Button/Fab'
@@ -27,11 +30,15 @@ import Slider from './Sliders'
 import Switch from './Switch'
 import Tabs from './Tabs'
 import Tab from './Tabs/Tab'
+import TabContent from './Tabs/TabContent'
 import TextField from './TextFields'
 
 export {
   Badge,
   Card,
+  Carousel,
+  CarouselItem,
+  Snackbar,
   NavigationBar,
   Button,
   Fab,
@@ -59,5 +66,6 @@ export {
   Switch,
   Tabs,
   Tab,
+  TabContent,
   TextField
 }

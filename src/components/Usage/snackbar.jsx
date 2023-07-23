@@ -1,18 +1,5 @@
----
-title: Snackbar
----
-
-# Snackbar
-
-## Snackbars show short updates about app processes at the bottom of the screen
-
-# Usage
-
-<usage name="snackbar"></usage>
-
-```jsx
 import { X } from 'lucide-react'
-import { Snackbar } from 'actify'
+import { Snackbar } from '@/packages/components'
 
 export default () => {
   return (
@@ -34,4 +21,3 @@ export default () => {
     </div>
   )
 }
-```

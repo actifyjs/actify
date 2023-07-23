@@ -1,17 +1,4 @@
----
-title: Lists
----
-
-# Lists
-
-## Lists are continuous, vertical indexes of text and images
-
-# Usage
-
-<usage name="list"></usage>
-
-```jsx
-import { List, ListItem } from 'actify'
+import { List, ListItem } from '@/packages/components'
 
 export default () => {
   const list = [
@@ -36,4 +23,3 @@ export default () => {
     </List>
   )
 }
-```

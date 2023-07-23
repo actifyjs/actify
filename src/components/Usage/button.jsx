@@ -1,22 +1,9 @@
----
-title: Button
----
-
-# Button
-
-## Common buttons prompt most actions in a UI
-
-# Usage
-
-<usage name="button"></usage>
-
-```jsx
 import { Home } from 'lucide-react'
-import { Button } from 'actify'
+import { Button } from '@/packages/components'
 
 export default () => {
   return (
-    <>
+    <div className="flex justify-between">
       <Button>Default Button</Button>
       <Button variant="elevated">Elevated Button</Button>
       <Button variant="tonal">Tonal Button</Button>
@@ -34,7 +21,6 @@ export default () => {
           <Home />
         </div>
       </Button>
-    </>
+    </div>
   )
 }
-```

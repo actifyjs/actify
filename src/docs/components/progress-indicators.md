@@ -6,9 +6,12 @@ title: Progress indicators
 
 ## Progress indicators show the status of a process in real time
 
+# Usage
+
+<usage name="progress-indicators"></usage>
+
 ```jsx
-import LinearProgress from 'actify'
-import CircularProgress from 'actify'
+import { LinearProgress, CircularProgress } from 'actify'
 
 export default () => {
   return (

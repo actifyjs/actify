@@ -1,17 +1,4 @@
----
-title: Carousel
----
-
-# Carousel
-
-## Carousels show a collection of items that can be scrolled on and off the screen
-
-# Usage
-
-<usage name="carousel"></usage>
-
-```jsx
-import { Carousel, CarouselItem } from 'actify'
+import { Carousel, CarouselItem } from '@/packages/components'
 
 export default () => {
   const images = [
@@ -28,4 +15,3 @@ export default () => {
     </Carousel>
   )
 }
-```

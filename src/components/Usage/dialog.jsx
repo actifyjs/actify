@@ -1,18 +1,5 @@
----
-title: Dialogs
----
-
-# Dialogs
-
-## Dialogs provide important prompts in a user flow
-
-# Usage
-
-<usage name="dialog"></usage>
-
-```jsx
 import { useRef } from 'react'
-import { Button, Dialog } from 'actify'
+import { Button, Dialog } from '@/packages/components'
 
 export default () => {
   const ref = useRef(null)
@@ -29,4 +16,3 @@ export default () => {
     </>
   )
 }
-```

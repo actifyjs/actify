@@ -1,18 +1,5 @@
----
-title: Menus
----
-
-# Menus
-
-## Menus display a list of choices on a temporary surface
-
-# Usage
-
-<usage name="menu"></usage>
-
-```jsx
 import { useRef } from 'react'
-import { Button, Menu, MenuItem } from 'actify'
+import { Button, Menu, MenuItem } from '@/packages/components'
 
 export default () => {
   const menuRef = useRef()
@@ -35,4 +22,3 @@ export default () => {
     </>
   )
 }
-```
