@@ -119,28 +119,6 @@ export default () => {
       </div>
       <div className="grid grid-cols-5 gap-2">
         <label className="flex items-center gap-2">
-          <Switch selected />
-          <span>primary</span>
-        </label>
-        <label className="flex items-center">
-          <Switch selected color="secondary" />
-          <span>secondary</span>
-        </label>
-        <label className="flex items-center">
-          <Switch selected color="tertiary" />
-          <span>tertiary</span>
-        </label>
-        <label className="flex items-center">
-          <Switch selected color="error" />
-          <span>error</span>
-        </label>
-        <label className="flex items-center">
-          <Switch selected color="error" disabled />
-          <span>disabled</span>
-        </label>
-      </div>
-      <div className="grid grid-cols-5 gap-2">
-        <label className="flex items-center gap-2">
           <RadioButton name="actify" value="vue" />
           <span>primary</span>
         </label>
@@ -159,6 +137,28 @@ export default () => {
         <label className="flex items-center gap-2">
           <RadioButton name="actify" value="next" color="error" disabled />
           <span>error</span>
+        </label>
+      </div>
+      <div className="grid grid-cols-5 gap-2">
+        <label className="flex items-center gap-2">
+          <Switch selected />
+          <span>primary</span>
+        </label>
+        <label className="flex items-center">
+          <Switch selected color="secondary" />
+          <span>secondary</span>
+        </label>
+        <label className="flex items-center">
+          <Switch selected color="tertiary" />
+          <span>tertiary</span>
+        </label>
+        <label className="flex items-center">
+          <Switch selected color="error" />
+          <span>error</span>
+        </label>
+        <label className="flex items-center">
+          <Switch selected color="error" disabled />
+          <span>disabled</span>
         </label>
       </div>
       <div className="grid grid-cols-5 gap-2">
