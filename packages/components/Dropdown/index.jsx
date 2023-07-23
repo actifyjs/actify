@@ -7,7 +7,11 @@ const Dropdown = (props) => {
 
   return (
     <div className="relative inline-block">
-      <Button variant="text" trailing-icon className="peer">
+      <Button
+        variant="text"
+        trailing-icon
+        className="peer [&_svg]:transition-transform [&_svg]:duration-300 [&_svg]:hover:rotate-90"
+      >
         {title}
         <div slot="icon" className="flex items-center">
           <ChevronDown size={20} />
