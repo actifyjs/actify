@@ -144,19 +144,19 @@ export default () => {
           <Switch selected />
           <span>primary</span>
         </label>
-        <label className="flex items-center">
+        <label className="flex items-center gap-2">
           <Switch selected color="secondary" />
           <span>secondary</span>
         </label>
-        <label className="flex items-center">
+        <label className="flex items-center gap-2">
           <Switch selected color="tertiary" />
           <span>tertiary</span>
         </label>
-        <label className="flex items-center">
+        <label className="flex items-center gap-2">
           <Switch selected color="error" />
           <span>error</span>
         </label>
-        <label className="flex items-center">
+        <label className="flex items-center gap-2">
           <Switch selected color="error" disabled />
           <span>disabled</span>
         </label>
