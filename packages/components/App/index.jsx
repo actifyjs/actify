@@ -1,20 +1,9 @@
-import { forwardRef, useEffect } from 'react'
+import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { AppProvider } from './AppContext'
 
 const App = forwardRef((props, ref) => {
   const { style, className, children, ...rest } = props
-
-  useEffect(() => {
-    if (
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [])
 
   return (
     <AppProvider>

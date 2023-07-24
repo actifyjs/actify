@@ -7,14 +7,15 @@ const SwitchTheme = forwardRef((props, ref) => {
   const [mode, setMode] = useState('') // dark mode
 
   const initTheme = () => {
-    const classList = document.querySelector('html').classList
-    const dark = classList.contains('dark')
-    if (dark) {
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
       setMode('dark')
-      document.documentElement.setAttribute('data-color-mode', 'dark')
+      document.documentElement.classList.add('dark')
     } else {
       setMode('light')
-      document.documentElement.setAttribute('data-color-mode', 'light')
+      document.documentElement.classList.remove('dark')
     }
   }
   useEffect(() => {
@@ -27,11 +28,9 @@ const SwitchTheme = forwardRef((props, ref) => {
     if (mode == 'dark') {
       setMode('light')
       localStorage.setItem('theme', 'light')
-      document.documentElement.setAttribute('data-color-mode', 'light')
     } else {
       setMode('dark')
       localStorage.setItem('theme', 'dark')
-      document.documentElement.setAttribute('data-color-mode', 'dark')
     }
   }
 
