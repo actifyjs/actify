@@ -13,7 +13,7 @@ export default () => {
         <Badge value={value} color={color} />
       </IconButton>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex gap-4">
         <TextField value={value} label="set badge" onInput={(e) => setValue(e.target.value)} />
         <TextField value={color} label="set color" onInput={(e) => setColor(e.target.value)} />
       </div>
