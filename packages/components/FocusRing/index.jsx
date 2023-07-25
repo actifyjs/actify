@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import '@material/web/focus/focus-ring'
+import '@material/web/focus/md-focus-ring'
 
 const FocusRing = forwardRef((props, ref) => {
   const { ...rest } = props

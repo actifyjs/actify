@@ -8,7 +8,7 @@ title: Progress indicators
 
 # Usage
 
-<usage name="progress-indicators"></usage>
+<usage name="progress"></usage>
 
 ```jsx
 import { LinearProgress, CircularProgress } from 'actify'

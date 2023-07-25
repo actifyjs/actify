@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.22.5",
-    "@material/web": "^1.0.0-pre.13",
+    "@material/web": "^1.0.0-pre.14",
     "@tailwindcss/typography": "^0.5.9",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",

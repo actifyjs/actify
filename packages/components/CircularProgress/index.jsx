@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import '@material/web/circularprogress/circular-progress'
+import '@material/web/progress/circular-progress'
 import { setColor, removeFalseValue } from '@/packages/utils'
 
 const CircularProgress = forwardRef((props, ref) => {

@@ -438,10 +438,10 @@
   resolved "https://registry.npmmirror.com/@material/material-color-utilities/-/material-color-utilities-0.2.7.tgz#ff2a638d2db295a796fa02671410df4f4f97c33e"
   integrity sha512-0FCeqG6WvK4/Cc06F/xXMd/pv4FeisI0c1tUpBbfhA2n9Y8eZEv4Karjbmf2ZqQCPUWMrGp8A571tCjizxoTiQ==
 
-"@material/web@^1.0.0-pre.13":
-  version "1.0.0-pre.13"
-  resolved "https://registry.npmjs.org/@material/web/-/web-1.0.0-pre.13.tgz#56698cac83e08e601730ff9052531e2620763528"
-  integrity sha512-PAWvd8TxX2T079WYOsoAIjw6kqCiQjLyNp/BWZVsYrBSNXhdBPPh38XkzQ9HKM43zUvJU9IELby6gH4O1Elviw==
+"@material/web@^1.0.0-pre.14":
+  version "1.0.0-pre.14"
+  resolved "https://registry.npmmirror.com/@material/web/-/web-1.0.0-pre.14.tgz#f16fed0aa47f5512675bced243a95dc6a60b10e1"
+  integrity sha512-nR5argPpzkGNaIoPARgo23uVAmwYRHjZdnlZQJkIe+H8jA4AVdjcEAAgMOHnaT/ByhDShob8mwdf4+bgmA9mgw==
   dependencies:
     lit "^2.7.4"
     safevalues "^0.4.3"

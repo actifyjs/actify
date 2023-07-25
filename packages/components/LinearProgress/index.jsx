@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import '@material/web/linearprogress/linear-progress'
+import '@material/web/progress/linear-progress'
 import { setColor, removeFalseValue } from '@/packages/utils'
 
 const LinearProgress = forwardRef((props, ref) => {
