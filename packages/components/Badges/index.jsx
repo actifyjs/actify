@@ -5,7 +5,7 @@ import '@material/web/labs/badge/badge'
 import { setColor } from '@/packages/utils'
 
 const Badge = forwardRef((props, ref) => {
-  const { style, color, value, className, ...rest } = props
+  const { style, color, value, className, children, ...rest } = props
   let styles = { ...style }
   if (color) {
     styles['--md-badge-color'] = setColor(color)
@@ -13,7 +13,12 @@ const Badge = forwardRef((props, ref) => {
   }
   const number = isNaN(parseInt(value)) ? '' : parseInt(value)
 
-  return <md-badge ref={ref} value={number > 999 ? '999+' : number} {...rest} class={className} style={{ ...styles }} />
+  return (
+    <div className="inline-flex relative">
+      {children}
+      <md-badge ref={ref} value={number > 999 ? '999+' : number} {...rest} class={className} style={{ ...styles }} />
+    </div>
+  )
 })
 
 Badge.propTypes = {
