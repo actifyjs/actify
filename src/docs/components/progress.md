@@ -16,7 +16,7 @@ import { LinearProgress, CircularProgress } from 'actify'
 export default () => {
   return (
     <>
-      <LinearProgress indeterminate progress={0.5} />
+      <LinearProgress indeterminate value={0.5} />
       <CircularProgress indeterminate />
     </>
   )
