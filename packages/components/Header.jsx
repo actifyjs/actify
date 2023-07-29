@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 import { useApp } from './App/AppContext'
 import Button from '@/packages/components/Button'
+import IconButton from '@/packages/components/Button/IconButton'
 import Spacer from '@/packages/components/Spacer'
 import Dropdown from '@/packages/components/Dropdown'
 import SwitchTheme from '@/packages/components/SwitchTheme'
@@ -58,20 +59,14 @@ const Header = forwardRef((props, ref) => {
           </svg>
           <span className="hidden self-center whitespace-nowrap text-2xl font-semibold md:inline">ctify</span>
         </Link>
-        <button
-          onClick={() => setDrawer(!app.drawer)}
-          className="inline-flex h-9 w-9 items-center rounded-md p-2 text-sm hover:bg-on-surface hover:bg-opacity-5"
-        >
-          <Menu />
-        </button>
+        <IconButton onClick={() => setDrawer(!app.drawer)}>
+          <Menu className="text-primary" />
+        </IconButton>
         <Spacer />
         <SwitchTheme className="block md:hidden" />
-        <button
-          onClick={handleUpdateTheme}
-          className="inline-flex h-9 w-9 items-center rounded-md p-2 text-sm hover:bg-on-surface hover:bg-opacity-5"
-        >
-          <Palette />
-        </button>
+        <IconButton onClick={handleUpdateTheme}>
+          <Palette className="text-primary" />
+        </IconButton>
         <div className="hidden w-full md:block md:w-auto">
           <ul className="flex flex-row gap-2 font-medium">
             <li>

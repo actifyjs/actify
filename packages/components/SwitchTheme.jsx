@@ -1,5 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 import { Sun, Moon } from 'lucide-react'
+import IconButton from '@/packages/components/Button/IconButton'
 import { forwardRef, useEffect, useState } from 'react'
 
 const SwitchTheme = forwardRef((props, ref) => {
@@ -36,8 +37,16 @@ const SwitchTheme = forwardRef((props, ref) => {
 
   return (
     <div ref={ref} {...rest} onClick={toggleTheme} className={twMerge('cursor-pointer overflow-hidden', className)}>
-      <div className="grid place-content-center rounded-md p-2 hover:bg-on-surface hover:bg-opacity-5">
-        {mode == 'dark' ? <Sun /> : <Moon />}
+      <div className="grid place-content-center">
+        {mode == 'dark' ? (
+          <IconButton>
+            <Sun className="text-primary" />
+          </IconButton>
+        ) : (
+          <IconButton>
+            <Moon className="text-primary" />
+          </IconButton>
+        )}
       </div>
     </div>
   )
