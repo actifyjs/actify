@@ -15,6 +15,9 @@ const Tabs = forwardRef((props, ref) => {
 
   useEffect(() => {
     tabsRef.current.addEventListener('change', onChange)
+    return () => {
+      tabsRef.current.removeEventListener('change', onChange)
+    }
   }, [])
 
   return (

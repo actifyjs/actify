@@ -7,6 +7,9 @@ const NavigationBar = forwardRef((props, ref) => {
 
   useEffect(() => {
     _ref.current.addEventListener('onActiveIndexChange', onChange)
+    return () => {
+      _ref.current.removeEventListener('onActiveIndexChange', onChange)
+    }
   }, [])
 
   return (
