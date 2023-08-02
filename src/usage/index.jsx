@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 
 const Usage = ({ name }) => {
-  const LazyComponent = lazy(() => import(`../../components/Usage/${name}.jsx`))
+  const LazyComponent = lazy(() => import(`./${name}.jsx`))
   return (
     <Suspense>
       <LazyComponent name={name} />
