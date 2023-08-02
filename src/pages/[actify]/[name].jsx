@@ -6,7 +6,7 @@ import rehypeRaw from 'rehype-raw'
 import Code from '@/packages/components/Code'
 import { Pencil } from 'lucide-react'
 import Button from '@/packages/components/Button'
-import Usage from '@/src/Usage'
+import Usage from '@/src/usage'
 
 export default () => {
   const params = useParams()
