@@ -1,8 +1,9 @@
 import Prism from 'prismjs'
 import { Copy } from 'lucide-react'
-import { useRef, useEffect, useState } from 'react'
 import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-css.min.js'
 import 'prismjs/components/prism-jsx.min.js'
+import { useRef, useState, useEffect } from 'react'
 import 'prism-material-themes/themes/material-palenight.css'
 
 const Code = (props) => {
