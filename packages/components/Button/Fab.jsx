@@ -8,13 +8,12 @@ const Fab = forwardRef((props, ref) => {
   const { style, icon, size, variant, color, className, children, ...rest } = props
   let styles = { ...style }
   color && (styles['--md-fab-icon-color'] = setColor(color))
-
   return (
     <md-fab ref={ref} {...rest} class={className} style={{ ...styles }}>
       {icon ? (
-        <Icon color={color} slot="icon">
-          {icon}
-        </Icon>
+        <span slot="icon">
+          <Icon name={icon} />
+        </span>
       ) : (
         <span className="grid place-content-center" color={color} slot="icon">
           {children}

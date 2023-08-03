@@ -12,12 +12,11 @@ title: Floating action buttons
 
 ```jsx
 import { Fab } from 'actify'
-import { Home } from 'lucide-react'
 
 export default () => {
   return (
     <>
-      <Fab color="error" icon={<Home />} />
+      <Fab color="error" icon="Home" />
       <Fab color="primary" label="ctify">
         <svg width="33.455" height="36.987" fill="#fff" viewBox="0 0 33.455 36.987" xmlns="http://www.w3.org/2000/svg">
           <path
