@@ -1,10 +1,11 @@
 import { lazy, Suspense } from 'react'
 
-const Usage = ({ name }) => {
+const Usage = (props) => {
+  const { name, ...rest } = props
   const LazyComponent = lazy(() => import(`../usage/${name}.jsx`))
   return (
     <Suspense>
-      <LazyComponent name={name} />
+      <LazyComponent name={name} {...rest} />
     </Suspense>
   )
 }

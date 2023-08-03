@@ -12,6 +12,7 @@ const Layout = ({ children }) => {
       <Header />
       <Drawer>
         <ul className="overflow-y-auto overflow-x-hidden">
+          <ListItemLink headline="Icon" to="/getting-started/icon" />
           <ListItemLink headline="Theme" to="/getting-started/theme" />
           {components.map((component, index) =>
             component.children ? (

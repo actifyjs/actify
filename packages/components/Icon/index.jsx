@@ -1,17 +1,15 @@
-import React, { forwardRef } from 'react'
-import '@material/web/icon/icon'
+import { forwardRef } from 'react'
+import { icons } from 'lucide-react'
 import { setColor } from '@/packages/utils'
 
 const Icon = forwardRef((props, ref) => {
-  const { size, color, style, className, children, ...rest } = props
-  let styles = { ...style }
-  size && (styles['--md-icon-size'] = size)
-  color && (styles['--md-icon-color'] = setColor(color))
+  const { name, color, size, className } = props
+  const LucideIcon = icons[name]
 
   return (
-    <md-icon ref={ref} {...rest} class={className} style={{ ...styles }}>
-      <span>{children}</span>
-    </md-icon>
+    <i className={className}>
+      <LucideIcon ref={ref} color={setColor(color)} size={size} />
+    </i>
   )
 })
 
