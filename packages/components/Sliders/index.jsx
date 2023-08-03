@@ -10,7 +10,7 @@ const Slider = forwardRef((props, ref) => {
     styles['--md-sys-color-primary'] = setColor(color)
   }
 
-  return <md-slider ref={ref} style={styles} className={className} {...rest} />
+  return <md-slider ref={ref} style={styles} class={className} {...rest} />
 })
 
 export default Slider

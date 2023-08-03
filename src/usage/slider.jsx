@@ -1,5 +1,5 @@
 import { Slider } from '@/packages/components'
 
 export default () => {
-  return <Slider labeled />
+  return <Slider labeled className="w-full" />
 }
