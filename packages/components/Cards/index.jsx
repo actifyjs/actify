@@ -41,7 +41,7 @@ const Card = forwardRef((props, ref) => {
     >
       {children}
       <Ripple />
-      <Elevation />
+      <Elevation level="1" />
     </div>
   )
 })
