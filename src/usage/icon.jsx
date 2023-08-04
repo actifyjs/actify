@@ -1,6 +1,6 @@
 import icons from '@/src/icons.json'
 import { useEffect, useState, useTransition } from 'react'
-import { Icon, TextField } from '@/packages/components'
+import { Icon, TextField, LinearProgress } from '@/packages/components'
 
 export default (props) => {
   const [isPending, startTransition] = useTransition()
@@ -34,8 +34,14 @@ export default (props) => {
   return (
     <>
       <Icon name="Home" {...rest} />
-      <TextField className="my-2 w-full" onInput={handleInput} placeholder={`Search icon in ${icons.length}`} />
-      <div className="gap-2 grid grid-cols-[repeat(auto-fill,minmax(56px,1fr))]">
+      <TextField
+        variant="outlined"
+        className="my-2 w-full"
+        onInput={handleInput}
+        placeholder={`Search icon in ${icons.length}`}
+      />
+      <LinearProgress indeterminate={isPending} />
+      <div className="mt-2 gap-2 grid grid-cols-[repeat(auto-fill,minmax(52px,1fr))]">
         {filterIcons.map((item) => (
           <Icon
             size={36}
