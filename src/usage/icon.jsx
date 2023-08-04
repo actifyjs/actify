@@ -19,27 +19,34 @@ export default (props) => {
     })
   }
 
-  // 复制到剪切板
+  // copy icon
   const cliptoboard = (str) => {
-    navigator.clipboard.writeText(str)
+    navigator.clipboard.writeText(str).then(
+      () => {
+        console.log('Copied!')
+      },
+      () => {
+        console.log('Copy Failed!')
+      }
+    )
   }
 
   return (
     <>
-      <TextField className="w-full" onInput={handleInput} placeholder={`Search icon in ${icons.length}`} />
-      <div className="mt-2 gap-2 grid grid-cols-[repeat(auto-fill,minmax(56px,1fr))]">
+      <Icon name="Home" {...rest} />
+      <TextField className="my-2 w-full" onInput={handleInput} placeholder={`Search icon in ${icons.length}`} />
+      <div className="gap-2 grid grid-cols-[repeat(auto-fill,minmax(56px,1fr))]">
         {filterIcons.map((item) => (
           <Icon
             size={36}
             key={item}
             name={item}
             color="primary"
-            onClick={cliptoboard(item)}
+            onClick={() => cliptoboard(item)}
             className="flex items-center justify-center cursor-pointer p-2 bg-black/10 dark:bg-white/10 rounded-md"
           />
         ))}
       </div>
-      <Icon name="Home" {...rest} />
     </>
   )
 }
