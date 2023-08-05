@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import '@material/web/icon/icon'
 import '@material/web/iconbutton/standard-icon-button'
 import '@material/web/iconbutton/outlined-icon-button'
 import '@material/web/iconbutton/filled-icon-button'
