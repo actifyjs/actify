@@ -11,14 +11,13 @@ title: Icon buttons
 <usage name="icon-button"></usage>
 
 ```jsx
-import { IconButton } from 'actify'
-import { Menu } from 'lucide-react'
+import { Icon, IconButton } from 'actify'
 
 export default () => {
   return (
     <>
       <IconButton>
-        <Menu />
+        <Icon name="Menu" />
       </IconButton>
       <IconButton>
         <svg

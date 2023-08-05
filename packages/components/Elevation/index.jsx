@@ -4,7 +4,7 @@ import { cn } from '@/packages/utils'
 import { cva } from 'class-variance-authority'
 
 const elevationStyles = cva(
-  'rounded-[inherit] absolute inset-0 before:absolute before:inset-0 before:transition-all after:absolute after:inset-0 after:transition-all before:rounded-[inherit] before:text-black before:opacity-30 after:opacity-[0.15] after:rounded-[inherit] after:text-black',
+  'pointer-events-none rounded-[inherit] absolute inset-0 before:absolute before:inset-0 before:transition-all after:absolute after:inset-0 after:transition-all before:rounded-[inherit] before:text-black before:opacity-30 after:opacity-[0.15] after:rounded-[inherit] after:text-black',
   {
     variants: {
       level: {

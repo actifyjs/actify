@@ -7,8 +7,8 @@ const Icon = forwardRef((props, ref) => {
   const LucideIcon = icons[name]
 
   return (
-    <i className={className}>
-      <LucideIcon ref={ref} {...rest} color={setColor(color)} size={size} />
+    <i className={className} {...rest}>
+      <LucideIcon ref={ref} color={setColor(color)} size={size} />
     </i>
   )
 })

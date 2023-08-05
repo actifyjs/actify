@@ -1,5 +1,5 @@
 import Prism from 'prismjs'
-import { Copy } from 'lucide-react'
+import { Icon } from '@/packages/components'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-css.min.js'
 import 'prismjs/components/prism-jsx.min.js'
@@ -46,7 +46,7 @@ const Code = (props) => {
         </div>
         <div className="mt-2 flex cursor-pointer gap-2 text-white opacity-0 transition-opacity hover:text-white/75 group-hover:opacity-100">
           <span className="text-sm">{copyResult}</span>
-          <Copy size={20} onClick={copyCode} />
+          <Icon name="Copy" size={20} onClick={copyCode} />
         </div>
       </div>
 

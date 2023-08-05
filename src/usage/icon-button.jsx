@@ -1,11 +1,10 @@
-import { IconButton } from '@/packages/components'
-import { Menu } from 'lucide-react'
+import { Icon, IconButton } from '@/packages/components'
 
 export default () => {
   return (
     <div className="flex items-center gap-4">
       <IconButton>
-        <Menu />
+        <Icon name="Menu" />
       </IconButton>
       <IconButton>
         <svg

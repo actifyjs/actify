@@ -11,16 +11,14 @@ title: Navigation bar
 <usage name="navigation-bar"></usage>
 
 ```jsx
-import { Home, User, Settings2 } from 'lucide-react'
-import NavigationBar from '@/packages/components/NavigationBar'
-import NavigationTab from '@/packages/components/NavigationBar/NavigationTab'
+import { Icon, NavigationBar, NavigationTab } from 'actify'
 
 export default () => {
   return (
     <NavigationBar>
-      <NavigationTab label="Home" inactiveIcon={<Home />} activeIcon={<Home />} />
-      <NavigationTab label="User" showBadge={true} badgeValue={999} inactiveIcon={<User />} activeIcon={<User />} />
-      <NavigationTab label="Setting" inactiveIcon={<Settings2 />} activeIcon={<Settings2 />} />
+      <NavigationTab label="Home" inactiveIcon="Home" activeIcon="Home" />
+      <NavigationTab label="User" showBadge={true} badgeValue={999} inactiveIcon="User" activeIcon="User" />
+      <NavigationTab label="Setting" inactiveIcon="Setting2" activeIcon="Setting2" />
     </NavigationBar>
   )
 }

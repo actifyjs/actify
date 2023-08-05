@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { cn } from '@/packages/utils'
 import { cva } from 'class-variance-authority'
-import { Menu, Search as SearchIcon } from 'lucide-react'
+import { Icon } from '@/packages/components'
 
 const variants = cva('flex items-center px-4 py-1 h-14 rounded-full bg-black/5 dark:bg-white/5', {
   variants: {
@@ -16,9 +16,9 @@ const Search = forwardRef((props, ref) => {
   const { children, className, ...rest } = props
   return (
     <div className={cn(variants({ className }))}>
-      <Menu size="24" />
+      <Icon name="Menu" size="24" />
       <input ref={ref} {...rest} type="text" className="mx-4 flex-grow bg-transparent focus-visible:outline-none" />
-      <SearchIcon size="24" />
+      <Icon name="Search" size="24" />
     </div>
   )
 })

@@ -4,6 +4,7 @@ import Carousel from './Carousel'
 import CarouselItem from './Carousel/CarouselItem'
 import Snackbar from './Snackbar'
 import NavigationBar from './NavigationBar'
+import NavigationTab from './NavigationBar/NavigationTab'
 import Button from './Button'
 import Fab from './Button/Fab'
 import IconButton from './Button/IconButton'
@@ -40,6 +41,7 @@ export {
   CarouselItem,
   Snackbar,
   NavigationBar,
+  NavigationTab,
   Button,
   Fab,
   IconButton,

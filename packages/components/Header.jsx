@@ -1,14 +1,11 @@
 import { forwardRef } from 'react'
-import { Menu } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 import { useApp } from './App/AppContext'
-import Button from '@/packages/components/Button'
-import IconButton from '@/packages/components/Button/IconButton'
+import { Icon, Button, IconButton } from '@/packages/components'
 import Spacer from '@/packages/components/Spacer'
 import Dropdown from '@/packages/components/Dropdown'
 import SwitchTheme from '@/packages/components/SwitchTheme'
-import { Palette } from 'lucide-react'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const Header = forwardRef((props, ref) => {
@@ -60,12 +57,12 @@ const Header = forwardRef((props, ref) => {
           <span className="hidden self-center whitespace-nowrap text-2xl font-semibold md:inline">ctify</span>
         </Link>
         <IconButton onClick={() => setDrawer(!app.drawer)}>
-          <Menu className="text-primary" />
+          <Icon name="Menu" color="primary" />
         </IconButton>
         <Spacer />
         <SwitchTheme className="block md:hidden" />
         <IconButton onClick={handleUpdateTheme}>
-          <Palette className="text-primary" />
+          <Icon name="Palette" color="primary" />
         </IconButton>
         <div className="hidden w-full md:block md:w-auto">
           <ul className="flex flex-row gap-2 font-medium">

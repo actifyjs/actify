@@ -11,15 +11,14 @@ title: Badge
 <usage name="badges"></usage>
 
 ```jsx
-import { User } from 'lucide-react'
-import { Badge, IconButton } from 'actify'
+import { Icon, Badge, IconButton } from 'actify'
 
 export default () => {
   return (
     <div className="flex gap-8">
       <Badge value={999} color="primary">
         <IconButton>
-          <User />
+          <Icon name="User" />
         </IconButton>
       </Badge>
       <Badge value={value}>

@@ -1,6 +1,5 @@
 import { twMerge } from 'tailwind-merge'
-import { Sun, Moon } from 'lucide-react'
-import IconButton from '@/packages/components/Button/IconButton'
+import { Icon, IconButton } from '@/packages/components'
 import { forwardRef, useEffect, useState } from 'react'
 
 const SwitchTheme = forwardRef((props, ref) => {
@@ -40,11 +39,11 @@ const SwitchTheme = forwardRef((props, ref) => {
       <div className="grid place-content-center">
         {mode == 'dark' ? (
           <IconButton>
-            <Sun className="text-primary" />
+            <Icon name="Sun" color="primary" />
           </IconButton>
         ) : (
           <IconButton>
-            <Moon className="text-primary" />
+            <Icon name="Moon" color="primary" />
           </IconButton>
         )}
       </div>

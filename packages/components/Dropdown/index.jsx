@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ChevronDown } from 'lucide-react'
-import Button from '@/packages/components/Button'
+import { Button, Icon } from '@/packages/components'
 
 const Dropdown = (props) => {
   const { title, items } = props
@@ -14,7 +13,7 @@ const Dropdown = (props) => {
       >
         {title}
         <div slot="icon" className="flex items-center">
-          <ChevronDown size={20} />
+          <Icon name="ChevronDown" size={20} />
         </div>
       </Button>
 

@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { Home, User2, Settings2 } from 'lucide-react'
-import { Tabs, Tab, TabContent } from '@/packages/components'
+import { Icon, Tabs, Tab, TabContent } from '@/packages/components'
 
 const TabContent1 = () => {
   return <img className="pointer-events-none mx-auto select-none" src="https://picsum.photos/800/600?1" />
@@ -19,20 +18,20 @@ export default () => {
       <Tabs selected={selected} onChange={(e) => setSelected(e.target.selected)}>
         <Tab>
           <span slot="icon">
-            <Home />
+            <Icon name="Home" />
           </span>
           Home
         </Tab>
         <Tab>
           User
           <span slot="icon">
-            <User2 />
+            <Icon name="User2" />
           </span>
         </Tab>
         <Tab>
           Settings
           <span slot="icon">
-            <Settings2 />
+            <Icon name="Settings2" />
           </span>
         </Tab>
       </Tabs>

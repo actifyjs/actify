@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import { cn } from '@/packages/utils'
 import { cva } from 'class-variance-authority'
 import Spacer from '@/packages/components/Spacer'
-import { Menu, User } from 'lucide-react'
+import { Icon } from '@/packages/components'
 
 const topAppBarStyles = cva('inline-flex w-full items-center justify-start bg-primary px-1 py-2', {
   variants: {
@@ -26,7 +26,7 @@ const TopAppBar = forwardRef((props, ref) => {
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
             <div className="relative h-6 w-6 text-on-primary">
-              <Menu size={24} />
+              <Icon name="Menu" size={24} />
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@ const TopAppBar = forwardRef((props, ref) => {
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
             <div className="relative h-6 w-6 text-on-primary">
-              <User size={24} />
+              <Icon name="User" size={24} />
             </div>
           </div>
         </div>
@@ -50,9 +50,7 @@ const TopAppBar = forwardRef((props, ref) => {
         <div className="w-full items-start justify-start gap-2.5 self-stretch px-4">
           <div className="text-zinc-900 text-[24px] font-normal leading-loose">{title}</div>
         </div>
-      ) : (
-        ''
-      )}
+      ) : null}
     </div>
   )
 })

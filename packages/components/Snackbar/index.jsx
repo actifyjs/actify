@@ -1,7 +1,7 @@
 import { cn } from '@/packages/utils'
 import { forwardRef, useState } from 'react'
 import { cva } from 'class-variance-authority'
-import Elevation from '@/packages/components/Elevation'
+import { Icon, Elevation } from '@/packages/components'
 
 const variants = cva('relative py-[14px] px-4 flex items-center justify-between rounded-[4px]', {
   variants: {
@@ -38,11 +38,7 @@ const Snackbar = forwardRef((props, ref) => {
     >
       <div className="line-clamp-2 flex-grow">{children}</div>
       {action && <div className="-mr-2 ml-1 cursor-pointer px-3 py-[10px]">{action}</div>}
-      {icon && (
-        <i onClick={close} className="cursor-pointer pl-5">
-          {icon}
-        </i>
-      )}
+      {icon && <Icon onClick={close} name={icon} />}
       {longaction && <div className="w-full cursor-pointer px-3 py-[14px] text-right">{longaction}</div>}
       <Elevation level="3" />
     </div>

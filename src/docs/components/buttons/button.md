@@ -11,8 +11,7 @@ title: Button
 <usage name="button"></usage>
 
 ```jsx
-import { Home } from 'lucide-react'
-import { Button } from 'actify'
+import { Icon, Button } from 'actify'
 
 export default () => {
   return (
@@ -24,14 +23,14 @@ export default () => {
       <Button variant="text">Text Button</Button>
       <Button leading-icon>
         <div slot="icon" className="flex items-center">
-          <Home />
+          <Icon name="Home" />
         </div>
         Button with leading icon
       </Button>
       <Button trailing-icon>
         Button with trailing icon
         <div slot="icon" className="flex items-center">
-          <Home />
+          <Icon name="Home" />
         </div>
       </Button>
     </>

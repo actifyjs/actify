@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import Button from '@/packages/components/Button'
-import { ArrowRight, HelpCircle, Github } from 'lucide-react'
+import { Icon, Button } from '@/packages/components'
 
 export default () => {
   return (
@@ -26,21 +25,21 @@ export default () => {
           <Button trailing-icon>
             Get Started
             <span slot="icon" className="flex items-center">
-              <ArrowRight />
+              <Icon name="ArrowRight" />
             </span>
           </Button>
         </Link>
         <Link to="/getting-started/why-actify">
           <Button color="secondary">
             <span slot="icon" className="flex items-center">
-              <HelpCircle />
+              <Icon name="HelpCircle" />
             </span>
             Why Actify
           </Button>
         </Link>
         <Button variant="outlined" href="https://github.com/actifyjs/actify" target="_blank">
           <span slot="icon" className="flex items-center">
-            <Github />
+            <Icon name="Github" />
           </span>
           GitHub
         </Button>

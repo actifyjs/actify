@@ -4,8 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import Code from '@/packages/components/Code'
-import { Pencil } from 'lucide-react'
-import Button from '@/packages/components/Button'
+import { Icon, Button } from '@/packages/components'
 import Usage from '@/src/usage'
 
 export default () => {
@@ -23,7 +22,7 @@ export default () => {
         >
           Edit this page on GitHub
           <div slot="icon" className="flex items-center">
-            <Pencil />
+            <Icon name="Pencil" />
           </div>
         </Button>
       )

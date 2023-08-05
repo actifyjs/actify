@@ -30,7 +30,6 @@ import {
   Tab,
   TextField
 } from '@/packages/components'
-import { Home, User, Car, Camera, Settings } from 'lucide-react'
 
 export default () => {
   return (
@@ -44,41 +43,41 @@ export default () => {
       </div>
       <div className="grid grid-cols-5 gap-2">
         <IconButton>
-          <User />
+          <Icon name="User" />
           <Badge value={999} color="primary" />
         </IconButton>
         <IconButton>
-          <User />
+          <Icon name="User" />
           <Badge value={999} color="secondary" />
         </IconButton>
         <IconButton>
-          <User />
+          <Icon name="User" />
           <Badge value={999} color="tertiary" />
         </IconButton>
         <IconButton>
-          <User />
+          <Icon name="User" />
           <Badge value={999} />
         </IconButton>
         <IconButton disabled>
-          <User />
+          <Icon name="User" />
           <Badge value={999} />
         </IconButton>
       </div>
       <div className="grid grid-cols-5 gap-2">
         <IconButton variant="filled-tonal" color="primary">
-          <User />
+          <Icon name="User" />
         </IconButton>
         <IconButton variant="filled-tonal" color="secondary">
-          <User />
+          <Icon name="User" />
         </IconButton>
         <IconButton variant="filled-tonal" color="tertiary">
-          <User />
+          <Icon name="User" />
         </IconButton>
         <IconButton variant="filled-tonal" color="error">
-          <User />
+          <Icon name="User" />
         </IconButton>
         <IconButton variant="filled-tonal" disabled>
-          <User />
+          <Icon name="User" />
         </IconButton>
       </div>
       <div className="grid grid-cols-5 gap-2">
@@ -172,104 +171,104 @@ export default () => {
         <Tabs selected={0} color="primary">
           <Tab>
             <span slot="icon">
-              <Home />
+              <Icon name="Home" />
             </span>
             Home
           </Tab>
           <Tab>
             User
             <span slot="icon">
-              <User />
+              <Icon name="User" />
             </span>
           </Tab>
           <Tab>
             Camera
             <span slot="icon">
-              <Camera />
+              <Icon name="Camera" />
             </span>
           </Tab>
           <Tab>
             Settings
             <span slot="icon">
-              <Settings />
+              <Icon name="Settings" />
             </span>
           </Tab>
         </Tabs>
         <Tabs selected={1} color="secondary">
           <Tab>
             <span slot="icon">
-              <Home />
+              <Icon name="Home" />
             </span>
             Home
           </Tab>
           <Tab>
             User
             <span slot="icon">
-              <User />
+              <Icon name="User" />
             </span>
           </Tab>
           <Tab>
             Camera
             <span slot="icon">
-              <Camera />
+              <Icon name="Camera" />
             </span>
           </Tab>
           <Tab>
             Settings
             <span slot="icon">
-              <Settings />
+              <Icon name="Settings" />
             </span>
           </Tab>
         </Tabs>
         <Tabs selected={2} color="tertiary">
           <Tab>
             <span slot="icon">
-              <Home />
+              <Icon name="Home" />
             </span>
             Home
           </Tab>
           <Tab>
             Car
             <span slot="icon">
-              <Car />
+              <Icon name="Car" />
             </span>
           </Tab>
           <Tab>
             Camera
             <span slot="icon">
-              <Camera />
+              <Icon name="Camera" />
             </span>
           </Tab>
           <Tab>
             Settings
             <span slot="icon">
-              <Settings />
+              <Icon name="Settings" />
             </span>
           </Tab>
         </Tabs>
         <Tabs selected={3} color="error">
           <Tab>
             <span slot="icon">
-              <Home />
+              <Icon name="Home" />
             </span>
             Home
           </Tab>
           <Tab>
             User
             <span slot="icon">
-              <User />
+              <Icon name="User" />
             </span>
           </Tab>
           <Tab>
             Camera
             <span slot="icon">
-              <Camera />
+              <Icon name="Camera" />
             </span>
           </Tab>
           <Tab>
             Settings
             <span slot="icon">
-              <Settings />
+              <Icon name="Settings" />
             </span>
           </Tab>
         </Tabs>

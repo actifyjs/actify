@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Circle } from 'lucide-react'
+import { Icon } from '@/packages/components'
 import '@material/web/chips/chip-set'
 import '@material/web/chips/assist-chip'
 import '@material/web/chips/filter-chip'
@@ -14,22 +14,18 @@ const Chip = (props) => {
     <md-chip-set>
       {type == 'assist' && (
         <md-assist-chip {...rest}>
-          <md-icon slot="icon"></md-icon>
+          <span slot="icon">{icon && <Icon name={icon} />}</span>
         </md-assist-chip>
       )}
       {type == 'filter' && (
         <md-filter-chip {...rest}>
-          <md-icon slot="icon">
-            <Circle size={18} />
-          </md-icon>
+          <span slot="icon">
+            <Icon name="Circle" size={18} />
+          </span>
         </md-filter-chip>
       )}
-      {type == 'input' && (
-        <md-input-chip {...rest}>{/* <md-icon slot="icon">{icon && icon}</md-icon> */}</md-input-chip>
-      )}
-      {type == 'suggestion' && (
-        <md-suggestion-chip {...rest}>{/* <md-icon slot="icon">{icon && icon}</md-icon> */}</md-suggestion-chip>
-      )}
+      {type == 'input' && <md-input-chip {...rest} />}
+      {type == 'suggestion' && <md-suggestion-chip {...rest} />}
     </md-chip-set>
   )
 }
