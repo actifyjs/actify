@@ -20,3 +20,9 @@
 .dark ::-webkit-scrollbar-track {
   background-color: rgb(66, 66, 66);
 }
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}

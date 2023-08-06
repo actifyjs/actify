@@ -1,22 +1,14 @@
-import React, { useEffect, useRef } from 'react'
-import '@material/web/ripple/ripple'
-import { cva } from 'class-variance-authority'
+import React, { useRef } from 'react'
+import useRipple from '@/packages/hooks/useRipple'
 
-const rippleStyles = cva('rounded-[inherit] absolute inset-0 overflow-hidden')
-
-const Ripple = (props) => {
-  const ref = useRef()
-
-  useEffect(() => {
-    console.log(ref.current)
-  }, [])
-
-  const handleClick = (e) => {
-    console.log(e)
-  }
-
-  return <span ref={ref} className={rippleStyles()}></span>
-  // return <md-ripple {...props} />
+const Ripple = () => {
+  const ref = useRef(null)
+  const ripples = useRipple(ref)
+  return (
+    <span ref={ref} className="overflow-hidden absolute inset-0">
+      {ripples}
+    </span>
+  )
 }
 
 Ripple.displayName = 'Actify.Ripple'

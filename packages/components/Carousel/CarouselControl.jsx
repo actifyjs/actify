@@ -1,4 +1,4 @@
-import useInterval from './useInterval'
+import { useInterval } from 'usehooks-ts'
 import { Icon } from '@/packages/components'
 import { useCarousel } from './CarouselContext'
 

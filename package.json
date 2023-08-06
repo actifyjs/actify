@@ -61,6 +61,7 @@
     "tailwind-material-colors": "^1.0.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "^3.3.3",
+    "usehooks-ts": "^2.9.1",
     "vite": "^4.4.7",
     "vite-plugin-markdown": "^2.2.0-2",
     "vite-plugin-pages": "^0.31.0"
