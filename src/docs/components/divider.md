@@ -11,7 +11,7 @@ title: Divider
 <usage name="divider"></usage>
 
 ```jsx
-import { divider } from 'actify'
+import { Divider } from 'actify'
 
 export default () => {
   return (
