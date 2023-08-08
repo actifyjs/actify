@@ -2,7 +2,7 @@ import { useState, useContext, createContext } from 'react'
 
 const defaultValue = {
   top: 64,
-  left: 240,
+  left: 180,
   drawer: false
 }
 
@@ -21,9 +21,5 @@ export function AppProvider({ children }) {
       setApp({ ...defaultValue, left: 0, drawer })
     }
   }
-  return (
-    <AppContext.Provider value={{ app, setApp, setDrawer }}>
-      {children}
-    </AppContext.Provider>
-  )
+  return <AppContext.Provider value={{ app, setApp, setDrawer }}>{children}</AppContext.Provider>
 }

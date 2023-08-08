@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
   return (
     <App>
       <Header />
-      <Drawer>
+      <Drawer width={180}>
         <ul className="overflow-y-auto overflow-x-hidden">
           <ListItemLink headline="Icon" to="/getting-started/icon" />
           <ListItemLink headline="Theme" to="/getting-started/theme" />

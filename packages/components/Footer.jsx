@@ -7,7 +7,7 @@ const Footer = forwardRef((props, ref) => {
   const { onClick, children, className, ...rest } = props
 
   return (
-    <footer ref={ref} {...rest} style={{ paddingLeft: app.left }} className={twMerge('shadow-inner', className)}>
+    <footer ref={ref} {...rest} style={{ marginLeft: app.left }} className={twMerge('shadow-inner', className)}>
       <div className="mx-auto w-full max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <p className="text-center">Copyright © 2023 Actify</p>
         <p className="text-center">

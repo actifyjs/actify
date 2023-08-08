@@ -30,6 +30,7 @@ const Drawer = forwardRef((props, ref) => {
         {...rest}
         style={{
           top: app.top,
+          width: `${width}px`,
           height: `calc(100vh - ${app.top}px)`,
           transform: `${app.drawer ? 'translateX(0)' : 'translateX(-100%)'}`
         }}
