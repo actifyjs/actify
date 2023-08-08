@@ -40,7 +40,7 @@ const Divider = (props) => {
 
 Divider.propTypes = {
   color: PropTypes.string,
-  thickness: PropTypes.oneOf(PropTypes.number, PropTypes.string)
+  thickness: PropTypes.oneOf([PropTypes.number, PropTypes.string])
 }
 
 Divider.displayName = 'Actify.Divider'
