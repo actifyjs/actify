@@ -22,7 +22,7 @@ const SwitchTheme = forwardRef((props, ref) => {
     initTheme()
   }, [])
 
-  const toggleTheme = () => {
+  const toggleMode = () => {
     const classList = document.querySelector('html').classList
     classList.toggle('dark')
     if (mode == 'dark') {
@@ -32,6 +32,36 @@ const SwitchTheme = forwardRef((props, ref) => {
       setMode('dark')
       localStorage.setItem('theme', 'dark')
     }
+  }
+
+  const toggleTheme = (event) => {
+    const isAppearanceTransition =
+      document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (!isAppearanceTransition) {
+      toggleMode()
+      return
+    }
+
+    const x = event.clientX
+    const y = event.clientY
+    const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+    const transition = document.startViewTransition(() => {
+      toggleMode()
+    })
+    transition.ready.then(() => {
+      const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`]
+      document.documentElement.animate(
+        {
+          clipPath: mode == 'dark' ? [...clipPath].reverse() : clipPath
+        },
+        {
+          duration: 500,
+          easing: 'ease-out',
+          pseudoElement: mode == 'dark' ? '::view-transition-old(root)' : '::view-transition-new(root)'
+        }
+      )
+    })
   }
 
   return (
