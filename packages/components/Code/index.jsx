@@ -1,5 +1,5 @@
 import Prism from 'prismjs'
-import { Icon } from '@/packages/components'
+import { Icon, IconButton } from '@/packages/components'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-css.min.js'
 import 'prismjs/components/prism-jsx.min.js'
@@ -9,7 +9,7 @@ import 'prism-material-themes/themes/material-palenight.css'
 const Code = (props) => {
   const ref = useRef()
   const { code, language, children } = props
-  const [copyResult, setCopyResult] = useState('')
+  const [iconName, setIconName] = useState('Copy')
 
   useEffect(() => {
     highlight()
@@ -22,15 +22,15 @@ const Code = (props) => {
   const copyCode = () => {
     navigator.clipboard.writeText(code || children).then(
       () => {
-        setCopyResult('Copied!')
+        setIconName('Check')
         setTimeout(() => {
-          setCopyResult('')
+          setIconName('Copy')
         }, 2000)
       },
       () => {
-        setCopyResult('Copy Failed!')
+        setIconName('CopyX')
         setTimeout(() => {
-          setCopyResult('')
+          setIconName('Copy')
         }, 2000)
       }
     )
@@ -44,9 +44,10 @@ const Code = (props) => {
           <div className="h-3 w-3 rounded-full bg-[#feba35]"></div>
           <div className="h-3 w-3 rounded-full bg-[#26c63e]"></div>
         </div>
-        <div className="mt-2 flex cursor-pointer gap-2 text-white opacity-0 transition-opacity hover:text-white/75 group-hover:opacity-100">
-          <span className="text-sm">{copyResult}</span>
-          <Icon name="Copy" size={20} onClick={copyCode} />
+        <div className="mt-6 cursor-pointer text-white opacity-0 transition-opacity hover:text-white/75 group-hover:opacity-100">
+          <IconButton variant="filled" onClick={copyCode} color="surface">
+            <Icon name={iconName} />
+          </IconButton>
         </div>
       </div>
 

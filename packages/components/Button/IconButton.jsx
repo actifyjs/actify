@@ -9,7 +9,14 @@ import { setColor } from '@/packages/utils'
 
 const IconButton = forwardRef((props, ref) => {
   const { style, icon, size, variant, color, className, children, ...rest } = props
-  let styles = {}
+  let styles = { ...style }
+  if (size) {
+    if (variant) {
+      styles[`--md-${variant}-icon-button-container-size`] = `${size}px`
+    } else {
+      styles['--md-standard-icon-button-container-size'] = `${size}px`
+    }
+  }
   if (color) {
     if (variant == 'filled-tonal') {
       styles['--md-sys-color-secondary-container'] = setColor(color)
@@ -50,7 +57,7 @@ IconButton.propTypes = {
 }
 
 IconButton.defaultProps = {
-  size: 'medium',
+  size: '40',
   color: 'primary',
   variant: 'standard'
 }
