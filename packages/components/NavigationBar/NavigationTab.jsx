@@ -6,8 +6,8 @@ const NavigationTab = forwardRef((props, ref) => {
   const { activeIcon, inactiveIcon, children, ...rest } = props
   return (
     <md-navigation-tab ref={ref} {...rest}>
-      <span slot="activeIcon">{activeIcon && <Icon name="activeIcon" />}</span>
-      <span slot="inactiveIcon">{inactiveIcon && <Icon name="inactiveIcon" />}</span>
+      <span slot="activeIcon">{activeIcon && <Icon name={activeIcon} />}</span>
+      <span slot="inactiveIcon">{inactiveIcon && <Icon name={inactiveIcon} />}</span>
     </md-navigation-tab>
   )
 })
