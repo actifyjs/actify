@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Button, Menu, MenuItem } from '@/packages/components'
+import { Button, Menu, MenuItem } from 'actify'
 
 export default () => {
   const menuRef = useRef()

@@ -1,4 +1,4 @@
-import { RadioButton } from '@/packages/components'
+import { RadioButton } from 'actify'
 
 export default () => {
   return (

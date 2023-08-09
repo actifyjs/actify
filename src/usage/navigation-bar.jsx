@@ -1,4 +1,4 @@
-import { NavigationBar, NavigationTab } from '@/packages/components'
+import { NavigationBar, NavigationTab } from 'actify'
 
 export default () => {
   return (

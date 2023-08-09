@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { LinearProgress, CircularProgress, Switch, Slider } from '@/packages/components'
+import { LinearProgress, CircularProgress, Switch, Slider } from 'actify'
 
 export default () => {
   const [indeterminate, setIndeterminate] = useState(true)

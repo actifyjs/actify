@@ -1,6 +1,6 @@
 import icons from '@/src/icons.json'
 import { useEffect, useState, useTransition } from 'react'
-import { Icon, TextField, LinearProgress } from '@/packages/components'
+import { Icon, TextField, LinearProgress } from 'actify'
 
 export default (props) => {
   const [isPending, startTransition] = useTransition()

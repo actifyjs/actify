@@ -29,7 +29,7 @@ import {
   Tabs,
   Tab,
   TextField
-} from '@/packages/components'
+} from 'actify'
 
 export default () => {
   return (

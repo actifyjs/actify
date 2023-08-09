@@ -1,4 +1,4 @@
-import { Snackbar } from '@/packages/components'
+import { Snackbar } from 'actify'
 
 export default () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon } from '@/packages/components'
+import { Icon } from 'actify'
 import '@material/web/chips/chip-set'
 import '@material/web/chips/assist-chip'
 import '@material/web/chips/filter-chip'

@@ -1,4 +1,4 @@
-import { Select, SelectOption } from '@/packages/components'
+import { Select, SelectOption } from 'actify'
 
 export default () => {
   return (

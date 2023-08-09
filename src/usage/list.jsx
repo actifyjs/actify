@@ -1,4 +1,4 @@
-import { List, ListItem } from '@/packages/components'
+import { List, ListItem } from 'actify'
 
 export default () => {
   const list = [

@@ -1,4 +1,4 @@
-import { Divider } from '@/packages/components'
+import { Divider } from 'actify'
 
 export default () => {
   return (

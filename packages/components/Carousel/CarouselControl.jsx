@@ -1,5 +1,5 @@
 import { useInterval } from 'usehooks-ts'
-import { Icon } from '@/packages/components'
+import { Icon } from 'actify'
 import { useCarousel } from './CarouselContext'
 
 const CarouselControl = () => {

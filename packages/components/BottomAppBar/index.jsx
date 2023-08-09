@@ -1,4 +1,4 @@
-import { Icon, Elevation } from '@/packages/components'
+import { Icon, Elevation } from 'actify'
 
 const BottomAppBar = () => {
   return (

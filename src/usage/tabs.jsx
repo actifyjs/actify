@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Icon, Tabs, Tab, TabContent } from '@/packages/components'
+import { Icon, Tabs, Tab, TabContent } from 'actify'
 
 const TabContent1 = () => {
   return <img className="pointer-events-none mx-auto select-none" src="https://picsum.photos/800/600?1" />

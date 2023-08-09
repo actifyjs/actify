@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import { cn } from '@/packages/utils'
 import { cva } from 'class-variance-authority'
 import Spacer from '@/packages/components/Spacer'
-import { Icon } from '@/packages/components'
+import { Icon } from 'actify'
 
 const topAppBarStyles = cva('inline-flex w-full items-center justify-start bg-primary px-1 py-2', {
   variants: {

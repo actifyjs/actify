@@ -1,4 +1,4 @@
-import { Icon, NavigationBar } from '@/packages/components'
+import { Icon, NavigationBar } from 'actify'
 
 export default () => {
   const items = [

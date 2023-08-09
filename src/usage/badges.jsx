@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Icon, Badge, Button, IconButton, TextField } from '@/packages/components'
+import { Icon, Badge, Button, IconButton, TextField } from 'actify'
 
 export default () => {
   const [value, setValue] = useState('999')

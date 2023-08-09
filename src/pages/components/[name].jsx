@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import Code from '@/packages/components/Code'
-import { Icon, Button } from '@/packages/components'
+import { Icon, Button } from 'actify'
 import Usage from '@/src/usage'
 
 export default () => {

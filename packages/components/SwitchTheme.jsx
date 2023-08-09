@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge'
-import { Icon, IconButton } from '@/packages/components'
+import { Icon, IconButton } from 'actify'
 import { forwardRef, useEffect, useState } from 'react'
 
 const SwitchTheme = forwardRef((props, ref) => {

@@ -1,4 +1,4 @@
-import { Card } from '@/packages/components'
+import { Card } from 'actify'
 
 export default () => {
   return (

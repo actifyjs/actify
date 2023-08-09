@@ -1,4 +1,4 @@
-import { Checkbox } from '@/packages/components'
+import { Checkbox } from 'actify'
 
 export default () => {
   return (

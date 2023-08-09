@@ -1,4 +1,4 @@
-import { Icon, Button } from '@/packages/components'
+import { Icon, Button } from 'actify'
 
 export default () => {
   return (

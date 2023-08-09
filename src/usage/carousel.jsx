@@ -1,4 +1,4 @@
-import { Carousel, CarouselItem } from '@/packages/components'
+import { Carousel, CarouselItem } from 'actify'
 
 export default () => {
   const images = [

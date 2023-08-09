@@ -1,4 +1,4 @@
-import { Switch } from '@/packages/components'
+import { Switch } from 'actify'
 
 export default () => {
   return (

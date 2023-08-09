@@ -1,4 +1,4 @@
-import { Fab } from '@/packages/components'
+import { Fab } from 'actify'
 
 export default () => {
   return (

@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 import { useApp } from './App/AppContext'
-import { Icon, Button, IconButton } from '@/packages/components'
+import { Icon, Button, IconButton } from 'actify'
 import Spacer from '@/packages/components/Spacer'
 import Dropdown from '@/packages/components/Dropdown'
 import SwitchTheme from '@/packages/components/SwitchTheme'
@@ -56,19 +56,16 @@ const Header = forwardRef((props, ref) => {
           </svg>
           <span className="hidden self-center whitespace-nowrap text-2xl font-semibold md:inline">ctify</span>
         </Link>
-        <IconButton onClick={() => setDrawer(!app.drawer)}>
+        <IconButton className="inline-flex md:hidden" onClick={() => setDrawer(!app.drawer)}>
           <Icon name="Menu" color="primary" />
         </IconButton>
         <Spacer />
-        <SwitchTheme className="block md:hidden" />
         <IconButton onClick={handleUpdateTheme}>
           <Icon name="Palette" color="primary" />
         </IconButton>
+        <SwitchTheme />
         <div className="hidden w-full md:block md:w-auto">
           <ul className="flex flex-row gap-2 font-medium">
-            <li>
-              <SwitchTheme />
-            </li>
             <li>
               <Dropdown
                 title="Learn"

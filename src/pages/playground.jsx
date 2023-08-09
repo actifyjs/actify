@@ -28,7 +28,7 @@ import {
   Switch,
   Tabs,
   TextField
-} from '@/packages/components'
+} from 'actify'
 import { useEffect, useRef, useState } from 'react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 

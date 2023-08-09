@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Button, Dialog } from '@/packages/components'
+import { Button, Dialog } from 'actify'
 
 export default () => {
   const ref = useRef(null)

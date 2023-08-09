@@ -1,4 +1,4 @@
-import { Chip } from '@/packages/components'
+import { Chip } from 'actify'
 
 export default () => {
   return (

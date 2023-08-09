@@ -5,10 +5,11 @@ import react from '@vitejs/plugin-react'
 import { name, peerDependencies } from './package.json'
 import mdPlugin, { Mode } from 'vite-plugin-markdown'
 
-// set @ alias to current directory
 const resolve = {
+  // resolve alias
   alias: {
-    '@': path.resolve(__dirname, '.')
+    '@': path.resolve(__dirname, '.'),
+    actify: path.resolve(__dirname, 'packages/components')
   }
 }
 

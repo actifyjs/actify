@@ -1,7 +1,7 @@
 import { cn } from '@/packages/utils'
 import { forwardRef, useState } from 'react'
 import { cva } from 'class-variance-authority'
-import { Icon, Elevation } from '@/packages/components'
+import { Icon, Elevation } from 'actify'
 
 const variants = cva('relative py-[14px] px-4 flex items-center justify-between rounded-[4px]', {
   variants: {

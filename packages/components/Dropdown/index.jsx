@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Button, Icon } from '@/packages/components'
+import { Button, Icon } from 'actify'
 
 const Dropdown = (props) => {
   const { title, items } = props

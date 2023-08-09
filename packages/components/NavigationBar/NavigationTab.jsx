@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { Icon } from '@/packages/components'
+import { Icon } from 'actify'
 import '@material/web/labs/navigationtab/navigation-tab'
 
 const NavigationTab = forwardRef((props, ref) => {

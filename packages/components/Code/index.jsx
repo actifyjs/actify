@@ -1,5 +1,5 @@
 import Prism from 'prismjs'
-import { Icon, IconButton } from '@/packages/components'
+import { Icon, IconButton } from 'actify'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-css.min.js'
 import 'prismjs/components/prism-jsx.min.js'

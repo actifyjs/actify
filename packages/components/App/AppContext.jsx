@@ -18,7 +18,7 @@ export function AppProvider({ children }) {
     if (drawer) {
       setApp({ ...defaultValue, left: defaultValue.left, drawer })
     } else {
-      setApp({ ...defaultValue, left: 0, drawer })
+      setApp({ ...defaultValue, left: 16, drawer })
     }
   }
   return <AppContext.Provider value={{ app, setApp, setDrawer }}>{children}</AppContext.Provider>
