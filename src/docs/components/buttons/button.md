@@ -4,7 +4,7 @@ title: Button
 
 # Button
 
-## Common buttons prompt most actions in a UI
+## Buttons have label text that describes the action that will occur if a user taps a button.
 
 # Usage
 
