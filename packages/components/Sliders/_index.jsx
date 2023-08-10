@@ -1,4 +1,4 @@
-import { cn } from '@/packages/utils'
+import clsx from 'clsx'
 import { forwardRef, useMemo, useState } from 'react'
 
 const Slider = forwardRef((props, ref) => {
@@ -12,7 +12,7 @@ const Slider = forwardRef((props, ref) => {
   }, [value])
 
   return (
-    <div {...rest} className={cn('relative h-[68px] pt-[48px] pb-[18px] pointer-events-none', className)}>
+    <div {...rest} className={clsx('relative h-[68px] pt-[48px] pb-[18px] pointer-events-none', className)}>
       <input
         ref={ref}
         type="range"

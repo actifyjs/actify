@@ -1,8 +1,7 @@
 import { forwardRef } from 'react'
-import { cn } from '@/packages/utils'
-import { cva } from 'class-variance-authority'
+import { tv } from 'tailwind-variants'
 
-const variants = cva('fixed h-full left-[256px] px-2 gap-2 flex flex-col items-center bg-black/5 dark:bg-white/5', {
+const variants = tv('fixed h-full left-[256px] px-2 gap-2 flex flex-col items-center bg-black/5 dark:bg-white/5', {
   variants: {
     variant: {}
   },
@@ -14,7 +13,7 @@ const variants = cva('fixed h-full left-[256px] px-2 gap-2 flex flex-col items-c
 const NavigationRail = forwardRef((props, ref) => {
   const { children, className, ...rest } = props
   return (
-    <div ref={ref} {...rest} className={cn(variants({ className }))}>
+    <div ref={ref} {...rest} className={variants({ className })}>
       {children}
     </div>
   )

@@ -1,10 +1,9 @@
 import { forwardRef } from 'react'
-import { cn } from '@/packages/utils'
-import { cva } from 'class-variance-authority'
-import Spacer from '@/packages/components/Spacer'
+import { tv } from 'tailwind-variants'
 import { Icon } from 'actify'
+import Spacer from '@/packages/components/Spacer'
 
-const topAppBarStyles = cva('inline-flex w-full items-center justify-start bg-primary px-1 py-2', {
+const variants = tv('inline-flex w-full items-center justify-start bg-primary px-1 py-2', {
   variants: {
     size: {
       default: 'h-16 text-center gap-1.5', // Center-aligned top app bar
@@ -21,7 +20,7 @@ const topAppBarStyles = cva('inline-flex w-full items-center justify-start bg-pr
 const TopAppBar = forwardRef((props, ref) => {
   const { title, size, className, ...rest } = props
   return (
-    <div ref={ref} {...rest} className={cn(topAppBarStyles({ size, className }))}>
+    <div ref={ref} {...rest} className={variants({ size, className })}>
       <div className="inline-flex h-12 w-12 flex-col items-center justify-center gap-2.5">
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
