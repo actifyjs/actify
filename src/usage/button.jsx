@@ -8,17 +8,13 @@ export default () => {
       <Button variant="tonal">Tonal Button</Button>
       <Button variant="outlined">Outlined Button</Button>
       <Button variant="text">Text Button</Button>
-      <Button leading-icon>
-        <div slot="icon" className="flex items-center">
-          <Icon name="Home" />
-        </div>
+      <Button>
+        <Icon name="Home" />
         Button with leading icon
       </Button>
-      <Button trailing-icon>
+      <Button>
         Button with trailing icon
-        <div slot="icon" className="flex items-center">
-          <Icon name="Home" />
-        </div>
+        <Icon name="Home" />
       </Button>
     </div>
   )

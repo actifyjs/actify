@@ -17,13 +17,10 @@ export default () => {
         <Button
           variant="text"
           target="_blank"
-          trailing-icon
           href={`https://github.com/actifyjs/actify/blob/main/src/docs/${params.actify}/${params.name}.md`}
         >
           Edit this page on GitHub
-          <div slot="icon" className="flex items-center">
-            <Icon name="Pencil" />
-          </div>
+          <Icon name="Pencil" />
         </Button>
       )
     )

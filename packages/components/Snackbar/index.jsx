@@ -1,9 +1,9 @@
-import { cn } from '@/packages/utils'
+import clsx from 'clsx'
 import { forwardRef, useState } from 'react'
-import { cva } from 'class-variance-authority'
+import { tv } from 'tailwind-variants'
 import { Icon, Elevation } from 'actify'
 
-const variants = cva('relative py-[14px] px-4 flex items-center justify-between rounded-[4px]', {
+const variants = tv('relative py-[14px] px-4 flex items-center justify-between rounded-[4px]', {
   variants: {
     variant: {},
     color: {
@@ -34,7 +34,7 @@ const Snackbar = forwardRef((props, ref) => {
       style={{
         display: `${show ? 'blcok' : 'none'}`
       }}
-      className={cn(`${longaction ? 'flex-wrap' : ''}`, variants({ color, className }))}
+      className={clsx(`${longaction ? 'flex-wrap' : ''}`, variants({ color, className }))}
     >
       <div className="line-clamp-2 flex-grow">{children}</div>
       {action && <div className="-mr-2 ml-1 cursor-pointer px-3 py-[10px]">{action}</div>}

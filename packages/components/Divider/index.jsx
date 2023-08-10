@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { cn } from '@/packages/utils'
-import { cva } from 'class-variance-authority'
+import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
 
-const dividerStyles = cva(
+const variants = tv(
   'relative h-[var(--md-divider-thickness)] before:absolute before:inset-0 before:bg-[var(--md-divider-color)] before:h-[var(--md-divider-thickness)] before:w-full',
   {
     variants: {}
@@ -25,17 +24,7 @@ const Divider = (props) => {
     styles['--md-divider-thickness'] = '1px'
   }
 
-  return (
-    <div
-      {...rest}
-      style={styles}
-      className={cn(
-        dividerStyles({
-          className
-        })
-      )}
-    ></div>
-  )
+  return <div {...rest} style={styles} className={variants({ className })}></div>
 }
 
 Divider.propTypes = {

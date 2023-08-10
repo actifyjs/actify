@@ -22,25 +22,19 @@ export default () => {
       <p className="text-center text-4xl font-extrabold ">React Material Design 3 Components Library</p>
       <div className="flex justify-center gap-2">
         <Link to="/getting-started/installation">
-          <Button trailing-icon>
+          <Button>
             Get Started
-            <span slot="icon" className="flex items-center">
-              <Icon name="ArrowRight" />
-            </span>
+            <Icon name="ArrowRight" />
           </Button>
         </Link>
         <Link to="/getting-started/why-actify">
           <Button color="secondary">
-            <span slot="icon" className="flex items-center">
-              <Icon name="HelpCircle" />
-            </span>
+            <Icon name="HelpCircle" />
             Why Actify
           </Button>
         </Link>
         <Button variant="outlined" href="https://github.com/actifyjs/actify" target="_blank">
-          <span slot="icon" className="flex items-center">
-            <Icon name="Github" />
-          </span>
+          <Icon name="Github" />
           GitHub
         </Button>
       </div>
