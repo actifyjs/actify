@@ -4,16 +4,21 @@ import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-css.min.js'
 import 'prismjs/components/prism-jsx.min.js'
 import { useRef, useState, useEffect } from 'react'
+import { tv } from 'tailwind-variants'
 import 'prism-material-themes/themes/material-palenight.css'
+
+const variants = tv({
+  base: 'group !overflow-x-hidden'
+})
 
 const Code = (props) => {
   const ref = useRef()
-  const { code, language, children } = props
+  const { className, code, language, children } = props
   const [iconName, setIconName] = useState('Copy')
 
   useEffect(() => {
     highlight()
-  }, [])
+  }, [children])
 
   const highlight = () => {
     if (ref && ref.current) Prism.highlightElement(ref.current)
@@ -37,7 +42,7 @@ const Code = (props) => {
   }
 
   return (
-    <div className="group !overflow-x-hidden">
+    <div className={variants({ className })}>
       <div className="-mb-8 flex h-6 items-center justify-between px-2">
         <div className="flex gap-2">
           <div className="h-3 w-3 rounded-full bg-[#f95f55]"></div>

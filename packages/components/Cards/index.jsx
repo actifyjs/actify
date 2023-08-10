@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
-import Ripple from '@/packages/components/Ripple'
-import Elevation from '@/packages/components/Elevation'
+import { Ripple, Elevation } from 'actify'
 
 const Card = forwardRef((props, ref) => {
   const { ripple, children, className, ...rest } = props

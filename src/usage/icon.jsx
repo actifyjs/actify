@@ -33,7 +33,7 @@ export default (props) => {
 
   return (
     <>
-      <Icon name="Home" {...rest} />
+      <Icon name={icon} {...rest} />
       <TextField
         variant="outlined"
         className="my-2 w-full"

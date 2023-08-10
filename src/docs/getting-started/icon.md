@@ -15,4 +15,4 @@ export default () => {
 }
 ```
 
-<usage name="icon" icon="Home" color="primary" size="36"></usage>
+<usage name="icon" icon="Home" hidecode="true" color="primary" size="36"></usage>

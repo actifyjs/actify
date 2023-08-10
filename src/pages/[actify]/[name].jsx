@@ -43,6 +43,7 @@ export default () => {
         rehypePlugins={[rehypeRaw]}
         remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
         components={{
+          p: ({ children }) => <div className="mb-4">{children}</div>, // replace p tag to div tag
           pre: ({ children }) => <>{children}</>, // remove pre tag
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')

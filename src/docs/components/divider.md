@@ -9,16 +9,3 @@ title: Divider
 # Usage
 
 <usage name="divider"></usage>
-
-```jsx
-import { Divider } from 'actify'
-
-export default () => {
-  return (
-    <div className="flex flex-col">
-      <Divider />
-      <Divider thickness={10} color="error" />
-    </div>
-  )
-}
-```
