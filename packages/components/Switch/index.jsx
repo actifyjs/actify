@@ -39,7 +39,7 @@ const Switch = forwardRef((props, ref) => {
       <i className={dotVariants({ icons })}>
         {icons && <Icon name={`${checked ? 'Check' : 'X'}`} size={16} color={`${checked ? 'black' : 'white'}`} />}
       </i>
-      <Ripple />
+      <Ripple className="rounded-full" />
     </label>
   )
 })

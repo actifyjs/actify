@@ -26,7 +26,7 @@ const Fab = forwardRef((props, ref) => {
 
   let styles = { ...style }
   styles['color'] = setColor(color)
-  styles['background-color'] = 'var(--md-sys-color-surface-container-high, #ece6f0)'
+  styles['backgroundColor'] = 'var(--md-sys-color-surface-container-high, #ece6f0)'
 
   return (
     <button type={rest.type || 'button'} ref={ref} {...rest} style={styles} className={variants({ size, className })}>
