@@ -46,10 +46,11 @@ const variants = tv({
 
 const Button = forwardRef((props, ref) => {
   const { ripple, variant, color, style, className, children, ...rest } = props
-  const isLink = rest.href ? true : false
 
-  return isLink ? (
-    <a
+  const Tag = rest.href ? 'a' : 'button'
+
+  return (
+    <Tag
       {...rest}
       ref={ref}
       style={style}
@@ -63,23 +64,7 @@ const Button = forwardRef((props, ref) => {
       {children}
       {ripple && <Ripple />}
       {variant === 'elevated' && <Elevation level={3} />}
-    </a>
-  ) : (
-    <button
-      {...rest}
-      ref={ref}
-      style={style}
-      type={rest.type || 'button'}
-      className={variants({
-        variant,
-        color,
-        className
-      })}
-    >
-      {children}
-      {ripple && <Ripple />}
-      {variant === 'elevated' && <Elevation level={1} />}
-    </button>
+    </Tag>
   )
 })
 
