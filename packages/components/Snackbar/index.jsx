@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { forwardRef, useState } from 'react'
 import { tv } from 'tailwind-variants'
 import { Icon, Elevation } from 'actify'
@@ -11,6 +10,9 @@ const variants = tv('relative py-[14px] px-4 flex items-center justify-between r
       secondary: 'bg-secondary text-white',
       tertiary: 'bg-tertiary text-white',
       error: 'bg-error text-white'
+    },
+    longaction: {
+      true: 'flex-wrap'
     }
   },
   defaultVariants: {
@@ -34,7 +36,7 @@ const Snackbar = forwardRef((props, ref) => {
       style={{
         display: `${show ? 'blcok' : 'none'}`
       }}
-      className={clsx(`${longaction ? 'flex-wrap' : ''}`, variants({ color, className }))}
+      className={variants({ longaction, color, className })}
     >
       <div className="line-clamp-2 flex-grow">{children}</div>
       {action && <div className="-mr-2 ml-1 cursor-pointer px-3 py-[10px]">{action}</div>}

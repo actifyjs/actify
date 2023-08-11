@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 import React, { forwardRef } from 'react'
 
