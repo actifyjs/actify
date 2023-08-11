@@ -24,7 +24,7 @@ export default () => {
           <span>indeterminate</span>
         </label>
         <label className="flex items-center gap-2">
-          <Slider labeled onInput={(e) => setValue(e.target.value / 100)} />
+          <Slider labeled value={value} onChange={(e) => setValue(e.target.value / 100)} />
           <span>value</span>
         </label>
       </div>
