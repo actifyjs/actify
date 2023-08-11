@@ -19,7 +19,7 @@ export default () => {
           <span>with label</span>
         </label>
         <label className="flex items-center gap-2">
-          <Switch color="primary" icons selected />
+          <Switch color="primary" selected icons />
           <span>with icons</span>
         </label>
       </div>

@@ -19,7 +19,7 @@ export default () => {
             icons
             selected
             value={indeterminate}
-            onInput={(e) => setIndeterminate(e.target.selected)}
+            onChange={(e) => setIndeterminate(e.target.checked)}
           />
           <span>indeterminate</span>
         </label>
