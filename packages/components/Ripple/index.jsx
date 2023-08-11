@@ -5,7 +5,7 @@ const Ripple = () => {
   const ref = useRef(null)
   const ripples = useRipple(ref)
   return (
-    <span ref={ref} className="overflow-hidden absolute inset-0">
+    <span ref={ref} className="rounded-[inherit] overflow-hidden absolute inset-0">
       {ripples}
     </span>
   )
