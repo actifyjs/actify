@@ -78,7 +78,7 @@ const Button = forwardRef((props, ref) => {
     >
       {children}
       {ripple && <Ripple />}
-      {variant === 'elevated' && <Elevation level={3} />}
+      {variant === 'elevated' && <Elevation level={1} />}
     </button>
   )
 })
