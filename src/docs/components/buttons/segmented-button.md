@@ -6,4 +6,4 @@ title: Segmented button
 
 ## Segmented buttons help people select options, switch views, or sort elements
 
-> TODO
+<usage name="segmented-button"></usage>

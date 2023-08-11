@@ -8,6 +8,7 @@ import NavigationTab from './NavigationBar/NavigationTab'
 import Button from './Button'
 import Fab from './Button/Fab'
 import IconButton from './Button/IconButton'
+import SegmentedButton from './Button/SegmentedButton'
 import Checkbox from './Checkbox'
 import Chip from './Chips'
 import Dialog from './Dialogs'
@@ -45,6 +46,7 @@ export {
   Button,
   Fab,
   IconButton,
+  SegmentedButton,
   Checkbox,
   Chip,
   Dialog,
