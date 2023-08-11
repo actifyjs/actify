@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types'
-import { icons as LucideIcons } from 'lucide-react'
+import icons from '@/src/icons.json'
+import { tv } from 'tailwind-variants'
 import React, { forwardRef } from 'react'
 import { setColor } from '@/packages/utils'
-import icons from '@/src/icons.json'
+import { icons as LucideIcons } from 'lucide-react'
+
+const variants = tv({
+  base: 'relative'
+})
 
 const Icon = forwardRef((props, ref) => {
   const { name, color, size, className, ...rest } = props
@@ -22,8 +27,8 @@ const Icon = forwardRef((props, ref) => {
   if (isValidIcon) {
     const LucideIcon = LucideIcons[name]
     return (
-      <i className={className}>
-        <LucideIcon ref={ref} {...rest} color={setColor(color)} size={size} />
+      <i className={variants({ className })} {...rest}>
+        <LucideIcon ref={ref} color={setColor(color)} size={size} />
       </i>
     )
   } else {
