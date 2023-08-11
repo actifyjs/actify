@@ -1,25 +1,41 @@
 import React, { forwardRef } from 'react'
-import '@material/web/fab/fab'
 import PropTypes from 'prop-types'
+import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
-import Icon from '@/packages/components/Icon'
+import { Icon, Ripple, Elevation } from 'actify'
+
+const variants = tv({
+  base: 'relative inline-flex items-center justify-center w-fit',
+  variants: {
+    size: {
+      small: 'h-10 px-2 rounded-xl',
+      medium: 'h-14 px-4 rounded-2xl',
+      large: 'h-24 px-8 rounded-[28px]'
+    }
+  }
+})
+
+const iconSizeMap = {
+  small: 24,
+  medium: 24,
+  large: 36
+}
 
 const Fab = forwardRef((props, ref) => {
-  const { style, icon, size, variant, color, className, children, ...rest } = props
+  const { label, style, icon, size, variant, color, className, children, ...rest } = props
+
   let styles = { ...style }
-  color && (styles['--md-fab-icon-color'] = setColor(color))
+  styles['color'] = setColor(color)
+  styles['background-color'] = 'var(--md-sys-color-surface-container-high, #ece6f0)'
+
   return (
-    <md-fab ref={ref} {...rest} class={className} style={{ ...styles }}>
-      {icon ? (
-        <span slot="icon">
-          <Icon name={icon} />
-        </span>
-      ) : (
-        <span className="grid place-content-center" color={color} slot="icon">
-          {children}
-        </span>
-      )}
-    </md-fab>
+    <button type={rest.type || 'button'} ref={ref} {...rest} style={styles} className={variants({ size, className })}>
+      {icon && <Icon name={icon} size={iconSizeMap[size]} />}
+      {children}
+      {label}
+      <Ripple />
+      <Elevation level={3} />
+    </button>
   )
 })
 
