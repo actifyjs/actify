@@ -1,62 +1,43 @@
-import React, { forwardRef } from 'react'
+import { Ripple } from 'actify'
 import PropTypes from 'prop-types'
-import '@material/web/iconbutton/standard-icon-button'
-import '@material/web/iconbutton/outlined-icon-button'
-import '@material/web/iconbutton/filled-icon-button'
-import '@material/web/iconbutton/filled-tonal-icon-button'
+import { tv } from 'tailwind-variants'
+import React, { forwardRef } from 'react'
 
 import { setColor } from '@/packages/utils'
 
+const variants = tv({
+  base: 'relative inline-flex h-10 w-10 rounded-full items-center justify-center hover:bg-black/5 hover:dark:bg-white/5',
+  variants: {
+    variant: {
+      standard: '',
+      outlined: '',
+      filled: '',
+      'filled-tonal': ''
+    }
+  }
+})
+
 const IconButton = forwardRef((props, ref) => {
-  const { style, icon, size, variant, color, className, children, ...rest } = props
-  let styles = { ...style }
-  if (size) {
-    if (variant) {
-      styles[`--md-${variant}-icon-button-container-size`] = `${size}px`
-    } else {
-      styles['--md-standard-icon-button-container-size'] = `${size}px`
-    }
-  }
-  if (color) {
-    if (variant == 'filled-tonal') {
-      styles['--md-sys-color-secondary-container'] = setColor(color)
-    } else {
-      styles['--md-sys-color-primary'] = setColor(color)
-    }
-  }
+  const { ripple, style, size, variant, color, className, children, ...rest } = props
+  const colorVariant = setColor(color)
+  const Tag = rest.href ? 'a' : 'button'
 
   return (
-    <>
-      {variant === 'standard' && (
-        <md-standard-icon-button ref={ref} {...rest} class={className} style={{ ...styles }}>
-          {children}
-        </md-standard-icon-button>
-      )}
-      {variant === 'outlined' && (
-        <md-outlined-icon-button ref={ref} {...rest} class={className} style={{ ...styles }}>
-          {children}
-        </md-outlined-icon-button>
-      )}
-      {variant === 'filled' && (
-        <md-filled-icon-button ref={ref} {...rest} class={className} style={{ ...styles }}>
-          {children}
-        </md-filled-icon-button>
-      )}
-      {variant === 'filled-tonal' && (
-        <md-filled-tonal-icon-button ref={ref} {...rest} class={className} style={{ ...styles }}>
-          {children}
-        </md-filled-tonal-icon-button>
-      )}
-    </>
+    <Tag ref={ref} {...rest} style={{ color: colorVariant, ...style }} className={variants({ className })}>
+      {children}
+      {ripple && <Ripple />}
+    </Tag>
   )
 })
 
 IconButton.propTypes = {
+  ripple: PropTypes.bool,
   color: PropTypes.string,
   variant: PropTypes.oneOf(['standard', 'outlined', 'filled', 'filled-tonal'])
 }
 
 IconButton.defaultProps = {
+  ripple: true,
   size: '40',
   color: 'primary',
   variant: 'standard'
