@@ -21,24 +21,26 @@ Inspired by Vuetify. Some highlights include:
 npm install actify
 
 # with yarn
-yarn add actity
+yarn add actify
 ```
 
 ### 🎉 Example
 
-- common react app
+<details>
+<summary>React project</summary>
 
 ```jsx
-import React from 'react'
-import ReactDOM from 'react-dom'
 import { Button } from 'actify'
 
 export default () => {
-  return <Button variant="outlined">Hello Actify</Button>
+  return <Button>Hello Actify</Button>
 }
 ```
 
-- Next.js
+</details>
+
+<details>
+<summary>Next.js project</summary>
 
 ```jsx
 import dynamic from 'next/dynamic'
@@ -52,11 +54,7 @@ export default () => {
 }
 ```
 
-### 🚧 Status
-
-- ❌ Not started
-- 🟡 In progress
-- ✅ Complete
+</details>
 
 ### 🌐 Browser Support
 
