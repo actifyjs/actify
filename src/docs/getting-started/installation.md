@@ -9,7 +9,7 @@ title: Installation
 npm install actify
 
 # with yarn
-yarn add actity
+yarn add actify
 ```
 
 #### In your pages or components, you can import and use it, for example:
