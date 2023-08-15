@@ -1,12 +1,38 @@
-import React, { forwardRef } from 'react'
-import '@material/web/menu/menu-item'
+import { Button } from 'actify'
+import MenuContext from './MenuContext'
+import React, { forwardRef, useContext } from 'react'
+import { useListItem, useFloatingTree, useMergeRefs } from '@floating-ui/react'
 
 const MenuItem = forwardRef((props, ref) => {
-  const { children, ...rest } = props
+  const { label, disabled, ...rest } = props
+
+  const menu = useContext(MenuContext)
+  const item = useListItem({ label: disabled ? null : label })
+  const tree = useFloatingTree()
+  const isActive = item.index === menu.activeIndex
+
   return (
-    <md-menu-item ref={ref} {...rest}>
-      {children}
-    </md-menu-item>
+    <Button
+      {...rest}
+      ref={useMergeRefs([item.ref, ref])}
+      type="button"
+      role="menuitem"
+      className="MenuItem"
+      tabIndex={isActive ? 0 : -1}
+      disabled={disabled}
+      {...menu.getItemProps({
+        onClick(event) {
+          rest.onClick?.(event)
+          tree?.events.emit('click')
+        },
+        onFocus(event) {
+          rest.onFocus?.(event)
+          menu.setHasFocusInside(true)
+        }
+      })}
+    >
+      {label}
+    </Button>
   )
 })
 

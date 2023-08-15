@@ -1,22 +1,22 @@
-import { Snackbar } from 'actify'
+import { useRef } from 'react'
+import { Button, Snackbar } from 'actify'
+import { loremIpsum } from 'lorem-ipsum'
 
 export default () => {
+  const ref = useRef(null)
+  const handleClick = () => {
+    ref.current?.(loremIpsum())
+  }
+
   return (
-    <div className="w-fit space-y-2 pt-4">
-      <Snackbar>Single-line snackbar</Snackbar>
-      <Snackbar color="secondary" action="Action">
-        Single-line snackbar with action
-      </Snackbar>
-      <Snackbar color="tertiary">Two-line snackbar without action Two-line snackbar without action</Snackbar>
-      <Snackbar action="action">Two-line snackbar with action Two-line snackbar with action</Snackbar>
-      <Snackbar action="warning" icon="X">
-        Two-line snackbar with action Two-line snackbar with action
-      </Snackbar>
-      <Snackbar color="error">error</Snackbar>
-      <Snackbar color="primary" icon="X" longaction="Longer action">
-        <p>Two-line snackbar with success</p>
-        <p>with longer action</p>
-      </Snackbar>
-    </div>
+    <Button onClick={handleClick}>
+      Click to show snackbar
+      <Snackbar
+        timeout={200000}
+        children={(add) => {
+          ref.current = add
+        }}
+      />
+    </Button>
   )
 }

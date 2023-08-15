@@ -1,24 +1,27 @@
-import { useRef } from 'react'
-import { Button, Menu, MenuItem } from 'actify'
+import Menu from '@/packages/components/Menus'
+import MenuItem from '@/packages/components/Menus/MenuItem'
 
 export default () => {
-  const menuRef = useRef()
-  const anchorRef = useRef()
-  const handleClick = () => {
-    menuRef.current.anchor = anchorRef.current
-    menuRef.current.show()
-  }
-
   return (
-    <>
-      <Button ref={anchorRef} onClick={handleClick}>
-        Open
-      </Button>
-      <Menu ref={menuRef} fixed>
-        <MenuItem headline="menu1" />
-        <MenuItem headline="menu2" />
-        <MenuItem headline="menu3" />
+    <Menu label="Menu">
+      <MenuItem label="Undo" onClick={() => console.log('Undo')} />
+      <MenuItem label="Redo" disabled />
+      <MenuItem label="Cut" />
+      <Menu label="Copy as">
+        <MenuItem label="Text" />
+        <MenuItem label="Video" />
+        <Menu label="Image">
+          <MenuItem label=".png" />
+          <MenuItem label=".jpg" />
+          <MenuItem label=".svg" />
+          <MenuItem label=".gif" />
+        </Menu>
+        <MenuItem label="Audio" />
       </Menu>
-    </>
+      <Menu label="Share">
+        <MenuItem label="Mail" />
+        <MenuItem label="Instagram" />
+      </Menu>
+    </Menu>
   )
 }
