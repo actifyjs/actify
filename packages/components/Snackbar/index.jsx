@@ -1,7 +1,6 @@
-import { Icon } from 'actify'
-import { useTransition } from '@react-spring/web'
+import { Icon, Content, IconButton } from 'actify'
+import { useTransition, animated } from '@react-spring/web'
 import React, { useState, useMemo, useEffect } from 'react'
-import { Container, Message, Button, Content, Life } from './styles'
 
 let id = 0
 
@@ -37,24 +36,30 @@ const Snackbar = (props) => {
   }, [])
 
   return (
-    <Container>
+    <div className="fixed z-[1000] bottom-8 mx-auto left-8 right-8 flex flex-col pointer-events-none items-center md:items-end">
       {transitions(({ life, ...style }, item) => (
-        <Message style={style}>
+        <animated.div className="relative overflow-hidden w-full md:w-80" style={style}>
           <Content ref={(ref) => ref && refMap.set(item, ref)}>
-            <Life style={{ right: life }} />
+            <animated.div
+              className="h-1 absolute bottom-0 left-0 bg-[linear-gradient(130deg,#00b4e6,#00f0e0)]"
+              style={{ right: life }}
+            />
             <p>{item.msg}</p>
-            <Button
+            <IconButton
+              tag="span"
+              color="white"
+              className="cursor-pointer pointer-events-auto flex justify-center"
               onClick={(e) => {
                 e.stopPropagation()
                 if (cancelMap.has(item) && life.get() !== '0%') cancelMap.get(item)()
               }}
             >
               <Icon name="X" size={18} />
-            </Button>
+            </IconButton>
           </Content>
-        </Message>
+        </animated.div>
       ))}
-    </Container>
+    </div>
   )
 }
 

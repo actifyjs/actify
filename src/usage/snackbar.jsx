@@ -12,7 +12,6 @@ export default () => {
     <Button onClick={handleClick}>
       Click to show snackbar
       <Snackbar
-        timeout={200000}
         children={(add) => {
           ref.current = add
         }}

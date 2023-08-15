@@ -6,4 +6,6 @@ title: Tooltips
 
 ## Tooltips display brief labels or messages
 
-> TODO
+# Usage
+
+<usage name="tooltip"></usage>

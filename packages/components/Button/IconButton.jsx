@@ -18,9 +18,17 @@ const variants = tv({
 })
 
 const IconButton = forwardRef((props, ref) => {
-  const { ripple, style, size, variant, color, className, children, ...rest } = props
+  const { tag, ripple, style, size, variant, color, className, children, ...rest } = props
   const colorVariant = setColor(color)
-  const Tag = rest.href ? 'a' : 'button'
+
+  let Tag = ''
+  if (rest.href) {
+    Tag = 'a'
+  } else if (tag) {
+    Tag = tag
+  } else {
+    Tag = 'button'
+  }
 
   return (
     <Tag ref={ref} {...rest} style={{ color: colorVariant, ...style }} className={variants({ className })}>

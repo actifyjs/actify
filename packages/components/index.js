@@ -34,6 +34,7 @@ import Tabs from './Tabs'
 import Tab from './Tabs/Tab'
 import TabContent from './Tabs/TabContent'
 import TextField from './TextFields'
+import Content from './Floating/Content'
 
 export {
   Badge,
@@ -71,5 +72,6 @@ export {
   Tabs,
   Tab,
   TabContent,
-  TextField
+  TextField,
+  Content
 }
