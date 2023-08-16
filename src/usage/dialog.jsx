@@ -2,13 +2,13 @@ import {
   Icon,
   Button,
   Spacer,
-  IconButton,
   Dialog,
-  DialogActivator,
+  IconButton,
+  DialogClose,
   DialogContent,
-  DialogDescription,
   DialogHeading,
-  DialogClose
+  DialogActivator,
+  DialogDescription
 } from 'actify'
 
 import { loremIpsum } from 'lorem-ipsum'
@@ -24,7 +24,7 @@ export default () => {
           <p>{loremIpsum({ count: 4, units: 'words' })}</p>
           <Spacer />
           <DialogClose>
-            <IconButton color="black">
+            <IconButton color="secondary">
               <Icon name="X" />
             </IconButton>
           </DialogClose>

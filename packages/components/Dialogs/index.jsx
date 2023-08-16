@@ -125,7 +125,7 @@ export const DialogContent = forwardRef((props, propRef) => {
     <FloatingPortal>
       <FloatingOverlay
         lockScroll
-        className="z-[99] grid place-items-center fixed w-screen h-screen bg-black/60 backdrop-blur-sm"
+        className="z-[99] grid place-items-center fixed w-screen h-screen bg-black/40 dark:bg-[rgba(3,3,3,.8)] backdrop-blur-sm"
       >
         {isMounted && (
           <FloatingFocusManager context={floatingContext}>
@@ -135,7 +135,7 @@ export const DialogContent = forwardRef((props, propRef) => {
               aria-labelledby={context.labelId}
               {...context.getFloatingProps(props)}
               aria-describedby={context.descriptionId}
-              className="relative bg-white rounded-lg font-light leading-relaxed w-full md:w-3/4 lg:w-3/5 2xl:w-2/5 min-w-[90%] md:min-w-[75%] lg:min-w-[60%] 2xl:min-w-[40%] max-w-[90%] md:max-w-[75%] lg:max-w-[60%] 2xl:max-w-[40%]"
+              className="relative bg-white dark:bg-[rgb(33,33,33)] text-black dark:text-white rounded-lg font-light leading-relaxed w-full md:w-3/4 lg:w-3/5 2xl:w-2/5 min-w-[90%] md:min-w-[75%] lg:min-w-[60%] 2xl:min-w-[40%] max-w-[90%] md:max-w-[75%] lg:max-w-[60%] 2xl:max-w-[40%]"
             >
               {props.children}
             </div>
@@ -182,10 +182,10 @@ export const DialogDescription = forwardRef(({ children, ...props }, ref) => {
 
   return (
     <div
-      {...props}
-      ref={ref}
       id={id}
-      className="relative p-4 text-blue-gray-500 antialiased font-sans text-base font-light leading-relaxed border-t border-t-black/10 border-b border-b-black/10"
+      ref={ref}
+      {...props}
+      className="relative p-4 text-base leading-relaxed border-t border-t-black/10 dark:border-t-white/10 border-b border-b-black/10 dark:border-b-white/10"
     >
       {children}
     </div>
