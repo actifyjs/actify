@@ -42,7 +42,7 @@ export function useDialog({ initialOpen = false, open: controlledOpen, onOpenCha
     enabled: controlledOpen == null
   })
   const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown' })
-  const role = useRole(context)
+  const role = useRole(context, { role: 'dialog' })
 
   const interactions = useInteractions([click, dismiss, role])
 
