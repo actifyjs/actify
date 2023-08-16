@@ -21,7 +21,6 @@ import {
   FloatingOverlay,
   useId
 } from '@floating-ui/react'
-import { Elevation } from 'actify'
 
 export function useDialog({ initialOpen = false, open: controlledOpen, onOpenChange: setControlledOpen }) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
@@ -119,10 +118,9 @@ export const DialogContent = forwardRef((props, propRef) => {
             aria-labelledby={context.labelId}
             aria-describedby={context.descriptionId}
             {...context.getFloatingProps(props)}
-            className="relative bg-white rounded-lg shadow-2xl text-blue-gray-500 antialiased font-sans text-base font-light leading-relaxed w-full md:w-3/4 lg:w-3/5 2xl:w-2/5 min-w-[90%] md:min-w-[75%] lg:min-w-[60%] 2xl:min-w-[40%] max-w-[90%] md:max-w-[75%] lg:max-w-[60%] 2xl:max-w-[40%]"
+            className="relative bg-white rounded-lg font-light leading-relaxed w-full md:w-3/4 lg:w-3/5 2xl:w-2/5 min-w-[90%] md:min-w-[75%] lg:min-w-[60%] 2xl:min-w-[40%] max-w-[90%] md:max-w-[75%] lg:max-w-[60%] 2xl:max-w-[40%]"
           >
             {props.children}
-            <Elevation level={3} />
           </div>
         </FloatingFocusManager>
       </FloatingOverlay>

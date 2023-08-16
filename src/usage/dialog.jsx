@@ -11,6 +11,8 @@ import {
   DialogClose
 } from 'actify'
 
+import { loremIpsum } from 'lorem-ipsum'
+
 export default () => {
   return (
     <Dialog>
@@ -19,7 +21,7 @@ export default () => {
       </DialogActivator>
       <DialogContent>
         <DialogHeading>
-          <p>Its a simple dialog.</p>
+          <p>{loremIpsum({ count: 4, units: 'words' })}</p>
           <Spacer />
           <DialogClose>
             <IconButton color="black">
@@ -27,11 +29,7 @@ export default () => {
             </IconButton>
           </DialogClose>
         </DialogHeading>
-        <DialogDescription>
-          The key to more success is to have a lot of pillows. Put it this way, it took me twenty five years to get
-          these plants, twenty five years of blood sweat and tears, and I'm never giving up, I'm just getting started.
-          I'm up to something. Fan luv.
-        </DialogDescription>
+        <DialogDescription>{loremIpsum({ count: 3 })}</DialogDescription>
         <div className="flex items-center gap-2 p-4">
           <Spacer />
           <Button color="error">Cancel</Button>
