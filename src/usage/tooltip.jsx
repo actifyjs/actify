@@ -1,6 +1,5 @@
-import { Button } from 'actify'
 import { loremIpsum } from 'lorem-ipsum'
-import { Tooltip, TooltipActivator, TooltipContent } from '@/packages/components/Tooltips'
+import { Button, Tooltip, TooltipActivator, TooltipContent } from 'actify'
 
 export default () => {
   return (

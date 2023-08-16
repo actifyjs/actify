@@ -11,7 +11,7 @@ import IconButton from './Button/IconButton'
 import SegmentedButton from './Button/SegmentedButton'
 import Checkbox from './Checkbox'
 import Chip from './Chips'
-import Dialog from './Dialogs'
+import { Dialog, DialogActivator, DialogContent, DialogDescription, DialogHeading, DialogClose } from './Dialogs'
 import Divider from './Divider'
 import Elevation from './Elevation'
 import FocusRing from './FocusRing'
@@ -34,7 +34,9 @@ import Tabs from './Tabs'
 import Tab from './Tabs/Tab'
 import TabContent from './Tabs/TabContent'
 import TextField from './TextFields'
+import Spacer from './Spacer'
 import Content from './Floating/Content'
+import { Tooltip, TooltipActivator, TooltipContent } from './Tooltips'
 
 export {
   Badge,
@@ -51,6 +53,11 @@ export {
   Checkbox,
   Chip,
   Dialog,
+  DialogActivator,
+  DialogContent,
+  DialogDescription,
+  DialogHeading,
+  DialogClose,
   Divider,
   Elevation,
   FocusRing,
@@ -73,5 +80,9 @@ export {
   Tab,
   TabContent,
   TextField,
-  Content
+  Spacer,
+  Content,
+  Tooltip,
+  TooltipActivator,
+  TooltipContent
 }
