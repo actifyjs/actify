@@ -3,28 +3,28 @@ import MenuContext from './MenuContext'
 import { useSpring, animated } from '@react-spring/web'
 import React, { useRef, useState, useEffect, useContext, forwardRef } from 'react'
 import {
-  autoUpdate,
   flip,
-  FloatingFocusManager,
+  shift,
+  offset,
+  useRole,
+  useClick,
+  useHover,
+  useDismiss,
+  autoUpdate,
+  safePolygon,
+  useFloating,
+  useListItem,
   FloatingList,
   FloatingNode,
-  FloatingPortal,
-  offset,
-  safePolygon,
-  shift,
-  useClick,
-  useDismiss,
-  useFloating,
-  useFloatingNodeId,
-  useFloatingParentNodeId,
-  useFloatingTree,
-  useHover,
-  useInteractions,
-  useListItem,
-  useListNavigation,
   useMergeRefs,
-  useRole,
-  useTypeahead
+  useTypeahead,
+  FloatingPortal,
+  useInteractions,
+  useFloatingTree,
+  useListNavigation,
+  useFloatingNodeId,
+  FloatingFocusManager,
+  useFloatingParentNodeId
 } from '@floating-ui/react'
 
 const Menu = forwardRef((props, ref) => {

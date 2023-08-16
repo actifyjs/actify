@@ -1,14 +1,14 @@
 import MenuContext from './MenuContext'
 import React, { forwardRef, useContext, useState } from 'react'
 import {
-  autoUpdate,
   flip,
   shift,
   offset,
+  autoUpdate,
   useFloating,
+  useMergeRefs,
   useFloatingNodeId,
-  useFloatingParentNodeId,
-  useMergeRefs
+  useFloatingParentNodeId
 } from '@floating-ui/react'
 
 const MenuHandler = forwardRef((props, ref) => {

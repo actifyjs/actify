@@ -1,19 +1,19 @@
+import { Content } from 'actify'
 import { useState, useMemo, forwardRef, useContext, createContext, isValidElement, cloneElement } from 'react'
 import {
-  useFloating,
-  autoUpdate,
-  offset,
   flip,
   shift,
-  useHover,
-  useFocus,
-  useDismiss,
+  offset,
   useRole,
-  useInteractions,
+  useFocus,
+  useHover,
+  autoUpdate,
+  useDismiss,
+  useFloating,
   useMergeRefs,
-  FloatingPortal
+  FloatingPortal,
+  useInteractions
 } from '@floating-ui/react'
-import { Content } from 'actify'
 
 export function useTooltip({
   initialOpen = false,

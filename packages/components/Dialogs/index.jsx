@@ -1,25 +1,26 @@
 import {
-  useState,
   useMemo,
+  useState,
   forwardRef,
   useContext,
+  cloneElement,
   createContext,
   isValidElement,
-  cloneElement,
   useLayoutEffect
 } from 'react'
 
 import {
-  useFloating,
+  useId,
+  useRole,
   useClick,
   useDismiss,
-  useRole,
-  useInteractions,
+  useFloating,
   useMergeRefs,
   FloatingPortal,
-  FloatingFocusManager,
+  useInteractions,
   FloatingOverlay,
-  useId
+  useTransitionStyles,
+  FloatingFocusManager
 } from '@floating-ui/react'
 
 export function useDialog({ initialOpen = false, open: controlledOpen, onOpenChange: setControlledOpen }) {
@@ -103,8 +104,22 @@ export const DialogActivator = forwardRef(({ children, asChild = false, ...props
 export const DialogContent = forwardRef((props, propRef) => {
   const { context: floatingContext, ...context } = useDialogContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
-
-  if (!floatingContext.open) return null
+  const { isMounted, styles } = useTransitionStyles(context, {
+    duration: 250,
+    initial: {
+      opacity: 0,
+      transform: 'translateY(-50px) scale(0)'
+    },
+    open: () => ({
+      opacity: 1,
+      transform: 'translateY(0) scale(1)'
+    }),
+    close: () => ({
+      opacity: 0,
+      transform: 'translateY(-50px) scale(0)'
+    })
+  })
+  if (!isMounted) return null
 
   return (
     <FloatingPortal>
@@ -112,17 +127,20 @@ export const DialogContent = forwardRef((props, propRef) => {
         lockScroll
         className="z-[99] grid place-items-center fixed w-screen h-screen bg-black/60 backdrop-blur-sm"
       >
-        <FloatingFocusManager context={floatingContext}>
-          <div
-            ref={ref}
-            aria-labelledby={context.labelId}
-            aria-describedby={context.descriptionId}
-            {...context.getFloatingProps(props)}
-            className="relative bg-white rounded-lg font-light leading-relaxed w-full md:w-3/4 lg:w-3/5 2xl:w-2/5 min-w-[90%] md:min-w-[75%] lg:min-w-[60%] 2xl:min-w-[40%] max-w-[90%] md:max-w-[75%] lg:max-w-[60%] 2xl:max-w-[40%]"
-          >
-            {props.children}
-          </div>
-        </FloatingFocusManager>
+        {isMounted && (
+          <FloatingFocusManager context={floatingContext}>
+            <div
+              ref={ref}
+              style={{ ...styles }}
+              aria-labelledby={context.labelId}
+              {...context.getFloatingProps(props)}
+              aria-describedby={context.descriptionId}
+              className="relative bg-white rounded-lg font-light leading-relaxed w-full md:w-3/4 lg:w-3/5 2xl:w-2/5 min-w-[90%] md:min-w-[75%] lg:min-w-[60%] 2xl:min-w-[40%] max-w-[90%] md:max-w-[75%] lg:max-w-[60%] 2xl:max-w-[40%]"
+            >
+              {props.children}
+            </div>
+          </FloatingFocusManager>
+        )}
       </FloatingOverlay>
     </FloatingPortal>
   )
