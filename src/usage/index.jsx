@@ -4,11 +4,11 @@ import { lazy, Suspense, useState, useEffect } from 'react'
 const Usage = (props) => {
   const [rawString, setRawString] = useState('')
   const { name, hidecode, ...rest } = props
-  const LazyComponent = lazy(() => import(`./${name}.jsx`))
+  const LazyComponent = lazy(() => import(`./../usage/${name}.jsx`))
 
   useEffect(() => {
     async function loadData() {
-      const raw = await import(`./${name}.jsx?raw`)
+      const raw = await import(`./../usage/${name}.jsx?raw`)
       setRawString(raw.default)
     }
     loadData()
