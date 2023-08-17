@@ -7,11 +7,13 @@
 ### 🚀 Introduction
 
 Actify is a React Components Library based on Material Design 3 Web Components.
-Inspired by Vuetify. Some highlights include:
+Inspired by Vuetify. Some features:
 
-- **Vite:** Use Vite to build lib and docs.
-- **Tailwind CSS:** Build with Tailwind CSS.
-- **CSS Property:** Use css property to control web component styles.
+- **[Vite](https://vitejs.dev/):** Use Vite to build libs and docs.
+- **[Tailwind CSS](https://tailwindcss.com/):** Build with Tailwind CSS.
+- **[Tailwind Variants](https://www.tailwind-variants.org/):** For variants and smart className merge.
+- **[Floating UI](https://floating-ui.com/):** The future of Popper to deal with smart anchor positioning.
+- **[React Spring](https://www.react-spring.dev/):** For building interactive, data-driven, and animated UI components.
 - **Theme System:** A powerful color system that makes it easy to style your application with a consistent color palette.
 
 ### 🌻 Get Started

@@ -6,7 +6,7 @@ title: Why Actify
 
 ## What is Actify?
 
-Actify is an open source react component library written in Vite + React + Tailwind css based on Google's Material Design 3. You can use it for write react pages.
+Actify is an open source react component library written in Vite + React + Tailwind CSS based on Google's Material Design 3. You can use it for write react pages.
 
 ## Getting started
 
