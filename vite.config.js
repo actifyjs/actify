@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
   if (mode == 'lib') {
     // build for lib
     return {
+      publicDir: false,
       resolve,
       build: {
         outDir: 'lib',
