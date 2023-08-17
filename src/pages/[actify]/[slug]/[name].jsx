@@ -28,8 +28,16 @@ export default () => {
 
   useEffect(() => {
     async function loadData() {
-      const filePath = `./../../../docs/${pathname}.md`
-      const { attributes, markdown } = await import(filePath)
+      let importResult = {}
+      const filePath = pathname.split('/')
+      const fileName = filePath.pop()
+      if (filePath.length == 2) {
+        importResult = await import(`./../../../docs/${filePath[1]}/${fileName}.md`)
+      }
+      if (filePath.length == 3) {
+        importResult = await import(`./../../../docs/${filePath[1]}/${filePath[2]}/${fileName}.md`)
+      }
+      const { attributes, markdown } = importResult
       setMarkdown(markdown)
       document.title = attributes.title + ` | Actify`
     }
