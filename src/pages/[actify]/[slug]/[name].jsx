@@ -28,7 +28,7 @@ export default () => {
 
   useEffect(() => {
     async function loadData() {
-      const { attributes, markdown } = await import(`/../../../../src/docs/${location.pathname}.md`)
+      const { attributes, markdown } = await import(`/../../../../src/docs${location.pathname}.md`)
       setMarkdown(markdown)
       document.title = attributes.title + ` | Actify`
     }
