@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import ReactMarkdown from 'react-markdown'
+import Usage from '@/src/usage'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
-import Code from '@/packages/components/Code'
 import { Icon, Button } from 'actify'
-import Usage from '@/src/usage'
+import ReactMarkdown from 'react-markdown'
+import { useState, useEffect } from 'react'
+import Code from '@/packages/components/Code'
+import { useLocation } from 'react-router-dom'
 
 export default () => {
-  const params = useParams()
+  const location = useLocation()
   const [markdown, setMarkdown] = useState('')
 
   const EditOnGitHub = () => {
@@ -17,7 +17,7 @@ export default () => {
         <Button
           variant="text"
           target="_blank"
-          href={`https://github.com/actifyjs/actify/blob/main/src/docs/components/${params.actify}/${params.name}.md`}
+          href={`https://github.com/actifyjs/actify/blob/main/src/docs${location.pathname}.md`}
         >
           Edit this page on GitHub
           <Icon name="Pencil" />
@@ -28,12 +28,12 @@ export default () => {
 
   useEffect(() => {
     async function loadData() {
-      const { attributes, markdown } = await import(`./../../../docs/components/${params.actify}/${params.name}.md`)
+      const { attributes, markdown } = await import(`/../../../../src/docs/${location.pathname}.md`)
       setMarkdown(markdown)
-      document.title = attributes.title + `- ${params.actify} | Actify`
+      document.title = attributes.title + ` | Actify`
     }
     loadData()
-  }, [params])
+  }, [location])
 
   return (
     <>
