@@ -8,7 +8,7 @@ import Code from '@/packages/components/Code'
 import { useLocation } from 'react-router-dom'
 
 export default () => {
-  const location = useLocation()
+  const { pathname } = useLocation()
   const [markdown, setMarkdown] = useState('')
 
   const EditOnGitHub = () => {
@@ -28,12 +28,13 @@ export default () => {
 
   useEffect(() => {
     async function loadData() {
-      const { attributes, markdown } = await import(`/../../../../src/docs${location.pathname}.md`)
+      const filePath = `./../../../docs/${pathname}.md`
+      const { attributes, markdown } = await import(filePath)
       setMarkdown(markdown)
       document.title = attributes.title + ` | Actify`
     }
     loadData()
-  }, [location])
+  }, [pathname])
 
   return (
     <>
