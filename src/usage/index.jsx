@@ -1,5 +1,6 @@
 import Code from '@/packages/components/Code'
 import { lazy, Suspense, useState, useEffect } from 'react'
+import { Icon, Tabs, TabsHeader, TabsBody, Tab, TabPanel } from 'actify'
 
 const Usage = (props) => {
   const [rawString, setRawString] = useState('')
@@ -16,12 +17,24 @@ const Usage = (props) => {
 
   return (
     <Suspense>
-      <LazyComponent name={name} {...rest} />
-      {!hidecode && (
-        <Code className="mt-4" language="jsx">
-          {rawString}
-        </Code>
-      )}
+      <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
+        <TabsHeader>
+          <Tab value="preview" className="flex gap-2">
+            <Icon name="Eye" size={18} />
+            Preview
+          </Tab>
+          <Tab value="code" className="flex gap-2">
+            <Icon name="Code" size={18} />
+            Code
+          </Tab>
+        </TabsHeader>
+        <TabsBody className="p-6">
+          <TabPanel value="preview">
+            <LazyComponent name={name} {...rest} />
+          </TabPanel>
+          <TabPanel value="code">{!hidecode && <Code language="jsx">{rawString}</Code>}</TabPanel>
+        </TabsBody>
+      </Tabs>
     </Suspense>
   )
 }

@@ -10,7 +10,7 @@ const Tabs = forwardRef((props, ref) => {
   const { value, className, children, ...rest } = props
   return (
     <TabsProvider value={value}>
-      <div ref={ref} {...rest} className={variants(className)}>
+      <div ref={ref} {...rest} className={variants({ className })}>
         {children}
       </div>
     </TabsProvider>

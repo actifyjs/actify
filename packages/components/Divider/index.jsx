@@ -19,9 +19,9 @@ const Divider = (props) => {
     styles['--md-divider-color'] = 'var(--md-sys-color-outline-variant, #cac4d0)'
   }
   if (thickness) {
-    styles['--md-divider-thickness'] = thickness + 'px'
+    styles['height'] = thickness + 'px'
   } else {
-    styles['--md-divider-thickness'] = '1px'
+    styles['height'] = '1px'
   }
 
   return <div {...rest} style={styles} className={variants({ className })}></div>

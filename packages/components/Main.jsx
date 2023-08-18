@@ -9,7 +9,12 @@ const Main = forwardRef((props, ref) => {
   const paddingLeft = pathname == '/' ? '0' : app.left
 
   return (
-    <main ref={ref} {...rest} style={{ paddingLeft }} className="container mx-auto min-h-[calc(100vh-120px)] p-4">
+    <main
+      ref={ref}
+      {...rest}
+      style={{ paddingLeft, paddingRight: 256 }}
+      className="container mx-auto min-h-[calc(100vh-120px)] p-4"
+    >
       {children}
     </main>
   )
