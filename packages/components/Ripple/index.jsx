@@ -1,6 +1,6 @@
-import { tv } from 'tailwind-variants'
+import useRipple from './useRipple'
 import React, { useRef } from 'react'
-import useRipple from '@/packages/hooks/useRipple'
+import { tv } from 'tailwind-variants'
 
 const variants = tv({
   base: 'absolute overflow-hidden inset-0 rounded-[inherit]'
