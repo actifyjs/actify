@@ -6,13 +6,14 @@ const Main = forwardRef((props, ref) => {
   const { app } = useApp()
   const { pathname } = useLocation()
   const { children, className, ...rest } = props
-  const paddingLeft = pathname == '/' ? '0' : app.left
+  const paddingLeft = pathname == '/' ? 0 : app.left
+  const paddingRight = pathname == '/' ? 0 : 256
 
   return (
     <main
       ref={ref}
       {...rest}
-      style={{ paddingLeft, paddingRight: 256 }}
+      style={{ paddingLeft, paddingRight }}
       className="container mx-auto min-h-[calc(100vh-120px)] p-4"
     >
       {children}
