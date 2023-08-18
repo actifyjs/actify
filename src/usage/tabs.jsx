@@ -1,41 +1,46 @@
-import { useState } from 'react'
-import { Icon, Tabs, Tab, TabContent } from 'actify'
-
-const TabContent1 = () => {
-  return <img className="pointer-events-none mx-auto select-none" src="https://picsum.photos/800/600?1" />
-}
-const TabContent2 = () => {
-  return <img className="pointer-events-none mx-auto select-none" src="https://picsum.photos/800/600?2" />
-}
-const TabContent3 = () => {
-  return <img className="pointer-events-none mx-auto select-none" src="https://picsum.photos/800/600?3" />
-}
+import { loremIpsum } from 'lorem-ipsum'
+import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from 'actify'
 
 export default () => {
-  const [selected, setSelected] = useState(1)
+  const data = [
+    {
+      label: 'HTML',
+      value: 'html'
+    },
+    {
+      label: 'React',
+      value: 'react'
+    },
+    {
+      label: 'Vue',
+      value: 'vue'
+    },
+    {
+      label: 'Angular',
+      value: 'angular'
+    },
+    {
+      label: 'Svelte',
+      value: 'svelte'
+    }
+  ]
+
   return (
-    <div className="w-full">
-      <Tabs selected={selected} onChange={(e) => setSelected(e.target.selected)}>
-        <Tab>
-          <span slot="icon">
-            <Icon name="Home" />
-          </span>
-          Home
-        </Tab>
-        <Tab>
-          User
-          <span slot="icon">
-            <Icon name="User2" />
-          </span>
-        </Tab>
-        <Tab>
-          Settings
-          <span slot="icon">
-            <Icon name="Settings2" />
-          </span>
-        </Tab>
-      </Tabs>
-      <TabContent list={[<TabContent1 />, <TabContent2 />, <TabContent3 />]} selected={selected} />
-    </div>
+    <Tabs value="react">
+      <TabsHeader>
+        {data.map(({ label, value }) => (
+          <Tab key={value} value={value}>
+            {label}
+          </Tab>
+        ))}
+      </TabsHeader>
+      <TabsBody>
+        {data.map(({ value }) => (
+          <TabPanel key={value} value={value}>
+            {loremIpsum()}
+          </TabPanel>
+        ))}
+      </TabsBody>
+    </Tabs>
   )
 }

@@ -32,7 +32,9 @@ import Slider from './Sliders'
 import Switch from './Switch'
 import Tabs from './Tabs'
 import Tab from './Tabs/Tab'
-import TabContent from './Tabs/TabContent'
+import TabsBody from './Tabs/TabsBody'
+import TabPanel from './Tabs/TabPanel'
+import TabsHeader from './Tabs/TabsHeader'
 import TextField from './TextFields'
 import Spacer from './Spacer'
 import Content from './Floating/Content'
@@ -78,7 +80,9 @@ export {
   Switch,
   Tabs,
   Tab,
-  TabContent,
+  TabsBody,
+  TabPanel,
+  TabsHeader,
   TextField,
   Spacer,
   Content,

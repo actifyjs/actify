@@ -1,26 +1,19 @@
-import React, { useEffect, useRef, forwardRef } from 'react'
-import '@material/web/tabs/tabs'
+import { tv } from 'tailwind-variants'
+import React, { forwardRef } from 'react'
+import { TabsProvider } from './TabContext'
 
-import { setColor } from '@/packages/utils'
+const variants = tv({
+  base: 'overflow-hidden block'
+})
 
 const Tabs = forwardRef((props, ref) => {
-  const tabsRef = ref || useRef()
-  const { style, color, children, onChange, className, ...rest } = props
-  let styles = {
-    ...style
-  }
-  if (color) {
-    styles['--md-sys-color-primary'] = setColor(color)
-  }
-
-  useEffect(() => {
-    tabsRef.current.addEventListener('change', onChange)
-  }, [])
-
+  const { value, className, children, ...rest } = props
   return (
-    <md-tabs ref={tabsRef} {...rest} class={className} style={{ ...styles }}>
-      {children}
-    </md-tabs>
+    <TabsProvider value={value}>
+      <div ref={ref} {...rest} className={variants(className)}>
+        {children}
+      </div>
+    </TabsProvider>
   )
 })
 
