@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react'
 import { TabsProvider } from './TabContext'
 
 const variants = tv({
-  base: 'overflow-hidden block'
+  base: 'relative overflow-hidden'
 })
 
 const Tabs = forwardRef((props, ref) => {
