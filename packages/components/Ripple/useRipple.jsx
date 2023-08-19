@@ -1,17 +1,16 @@
 import { useDebounce } from 'usehooks-ts'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const useRipple = (ref) => {
   const [ripples, setRipples] = useState([])
-  const debounced = useDebounce(ripples, 1000)
 
   useEffect(() => {
     if (ref.current) {
       const element = ref.current
       const clickHandler = (e) => {
         var rect = element.getBoundingClientRect()
-        var left = e.clientX - rect.left
-        var top = e.clientY - rect.top
+        const top = e.clientY - rect.top
+        const left = e.clientX - rect.left
         const height = element.clientHeight
         const width = element.clientWidth
         const diameter = Math.max(width, height)
@@ -33,6 +32,8 @@ const useRipple = (ref) => {
     }
   }, [ref, ripples])
 
+  const debounced = useDebounce(ripples, 1000)
+
   useEffect(() => {
     if (debounced.length) {
       setRipples([])
@@ -43,14 +44,11 @@ const useRipple = (ref) => {
     return (
       <span
         key={i}
+        className="absolute rounded-[inherit] bg-secondary/25"
         style={{
           ...style,
-          opacity: '25%',
-          borderRadius: '50%',
-          position: 'absolute',
           transform: 'scale(0)',
-          backgroundColor: '#FFFFFF',
-          animation: 'ripple 600ms linear'
+          animation: 'ripple 600ms cubic-bezier(0.4, 0, 0.2, 1)'
         }}
       />
     )
