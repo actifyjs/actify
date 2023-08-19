@@ -2,6 +2,7 @@ import { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 import { useApp } from './App/AppContext'
+import { useLocation } from 'react-router-dom'
 import { Icon, Button, IconButton } from 'actify'
 import Spacer from '@/packages/components/Spacer'
 import Dropdown from '@/packages/components/Dropdown'
@@ -9,6 +10,7 @@ import SwitchTheme from '@/packages/components/SwitchTheme'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const Header = forwardRef((props, ref) => {
+  const { pathname } = useLocation()
   const { app, setDrawer } = useApp()
   const { onClick, children, className, ...rest } = props
 
@@ -56,9 +58,11 @@ const Header = forwardRef((props, ref) => {
           </svg>
           <span className="hidden self-center whitespace-nowrap text-2xl font-semibold md:inline">ctify</span>
         </Link>
-        <IconButton className="inline-flex md:hidden" onClick={() => setDrawer(!app.drawer)}>
-          <Icon name="Menu" color="primary" />
-        </IconButton>
+        {pathname != '/' && (
+          <IconButton className="inline-flex md:hidden" onClick={() => setDrawer(!app.drawer)}>
+            <Icon name="Menu" color="primary" />
+          </IconButton>
+        )}
         <Spacer />
         <IconButton onClick={handleUpdateTheme}>
           <Icon name="Palette" color="primary" />
