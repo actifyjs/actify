@@ -18,16 +18,18 @@ const Usage = (props) => {
   return (
     <Suspense>
       <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
-        <TabsHeader>
-          <Tab value="preview" className="flex gap-2">
-            <Icon name="Eye" size={18} />
-            Preview
-          </Tab>
-          <Tab value="code" className="flex gap-2">
-            <Icon name="Code" size={18} />
-            Code
-          </Tab>
-        </TabsHeader>
+        <div className="flex items-center justify-between border-b border-[#ccc] dark:border-[#222]">
+          <TabsHeader className="bg-transparent">
+            <Tab value="preview">
+              <Icon name="Eye" size={18} />
+              Preview
+            </Tab>
+            <Tab value="code">
+              <Icon name="Code" size={18} />
+              Code
+            </Tab>
+          </TabsHeader>
+        </div>
         <TabsBody className="p-6">
           <TabPanel value="preview">
             <LazyComponent name={name} {...rest} />

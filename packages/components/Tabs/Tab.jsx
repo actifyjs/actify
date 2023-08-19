@@ -3,10 +3,10 @@ import { useTabs } from './TabsContext'
 import React, { forwardRef } from 'react'
 
 const variants = tv({
-  base: 'flex items-center justify-center text-center w-full h-full relative bg-transparent py-1 px-2 text-blue-gray-900 antialiased font-sans text-base font-normal leading-relaxed select-none cursor-pointer',
+  base: 'flex items-center justify-center gap-2 py-1 px-2 text-base font-normal leading-relaxed select-none cursor-pointer',
   variants: {
     active: {
-      true: 'bg-primary rounded'
+      true: 'bg-primary rounded-lg'
     }
   }
 })
