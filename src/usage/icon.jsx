@@ -40,7 +40,7 @@ export default (props) => {
         onInput={handleInput}
         placeholder={`Search icon in ${icons.length}`}
       />
-      <LinearProgress indeterminate={isPending} />
+      <LinearProgress indeterminate={isPending} value={0} />
       <div className="mt-2 gap-2 grid grid-cols-[repeat(auto-fill,minmax(52px,1fr))]">
         {filterIcons.map((item) => (
           <Icon

@@ -11,6 +11,7 @@ const barVariants = tv({
   base: 'absolute animate-[auto_ease_0s_1_normal_none_running_none] transition-transform',
   variants: {
     indeterminate: {
+      hidden: 'hidden',
       primary: 'animate-[2s_linear_0s_infinite_normal_none_running_primary-indeterminate-translate]',
       secondary: 'animate-[2s_linear_0s_infinite_normal_none_running_secondary-indeterminate-translate]'
     }
@@ -69,7 +70,7 @@ const LinearProgress = React.forwardRef((props, ref) => {
           transformOrigin: 'left center',
           insetInlineStart: '-54.8889%'
         }}
-        className={barVariants({ indeterminate: indeterminate ? 'secondary' : null })}
+        className={barVariants({ indeterminate: indeterminate ? 'secondary' : 'hidden' })}
       >
         <div className={barInnerVariants({ indeterminate: indeterminate ? 'secondary' : null })}></div>
       </div>
