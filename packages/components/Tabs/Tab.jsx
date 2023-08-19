@@ -1,5 +1,5 @@
 import { tv } from 'tailwind-variants'
-import { useTabs } from './TabContext'
+import { useTabs } from './TabsContext'
 import React, { forwardRef } from 'react'
 
 const variants = tv({
