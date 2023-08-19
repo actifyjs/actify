@@ -1,15 +1,15 @@
+import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useCarousel } from './CarouselContext'
 import debounce from '@/packages/utils/debounce'
-import { useRef, useState, forwardRef, useLayoutEffect } from 'react'
 
-const CarouselItem = forwardRef((props, ref) => {
+const CarouselItem = React.forwardRef((props, ref) => {
   const { images, className, ...rest } = props
   const { carousel, setCarousel } = useCarousel()
 
-  const _ref = useRef(null) || ref
-  const carouselRef = useRef(null)
-  const [maxSlideHeight, setMaxSlideHeight] = useState(0)
+  const _ref = React.useRef(null) || ref
+  const carouselRef = React.useRef(null)
+  const [maxSlideHeight, setMaxSlideHeight] = React.useState(0)
 
   const calculateMaxSlideHeight = () => {
     if (!carouselRef.current) return
@@ -23,7 +23,7 @@ const CarouselItem = forwardRef((props, ref) => {
     }
   }
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     if (!images.length) return
 
     if (carousel.current >= images.length) {

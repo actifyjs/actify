@@ -1,10 +1,10 @@
+import React from 'react'
 import PropTypes from 'prop-types'
-import { forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
 import { Ripple, Elevation } from 'actify'
 
 const variants = tv({
-  base: 'relative inline-flex gap-2 items-center justify-center select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none h-10 w-fit text-sm px-6 rounded-full',
+  base: 'relative inline-flex gap-2 items-center justify-center select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none h-10 text-sm px-6 rounded-full',
   variants: {
     color: {
       primary: 'bg-primary text-on-primary hover:bg-primary/90',
@@ -44,7 +44,7 @@ const variants = tv({
   }
 })
 
-const Button = forwardRef((props, ref) => {
+const Button = React.forwardRef((props, ref) => {
   const { ripple, variant, color, style, className, children, ...rest } = props
 
   const Tag = rest.href ? 'a' : 'button'

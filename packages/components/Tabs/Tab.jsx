@@ -1,6 +1,6 @@
+import React from 'react'
 import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
-import React, { forwardRef } from 'react'
 
 const variants = tv({
   base: 'flex items-center justify-center gap-2 py-1 px-2 text-base font-normal leading-relaxed select-none cursor-pointer',
@@ -11,7 +11,7 @@ const variants = tv({
   }
 })
 
-const Tab = forwardRef((props, ref) => {
+const Tab = React.forwardRef((props, ref) => {
   const { active, setActive } = useTabs()
   const { className, value, children, ...rest } = props
 

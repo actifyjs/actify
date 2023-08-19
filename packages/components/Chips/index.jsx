@@ -1,7 +1,7 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon, Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
-import React, { useState, forwardRef } from 'react'
 
 const variants = tv({
   base: 'relative inline-flex items-center gap-2 px-4 h-8 rounded-lg text-sm border no-underline hover:bg-black/10 dark:hover:bg-white/10',
@@ -15,9 +15,9 @@ const variants = tv({
   }
 })
 
-const Chip = forwardRef((props, ref) => {
-  const [show, setShow] = useState(true)
-  const [selected, setSelected] = useState(false)
+const Chip = React.forwardRef((props, ref) => {
+  const [show, setShow] = React.useState(true)
+  const [selected, setSelected] = React.useState(false)
   const { ripple, label, type, color, icon, style, className, children, ...rest } = props
 
   const handleClick = () => {

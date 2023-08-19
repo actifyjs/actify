@@ -1,5 +1,6 @@
+import React from 'react'
 import MenuContext from './MenuContext'
-import React, { forwardRef, useContext, useState } from 'react'
+
 import {
   flip,
   shift,
@@ -11,10 +12,10 @@ import {
   useFloatingParentNodeId
 } from '@floating-ui/react'
 
-const MenuHandler = forwardRef((props, ref) => {
+const MenuHandler = React.forwardRef((props, ref) => {
   const { children, ...rest } = props
-  const [isOpen, setIsOpen] = useState(false)
-  const menu = useContext(MenuContext)
+  const [isOpen, setIsOpen] = React.useState(false)
+  const menu = React.useContext(MenuContext)
 
   const nodeId = useFloatingNodeId()
   const parentId = useFloatingParentNodeId()

@@ -1,9 +1,9 @@
-import { forwardRef, useEffect } from 'react'
+import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useApp } from '../App/AppContext'
 import debounce from '@/packages/utils/debounce'
 
-const Drawer = forwardRef((props, ref) => {
+const Drawer = React.forwardRef((props, ref) => {
   const { app, setApp, setDrawer } = useApp()
   const { width, children, className, ...rest } = props
 
@@ -15,7 +15,7 @@ const Drawer = forwardRef((props, ref) => {
     }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (width) {
       setApp({ ...app, left: width })
     }

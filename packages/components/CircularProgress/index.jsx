@@ -1,6 +1,6 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
 import { setColor } from '@/packages/utils'
 
 const variants = tv({
@@ -23,7 +23,7 @@ const circleStyles = {
   fill: 'rgba(0, 0, 0, 0)'
 }
 
-const CircularProgress = forwardRef((props, ref) => {
+const CircularProgress = React.forwardRef((props, ref) => {
   const { value, indeterminate, style, color, className, ...rest } = props
 
   return (

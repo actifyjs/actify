@@ -1,6 +1,6 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
 
 const variants = tv({
   base: 'flex',
@@ -27,7 +27,7 @@ const variants = tv({
   }
 })
 
-const SegmentedButton = forwardRef((props, ref) => {
+const SegmentedButton = React.forwardRef((props, ref) => {
   const { variant, color, ripple, style, className, children, ...rest } = props
 
   return (

@@ -1,7 +1,8 @@
+import React from 'react'
 import { Icon, Button } from 'actify'
 import MenuContext from './MenuContext'
 import { useSpring, animated } from '@react-spring/web'
-import React, { useRef, useState, useEffect, useContext, forwardRef } from 'react'
+
 import {
   flip,
   shift,
@@ -27,15 +28,15 @@ import {
   useFloatingParentNodeId
 } from '@floating-ui/react'
 
-const Menu = forwardRef((props, ref) => {
+const Menu = React.forwardRef((props, ref) => {
   const { children, label, ...rest } = props
-  const [isOpen, setIsOpen] = useState(false)
-  const [hasFocusInside, setHasFocusInside] = useState(false)
-  const [activeIndex, setActiveIndex] = useState(null)
+  const [isOpen, setIsOpen] = React.useState(false)
+  const [activeIndex, setActiveIndex] = React.useState(null)
+  const [hasFocusInside, setHasFocusInside] = React.useState(false)
 
-  const elementsRef = useRef([])
-  const labelsRef = useRef([])
-  const parent = useContext(MenuContext)
+  const elementsRef = React.useRef([])
+  const labelsRef = React.useRef([])
+  const parent = React.useContext(MenuContext)
 
   const tree = useFloatingTree()
   const nodeId = useFloatingNodeId()
@@ -94,7 +95,7 @@ const Menu = forwardRef((props, ref) => {
   // Event emitter allows you to communicate across tree components.
   // This effect closes all menus when an item gets clicked anywhere
   // in the tree.
-  useEffect(() => {
+  React.useEffect(() => {
     if (!tree) return
     function handleTreeClick() {
       setIsOpen(false)
@@ -112,7 +113,7 @@ const Menu = forwardRef((props, ref) => {
     }
   }, [tree, nodeId, parentId])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isOpen && tree) {
       tree.events.emit('menuopen', { parentId, nodeId })
     }

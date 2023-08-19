@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, forwardRef } from 'react'
+import React from 'react'
 import '@material/web/labs/navigationbar/navigation-bar'
 
-const NavigationBar = forwardRef((props, ref) => {
+const NavigationBar = React.forwardRef((props, ref) => {
   const { children, onChange, ...rest } = props
-  const _ref = ref || useRef(null)
+  const _ref = ref || React.useRef(null)
 
-  useEffect(() => {
+  React.useEffect(() => {
     _ref.current.addEventListener('onActiveIndexChange', onChange)
   }, [])
 

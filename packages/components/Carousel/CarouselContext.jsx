@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from 'react'
+import React from 'react'
 
 const defaultValue = {
   current: 0,
@@ -7,23 +7,19 @@ const defaultValue = {
   infinite: true
 }
 
-const CarouselContext = createContext(defaultValue)
+const CarouselContext = React.createContext(defaultValue)
 
 export function useCarousel() {
-  return useContext(CarouselContext)
+  return React.useContext(CarouselContext)
 }
 
 export function CarouselProvider(props) {
   const { current, autoPlay, interval, infinite, children } = props
-  const [carousel, setCarousel] = useState({
+  const [carousel, setCarousel] = React.useState({
     current: current || defaultValue.current,
     autoPlay: autoPlay || defaultValue.autoPlay,
     interval: interval || defaultValue.interval,
     infinite: infinite || defaultValue.infinite
   })
-  return (
-    <CarouselContext.Provider value={{ carousel, setCarousel }}>
-      {children}
-    </CarouselContext.Provider>
-  )
+  return <CarouselContext.Provider value={{ carousel, setCarousel }}>{children}</CarouselContext.Provider>
 }

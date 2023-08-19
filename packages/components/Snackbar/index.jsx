@@ -1,14 +1,14 @@
+import React from 'react'
 import { Icon, Content, IconButton } from 'actify'
 import { useTransition, animated } from '@react-spring/web'
-import React, { useState, useMemo, useEffect } from 'react'
 
 let id = 0
 
 const Snackbar = (props) => {
-  const [items, setItems] = useState([])
+  const [items, setItems] = React.useState([])
   const { config = { tension: 125, friction: 20, precision: 0.1 }, timeout = 3000, children } = props
-  const refMap = useMemo(() => new WeakMap(), [])
-  const cancelMap = useMemo(() => new WeakMap(), [])
+  const refMap = React.useMemo(() => new WeakMap(), [])
+  const cancelMap = React.useMemo(() => new WeakMap(), [])
 
   const transitions = useTransition(items, {
     from: { opacity: 0, height: 0, life: '100%' },
@@ -29,7 +29,7 @@ const Snackbar = (props) => {
     config: (item, index, phase) => (key) => (phase === 'enter' && key === 'life' ? { duration: timeout } : config)
   })
 
-  useEffect(() => {
+  React.useEffect(() => {
     children((msg) => {
       setItems((state) => [...state, { key: id++, msg }])
     })

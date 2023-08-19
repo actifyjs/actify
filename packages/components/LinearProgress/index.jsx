@@ -1,6 +1,6 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
 import { setColor } from '@/packages/utils'
 
 const variants = tv({
@@ -27,7 +27,7 @@ const barInnerVariants = tv({
   }
 })
 
-const LinearProgress = forwardRef((props, ref) => {
+const LinearProgress = React.forwardRef((props, ref) => {
   const { value, indeterminate, style, color, className, ...rest } = props
 
   return (

@@ -1,6 +1,6 @@
+import React from 'react'
 import { Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
-import React, { useId, forwardRef } from 'react'
 import { setColor } from '@/packages/utils'
 
 const labelVariants = tv({
@@ -15,8 +15,8 @@ const dotVariants = tv({
   base: 'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity text-black/90 peer-checked:text-current'
 })
 
-const RadioButton = forwardRef((props, ref) => {
-  const id = useId()
+const RadioButton = React.forwardRef((props, ref) => {
+  const id = React.useId()
   const { style, className, color, children, ...rest } = props
   const colorVariants = setColor(color ?? 'primary')
 

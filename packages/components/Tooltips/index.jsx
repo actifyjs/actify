@@ -1,5 +1,6 @@
+import React from 'react'
 import { Content } from 'actify'
-import { useState, useMemo, forwardRef, useContext, createContext, isValidElement, cloneElement } from 'react'
+
 import {
   flip,
   shift,
@@ -21,7 +22,7 @@ export function useTooltip({
   open: controlledOpen,
   onOpenChange: setControlledOpen
 }) {
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
+  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
 
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = setControlledOpen ?? setUncontrolledOpen
@@ -56,7 +57,7 @@ export function useTooltip({
 
   const interactions = useInteractions([hover, focus, dismiss, role])
 
-  return useMemo(
+  return React.useMemo(
     () => ({
       open,
       setOpen,
@@ -67,10 +68,10 @@ export function useTooltip({
   )
 }
 
-const TooltipContext = createContext(null)
+const TooltipContext = React.createContext(null)
 
 export const useTooltipContext = () => {
-  const context = useContext(TooltipContext)
+  const context = React.useContext(TooltipContext)
 
   if (context == null) {
     throw new Error('Tooltip components must be wrapped in <Tooltip />')
@@ -86,14 +87,14 @@ export function Tooltip({ children, ...options }) {
   return <TooltipContext.Provider value={tooltip}>{children}</TooltipContext.Provider>
 }
 
-export const TooltipActivator = forwardRef(({ children, asChild = false, ...props }, propRef) => {
+export const TooltipActivator = React.forwardRef(({ children, asChild = false, ...props }, propRef) => {
   const context = useTooltipContext()
   const childrenRef = children.ref
   const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
 
   // `asChild` allows the user to pass any element as the anchor
-  if (asChild && isValidElement(children)) {
-    return cloneElement(
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(
       children,
       context.getReferenceProps({
         ref,
@@ -116,7 +117,7 @@ export const TooltipActivator = forwardRef(({ children, asChild = false, ...prop
   )
 })
 
-export const TooltipContent = forwardRef(({ style, ...props }, propRef) => {
+export const TooltipContent = React.forwardRef(({ style, ...props }, propRef) => {
   const context = useTooltipContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
 

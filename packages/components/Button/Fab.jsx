@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
@@ -21,7 +21,7 @@ const iconSizeMap = {
   large: 36
 }
 
-const Fab = forwardRef((props, ref) => {
+const Fab = React.forwardRef((props, ref) => {
   const { label, style, icon, size, variant, color, className, children, ...rest } = props
 
   let styles = { ...style }

@@ -1,11 +1,11 @@
+import React from 'react'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
 
 const variants = tv({
   base: 'flex relative p-2 bg-secondary/10 rounded-lg'
 })
 
-const TabsHeader = forwardRef((props, ref) => {
+const TabsHeader = React.forwardRef((props, ref) => {
   const { children, className, ...rest } = props
 
   return (

@@ -1,7 +1,7 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import '@material/web/select/select-option'
 
-const SelectOption = forwardRef((props, ref) => {
+const SelectOption = React.forwardRef((props, ref) => {
   return <md-select-option ref={ref} {...props} />
 })
 

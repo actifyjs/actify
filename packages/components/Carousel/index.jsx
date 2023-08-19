@@ -1,10 +1,10 @@
-import { forwardRef } from 'react'
+import React from 'react'
 import { twMerge } from 'tailwind-merge'
-import { CarouselProvider } from './CarouselContext'
 import CarouselControl from './CarouselControl'
 import CarouselIndicator from './CarouselIndicator'
+import { CarouselProvider } from './CarouselContext'
 
-const Carousel = forwardRef((props, ref) => {
+const Carousel = React.forwardRef((props, ref) => {
   const { style, control, indicator, current, autoPlay, interval, infinite, children, className, ...rest } = props
 
   return (

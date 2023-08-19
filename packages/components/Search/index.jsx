@@ -1,6 +1,6 @@
-import { forwardRef } from 'react'
-import { tv } from 'tailwind-variants'
+import React from 'react'
 import { Icon } from 'actify'
+import { tv } from 'tailwind-variants'
 
 const variants = tv('flex items-center px-4 py-1 h-14 rounded-full bg-black/5 dark:bg-white/5', {
   variants: {
@@ -11,7 +11,7 @@ const variants = tv('flex items-center px-4 py-1 h-14 rounded-full bg-black/5 da
   }
 })
 
-const Search = forwardRef((props, ref) => {
+const Search = React.forwardRef((props, ref) => {
   const { children, className, ...rest } = props
   return (
     <div className={variants({ className })}>

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
@@ -17,7 +17,7 @@ const variants = tv({
   }
 })
 
-const Badge = forwardRef((props, ref) => {
+const Badge = React.forwardRef((props, ref) => {
   const { style, color, value, className, children, ...rest } = props
   const number = isNaN(parseInt(value)) ? '' : parseInt(value)
 

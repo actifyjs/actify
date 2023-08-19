@@ -1,7 +1,7 @@
+import React from 'react'
 import { createStore, useStore } from 'zustand'
-import { createContext, useContext, useRef } from 'react'
 
-const TabsContext = createContext()
+const TabsContext = React.createContext()
 
 export const TabsProvider = ({ children, ...initialProp }) => {
   const useCreateStore = createStore()((set) => ({
@@ -9,13 +9,13 @@ export const TabsProvider = ({ children, ...initialProp }) => {
     setActive: (state) => set({ active: state })
   }))
 
-  const store = useRef(useCreateStore)
+  const store = React.useRef(useCreateStore)
 
   return <TabsContext.Provider value={store.current}>{children}</TabsContext.Provider>
 }
 
 export const useTabs = () => {
-  const store = useContext(TabsContext)
+  const store = React.useContext(TabsContext)
   if (!store) {
     throw new Error('Missing TabsContext.Provider in the tree')
   }

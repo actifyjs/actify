@@ -1,7 +1,7 @@
-import { forwardRef } from 'react'
+import React from 'react'
 import '@material/web/labs/navigationdrawer/navigation-drawer'
 
-const NavigationDrawer = forwardRef((props, ref) => {
+const NavigationDrawer = React.forwardRef((props, ref) => {
   const { width, style, className, children, ...rest } = props
   let styles = {}
   if (width) {

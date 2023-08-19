@@ -1,8 +1,8 @@
-import { forwardRef } from 'react'
+import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { AppProvider } from './AppContext'
 
-const App = forwardRef((props, ref) => {
+const App = React.forwardRef((props, ref) => {
   const { style, className, children, ...rest } = props
 
   return (

@@ -1,12 +1,12 @@
+import React from 'react'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
 import { TabsProvider } from './TabsContext'
 
 const variants = tv({
   base: 'relative overflow-hidden'
 })
 
-const Tabs = forwardRef((props, ref) => {
+const Tabs = React.forwardRef((props, ref) => {
   const { value, className, children, ...rest } = props
   return (
     <TabsProvider value={value}>

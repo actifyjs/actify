@@ -1,11 +1,11 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import '@material/web/textfield/filled-text-field'
 import '@material/web/textfield/outlined-text-field'
 
 import { setColor } from '@/packages/utils'
 
-const TextField = forwardRef((props, ref) => {
+const TextField = React.forwardRef((props, ref) => {
   const { style, color, variant, className, children, ...rest } = props
   let styles = { ...style }
   if (color) {

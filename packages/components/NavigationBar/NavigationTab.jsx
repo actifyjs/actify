@@ -1,8 +1,8 @@
-import { forwardRef } from 'react'
+import React from 'react'
 import { Icon } from 'actify'
 import '@material/web/labs/navigationtab/navigation-tab'
 
-const NavigationTab = forwardRef((props, ref) => {
+const NavigationTab = React.forwardRef((props, ref) => {
   const { activeIcon, inactiveIcon, children, ...rest } = props
   return (
     <md-navigation-tab ref={ref} {...rest}>

@@ -1,5 +1,4 @@
-import Menu from '@/packages/components/Menus'
-import MenuItem from '@/packages/components/Menus/MenuItem'
+import { Menu, MenuItem } from 'actify'
 
 export default () => {
   return (

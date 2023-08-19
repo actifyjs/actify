@@ -1,5 +1,5 @@
+import React from 'react'
 import useRipple from './useRipple'
-import React, { useRef } from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
@@ -9,7 +9,7 @@ const variants = tv({
 const Ripple = (props) => {
   const { className, ...rest } = props
 
-  const ref = useRef(null)
+  const ref = React.useRef(null)
   const ripples = useRipple(ref)
   return (
     <span ref={ref} {...rest} className={variants({ className })}>

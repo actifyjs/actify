@@ -1,11 +1,11 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import '@material/web/field/filled-field'
 import '@material/web/field/outlined-field'
 
 import { setColor } from '@/packages/utils'
 
-const Field = forwardRef((props, ref) => {
+const Field = React.forwardRef((props, ref) => {
   const { style, icon, size, variant, color, className, children, ...rest } = props
   let styles = {}
   if (color) {

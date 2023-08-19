@@ -1,13 +1,4 @@
-import {
-  useMemo,
-  useState,
-  forwardRef,
-  useContext,
-  cloneElement,
-  createContext,
-  isValidElement,
-  useLayoutEffect
-} from 'react'
+import React from 'react'
 
 import {
   useId,
@@ -24,9 +15,9 @@ import {
 } from '@floating-ui/react'
 
 export function useDialog({ initialOpen = false, open: controlledOpen, onOpenChange: setControlledOpen }) {
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
-  const [labelId, setLabelId] = useState()
-  const [descriptionId, setDescriptionId] = useState()
+  const [labelId, setLabelId] = React.useState()
+  const [descriptionId, setDescriptionId] = React.useState()
+  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
 
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = setControlledOpen ?? setUncontrolledOpen
@@ -46,7 +37,7 @@ export function useDialog({ initialOpen = false, open: controlledOpen, onOpenCha
 
   const interactions = useInteractions([click, dismiss, role])
 
-  return useMemo(
+  return React.useMemo(
     () => ({
       open,
       setOpen,
@@ -61,10 +52,10 @@ export function useDialog({ initialOpen = false, open: controlledOpen, onOpenCha
   )
 }
 
-const DialogContext = createContext(null)
+const DialogContext = React.createContext(null)
 
 export const useDialogContext = () => {
-  const context = useContext(DialogContext)
+  const context = React.useContext(DialogContext)
   if (context == null) {
     throw new Error('Dialog components must be wrapped in <Dialog />')
   }
@@ -76,14 +67,14 @@ export function Dialog({ children, ...options }) {
   return <DialogContext.Provider value={dialog}>{children}</DialogContext.Provider>
 }
 
-export const DialogActivator = forwardRef(({ children, asChild = false, ...props }, propRef) => {
+export const DialogActivator = React.forwardRef(({ children, asChild = false, ...props }, propRef) => {
   const context = useDialogContext()
   const childrenRef = children.ref
   const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
 
   // `asChild` allows the user to pass any element as the anchor
-  if (asChild && isValidElement(children)) {
-    return cloneElement(
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(
       children,
       context.getReferenceProps({
         ref,
@@ -101,7 +92,7 @@ export const DialogActivator = forwardRef(({ children, asChild = false, ...props
   )
 })
 
-export const DialogContent = forwardRef((props, propRef) => {
+export const DialogContent = React.forwardRef((props, propRef) => {
   const { context: floatingContext, ...context } = useDialogContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
   const { isMounted, styles } = useTransitionStyles(context, {
@@ -146,13 +137,13 @@ export const DialogContent = forwardRef((props, propRef) => {
   )
 })
 
-export const DialogHeading = forwardRef(({ children, ...props }, ref) => {
+export const DialogHeading = React.forwardRef(({ children, ...props }, ref) => {
   const { setLabelId } = useDialogContext()
   const id = useId()
 
   // Only sets `aria-labelledby` on the Dialog root element
   // if this component is mounted inside it.
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     setLabelId(id)
     return () => setLabelId(undefined)
   }, [id, setLabelId])
@@ -169,13 +160,13 @@ export const DialogHeading = forwardRef(({ children, ...props }, ref) => {
   )
 })
 
-export const DialogDescription = forwardRef(({ children, ...props }, ref) => {
+export const DialogDescription = React.forwardRef(({ children, ...props }, ref) => {
   const { setDescriptionId } = useDialogContext()
   const id = useId()
 
   // Only sets `aria-describedby` on the Dialog root element
   // if this component is mounted inside it.
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     setDescriptionId(id)
     return () => setDescriptionId(undefined)
   }, [id, setDescriptionId])
@@ -192,7 +183,7 @@ export const DialogDescription = forwardRef(({ children, ...props }, ref) => {
   )
 })
 
-export const DialogClose = forwardRef((props, ref) => {
+export const DialogClose = React.forwardRef((props, ref) => {
   const { setOpen } = useDialogContext()
   return <div {...props} ref={ref} onClick={() => setOpen(false)} />
 })

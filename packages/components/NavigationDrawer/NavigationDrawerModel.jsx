@@ -1,7 +1,7 @@
-import { forwardRef } from 'react'
+import React from 'react'
 import '@material/web/labs/navigationdrawer/navigation-drawer-modal'
 
-const NavigationDrawerModal = forwardRef((props, ref) => {
+const NavigationDrawerModal = React.forwardRef((props, ref) => {
   const { width, style, className, children, ...rest } = props
   let styles = {}
   styles['--md-navigation-drawer-modal-container-width'] = width ?? 0

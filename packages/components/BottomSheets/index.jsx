@@ -1,11 +1,11 @@
-import { useRef, useState, useEffect } from 'react'
+import React from 'react'
 
 const BottomSheets = () => {
-  const ref = useRef()
-  const [top, setTop] = useState(false)
-  const [height, setHeight] = useState(false)
+  const ref = React.useRef()
+  const [top, setTop] = React.useState(false)
+  const [height, setHeight] = React.useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => {

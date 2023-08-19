@@ -1,10 +1,10 @@
+import React from 'react'
 import Prism from 'prismjs'
+import { tv } from 'tailwind-variants'
 import { Icon, IconButton } from 'actify'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-css.min.js'
 import 'prismjs/components/prism-jsx.min.js'
-import { useRef, useState, useEffect } from 'react'
-import { tv } from 'tailwind-variants'
 import 'prism-material-themes/themes/material-palenight.css'
 
 const variants = tv({
@@ -12,11 +12,11 @@ const variants = tv({
 })
 
 const Code = (props) => {
-  const ref = useRef()
+  const ref = React.useRef()
   const { className, code, language, children } = props
-  const [iconName, setIconName] = useState('Copy')
+  const [iconName, setIconName] = React.useState('Copy')
 
-  useEffect(() => {
+  React.useEffect(() => {
     highlight()
   }, [children])
 

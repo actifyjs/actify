@@ -1,7 +1,7 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import icons from '@/src/icons.json'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
 import { setColor } from '@/packages/utils'
 import { icons as LucideIcons } from 'lucide-react'
 
@@ -9,7 +9,7 @@ const variants = tv({
   base: 'relative'
 })
 
-const Icon = forwardRef((props, ref) => {
+const Icon = React.forwardRef((props, ref) => {
   const { name, color, size, className, ...rest } = props
   if (!name) {
     return (

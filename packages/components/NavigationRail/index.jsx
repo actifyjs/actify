@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import React from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv('fixed h-full left-[256px] px-2 gap-2 flex flex-col items-center bg-black/5 dark:bg-white/5', {
@@ -10,7 +10,7 @@ const variants = tv('fixed h-full left-[256px] px-2 gap-2 flex flex-col items-ce
   }
 })
 
-const NavigationRail = forwardRef((props, ref) => {
+const NavigationRail = React.forwardRef((props, ref) => {
   const { children, className, ...rest } = props
   return (
     <div ref={ref} {...rest} className={variants({ className })}>

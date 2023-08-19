@@ -1,9 +1,8 @@
-import { forwardRef } from 'react'
+import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const Terminal = forwardRef((props, ref) => {
-  const { title, lastlogin, hostname, username, children, className, ...rest } =
-    props
+const Terminal = React.forwardRef((props, ref) => {
+  const { title, lastlogin, hostname, username, children, className, ...rest } = props
 
   return (
     <div ref={ref} {...rest} className={twMerge('', className)}>
@@ -17,12 +16,9 @@ const Terminal = forwardRef((props, ref) => {
           </div>
         </div>
         <div className="h-auto bg-black pl-1 pt-1 font-mono text-current text-white">
+          <p className="pb-1">{lastlogin || 'Last login: Wed Sep 25 09:11:04 on ttys000'}</p>
           <p className="pb-1">
-            {lastlogin || 'Last login: Wed Sep 25 09:11:04 on ttys000'}
-          </p>
-          <p className="pb-1">
-            {hostname || 'Lerte-MacBook-Pro'}:{username || 'lerte'}${' '}
-            <span>{children}</span>
+            {hostname || 'Lerte-MacBook-Pro'}:{username || 'lerte'}$ <span>{children}</span>
           </p>
         </div>
       </div>

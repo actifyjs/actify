@@ -1,5 +1,5 @@
+import React from 'react'
 import { tv } from 'tailwind-variants'
-import { forwardRef, useMemo, useState } from 'react'
 
 const variants = tv({
   base: 'relative w-full min-w-[200px] h-1 pointer-events-none'
@@ -19,11 +19,11 @@ const trackVariant = tv({
   }
 })
 
-const Slider = forwardRef((props, ref) => {
+const Slider = React.forwardRef((props, ref) => {
   const { labeled, size, min, max, step, color, value: valueProp, children, className, ...rest } = props
-  const [value, setValue] = useState(valueProp * 100 || 0)
+  const [value, setValue] = React.useState(valueProp * 100 || 0)
 
-  const percent = useMemo(() => {
+  const percent = React.useMemo(() => {
     const _min = min || 0
     const _max = max || 100
     return (value / _max - _min) * 100

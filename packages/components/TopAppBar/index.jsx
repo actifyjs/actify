@@ -1,7 +1,6 @@
-import { forwardRef } from 'react'
+import React from 'react'
+import { Icon, Spacer } from 'actify'
 import { tv } from 'tailwind-variants'
-import { Icon } from 'actify'
-import Spacer from '@/packages/components/Spacer'
 
 const variants = tv('inline-flex w-full items-center justify-start bg-primary px-1 py-2', {
   variants: {
@@ -17,7 +16,7 @@ const variants = tv('inline-flex w-full items-center justify-start bg-primary px
   }
 })
 
-const TopAppBar = forwardRef((props, ref) => {
+const TopAppBar = React.forwardRef((props, ref) => {
   const { title, size, className, ...rest } = props
   return (
     <div ref={ref} {...rest} className={variants({ size, className })}>

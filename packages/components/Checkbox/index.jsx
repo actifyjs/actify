@@ -1,6 +1,6 @@
+import React from 'react'
 import { Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
-import React, { useId, forwardRef, useState } from 'react'
 
 const variants = tv({
   base: "peer relative appearance-none w-[18px] h-[18px] rounded-sm border-2 border-blue-gray-200 cursor-pointer transition-all before:content[''] before:block before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity",
@@ -17,10 +17,10 @@ const variants = tv({
   }
 })
 
-const Checkbox = forwardRef((props, ref) => {
-  const checkboxId = useId()
+const Checkbox = React.forwardRef((props, ref) => {
+  const checkboxId = React.useId()
   const { style, color, checked: checkedProp, className, ...rest } = props
-  const [checked, setChecked] = useState(checkedProp ?? false)
+  const [checked, setChecked] = React.useState(checkedProp ?? false)
 
   return (
     <label htmlFor={checkboxId} className="relative overflow-hidden flex items-center cursor-pointer p-3 rounded-full">

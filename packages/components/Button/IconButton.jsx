@@ -1,7 +1,7 @@
+import React from 'react'
 import { Ripple } from 'actify'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
 
 import { setColor } from '@/packages/utils'
 
@@ -17,7 +17,7 @@ const variants = tv({
   }
 })
 
-const IconButton = forwardRef((props, ref) => {
+const IconButton = React.forwardRef((props, ref) => {
   const { tag, ripple, style, size, variant, color, className, children, ...rest } = props
   const colorVariant = setColor(color)
 

@@ -1,13 +1,13 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
 import { Ripple, Elevation } from 'actify'
 
 const variants = tv({
   base: 'relative inline-flex flex-col rounded-lg'
 })
 
-const Card = forwardRef((props, ref) => {
+const Card = React.forwardRef((props, ref) => {
   const { ripple, elevation, children, className, ...rest } = props
 
   return (

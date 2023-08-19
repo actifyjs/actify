@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react'
 import '@material/web/list/list-item'
+import { NavLink } from 'react-router-dom'
 
-const ListItemLink = forwardRef((props, ref) => {
+const ListItemLink = React.forwardRef((props, ref) => {
   const { to, target, className, children, ...rest } = props
 
   return (

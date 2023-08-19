@@ -1,7 +1,7 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import '@material/web/list/list'
 
-const List = forwardRef((props, ref) => {
+const List = React.forwardRef((props, ref) => {
   const { className, children, ...rest } = props
 
   return (
