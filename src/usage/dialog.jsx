@@ -12,7 +12,6 @@ import {
 } from 'actify'
 
 import { useState } from 'react'
-import { loremIpsum } from 'lorem-ipsum'
 
 export default () => {
   const [open, setOpen] = useState(false)
@@ -25,7 +24,7 @@ export default () => {
         </DialogActivator>
         <DialogContent>
           <DialogHeading>
-            <p>{loremIpsum({ count: 4, units: 'words' })}</p>
+            <p>This dialog opened by activator</p>
             <Spacer />
             <DialogClose>
               <IconButton color="secondary">
@@ -33,7 +32,13 @@ export default () => {
               </IconButton>
             </DialogClose>
           </DialogHeading>
-          <DialogDescription>{loremIpsum({ count: 3 })}</DialogDescription>
+          <DialogDescription>
+            <p>
+              Amet sunt fugiat irure Lorem commodo nulla officia cupidatat ipsum duis quis minim Lorem incididunt. Non
+              laboris mollit laborum cillum deserunt aliqua amet dolor excepteur ea aliqua commodo excepteur. Sint id
+              est id deserunt magna aliquip consectetur adipisicing pariatur dolor mollit velit ea deserunt.
+            </p>
+          </DialogDescription>
           <div className="flex items-center gap-2 p-4">
             <Spacer />
             <DialogClose>
@@ -44,11 +49,13 @@ export default () => {
         </DialogContent>
       </Dialog>
 
-      <Button onClick={() => setOpen(true)}>Open dialog without activator</Button>
+      <Button onClick={() => setOpen(true)} color="tertiary">
+        Open dialog without activator
+      </Button>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeading>
-            <p>{loremIpsum({ count: 4, units: 'words' })}</p>
+            <p>This dialog opened by out anchor</p>
             <Spacer />
             <DialogClose>
               <IconButton color="secondary">
@@ -56,7 +63,12 @@ export default () => {
               </IconButton>
             </DialogClose>
           </DialogHeading>
-          <DialogDescription>{loremIpsum({ count: 3 })}</DialogDescription>
+          <DialogDescription>
+            <p>
+              Ea ipsum mollit Lorem enim. Sunt consectetur veniam adipisicing reprehenderit est laborum anim ea fugiat.
+              Commodo labore nostrud ut tempor dolor nulla veniam est ad adipisicing nisi exercitation.
+            </p>
+          </DialogDescription>
           <div className="flex items-center gap-2 p-4">
             <Spacer />
             <Button color="error">Cancel</Button>

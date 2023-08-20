@@ -4,7 +4,7 @@ import { useRole, useClick, useDismiss, useFloating, useInteractions } from '@fl
 
 const DialogContext = React.createContext()
 
-export function useDialog({ initialOpen = false, open: controlledOpen, onOpenChange: setControlledOpen }) {
+function useDialog({ initialOpen = false, open: controlledOpen, onOpenChange: setControlledOpen }) {
   const [labelId, setLabelId] = React.useState()
   const [descriptionId, setDescriptionId] = React.useState()
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)

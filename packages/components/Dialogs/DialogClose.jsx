@@ -1,9 +1,15 @@
 import React from 'react'
+import { tv } from 'tailwind-variants'
 import { useDialogContext } from './DialogContext'
+
+const variants = tv({
+  base: ''
+})
 
 const DialogClose = React.forwardRef((props, ref) => {
   const { setOpen } = useDialogContext()
-  return <div {...props} ref={ref} onClick={() => setOpen(false)} />
+  const { className, ...rest } = props
+  return <div ref={ref} {...rest} className={variants({ className })} onClick={() => setOpen(false)} />
 })
 
 export default DialogClose
