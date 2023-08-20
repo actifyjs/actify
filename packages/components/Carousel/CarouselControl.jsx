@@ -1,36 +1,23 @@
-import { useInterval } from 'usehooks-ts'
 import { Icon } from 'actify'
+import { useInterval } from 'usehooks-ts'
 import { useCarousel } from './CarouselContext'
 
 const CarouselControl = () => {
-  const { carousel, setCarousel } = useCarousel()
-  const { autoPlay, interval, infinite } = carousel
+  const { total, current, setCurrent, autoPlay, interval, infinite } = useCarousel()
 
   const prev = () => {
-    if (carousel.current == 0) {
-      setCarousel({
-        ...carousel,
-        current: carousel.total - 1
-      })
+    if (current == 0) {
+      setCurrent(total - 1)
     } else {
-      setCarousel({
-        ...carousel,
-        current: carousel.current - 1
-      })
+      setCurrent(current - 1)
     }
   }
   const next = () => {
-    if (carousel.current < carousel.total - 1) {
-      setCarousel({
-        ...carousel,
-        current: carousel.current + 1
-      })
+    if (current < total - 1) {
+      setCurrent(current + 1)
     } else {
       if (infinite) {
-        setCarousel({
-          ...carousel,
-          current: 0
-        })
+        setCurrent(0)
       }
     }
   }

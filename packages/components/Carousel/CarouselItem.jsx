@@ -5,7 +5,7 @@ import debounce from '@/packages/utils/debounce'
 
 const CarouselItem = React.forwardRef((props, ref) => {
   const { images, className, ...rest } = props
-  const { carousel, setCarousel } = useCarousel()
+  const { total, current, setTotal, setCurrent } = useCarousel()
 
   const _ref = React.useRef(null) || ref
   const carouselRef = React.useRef(null)
@@ -26,17 +26,11 @@ const CarouselItem = React.forwardRef((props, ref) => {
   React.useLayoutEffect(() => {
     if (!images.length) return
 
-    if (carousel.current >= images.length) {
-      setCarousel({
-        ...carousel,
-        current: 0,
-        total: images.length
-      })
+    if (current >= images.length) {
+      setTotal(images.length)
+      setCurrent(0)
     } else {
-      setCarousel({
-        ...carousel,
-        total: images.length
-      })
+      setTotal(images.length)
     }
     window.addEventListener('resize', debounce(calculateMaxSlideHeight, 100))
   }, [images]) // Add images as a dependency
@@ -51,8 +45,8 @@ const CarouselItem = React.forwardRef((props, ref) => {
       {images.map((image, index) => (
         <li
           key={index}
-          className={`${index > carousel.current ? 'translate-x-full' : '-translate-x-full'} ${
-            index === carousel.current ? 'translate-x-0' : ''
+          className={`${index > current ? 'translate-x-full' : '-translate-x-full'} ${
+            index === current ? 'translate-x-0' : ''
           } absolute inset-0 transform transition-transform duration-700 ease-in-out`}
         >
           <img

@@ -1,6 +1,8 @@
 import React from 'react'
+import { createStore, useStore } from 'zustand'
 
 const defaultValue = {
+  total: 0,
   current: 0,
   autoPlay: false,
   interval: 3000,
@@ -10,16 +12,29 @@ const defaultValue = {
 const CarouselContext = React.createContext(defaultValue)
 
 export function useCarousel() {
-  return React.useContext(CarouselContext)
+  const store = React.useContext(CarouselContext)
+  if (!store) {
+    throw new Error('Missing CarouselContext.Provider in the tree')
+  }
+  return useStore(store)
 }
 
 export function CarouselProvider(props) {
-  const { current, autoPlay, interval, infinite, children } = props
-  const [carousel, setCarousel] = React.useState({
-    current: current || defaultValue.current,
-    autoPlay: autoPlay || defaultValue.autoPlay,
-    interval: interval || defaultValue.interval,
-    infinite: infinite || defaultValue.infinite
-  })
-  return <CarouselContext.Provider value={{ carousel, setCarousel }}>{children}</CarouselContext.Provider>
+  const { children, ...rest } = props
+  const useCreateStore = createStore()((set) => ({
+    total: rest.total ?? defaultValue.total,
+    current: rest.current ?? defaultValue.current,
+    autoPlay: rest.autoPlay ?? defaultValue.autoPlay,
+    interval: rest.interval ?? defaultValue.interval,
+    infinite: rest.infinite ?? defaultValue.infinite,
+    setTotal: (total) => set({ total }),
+    setCurrent: (current) => set({ current }),
+    setAutoPlay: (autoPlay) => set({ autoPlay }),
+    setInterval: (interval) => set({ interval }),
+    setInfinite: (infinite) => set({ infinite })
+  }))
+
+  const store = React.useRef(useCreateStore)
+
+  return <CarouselContext.Provider value={store.current}>{children}</CarouselContext.Provider>
 }
