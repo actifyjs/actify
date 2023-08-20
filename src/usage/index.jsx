@@ -25,7 +25,7 @@ const Usage = (props) => {
               Preview
             </Tab>
             <Tab value="code">
-              <Icon name="Code" size={18} />
+              <Icon name="Code2" size={18} />
               Code
             </Tab>
           </TabsHeader>

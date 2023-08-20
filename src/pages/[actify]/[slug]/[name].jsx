@@ -4,8 +4,8 @@ import rehypeRaw from 'rehype-raw'
 import { Icon, Button } from 'actify'
 import ReactMarkdown from 'react-markdown'
 import { useState, useEffect } from 'react'
-import Code from '@/packages/components/SyntaxHighlighter'
 import { useLocation } from 'react-router-dom'
+import SyntaxHighlighter from '@/packages/components/SyntaxHighlighter'
 
 export default () => {
   const { pathname } = useLocation()
@@ -20,7 +20,7 @@ export default () => {
           href={`https://github.com/actifyjs/actify/blob/main/src/docs${location.pathname}.md`}
         >
           Edit this page on GitHub
-          <Icon name="Pencil" />
+          <Icon name="PenSquare" size={18} />
         </Button>
       )
     )
@@ -57,7 +57,7 @@ export default () => {
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')
             return !inline && match ? (
-              <Code code={String(children).replace(/\n$/, '')} language={match[1]} />
+              <SyntaxHighlighter code={String(children).replace(/\n$/, '')} language={match[1]} />
             ) : (
               <code className={className} {...props}>
                 {children}

@@ -27,13 +27,13 @@ function useTooltip({ initialOpen = false, placement = 'top', open: controlledOp
     onOpenChange: setOpen,
     whileElementsMounted: autoUpdate,
     middleware: [
-      offset(5),
+      offset(15),
       flip({
         crossAxis: placement.includes('-'),
         fallbackAxisSideDirection: 'start',
-        padding: 5
+        padding: 15
       }),
-      shift({ padding: 5 })
+      shift({ padding: 15 })
     ]
   })
 

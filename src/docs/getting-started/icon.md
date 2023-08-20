@@ -8,11 +8,4 @@ title: Icon
 
 # Usage
 
-```jsx
-import { Icon } from 'actify'
-export default () => {
-  return <Icon name="Home" color="primary" size={36} />
-}
-```
-
 <usage name="icon" icon="Home" hidecode="true" color="primary" size="36"></usage>
