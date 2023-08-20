@@ -11,7 +11,7 @@ const variants = tv({
   base: 'group !overflow-x-hidden'
 })
 
-const Code = (props) => {
+const SyntaxHighlighter = (props) => {
   const ref = React.useRef()
   const { className, code, language, children } = props
   const [iconName, setIconName] = React.useState('Copy')
@@ -65,6 +65,4 @@ const Code = (props) => {
   )
 }
 
-Code.displayName = 'Actify.Code'
-
-export default Code
+export default SyntaxHighlighter

@@ -1,4 +1,4 @@
-import Code from '@/packages/components/Code'
+import SyntaxHighlighter from '@/packages/components/SyntaxHighlighter'
 import { lazy, Suspense, useState, useEffect } from 'react'
 import { Icon, Tabs, TabsHeader, TabsBody, Tab, TabPanel } from 'actify'
 
@@ -34,7 +34,9 @@ const Usage = (props) => {
           <TabPanel value="preview">
             <LazyComponent name={name} {...rest} />
           </TabPanel>
-          <TabPanel value="code">{!hidecode && <Code language="jsx">{rawString}</Code>}</TabPanel>
+          <TabPanel value="code">
+            {!hidecode && <SyntaxHighlighter language="jsx">{rawString}</SyntaxHighlighter>}
+          </TabPanel>
         </TabsBody>
       </Tabs>
     </Suspense>

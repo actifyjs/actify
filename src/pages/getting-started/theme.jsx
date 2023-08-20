@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import Code from '@/packages/components/Code'
-import Button from '@/packages/components/Button'
+import { Button } from 'actify'
 import All from '../examples/all'
+import { useEffect, useState } from 'react'
+import SyntaxHighlighter from '@/packages/components/SyntaxHighlighter'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const colorVaribles = [
@@ -114,7 +114,7 @@ export default () => {
         <p>Change the primary color, if the color you like, click export colors button</p>
         <p>Copy the css code and paste in your project main css file</p>
         <h4>Here is a live css code</h4>
-        <Code language="css">{cssString}</Code>
+        <SyntaxHighlighter language="css">{cssString}</SyntaxHighlighter>
       </article>
     </div>
   )

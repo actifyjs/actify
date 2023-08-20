@@ -1,13 +1,23 @@
 import {
   Badge,
   Card,
+  Carousel,
+  CarouselItem,
+  Snackbar,
   NavigationBar,
+  NavigationTab,
   Button,
   Fab,
   IconButton,
+  SegmentedButton,
   Checkbox,
   Chip,
   Dialog,
+  DialogActivator,
+  DialogContent,
+  DialogDescription,
+  DialogHeading,
+  DialogClose,
   Divider,
   Elevation,
   FocusRing,
@@ -27,7 +37,16 @@ import {
   Slider,
   Switch,
   Tabs,
-  TextField
+  Tab,
+  TabsBody,
+  TabPanel,
+  TabsHeader,
+  TextField,
+  Spacer,
+  Content,
+  Tooltip,
+  TooltipActivator,
+  TooltipContent
 } from 'actify'
 import { useEffect, useRef, useState } from 'react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
@@ -35,13 +54,23 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 const scope = {
   Badge,
   Card,
+  Carousel,
+  CarouselItem,
+  Snackbar,
   NavigationBar,
+  NavigationTab,
   Button,
   Fab,
   IconButton,
+  SegmentedButton,
   Checkbox,
   Chip,
   Dialog,
+  DialogActivator,
+  DialogContent,
+  DialogDescription,
+  DialogHeading,
+  DialogClose,
   Divider,
   Elevation,
   FocusRing,
@@ -61,12 +90,29 @@ const scope = {
   Slider,
   Switch,
   Tabs,
-  TextField
+  Tab,
+  TabsBody,
+  TabPanel,
+  TabsHeader,
+  TextField,
+  Spacer,
+  Content,
+  Tooltip,
+  TooltipActivator,
+  TooltipContent
 }
 
-const code = `<>
-  <Button>actify</Button>
-</>`
+const code = `() => {
+  const [tips, setTips] = React.useState('Hello Actify');
+  return (
+    <Tooltip>
+      <TooltipActivator>
+        <Button>Show Tooltip</Button>
+      </TooltipActivator>
+      <TooltipContent>{tips}</TooltipContent>
+    </Tooltip>
+  )
+}`
 const MIN_WIDTH = 100
 
 export default () => {

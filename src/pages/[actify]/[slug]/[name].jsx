@@ -4,7 +4,7 @@ import rehypeRaw from 'rehype-raw'
 import { Icon, Button } from 'actify'
 import ReactMarkdown from 'react-markdown'
 import { useState, useEffect } from 'react'
-import Code from '@/packages/components/Code'
+import Code from '@/packages/components/SyntaxHighlighter'
 import { useLocation } from 'react-router-dom'
 
 export default () => {
