@@ -1,4 +1,3 @@
-import { loremIpsum } from 'lorem-ipsum'
 import { Button, Tooltip, TooltipActivator, TooltipContent } from 'actify'
 
 export default () => {
@@ -7,7 +6,7 @@ export default () => {
       <TooltipActivator>
         <Button>Show Tooltip</Button>
       </TooltipActivator>
-      <TooltipContent>{loremIpsum()}</TooltipContent>
+      <TooltipContent>Hello Tooltip</TooltipContent>
     </Tooltip>
   )
 }

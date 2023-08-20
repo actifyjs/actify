@@ -44,7 +44,9 @@ import TabsHeader from './Tabs/TabsHeader'
 import TextField from './TextFields'
 import Spacer from './Spacer'
 import Content from './Floating/Content'
-import { Tooltip, TooltipActivator, TooltipContent } from './Tooltips'
+import Tooltip from './Tooltips'
+import TooltipContent from './Tooltips/TooltipContent'
+import TooltipActivator from './Tooltips/TooltipActivator'
 
 export {
   Badge,
