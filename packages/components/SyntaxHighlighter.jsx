@@ -57,7 +57,7 @@ const SyntaxHighlighter = (props) => {
       </div>
 
       <pre>
-        <code ref={ref} className={`language-${language}`}>
+        <code ref={ref} className={`language-${language}`} style={{ fontFamily: 'JetBrains Mono' }}>
           {code || children}
         </code>
       </pre>
