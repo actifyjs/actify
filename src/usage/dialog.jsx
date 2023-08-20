@@ -36,7 +36,9 @@ export default () => {
           <DialogDescription>{loremIpsum({ count: 3 })}</DialogDescription>
           <div className="flex items-center gap-2 p-4">
             <Spacer />
-            <Button color="error">Cancel</Button>
+            <DialogClose>
+              <Button color="error">Cancel</Button>
+            </DialogClose>
             <Button>Confirm</Button>
           </div>
         </DialogContent>
