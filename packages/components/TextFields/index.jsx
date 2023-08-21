@@ -1,21 +1,50 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import '@material/web/textfield/filled-text-field'
-import '@material/web/textfield/outlined-text-field'
+import { tv } from 'tailwind-variants'
 
-import { setColor } from '@/packages/utils'
+const variants = tv({
+  base: 'inline-flex rounded-md relative min-w-fit h-14 bg-surface',
+  variants: {
+    color: {
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      tertiary: 'text-tertiary',
+      error: 'text-error'
+    },
+    disabled: {
+      true: 'opacity-50 pointer-events-none'
+    },
+    variant: {
+      filled: '',
+      outlined: ''
+    }
+  },
+  defaultVariants: {
+    color: 'primary',
+    variant: 'outlined'
+  }
+})
+
+const labelVariants = tv({
+  base: 'absolute transition-all leading-none px-2 left-2 top-1/2 -translate-y-1/2 peer-valid:top-0 peer-focus:top-0 before:content-[attr(data-label)] before:z-50 before:absolute after:absolute after:inset-0 after:bg-surface after:top-1/2'
+})
 
 const TextField = React.forwardRef((props, ref) => {
-  const { style, color, variant, className, children, ...rest } = props
-  let styles = { ...style }
-  if (color) {
-    styles['--md-sys-color-primary'] = setColor(color)
-  }
+  const { style, color, variant, label, disabled, className, children, ...rest } = props
+
   return (
-    <>
-      {variant == 'filled' && <md-filled-text-field ref={ref} {...rest} class={className} style={{ ...styles }} />}
-      {variant == 'outlined' && <md-outlined-text-field ref={ref} {...rest} class={className} style={{ ...styles }} />}
-    </>
+    <label className={variants({ disabled, className })}>
+      <input
+        required
+        ref={ref}
+        {...rest}
+        type={rest.type || 'text'}
+        className="rounded-[inherit] w-[inherit] peer px-4 bg-transparent border-2 border-secondary/60 outline-none focus:border-secondary focus:text-on-surface transition-all placeholder:text-transparent focus:placeholder:text-on-surface"
+      />
+      <div className={labelVariants()} data-label={label}>
+        {label}
+      </div>
+    </label>
   )
 })
 
