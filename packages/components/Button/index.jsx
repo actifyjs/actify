@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
-import { Ripple, Elevation } from 'actify'
+import { Ripple, Elevation, CircularProgress } from 'actify'
 
 const variants = tv({
   base: 'relative inline-flex gap-2 items-center justify-center select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none h-10 text-sm px-6 rounded-full',
@@ -15,6 +15,9 @@ const variants = tv({
     variant: {
       outlined: 'border',
       tonal: 'bg-primary/50 hover:bg-primary/70'
+    },
+    loading: {
+      true: 'animate-spin'
     }
   },
   compoundVariants: [
@@ -45,7 +48,7 @@ const variants = tv({
 })
 
 const Button = React.forwardRef((props, ref) => {
-  const { ripple, variant, color, style, className, children, ...rest } = props
+  const { ripple, variant, loading, color, style, className, children, ...rest } = props
 
   const Tag = rest.href ? 'a' : 'button'
 
@@ -56,12 +59,12 @@ const Button = React.forwardRef((props, ref) => {
       style={style}
       type={rest.type || 'button'}
       className={variants({
-        variant,
         color,
+        variant,
         className
       })}
     >
-      {children}
+      {loading ? <CircularProgress className="w-8 h-8" color="white" indeterminate /> : children}
       {ripple && <Ripple />}
       {variant === 'elevated' && <Elevation level={3} />}
     </Tag>
