@@ -42,7 +42,7 @@ const DialogContent = React.forwardRef((props, propRef) => {
               aria-labelledby={context.labelId}
               {...context.getFloatingProps(props)}
               aria-describedby={context.descriptionId}
-              className="relative bg-white dark:bg-[rgb(33,33,33)] text-black dark:text-white rounded-lg font-light leading-relaxed w-full md:w-3/4 lg:w-3/5 2xl:w-2/5 min-w-[90%] md:min-w-[75%] lg:min-w-[60%] 2xl:min-w-[40%] max-w-[90%] md:max-w-[75%] lg:max-w-[60%] 2xl:max-w-[40%]"
+              className="relative p-2 bg-white dark:bg-[rgb(33,33,33)] text-black dark:text-white rounded-lg max-w-sm sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl"
             >
               {props.children}
             </div>

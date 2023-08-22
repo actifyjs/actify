@@ -1,7 +1,13 @@
 import React from 'react'
+import { tv } from 'tailwind-variants'
 import { useDialogContext } from './DialogContext'
 
-const DialogDescription = React.forwardRef(({ children, ...rest }, ref) => {
+const variants = tv({
+  base: 'relative p-2 -mx-2 mb-2 text-base leading-relaxed border-t border-t-black/10 dark:border-t-white/10 border-b border-b-black/10 dark:border-b-white/10 max-h-[calc(50vh)] overflow-y-auto'
+})
+
+const DialogDescription = React.forwardRef((props, ref) => {
+  const { children, className, ...rest } = props
   const id = React.useId()
   const { setDescriptionId } = useDialogContext()
 
@@ -11,12 +17,7 @@ const DialogDescription = React.forwardRef(({ children, ...rest }, ref) => {
   }, [id, setDescriptionId])
 
   return (
-    <div
-      id={id}
-      ref={ref}
-      {...rest}
-      className="relative p-4 text-base leading-relaxed border-t border-t-black/10 dark:border-t-white/10 border-b border-b-black/10 dark:border-b-white/10"
-    >
+    <div id={id} ref={ref} {...rest} className={variants({ className })}>
       {children}
     </div>
   )

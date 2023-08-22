@@ -39,7 +39,7 @@ export default () => {
               est id deserunt magna aliquip consectetur adipisicing pariatur dolor mollit velit ea deserunt.
             </p>
           </DialogDescription>
-          <div className="flex items-center gap-2 p-4">
+          <div className="flex items-center gap-2">
             <Spacer />
             <DialogClose>
               <Button color="error">Cancel</Button>
@@ -69,10 +69,12 @@ export default () => {
               Commodo labore nostrud ut tempor dolor nulla veniam est ad adipisicing nisi exercitation.
             </p>
           </DialogDescription>
-          <div className="flex items-center gap-2 p-4">
+          <div className="flex items-center gap-2">
             <Spacer />
             <Button color="error">Cancel</Button>
-            <Button>Confirm</Button>
+            <DialogClose>
+              <Button>Confirm</Button>
+            </DialogClose>
           </div>
         </DialogContent>
       </Dialog>
