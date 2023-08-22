@@ -18,13 +18,13 @@ const Usage = (props) => {
   return (
     <Suspense>
       <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
-        <div className="flex items-center justify-between border-b border-[#ccc] dark:border-[#222]">
+        <div className="flex border-b border-[#ccc] dark:border-[#222]">
           <TabsHeader className="bg-transparent">
-            <Tab value="preview">
+            <Tab value="preview" className="min-w-[120px]">
               <Icon name="Eye" size={18} />
               Preview
             </Tab>
-            <Tab value="code">
+            <Tab value="code" className="min-w-[120px]">
               <Icon name="Code2" size={18} />
               Code
             </Tab>
