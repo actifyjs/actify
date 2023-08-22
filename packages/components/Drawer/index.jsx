@@ -4,20 +4,22 @@ import { useApp } from '../App/AppContext'
 import debounce from '@/packages/utils/debounce'
 
 const Drawer = React.forwardRef((props, ref) => {
-  const { app, setApp, setDrawer } = useApp()
+  const { top, setLeft, drawer, setDrawer } = useApp()
   const { width, children, className, ...rest } = props
 
   const handleResize = () => {
     if (window.innerWidth < 768) {
+      setLeft(16)
       setDrawer(false)
     } else {
+      setLeft(width)
       setDrawer(true)
     }
   }
 
   React.useEffect(() => {
     if (width) {
-      setApp({ ...app, left: width })
+      setLeft(width)
     }
     handleResize()
     window.addEventListener('resize', debounce(handleResize, 100))
@@ -29,10 +31,10 @@ const Drawer = React.forwardRef((props, ref) => {
         ref={ref}
         {...rest}
         style={{
-          top: app.top,
+          top: top,
           width: `${width}px`,
-          height: `calc(100vh - ${app.top}px)`,
-          transform: `${app.drawer ? 'translateX(0)' : 'translateX(-100%)'}`
+          height: `calc(100vh - ${top}px)`,
+          transform: `${drawer ? 'translateX(0)' : 'translateX(-100%)'}`
         }}
         className={twMerge(
           'fixed bottom-0 left-0 right-auto z-50 max-w-full overflow-y-auto overflow-x-hidden shadow duration-200 will-change-transform md:z-10 lg:flex lg:translate-x-0 lg:flex-col',
@@ -44,7 +46,7 @@ const Drawer = React.forwardRef((props, ref) => {
       <div
         onClick={() => setDrawer(false)}
         className={`${
-          app.drawer ? 'opacity-100' : 'pointer-events-none opacity-0'
+          drawer ? 'opacity-100' : 'pointer-events-none opacity-0'
         } absolute inset-0 z-40 block bg-black/20 md:hidden`}
       ></div>
     </>

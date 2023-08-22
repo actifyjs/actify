@@ -11,7 +11,7 @@ import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const Header = forwardRef((props, ref) => {
   const { pathname } = useLocation()
-  const { app, setDrawer } = useApp()
+  const { top, drawer, setDrawer } = useApp()
   const { onClick, children, className, ...rest } = props
 
   const randomColor = () => {
@@ -37,7 +37,7 @@ const Header = forwardRef((props, ref) => {
     <header
       ref={ref}
       {...rest}
-      style={{ height: app.top }}
+      style={{ height: top }}
       className={twMerge('sticky top-0 z-30 h-16 bg-surface px-2 shadow backdrop-blur', className)}
     >
       <div className="mx-auto flex h-full flex-wrap items-center justify-between">
@@ -59,7 +59,7 @@ const Header = forwardRef((props, ref) => {
           <span className="hidden self-center whitespace-nowrap text-2xl font-semibold md:inline">ctify</span>
         </Link>
         {pathname != '/' && (
-          <IconButton className="inline-flex md:hidden" onClick={() => setDrawer(!app.drawer)}>
+          <IconButton className="inline-flex md:hidden" onClick={() => setDrawer(!drawer)}>
             <Icon name="Menu" color="primary" />
           </IconButton>
         )}

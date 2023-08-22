@@ -4,10 +4,10 @@ import { useApp } from './App/AppContext'
 import { useLocation } from 'react-router-dom'
 
 const Footer = forwardRef((props, ref) => {
-  const { app } = useApp()
+  const { left } = useApp()
   const { pathname } = useLocation()
   const { onClick, children, className, ...rest } = props
-  const marginLeft = pathname == '/' ? '0' : app.left
+  const marginLeft = pathname == '/' ? '0' : left
 
   return (
     <footer ref={ref} {...rest} style={{ marginLeft }} className={twMerge('shadow-inner', className)}>

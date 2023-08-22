@@ -13,11 +13,11 @@ const variants = tv({
 })
 
 const Main = forwardRef((props, ref) => {
-  const { app } = useApp()
+  const { left } = useApp()
   const { pathname } = useLocation()
   const { children, className, ...rest } = props
   const index = pathname == '/' ? true : false
-  const paddingLeft = index ? 0 : app.left + 'px'
+  const paddingLeft = index ? 0 : left + 'px'
 
   return (
     <main ref={ref} {...rest} style={{ '--left': paddingLeft }} className={variants({ index, className })}>

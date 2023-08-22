@@ -1,4 +1,5 @@
 import React from 'react'
+import { createStore, useStore } from 'zustand'
 
 const defaultValue = {
   top: 64,
@@ -6,20 +7,27 @@ const defaultValue = {
   drawer: false
 }
 
-const AppContext = React.createContext(defaultValue)
+const AppContext = React.createContext()
 
-export function useApp() {
-  return React.useContext(AppContext)
+export const AppProvider = ({ children, ...initialProp }) => {
+  const useCreateStore = createStore()((set) => ({
+    top: initialProp.value || defaultValue.top,
+    left: initialProp.value || defaultValue.left,
+    drawer: initialProp.value || defaultValue.drawer,
+    setTop: (state) => set({ top: state }),
+    setLeft: (state) => set({ left: state }),
+    setDrawer: (state) => set({ drawer: state })
+  }))
+
+  const store = React.useRef(useCreateStore).current
+
+  return <AppContext.Provider value={store}>{children}</AppContext.Provider>
 }
 
-export function AppProvider({ children }) {
-  const [app, setApp] = React.useState(defaultValue)
-  const setDrawer = (drawer) => {
-    if (drawer) {
-      setApp({ ...defaultValue, left: defaultValue.left, drawer })
-    } else {
-      setApp({ ...defaultValue, left: 16, drawer })
-    }
+export const useApp = () => {
+  const store = React.useContext(AppContext)
+  if (!store) {
+    throw new Error('Missing AppContext.Provider in the tree')
   }
-  return <AppContext.Provider value={{ app, setApp, setDrawer }}>{children}</AppContext.Provider>
+  return useStore(store)
 }
