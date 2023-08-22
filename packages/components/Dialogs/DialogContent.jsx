@@ -32,7 +32,7 @@ const DialogContent = React.forwardRef((props, propRef) => {
     <FloatingPortal>
       <FloatingOverlay
         lockScroll
-        className="z-[99] grid place-items-center bg-black/40 dark:bg-[rgba(3,3,3,.8)] backdrop-blur-sm"
+        className="z-[99] grid place-items-center bg-black/40 dark:bg-[rgba(3,3,3,.8)] backdrop-blur"
       >
         {isMounted && (
           <FloatingFocusManager context={floatingContext}>

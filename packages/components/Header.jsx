@@ -11,7 +11,7 @@ import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const Header = forwardRef((props, ref) => {
   const { pathname } = useLocation()
-  const { top, drawer, setDrawer } = useApp()
+  const { top, setLeft, drawer, setDrawer } = useApp()
   const { onClick, children, className, ...rest } = props
 
   const randomColor = () => {

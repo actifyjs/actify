@@ -37,7 +37,7 @@ const Drawer = React.forwardRef((props, ref) => {
           transform: `${drawer ? 'translateX(0)' : 'translateX(-100%)'}`
         }}
         className={twMerge(
-          'fixed bottom-0 left-0 right-auto z-50 max-w-full overflow-y-auto overflow-x-hidden shadow duration-200 will-change-transform md:z-10 lg:flex lg:translate-x-0 lg:flex-col',
+          'fixed bottom-0 left-0 right-auto bg-surface z-50 max-w-full overflow-y-auto overflow-x-hidden shadow duration-200 will-change-transform md:z-10 lg:flex lg:translate-x-0 lg:flex-col',
           className
         )}
       >
@@ -47,7 +47,7 @@ const Drawer = React.forwardRef((props, ref) => {
         onClick={() => setDrawer(false)}
         className={`${
           drawer ? 'opacity-100' : 'pointer-events-none opacity-0'
-        } absolute inset-0 z-40 block bg-black/20 md:hidden`}
+        } absolute inset-0 z-40 block bg-black/20 backdrop-blur md:hidden`}
       ></div>
     </>
   )
