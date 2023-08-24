@@ -1,42 +1,48 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import '@material/web/select/filled-select'
-import '@material/web/select/outlined-select'
-
-import { setColor } from '@/packages/utils'
+import { TextField } from 'actify'
+import { motion } from 'framer-motion'
 
 const Select = React.forwardRef((props, ref) => {
-  const { style, color, variant, className, children, ...rest } = props
-  let styles = { ...style }
-  if (color) {
-    styles['--md-sys-color-primary'] = setColor(color)
-  }
+  const { label, children } = props
+  const [isOpen, setIsOpen] = React.useState(false)
+  const MotionTextField = motion(TextField)
 
   return (
-    <>
-      {variant == 'filled' && (
-        <md-filled-select ref={ref} {...rest} style={{ ...styles }} className={className}>
-          {children}
-        </md-filled-select>
-      )}
-      {variant == 'outlined' && (
-        <md-outlined-select ref={ref} {...rest} style={{ ...styles }} className={className}>
-          {children}
-        </md-outlined-select>
-      )}
-    </>
+    <motion.nav ref={ref} initial={false} animate={isOpen ? 'open' : 'closed'}>
+      <MotionTextField
+        label={label}
+        onFocus={() => setIsOpen(true)}
+        onBlur={() => setIsOpen(false)}
+      />
+      <motion.ul
+        variants={{
+          open: {
+            transition: {
+              type: 'spring',
+              bounce: 0,
+              duration: 0.7,
+              delayChildren: 0.3,
+              staggerChildren: 0.05
+            },
+            clipPath: 'inset(0% 0% 0% 0% round 10px)'
+          },
+          closed: {
+            transition: {
+              type: 'spring',
+              bounce: 0,
+              duration: 0.3
+            },
+            clipPath: 'inset(10% 50% 90% 50% round 10px)'
+          }
+        }}
+        className={`bg-surface p-2 ${
+          isOpen ? 'pointer-events-auto' : 'pointer-events-none'
+        }`}
+      >
+        {children}
+      </motion.ul>
+    </motion.nav>
   )
 })
-
-Select.propTypes = {
-  color: PropTypes.string,
-  variant: PropTypes.oneOf(['filled', 'outlined'])
-}
-
-Select.defaultProps = {
-  variant: 'filled'
-}
-
-Select.displayName = 'Actify.Select'
 
 export default Select

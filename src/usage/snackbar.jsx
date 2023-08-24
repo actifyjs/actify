@@ -1,11 +1,10 @@
 import { useRef } from 'react'
 import { Button, Snackbar } from 'actify'
-import { loremIpsum } from 'lorem-ipsum'
 
 export default () => {
   const ref = useRef(null)
   const handleClick = () => {
-    ref.current?.(loremIpsum())
+    ref.current = 'Hello Actify'
   }
 
   return (

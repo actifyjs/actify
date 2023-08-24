@@ -1,27 +1,31 @@
-import { loremIpsum } from 'lorem-ipsum'
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from 'actify'
 
 export default () => {
   const data = [
     {
       label: 'HTML',
-      value: 'html'
+      value: 'html',
+      content: 'HTML content'
     },
     {
       label: 'React',
-      value: 'react'
+      value: 'react',
+      content: 'React content'
     },
     {
       label: 'Vue',
-      value: 'vue'
+      value: 'vue',
+      content: 'Vue content'
     },
     {
       label: 'Angular',
-      value: 'angular'
+      value: 'angular',
+      content: 'Angular content'
     },
     {
       label: 'Svelte',
-      value: 'svelte'
+      value: 'svelte',
+      content: 'Svelte content'
     }
   ]
 
@@ -35,9 +39,9 @@ export default () => {
         ))}
       </TabsHeader>
       <TabsBody>
-        {data.map(({ value }) => (
+        {data.map(({ value, content }) => (
           <TabPanel key={value} value={value}>
-            {loremIpsum()}
+            {content}
           </TabPanel>
         ))}
       </TabsBody>
