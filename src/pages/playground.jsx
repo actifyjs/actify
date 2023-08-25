@@ -43,7 +43,6 @@ import {
   TabsHeader,
   TextField,
   Spacer,
-  Content,
   Tooltip,
   TooltipActivator,
   TooltipContent
@@ -96,7 +95,6 @@ const scope = {
   TabsHeader,
   TextField,
   Spacer,
-  Content,
   Tooltip,
   TooltipActivator,
   TooltipContent
@@ -167,7 +165,10 @@ export default () => {
 
   return (
     <LiveProvider code={code} scope={scope}>
-      <div ref={splitPaneRef} className="relative flex h-[calc(100vh-152px)] overflow-hidden">
+      <div
+        ref={splitPaneRef}
+        className="relative flex h-[calc(100vh-152px)] overflow-hidden"
+      >
         <LiveEditor
           style={{ width: leftWidth + 'px' }}
           className={`${
@@ -176,10 +177,16 @@ export default () => {
         />
         <div
           onMouseDown={onMouseDown}
-          className={`${isDragging ? 'cursor-col-resize' : 'cursor-ew-resize'} w-1 bg-secondary`}
+          className={`${
+            isDragging ? 'cursor-col-resize' : 'cursor-ew-resize'
+          } w-1 bg-secondary`}
         ></div>
         <LiveError className="text-error" />
-        <LivePreview className={`${isDragging ? 'pointer-events-none select-none' : ''} flex-1 overflow-auto border`} />
+        <LivePreview
+          className={`${
+            isDragging ? 'pointer-events-none select-none' : ''
+          } flex-1 overflow-auto border`}
+        />
       </div>
     </LiveProvider>
   )
