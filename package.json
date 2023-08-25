@@ -45,6 +45,7 @@
     "autoprefixer": "^10.4.14",
     "framer-motion": "^10.16.1",
     "lucide-react": "^0.263.1",
+    "popmotion": "^11.0.5",
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",
     "prism-material-themes": "^1.0.4",
