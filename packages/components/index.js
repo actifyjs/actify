@@ -43,7 +43,6 @@ import TabPanel from './Tabs/TabPanel'
 import TabsHeader from './Tabs/TabsHeader'
 import TextField from './TextFields'
 import Spacer from './Spacer'
-import Content from './Floating/Content'
 import Tooltip from './Tooltips'
 import TooltipContent from './Tooltips/TooltipContent'
 import TooltipActivator from './Tooltips/TooltipActivator'
@@ -93,7 +92,6 @@ export {
   TabsHeader,
   TextField,
   Spacer,
-  Content,
   Tooltip,
   TooltipActivator,
   TooltipContent

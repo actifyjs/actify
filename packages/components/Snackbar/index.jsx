@@ -1,12 +1,17 @@
 import React from 'react'
-import { Icon, Content, IconButton } from 'actify'
+import Content from './Content'
+import { Icon, IconButton } from 'actify'
 import { useTransition, animated } from '@react-spring/web'
 
 let id = 0
 
 const Snackbar = (props) => {
   const [items, setItems] = React.useState([])
-  const { config = { tension: 125, friction: 20, precision: 0.1 }, timeout = 3000, children } = props
+  const {
+    config = { tension: 125, friction: 20, precision: 0.1 },
+    timeout = 3000,
+    children
+  } = props
   const refMap = React.useMemo(() => new WeakMap(), [])
   const cancelMap = React.useMemo(() => new WeakMap(), [])
 
@@ -26,7 +31,8 @@ const Snackbar = (props) => {
         })
       )
     },
-    config: (item, index, phase) => (key) => (phase === 'enter' && key === 'life' ? { duration: timeout } : config)
+    config: (item, index, phase) => (key) =>
+      phase === 'enter' && key === 'life' ? { duration: timeout } : config
   })
 
   React.useEffect(() => {
@@ -38,11 +44,14 @@ const Snackbar = (props) => {
   return (
     <div className="fixed z-[1000] bottom-8 mx-auto left-8 right-8 flex flex-col pointer-events-none items-center md:items-end">
       {transitions(({ life, ...style }, item) => (
-        <animated.div className="relative overflow-hidden w-full md:w-80" style={style}>
+        <animated.div
+          className="relative overflow-hidden w-full md:w-80"
+          style={style}
+        >
           <Content ref={(ref) => ref && refMap.set(item, ref)}>
             <animated.div
-              className="h-1 absolute bottom-0 left-0 bg-[linear-gradient(130deg,#00b4e6,#00f0e0)]"
               style={{ right: life }}
+              className="h-1 absolute bottom-0 left-0 bg-[linear-gradient(130deg,#00b4e6,#00f0e0)]"
             />
             <p>{item.msg}</p>
             <IconButton
@@ -51,7 +60,8 @@ const Snackbar = (props) => {
               className="cursor-pointer pointer-events-auto flex justify-center"
               onClick={(e) => {
                 e.stopPropagation()
-                if (cancelMap.has(item) && life.get() !== '0%') cancelMap.get(item)()
+                if (cancelMap.has(item) && life.get() !== '0%')
+                  cancelMap.get(item)()
               }}
             >
               <Icon name="X" size={18} />
