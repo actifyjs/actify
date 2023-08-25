@@ -5,13 +5,18 @@ const TabsContext = React.createContext()
 
 export const TabsProvider = ({ children, ...initialProp }) => {
   const useCreateStore = createStore()((set) => ({
+    layoutId: React.useId(),
     active: initialProp.value,
     setActive: (state) => set({ active: state })
   }))
 
   const store = React.useRef(useCreateStore)
 
-  return <TabsContext.Provider value={store.current}>{children}</TabsContext.Provider>
+  return (
+    <TabsContext.Provider value={store.current}>
+      {children}
+    </TabsContext.Provider>
+  )
 }
 
 export const useTabs = () => {
