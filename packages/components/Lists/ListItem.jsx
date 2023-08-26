@@ -1,10 +1,20 @@
 import React from 'react'
-import '@material/web/list/list-item'
+import { Ripple } from 'actify'
+import { tv } from 'tailwind-variants'
+
+const variants = tv({
+  base: 'relative flex items-center h-14 pl-4 leading-normal cursor-pointer hover:bg-secondary'
+})
 
 const ListItem = React.forwardRef((props, ref) => {
   const { className, children, ...rest } = props
 
-  return <md-list-item ref={ref} class={className} {...rest}></md-list-item>
+  return (
+    <li ref={ref} className={variants({ className })} {...rest}>
+      {children}
+      <Ripple />
+    </li>
+  )
 })
 
 ListItem.displayName = 'Actify.ListItem'

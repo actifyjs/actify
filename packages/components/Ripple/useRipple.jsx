@@ -44,7 +44,7 @@ const useRipple = (ref) => {
     return (
       <span
         key={i}
-        className="absolute rounded-[inherit] bg-secondary/25"
+        className="absolute rounded-full bg-white/10 dark:bg-black/10"
         style={{
           ...style,
           transform: 'scale(0)',

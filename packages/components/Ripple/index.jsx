@@ -3,7 +3,7 @@ import useRipple from './useRipple'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'absolute overflow-hidden inset-0 rounded-[inherit]'
+  base: 'absolute inset-0 overflow-hidden rounded-[inherit]'
 })
 
 const Ripple = (props) => {

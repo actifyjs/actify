@@ -1,13 +1,17 @@
 import React from 'react'
-import '@material/web/list/list'
+import { tv } from 'tailwind-variants'
+
+const variants = tv({
+  base: 'py-2 bg-surface'
+})
 
 const List = React.forwardRef((props, ref) => {
   const { className, children, ...rest } = props
 
   return (
-    <md-list ref={ref} {...rest} class={className}>
+    <ul ref={ref} {...rest} className={variants({ className })}>
       {children}
-    </md-list>
+    </ul>
   )
 })
 

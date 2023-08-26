@@ -1,24 +1,12 @@
 import { List, ListItem } from 'actify'
 
 export default () => {
-  const list = [
-    {
-      id: 1,
-      headline: 'HTML'
-    },
-    {
-      id: 2,
-      headline: 'CSS'
-    },
-    {
-      id: 3,
-      headline: 'React'
-    }
-  ]
+  const list = ['HTML', 'Tailwind CSS', 'Vue', 'React']
+
   return (
     <List>
       {list.map((item) => (
-        <ListItem key={item.id} headline={item.headline} />
+        <ListItem key={item}>{item}</ListItem>
       ))}
     </List>
   )
