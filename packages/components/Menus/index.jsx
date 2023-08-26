@@ -1,7 +1,6 @@
 import React from 'react'
 import { Icon, Button } from 'actify'
 import MenuContext from './MenuContext'
-import { useSpring, animated } from '@react-spring/web'
 
 import {
   flip,
@@ -43,11 +42,6 @@ const Menu = React.forwardRef((props, ref) => {
   const parentId = useFloatingParentNodeId()
   const item = useListItem()
 
-  const menuAppear = useSpring({
-    transform: isOpen ? 'translate3D(0,0,0)' : 'translate3D(0,-40px,0)',
-    opacity: isOpen ? 1 : 0
-  })
-
   const isNested = parentId != null
 
   const { floatingStyles, refs, context } = useFloating({
@@ -55,7 +49,11 @@ const Menu = React.forwardRef((props, ref) => {
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: isNested ? 'right-start' : 'bottom-start',
-    middleware: [offset({ mainAxis: isNested ? 0 : 4, alignmentAxis: isNested ? -4 : 0 }), flip(), shift()],
+    middleware: [
+      offset({ mainAxis: isNested ? 0 : 4, alignmentAxis: isNested ? -4 : 0 }),
+      flip(),
+      shift()
+    ],
     whileElementsMounted: autoUpdate
   })
 
@@ -83,14 +81,9 @@ const Menu = React.forwardRef((props, ref) => {
     activeIndex
   })
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-    hover,
-    click,
-    role,
-    dismiss,
-    listNavigation,
-    typeahead
-  ])
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
+    [hover, click, role, dismiss, listNavigation, typeahead]
+  )
 
   // Event emitter allows you to communicate across tree components.
   // This effect closes all menus when an item gets clicked anywhere
@@ -119,16 +112,23 @@ const Menu = React.forwardRef((props, ref) => {
     }
   }, [tree, isOpen, nodeId, parentId])
 
+  const Tag = isNested ? 'ul' : Button
   return (
     <FloatingNode id={nodeId}>
-      <Button
+      <Tag
         ref={useMergeRefs([refs.setReference, item.ref, ref])}
-        tabIndex={!isNested ? undefined : parent.activeIndex === item.index ? 0 : -1}
+        tabIndex={
+          !isNested ? undefined : parent.activeIndex === item.index ? 0 : -1
+        }
         role={isNested ? 'menuitem' : undefined}
         data-open={isOpen ? '' : undefined}
         data-nested={isNested ? '' : undefined}
         data-focus-inside={hasFocusInside ? '' : undefined}
-        className={isNested ? 'MenuItem' : 'Menu'}
+        className={
+          isNested
+            ? 'MenuItem cursor-pointer flex items-center gap-1 hover:bg-surface p-1 rounded-md'
+            : 'Menu'
+        }
         {...getReferenceProps(
           parent.getItemProps({
             ...rest,
@@ -141,8 +141,8 @@ const Menu = React.forwardRef((props, ref) => {
         )}
       >
         {label}
-        {isNested && <Icon name="ChevronDown" size={16} />}
-      </Button>
+        {isNested && <Icon name="ChevronDown" size={18} />}
+      </Tag>
       <MenuContext.Provider
         value={{
           activeIndex,
@@ -161,13 +161,14 @@ const Menu = React.forwardRef((props, ref) => {
                 initialFocus={isNested ? -1 : 0}
                 returnFocus={!isNested}
               >
-                <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
-                  <animated.div
-                    style={menuAppear}
-                    className="border text-on-surface bg-surface p-2 rounded-md flex flex-col gap-2"
-                  >
+                <div
+                  ref={refs.setFloating}
+                  style={floatingStyles}
+                  {...getFloatingProps()}
+                >
+                  <div className="p-2 text-on-secondary bg-secondary rounded-md flex flex-col gap-2">
                     {children}
-                  </animated.div>
+                  </div>
                 </div>
               </FloatingFocusManager>
             </FloatingPortal>

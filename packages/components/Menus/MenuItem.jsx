@@ -12,12 +12,12 @@ const MenuItem = React.forwardRef((props, ref) => {
   const isActive = item.index === menu.activeIndex
 
   return (
-    <Button
+    <li
       {...rest}
       ref={useMergeRefs([item.ref, ref])}
       type="button"
       role="menuitem"
-      className="MenuItem"
+      className="MenuItem cursor-pointer hover:bg-surface p-1 rounded-md"
       tabIndex={isActive ? 0 : -1}
       disabled={disabled}
       {...menu.getItemProps({
@@ -32,7 +32,7 @@ const MenuItem = React.forwardRef((props, ref) => {
       })}
     >
       {label}
-    </Button>
+    </li>
   )
 })
 
