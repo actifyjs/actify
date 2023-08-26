@@ -17,7 +17,7 @@ export default () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="flex gap-2">
+    <div className="flex items-center gap-2">
       <Dialog>
         <DialogActivator>
           <Button>Open dialog with activator</Button>
@@ -34,9 +34,11 @@ export default () => {
           </DialogHeading>
           <DialogDescription>
             <p>
-              Amet sunt fugiat irure Lorem commodo nulla officia cupidatat ipsum duis quis minim Lorem incididunt. Non
-              laboris mollit laborum cillum deserunt aliqua amet dolor excepteur ea aliqua commodo excepteur. Sint id
-              est id deserunt magna aliquip consectetur adipisicing pariatur dolor mollit velit ea deserunt.
+              Amet sunt fugiat irure Lorem commodo nulla officia cupidatat ipsum
+              duis quis minim Lorem incididunt. Non laboris mollit laborum
+              cillum deserunt aliqua amet dolor excepteur ea aliqua commodo
+              excepteur. Sint id est id deserunt magna aliquip consectetur
+              adipisicing pariatur dolor mollit velit ea deserunt.
             </p>
           </DialogDescription>
           <div className="flex items-center gap-2">
@@ -65,8 +67,9 @@ export default () => {
           </DialogHeading>
           <DialogDescription>
             <p>
-              Ea ipsum mollit Lorem enim. Sunt consectetur veniam adipisicing reprehenderit est laborum anim ea fugiat.
-              Commodo labore nostrud ut tempor dolor nulla veniam est ad adipisicing nisi exercitation.
+              Ea ipsum mollit Lorem enim. Sunt consectetur veniam adipisicing
+              reprehenderit est laborum anim ea fugiat. Commodo labore nostrud
+              ut tempor dolor nulla veniam est ad adipisicing nisi exercitation.
             </p>
           </DialogDescription>
           <div className="flex items-center gap-2">

@@ -11,7 +11,13 @@ const TabPanel = React.forwardRef((props, ref) => {
   const { value, className, children, ...rest } = props
 
   return (
-    <div role="tabpanel" data-value={value} ref={ref} {...rest} className={variants({ className })}>
+    <div
+      role="tabpanel"
+      data-value={value}
+      ref={ref}
+      {...rest}
+      className={variants({ className })}
+    >
       {active == value && children}
     </div>
   )
