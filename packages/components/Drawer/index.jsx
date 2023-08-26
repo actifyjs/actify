@@ -2,10 +2,18 @@ import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useApp } from '../App/AppContext'
 import debounce from '@/packages/utils/debounce'
+import { useLocation } from 'react-router-dom'
 
 const Drawer = React.forwardRef((props, ref) => {
+  const location = useLocation()
   const { top, setLeft, drawer, setDrawer } = useApp()
   const { width, children, className, ...rest } = props
+
+  React.useEffect(() => {
+    if (window.innerWidth < 768) {
+      setDrawer(false)
+    }
+  }, [location])
 
   const handleResize = () => {
     if (window.innerWidth < 768) {
