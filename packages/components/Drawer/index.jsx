@@ -55,7 +55,7 @@ const Drawer = React.forwardRef((props, ref) => {
         onClick={() => setDrawer(false)}
         className={`${
           drawer ? 'opacity-100' : 'pointer-events-none opacity-0'
-        } absolute inset-0 z-40 block bg-black/20 backdrop-blur md:hidden`}
+        } transition-colors fixed inset-0 z-40 block md:hidden bg-white/25 dark:bg-black/25 backdrop-blur`}
       ></div>
     </>
   )
