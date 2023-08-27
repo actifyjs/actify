@@ -17,10 +17,15 @@ const Main = forwardRef((props, ref) => {
   const { pathname } = useLocation()
   const { children, className, ...rest } = props
   const index = pathname == '/' ? true : false
-  const paddingLeft = index ? 0 : left + 'px'
+  const paddingLeft = index ? '16px' : left + 'px'
 
   return (
-    <main ref={ref} {...rest} style={{ '--left': paddingLeft }} className={variants({ index, className })}>
+    <main
+      ref={ref}
+      {...rest}
+      style={{ '--left': paddingLeft }}
+      className={variants({ index, className })}
+    >
       {children}
     </main>
   )

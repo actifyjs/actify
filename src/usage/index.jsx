@@ -30,12 +30,14 @@ const Usage = (props) => {
             </Tab>
           </TabsHeader>
         </div>
-        <TabsBody className="p-6">
+        <TabsBody className="p-2">
           <TabPanel value="preview">
             <LazyComponent name={name} {...rest} />
           </TabPanel>
           <TabPanel value="code">
-            {!hidecode && <SyntaxHighlighter language="jsx">{rawString}</SyntaxHighlighter>}
+            {!hidecode && (
+              <SyntaxHighlighter language="jsx">{rawString}</SyntaxHighlighter>
+            )}
           </TabPanel>
         </TabsBody>
       </Tabs>
