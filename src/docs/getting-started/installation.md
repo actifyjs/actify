@@ -8,8 +8,8 @@ title: Installation
 
 <tabs language="shell" value="npm" tabs='[{"label":"npm","icon":"Terminal","content":"npm install actify"},{"label":"yarn","icon":"TerminalSquare","content":"yarn add actify"}]'></tabs>
 
-<details>
-<summary>React project</summary>
+<details open>
+<summary className="cursor-pointer">React project</summary>
 
 ```jsx
 import { Button } from 'actify'
@@ -22,7 +22,7 @@ export default () => {
 </details>
 
 <details>
-<summary>Next.js project</summary>
+<summary className="cursor-pointer">Next.js project</summary>
 
 ```jsx
 import dynamic from 'next/dynamic'
