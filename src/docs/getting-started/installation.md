@@ -6,7 +6,7 @@ title: Installation
 
 #### In your pages or components, you can import and use it, for example:
 
-<tabs value="npm" tabs='[{"label":"npm","icon":"Terminal","content":"npm install actify"},{"label":"yarn","icon":"TerminalSquare","content":"yarn add actify"}]'></tabs>
+<tabs language="shell" value="npm" tabs='[{"label":"npm","icon":"Terminal","content":"npm install actify"},{"label":"yarn","icon":"TerminalSquare","content":"yarn add actify"}]'></tabs>
 
 <details>
 <summary>React project</summary>
