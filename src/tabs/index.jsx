@@ -13,7 +13,6 @@ const Tabs = (props) => {
   const { value, language, tabs } = props
 
   const _tabs = JSON.parse(tabs)
-  console.log(value, _tabs)
 
   return (
     <ActifyTabs value={value} className="not-prose rounded-lg bg-secondary/10">
