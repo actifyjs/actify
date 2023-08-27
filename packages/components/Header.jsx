@@ -11,7 +11,7 @@ import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const Header = forwardRef((props, ref) => {
   const { pathname } = useLocation()
-  const { top, setLeft, drawer, setDrawer } = useApp()
+  const { top, drawer, setDrawer } = useApp()
   const { onClick, children, className, ...rest } = props
 
   const randomColor = () => {
@@ -38,7 +38,10 @@ const Header = forwardRef((props, ref) => {
       ref={ref}
       {...rest}
       style={{ height: top }}
-      className={twMerge('sticky top-0 z-30 h-16 bg-surface px-2 shadow backdrop-blur', className)}
+      className={twMerge(
+        'sticky top-0 z-30 h-16 bg-surface/25 px-2 shadow backdrop-blur',
+        className
+      )}
     >
       <div className="mx-auto flex h-full flex-wrap items-center justify-between">
         <Link to="/" className="flex items-center text-primary">
@@ -56,10 +59,15 @@ const Header = forwardRef((props, ref) => {
               d="M55.047-328.513l-5.238-13.822-14.323,5.317-3.243,8.5H29L42.821-364.5h4.359L61-328.513Zm-6.067-15.969.829,2.147-.829-2.147-5.308-13.745-7.123,18.445"
             />
           </svg>
-          <span className="hidden self-center whitespace-nowrap text-2xl font-semibold md:inline">ctify</span>
+          <span className="hidden self-center whitespace-nowrap text-2xl font-semibold md:inline">
+            ctify
+          </span>
         </Link>
         {pathname != '/' && (
-          <IconButton className="inline-flex md:hidden" onClick={() => setDrawer(!drawer)}>
+          <IconButton
+            className="inline-flex md:hidden"
+            onClick={() => setDrawer(!drawer)}
+          >
             <Icon name="Menu" color="primary" />
           </IconButton>
         )}
