@@ -1,3 +1,4 @@
+import Tabs from '@/src/tabs'
 import Usage from '@/src/usage'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
@@ -32,10 +33,14 @@ export default () => {
       const filePath = pathname.split('/')
       const fileName = filePath.pop()
       if (filePath.length == 2) {
-        importResult = await import(`./../../../docs/${filePath[1]}/${fileName}.md`)
+        importResult = await import(
+          `./../../../docs/${filePath[1]}/${fileName}.md`
+        )
       }
       if (filePath.length == 3) {
-        importResult = await import(`./../../../docs/${filePath[1]}/${filePath[2]}/${fileName}.md`)
+        importResult = await import(
+          `./../../../docs/${filePath[1]}/${filePath[2]}/${fileName}.md`
+        )
       }
       const { attributes, markdown } = importResult
       setMarkdown(markdown)
@@ -57,13 +62,17 @@ export default () => {
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')
             return !inline && match ? (
-              <SyntaxHighlighter code={String(children).replace(/\n$/, '')} language={match[1]} />
+              <SyntaxHighlighter
+                code={String(children).replace(/\n$/, '')}
+                language={match[1]}
+              />
             ) : (
               <code className={className} {...props}>
                 {children}
               </code>
             )
           },
+          tabs: ({ node, children, ...rest }) => <Tabs {...rest} />,
           usage: ({ node, children, ...rest }) => <Usage {...rest} />
         }}
       />

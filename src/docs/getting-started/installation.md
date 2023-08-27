@@ -4,15 +4,9 @@ title: Installation
 
 #### To get started with Actify, simply paste the following code into you terminal:
 
-```shell
-# with npm
-npm install actify
-
-# with yarn
-yarn add actify
-```
-
 #### In your pages or components, you can import and use it, for example:
+
+<tabs value="npm" tabs='[{"label":"npm","icon":"Terminal","content":"npm install actify"},{"label":"yarn","icon":"TerminalSquare","content":"yarn add actify"}]'></tabs>
 
 <details>
 <summary>React project</summary>
