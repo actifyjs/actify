@@ -28,7 +28,7 @@ yarn add actify
 
 ### 🎉 Example
 
-<details>
+<details open>
 <summary>React project</summary>
 
 ```jsx
