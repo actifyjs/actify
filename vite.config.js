@@ -4,7 +4,6 @@ import pages from 'vite-plugin-pages'
 import react from '@vitejs/plugin-react'
 import mdPlugin, { Mode } from 'vite-plugin-markdown'
 import { name, peerDependencies } from './package.json'
-import { libInjectCss } from 'vite-plugin-lib-inject-css'
 
 const resolve = {
   // resolve alias
@@ -19,9 +18,8 @@ export default defineConfig(({ mode }) => {
   if (mode == 'lib') {
     // build for lib
     return {
-      publicDir: false,
       resolve,
-      plugins: [libInjectCss()],
+      publicDir: false,
       build: {
         outDir: 'lib',
         lib: {
