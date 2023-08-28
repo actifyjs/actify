@@ -1,8 +1,8 @@
-export function setColor(str) {
-  // 'primary', 'secondary', 'tertiary', 'error'
-  if (str == 'primary' || str == 'secondary' || str == 'tertiary' || str == 'error') {
-    return `rgb(var(--color-${str}))`
+export function setColor(colorString) {
+  const colors = ['primary', 'secondary', 'tertiary', 'error']
+  if (colors.includes(colorString)) {
+    return `var(--color-${colorString})`
   } else {
-    return str
+    return colorString
   }
 }
