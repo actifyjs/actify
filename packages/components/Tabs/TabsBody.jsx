@@ -2,7 +2,7 @@ import React from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'block w-full relative bg-transparent overflow-hidden'
+  base: 'block w-full relative bg-transparent'
 })
 
 const TabsBody = React.forwardRef((props, ref) => {

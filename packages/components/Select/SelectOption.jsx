@@ -1,31 +1,33 @@
 import React from 'react'
-import { tv } from 'tailwind-variants'
-import { motion } from 'framer-motion'
+import { useListItem } from '@floating-ui/react'
+import { useSelectContext } from './SelectContext'
 
-const variants = tv({
-  base: 'cursor-pointer hover:text-on-secondary hover:bg-secondary p-2 rounded'
-})
+const SelectOption = ({ children }) => {
+  const { activeIndex, selectedIndex, getItemProps, handleSelect } =
+    useSelectContext()
 
-const SelectOption = React.forwardRef((props, ref) => {
-  const { className, children, ...rest } = props
+  const { ref, index } = useListItem()
+
+  const isActive = activeIndex === index
+  const isSelected = selectedIndex === index
+
   return (
-    <motion.li
+    <button
       ref={ref}
-      {...rest}
-      className={variants({ className })}
-      variants={{
-        open: {
-          opacity: 1,
-          y: 0,
-          transition: { type: 'spring', stiffness: 300, damping: 24 }
-        },
-        closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
-      }}
+      role="option"
+      aria-selected={isActive && isSelected}
+      tabIndex={isActive ? 0 : -1}
+      className={`rounded ${isActive ? 'bg-secondary' : ''} ${
+        isSelected ? 'bg-secondary/25' : ''
+      }`}
+      {...getItemProps({
+        onClick: () => handleSelect(index)
+      })}
     >
       {children}
-    </motion.li>
+    </button>
   )
-})
+}
 
 SelectOption.displayName = 'Actify.SelectOption'
 

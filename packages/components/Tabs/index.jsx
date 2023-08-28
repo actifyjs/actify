@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants'
 import { TabsProvider } from './TabsContext'
 
 const variants = tv({
-  base: 'relative overflow-hidden'
+  base: 'relative'
 })
 
 const Tabs = React.forwardRef((props, ref) => {
