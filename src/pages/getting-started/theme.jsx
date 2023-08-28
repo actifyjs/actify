@@ -1,7 +1,7 @@
 import { Button } from 'actify'
 import All from '../examples/all'
 import { useEffect, useState } from 'react'
-import SyntaxHighlighter from '@/packages/components/SyntaxHighlighter'
+import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const colorVaribles = [
@@ -58,7 +58,9 @@ export default () => {
     const body = getComputedStyle(document.body)
     let colors = ':root{\n'
     for (let i = 0; i < colorVaribles.length; i++) {
-      colors += `${colorVaribles[i]}: ${body.getPropertyValue(colorVaribles[i])};\n`
+      colors += `${colorVaribles[i]}: ${body.getPropertyValue(
+        colorVaribles[i]
+      )};\n`
     }
     colors += '}'
     setCssString(colors)
@@ -81,17 +83,29 @@ export default () => {
         {colorVaribles.map((item, index) => (
           <div
             key={index}
-            className={`grid h-10 place-content-center rounded-lg bg-${item.slice(8)} ${
-              /^on-/.test(item.slice(8)) ? 'text-' + item.slice(11) : 'text-on-' + item.slice(8)
+            className={`grid h-10 place-content-center rounded-lg bg-${item.slice(
+              8
+            )} ${
+              /^on-/.test(item.slice(8))
+                ? 'text-' + item.slice(11)
+                : 'text-on-' + item.slice(8)
             }`}
           >
             {item.slice(8)}
           </div>
         ))}
-        <div className="grid h-10 place-content-center rounded-lg bg-black text-white">black</div>
-        <div className="grid h-10 place-content-center rounded-lg bg-white text-black">white</div>
-        <div className="grid h-10 place-content-center rounded-lg text-outline">transparent</div>
-        <div className="grid h-10 place-content-center rounded-lg text-on-tertiary-container">current</div>
+        <div className="grid h-10 place-content-center rounded-lg bg-black text-white">
+          black
+        </div>
+        <div className="grid h-10 place-content-center rounded-lg bg-white text-black">
+          white
+        </div>
+        <div className="grid h-10 place-content-center rounded-lg text-outline">
+          transparent
+        </div>
+        <div className="grid h-10 place-content-center rounded-lg text-on-tertiary-container">
+          current
+        </div>
       </div>
       <p className="text-xl">Try dynamic color</p>
       <div className="flex items-center gap-4">
@@ -111,7 +125,10 @@ export default () => {
       <All />
       <article className="prose">
         <h4>How to use?</h4>
-        <p>Change the primary color, if the color you like, click export colors button</p>
+        <p>
+          Change the primary color, if the color you like, click export colors
+          button
+        </p>
         <p>Copy the css code and paste in your project main css file</p>
         <h4>Here is a live css code</h4>
         <SyntaxHighlighter language="css">{cssString}</SyntaxHighlighter>

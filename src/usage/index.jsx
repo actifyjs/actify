@@ -1,4 +1,4 @@
-import SyntaxHighlighter from '@/packages/components/SyntaxHighlighter'
+import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 import { lazy, Suspense, useState, useEffect } from 'react'
 import { Icon, Tabs, TabsHeader, TabsBody, Tab, TabPanel } from 'actify'
 

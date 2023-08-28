@@ -7,7 +7,7 @@ import {
   Tabs as ActifyTabs
 } from 'actify'
 
-import SyntaxHighlighter from '@/packages/components/SyntaxHighlighter'
+import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 
 const Tabs = (props) => {
   const { value, language, tabs } = props

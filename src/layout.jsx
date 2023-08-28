@@ -1,9 +1,9 @@
-import App from '@/packages/components/App'
-import Main from '@/packages/components/Main'
-import Header from '@/packages/components/Header'
-import Drawer from '@/packages/components/Drawer'
-import Footer from '@/packages/components/Footer'
-import ListItemLink from '@/packages/components/Lists/ListItemLink'
+import App from '@/src/components/App'
+import Main from '@/src/components/Main'
+import Header from '@/src/components/Header'
+import Drawer from '@/src/components/Drawer'
+import Footer from '@/src/components/Footer'
+import ItemLink from '@/src/components/ItemLink'
 import components from './components.json'
 import { useLocation } from 'react-router-dom'
 
@@ -16,23 +16,31 @@ const Layout = ({ children }) => {
       {pathname != '/' ? (
         <Drawer width={180}>
           <ul className="overflow-y-auto overflow-x-hidden">
-            <ListItemLink headline="Icon" to="/getting-started/icon" />
-            <ListItemLink headline="Theme" to="/getting-started/theme" />
+            <ItemLink to="/getting-started/icon">Icon</ItemLink>
+            <ItemLink to="/getting-started/theme">Theme</ItemLink>
             {components.map((component, index) =>
               component.children ? (
                 component.children.map((child, index) => (
-                  <ListItemLink
+                  <ItemLink
                     key={index}
-                    headline={child.name}
-                    to={`/components/${component.name.toLowerCase()}/` + child.name.toLowerCase().split(' ').join('-')}
-                  />
+                    to={
+                      `/components/${component.name.toLowerCase()}/` +
+                      child.name.toLowerCase().split(' ').join('-')
+                    }
+                  >
+                    {child.name}
+                  </ItemLink>
                 ))
               ) : (
-                <ListItemLink
+                <ItemLink
                   key={index}
-                  headline={component.name}
-                  to={'/components/' + component.name.toLowerCase().split(' ').join('-')}
-                />
+                  to={
+                    '/components/' +
+                    component.name.toLowerCase().split(' ').join('-')
+                  }
+                >
+                  {component.name}
+                </ItemLink>
               )
             )}
           </ul>

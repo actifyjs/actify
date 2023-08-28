@@ -25,7 +25,6 @@ import Field from './Field'
 import Icon from './Icon'
 import List from './Lists'
 import ListItem from './Lists/ListItem'
-import ListItemLink from './Lists/ListItemLink'
 import Menu from './Menus'
 import MenuItem from './Menus/MenuItem'
 import LinearProgress from './LinearProgress'
@@ -74,7 +73,6 @@ export {
   Icon,
   List,
   ListItem,
-  ListItemLink,
   Menu,
   MenuItem,
   LinearProgress,
