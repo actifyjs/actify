@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
 
 const variants = tv({
-  base: 'relative before:absolute before:inset-0 before:bg-[var(--color)]'
+  base: 'relative before:absolute before:inset-0 before:bg-[--color]'
 })
 
 const Divider = (props) => {
