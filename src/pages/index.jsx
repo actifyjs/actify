@@ -11,17 +11,17 @@ export default () => {
       <p className="text-center text-4xl font-extrabold ">
         React Material Design 3 Components Library
       </p>
-      <div className="flex justify-center gap-2">
+      <div className="flex items-center justify-center gap-1 sm:gap-2">
         <Link to="/getting-started/installation">
-          <Button>
-            Get Started
+          <Button className="sm:before:content-['Get']">
+            Started
             <Icon name="ArrowRight" />
           </Button>
         </Link>
         <Link to="/getting-started/why-actify">
-          <Button color="secondary">
+          <Button color="secondary" className="sm:after:content-['Actify']">
             <Icon name="HelpCircle" />
-            Why Actify
+            Why
           </Button>
         </Link>
         <Button
