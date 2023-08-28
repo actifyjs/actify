@@ -4,6 +4,7 @@ import { twMerge } from 'tailwind-merge'
 import { useApp } from './AppContext'
 import { useLocation } from 'react-router-dom'
 import { Icon, Button, Spacer, IconButton } from 'actify'
+import Logo from '@/src/components/Logo'
 import Dropdown from '@/src/components/Dropdown'
 import SwitchTheme from '@/src/components/SwitchTheme'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
@@ -44,20 +45,7 @@ const Header = forwardRef((props, ref) => {
     >
       <div className="mx-auto flex h-full flex-wrap items-center justify-between">
         <Link to="/" className="flex items-center text-primary">
-          <svg
-            width="33.455"
-            height="36.987"
-            fill="var(--md-sys-color-surface)"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 33.455 36.987"
-          >
-            <path
-              strokeWidth="2"
-              stroke="var(--md-sys-color-primary)"
-              transform="translate(-28.272 365)"
-              d="M55.047-328.513l-5.238-13.822-14.323,5.317-3.243,8.5H29L42.821-364.5h4.359L61-328.513Zm-6.067-15.969.829,2.147-.829-2.147-5.308-13.745-7.123,18.445"
-            />
-          </svg>
+          <Logo height={36} />
           <span className="hidden self-center whitespace-nowrap text-2xl font-semibold md:inline">
             ctify
           </span>
