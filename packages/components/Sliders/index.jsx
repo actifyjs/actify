@@ -2,7 +2,7 @@ import React from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'relative w-full min-w-[200px] my-5 pointer-events-none'
+  base: 'relative text-primary w-full min-w-[200px] my-5 pointer-events-none'
 })
 
 const trackVariant = tv({
@@ -29,10 +29,10 @@ const Slider = React.forwardRef((props, ref) => {
     labeled,
     children,
     className,
-    value: valueProp,
+    defaultValue,
     ...rest
   } = props
-  const [value, setValue] = React.useState(valueProp * 100 || 0)
+  const [value, setValue] = React.useState(defaultValue * 100 || 0)
 
   const percent = React.useMemo(() => {
     const _min = min || 0
@@ -57,12 +57,12 @@ const Slider = React.forwardRef((props, ref) => {
         onChange={handleChange}
         className="peer pointer-events-auto w-full h-full absolute opacity-0"
       />
-      <div className="h-1 rounded-full overflow-hidden bg-black/20 dark:bg-white/20"></div>
+      <div className="h-1 rounded-full overflow-hidden bg-surface"></div>
 
       {/* active track */}
       <i
         style={{ width: `calc(${percent}% - 10px)` }}
-        className="rounded-l-full absolute left-0 top-0 h-1 bg-current opacity-80"
+        className="rounded-l-full absolute left-0 top-0 h-1 bg-current"
       />
       {/* handle circle */}
       <div
