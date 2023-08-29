@@ -12,7 +12,7 @@ export default () => {
         </div>
         <CircularProgress indeterminate={indeterminate} value={value} />
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <label className="flex items-center gap-2">
           <Switch
             color="primary"
@@ -24,7 +24,11 @@ export default () => {
           <span>indeterminate</span>
         </label>
         <label className="flex items-center gap-2">
-          <Slider labeled value={value} onChange={(e) => setValue(e.target.value / 100)} />
+          <Slider
+            labeled
+            value={value}
+            onChange={(e) => setValue(e.target.value / 100)}
+          />
           <span>value</span>
         </label>
       </div>
