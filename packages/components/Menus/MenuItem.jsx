@@ -17,7 +17,7 @@ const MenuItem = React.forwardRef((props, ref) => {
       ref={useMergeRefs([item.ref, ref])}
       type="button"
       role="menuitem"
-      className="MenuItem cursor-pointer hover:bg-surface p-1 rounded-md"
+      className="MenuItem cursor-pointer hover:bg-surface p-1 rounded-md list-none"
       tabIndex={isActive ? 0 : -1}
       disabled={disabled}
       {...menu.getItemProps({
