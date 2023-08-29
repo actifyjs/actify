@@ -1,12 +1,7 @@
+import { Icon } from 'actify'
 import { wrap } from 'popmotion'
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-
-const images = [
-  'https://d33wubrfki0l68.cloudfront.net/dd23708ebc4053551bb33e18b7174e73b6e1710b/dea24/static/images/wallpapers/shared-colors@2x.png',
-  'https://d33wubrfki0l68.cloudfront.net/49de349d12db851952c5556f3c637ca772745316/cfc56/static/images/wallpapers/bridge-02@2x.png',
-  'https://d33wubrfki0l68.cloudfront.net/594de66469079c21fc54c14db0591305a1198dd6/3f4b1/static/images/wallpapers/bridge-01@2x.png'
-]
 
 const variants = {
   enter: (direction) => {
@@ -40,7 +35,8 @@ const swipePower = (offset, velocity) => {
   return Math.abs(offset) * velocity
 }
 
-const Slide = () => {
+const Slide = (props) => {
+  const { images } = props
   const [[page, direction], setPage] = useState([0, 0])
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
@@ -83,17 +79,18 @@ const Slide = () => {
           }}
         />
       </AnimatePresence>
+
+      <div
+        onClick={() => paginate(-1)}
+        className="z-10 select-none left-3 top-[calc(50%-20px)] absolute bg-white rounded-full w-[40px] h-[40px] flex justify-center items-center cursor-pointer text-[18px] font-bold text-black"
+      >
+        <Icon name="ChevronLeft" />
+      </div>
       <div
         onClick={() => paginate(1)}
         className="z-10 select-none right-3 top-[calc(50%-20px)] absolute bg-white rounded-full w-[40px] h-[40px] flex justify-center items-center cursor-pointer text-[18px] font-bold text-black"
       >
-        ‣
-      </div>
-      <div
-        onClick={() => paginate(-1)}
-        className="z-10 select-none left-3 top-[calc(50%-20px)] absolute rotate-180 bg-white rounded-full w-[40px] h-[40px] flex justify-center items-center cursor-pointer text-[18px] font-bold text-black"
-      >
-        ‣
+        <Icon name="ChevronRight" />
       </div>
     </>
   )
