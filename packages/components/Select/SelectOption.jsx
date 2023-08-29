@@ -12,20 +12,20 @@ const SelectOption = ({ children }) => {
   const isSelected = selectedIndex === index
 
   return (
-    <button
+    <li
       ref={ref}
       role="option"
       aria-selected={isActive && isSelected}
       tabIndex={isActive ? 0 : -1}
-      className={`rounded ${isActive ? 'bg-secondary' : ''} ${
-        isSelected ? 'bg-secondary/25' : ''
-      }`}
+      className={`rounded-md list-none px-2 cursor-pointer ${
+        isActive ? 'bg-secondary' : ''
+      } ${isSelected ? 'bg-secondary/25' : ''}`}
       {...getItemProps({
         onClick: () => handleSelect(index)
       })}
     >
       {children}
-    </button>
+    </li>
   )
 }
 

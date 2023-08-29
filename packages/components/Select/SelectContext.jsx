@@ -122,14 +122,14 @@ export const SelectProvider = ({ children, ...options }) => {
         tabIndex={0}
         ref={refs.setReference}
         {...getReferenceProps()}
-        className="relative cursor-pointer px-2 border rounded min-w-[200px]"
+        className="relative cursor-pointer h-10 flex items-center px-2 border rounded min-w-[200px]"
       >
         {selectedElement ? selectedElement.innerText : 'Select...'}
       </div>
       <SelectContext.Provider value={selectContext}>
         {isOpen && (
           <FloatingFocusManager context={context} modal={false}>
-            <div
+            <ul
               ref={refs.setFloating}
               style={floatingStyles}
               {...getFloatingProps()}
@@ -138,7 +138,7 @@ export const SelectProvider = ({ children, ...options }) => {
               <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
                 {children}
               </FloatingList>
-            </div>
+            </ul>
           </FloatingFocusManager>
         )}
       </SelectContext.Provider>
