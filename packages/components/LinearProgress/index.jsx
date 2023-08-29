@@ -12,8 +12,10 @@ const barVariants = tv({
   variants: {
     indeterminate: {
       hidden: 'hidden',
-      primary: 'animate-[2s_linear_0s_infinite_normal_none_running_primary-indeterminate-translate]',
-      secondary: 'animate-[2s_linear_0s_infinite_normal_none_running_secondary-indeterminate-translate]'
+      primary:
+        'animate-[2s_linear_0s_infinite_normal_none_running_primary-indeterminate-translate]',
+      secondary:
+        'animate-[2s_linear_0s_infinite_normal_none_running_secondary-indeterminate-translate]'
     }
   }
 })
@@ -22,8 +24,10 @@ const barInnerVariants = tv({
   base: 'absolute inset-0 animate-[auto_ease_0s_1_normal_none_running_none] bg-[var(--color, #1976d2)]',
   variants: {
     indeterminate: {
-      primary: 'animate-[2s_linear_0s_infinite_normal_none_running_primary-indeterminate-scale]',
-      secondary: 'animate-[2s_linear_0s_infinite_normal_none_running_secondary-indeterminate-scale]'
+      primary:
+        'animate-[2s_linear_0s_infinite_normal_none_running_primary-indeterminate-scale]',
+      secondary:
+        'animate-[2s_linear_0s_infinite_normal_none_running_secondary-indeterminate-scale]'
     }
   }
 })
@@ -39,16 +43,17 @@ const LinearProgress = React.forwardRef((props, ref) => {
       className={variants({ indeterminate, className })}
     >
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 bg-surface"
         style={{
           transform: 'scaleX(1)',
           transformOrigin: 'left center',
-          transition: 'transform 250ms cubic-bezier(0.4, 0, 0.6, 1) 0s',
-          backgroundColor: 'var(--md-sys-color-surface-container-highest, #e6e0e9)'
+          transition: 'transform 250ms cubic-bezier(0.4, 0, 0.6, 1) 0s'
         }}
       />
       <div
-        className={barVariants({ indeterminate: indeterminate ? 'primary' : null })}
+        className={barVariants({
+          indeterminate: indeterminate ? 'primary' : null
+        })}
         style={{
           blockSize: '100%',
           inlineSize: '100%',
@@ -59,7 +64,11 @@ const LinearProgress = React.forwardRef((props, ref) => {
           transform: `scaleX(${indeterminate ? 1 : value})`
         }}
       >
-        <div className={barInnerVariants({ indeterminate: indeterminate ? 'primary' : null })}></div>
+        <div
+          className={barInnerVariants({
+            indeterminate: indeterminate ? 'primary' : null
+          })}
+        ></div>
       </div>
       <div
         style={{
@@ -70,9 +79,15 @@ const LinearProgress = React.forwardRef((props, ref) => {
           transformOrigin: 'left center',
           insetInlineStart: '-54.8889%'
         }}
-        className={barVariants({ indeterminate: indeterminate ? 'secondary' : 'hidden' })}
+        className={barVariants({
+          indeterminate: indeterminate ? 'secondary' : 'hidden'
+        })}
       >
-        <div className={barInnerVariants({ indeterminate: indeterminate ? 'secondary' : null })}></div>
+        <div
+          className={barInnerVariants({
+            indeterminate: indeterminate ? 'secondary' : null
+          })}
+        ></div>
       </div>
     </div>
   )
