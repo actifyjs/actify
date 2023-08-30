@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -18,7 +18,7 @@
     "directory": "packages/components"
   },
   "files": [
-    "lib"
+    "lib/"
   ],
   "main": "./lib/actify.umd.js",
   "exports": {

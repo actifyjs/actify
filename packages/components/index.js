@@ -1,4 +1,3 @@
-import '@/src/main.css'
 import Badge from './Badges'
 import Card from './Cards'
 import Carousel from './Carousel'
