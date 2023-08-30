@@ -36,7 +36,6 @@
   "devDependencies": {
     "@babel/preset-react": "^7.22.5",
     "@floating-ui/react": "^0.25.1",
-    "@material/web": "^1.0.0-pre.14",
     "@react-spring/web": "^9.7.3",
     "@tailwindcss/typography": "^0.5.9",
     "@types/react": "^18.2.15",
