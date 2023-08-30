@@ -1,3 +1,4 @@
+import React from 'react'
 import { Icon, Elevation } from 'actify'
 
 const BottomAppBar = () => {

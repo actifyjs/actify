@@ -1,3 +1,4 @@
+import React from 'react'
 import { PopoverProvider } from './PopoverContext'
 
 const Popover = (props) => {

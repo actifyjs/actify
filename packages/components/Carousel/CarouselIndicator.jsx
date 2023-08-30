@@ -1,3 +1,4 @@
+import React from 'react'
 import { useCarousel } from './CarouselContext'
 
 const CarouselIndicator = () => {

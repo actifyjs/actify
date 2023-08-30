@@ -1,9 +1,11 @@
+import React from 'react'
 import { Icon } from 'actify'
 import { useInterval } from 'usehooks-ts'
 import { useCarousel } from './CarouselContext'
 
 const CarouselControl = () => {
-  const { total, current, setCurrent, autoPlay, interval, infinite } = useCarousel()
+  const { total, current, setCurrent, autoPlay, interval, infinite } =
+    useCarousel()
 
   const prev = () => {
     if (current == 0) {

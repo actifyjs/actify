@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from 'actify'
 import MenuContext from './MenuContext'
 import { useListItem, useFloatingTree, useMergeRefs } from '@floating-ui/react'
 

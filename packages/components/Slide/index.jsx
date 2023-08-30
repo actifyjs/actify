@@ -1,6 +1,6 @@
+import React from 'react'
 import { Icon } from 'actify'
 import { wrap } from 'popmotion'
-import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const variants = {
@@ -37,7 +37,7 @@ const swipePower = (offset, velocity) => {
 
 const Slide = (props) => {
   const { images } = props
-  const [[page, direction], setPage] = useState([0, 0])
+  const [[page, direction], setPage] = React.useState([0, 0])
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
