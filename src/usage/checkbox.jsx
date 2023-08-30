@@ -2,7 +2,7 @@ import { Checkbox } from 'actify'
 
 export default () => {
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-wrap gap-4">
       <label className="flex items-center">
         <Checkbox />
         <span>primary</span>

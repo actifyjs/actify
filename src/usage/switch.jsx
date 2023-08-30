@@ -3,7 +3,7 @@ import { Switch } from 'actify'
 export default () => {
   return (
     <>
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap justify-between">
         <Switch color="primary" />
         <Switch color="secondary" />
         <Switch color="tertiary" />

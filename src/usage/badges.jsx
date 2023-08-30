@@ -17,9 +17,17 @@ export default () => {
           <Button>with button</Button>
         </Badge>
       </div>
-      <div className="flex gap-4">
-        <TextField value={value} label="set badge" onInput={(e) => setValue(e.target.value)} />
-        <TextField value={color} label="set color" onInput={(e) => setColor(e.target.value)} />
+      <div className="mt-4 flex gap-4 flex-wrap">
+        <TextField
+          value={value}
+          label="set badge"
+          onInput={(e) => setValue(e.target.value)}
+        />
+        <TextField
+          value={color}
+          label="set color"
+          onInput={(e) => setColor(e.target.value)}
+        />
       </div>
     </>
   )
