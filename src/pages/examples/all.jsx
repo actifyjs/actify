@@ -21,6 +21,23 @@ export default () => {
         <Button disabled>disabled</Button>
       </div>
       <div className="grid grid-cols-5 gap-2">
+        <IconButton variant="filled-tonal" color="primary">
+          <Icon name="User" />
+        </IconButton>
+        <IconButton variant="filled-tonal" color="secondary">
+          <Icon name="User" />
+        </IconButton>
+        <IconButton variant="filled-tonal" color="tertiary">
+          <Icon name="User" />
+        </IconButton>
+        <IconButton variant="filled-tonal" color="error">
+          <Icon name="User" />
+        </IconButton>
+        <IconButton variant="filled-tonal" disabled>
+          <Icon name="User" />
+        </IconButton>
+      </div>
+      <div className="grid grid-cols-5 gap-2">
         <IconButton>
           <Icon name="User" />
           <Badge value={999} color="primary" />
@@ -40,23 +57,6 @@ export default () => {
         <IconButton disabled>
           <Icon name="User" />
           <Badge value={999} />
-        </IconButton>
-      </div>
-      <div className="grid grid-cols-5 gap-2">
-        <IconButton variant="filled-tonal" color="primary">
-          <Icon name="User" />
-        </IconButton>
-        <IconButton variant="filled-tonal" color="secondary">
-          <Icon name="User" />
-        </IconButton>
-        <IconButton variant="filled-tonal" color="tertiary">
-          <Icon name="User" />
-        </IconButton>
-        <IconButton variant="filled-tonal" color="error">
-          <Icon name="User" />
-        </IconButton>
-        <IconButton variant="filled-tonal" disabled>
-          <Icon name="User" />
         </IconButton>
       </div>
       <div className="grid grid-cols-5 gap-2">

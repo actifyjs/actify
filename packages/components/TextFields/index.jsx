@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'inline-flex rounded-md relative min-w-fit h-14 bg-surface',
+  base: 'inline-flex rounded-md relative h-14 bg-surface',
   variants: {
     color: {
       primary: 'text-primary',
@@ -30,16 +30,25 @@ const labelVariants = tv({
 })
 
 const TextField = React.forwardRef((props, ref) => {
-  const { style, color, variant, label, disabled, className, children, ...rest } = props
+  const {
+    style,
+    color,
+    variant,
+    label,
+    disabled,
+    className,
+    children,
+    ...rest
+  } = props
 
   return (
-    <label className={variants({ disabled, className })}>
+    <label className={variants({ color, disabled, className })}>
       <input
         required
         ref={ref}
         {...rest}
         type={rest.type || 'text'}
-        className="rounded-[inherit] w-[inherit] peer px-4 bg-transparent border-2 border-secondary/60 outline-none focus:border-secondary focus:text-on-surface transition-all placeholder:text-transparent focus:placeholder:text-on-surface"
+        className="rounded-[inherit] w-full peer px-4 bg-transparent border-2 border-outline outline-none focus:text-[inherit] focus:border-current focus:text-on-surface transition-all placeholder:text-transparent focus:placeholder:text-on-surface"
       />
       <div className={labelVariants()} data-label={label}>
         {label}
@@ -49,6 +58,7 @@ const TextField = React.forwardRef((props, ref) => {
 })
 
 TextField.propTypes = {
+  color: PropTypes.string,
   variant: PropTypes.oneOf(['filled', 'outlined'])
 }
 
