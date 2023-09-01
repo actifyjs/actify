@@ -12,8 +12,8 @@ const CarouselIndicator = () => {
           onClick={() => setCurrent(index)}
           className={`${
             index == current
-              ? 'bg-primary/50 dark:bg-primary'
-              : 'bg-primary hover:bg-primary/80 dark:bg-primary/50 dark:hover:bg-primary/80'
+              ? 'bg-primary dark:bg-primary'
+              : 'bg-primary/50 hover:bg-primary/80 dark:bg-primary/50 dark:hover:bg-primary/80'
           } h-3 w-3 rounded-full`}
         ></button>
       ))}

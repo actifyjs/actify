@@ -25,7 +25,7 @@ export function useCarousel() {
 export function CarouselProvider(props) {
   const { children, ...rest } = props
   const useCreateStore = createStore()((set) => ({
-    page: defaultValue.page,
+    page: [rest.current ?? defaultValue.current, 0],
     total: rest.total ?? defaultValue.total,
     current: rest.current ?? defaultValue.current,
     interval: rest.interval ?? defaultValue.interval,

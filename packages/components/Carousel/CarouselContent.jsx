@@ -37,6 +37,7 @@ const CarouselContent = ({ children }) => {
     current,
     setCurrent
   } = useCarousel()
+
   const images = React.Children.toArray(children).map(
     (child) => child.props.src
   )
