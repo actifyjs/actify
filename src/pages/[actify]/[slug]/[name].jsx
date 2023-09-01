@@ -67,7 +67,10 @@ export default () => {
                 language={match[1]}
               />
             ) : (
-              <code className={className} {...props}>
+              <code
+                className="before:hidden after:hidden bg-black/10 dark:bg-white/10 rounded-md p-1.5"
+                {...props}
+              >
                 {children}
               </code>
             )
