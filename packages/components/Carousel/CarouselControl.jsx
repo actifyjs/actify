@@ -4,24 +4,16 @@ import { useInterval } from 'usehooks-ts'
 import { useCarousel } from './CarouselContext'
 
 const CarouselControl = () => {
-  const { total, current, setCurrent, autoPlay, interval, infinite } =
+  const { total, page, setPage, current, autoPlay, interval, infinite } =
     useCarousel()
-
   const prev = () => {
-    if (current == 0) {
-      setCurrent(total - 1)
-    } else {
-      setCurrent(current - 1)
-    }
+    setPage([parseInt(page) - 1, -1])
   }
   const next = () => {
-    if (current < total - 1) {
-      setCurrent(current + 1)
-    } else {
-      if (infinite) {
-        setCurrent(0)
-      }
+    if (!infinite && current == total - 1) {
+      return
     }
+    setPage([parseInt(page) + 1, 1])
   }
 
   autoPlay && useInterval(next, interval)
