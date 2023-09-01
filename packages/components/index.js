@@ -20,6 +20,7 @@ import Elevation from './Elevation'
 import Icon from './Icon'
 import List from './Lists'
 import ListItem from './Lists/ListItem'
+import ListGroup from './Lists/ListGroup'
 import Menu from './Menus'
 import MenuItem from './Menus/MenuItem'
 import LinearProgress from './LinearProgress'
@@ -64,6 +65,7 @@ export {
   Icon,
   List,
   ListItem,
+  ListGroup,
   Menu,
   MenuItem,
   LinearProgress,
