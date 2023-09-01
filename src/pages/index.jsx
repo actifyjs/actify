@@ -34,31 +34,6 @@ export default () => {
           GitHub
         </Button>
       </div>
-      <DropDownMenu />
     </div>
-  )
-}
-
-const DropDownMenu = () => {
-  const [open, setOpen] = React.useState(false)
-
-  return (
-    <ul className="border p-5">
-      <li className="cursor-pointer">
-        <span onClick={() => setOpen(!open)}>group</span>
-        <div
-          className={`transition-all duration-300 ease-in-out grid ${
-            open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-          }`}
-        >
-          <ul className="pl-5 overflow-hidden">
-            <li>lorem</li>
-            <li>ipsum</li>
-            <li>dolor</li>
-          </ul>
-        </div>
-      </li>
-      <li>ipsum</li> <li>dolor</li>
-    </ul>
   )
 }
