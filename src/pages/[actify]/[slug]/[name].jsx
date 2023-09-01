@@ -52,7 +52,7 @@ export default () => {
   return (
     <>
       <ReactMarkdown
-        className="prose mb-4 max-w-full dark:prose-invert prose-pre:p-0 [&_pre]:!mb-0"
+        className="prose text-sm sm:text-base md:text-lg mb-4 max-w-full dark:prose-invert prose-pre:p-0 [&_pre]:!mb-0"
         children={markdown}
         rehypePlugins={[rehypeRaw]}
         remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
