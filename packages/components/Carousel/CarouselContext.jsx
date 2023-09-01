@@ -1,13 +1,15 @@
 import React from 'react'
 import { createStore, useStore } from 'zustand'
 
-const defaultValue = {
+export const defaultValue = {
+  page: [0, 0],
   total: 0,
   current: 0,
-  autoPlay: false,
   interval: 3000,
-  infinite: false,
-  page: [0, 0]
+
+  control: false,
+  autoPlay: false,
+  infinite: false
 }
 
 const CarouselContext = React.createContext(defaultValue)
@@ -26,15 +28,16 @@ export function CarouselProvider(props) {
     page: defaultValue.page,
     total: rest.total ?? defaultValue.total,
     current: rest.current ?? defaultValue.current,
-    autoPlay: rest.autoPlay ?? defaultValue.autoPlay,
     interval: rest.interval ?? defaultValue.interval,
+
+    control: rest.control ?? defaultValue.control,
+    autoPlay: rest.autoPlay ?? defaultValue.autoPlay,
     infinite: rest.infinite ?? defaultValue.infinite,
+
     setPage: (page) => set({ page }),
     setTotal: (total) => set({ total }),
     setCurrent: (current) => set({ current }),
-    setAutoPlay: (autoPlay) => set({ autoPlay }),
-    setInterval: (interval) => set({ interval }),
-    setInfinite: (infinite) => set({ infinite })
+    setInterval: (interval) => set({ interval })
   }))
 
   const store = React.useRef(useCreateStore)

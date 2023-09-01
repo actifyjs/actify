@@ -3,14 +3,23 @@ import { tv } from 'tailwind-variants'
 import CarouselContent from './CarouselContent'
 import CarouselControl from './CarouselControl'
 import CarouselIndicator from './CarouselIndicator'
-import { CarouselProvider } from './CarouselContext'
+import { defaultValue, CarouselProvider } from './CarouselContext'
 
 const variants = tv({
   base: 'relative overflow-hidden rounded-lg w-full min-h-[400px] flex items-center justify-center'
 })
 
 const Carousel = React.forwardRef((props, ref) => {
-  const { style, control, indicator, children, className, ...rest } = props
+  const {
+    style,
+    autoPlay,
+    control,
+    infinite,
+    indicator,
+    children,
+    className,
+    ...rest
+  } = props
   return (
     <CarouselProvider {...{ total: children.length, ...rest }}>
       <div
@@ -20,7 +29,11 @@ const Carousel = React.forwardRef((props, ref) => {
         className={variants({ className })}
       >
         <CarouselContent>{children}</CarouselContent>
-        {control && <CarouselControl />}
+        <CarouselControl
+          control={control ?? defaultValue.control}
+          autoPlay={autoPlay ?? defaultValue.autoPlay}
+          infinite={infinite ?? defaultValue.infinite}
+        />
         {indicator && <CarouselIndicator />}
       </div>
     </CarouselProvider>
