@@ -29,8 +29,6 @@ npm install actify
 yarn add actify
 ```
 
----
-
 ## ⚙️ Set tailwind.config.js
 
 ```js
@@ -60,8 +58,6 @@ module.exports = {
   plugins: []
 }
 ```
-
----
 
 ## 🎨 Config color theme (optional)
 
