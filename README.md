@@ -4,17 +4,22 @@
   </a>
 </p>
 
+---
+
 ### 🚀 Introduction
 
 Actify is a React Components Library based on Material Design 3 Web Components.
 Inspired by Vuetify. Some features:
 
 - **[Vite](https://vitejs.dev/):** Use Vite to build libs and docs.
+- **[Icon](https://lucide.dev/):** Icon are based on [lucide-icon](https://lucide.dev/).
 - **[Tailwind CSS](https://tailwindcss.com/):** Build with Tailwind CSS.
 - **[Tailwind Variants](https://www.tailwind-variants.org/):** For variants and smart className merge.
 - **[Floating UI](https://floating-ui.com/):** The future of Popper to deal with smart anchor positioning.
 - **[Framer Motion](https://www.framer.com/motion/):** It powers the amazing animations and interactions in Framer, the web builder for creative pros. Zero code, maximum speed.
 - **Theme System:** A powerful color system that makes it easy to style your application with a consistent color palette.
+
+---
 
 ### 🌻 Get Started
 
@@ -25,6 +30,8 @@ npm install actify
 # with yarn
 yarn add actify
 ```
+
+---
 
 ### ⚙️ Set tailwind.config.js
 
@@ -56,6 +63,8 @@ module.exports = {
 }
 ```
 
+---
+
 ### 🎨 Config color theme (optional)
 
 - go to [actify theme config page](https://actifyjs.com/getting-started/theme)
@@ -76,6 +85,8 @@ module.exports = {
   }
 }
 ```
+
+---
 
 ### 🎉 Example
 
