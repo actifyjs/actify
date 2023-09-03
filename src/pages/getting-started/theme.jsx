@@ -105,13 +105,13 @@ export default () => {
 
   const getColors = () => {
     const body = getComputedStyle(document.body)
-    let colors = ':root{\n'
+    let colors = '@layer base {\n\t:root {\n'
     for (let i = 0; i < colorVaribles.length; i++) {
-      colors += `${colorVaribles[i]}: ${body.getPropertyValue(
+      colors += `\t\t${colorVaribles[i]}: ${body.getPropertyValue(
         colorVaribles[i]
       )};\n`
     }
-    colors += '}'
+    colors += '\t}\n}'
     setCssString(colors)
   }
 
@@ -126,8 +126,13 @@ export default () => {
   }
 
   return (
-    <div className="space-y-4">
-      <p className="text-xl">Color palette</p>
+    <article className="prose text-sm sm:text-base md:text-lg mb-4 max-w-full dark:prose-invert prose-pre:p-0 [&_pre]:!mb-0">
+      <h1>Theme</h1>
+      <blockquote>
+        The theme is a set of color variables that can be used in the
+        application.
+      </blockquote>
+      <h2>Color palette</h2>
       <div className="grid grid-cols-2 gap-4 rounded-lg border border-outline/20 bg-tertiary-container bg-opacity-30 p-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
         {colorVaribles.map((item, index) => (
           <div
@@ -156,7 +161,7 @@ export default () => {
           current
         </div>
       </div>
-      <p className="text-xl">Try dynamic color</p>
+      <h2>Try dynamic color</h2>
       <div className="flex items-center gap-4">
         <div className="mt-2 space-y-4">
           <label className="flex items-center gap-2">
@@ -170,18 +175,22 @@ export default () => {
         </div>
         <Button onClick={exportColors}>Export Colors</Button>
       </div>
-      <p className="text-xl">Components live</p>
+      <h2>Components live</h2>
       <All />
-      <article className="prose">
-        <h4>How to use?</h4>
-        <p>
+
+      <h2>How to use?</h2>
+      <ul>
+        <li>
           Change the primary color, if the color you like, click export colors
           button
-        </p>
-        <p>Copy the css code and paste in your project main css file</p>
-        <h4>Here is a live css code</h4>
-        <SyntaxHighlighter language="css">{cssString}</SyntaxHighlighter>
-      </article>
-    </div>
+        </li>
+        <li>
+          Go to your project main css file, add the following code or exported
+          file content to the end of the file
+        </li>
+      </ul>
+      <h2>Here is a live css code</h2>
+      <SyntaxHighlighter language="css">{cssString}</SyntaxHighlighter>
+    </article>
   )
 }
