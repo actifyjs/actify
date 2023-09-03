@@ -1,15 +1,20 @@
 [
   {
+    "label": "App bars",
+    "children": [
+      {
+        "name": "Bottom app bar",
+        "status": "❌"
+      },
+      {
+        "name": "Top app bar",
+        "status": "❌"
+      }
+    ]
+  },
+  {
     "name": "Badges",
     "status": "🟡"
-  },
-  {
-    "name": "Bottom app bar",
-    "status": "❌"
-  },
-  {
-    "name": "Bottom sheets",
-    "status": "❌"
   },
   {
     "label": "Buttons",
@@ -73,16 +78,21 @@
     "status": "✅"
   },
   {
-    "name": "Navigation bar",
-    "status": "🟡"
-  },
-  {
-    "name": "Navigation drawer",
-    "status": "🟡"
-  },
-  {
-    "name": "Navigation rail",
-    "status": "❌"
+    "label": "Navigation",
+    "children": [
+      {
+        "name": "Navigation bar",
+        "status": "🟡"
+      },
+      {
+        "name": "Navigation drawer",
+        "status": "🟡"
+      },
+      {
+        "name": "Navigation rail",
+        "status": "❌"
+      }
+    ]
   },
   {
     "name": "Progress",
@@ -97,8 +107,17 @@
     "status": "❌"
   },
   {
-    "name": "Slide sheets",
-    "status": "❌"
+    "label": "Sheets",
+    "children": [
+      {
+        "name": "Bottom sheets",
+        "status": "❌"
+      },
+      {
+        "name": "Slide sheets",
+        "status": "❌"
+      }
+    ]
   },
   {
     "name": "Sliders",
@@ -126,10 +145,6 @@
   },
   {
     "name": "Tooltips",
-    "status": "❌"
-  },
-  {
-    "name": "Top app bar",
     "status": "❌"
   }
 ]

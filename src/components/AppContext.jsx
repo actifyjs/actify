@@ -3,7 +3,7 @@ import { createStore, useStore } from 'zustand'
 
 const defaultValue = {
   top: 64,
-  left: 180,
+  left: 240,
   drawer: false
 }
 

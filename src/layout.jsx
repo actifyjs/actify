@@ -7,6 +7,8 @@ import components from './components.json'
 import { useLocation } from 'react-router-dom'
 import { List, ListItemLink, ListGroup } from 'actify'
 
+const spaces2Hyphen = (str) => str.toLowerCase().split(' ').join('-')
+
 const Layout = ({ children }) => {
   const { pathname } = useLocation()
 
@@ -14,7 +16,7 @@ const Layout = ({ children }) => {
     <App>
       <Header />
       {pathname != '/' ? (
-        <Drawer width={180}>
+        <Drawer width={240}>
           <List>
             <ListItemLink to="/getting-started/icon">Icon</ListItemLink>
             <ListItemLink to="/getting-started/theme">Theme</ListItemLink>
@@ -25,7 +27,7 @@ const Layout = ({ children }) => {
                     <ListItemLink
                       key={index}
                       to={
-                        `/components/${component.label.toLowerCase()}/` +
+                        `/components/${spaces2Hyphen(component.label)}/` +
                         child.name.toLowerCase().split(' ').join('-')
                       }
                     >
@@ -36,10 +38,7 @@ const Layout = ({ children }) => {
               ) : (
                 <ListItemLink
                   key={index}
-                  to={
-                    '/components/' +
-                    component.name.toLowerCase().split(' ').join('-')
-                  }
+                  to={'/components/' + spaces2Hyphen(component.name)}
                 >
                   {component.name}
                 </ListItemLink>
