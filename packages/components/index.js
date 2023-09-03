@@ -21,6 +21,7 @@ import Icon from './Icon'
 import List from './Lists'
 import ListItem from './Lists/ListItem'
 import ListGroup from './Lists/ListGroup'
+import ListItemLink from './Lists/ListItemLink'
 import Menu from './Menus'
 import MenuItem from './Menus/MenuItem'
 import LinearProgress from './LinearProgress'
@@ -66,6 +67,7 @@ export {
   List,
   ListItem,
   ListGroup,
+  ListItemLink,
   Menu,
   MenuItem,
   LinearProgress,

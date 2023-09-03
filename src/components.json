@@ -12,7 +12,7 @@
     "status": "❌"
   },
   {
-    "name": "Buttons",
+    "label": "Buttons",
     "children": [
       {
         "name": "Button",

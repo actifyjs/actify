@@ -37,7 +37,7 @@ const ListGroup = React.forwardRef((props, ref) => {
           open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
         }`}
       >
-        <ul className="pl-5 overflow-hidden">
+        <ul className="overflow-hidden">
           {React.Children.map(
             children,
             (child) =>

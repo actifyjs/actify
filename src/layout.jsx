@@ -3,9 +3,9 @@ import Main from '@/src/components/Main'
 import Header from '@/src/components/Header'
 import Drawer from '@/src/components/Drawer'
 import Footer from '@/src/components/Footer'
-import ItemLink from '@/src/components/ItemLink'
 import components from './components.json'
 import { useLocation } from 'react-router-dom'
+import { List, ListItemLink, ListGroup } from 'actify'
 
 const Layout = ({ children }) => {
   const { pathname } = useLocation()
@@ -15,24 +15,26 @@ const Layout = ({ children }) => {
       <Header />
       {pathname != '/' ? (
         <Drawer width={180}>
-          <ul className="overflow-y-auto overflow-x-hidden">
-            <ItemLink to="/getting-started/icon">Icon</ItemLink>
-            <ItemLink to="/getting-started/theme">Theme</ItemLink>
+          <List>
+            <ListItemLink to="/getting-started/icon">Icon</ListItemLink>
+            <ListItemLink to="/getting-started/theme">Theme</ListItemLink>
             {components.map((component, index) =>
               component.children ? (
-                component.children.map((child, index) => (
-                  <ItemLink
-                    key={index}
-                    to={
-                      `/components/${component.name.toLowerCase()}/` +
-                      child.name.toLowerCase().split(' ').join('-')
-                    }
-                  >
-                    {child.name}
-                  </ItemLink>
-                ))
+                <ListGroup key={index} label={component.label}>
+                  {component.children.map((child, index) => (
+                    <ListItemLink
+                      key={index}
+                      to={
+                        `/components/${component.label.toLowerCase()}/` +
+                        child.name.toLowerCase().split(' ').join('-')
+                      }
+                    >
+                      {child.name}
+                    </ListItemLink>
+                  ))}
+                </ListGroup>
               ) : (
-                <ItemLink
+                <ListItemLink
                   key={index}
                   to={
                     '/components/' +
@@ -40,10 +42,10 @@ const Layout = ({ children }) => {
                   }
                 >
                   {component.name}
-                </ItemLink>
+                </ListItemLink>
               )
             )}
-          </ul>
+          </List>
         </Drawer>
       ) : null}
       <Main>{children}</Main>
