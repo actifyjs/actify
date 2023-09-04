@@ -1,5 +1,6 @@
 import TopAppBar from './TopAppBar'
 import BottomAppBar from './BottomAppBar'
+import NavigationRail from './NavigationRail'
 import Badge from './Badges'
 import Card from './Cards'
 import Carousel from './Carousel'
@@ -48,6 +49,7 @@ import TooltipActivator from './Tooltips/TooltipActivator'
 export {
   TopAppBar,
   BottomAppBar,
+  NavigationRail,
   Badge,
   Card,
   Carousel,

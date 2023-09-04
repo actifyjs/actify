@@ -1,7 +1,8 @@
 import React from 'react'
 import { tv } from 'tailwind-variants'
 
-const variants = tv('fixed h-full left-[256px] px-2 gap-2 flex flex-col items-center bg-black/5 dark:bg-white/5', {
+const variants = tv({
+  base: 'min-h-[540px] w-20 bg-surface flex items-center justify-center',
   variants: {
     variant: {}
   },
