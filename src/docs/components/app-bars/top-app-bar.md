@@ -4,4 +4,4 @@ title: Top app bars
 
 # Top app bars
 
-> TODO
+<usage name="top-app-bar"></usage>

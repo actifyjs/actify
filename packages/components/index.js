@@ -1,3 +1,4 @@
+import TopAppBar from './TopAppBar'
 import BottomAppBar from './BottomAppBar'
 import Badge from './Badges'
 import Card from './Cards'
@@ -45,6 +46,7 @@ import TooltipContent from './Tooltips/TooltipContent'
 import TooltipActivator from './Tooltips/TooltipActivator'
 
 export {
+  TopAppBar,
   BottomAppBar,
   Badge,
   Card,
