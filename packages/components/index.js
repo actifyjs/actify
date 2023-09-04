@@ -1,3 +1,4 @@
+import BottomAppBar from './BottomAppBar'
 import Badge from './Badges'
 import Card from './Cards'
 import Carousel from './Carousel'
@@ -44,6 +45,7 @@ import TooltipContent from './Tooltips/TooltipContent'
 import TooltipActivator from './Tooltips/TooltipActivator'
 
 export {
+  BottomAppBar,
   Badge,
   Card,
   Carousel,

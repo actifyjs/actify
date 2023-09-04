@@ -22,14 +22,31 @@ const iconSizeMap = {
 }
 
 const Fab = React.forwardRef((props, ref) => {
-  const { label, style, icon, size, variant, color, className, children, ...rest } = props
+  const {
+    label,
+    style,
+    icon,
+    size,
+    variant,
+    color,
+    className,
+    children,
+    ...rest
+  } = props
 
   let styles = { ...style }
   styles['color'] = setColor(color)
-  styles['backgroundColor'] = 'var(--md-sys-color-surface-container-high, #ece6f0)'
+  styles['backgroundColor'] =
+    'var(--md-sys-color-surface-container-high, #ece6f0)'
 
   return (
-    <button type={rest.type || 'button'} ref={ref} {...rest} style={styles} className={variants({ size, className })}>
+    <button
+      type={rest.type || 'button'}
+      ref={ref}
+      {...rest}
+      style={styles}
+      className={variants({ size, className })}
+    >
       {icon && <Icon name={icon} size={iconSizeMap[size]} />}
       {children}
       {label}

@@ -1,17 +1,17 @@
 import React from 'react'
-import { Icon, Elevation } from 'actify'
+import { Elevation } from 'actify'
 
-const BottomAppBar = () => {
+const BottomAppBar = (props) => {
+  const { children } = props
+  const icons = children.find((child) => child.key === 'icons')
+  const fab = children.find((child) => child.key === 'fab')
+
   return (
     <div className="relative flex h-20 items-center justify-between bg-primary px-4">
-      <div className="flex gap-2 [&_*]:cursor-pointer">
-        <Icon name="Home" color="white" size={24} />
-        <Icon name="Search" color="white" size={24} />
-        <Icon name="Notification" color="white" size={24} />
+      <div className="[&>i]:p-3 grow place-items-center grid grid-cols-[repeat(auto-fill,minmax(48px,1fr))]">
+        {icons}
       </div>
-      <div className="h-14 w-14 cursor-pointer rounded-2xl bg-white/20 p-4">
-        <Icon name="Camera" color="white" size={24} />
-      </div>
+      {fab}
       <Elevation level={2} />
     </div>
   )
