@@ -42,29 +42,27 @@ const Snackbar = (props) => {
   }, [])
 
   return (
-    <div className="fixed z-[1000] bottom-8 mx-auto left-8 right-8 flex flex-col pointer-events-none items-center md:items-end">
+    <div className="fixed z-[1000] bottom-8 mx-auto left-8 right-8 flex flex-col gap-2 pointer-events-none items-center md:items-end">
       {transitions(({ life, ...style }, item) => (
         <animated.div
-          className="relative overflow-hidden w-full md:w-80"
           style={style}
+          className="relative overflow-hidden w-full md:w-80"
         >
           <Content ref={(ref) => ref && refMap.set(item, ref)}>
             <animated.div
               style={{ right: life }}
-              className="h-1 absolute bottom-0 left-0 bg-[linear-gradient(130deg,#00b4e6,#00f0e0)]"
+              className="h-1 rounded-b absolute bottom-0 left-0 bg-[linear-gradient(130deg,#00b4e6,#00f0e0)]"
             />
-            <p>{item.msg}</p>
+            <p className="pl-4">{item.msg}</p>
             <IconButton
-              tag="span"
-              color="white"
-              className="cursor-pointer pointer-events-auto flex justify-center"
+              className="h-12 cursor-pointer pointer-events-auto flex justify-center"
               onClick={(e) => {
                 e.stopPropagation()
                 if (cancelMap.has(item) && life.get() !== '0%')
                   cancelMap.get(item)()
               }}
             >
-              <Icon name="X" size={18} />
+              <Icon name="X" size={24} className="text-on-inverse-surface" />
             </IconButton>
           </Content>
         </animated.div>
