@@ -8,7 +8,7 @@ const BottomAppBar = (props) => {
 
   return (
     <div className="relative flex h-20 items-center justify-between bg-primary px-4">
-      <div className="[&>i]:p-3 grow place-items-center grid grid-cols-[repeat(auto-fill,minmax(48px,1fr))]">
+      <div className="[&>i]:cursor-pointer [&>i]:p-3 grow place-items-center grid grid-cols-[repeat(auto-fill,minmax(48px,1fr))]">
         {icons}
       </div>
       {fab}
