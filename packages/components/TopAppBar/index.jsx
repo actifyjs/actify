@@ -3,7 +3,7 @@ import { Icon, Spacer } from 'actify'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'inline-flex w-full items-center justify-start bg-primary px-4 py-2',
+  base: 'inline-flex w-full items-center justify-start bg-surface px-4 py-2',
   variants: {
     size: {
       default: 'h-16 text-center gap-1.5', // Center-aligned top app bar
@@ -24,7 +24,7 @@ const TopAppBar = React.forwardRef((props, ref) => {
       <div className="inline-flex h-12 w-12 flex-col items-center justify-center gap-2.5">
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
-            <div className="relative h-6 w-6 text-on-primary">
+            <div className="relative h-6 w-6 text-on-surface">
               <Icon name="Menu" size={24} />
             </div>
           </div>
@@ -33,14 +33,14 @@ const TopAppBar = React.forwardRef((props, ref) => {
       {size == 'medium' || size == 'large ' ? (
         <Spacer />
       ) : (
-        <div className="shrink grow basis-0 text-[22px] font-normal leading-7 text-on-primary">
+        <div className="shrink grow basis-0 text-[22px] font-normal leading-7 text-on-surface">
           {title}
         </div>
       )}
       <div className="inline-flex h-12 w-12 flex-col items-center justify-center gap-2.5">
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
-            <div className="relative h-6 w-6 text-on-primary">
+            <div className="relative h-6 w-6 text-on-surface">
               <Icon name="User" size={24} />
             </div>
           </div>
@@ -49,7 +49,7 @@ const TopAppBar = React.forwardRef((props, ref) => {
 
       {size == 'medium' || size == 'large ' ? (
         <div className="w-full items-start justify-start gap-2.5 self-stretch px-4">
-          <div className="text-zinc-900 text-[24px] font-normal leading-loose">
+          <div className="text-on-surface text-[24px] font-normal leading-loose">
             {title}
           </div>
         </div>
