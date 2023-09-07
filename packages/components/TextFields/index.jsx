@@ -21,7 +21,22 @@ const variants = tv({
   },
   defaultVariants: {
     color: 'primary',
-    variant: 'outlined'
+    variant: 'filled'
+  }
+})
+
+const inputVariants = tv({
+  base: 'rounded-[inherit] w-full peer px-4 bg-transparent',
+  variants: {
+    variant: {
+      filled: 'focus:outline-none',
+      outlined:
+        'border focus:border-2 border-outline outline-none focus:text-[inherit] focus:border-current transition-all placeholder:text-transparent focus:placeholder:text-on-surface'
+    }
+  },
+  defaultVariants: {
+    color: 'primary',
+    variant: 'filled'
   }
 })
 
@@ -48,7 +63,7 @@ const TextField = React.forwardRef((props, ref) => {
         ref={ref}
         {...rest}
         type={rest.type || 'text'}
-        className="rounded-[inherit] w-full peer px-4 bg-transparent border-2 border-outline outline-none focus:text-[inherit] focus:border-current focus:text-on-surface transition-all placeholder:text-transparent focus:placeholder:text-on-surface"
+        className={inputVariants({ color, variant })}
       />
       <div className={labelVariants()} data-label={label}>
         {label}
