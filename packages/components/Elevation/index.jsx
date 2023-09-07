@@ -17,7 +17,11 @@ const variants = tv({
 })
 
 const Elevation = (props) => {
-  return <span className={variants({ level: props.level })}></span>
+  return (
+    <span
+      className={variants({ level: props.level, className: props.className })}
+    ></span>
+  )
 }
 
 Elevation.propTypes = {

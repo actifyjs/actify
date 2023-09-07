@@ -4,8 +4,8 @@ title: Cards
 
 # Cards
 
-## Cards display content and actions about a single subject
+> Cards display content and actions about a single subject
 
-# Usage
+## Usage
 
 <usage name="card"></usage>
