@@ -36,8 +36,6 @@ const Fab = React.forwardRef((props, ref) => {
 
   let styles = { ...style }
   styles['color'] = setColor(color)
-  styles['backgroundColor'] =
-    'var(--md-sys-color-surface-container-high, #ece6f0)'
 
   return (
     <button
