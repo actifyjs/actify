@@ -3,13 +3,17 @@ import { Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: "peer relative appearance-none w-[18px] h-[18px] rounded-sm border-2 border-blue-gray-200 cursor-pointer transition-all before:content[''] before:block before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity",
+  base: "peer relative appearance-none w-[18px] h-[18px] rounded-sm border-2 border-outline cursor-pointer transition-all before:content[''] before:block before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity",
   variants: {
     color: {
-      primary: 'before:bg-primary checked:bg-primary checked:border-primary checked:before:bg-primary',
-      secondary: 'before:bg-secondary checked:bg-secondary checked:border-secondary checked:before:bg-secondary',
-      tertiary: 'before:bg-tertiary checked:bg-tertiary checked:border-tertiary checked:before:bg-tertiary',
-      error: 'before:bg-error checked:bg-error checked:border-error checked:before:bg-error'
+      primary:
+        'before:bg-primary checked:bg-primary checked:border-primary checked:before:bg-primary',
+      secondary:
+        'before:bg-secondary checked:bg-secondary checked:border-secondary checked:before:bg-secondary',
+      tertiary:
+        'before:bg-tertiary checked:bg-tertiary checked:border-tertiary checked:before:bg-tertiary',
+      error:
+        'before:bg-error checked:bg-error checked:border-error checked:before:bg-error'
     }
   },
   defaultVariants: {
@@ -23,7 +27,10 @@ const Checkbox = React.forwardRef((props, ref) => {
   const [checked, setChecked] = React.useState(checkedProp ?? false)
 
   return (
-    <label htmlFor={checkboxId} className="relative overflow-hidden flex items-center cursor-pointer p-3 rounded-full">
+    <label
+      htmlFor={checkboxId}
+      className="relative overflow-hidden flex items-center cursor-pointer p-3 rounded-full"
+    >
       <input
         ref={ref}
         {...rest}

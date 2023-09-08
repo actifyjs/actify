@@ -4,7 +4,7 @@ import { Icon, Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'relative inline-flex items-center gap-2 px-4 h-8 rounded-lg text-sm border no-underline hover:bg-black/10 dark:hover:bg-white/10',
+  base: 'relative inline-flex items-center gap-2 px-4 h-8 rounded-lg text-sm border border-outline no-underline hover:bg-black/10 dark:hover:bg-white/10',
   variants: {
     type: {
       assist: '',
@@ -18,7 +18,17 @@ const variants = tv({
 const Chip = React.forwardRef((props, ref) => {
   const [show, setShow] = React.useState(true)
   const [selected, setSelected] = React.useState(false)
-  const { ripple, label, type, color, icon, style, className, children, ...rest } = props
+  const {
+    ripple,
+    label,
+    type,
+    color,
+    icon,
+    style,
+    className,
+    children,
+    ...rest
+  } = props
 
   const handleClick = () => {
     rest.onClick && rest.onClick()
@@ -31,8 +41,20 @@ const Chip = React.forwardRef((props, ref) => {
 
   return (
     show && (
-      <Tag ref={ref} {...rest} style={style} className={variants({ type, className })} onClick={handleClick}>
-        {type == 'filter' && <Icon name={`${selected ? 'Check' : 'Circle'}`} size={18} color={color} />}
+      <Tag
+        ref={ref}
+        {...rest}
+        style={style}
+        className={variants({ type, className })}
+        onClick={handleClick}
+      >
+        {type == 'filter' && (
+          <Icon
+            name={`${selected ? 'Check' : 'Circle'}`}
+            size={18}
+            color={color}
+          />
+        )}
         {label}
         {ripple && <Ripple />}
         {type == 'input' && (
