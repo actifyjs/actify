@@ -4,33 +4,43 @@ export default () => {
   return (
     <div className="flex gap-2 not-prose">
       <Card>
-        <img src="https://picsum.photos/480/240?1" atl="" />
-        <div className="block flex-grow flex-shrink p-5">
-          <div className="font-medium text-gray-700 mb-3">default card</div>
-          <div className="text-gray-500">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
+        <img
+          atl=""
+          className="w-full object-fit"
+          src="https://picsum.photos/480/240?1"
+        />
+        <div className="block flex-grow flex-shrink p-5 text-on-surface">
+          <div className="font-medium mb-3">default card</div>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
       </Card>
       <Card type="filled">
-        <img src="https://picsum.photos/480/240?2" atl="" />
-        <div className="block flex-grow flex-shrink p-5">
-          <div className="font-medium text-gray-700 mb-3">filled card</div>
-          <div className="text-gray-500">
+        <img
+          atl=""
+          className="w-full object-fit"
+          src="https://picsum.photos/480/240?2"
+        />
+        <div className="block flex-grow flex-shrink p-5 text-surface">
+          <div className="font-medium mb-3">filled card</div>
+          <p>
             Tempore rem numquam qui quae placeat, enim ut temporibus inventore
             architecto eaque.
-          </div>
+          </p>
         </div>
       </Card>
       <Card type="outlined">
-        <img src="https://picsum.photos/480/240?3" atl="" />
-        <div className="block flex-grow flex-shrink p-5">
-          <div className="font-medium text-gray-700 mb-3">outlined card</div>
-          <div className="text-gray-500">
+        <img
+          atl=""
+          className="w-full object-fit"
+          src="https://picsum.photos/480/240?3"
+        />
+        <div className="block flex-grow flex-shrink p-5 text-on-surface">
+          <div className="font-medium mb-3">outlined card</div>
+          <p>
             At fugit expedita quibusdam veniam rerum omnis itaque optio aliquam
             quo saepe laborum, autem quia sint atque? Placeat molestias
             dignissimos illo quos.
-          </div>
+          </p>
         </div>
       </Card>
     </div>
