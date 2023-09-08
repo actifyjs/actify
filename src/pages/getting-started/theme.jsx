@@ -1,6 +1,7 @@
 import { Button } from 'actify'
 import All from '../examples/all'
 import { useEffect, useState } from 'react'
+import ThemePreview from '@/src/components/ThemePreview'
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
@@ -127,40 +128,8 @@ export default () => {
 
   return (
     <article className="prose text-sm sm:text-base md:text-lg mb-4 max-w-full dark:prose-invert prose-pre:p-0 [&_pre]:!mb-0">
-      <h1>Theme</h1>
-      <blockquote>
-        The theme is a set of color variables that can be used in the
-        application.
-      </blockquote>
-      <h2>Color palette</h2>
-      <div className="grid grid-cols-2 gap-4 rounded-lg border border-outline/20 bg-tertiary-container bg-opacity-30 p-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-        {colorVaribles.map((item, index) => (
-          <div
-            key={index}
-            className={`grid h-10 place-content-center rounded-lg bg-${item.slice(
-              8
-            )} ${
-              /^on-/.test(item.slice(8))
-                ? 'text-' + item.slice(11)
-                : 'text-on-' + item.slice(8)
-            }`}
-          >
-            {item.slice(8)}
-          </div>
-        ))}
-        <div className="grid h-10 place-content-center rounded-lg bg-black text-white">
-          black
-        </div>
-        <div className="grid h-10 place-content-center rounded-lg bg-white text-black">
-          white
-        </div>
-        <div className="grid h-10 place-content-center rounded-lg text-outline">
-          transparent
-        </div>
-        <div className="grid h-10 place-content-center rounded-lg text-on-tertiary-container">
-          current
-        </div>
-      </div>
+      <h2>Color scheme</h2>
+      <ThemePreview />
       <h2>Try dynamic color</h2>
       <div className="flex items-center gap-4">
         <div className="mt-2 space-y-4">
