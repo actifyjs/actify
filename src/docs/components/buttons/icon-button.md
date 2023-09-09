@@ -4,8 +4,8 @@ title: Icon buttons
 
 # Icon buttons
 
-## Icon buttons help people take minor actions with one tap
+> Icon buttons help people take minor actions with one tap
 
-# Usage
+## Usage
 
 <usage name="icon-button"></usage>

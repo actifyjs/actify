@@ -4,7 +4,7 @@ import { useApp } from './AppContext'
 import { useLocation } from 'react-router-dom'
 
 const variants = tv({
-  base: 'container mx-auto min-h-[calc(100vh-120px)] p-4 lg:pr-64 pl-[var(--left)]',
+  base: 'container mx-auto min-h-[calc(100vh-120px)] p-4 pl-[var(--left)]',
   variants: {
     index: {
       true: '!pr-4'

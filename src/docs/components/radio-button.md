@@ -4,8 +4,8 @@ title: Radio button
 
 # Radio button
 
-## Radio buttons let people select one option from a set of options
+> Radio buttons let people select one option from a set of options
 
-# Usage
+## Usage
 
 <usage name="radio-button"></usage>

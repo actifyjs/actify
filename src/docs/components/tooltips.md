@@ -4,8 +4,8 @@ title: Tooltips
 
 # Tooltips
 
-## Tooltips display brief labels or messages
+> Tooltips display brief labels or messages
 
-# Usage
+## Usage
 
 <usage name="tooltip"></usage>

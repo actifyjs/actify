@@ -4,8 +4,8 @@ title: Dialogs
 
 # Dialogs
 
-## Dialogs provide important prompts in a user flow
+> Dialogs provide important prompts in a user flow
 
-# Usage
+## Usage
 
 <usage name="dialog"></usage>

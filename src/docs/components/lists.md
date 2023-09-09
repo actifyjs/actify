@@ -4,8 +4,8 @@ title: Lists
 
 # Lists
 
-## Lists are continuous, vertical indexes of text and images
+> Lists are continuous, vertical indexes of text and images
 
-# Usage
+## Usage
 
 <usage name="list"></usage>

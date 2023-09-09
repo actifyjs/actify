@@ -4,8 +4,8 @@ title: Switch
 
 # Switch
 
-## Switches toggle the state of an item on or off
+> Switches toggle the state of an item on or off
 
-# Usage
+## Usage
 
 <usage name="switch"></usage>

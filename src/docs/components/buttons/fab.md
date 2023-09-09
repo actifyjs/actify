@@ -4,8 +4,8 @@ title: Floating action buttons
 
 # Floating action buttons
 
-## Floating action buttons (FABs) help people take primary actions
+> Floating action buttons (FABs) help people take primary actions
 
-# Usage
+## Usage
 
 <usage name="fab"></usage>

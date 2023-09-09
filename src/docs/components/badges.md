@@ -4,8 +4,8 @@ title: Badge
 
 # Badge
 
-## Badges show notifications, counts, or status information on navigation items and icons
+> Badges show notifications, counts, or status information on navigation items and icons
 
-# Usage
+## Usage
 
 <usage name="badges"></usage>

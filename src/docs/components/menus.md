@@ -4,8 +4,8 @@ title: Menus
 
 # Menus
 
-## Menus display a list of choices on a temporary surface
+> Menus display a list of choices on a temporary surface
 
-# Usage
+## Usage
 
 <usage name="menu"></usage>

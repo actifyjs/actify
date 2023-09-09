@@ -4,8 +4,8 @@ title: Divider
 
 # Divider
 
-## Dividers are thin lines that group content in lists or other containers
+> Dividers are thin lines that group content in lists or other containers
 
-# Usage
+## Usage
 
 <usage name="divider"></usage>
