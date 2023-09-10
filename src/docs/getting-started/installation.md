@@ -2,15 +2,15 @@
 title: Installation
 ---
 
-#### Prerequisites:
+## Prerequisites:
 
 > Need a React and Tailwind CSS project
 
-#### To get started with Actify, simply paste the following code into you terminal:
+## Install
 
 <tabs language="shell" value="npm" tabs='[{"label":"npm","icon":"Terminal","content":"npm install actify"},{"label":"yarn","icon":"TerminalSquare","content":"yarn add actify"}]'></tabs>
 
-### tailwind.config.js
+## tailwind.config.js
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -40,7 +40,7 @@ module.exports = {
 }
 ```
 
-#### In your pages or components, you can import and use it, for example:
+## Example
 
 ```jsx
 import { Button } from 'actify'
