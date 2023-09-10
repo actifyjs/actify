@@ -9,7 +9,7 @@ import EditOnGitHub from '@/src/components/EditOnGitHub'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 
-const Markdown = memo(({ markdown }) => {
+const Markdown = memo(({ pathname, markdown }) => {
   return (
     <article>
       <ReactMarkdown
@@ -40,7 +40,7 @@ const Markdown = memo(({ markdown }) => {
           usage: ({ node, children, ...rest }) => <Usage {...rest} />
         }}
       />
-      {markdown && <EditOnGitHub />}
+      {markdown && <EditOnGitHub pathname={pathname} />}
     </article>
   )
 })

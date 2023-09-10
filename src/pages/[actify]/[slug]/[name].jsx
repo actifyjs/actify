@@ -31,7 +31,7 @@ export default () => {
 
   return (
     <div className="lg:pr-64">
-      <Markdown markdown={markdown} />
+      <Markdown pathname={pathname} markdown={markdown} />
       <TableOfContents hash={hash} markdown={markdown} />
     </div>
   )
