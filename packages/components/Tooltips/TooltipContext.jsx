@@ -15,7 +15,12 @@ import {
 
 const TooltipContext = React.createContext()
 
-function useTooltip({ initialOpen = false, placement = 'top', open: controlledOpen, onOpenChange: setControlledOpen }) {
+function useTooltip({
+  initialOpen = false,
+  placement = 'top',
+  open: controlledOpen,
+  onOpenChange: setControlledOpen
+}) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
 
   const open = controlledOpen ?? uncontrolledOpen
@@ -27,13 +32,13 @@ function useTooltip({ initialOpen = false, placement = 'top', open: controlledOp
     onOpenChange: setOpen,
     whileElementsMounted: autoUpdate,
     middleware: [
-      offset(15),
+      offset(5),
       flip({
         crossAxis: placement.includes('-'),
         fallbackAxisSideDirection: 'start',
-        padding: 15
+        padding: 5
       }),
-      shift({ padding: 15 })
+      shift({ padding: 5 })
     ]
   })
 
@@ -74,5 +79,9 @@ export function TooltipProvider({ children, ...options }) {
   // This can accept any props as options, e.g. `placement`,
   // or other positioning options.
   const tooltip = useTooltip(options)
-  return <TooltipContext.Provider value={tooltip}>{children}</TooltipContext.Provider>
+  return (
+    <TooltipContext.Provider value={tooltip}>
+      {children}
+    </TooltipContext.Provider>
+  )
 }
