@@ -13,8 +13,9 @@ const variants = tv({
       error: 'bg-error text-on-error hover:bg-error/90'
     },
     variant: {
-      outlined: 'border',
-      tonal: 'bg-primary/50 hover:bg-primary/70'
+      outlined: 'border border-outline',
+      tonal:
+        'bg-secondary-container text-on-surface hover:bg-secondary-container/60'
     },
     loading: {
       true: 'animate-spin'
@@ -23,22 +24,22 @@ const variants = tv({
   compoundVariants: [
     {
       variant: ['outlined', 'text'],
-      className: 'bg-transparent text-primary hover:bg-primary/10 px-3'
+      className: 'bg-transparent text-primary hover:bg-primary/10'
     },
     {
       color: 'secondary',
       variant: ['outlined', 'text'],
-      className: 'bg-transparent text-secondary hover:bg-secondary/10 px-3'
+      className: 'bg-transparent text-secondary hover:bg-secondary/10'
     },
     {
       color: 'tertiary',
       variant: ['outlined', 'text'],
-      className: 'bg-transparent text-tertiary hover:bg-tertiary/10 px-3'
+      className: 'bg-transparent text-tertiary hover:bg-tertiary/10'
     },
     {
       color: 'error',
       variant: ['outlined', 'text'],
-      className: 'bg-transparent text-error hover:bg-error/10 px-3'
+      className: 'bg-transparent text-error hover:bg-error/10'
     }
   ],
   defaultVariants: {
@@ -48,7 +49,16 @@ const variants = tv({
 })
 
 const Button = React.forwardRef((props, ref) => {
-  const { ripple, variant, loading, color, style, className, children, ...rest } = props
+  const {
+    ripple,
+    variant,
+    loading,
+    color,
+    style,
+    className,
+    children,
+    ...rest
+  } = props
 
   const Tag = rest.href ? 'a' : 'button'
 
@@ -64,7 +74,11 @@ const Button = React.forwardRef((props, ref) => {
         className
       })}
     >
-      {loading ? <CircularProgress className="w-8 h-8" color="white" indeterminate /> : children}
+      {loading ? (
+        <CircularProgress className="w-8 h-8" color="white" indeterminate />
+      ) : (
+        children
+      )}
       {ripple && <Ripple />}
       {variant === 'elevated' && <Elevation level={3} />}
     </Tag>
