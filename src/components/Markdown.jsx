@@ -10,10 +10,6 @@ import EditOnGitHub from '@/src/components/EditOnGitHub'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 
-const upcaseFirstLetter = (str) => {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
-
 const Markdown = memo(({ pathname, markdown }) => {
   return (
     <article>
