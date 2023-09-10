@@ -12,7 +12,7 @@ title: Carousel
 
 ## Props
 
-| Props     | Type      | Descript                                                    | Default |
+| Props     | Type      | Description                                                 | Default |
 | --------- | --------- | ----------------------------------------------------------- | ------- |
 | autoPlay  | `boolean` | Sets the autoplay mode for carousel                         | `false` |
 | control   | `boolean` | Show prev and next button for carousel                      | `false` |
