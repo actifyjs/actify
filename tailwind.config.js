@@ -1,6 +1,12 @@
 const colors = require('tailwindcss/colors')
 const { withMaterialColors } = require('tailwind-material-colors')
 
+delete colors['lightBlue']
+delete colors['warmGray']
+delete colors['trueGray']
+delete colors['coolGray']
+delete colors['blueGray']
+
 module.exports = withMaterialColors(
   {
     darkMode: 'class',
