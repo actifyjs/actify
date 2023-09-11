@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Icon, Button, IconButton } from 'actify'
+import { Icon, Button } from 'actify'
 import Logo from '@/src/components/Logo'
 
 export default () => {
