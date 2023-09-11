@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Icon, Button } from 'actify'
+import { Icon, Button, IconButton } from 'actify'
 import Logo from '@/src/components/Logo'
+import FilledField from '@/packages/components/Field/FilledField'
 
 export default () => {
   return (
@@ -34,6 +35,18 @@ export default () => {
           GitHub
         </Button>
       </div>
+      <span className="inline-flex">
+        <FilledField label="Label">
+          <FilledField.Slot name="leadingIcon">
+            <Icon name="User" />
+          </FilledField.Slot>
+          <FilledField.Slot name="trailingIcon">
+            <IconButton color="bg-current">
+              <Icon name="Lock" />
+            </IconButton>
+          </FilledField.Slot>
+        </FilledField>
+      </span>
     </div>
   )
 }
