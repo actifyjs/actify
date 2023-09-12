@@ -4,17 +4,33 @@ import FilledTextField from './FilledTextField'
 import OutlinedTextField from './OutlinedTextField'
 
 const TextField = React.forwardRef((props, ref) => {
-  const { variant, ...rest } = props
+  const { variant, prefixText, suffixText, ...rest } = props
   return (
     <>
-      {variant === 'filled' && <FilledTextField ref={ref} {...rest} />}
-      {variant === 'outlined' && <OutlinedTextField ref={ref} {...rest} />}
+      {variant === 'filled' && (
+        <FilledTextField
+          ref={ref}
+          {...rest}
+          prefixText={prefixText}
+          suffixText={suffixText}
+        />
+      )}
+      {variant === 'outlined' && (
+        <OutlinedTextField
+          ref={ref}
+          {...rest}
+          prefixText={prefixText}
+          suffixText={suffixText}
+        />
+      )}
     </>
   )
 })
 
 TextField.propTypes = {
   color: PropTypes.string,
+  prefixText: PropTypes.string,
+  suffixText: PropTypes.string,
   variant: PropTypes.oneOf(['filled', 'outlined'])
 }
 

@@ -3,60 +3,177 @@ import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'inline-flex rounded-md relative h-14 bg-surface',
+  base: 'cursor-text group',
   variants: {
     color: {
-      primary: 'text-primary',
-      secondary: 'text-secondary',
-      tertiary: 'text-tertiary',
-      error: 'text-error'
-    },
-    disabled: {
-      true: 'opacity-50 pointer-events-none'
-    },
-    variant: {
-      filled: '',
-      outlined: ''
+      primary: 'text-primary [--color:rgb(var(--color-primary))]',
+      secondary: 'text-secondary [--color:rgb(var(--color-secondary))]',
+      tertiary: 'text-tertiary [--color:rgb(var(--color-tertiary))]',
+      error: 'text-error [--color:rgb(var(--color-error))]'
     }
   },
-  defaultVariants: {
-    color: 'primary',
-    variant: 'filled'
-  }
-})
-
-const inputVariants = tv({
-  base: 'rounded-[inherit] w-full peer px-4 bg-transparent border focus:border-2 border-outline outline-none focus:text-[inherit] focus:border-current transition-all placeholder:text-transparent focus:placeholder:text-on-surface',
   defaultVariants: {
     color: 'primary'
   }
 })
 
-const labelVariants = tv({
-  base: 'absolute transition-all leading-none px-2 left-2 top-1/2 -translate-y-1/2 peer-valid:top-0 peer-focus:top-0 before:content-[attr(data-label)] before:z-50 before:absolute after:absolute after:inset-0 after:bg-surface after:top-1/2'
-})
-
 const OutlinedTextField = React.forwardRef((props, ref) => {
-  const { style, color, label, disabled, className, children, ...rest } = props
+  const inputRef = React.useRef()
+  const { color, prefixText, label, suffixText, className, children, ...rest } =
+    props
+  const [focused, setFocused] = React.useState(false)
+
+  const [populated, setPopulated] = React.useState(false)
+
+  const childrenArray = React.Children.toArray(children)
+
+  const leadingIcon = childrenArray.find(
+    (child) => child?.props?.name == 'leadingIcon'
+  )
+  const trailingIcon = childrenArray.find(
+    (child) => child?.props?.name == 'trailingIcon'
+  )
+
+  const handleClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }
+
+  const handleInput = (e) => {
+    if (e.target?.value?.length > 0) {
+      setPopulated(true)
+    } else {
+      setPopulated(false)
+    }
+  }
 
   return (
-    <label className={variants({ color, disabled, className })}>
-      <input
-        required
-        ref={ref}
-        {...rest}
-        type={rest.type || 'text'}
-        className={inputVariants({ color })}
-      />
-      <div className={labelVariants()} data-label={label}>
-        {label}
+    <div
+      ref={ref}
+      {...rest}
+      onClick={handleClick}
+      className={variants({ color, className })}
+    >
+      <div className="[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full">
+        {/* container-overflow */}
+        <div className="relative flex h-full rounded">
+          {/* container */}
+          <div className="relative flex flex-1 items-center rounded-[inherit] min-h-full max-h-full min-w-fit">
+            {/* start */}
+            {leadingIcon && (
+              <div className="[margin-inline-end:4px] min-w-[48px] flex h-full relative items-center justify-center">
+                {leadingIcon.props?.children}
+              </div>
+            )}
+            {/* middle */}
+            <div className="relative flex flex-1 h-full items-stretch self-baseline">
+              {/* label-wrapper */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  marginInlineStart: leadingIcon ? '' : '16px',
+                  marginInlineEnd: trailingIcon ? '' : '16px'
+                }}
+              >
+                <span
+                  className={`${
+                    focused || populated ? 'opacity-0' : 'opacity-100'
+                  } absolute z-[1] overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full top-4 text-base text-on-surface`}
+                >
+                  {label}
+                </span>
+              </div>
+              {/* input-wrapper */}
+              <div
+                className={`flex flex-1 w-full ${
+                  focused || populated ? 'opacity-100' : 'opacity-0'
+                } transition-opacity duration-[83ms] [transition-timing-function:cubic-bezier(0.2,0,0,1)]`}
+              >
+                <div
+                  className={`flex w-full py-4${leadingIcon ? '' : ' pl-4'}${
+                    trailingIcon ? '' : ' pr-4'
+                  }`}
+                >
+                  {prefixText && <span>{prefixText}</span>}
+                  <input
+                    ref={inputRef}
+                    aria-label={label}
+                    aria-invalid={false}
+                    onInput={handleInput}
+                    type={rest.type || 'text'}
+                    aria-describedby="description"
+                    onFocus={() => setFocused(true)}
+                    onBlur={() => setFocused(false)}
+                    className="inline-flex w-full outline-0 bg-transparent text-base text-on-surface"
+                  />
+                  {suffixText && <span>{suffixText}</span>}
+                </div>
+              </div>
+            </div>
+            {/* end */}
+            {trailingIcon && (
+              <div className="[margin-inline-start:4px] min-w-[48px] flex h-full relative items-center justify-center">
+                {trailingIcon.props?.children}
+              </div>
+            )}
+          </div>
+          {/* outline */}
+          <div className="pointer-events-none absolute flex w-full h-full rounded-[inherit]">
+            {/* outline-start */}
+            <div
+              className={`relative rounded-[inherit] [padding-inline-start:16px] before:[margin-inline-end:4px] before:border-r-0 before:absolute before:inset-0 before:rounded-l-[inherit] before:border ${
+                focused
+                  ? 'before:border-current after:border-current after:opacity-100'
+                  : 'before:border-outline after:border-outline after:opacity-0'
+              } after:absolute after:inset-0 after:rounded-l-[inherit] after:border-r-0 after:border-[3px]`}
+            ></div>
+            {/* outline-notch */}
+            <div className="relative flex items-start border-[inherit] px-1 [margin-inline-start:-4px] [margin-inline-end:4px] max-w-[calc(100%-32px)]">
+              {/* outline-panel-inactive */}
+              <div
+                className={`${
+                  focused ? 'opacity-0' : 'opacity-100'
+                } absolute inset-0 before:absolute before:inset-0 before:right-1/2 before:origin-top-left before:border-t before:border-t-outline after:absolute after:inset-0 after:origin-top-right after:left-1/2 after:border-t after:border-t-outline`}
+              ></div>
+              {/* outline-panel-active */}
+              <div
+                className={`${
+                  focused
+                    ? 'opacity-100 before:border-b-[3px] before:border-current after:border-b-[3px] after:border-current'
+                    : 'before:border-b before:border-b-outline after:border-b after:border-b-outline'
+                } absolute inset-0 before:absolute before:inset-0 before:right-1/2 before:origin-top-left after:absolute after:inset-0 after:origin-top-right after:left-1/2`}
+              ></div>
+              {/* outline-label */}
+              <div className="flex max-w-full translate-y-[calc(-100%+8px)]">
+                <span
+                  className={`text-xs ${focused ? 'opacity-100' : 'opacity-0'}`}
+                >
+                  {label}
+                </span>
+              </div>
+            </div>
+            {/* outline-end */}
+            <div
+              className={`relative rounded-[inherit] flex-grow [margin-inline-start:-4px] before:border-l-0 before:absolute before:inset-0 before:rounded-r-[inherit] before:border ${
+                focused
+                  ? 'before:border-current after:border-current after:opacity-100'
+                  : 'before:border-outline after:border-outline after:opacity-0'
+              } after:absolute after:inset-0 after:rounded-r-[inherit] after:border-l-0 after:border-[3px]`}
+            ></div>
+          </div>
+        </div>
       </div>
-    </label>
+    </div>
   )
 })
 
+OutlinedTextField.Slot = () => <></>
+
 OutlinedTextField.propTypes = {
-  color: PropTypes.string
+  prefixText: PropTypes.string,
+  suffixText: PropTypes.string,
+  color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'error'])
 }
 
 OutlinedTextField.displayName = 'Actify.OutlinedTextField'

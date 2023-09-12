@@ -1,6 +1,13 @@
 import icons from '@/src/icons.json'
 import { useEffect, useState, useTransition } from 'react'
-import { Icon, Tooltip, TooltipActivator, TooltipContent, TextField, LinearProgress } from 'actify'
+import {
+  Icon,
+  Tooltip,
+  TooltipActivator,
+  TooltipContent,
+  TextField,
+  LinearProgress
+} from 'actify'
 
 export default (props) => {
   const [isPending, startTransition] = useTransition()
@@ -11,7 +18,7 @@ export default (props) => {
     setFilterIcons(icons)
   }, [])
 
-  const handleInput = (e) => {
+  const handleChange = (e) => {
     const { value } = e.target
     const reg = new RegExp(value, 'i')
     startTransition(() => {
@@ -34,9 +41,8 @@ export default (props) => {
   return (
     <>
       <TextField
-        variant="outlined"
-        className="my-2 w-full"
-        onInput={handleInput}
+        className="w-full mb-2"
+        onChange={handleChange}
         label={`Search ${filterIcons.length} icons`}
       />
       <LinearProgress indeterminate={isPending} value={0} />

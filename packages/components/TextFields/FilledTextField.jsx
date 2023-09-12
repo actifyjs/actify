@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'cursor-text w-full group',
+  base: 'cursor-text group',
   variants: {
     color: {
       primary: 'text-primary',
@@ -19,20 +19,13 @@ const variants = tv({
 
 const FilledTextField = React.forwardRef((props, ref) => {
   const inputRef = React.useRef()
-  const { color, label, className, children } = props
+  const { color, prefixText, label, suffixText, className, children, ...rest } =
+    props
   const [focused, setFocused] = React.useState(false)
 
   const [populated, setPopulated] = React.useState(false)
 
   const childrenArray = React.Children.toArray(children)
-
-  const prefixText = childrenArray.find(
-    (child) => child?.props?.name == 'prefixText'
-  )
-
-  const suffixText = childrenArray.find(
-    (child) => child?.props?.name == 'suffixText'
-  )
 
   const leadingIcon = childrenArray.find(
     (child) => child?.props?.name == 'leadingIcon'
@@ -58,7 +51,7 @@ const FilledTextField = React.forwardRef((props, ref) => {
   return (
     <div
       ref={ref}
-      {...props}
+      {...rest}
       onClick={handleClick}
       className={variants({ color, className })}
     >
@@ -89,17 +82,10 @@ const FilledTextField = React.forwardRef((props, ref) => {
               >
                 <span
                   className={`${
-                    focused || populated ? 'opacity-0' : ''
-                  } absolute z-[1] overflow-hidden text-ellipsis whitespace-nowrap w-min top-4 text-on-surface`}
-                >
-                  {label}
-                </span>
-                <span
-                  className={`${
                     focused || populated
-                      ? 'opacity-100 text-current'
-                      : 'opacity-0'
-                  } absolute z-[1] overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full top-2 text-xs origin-top-left`}
+                      ? 'top-2 text-xs text-current'
+                      : 'top-4 text-base text-on-surface'
+                  } absolute z-[1] overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full origin-top-left transition-all`}
                 >
                   {label}
                 </span>
@@ -108,36 +94,49 @@ const FilledTextField = React.forwardRef((props, ref) => {
               <div
                 className={`flex flex-1 w-full ${
                   focused || populated ? 'opacity-100' : 'opacity-0'
-                } transition-opacity duration-[83ms]`}
+                } transition-opacity duration-[83ms] [transition-timing-function:cubic-bezier(0.2,0,0,1)]`}
               >
                 <div
                   className={`flex w-full pt-6 pb-2${
                     leadingIcon ? '' : ' pl-4'
                   }${trailingIcon ? '' : ' pr-4'}`}
                 >
-                  {prefixText && <span>{prefixText.props?.children}</span>}
+                  {prefixText && (
+                    <span className="text-base text-on-surface">
+                      {prefixText}
+                    </span>
+                  )}
                   <input
-                    type="text"
                     ref={inputRef}
+                    autoComplete="on"
                     aria-label={label}
                     aria-invalid={false}
                     onInput={handleInput}
+                    type={rest.type || 'text'}
                     aria-describedby="description"
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
-                    className="inline-flex w-full outline-0 bg-transparent text-on-surface"
+                    className="inline-flex w-full outline-0 bg-transparent text-base text-on-surface"
                   />
-                  {suffixText && <span>{suffixText.props?.children}</span>}
+                  {suffixText && (
+                    <span className="text-base text-on-surface">
+                      {suffixText}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
             {/* end */}
-            <div className="flex">{trailingIcon?.props?.children}</div>
+            {trailingIcon && (
+              <div className="[margin-inline-start:4px] min-w-[48px] flex h-full relative items-center justify-center">
+                {trailingIcon.props?.children}
+              </div>
+            )}
           </div>
           {/* active-indicator */}
           <div
-            className={`absolute inset-[auto_0px_0px] pointer-events-none w-full before:absolute before:w-full before:inset-[auto_0px_0px] before:border-b before:border-outline after:absolute after:w-full after:inset-[auto_0px_0px] after:border-b after:border-current  after:transition-all [transition-timing-function:cubic-bezier(0.2,0, 0,1)] ${
-              focused ? 'after:border-[3px]' : ''
+            className={`absolute inset-[auto_0px_0px] pointer-events-none w-full before:absolute before:w-full before:inset-[auto_0px_0px] before:border-b before:border-outline after:absolute after:w-full after:inset-[auto_0px_0px] after:border-current after:border-b-[3px] after:transition-opacity after:[transition-timing-function:cubic-bezier(0.2,0,0,1)] ${
+              focused ? 'after:opacity-100' : 'after:opacity-0'
             }`}
           ></div>
         </div>
@@ -149,6 +148,8 @@ const FilledTextField = React.forwardRef((props, ref) => {
 FilledTextField.Slot = () => <></>
 
 FilledTextField.propTypes = {
+  prefixText: PropTypes.string,
+  suffixText: PropTypes.string,
   color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'error'])
 }
 

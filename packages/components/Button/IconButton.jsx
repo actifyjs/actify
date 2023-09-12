@@ -18,7 +18,17 @@ const variants = tv({
 })
 
 const IconButton = React.forwardRef((props, ref) => {
-  const { tag, ripple, style, size, variant, color, className, children, ...rest } = props
+  const {
+    tag,
+    ripple,
+    style,
+    size,
+    variant,
+    color,
+    className,
+    children,
+    ...rest
+  } = props
   const colorVariant = setColor(color)
 
   let Tag = ''
@@ -31,7 +41,12 @@ const IconButton = React.forwardRef((props, ref) => {
   }
 
   return (
-    <Tag ref={ref} {...rest} style={{ color: colorVariant, ...style }} className={variants({ className })}>
+    <Tag
+      ref={ref}
+      {...rest}
+      style={{ color: colorVariant, ...style }}
+      className={variants({ className })}
+    >
       {children}
       {ripple && <Ripple />}
     </Tag>
@@ -47,7 +62,7 @@ IconButton.propTypes = {
 IconButton.defaultProps = {
   ripple: true,
   size: '40',
-  color: 'primary',
+  color: 'current',
   variant: 'standard'
 }
 
