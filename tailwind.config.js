@@ -12,7 +12,7 @@ module.exports = withMaterialColors(
     darkMode: 'class',
     content: [
       './packages/**/*.{js,ts,jsx,tsx}',
-      './src/**/*.{html,js,ts,jsx,tsx}'
+      './src/**/*.{html,md,js,ts,jsx,tsx}'
     ],
     plugins: [require('@tailwindcss/typography')],
     theme: {
