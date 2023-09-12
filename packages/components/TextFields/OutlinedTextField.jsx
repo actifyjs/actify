@@ -126,14 +126,14 @@ const OutlinedTextField = React.forwardRef((props, ref) => {
                 focused
                   ? 'before:border-current after:border-current after:opacity-100'
                   : 'before:border-outline after:border-outline after:opacity-0'
-              } after:absolute after:inset-0 after:rounded-l-[inherit] after:border-r-0 after:border-[3px]`}
+              } after:absolute after:inset-0 after:[margin-inline-end:4px] after:rounded-l-[inherit] after:border-r-0 after:border-[3px]`}
             ></div>
             {/* outline-notch */}
             <div className="relative flex items-start border-[inherit] px-1 [margin-inline-start:-4px] [margin-inline-end:4px] max-w-[calc(100%-32px)]">
               {/* outline-panel-inactive */}
               <div
                 className={`${
-                  focused ? 'opacity-0' : 'opacity-100'
+                  focused || populated ? 'opacity-0' : 'opacity-100'
                 } absolute inset-0 before:absolute before:inset-0 before:right-1/2 before:origin-top-left before:border-t before:border-t-outline after:absolute after:inset-0 after:origin-top-right after:left-1/2 after:border-t after:border-t-outline`}
               ></div>
               {/* outline-panel-active */}
@@ -147,7 +147,9 @@ const OutlinedTextField = React.forwardRef((props, ref) => {
               {/* outline-label */}
               <div className="flex max-w-full translate-y-[calc(-100%+8px)]">
                 <span
-                  className={`text-xs ${focused ? 'opacity-100' : 'opacity-0'}`}
+                  className={`text-xs ${
+                    focused || populated ? 'opacity-100' : 'opacity-0'
+                  }`}
                 >
                   {label}
                 </span>
