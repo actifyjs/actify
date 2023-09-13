@@ -129,7 +129,7 @@ const FilledTextField = React.forwardRef((props, ref) => {
                     aria-describedby="description"
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
-                    className="inline-flex w-full outline-0 bg-transparent text-base text-on-surface"
+                    className="inline-flex w-full outline-0 bg-transparent text-base text-on-surface focus:outline-none [-webkit-tap-highlight-color:rgba(0,0,0,0)]"
                   />
                   {suffixText && (
                     <span className="text-base text-on-surface">
