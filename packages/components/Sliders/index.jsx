@@ -90,7 +90,9 @@ const Slider = React.forwardRef((props, ref) => {
                 </div>
               )}
               {/* ring */}
-              <div className="rings opacity-0 absolute rounded-full z-[-1] inset-0 bg-outline/30"></div>
+              {!disabled && (
+                <div className="rings opacity-0 absolute rounded-full z-[-1] inset-0 bg-outline/30"></div>
+              )}
             </div>
           </div>
         </div>
