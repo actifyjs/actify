@@ -10,6 +10,9 @@ const variants = tv({
       secondary: 'text-secondary [--color:rgb(var(--color-secondary))]',
       tertiary: 'text-tertiary [--color:rgb(var(--color-tertiary))]',
       error: 'text-error [--color:rgb(var(--color-error))]'
+    },
+    disabled: {
+      true: 'text-outline opacity-[.38] cursor-default'
     }
   },
   defaultVariants: {
@@ -18,9 +21,19 @@ const variants = tv({
 })
 
 const OutlinedTextField = React.forwardRef((props, ref) => {
-  const inputRef = React.useRef()
-  const { color, prefixText, label, suffixText, className, children, ...rest } =
-    props
+  const inputRef = ref || React.useRef()
+  const {
+    color,
+    disabled,
+    required,
+    prefixText,
+    label,
+    suffixText,
+    className,
+    children,
+    ...rest
+  } = props
+
   const [focused, setFocused] = React.useState(false)
 
   const [populated, setPopulated] = React.useState(false)
@@ -50,10 +63,8 @@ const OutlinedTextField = React.forwardRef((props, ref) => {
 
   return (
     <div
-      ref={ref}
-      {...rest}
       onClick={handleClick}
-      className={variants({ color, className })}
+      className={variants({ color, disabled, className })}
     >
       <div className="[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full">
         {/* container-overflow */}
@@ -82,6 +93,7 @@ const OutlinedTextField = React.forwardRef((props, ref) => {
                   } absolute z-[1] overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full top-4 text-base text-on-surface`}
                 >
                   {label}
+                  {required && '*'}
                 </span>
               </div>
               {/* input-wrapper */}
@@ -97,8 +109,10 @@ const OutlinedTextField = React.forwardRef((props, ref) => {
                 >
                   {prefixText && <span>{prefixText}</span>}
                   <input
+                    {...rest}
                     ref={inputRef}
                     aria-label={label}
+                    disabled={disabled}
                     aria-invalid={false}
                     onInput={handleInput}
                     type={rest.type || 'text'}
@@ -152,6 +166,7 @@ const OutlinedTextField = React.forwardRef((props, ref) => {
                   }`}
                 >
                   {label}
+                  {required && '*'}
                 </span>
               </div>
             </div>

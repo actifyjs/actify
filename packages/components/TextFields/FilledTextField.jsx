@@ -10,6 +10,9 @@ const variants = tv({
       secondary: 'text-secondary',
       tertiary: 'text-tertiary',
       error: 'text-error'
+    },
+    disabled: {
+      true: 'text-outline opacity-[.38] cursor-default'
     }
   },
   defaultVariants: {
@@ -18,9 +21,19 @@ const variants = tv({
 })
 
 const FilledTextField = React.forwardRef((props, ref) => {
-  const inputRef = React.useRef()
-  const { color, prefixText, label, suffixText, className, children, ...rest } =
-    props
+  const inputRef = ref || React.useRef()
+  const {
+    color,
+    disabled,
+    required,
+    prefixText,
+    label,
+    suffixText,
+    className,
+    children,
+    ...rest
+  } = props
+
   const [focused, setFocused] = React.useState(false)
 
   const [populated, setPopulated] = React.useState(false)
@@ -50,10 +63,8 @@ const FilledTextField = React.forwardRef((props, ref) => {
 
   return (
     <div
-      ref={ref}
-      {...rest}
       onClick={handleClick}
-      className={variants({ color, className })}
+      className={variants({ color, disabled, className })}
     >
       <div className="[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full">
         {/* container-overflow */}
@@ -88,6 +99,7 @@ const FilledTextField = React.forwardRef((props, ref) => {
                   } absolute z-[1] overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full origin-top-left transition-all`}
                 >
                   {label}
+                  {required && '*'}
                 </span>
               </div>
               {/* input-wrapper */}
@@ -107,9 +119,10 @@ const FilledTextField = React.forwardRef((props, ref) => {
                     </span>
                   )}
                   <input
+                    {...rest}
                     ref={inputRef}
-                    autoComplete="on"
                     aria-label={label}
+                    disabled={disabled}
                     aria-invalid={false}
                     onInput={handleInput}
                     type={rest.type || 'text'}
