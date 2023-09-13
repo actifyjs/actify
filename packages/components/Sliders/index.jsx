@@ -1,21 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { Elevation } from 'actify'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'relative text-primary w-full min-w-[200px] my-5 pointer-events-none'
-})
-
-const trackVariant = tv({
-  base: 'absolute rounded-full -mt-3 bg-primary',
+  base: 'relative flex flex-1 items-center [block-size:40px] pointer-events-none touch-none',
   variants: {
-    size: {
-      sm: 'h-3 w-3',
-      md: 'h-5 w-5',
-      lg: 'h-7 w-7'
+    color: {
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      tertiary: 'text-tertiary',
+      error: 'text-error'
+    },
+    disabled: {
+      true: 'text-outline opacity-[.38]'
     }
   },
   defaultVariants: {
-    size: 'md'
+    color: 'primary'
   }
 })
 
@@ -27,26 +29,39 @@ const Slider = React.forwardRef((props, ref) => {
     size,
     color,
     labeled,
+    disabled,
     children,
     className,
-    defaultValue,
+    value,
     ...rest
   } = props
-  const [value, setValue] = React.useState(defaultValue * 100 || 0)
+
+  const [_value, set_Value] = React.useState(value || 0)
 
   const percent = React.useMemo(() => {
     const _min = min || 0
     const _max = max || 100
-    return (value / _max - _min) * 100
-  }, [value])
+    return _value / _max - _min
+  }, [_value])
 
   const handleChange = (e) => {
-    setValue(e.target.value)
-    rest.onChange && rest.onChange(e)
+    if (rest.onChange) {
+      rest.onChange(e)
+    }
+    set_Value(e.target.value)
   }
 
   return (
-    <div className={variants({ className })}>
+    <div
+      style={{
+        '--size': '40px',
+        '--start-fraction': 0,
+        '--end-fraction': percent,
+        '--tick-count': 100,
+        '--with-tick-marks-container-size': '2px'
+      }}
+      className={variants({ color, disabled, className })}
+    >
       <input
         {...rest}
         ref={ref}
@@ -54,35 +69,39 @@ const Slider = React.forwardRef((props, ref) => {
         min={min || 0}
         max={max || 100}
         step={step || 1}
+        disabled={disabled}
         onChange={handleChange}
-        className="peer pointer-events-auto w-full h-full absolute opacity-0"
+        className="peer opacity-0 [-webkit-tap-highlight-color:rgba(0,0,0,0)] absolute w-full h-full m-0 bg-transparent cursor-pointer pointer-events-auto appearance-none"
       />
-      <div className="h-1 rounded-full overflow-hidden bg-surface"></div>
-
-      {/* active track */}
-      <i
-        style={{ width: `calc(${percent}% - 10px)` }}
-        className="rounded-l-full absolute left-0 top-0 h-1 bg-current"
-      />
-      {/* handle circle */}
-      <div
-        style={{ left: `calc(${percent}% - 10px)` }}
-        className={trackVariant({ size })}
-      >
-        {labeled && (
-          <span className="h-full text-xs grid place-content-center select-none">
-            {value}
-          </span>
-        )}
+      {/* track */}
+      <div className="absolute inset-0 flex items-center before:absolute before:[block-size:4px] before:rounded-full before:bg-outline before:[inset-inline-start:18px] before:[inset-inline-end:18px] before:[background-size:calc(1%-0.04px)_100%] after:absolute after:[block-size:4px] after:rounded-full after:[clip-path:inset(0_calc(var(--with-tick-marks-container-size)*min((1-var(--end-fraction))*1000000000,1)+(100%-var(--with-tick-marks-container-size)*2)*(1-var(--end-fraction)))_0_calc(var(--with-tick-marks-container-size)*min(var(--start-fraction)*1000000000,1)+(100%-var(--with-tick-marks-container-size)*2)*var(--start-fraction)))] after:bg-current after:[inset-inline-start:18px] after:[inset-inline-end:18px] after:[background-size:calc(1%-0.04px)_100%]"></div>
+      {/* handle */}
+      <div className="peer-focus-within:[&_.label]:[transform:scale(1)] peer-hover:[&_.rings]:opacity-100 relative [block-size:100%] [inline-size:100%] [padding-inline:20px]">
+        <div className="relative [block-size:100%] [inline-size:100%]">
+          <div className="absolute [inset-block:0] [inset-inline-start:calc(100%*var(--start-fraction))] [inline-size:calc(100%*(var(--end-fraction)-var(--start-fraction)))]">
+            <div className="absolute [block-size:var(--size)] [inline-size:var(--size)] rounded-full flex place-content-center place-items-center z-[1] [inset-inline-end:calc(0px-var(--size)/2)]">
+              <div className="absolute w-5 h-5 rounded-full bg-current">
+                <Elevation level={1} />
+              </div>
+              {/* label */}
+              {labeled && (
+                <div className="label absolute flex p-1 place-content-center place-items-center rounded-full text-xs [inset-block-end:100%] [min-inline-size:28px] [min-block-size:28px] bg-current transition-transform duration-100 [transition-timing-function:cubic-bezier(0.2,0,0,1)] origin-[center_bottom] [transform:scale(0)] before:absolute before:block before:bg-[inherit] before:[inline-size:14px] before:[block-size:14px] before:bottom-[calc(28px/-10)] before:rotate-45 after:absolute after:block after:inset-0 after:rounded-[inherit] after:bg-[inherit]">
+                  <span className="z-[1] text-surface">{_value}</span>
+                </div>
+              )}
+              {/* ring */}
+              <div className="rings opacity-0 absolute rounded-full z-[-1] inset-0 bg-outline/30"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      {/* focused ring circle */}
-      <i
-        style={{ left: `calc(${percent}% - 20px)`, marginTop: '-22px' }}
-        className="select-none absolute block h-10 w-10 rounded-full peer-focus:bg-black/25 dark:peer-focus:bg-white/25"
-      />
     </div>
   )
 })
+
+Slider.propTypes = {
+  color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'error'])
+}
 
 Slider.displayName = 'Actify.Slider'
 

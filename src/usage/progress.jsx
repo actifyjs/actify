@@ -23,7 +23,7 @@ export default () => {
           />
           <span>indeterminate</span>
         </label>
-        <label className="flex items-center gap-2">
+        <label className="flex flex-1 items-center gap-2">
           <Slider
             labeled
             value={value}
