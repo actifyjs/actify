@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
-import { Ripple, Elevation, CircularProgress } from 'actify'
+import { Ripple, Elevation } from 'actify'
 
 const variants = tv({
-  base: 'relative inline-flex gap-2 items-center justify-center select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none h-10 text-sm px-6 rounded-full',
+  base: 'relative inline-flex gap-2 items-center justify-center select-none h-10 text-sm px-6 rounded-full',
   variants: {
     color: {
       primary: 'bg-primary text-on-primary hover:bg-primary/90',
@@ -12,13 +12,13 @@ const variants = tv({
       tertiary: 'bg-tertiary text-on-tertiary hover:bg-tertiary/90',
       error: 'bg-error text-on-error hover:bg-error/90'
     },
+    disabled: {
+      true: 'bg-inverse-surface opacity-[.12] pointer-events-none'
+    },
     variant: {
       outlined: 'border border-outline',
       tonal:
         'bg-secondary-container text-on-surface hover:bg-secondary-container/60'
-    },
-    loading: {
-      true: 'animate-spin'
     }
   },
   compoundVariants: [
@@ -52,9 +52,9 @@ const Button = React.forwardRef((props, ref) => {
   const {
     ripple,
     variant,
-    loading,
     color,
     style,
+    disabled,
     className,
     children,
     ...rest
@@ -67,18 +67,16 @@ const Button = React.forwardRef((props, ref) => {
       {...rest}
       ref={ref}
       style={style}
+      disabled={disabled}
       type={rest.type || 'button'}
       className={variants({
         color,
+        disabled,
         variant,
         className
       })}
     >
-      {loading ? (
-        <CircularProgress className="w-8 h-8" color="white" indeterminate />
-      ) : (
-        children
-      )}
+      {children}
       {ripple && <Ripple />}
       {variant === 'elevated' && <Elevation level={3} />}
     </Tag>
