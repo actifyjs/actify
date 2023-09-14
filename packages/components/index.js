@@ -12,12 +12,7 @@ import IconButton from './Button/IconButton'
 import SegmentedButton from './Button/SegmentedButton'
 import Checkbox from './Checkbox'
 import Chip from './Chips'
-import Dialog from './Dialogs'
-import DialogClose from './Dialogs/DialogClose'
-import DialogHeading from './Dialogs/DialogHeading'
-import DialogContent from './Dialogs/DialogContent'
-import DialogActivator from './Dialogs/DialogActivator'
-import DialogDescription from './Dialogs/DialogDescription'
+import { Dialog } from './Dialogs'
 import Divider from './Divider'
 import Elevation from './Elevation'
 import Icon from './Icon'
@@ -35,16 +30,10 @@ import Select from './Select'
 import SelectOption from './Select/SelectOption'
 import Slider from './Sliders'
 import Switch from './Switch'
-import Tabs from './Tabs'
-import Tab from './Tabs/Tab'
-import TabsBody from './Tabs/TabsBody'
-import TabPanel from './Tabs/TabPanel'
-import TabsHeader from './Tabs/TabsHeader'
+import { Tabs } from './Tabs'
 import TextField from './TextFields'
 import Spacer from './Spacer'
-import Tooltip from './Tooltips'
-import TooltipContent from './Tooltips/TooltipContent'
-import TooltipActivator from './Tooltips/TooltipActivator'
+import { Tooltip } from './Tooltips'
 
 export {
   TopAppBar,
@@ -62,11 +51,6 @@ export {
   Checkbox,
   Chip,
   Dialog,
-  DialogActivator,
-  DialogContent,
-  DialogDescription,
-  DialogHeading,
-  DialogClose,
   Divider,
   Elevation,
   Icon,
@@ -85,13 +69,7 @@ export {
   Slider,
   Switch,
   Tabs,
-  Tab,
-  TabsBody,
-  TabPanel,
-  TabsHeader,
   TextField,
   Spacer,
-  Tooltip,
-  TooltipActivator,
-  TooltipContent
+  Tooltip
 }

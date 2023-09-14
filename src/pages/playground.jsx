@@ -11,11 +11,6 @@ import {
   Checkbox,
   Chip,
   Dialog,
-  DialogActivator,
-  DialogContent,
-  DialogDescription,
-  DialogHeading,
-  DialogClose,
   Divider,
   Elevation,
   Icon,
@@ -32,15 +27,9 @@ import {
   Slider,
   Switch,
   Tabs,
-  Tab,
-  TabsBody,
-  TabPanel,
-  TabsHeader,
   TextField,
   Spacer,
-  Tooltip,
-  TooltipActivator,
-  TooltipContent
+  Tooltip
 } from 'actify'
 import { useEffect, useRef, useState } from 'react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
@@ -58,11 +47,6 @@ const scope = {
   Checkbox,
   Chip,
   Dialog,
-  DialogActivator,
-  DialogContent,
-  DialogDescription,
-  DialogHeading,
-  DialogClose,
   Divider,
   Elevation,
   Icon,
@@ -79,25 +63,19 @@ const scope = {
   Slider,
   Switch,
   Tabs,
-  Tab,
-  TabsBody,
-  TabPanel,
-  TabsHeader,
   TextField,
   Spacer,
-  Tooltip,
-  TooltipActivator,
-  TooltipContent
+  Tooltip
 }
 
 const code = `() => {
   const [tips, setTips] = React.useState('Hello Actify');
   return (
     <Tooltip>
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Show Tooltip</Button>
-      </TooltipActivator>
-      <TooltipContent>{tips}</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>{tips}</Tooltip.Content>
     </Tooltip>
   )
 }`

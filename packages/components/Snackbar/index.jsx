@@ -55,6 +55,7 @@ const Snackbar = (props) => {
             />
             <p className="pl-4">{item.msg}</p>
             <IconButton
+              tag="span"
               className="h-12 cursor-pointer pointer-events-auto flex justify-center"
               onClick={(e) => {
                 e.stopPropagation()

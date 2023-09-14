@@ -6,7 +6,7 @@ const variants = tv({
   base: ''
 })
 
-const TabPanel = React.forwardRef((props, ref) => {
+const TabsPanel = React.forwardRef((props, ref) => {
   const { active } = useTabs()
   const { value, className, children, ...rest } = props
 
@@ -23,4 +23,4 @@ const TabPanel = React.forwardRef((props, ref) => {
   )
 })
 
-export default TabPanel
+export default TabsPanel

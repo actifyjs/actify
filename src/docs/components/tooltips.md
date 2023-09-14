@@ -14,75 +14,75 @@ title: Tooltips
 
 <code-preview code='<div className="grid grid-cols-3 gap-2 place-items-center">
     <Tooltip placement="top">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Top</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="top-start">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Top Start</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="top-end">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Top End</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="right">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Right</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="right-start">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Right Start</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="right-end">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Right End</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="bottom">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Bottom</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="bottom-start">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Bottom Start</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="bottom-end">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Bottom End</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="left">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Left</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="left-start">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Left Start</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip>
     <Tooltip placement="left-end">
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Left End</Button>
-      </TooltipActivator>
-      <TooltipContent>Actify Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Actify Tooltip</Tooltip.Content>
     </Tooltip></div>' 
 />

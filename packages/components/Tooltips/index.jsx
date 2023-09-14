@@ -1,7 +1,9 @@
 import React from 'react'
+import TooltipContent from './TooltipContent'
+import TooltipActivator from './TooltipActivator'
 import { TooltipProvider } from './TooltipContext'
 
-const Tooltip = React.forwardRef((props, ref) => {
+const TooltipRoot = React.forwardRef((props, ref) => {
   const { children, ...rest } = props
   return (
     <TooltipProvider ref={ref} {...rest}>
@@ -10,4 +12,7 @@ const Tooltip = React.forwardRef((props, ref) => {
   )
 })
 
-export default Tooltip
+export const Tooltip = Object.assign(TooltipRoot, {
+  Content: TooltipContent,
+  Activator: TooltipActivator
+})

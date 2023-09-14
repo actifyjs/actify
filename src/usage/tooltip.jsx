@@ -1,12 +1,12 @@
-import { Button, Tooltip, TooltipActivator, TooltipContent } from 'actify'
+import { Button, Tooltip } from 'actify'
 
 export default () => {
   return (
     <Tooltip>
-      <TooltipActivator>
+      <Tooltip.Activator>
         <Button>Show Tooltip</Button>
-      </TooltipActivator>
-      <TooltipContent>Hello Tooltip</TooltipContent>
+      </Tooltip.Activator>
+      <Tooltip.Content>Hello Tooltip</Tooltip.Content>
     </Tooltip>
   )
 }

@@ -1,13 +1,6 @@
 import icons from '@/src/icons.json'
 import { useEffect, useState, useTransition } from 'react'
-import {
-  Icon,
-  Tooltip,
-  TooltipActivator,
-  TooltipContent,
-  TextField,
-  LinearProgress
-} from 'actify'
+import { Icon, Tooltip, TextField, LinearProgress } from 'actify'
 
 export default (props) => {
   const [isPending, startTransition] = useTransition()
@@ -49,7 +42,7 @@ export default (props) => {
       <div className="mt-2 gap-2 grid grid-cols-[repeat(auto-fill,minmax(52px,1fr))]">
         {filterIcons.map((item) => (
           <Tooltip key={item}>
-            <TooltipActivator>
+            <Tooltip.Activator>
               <Icon
                 size={36}
                 name={item}
@@ -57,8 +50,8 @@ export default (props) => {
                 onClick={() => cliptoboard(item)}
                 className="flex items-center justify-center cursor-pointer p-2 bg-black/10 dark:bg-white/10 rounded-md"
               />
-            </TooltipActivator>
-            <TooltipContent>{item}</TooltipContent>
+            </Tooltip.Activator>
+            <Tooltip.Content>{item}</Tooltip.Content>
           </Tooltip>
         ))}
       </div>

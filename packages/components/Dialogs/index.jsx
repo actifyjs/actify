@@ -1,7 +1,12 @@
 import React from 'react'
+import DialogClose from './DialogClose'
+import DialogHeading from './DialogHeading'
+import DialogContent from './DialogContent'
+import DialogActivator from './DialogActivator'
+import DialogDescription from './DialogDescription'
 import { DialogProvider } from './DialogContext'
 
-const Dialog = React.forwardRef((props, ref) => {
+const DialogRoot = React.forwardRef((props, ref) => {
   const { children, ...rest } = props
   return (
     <DialogProvider ref={ref} {...rest}>
@@ -9,4 +14,11 @@ const Dialog = React.forwardRef((props, ref) => {
     </DialogProvider>
   )
 })
-export default Dialog
+
+export const Dialog = Object.assign(DialogRoot, {
+  Close: DialogClose,
+  Heading: DialogHeading,
+  Content: DialogContent,
+  Activator: DialogActivator,
+  Description: DialogDescription
+})

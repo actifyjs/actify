@@ -13,11 +13,6 @@ import {
   Checkbox,
   Chip,
   Dialog,
-  DialogActivator,
-  DialogContent,
-  DialogDescription,
-  DialogHeading,
-  DialogClose,
   Divider,
   Elevation,
   Icon,
@@ -34,15 +29,9 @@ import {
   Slider,
   Switch,
   Tabs,
-  Tab,
-  TabsBody,
-  TabPanel,
-  TabsHeader,
   TextField,
   Spacer,
-  Tooltip,
-  TooltipActivator,
-  TooltipContent
+  Tooltip
 } from 'actify'
 
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
@@ -61,11 +50,6 @@ const scope = {
   Checkbox,
   Chip,
   Dialog,
-  DialogActivator,
-  DialogContent,
-  DialogDescription,
-  DialogHeading,
-  DialogClose,
   Divider,
   Elevation,
   Icon,
@@ -82,15 +66,9 @@ const scope = {
   Slider,
   Switch,
   Tabs,
-  Tab,
-  TabsBody,
-  TabPanel,
-  TabsHeader,
   TextField,
   Spacer,
-  Tooltip,
-  TooltipActivator,
-  TooltipContent
+  Tooltip
 }
 
 const CodePreview = (props) => {
@@ -100,27 +78,27 @@ const CodePreview = (props) => {
     <LiveProvider code={code} scope={scope}>
       <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
         <div className="flex border-b border-[#ccc] dark:border-[#222]">
-          <TabsHeader className="bg-transparent">
-            <Tab value="preview" className="min-w-[120px]">
+          <Tabs.Header className="bg-transparent">
+            <Tabs.Tab value="preview" className="min-w-[120px]">
               <Icon name="Eye" size={18} />
               Preview
-            </Tab>
-            <Tab value="code" className="min-w-[120px]">
+            </Tabs.Tab>
+            <Tabs.Tab value="code" className="min-w-[120px]">
               <Icon name="Code2" size={18} />
               Code
-            </Tab>
-          </TabsHeader>
+            </Tabs.Tab>
+          </Tabs.Header>
         </div>
-        <TabsBody className="p-2">
-          <TabPanel value="preview">
+        <Tabs.Body className="p-2">
+          <Tabs.Panel value="preview">
             <LivePreview className="flex gap-2" />
-          </TabPanel>
-          <TabPanel value="code">
+          </Tabs.Panel>
+          <Tabs.Panel value="code">
             <SyntaxHighlighter language="jsx">
               <LiveEditor />
             </SyntaxHighlighter>
-          </TabPanel>
-        </TabsBody>
+          </Tabs.Panel>
+        </Tabs.Body>
       </Tabs>
     </LiveProvider>
   )

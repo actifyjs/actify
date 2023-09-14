@@ -1,15 +1,4 @@
-import {
-  Icon,
-  Button,
-  Spacer,
-  Dialog,
-  IconButton,
-  DialogClose,
-  DialogContent,
-  DialogHeading,
-  DialogActivator,
-  DialogDescription
-} from 'actify'
+import { Icon, Button, Spacer, Dialog, IconButton } from 'actify'
 
 import { useState } from 'react'
 
@@ -19,20 +8,20 @@ export default () => {
   return (
     <div className="flex items-center gap-2">
       <Dialog>
-        <DialogActivator>
+        <Dialog.Activator>
           <Button>Open dialog with activator</Button>
-        </DialogActivator>
-        <DialogContent>
-          <DialogHeading>
+        </Dialog.Activator>
+        <Dialog.Content>
+          <Dialog.Heading>
             <p>This dialog opened by activator</p>
             <Spacer />
-            <DialogClose>
+            <Dialog.Close>
               <IconButton color="secondary">
                 <Icon name="X" />
               </IconButton>
-            </DialogClose>
-          </DialogHeading>
-          <DialogDescription>
+            </Dialog.Close>
+          </Dialog.Heading>
+          <Dialog.Description>
             <p>
               Amet sunt fugiat irure Lorem commodo nulla officia cupidatat ipsum
               duis quis minim Lorem incididunt. Non laboris mollit laborum
@@ -40,46 +29,46 @@ export default () => {
               excepteur. Sint id est id deserunt magna aliquip consectetur
               adipisicing pariatur dolor mollit velit ea deserunt.
             </p>
-          </DialogDescription>
+          </Dialog.Description>
           <div className="flex items-center gap-2">
             <Spacer />
-            <DialogClose>
+            <Dialog.Close>
               <Button color="error">Cancel</Button>
-            </DialogClose>
+            </Dialog.Close>
             <Button>Confirm</Button>
           </div>
-        </DialogContent>
+        </Dialog.Content>
       </Dialog>
 
       <Button onClick={() => setOpen(true)} color="tertiary">
         Open dialog without activator
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
-          <DialogHeading>
+        <Dialog.Content>
+          <Dialog.Heading>
             <p>This dialog opened by out anchor</p>
             <Spacer />
-            <DialogClose>
+            <Dialog.Close>
               <IconButton color="secondary">
                 <Icon name="X" />
               </IconButton>
-            </DialogClose>
-          </DialogHeading>
-          <DialogDescription>
+            </Dialog.Close>
+          </Dialog.Heading>
+          <Dialog.Description>
             <p>
               Ea ipsum mollit Lorem enim. Sunt consectetur veniam adipisicing
               reprehenderit est laborum anim ea fugiat. Commodo labore nostrud
               ut tempor dolor nulla veniam est ad adipisicing nisi exercitation.
             </p>
-          </DialogDescription>
+          </Dialog.Description>
           <div className="flex items-center gap-2">
             <Spacer />
             <Button color="error">Cancel</Button>
-            <DialogClose>
+            <Dialog.Close>
               <Button>Confirm</Button>
-            </DialogClose>
+            </Dialog.Close>
           </div>
-        </DialogContent>
+        </Dialog.Content>
       </Dialog>
     </div>
   )

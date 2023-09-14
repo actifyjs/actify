@@ -1,6 +1,6 @@
-import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
+import { Icon, Tabs } from 'actify'
 import { lazy, Suspense, useState, useEffect } from 'react'
-import { Icon, Tabs, TabsHeader, TabsBody, Tab, TabPanel } from 'actify'
+import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 
 const Usage = (props) => {
   const [rawString, setRawString] = useState('')
@@ -19,27 +19,27 @@ const Usage = (props) => {
     <Suspense>
       <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
         <div className="flex border-b border-[#ccc] dark:border-[#222]">
-          <TabsHeader className="bg-transparent">
-            <Tab value="preview" className="min-w-[120px]">
+          <Tabs.Header className="bg-transparent">
+            <Tabs.Tab value="preview" className="min-w-[120px]">
               <Icon name="Eye" size={18} />
               Preview
-            </Tab>
-            <Tab value="code" className="min-w-[120px]">
+            </Tabs.Tab>
+            <Tabs.Tab value="code" className="min-w-[120px]">
               <Icon name="Code2" size={18} />
               Code
-            </Tab>
-          </TabsHeader>
+            </Tabs.Tab>
+          </Tabs.Header>
         </div>
-        <TabsBody className="p-2">
-          <TabPanel value="preview">
+        <Tabs.Body className="p-2">
+          <Tabs.Panel value="preview">
             <LazyComponent name={name} {...rest} />
-          </TabPanel>
-          <TabPanel value="code">
+          </Tabs.Panel>
+          <Tabs.Panel value="code">
             {!hidecode && (
               <SyntaxHighlighter language="jsx">{rawString}</SyntaxHighlighter>
             )}
-          </TabPanel>
-        </TabsBody>
+          </Tabs.Panel>
+        </Tabs.Body>
       </Tabs>
     </Suspense>
   )

@@ -1,42 +1,39 @@
-import {
-  Tab,
-  Icon,
-  TabsBody,
-  TabPanel,
-  TabsHeader,
-  Tabs as ActifyTabs
-} from 'actify'
+import { Icon, Tabs } from 'actify'
 
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 
-const Tabs = (props) => {
+const ActifyTabs = (props) => {
   const { value, language, tabs } = props
 
   const _tabs = JSON.parse(tabs)
 
   return (
-    <ActifyTabs value={value} className="not-prose rounded-lg bg-secondary/10">
+    <Tabs value={value} className="not-prose rounded-lg bg-secondary/10">
       <div className="flex border-b border-[#ccc] dark:border-[#222]">
-        <TabsHeader className="bg-transparent">
+        <Tabs.Header className="bg-transparent">
           {_tabs.map((tab) => (
-            <Tab key={tab.label} value={tab.label} className="min-w-[120px]">
+            <Tabs.Tab
+              key={tab.label}
+              value={tab.label}
+              className="min-w-[120px]"
+            >
               <Icon name={tab.icon} size={18} />
               {tab.label}
-            </Tab>
+            </Tabs.Tab>
           ))}
-        </TabsHeader>
+        </Tabs.Header>
       </div>
-      <TabsBody className="p-2">
+      <Tabs.Body className="p-2">
         {_tabs.map((tab) => (
-          <TabPanel key={tab.label} value={tab.label}>
+          <Tabs.Panel key={tab.label} value={tab.label}>
             <SyntaxHighlighter language={language || 'jsx'}>
               {tab.content}
             </SyntaxHighlighter>
-          </TabPanel>
+          </Tabs.Panel>
         ))}
-      </TabsBody>
-    </ActifyTabs>
+      </Tabs.Body>
+    </Tabs>
   )
 }
 
-export default Tabs
+export default ActifyTabs

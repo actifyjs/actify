@@ -1,4 +1,4 @@
-import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from 'actify'
+import { Tabs } from 'actify'
 
 export default () => {
   const data = [
@@ -31,20 +31,20 @@ export default () => {
 
   return (
     <Tabs value="react">
-      <TabsHeader>
+      <Tabs.Header>
         {data.map(({ label, value }) => (
-          <Tab key={value} value={value}>
+          <Tabs.Tab key={value} value={value}>
             {label}
-          </Tab>
+          </Tabs.Tab>
         ))}
-      </TabsHeader>
-      <TabsBody>
+      </Tabs.Header>
+      <Tabs.Body>
         {data.map(({ value, content }) => (
-          <TabPanel key={value} value={value}>
+          <Tabs.Panel key={value} value={value}>
             {content}
-          </TabPanel>
+          </Tabs.Panel>
         ))}
-      </TabsBody>
+      </Tabs.Body>
     </Tabs>
   )
 }
