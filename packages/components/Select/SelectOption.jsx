@@ -21,7 +21,8 @@ const SelectOption = ({ children }) => {
         isActive ? 'bg-secondary' : ''
       } ${isSelected ? 'bg-secondary/25' : ''}`}
       {...getItemProps({
-        onClick: () => handleSelect(index)
+        onClick: () => handleSelect(index),
+        onKeyDown: ({ key }) => key === 'Enter' && handleSelect(index)
       })}
     >
       {children}

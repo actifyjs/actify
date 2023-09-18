@@ -13,6 +13,8 @@ import {
   FloatingFocusManager
 } from '@floating-ui/react'
 
+import { TextField } from 'actify'
+
 const SelectContext = React.createContext()
 
 const useSelect = () => {
@@ -118,14 +120,13 @@ export const SelectProvider = ({ children, ...options }) => {
 
   return (
     <>
-      <div
+      <TextField
         tabIndex={0}
         ref={refs.setReference}
         {...getReferenceProps()}
-        className="relative cursor-pointer h-10 flex items-center px-2 border rounded min-w-[200px]"
-      >
-        {selectedElement ? selectedElement.innerText : 'Select...'}
-      </div>
+        label={options.label}
+        value={selectedElement ? selectedElement.innerText : ''}
+      />
       <SelectContext.Provider value={selectContext}>
         {isOpen && (
           <FloatingFocusManager context={context} modal={false}>
@@ -133,7 +134,7 @@ export const SelectProvider = ({ children, ...options }) => {
               ref={refs.setFloating}
               style={floatingStyles}
               {...getFloatingProps()}
-              className="flex flex-col p-2 rounded shadow z-50 bg-surface"
+              className="flex flex-col mt-1 p-2 rounded shadow z-50 bg-surface"
             >
               <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
                 {children}
