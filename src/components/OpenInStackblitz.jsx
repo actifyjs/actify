@@ -29,7 +29,7 @@ export default ({ title, code }) => {
           <App />
         </StrictMode>
       )`,
-      'App.jsx': code,
+      'App.jsx': "import 'actify/style'\n" + code,
       'package.json': `{
         "name": "actify-${title}",
         "private": true,
@@ -136,7 +136,7 @@ export default ({ title, code }) => {
         }
       }
       `,
-      'posstcss.config.js': `module.exports = {
+      'postcss.config.js': `module.exports = {
           plugins: {
             tailwindcss: {},
             autoprefixer: {}
