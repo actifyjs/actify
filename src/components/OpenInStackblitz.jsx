@@ -74,7 +74,7 @@ module.exports = withMaterialColors(
   {
     darkMode: 'class',
     content: [
-      '.*.{html,js,jsx}',
+      '*.{html,js,jsx}',
       './node_modules/actify/lib/*.{js,mjs}'
     ],
     theme: {
@@ -93,7 +93,7 @@ module.exports = withMaterialColors(
 import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react()]
 })`
     },
     settings: JSON.stringify({
