@@ -48,6 +48,7 @@ export default ({ title, code }) => {
           "@vitejs/plugin-react": "^1.3.0",
           "autoprefixer": "^10.4.5",
           "postcss": "^8.4.13",
+          "tailwind-material-colors": "^1.1.2",
           "tailwindcss": "^3.3.3",
           "vite": "^4.4.9"
         }
@@ -142,28 +143,34 @@ export default ({ title, code }) => {
             autoprefixer: {}
           }
         }`,
-      'tailwind.config.js': `/** @type {import('tailwindcss').Config} */
-      module.exports = {
-        content: ['./**/*.{js,jsx}', './node_modules/actify/lib/*.{js,mjs}'],
-        theme: {
-          extend: {
-            colors: {
-              primary: 'rgb(var(--color-primary, 0 106 106) / <alpha-value>)',
-              'on-primary': 'rgb(var(--color-on-primary, 255 255 255) / <alpha-value>)',
-              secondary: 'rgb(var(--color-secondary, 74 99 99) / <alpha-value>)',
-              'on-secondary': 'rgb(var(--color-on-secondary, 255 255 255) / <alpha-value>)',
-              tertiary: 'rgb(var(--color-tertiary, 75 96 124) / <alpha-value>)',
-              'on-tertiary': 'rgb(var(--color-on-tertiary, 255 255 255) / <alpha-value>)',
-              error: 'rgb(var(--color-error, 186 26 26) / <alpha-value>)',
-              'on-error': 'rgb(var(--color-on-error, 255 255 255) / <alpha-value>)',
-              surface: 'rgb(var(--color-surface, 250 253 252) / <alpha-value>)',
-              'on-surface': 'rgb(var(--color-on-surface, 25 28 28) / <alpha-value>)',
-              outline: 'rgb(var(--color-outline, 111 121 121) / <alpha-value>)',
-            },
-          },
+      'tailwind.config.js': `const colors = require('tailwindcss/colors')
+      const { withMaterialColors } = require('tailwind-material-colors')
+      
+      delete colors['lightBlue']
+      delete colors['warmGray']
+      delete colors['trueGray']
+      delete colors['coolGray']
+      delete colors['blueGray']
+      
+      module.exports = withMaterialColors(
+        {
+          darkMode: 'class',
+          content: [
+            '.*.{html,js,jsx}',
+            './node_modules/actify/lib/*.{js,mjs}'
+          ],
+          theme: {
+            extend: {
+              colors: {
+                ...colors
+              }
+            }
+          }
         },
-        plugins: [],
-      }`,
+        {
+          primary: '#006a6a'
+        }
+      )`,
       'vite.config.js': `import { defineConfig } from 'vite'
       import react from '@vitejs/plugin-react'
       // https://vitejs.dev/config/
