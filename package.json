@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -25,7 +25,8 @@
     ".": {
       "import": "./lib/actify.mjs",
       "require": "./lib/actify.umd.js"
-    }
+    },
+    "./style": "./lib/style.css"
   },
   "scripts": {
     "dev": "vite --host",
