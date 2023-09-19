@@ -3,7 +3,7 @@ import { LinearProgress, CircularProgress, Switch, Slider } from 'actify'
 
 export default () => {
   const [indeterminate, setIndeterminate] = useState(true)
-  const [value, setValue] = useState(0.5)
+  const [value, setValue] = useState(50)
   return (
     <>
       <div className="flex items-center gap-4">

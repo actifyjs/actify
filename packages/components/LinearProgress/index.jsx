@@ -1,3 +1,4 @@
+import './index.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
@@ -21,7 +22,7 @@ const barVariants = tv({
 })
 
 const barInnerVariants = tv({
-  base: 'absolute inset-0 animate-[auto_ease_0s_1_normal_none_running_none] bg-[var(--color, #1976d2)]',
+  base: 'absolute inset-0 animate-[auto_ease_0s_1_normal_none_running_none] bg-[--color]',
   variants: {
     indeterminate: {
       primary:
@@ -57,10 +58,9 @@ const LinearProgress = React.forwardRef((props, ref) => {
         style={{
           blockSize: '100%',
           inlineSize: '100%',
-          insetInlineStart: indeterminate ? '-145.167%' : 0,
-          backgroundColor: 'var(--color)',
           transition: 'none 0s ease 0s',
           transformOrigin: 'left center',
+          insetInlineStart: indeterminate ? '-145.167%' : 0,
           transform: `scaleX(${indeterminate ? 1 : value})`
         }}
       >
@@ -75,7 +75,6 @@ const LinearProgress = React.forwardRef((props, ref) => {
           blockSize: '100%',
           inlineSize: '100%',
           transition: 'none 0s ease 0s',
-          backgroundColor: 'var(--color)',
           transformOrigin: 'left center',
           insetInlineStart: '-54.8889%'
         }}

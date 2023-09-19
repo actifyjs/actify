@@ -1,3 +1,4 @@
+import './index.css'
 import React from 'react'
 import useRipple from './useRipple'
 import { tv } from 'tailwind-variants'

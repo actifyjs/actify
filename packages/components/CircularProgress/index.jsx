@@ -1,3 +1,4 @@
+import './index.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
@@ -44,7 +45,11 @@ const CircularProgress = React.forwardRef((props, ref) => {
         </div>
       ) : (
         <svg viewBox="0 0 4800 4800" className="rotate-arc -rotate-90">
-          <circle className="stroke-transparent" pathLength="100" style={circleStyles} />
+          <circle
+            className="stroke-transparent"
+            pathLength="100"
+            style={circleStyles}
+          />
           <circle
             className="stroke-current"
             pathLength="100"
