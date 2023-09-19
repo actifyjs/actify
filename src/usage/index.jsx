@@ -1,5 +1,6 @@
-import { Icon, Tabs } from 'actify'
+import { Icon, Tabs, Spacer } from 'actify'
 import { lazy, Suspense, useState, useEffect } from 'react'
+import OpenOnStackblitz from '@/src/components/OpenOnStackblitz'
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 
 const Usage = (props) => {
@@ -18,8 +19,8 @@ const Usage = (props) => {
   return (
     <Suspense>
       <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
-        <div className="flex border-b border-[#ccc] dark:border-[#222]">
-          <Tabs.Header className="bg-transparent">
+        <div className="flex border-b border-[#ccc] dark:border-[#222] w-full">
+          <Tabs.Header className="bg-transparent w-full">
             <Tabs.Tab value="preview" className="min-w-[120px]">
               <Icon name="Eye" size={18} />
               Preview
@@ -28,6 +29,8 @@ const Usage = (props) => {
               <Icon name="Code2" size={18} />
               Code
             </Tabs.Tab>
+            <Spacer />
+            <OpenOnStackblitz title={name} code={rawString} />
           </Tabs.Header>
         </div>
         <Tabs.Body className="p-2">

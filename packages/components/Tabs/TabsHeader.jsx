@@ -9,7 +9,7 @@ const TabsHeader = React.forwardRef((props, ref) => {
   const { children, className, ...rest } = props
 
   return (
-    <nav>
+    <nav className="w-full">
       <ul
         ref={ref}
         {...rest}

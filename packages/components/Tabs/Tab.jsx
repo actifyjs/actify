@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
 
 const variants = tv({
-  base: 'relative isolate w-full h-10 gap-2 flex items-center justify-center text-base font-normal leading-relaxed select-none cursor-pointer'
+  base: 'relative isolate h-10 gap-2 flex items-center justify-center text-base font-normal leading-relaxed select-none cursor-pointer'
 })
 
 const Tab = React.forwardRef((props, ref) => {
