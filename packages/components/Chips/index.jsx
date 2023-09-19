@@ -30,8 +30,8 @@ const Chip = React.forwardRef((props, ref) => {
     ...rest
   } = props
 
-  const handleClick = () => {
-    rest.onClick && rest.onClick()
+  const handleClick = (e) => {
+    rest?.onClick(e)
     if (type == 'filter') {
       setSelected(!selected)
     }

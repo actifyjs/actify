@@ -21,12 +21,12 @@ export default () => {
         <TextField
           value={value}
           label="set badge"
-          onInput={(e) => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
         />
         <TextField
           value={color}
           label="set color"
-          onInput={(e) => setColor(e.target.value)}
+          onChange={(e) => setColor(e.target.value)}
         />
       </div>
     </>

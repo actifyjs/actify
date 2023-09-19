@@ -54,6 +54,7 @@ const OutlinedTextField = React.forwardRef((props, ref) => {
   }
 
   const handleInput = (e) => {
+    rest.onInput?.(e)
     if (e.target?.value?.length > 0) {
       setPopulated(true)
     } else {
