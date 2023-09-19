@@ -1,4 +1,3 @@
-import { forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
 import { useApp } from './AppContext'
 import { useLocation } from 'react-router-dom'
@@ -12,23 +11,17 @@ const variants = tv({
   }
 })
 
-const Main = forwardRef((props, ref) => {
+const Main = ({ children }) => {
   const { left } = useApp()
   const { pathname } = useLocation()
-  const { children, className, ...rest } = props
   const index = pathname == '/' ? true : false
   const paddingLeft = index ? '16px' : left + 'px'
 
   return (
-    <main
-      ref={ref}
-      {...rest}
-      style={{ '--left': paddingLeft }}
-      className={variants({ index, className })}
-    >
+    <main style={{ '--left': paddingLeft }} className={variants({ index })}>
       {children}
     </main>
   )
-})
+}
 
 export default Main

@@ -71,9 +71,7 @@ const scope = {
   Tooltip
 }
 
-const CodePreview = (props) => {
-  const { code, children } = props
-
+const CodePreview = ({ code }) => {
   return (
     <LiveProvider code={code} scope={scope}>
       <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">

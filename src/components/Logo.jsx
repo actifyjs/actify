@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 
-const Logo = (props) => {
+const Logo = ({ height }) => {
   return (
     <svg
-      {...props}
+      height={height}
       fill="rgb(var(--color-surface))"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 33.455 36.987"

@@ -1,6 +1,4 @@
-import { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
-import { twMerge } from 'tailwind-merge'
 import { useApp } from './AppContext'
 import { useLocation } from 'react-router-dom'
 import { Icon, Button, Spacer, IconButton } from 'actify'
@@ -9,10 +7,9 @@ import Dropdown from '@/src/components/Dropdown'
 import SwitchTheme from '@/src/components/SwitchTheme'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
-const Header = forwardRef((props, ref) => {
+const Header = () => {
   const { pathname } = useLocation()
   const { top, drawer, setDrawer } = useApp()
-  const { onClick, children, className, ...rest } = props
 
   const randomColor = () => {
     const letters = '0123456789ABCDEF'
@@ -22,6 +19,7 @@ const Header = forwardRef((props, ref) => {
     }
     return color
   }
+
   const handleUpdateTheme = () => {
     updateTheme(
       {
@@ -35,13 +33,8 @@ const Header = forwardRef((props, ref) => {
 
   return (
     <header
-      ref={ref}
-      {...rest}
       style={{ height: top }}
-      className={twMerge(
-        'sticky top-0 z-30 h-16 bg-surface/25 px-2 shadow backdrop-blur',
-        className
-      )}
+      className="sticky top-0 z-30 h-16 bg-surface/25 px-2 shadow backdrop-blur"
     >
       <div className="mx-auto flex h-full flex-wrap items-center justify-between">
         <Link to="/" className="flex items-center text-primary">
@@ -102,6 +95,6 @@ const Header = forwardRef((props, ref) => {
       </div>
     </header>
   )
-})
+}
 
 export default Header

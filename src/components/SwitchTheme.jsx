@@ -1,9 +1,7 @@
-import { twMerge } from 'tailwind-merge'
 import { Icon, IconButton } from 'actify'
-import { forwardRef, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const SwitchTheme = forwardRef((props, ref) => {
-  const { className, ...rest } = props
+const SwitchTheme = () => {
   const [mode, setMode] = useState('') // dark mode
 
   const initTheme = () => {
@@ -76,25 +74,10 @@ const SwitchTheme = forwardRef((props, ref) => {
   }
 
   return (
-    <div
-      ref={ref}
-      {...rest}
-      onClick={toggleTheme}
-      className={twMerge('cursor-pointer overflow-hidden', className)}
-    >
-      <div className="grid place-content-center">
-        {mode == 'dark' ? (
-          <IconButton>
-            <Icon name="Sun" color="primary" />
-          </IconButton>
-        ) : (
-          <IconButton>
-            <Icon name="MoonStar" color="primary" />
-          </IconButton>
-        )}
-      </div>
-    </div>
+    <IconButton onClick={toggleTheme}>
+      <Icon name={mode == 'dark' ? 'Sun' : 'MoonStar'} color="primary" />
+    </IconButton>
   )
-})
+}
 
 export default SwitchTheme

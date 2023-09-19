@@ -1,15 +1,13 @@
-import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import { useEffect } from 'react'
 import { useApp } from './AppContext'
 import debounce from '@/packages/utils/debounce'
 import { useLocation } from 'react-router-dom'
 
-const Drawer = React.forwardRef((props, ref) => {
+const Drawer = ({ width, children }) => {
   const location = useLocation()
   const { top, setLeft, drawer, setDrawer } = useApp()
-  const { width, children, className, ...rest } = props
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (window.innerWidth < 768) {
       setDrawer(false)
     }
@@ -25,7 +23,7 @@ const Drawer = React.forwardRef((props, ref) => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (width) {
       setLeft(width)
     }
@@ -36,18 +34,13 @@ const Drawer = React.forwardRef((props, ref) => {
   return (
     <>
       <aside
-        ref={ref}
-        {...rest}
         style={{
           top: top,
           width: `${width}px`,
           height: `calc(100vh - ${top}px)`,
           transform: `${drawer ? 'translateX(0)' : 'translateX(-100%)'}`
         }}
-        className={twMerge(
-          'fixed bottom-0 left-0 right-auto bg-surface z-50 max-w-full overflow-y-auto overflow-x-hidden shadow duration-200 will-change-transform md:z-10 lg:flex lg:translate-x-0 lg:flex-col',
-          className
-        )}
+        className="fixed bottom-0 left-0 right-auto bg-surface z-50 max-w-full overflow-y-auto overflow-x-hidden shadow duration-200 will-change-transform md:z-10 lg:flex lg:translate-x-0 lg:flex-col"
       >
         {children}
       </aside>
@@ -59,6 +52,6 @@ const Drawer = React.forwardRef((props, ref) => {
       ></div>
     </>
   )
-})
+}
 
 export default Drawer

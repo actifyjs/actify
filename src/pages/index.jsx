@@ -7,7 +7,7 @@ export default () => {
   return (
     <div className="container flex flex-col gap-4">
       <div className="mx-auto w-80">
-        <Logo width="100%" />
+        <Logo />
       </div>
       <p className="text-center text-4xl font-extrabold ">
         React Material Design 3 Components Library
@@ -26,9 +26,9 @@ export default () => {
           </Button>
         </Link>
         <Button
+          target="_blank"
           variant="outlined"
           href="https://github.com/actifyjs/actify"
-          target="_blank"
         >
           <Icon name="Github" />
           GitHub
