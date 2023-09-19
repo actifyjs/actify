@@ -4,25 +4,14 @@ export default ({ title, code }) => {
   const project = {
     title: 'Actify ' + title,
     template: 'node',
-    description: 'Actify ' + title + 'usage example',
-    dependencies: JSON.stringify({
-      [name]: version,
-      react: '18.2.0',
-      'react-dom': '18.2.0',
-      '@vitejs/plugin-react': '^1.3.0',
-      autoprefixer: '^10.4.5',
-      postcss: '^8.4.13',
-      'react-router-dom': '^6.16.0',
-      tailwindcss: '^3.3.3',
-      vite: '^4.4.9'
-    }),
+    description: 'Actify ' + title + ' usage example',
     files: {
       'index.html': `<!DOCTYPE html>
       <html lang="en">
         <head>
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Actify</title>
+          <title>Actify-${title}</title>
         </head>
         <body>
           <div id="root"></div>
@@ -42,7 +31,7 @@ export default ({ title, code }) => {
       )`,
       'App.jsx': code,
       'package.json': `{
-        "name": "actify-template",
+        "name": "actify-${title}",
         "private": true,
         "version": "0.0.0",
         "scripts": {
@@ -51,15 +40,14 @@ export default ({ title, code }) => {
           "preview": "vite preview"
         },
         "dependencies": {
-          "actify": "^0.1.14",
-          "react": "^18.0.0",
-          "react-dom": "^18.0.0"
+          "${name}": "^${version}",
+          "react": "^18.2.0",
+          "react-dom": "^18.2.0"
         },
         "devDependencies": {
           "@vitejs/plugin-react": "^1.3.0",
           "autoprefixer": "^10.4.5",
           "postcss": "^8.4.13",
-          "react-router-dom": "^6.16.0",
           "tailwindcss": "^3.3.3",
           "vite": "^4.4.9"
         }
@@ -210,28 +198,6 @@ export default ({ title, code }) => {
           ))
         )
       )}
-      {/* <input
-        type="hidden"
-        name="project[files][index.js]"
-        value={project.files['index.js']}
-      />
-      <input
-        type="hidden"
-        name="project[files][index.html]"
-        value={project.files['index.html']}
-      />
-      <input
-        type="hidden"
-        name="project[description]"
-        value={project.description}
-      />
-      <input
-        type="hidden"
-        name="project[dependencies]"
-        value={project.dependencies}
-      />
-      <input type="hidden" name="project[template]" value={project.template} />
-      <input type="hidden" name="project[settings]" value={project.settings} /> */}
       <button type="submit">
         <img
           className="cursor-pointer"

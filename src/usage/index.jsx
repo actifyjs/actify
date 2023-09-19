@@ -1,6 +1,6 @@
 import { Icon, Tabs, Spacer } from 'actify'
 import { lazy, Suspense, useState, useEffect } from 'react'
-import OpenOnStackblitz from '@/src/components/OpenOnStackblitz'
+import OpenInStackblitz from '@/src/components/OpenInStackblitz'
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 
 const Usage = (props) => {
@@ -30,7 +30,7 @@ const Usage = (props) => {
               Code
             </Tabs.Tab>
             <Spacer />
-            <OpenOnStackblitz title={name} code={rawString} />
+            <OpenInStackblitz title={name} code={rawString} />
           </Tabs.Header>
         </div>
         <Tabs.Body className="p-2">
