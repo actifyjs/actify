@@ -4,7 +4,7 @@ title: Icon
 
 # Icon
 
-> Icons is based on [lucide-icon](https://lucide.dev/), can custom color and size.
+> Icons is based on <a href="https://lucide.dev/" target="_blank">lucide-icon</a>, can custom color and size.
 
 ## Usage
 

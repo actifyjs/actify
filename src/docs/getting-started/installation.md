@@ -4,7 +4,7 @@ title: Installation
 
 ## Prerequisites:
 
-> Need a React and Tailwind CSS project
+> Actify is working with Tailwind CSS classes and you need to have Tailwind CSS installed on your project - <a href="https://tailwindcss.com/docs/installation/framework-guides" target="_blank">Tailwind CSS Installation Guide</a>.
 
 ## Install
 
