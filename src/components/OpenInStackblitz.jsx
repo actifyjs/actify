@@ -102,7 +102,12 @@ export default defineConfig({
   }
 
   return (
-    <form method="post" target="_target" action="https://stackblitz.com/run">
+    <form
+      method="post"
+      target="_target"
+      className="flex"
+      action="https://stackblitz.com/run"
+    >
       {Object.keys(project).map((item) =>
         item != 'files' ? (
           <input
