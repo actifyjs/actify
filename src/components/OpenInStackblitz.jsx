@@ -13,7 +13,7 @@ export default ({ title, code }) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Actify-${title}</title>
   </head>
-  <body>
+  <body class="p-5">
     <div id="root"></div>
     <script type="module" src="main.jsx"></script>
   </body>
