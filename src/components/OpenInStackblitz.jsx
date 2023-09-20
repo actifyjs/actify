@@ -34,9 +34,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "vite"
   },
   "dependencies": {
     "${name}": "^${version}",
