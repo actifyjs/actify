@@ -9,3 +9,9 @@ title: Select
 ## Usage
 
 <usage name="select"></usage>
+
+## Props
+
+| Props    | Type      | Description            | Default |
+| -------- | --------- | ---------------------- | ------- |
+| multiple | `boolean` | single or multi select | `false` |
