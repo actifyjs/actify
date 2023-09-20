@@ -28,7 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>
 )`,
-      'App.jsx': "import 'actify/style'\n" + code,
+      'App.jsx': code,
       'package.json': `{
   "name": "actify-${title}",
   "private": true,
