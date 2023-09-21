@@ -4,7 +4,12 @@ import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
 
 const labelVariants = tv({
-  base: 'relative overflow-hidden flex items-center cursor-pointer p-2.5 rounded-full'
+  base: 'relative overflow-hidden flex items-center cursor-pointer p-2.5 rounded-full',
+  variants: {
+    disabled: {
+      true: 'opacity-[.12] pointer-events-none'
+    }
+  }
 })
 
 const variants = tv({
@@ -17,13 +22,13 @@ const dotVariants = tv({
 
 const RadioButton = React.forwardRef((props, ref) => {
   const id = React.useId()
-  const { style, className, color, children, ...rest } = props
+  const { style, className, color, disabled, children, ...rest } = props
   const colorVariants = setColor(color ?? 'primary')
 
   return (
     <label
       htmlFor={id}
-      className={labelVariants()}
+      className={labelVariants({ disabled })}
       style={{ color: colorVariants }}
     >
       <input
@@ -32,6 +37,7 @@ const RadioButton = React.forwardRef((props, ref) => {
         ref={ref}
         {...rest}
         style={style}
+        disabled={disabled}
         className={variants({ className })}
       />
       <span className={dotVariants()}>

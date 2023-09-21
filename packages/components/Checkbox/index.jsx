@@ -14,6 +14,9 @@ const variants = tv({
         'before:bg-tertiary checked:bg-tertiary checked:border-tertiary checked:before:bg-tertiary',
       error:
         'before:bg-error checked:bg-error checked:border-error checked:before:bg-error'
+    },
+    disabled: {
+      true: 'opacity-[.12] pointer-events-none'
     }
   },
   defaultVariants: {
@@ -23,7 +26,14 @@ const variants = tv({
 
 const Checkbox = React.forwardRef((props, ref) => {
   const checkboxId = React.useId()
-  const { style, color, checked: checkedProp, className, ...rest } = props
+  const {
+    style,
+    color,
+    disabled,
+    checked: checkedProp,
+    className,
+    ...rest
+  } = props
   const [checked, setChecked] = React.useState(checkedProp ?? false)
 
   return (
@@ -37,9 +47,10 @@ const Checkbox = React.forwardRef((props, ref) => {
         style={style}
         type="checkbox"
         id={checkboxId}
+        disabled={disabled}
         defaultChecked={checked}
         onClick={(e) => setChecked(e.target.checked)}
-        className={variants({ color, className })}
+        className={variants({ color, disabled, className })}
       />
       <span className="text-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity">
         <svg

@@ -4,7 +4,12 @@ import { Icon, Ripple } from 'actify'
 import { setColor } from '@/packages/utils'
 
 const variants = tv({
-  base: 'h-8 w-14 rounded-full border-[2px] border-current shadow-inner peer-checked:bg-current'
+  base: 'h-8 w-14 rounded-full border-[2px] border-current shadow-inner peer-checked:bg-current',
+  variants: {
+    disabled: {
+      true: 'opacity-[.12] pointer-events-none'
+    }
+  }
 })
 
 const dotVariants = tv({
@@ -18,13 +23,18 @@ const dotVariants = tv({
 
 const Switch = React.forwardRef((props, ref) => {
   const id = React.useId()
-  const { icons, selected, color, children, className, ...rest } = props
+  const { icons, selected, color, disabled, children, className, ...rest } =
+    props
   const [checked, setChecked] = React.useState(selected ?? false)
 
   const colorVariant = color ?? 'primary'
 
   return (
-    <label htmlFor={id} className="relative cursor-pointer" style={{ color: setColor(colorVariant) }}>
+    <label
+      htmlFor={id}
+      className="relative cursor-pointer"
+      style={{ color: setColor(colorVariant) }}
+    >
       <input
         hidden
         id={id}
@@ -32,12 +42,19 @@ const Switch = React.forwardRef((props, ref) => {
         {...rest}
         type="checkbox"
         className="peer"
+        disabled={disabled}
         defaultChecked={checked}
         onClick={(e) => setChecked(e.target.checked)}
       />
-      <div className={variants({ className })}></div>
+      <div className={variants({ disabled, className })}></div>
       <i className={dotVariants({ icons })}>
-        {icons && <Icon name={`${checked ? 'Check' : 'X'}`} size={16} color={`${checked ? 'black' : 'white'}`} />}
+        {icons && (
+          <Icon
+            name={`${checked ? 'Check' : 'X'}`}
+            size={16}
+            color={`${checked ? 'black' : 'white'}`}
+          />
+        )}
       </i>
       <Ripple className="rounded-full" />
     </label>
