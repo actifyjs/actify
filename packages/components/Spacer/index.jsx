@@ -1,7 +1,12 @@
 import React from 'react'
+import { tv } from 'tailwind-variants'
 
-const Spacer = () => {
-  return <div className="flex-1"></div>
+const variants = tv({
+  base: 'flex-1'
+})
+
+const Spacer = ({ className }) => {
+  return <div className={variants({ className })}></div>
 }
 
 Spacer.displayName = 'Actify.Spacer'

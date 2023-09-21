@@ -21,15 +21,15 @@ const Usage = (props) => {
       <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
         <div className="flex border-b border-[#ccc] dark:border-[#222] w-full">
           <Tabs.Header className="bg-transparent w-full">
-            <Tabs.Tab value="preview" className="min-w-[120px]">
+            <Tabs.Tab value="preview" className="min-w-[90px]">
               <Icon name="Eye" size={18} />
               Preview
             </Tabs.Tab>
-            <Tabs.Tab value="code" className="min-w-[120px]">
+            <Tabs.Tab value="code" className="min-w-[90px]">
               <Icon name="Code2" size={18} />
               Code
             </Tabs.Tab>
-            <Spacer />
+            <Spacer className="hidden sm:block" />
             {!hidecode && <OpenInStackblitz title={name} code={rawString} />}
           </Tabs.Header>
         </div>
