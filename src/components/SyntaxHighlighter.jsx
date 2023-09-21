@@ -56,8 +56,12 @@ const SyntaxHighlighter = (props) => {
         </div>
       </div>
 
-      <pre>
-        <code ref={ref} className={`language-${language}`} style={{ fontFamily: 'JetBrains Mono' }}>
+      <pre className="[&::-webkit-scrollbar]:hidden">
+        <code
+          ref={ref}
+          className={`language-${language}`}
+          style={{ fontFamily: 'JetBrains Mono' }}
+        >
           {code || children}
         </code>
       </pre>
