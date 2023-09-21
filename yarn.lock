@@ -900,6 +900,11 @@ csstype@^3.0.2:
   resolved "https://registry.npmmirror.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
 
+dayjs@^1.11.10:
+  version "1.11.10"
+  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
+  integrity sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==
+
 debug@^4.0.0, debug@^4.1.0, debug@^4.3.4:
   version "4.3.4"
   resolved "https://registry.npmmirror.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
@@ -2437,6 +2442,11 @@ react-router@6.14.2:
   integrity sha512-09Zss2dE2z+T1D03IheqAFtK4UzQyX8nFPWx6jkwdYzGLXd5ie06A6ezS2fO6zJfEb/SpG6UocN2O1hfD+2urQ==
   dependencies:
     "@remix-run/router" "1.7.2"
+
+react-tailwindcss-datepicker@^1.6.6:
+  version "1.6.6"
+  resolved "https://registry.npmjs.org/react-tailwindcss-datepicker/-/react-tailwindcss-datepicker-1.6.6.tgz#b6afe0ff8efacf8fa4eaf02e6dadd5fe4719963d"
+  integrity sha512-kHSUonRO86PoYQQWPqpaSw2JeEn9OafdLsLBG85zO5Sfs23Ku8Ixt/YO+Is3TCBcFeOKnZgzhGLmP3NAXVlFkA==
 
 react-tailwindcss-select@^1.8.5:
   version "1.8.5"

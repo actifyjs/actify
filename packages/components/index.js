@@ -33,6 +33,7 @@ import { Tabs } from './Tabs'
 import TextField from './TextFields'
 import Spacer from './Spacer'
 import { Tooltip } from './Tooltips'
+import DatePicker from './DatePicker'
 
 export {
   TopAppBar,
@@ -69,5 +70,6 @@ export {
   Tabs,
   TextField,
   Spacer,
-  Tooltip
+  Tooltip,
+  DatePicker
 }

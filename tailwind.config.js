@@ -13,7 +13,8 @@ module.exports = withMaterialColors(
     content: [
       './packages/**/*.{js,ts,jsx,tsx}',
       './src/**/*.{html,md,js,ts,jsx,tsx}',
-      './node_modules/react-tailwindcss-select/dist/index.esm.js'
+      './node_modules/react-tailwindcss-select/dist/index.esm.js',
+      './node_modules/react-tailwindcss-datepicker/dist/index.esm.js'
     ],
     plugins: [require('@tailwindcss/typography')],
     theme: {
