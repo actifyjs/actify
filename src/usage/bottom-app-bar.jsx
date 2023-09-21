@@ -4,13 +4,15 @@ import { Fab, Icon, BottomAppBar } from 'actify'
 export default () => {
   return (
     <BottomAppBar>
-      <React.Fragment key="icons">
+      <BottomAppBar.Slot name="icons">
         <Icon name="Home" />
         <Icon name="User2" />
         <Icon name="Camera" />
         <Icon name="Search" />
-      </React.Fragment>
-      <Fab key="fab" icon="Plus" />
+      </BottomAppBar.Slot>
+      <BottomAppBar.Slot name="fab">
+        <Fab name="fab" icon="Plus" color="bg-surface" />
+      </BottomAppBar.Slot>
     </BottomAppBar>
   )
 }
