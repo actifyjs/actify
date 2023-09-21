@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Icon, Badge, Button, IconButton, TextField } from 'actify'
+import { Badge, Icon, Slider, Select, Button, IconButton } from 'actify'
 
 export default () => {
-  const [value, setValue] = useState('999')
-  const [color, setColor] = useState('primary')
+  const [value, setValue] = useState(99)
+  const [color, setColor] = useState('error')
 
   return (
     <>
@@ -13,21 +13,23 @@ export default () => {
             <Icon name="User" />
           </IconButton>
         </Badge>
-        <Badge value={value}>
+        <Badge value={value} color={color}>
           <Button>with button</Button>
         </Badge>
       </div>
       <div className="mt-4 flex gap-4 flex-wrap">
-        <TextField
+        <Slider
+          labeled
+          max={999}
           value={value}
-          label="set badge"
           onChange={(e) => setValue(e.target.value)}
         />
-        <TextField
-          value={color}
-          label="set color"
-          onChange={(e) => setColor(e.target.value)}
-        />
+        <Select value={color} onChange={(e) => setColor(e.value)}>
+          <Select.Option value="primary">Primary</Select.Option>
+          <Select.Option value="secondary">Secondary</Select.Option>
+          <Select.Option value="tertiary">Tertiary</Select.Option>
+          <Select.Option value="error">Eroor</Select.Option>
+        </Select>
       </div>
     </>
   )
