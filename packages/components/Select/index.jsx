@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactSelect from 'react-select'
-import makeAnimated from 'react-select/animated'
-
-const animatedComponents = makeAnimated()
+import ReactSelect from 'react-tailwindcss-select'
 
 const SelectRoot = React.forwardRef((props, ref) => {
   const { children, multiple, ...rest } = props
@@ -14,13 +11,7 @@ const SelectRoot = React.forwardRef((props, ref) => {
   }))
 
   return (
-    <ReactSelect
-      ref={ref}
-      {...rest}
-      options={options}
-      isMulti={multiple}
-      components={animatedComponents}
-    />
+    <ReactSelect ref={ref} {...rest} options={options} isMultiple={multiple} />
   )
 })
 
