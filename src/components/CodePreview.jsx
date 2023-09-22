@@ -30,7 +30,9 @@ import {
   Tabs,
   TextField,
   Spacer,
-  Tooltip
+  Tooltip,
+  DatePicker,
+  Drawer
 } from 'actify'
 
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
@@ -66,7 +68,9 @@ const scope = {
   Tabs,
   TextField,
   Spacer,
-  Tooltip
+  Tooltip,
+  DatePicker,
+  Drawer
 }
 
 const CodePreview = ({ code }) => {

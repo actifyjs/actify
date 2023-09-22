@@ -28,7 +28,9 @@ import {
   Tabs,
   TextField,
   Spacer,
-  Tooltip
+  Tooltip,
+  DatePicker,
+  Drawer
 } from 'actify'
 import { useEffect, useRef, useState } from 'react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
@@ -63,7 +65,9 @@ const scope = {
   Tabs,
   TextField,
   Spacer,
-  Tooltip
+  Tooltip,
+  DatePicker,
+  Drawer
 }
 
 const code = `() => {
