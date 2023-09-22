@@ -34,6 +34,7 @@ import TextField from './TextFields'
 import Spacer from './Spacer'
 import { Tooltip } from './Tooltips'
 import DatePicker from './DatePicker'
+import { Drawer } from './NavigationDrawer'
 
 export {
   TopAppBar,
@@ -71,5 +72,6 @@ export {
   TextField,
   Spacer,
   Tooltip,
-  DatePicker
+  DatePicker,
+  Drawer
 }
