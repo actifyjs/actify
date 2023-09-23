@@ -15,7 +15,7 @@ title: Date pickers
 | Props          | Type      | Description                  | Default      |
 | -------------- | --------- | ---------------------------- | ------------ |
 | asSingle       | `boolean` | render as single date picker | `false`      |
-| useRange       | `boolean` | use range mode               | `false`      |
+| useRange       | `boolean` | use range mode               | `true`       |
 | placeholder    | `string`  | placeholder text             | `null`       |
 | separator      | `string`  | separator between range date | `~`          |
 | showShortcuts  | `boolean` | show left shortcuts date     | `false`      |
