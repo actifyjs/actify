@@ -50,7 +50,7 @@ const Switch = React.forwardRef((props, ref) => {
       <i className={dotVariants({ icons })}>
         {icons && (
           <Icon
-            name={`${checked ? 'Check' : 'X'}`}
+            name={`${checked ? 'check' : 'x'}`}
             size={16}
             color={`${checked ? 'black' : 'white'}`}
           />
