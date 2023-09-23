@@ -4,19 +4,19 @@ export default () => {
   const list = [
     {
       label: 'Home',
-      icon: 'Home'
+      icon: 'home'
     },
     {
       label: 'Camera',
-      icon: 'Camera'
+      icon: 'camera'
     },
     {
       label: 'User',
-      icon: 'User2'
+      icon: 'user-2'
     },
     {
       label: 'Settings',
-      icon: 'Settings'
+      icon: 'settings'
     }
   ]
 
