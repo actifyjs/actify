@@ -141,7 +141,7 @@ const Menu = React.forwardRef((props, ref) => {
         )}
       >
         {label}
-        {isNested && <Icon name="ChevronDown" size={18} />}
+        {isNested && <Icon name="chevron-down" size={18} />}
       </Tag>
       <MenuContext.Provider
         value={{

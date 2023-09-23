@@ -9,23 +9,23 @@ export default () => {
       <Button variant="tonal">Tonal</Button>
       <Button variant="text">Text Button</Button>
       <Button variant="filled">
-        <Icon name="Upload" />
+        <Icon name="upload" />
         Filled
       </Button>
       <Button variant="outlined">
-        <Icon name="Upload" />
+        <Icon name="upload" />
         Outlined
       </Button>
       <Button variant="elevated">
-        <Icon name="Upload" />
+        <Icon name="upload" />
         Elevated
       </Button>
       <Button variant="tonal">
-        <Icon name="Upload" />
+        <Icon name="upload" />
         Tonal
       </Button>
       <Button variant="text">
-        <Icon name="Upload" />
+        <Icon name="upload" />
         Text
       </Button>
     </div>

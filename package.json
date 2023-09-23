@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -45,7 +45,7 @@
     "autoprefixer": "^10.4.14",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.1",
-    "lucide-react": "^0.263.1",
+    "lucide-react": "^0.279.0",
     "popmotion": "^11.0.5",
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",

@@ -75,7 +75,7 @@ const SwitchTheme = () => {
 
   return (
     <IconButton onClick={toggleTheme}>
-      <Icon name={mode == 'dark' ? 'Sun' : 'MoonStar'} color="primary" />
+      <Icon name={mode == 'dark' ? 'sun' : 'moon-star'} color="primary" />
     </IconButton>
   )
 }

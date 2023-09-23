@@ -16,12 +16,12 @@ export default () => {
         <Link to="/getting-started/installation">
           <Button className="sm:before:content-['Get']">
             Started
-            <Icon name="ArrowRight" />
+            <Icon name="arrow-right" />
           </Button>
         </Link>
         <Link to="/getting-started/why-actify">
           <Button color="secondary" className="sm:after:content-['Actify']">
-            <Icon name="HelpCircle" />
+            <Icon name="help-circle" />
             Why
           </Button>
         </Link>
@@ -30,7 +30,7 @@ export default () => {
           variant="outlined"
           href="https://github.com/actifyjs/actify"
         >
-          <Icon name="Github" />
+          <Icon name="github" />
           GitHub
         </Button>
       </div>

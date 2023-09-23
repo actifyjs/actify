@@ -17,7 +17,7 @@ export default () => {
             <Spacer />
             <Dialog.Close>
               <IconButton color="secondary">
-                <Icon name="X" />
+                <Icon name="x" />
               </IconButton>
             </Dialog.Close>
           </Dialog.Heading>
@@ -50,7 +50,7 @@ export default () => {
             <Spacer />
             <Dialog.Close>
               <IconButton color="secondary">
-                <Icon name="X" />
+                <Icon name="x" />
               </IconButton>
             </Dialog.Close>
           </Dialog.Heading>

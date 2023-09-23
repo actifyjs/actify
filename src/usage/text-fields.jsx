@@ -9,7 +9,7 @@ export default () => {
       <div className="flex items-center gap-2 flex-wrap">
         <TextField label="Email" suffixText="@actifyjs.com">
           <TextField.Slot name="leadingIcon">
-            <Icon name="Mail" />
+            <Icon name="mail" />
           </TextField.Slot>
         </TextField>
 
@@ -19,12 +19,12 @@ export default () => {
           type={showPassword ? 'text' : 'password'}
         >
           <TextField.Slot name="leadingIcon">
-            <Icon name="Lock" />
+            <Icon name="lock" />
           </TextField.Slot>
 
           <TextField.Slot name="trailingIcon">
             <IconButton onClick={() => setShowPassword((prev) => !prev)}>
-              <Icon name="Eye" />
+              <Icon name="eye" />
             </IconButton>
           </TextField.Slot>
         </TextField>

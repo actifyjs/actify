@@ -6,7 +6,7 @@ export default () => {
       <Drawer placement="left">
         <Drawer.Activator>
           <IconButton>
-            <Icon name="PanelLeftClose" />
+            <Icon name="panel-left-close" />
           </IconButton>
         </Drawer.Activator>
         <Drawer.Content>
@@ -20,7 +20,7 @@ export default () => {
       <Drawer placement="top">
         <Drawer.Activator>
           <IconButton>
-            <Icon name="PanelTopClose" />
+            <Icon name="panel-top-close" />
           </IconButton>
         </Drawer.Activator>
         <Drawer.Content>
@@ -34,7 +34,7 @@ export default () => {
       <Drawer placement="right">
         <Drawer.Activator>
           <IconButton>
-            <Icon name="PanelLeftOpen" />
+            <Icon name="panel-left-open" />
           </IconButton>
         </Drawer.Activator>
         <Drawer.Content>
@@ -48,7 +48,7 @@ export default () => {
       <Drawer placement="bottom">
         <Drawer.Activator>
           <IconButton>
-            <Icon name="PanelBottomClose" />
+            <Icon name="panel-bottom-close" />
           </IconButton>
         </Drawer.Activator>
         <Drawer.Content>

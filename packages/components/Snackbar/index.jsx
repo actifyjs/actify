@@ -63,7 +63,7 @@ const Snackbar = (props) => {
                   cancelMap.get(item)()
               }}
             >
-              <Icon name="X" size={24} className="text-on-inverse-surface" />
+              <Icon name="x" size={24} className="text-on-inverse-surface" />
             </IconButton>
           </Content>
         </animated.div>

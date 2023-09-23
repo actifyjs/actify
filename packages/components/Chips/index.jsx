@@ -59,7 +59,7 @@ const Chip = React.forwardRef((props, ref) => {
         {ripple && <Ripple />}
         {type == 'input' && (
           <Icon
-            name="X"
+            name="x"
             size={18}
             onClick={() => setShow(false)}
             className="hover:after:rounded-full hover:after:absolute hover:after:-inset-1 hover:after:bg-black/5 dark:hover:after:bg-white/5"

@@ -22,11 +22,11 @@ const Usage = (props) => {
         <div className="flex border-b border-[#ccc] dark:border-[#222] w-full">
           <Tabs.Header className="bg-transparent w-full">
             <Tabs.Tab value="preview">
-              <Icon name="Eye" size={18} />
+              <Icon name="eye" size={18} />
               Preview
             </Tabs.Tab>
             <Tabs.Tab value="code">
-              <Icon name="Code2" size={18} />
+              <Icon name="code-2" size={18} />
               Code
             </Tabs.Tab>
             <Spacer />

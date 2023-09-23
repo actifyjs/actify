@@ -12,7 +12,7 @@ const Dropdown = (props) => {
       >
         {title}
         <div slot="icon" className="flex items-center">
-          <Icon name="ChevronDown" size={20} />
+          <Icon name="chevron-down" size={20} />
         </div>
       </Button>
 

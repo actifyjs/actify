@@ -22,7 +22,7 @@ const ListGroup = React.forwardRef((props, ref) => {
       >
         {label}
         <Icon
-          name="ChevronDown"
+          name="chevron-down"
           className={`transition-transform ${open ? 'rotate-90' : ''}`}
         />
       </div>

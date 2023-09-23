@@ -8,7 +8,7 @@ const EditOnGitHub = ({ pathname }) => {
       href={`https://github.com/actifyjs/actify/blob/main/src/docs${pathname}.md`}
     >
       Edit this page on GitHub
-      <Icon name="PenSquare" size={18} />
+      <Icon name="pen-square" size={18} />
     </Button>
   )
 }

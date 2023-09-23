@@ -1,11 +1,12 @@
-import icons from '@/src/icons.json'
 import { useEffect, useState, useTransition } from 'react'
 import { Icon, Tooltip, TextField, LinearProgress } from 'actify'
+import dynamicIconImports from 'lucide-react/dynamicIconImports'
 
-export default (props) => {
+const icons = Object.keys(dynamicIconImports)
+
+export default () => {
   const [isPending, startTransition] = useTransition()
   const [filterIcons, setFilterIcons] = useState([])
-  const { icon, name, ...rest } = props
 
   useEffect(() => {
     setFilterIcons(icons)

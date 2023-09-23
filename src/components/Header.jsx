@@ -48,12 +48,12 @@ const Header = () => {
             className="inline-flex md:hidden"
             onClick={() => setDrawer(!drawer)}
           >
-            <Icon name="Menu" color="primary" />
+            <Icon name="menu" color="primary" />
           </IconButton>
         )}
         <Spacer />
         <IconButton onClick={handleUpdateTheme}>
-          <Icon name="Palette" color="primary" />
+          <Icon name="palette" color="primary" />
         </IconButton>
         <SwitchTheme />
         <div className="hidden w-full md:block md:w-auto">

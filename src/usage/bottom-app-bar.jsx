@@ -5,13 +5,13 @@ export default () => {
   return (
     <BottomAppBar>
       <BottomAppBar.Slot name="icons">
-        <Icon name="Home" />
-        <Icon name="User2" />
-        <Icon name="Camera" />
-        <Icon name="Search" />
+        <Icon name="home" />
+        <Icon name="user-2" />
+        <Icon name="camera" />
+        <Icon name="search" />
       </BottomAppBar.Slot>
       <BottomAppBar.Slot name="fab">
-        <Fab name="fab" icon="Plus" color="bg-surface" />
+        <Fab name="fab" icon="plus" color="bg-surface" />
       </BottomAppBar.Slot>
     </BottomAppBar>
   )

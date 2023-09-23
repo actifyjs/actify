@@ -10,7 +10,7 @@ export default () => {
       <div className="flex gap-8">
         <Badge value={value} color={color.value}>
           <IconButton>
-            <Icon name="User" />
+            <Icon name="user" />
           </IconButton>
         </Badge>
         <Badge value={value} color={color.value}>

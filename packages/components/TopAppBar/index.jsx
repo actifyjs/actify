@@ -25,7 +25,7 @@ const TopAppBar = React.forwardRef((props, ref) => {
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
             <div className="relative h-6 w-6 text-on-surface">
-              <Icon name="Menu" size={24} />
+              <Icon name="menu" size={24} />
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ const TopAppBar = React.forwardRef((props, ref) => {
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
             <div className="relative h-6 w-6 text-on-surface">
-              <Icon name="User" size={24} />
+              <Icon name="user" size={24} />
             </div>
           </div>
         </div>

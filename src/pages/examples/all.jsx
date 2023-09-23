@@ -22,39 +22,39 @@ export default () => {
       </div>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(72px,1fr))] gap-2">
         <IconButton variant="filled-tonal" color="primary">
-          <Icon name="User" />
+          <Icon name="user" />
         </IconButton>
         <IconButton variant="filled-tonal" color="secondary">
-          <Icon name="User" />
+          <Icon name="user" />
         </IconButton>
         <IconButton variant="filled-tonal" color="tertiary">
-          <Icon name="User" />
+          <Icon name="user" />
         </IconButton>
         <IconButton variant="filled-tonal" color="error">
-          <Icon name="User" />
+          <Icon name="user" />
         </IconButton>
         <IconButton variant="filled-tonal" disabled>
-          <Icon name="User" />
+          <Icon name="user" />
         </IconButton>
 
         <IconButton>
-          <Icon name="User" />
+          <Icon name="user" />
           <Badge value={999} color="primary" />
         </IconButton>
         <IconButton>
-          <Icon name="User" />
+          <Icon name="user" />
           <Badge value={999} color="secondary" />
         </IconButton>
         <IconButton>
-          <Icon name="User" />
+          <Icon name="user" />
           <Badge value={999} color="tertiary" />
         </IconButton>
         <IconButton>
-          <Icon name="User" />
+          <Icon name="user" />
           <Badge value={999} />
         </IconButton>
         <IconButton disabled>
-          <Icon name="User" />
+          <Icon name="user" />
           <Badge value={999} />
         </IconButton>
       </div>

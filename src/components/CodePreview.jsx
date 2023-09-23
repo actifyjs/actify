@@ -80,11 +80,11 @@ const CodePreview = ({ code }) => {
         <div className="flex border-b border-[#ccc] dark:border-[#222]">
           <Tabs.Header className="bg-transparent">
             <Tabs.Tab value="preview" className="min-w-[120px]">
-              <Icon name="Eye" size={18} />
+              <Icon name="eye" size={18} />
               Preview
             </Tabs.Tab>
             <Tabs.Tab value="code" className="min-w-[120px]">
-              <Icon name="Code2" size={18} />
+              <Icon name="code-2" size={18} />
               Code
             </Tabs.Tab>
           </Tabs.Header>
