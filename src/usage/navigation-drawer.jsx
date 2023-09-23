@@ -1,13 +1,18 @@
-import { Icon, IconButton, Drawer } from 'actify'
+import { Icon, IconButton, Drawer, Tooltip } from 'actify'
 
 export default () => {
   return (
     <div className="flex gap-2 items-center">
       <Drawer placement="left">
         <Drawer.Activator>
-          <IconButton>
-            <Icon name="panel-left-close" />
-          </IconButton>
+          <Tooltip>
+            <Tooltip.Activator>
+              <IconButton>
+                <Icon name="panel-left-close" />
+              </IconButton>
+            </Tooltip.Activator>
+            <Tooltip.Content>open from left</Tooltip.Content>
+          </Tooltip>
         </Drawer.Activator>
         <Drawer.Content>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
@@ -19,9 +24,14 @@ export default () => {
 
       <Drawer placement="top">
         <Drawer.Activator>
-          <IconButton>
-            <Icon name="panel-top-close" />
-          </IconButton>
+          <Tooltip>
+            <Tooltip.Activator>
+              <IconButton>
+                <Icon name="panel-top-close" />
+              </IconButton>
+            </Tooltip.Activator>
+            <Tooltip.Content>open from top</Tooltip.Content>
+          </Tooltip>
         </Drawer.Activator>
         <Drawer.Content>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
@@ -33,9 +43,14 @@ export default () => {
 
       <Drawer placement="right">
         <Drawer.Activator>
-          <IconButton>
-            <Icon name="panel-left-open" />
-          </IconButton>
+          <Tooltip>
+            <Tooltip.Activator>
+              <IconButton>
+                <Icon name="panel-left-open" />
+              </IconButton>
+            </Tooltip.Activator>
+            <Tooltip.Content>open from right</Tooltip.Content>
+          </Tooltip>
         </Drawer.Activator>
         <Drawer.Content>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
@@ -47,9 +62,14 @@ export default () => {
 
       <Drawer placement="bottom">
         <Drawer.Activator>
-          <IconButton>
-            <Icon name="panel-bottom-close" />
-          </IconButton>
+          <Tooltip>
+            <Tooltip.Activator>
+              <IconButton>
+                <Icon name="panel-bottom-close" />
+              </IconButton>
+            </Tooltip.Activator>
+            <Tooltip.Content>open from bottom</Tooltip.Content>
+          </Tooltip>
         </Drawer.Activator>
         <Drawer.Content>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
