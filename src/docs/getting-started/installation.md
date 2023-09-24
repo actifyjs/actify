@@ -8,7 +8,7 @@ title: Installation
 
 ## Install
 
-<tabs language="shell" value="npm" tabs='[{"label":"npm","icon":"Terminal","content":"npm install actify"},{"label":"yarn","icon":"TerminalSquare","content":"yarn add actify"}]'></tabs>
+<tabs language="shell" value="npm" tabs='[{"label":"npm","icon":"terminal","content":"npm install actify"},{"label":"yarn","icon":"terminal-square","content":"yarn add actify"}]'></tabs>
 
 ## tailwind.config.js
 

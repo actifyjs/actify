@@ -32,7 +32,7 @@ const Drawer = ({ width, children }) => {
         setDrawer(true)
       }
     }, 500)
-
+    handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])

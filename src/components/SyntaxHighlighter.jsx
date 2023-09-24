@@ -14,7 +14,7 @@ const variants = tv({
 const SyntaxHighlighter = (props) => {
   const ref = React.useRef()
   const { className, code, language, children } = props
-  const [iconName, setIconName] = React.useState('Copy')
+  const [iconName, setIconName] = React.useState('copy')
 
   React.useEffect(() => {
     highlight()
@@ -29,13 +29,13 @@ const SyntaxHighlighter = (props) => {
       () => {
         setIconName('Check')
         setTimeout(() => {
-          setIconName('Copy')
+          setIconName('copy')
         }, 2000)
       },
       () => {
-        setIconName('CopyX')
+        setIconName('copy-x')
         setTimeout(() => {
-          setIconName('Copy')
+          setIconName('copy')
         }, 2000)
       }
     )
