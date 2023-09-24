@@ -3,10 +3,16 @@ import { Fab } from 'actify'
 export default () => {
   return (
     <div className="flex gap-4">
-      <Fab color="error" icon="Camera" size="small" />
-      <Fab color="error" icon="Home" />
+      <Fab color="error" icon="camera" size="small" />
+      <Fab color="error" icon="home" />
       <Fab color="primary" label="ctify" size="large">
-        <svg width="33.455" height="36.987" fill="#fff" viewBox="0 0 33.455 36.987" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="33.455"
+          height="36.987"
+          fill="#fff"
+          viewBox="0 0 33.455 36.987"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             strokeWidth="2.5"
             stroke="currentColor"

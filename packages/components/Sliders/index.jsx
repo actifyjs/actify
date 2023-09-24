@@ -45,9 +45,7 @@ const Slider = React.forwardRef((props, ref) => {
   }, [_value])
 
   const handleChange = (e) => {
-    if (rest.onChange) {
-      rest.onChange(e)
-    }
+    rest.onChange?.(e)
     set_Value(e.target.value)
   }
 

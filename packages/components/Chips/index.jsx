@@ -31,7 +31,7 @@ const Chip = React.forwardRef((props, ref) => {
   } = props
 
   const handleClick = (e) => {
-    rest?.onClick(e)
+    rest.onClick?.(e)
     if (type == 'filter') {
       setSelected(!selected)
     }
@@ -50,7 +50,7 @@ const Chip = React.forwardRef((props, ref) => {
       >
         {type == 'filter' && (
           <Icon
-            name={`${selected ? 'Check' : 'Circle'}`}
+            name={`${selected ? 'check' : 'circle'}`}
             size={18}
             color={color}
           />
