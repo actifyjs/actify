@@ -4,7 +4,6 @@ import NavigationRail from './NavigationRail'
 import Badge from './Badges'
 import Card from './Cards'
 import Carousel from './Carousel'
-import CarouselItem from './Carousel/CarouselItem'
 import Snackbar from './Snackbar'
 import Button from './Button'
 import Fab from './Button/Fab'
@@ -43,7 +42,6 @@ export {
   Badge,
   Card,
   Carousel,
-  CarouselItem,
   Snackbar,
   Button,
   Fab,

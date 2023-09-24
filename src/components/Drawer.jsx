@@ -1,7 +1,16 @@
 import { useEffect } from 'react'
 import { useApp } from './AppContext'
-import debounce from '@/packages/utils/debounce'
 import { useLocation } from 'react-router-dom'
+
+const debounce = (fn, delay) => {
+  let timer = null
+  return function (...args) {
+    timer && clearTimeout(timer)
+    timer = setTimeout(() => {
+      fn.apply(this, args)
+    }, delay)
+  }
+}
 
 const Drawer = ({ width, children }) => {
   const location = useLocation()
@@ -13,22 +22,19 @@ const Drawer = ({ width, children }) => {
     }
   }, [location])
 
-  const handleResize = () => {
-    if (window.innerWidth < 768) {
-      setLeft(16)
-      setDrawer(false)
-    } else {
-      setLeft(width)
-      setDrawer(true)
-    }
-  }
-
   useEffect(() => {
-    if (width) {
-      setLeft(width)
-    }
-    handleResize()
-    window.addEventListener('resize', debounce(handleResize, 100))
+    const handleResize = debounce(() => {
+      if (window.innerWidth < 768) {
+        setLeft(16)
+        setDrawer(false)
+      } else {
+        setLeft(width)
+        setDrawer(true)
+      }
+    }, 500)
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
