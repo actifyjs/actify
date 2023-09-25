@@ -1,3 +1,4 @@
+import { Tooltip, IconButton } from 'actify'
 import { name, version } from '../../package.json'
 
 export default ({ title, code }) => {
@@ -125,12 +126,21 @@ export default defineConfig({
           ))
         )
       )}
-      <button type="submit">
-        <img
-          className="cursor-pointer"
-          src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"
-        />
-      </button>
+
+      <Tooltip placement="top">
+        <Tooltip.Activator>
+          <IconButton type="submit">
+            <svg
+              viewBox="0 0 28 28"
+              aria-hidden="true"
+              className="w-6 h-6 fill-[#1389fd]"
+            >
+              <path d="M12.747 16.273h-7.46L18.925 1.5l-3.671 10.227h7.46L9.075 26.5l3.671-10.227z"></path>
+            </svg>
+          </IconButton>
+        </Tooltip.Activator>
+        <Tooltip.Content>Open in Stackblitz</Tooltip.Content>
+      </Tooltip>
     </form>
   )
 }

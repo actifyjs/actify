@@ -1,5 +1,6 @@
 import { Icon, Tabs, Spacer } from 'actify'
 import { lazy, Suspense, useState, useEffect } from 'react'
+import OpenInCodeSandbox from '@/src/components/OpenInCodeSandbox'
 import OpenInStackblitz from '@/src/components/OpenInStackblitz'
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 
@@ -30,6 +31,7 @@ const Usage = (props) => {
               Code
             </Tabs.Tab>
             <Spacer />
+            {!hidecode && <OpenInCodeSandbox title={name} code={rawString} />}
             {!hidecode && <OpenInStackblitz title={name} code={rawString} />}
           </Tabs.Header>
         </div>
