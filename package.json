@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -10,7 +10,7 @@
     "tailwind css",
     "material design 3"
   ],
-  "description": "React Tailwind CSS Material Design 3 Component Library",
+  "description": "🌻React Material Design 3 Components Library",
   "homepage": "https://actifyjs.com",
   "repository": {
     "type": "git",
