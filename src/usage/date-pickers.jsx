@@ -11,5 +11,12 @@ export default () => {
     setValue(newValue)
   }
 
-  return <DatePicker value={value} showShortcuts onChange={handleChange} />
+  return (
+    <DatePicker
+      value={value}
+      showFooter
+      showShortcuts
+      onChange={handleChange}
+    />
+  )
 }

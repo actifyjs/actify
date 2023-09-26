@@ -8,8 +8,12 @@ const variants = tv({
 })
 
 const inputVariants = tv({
-  base: ''
+  base: 'relative transition-all duration-300 py-2.5 pl-4 pr-14 w-full border border-gray-300 dark:bg-slate-800 dark:text-white/80 dark:border-slate-600 rounded-lg tracking-wide font-light text-sm placeholder-gray-400 bg-white focus:ring disabled:opacity-40 disabled:cursor-not-allowed focus:border-blue-500 focus:ring-blue-500/20'
 })
+
+/**
+ * @type React.FC<DatePickerPropTypes>
+ */
 
 const DatePicker = forwardRef((props, ref) => {
   const { style, className, inputClassName, ...rest } = props
@@ -25,20 +29,30 @@ const DatePicker = forwardRef((props, ref) => {
   )
 })
 
-DatePicker.propTypes = {
+const DatePickerPropTypes = {
+  /** render as single date picker */
   asSingle: PropTypes.bool,
+  /** show left shortcuts date */
   showShortcuts: PropTypes.bool,
+  /** select range date - default value is true */
   useRange: PropTypes.bool,
+  /** separator between range date - defalut value is ~ */
   separator: PropTypes.string,
+  /** show footer actions */
   showFooter: PropTypes.bool,
+  /** readonly mode */
   readOnly: PropTypes.bool,
+  /** disabled mode */
   disabled: PropTypes.bool,
+  /** display format of date - defalut value is DD/MM/YYYY */
   displayFormat: PropTypes.string,
   inputClassName: PropTypes.string,
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
   startFrom: PropTypes.instanceOf(Date)
 }
+
+DatePicker.propTypes = DatePickerPropTypes
 
 DatePicker.defaultProps = {
   useRange: true,
