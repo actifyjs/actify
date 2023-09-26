@@ -1,13 +1,18 @@
+import PropTypes from 'prop-types'
 import { Icon, IconButton } from 'actify'
 import React, { useEffect, useState } from 'react'
-import { motion, AnimatePresence, useMotionValueEvent } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 let id = 0
 
-const SnackbarRoot = (props) => {
+/**
+ *
+ * @param {number} timeout - default 3000
+ * @param {string | JSX.Element | JSX.Element[] | () => JSX.Element} children
+ * @returns {JSX.Element} JSX Element
+ */
+const SnackbarRoot = ({ timeout = 3000, children }) => {
   const [items, setItems] = useState([])
-
-  const { timeout = 3000, children } = props
 
   useEffect(() => {
     children((msg) => {
@@ -62,6 +67,11 @@ const SnackbarRoot = (props) => {
       </AnimatePresence>
     </ul>
   )
+}
+
+SnackbarRoot.propTypes = {
+  timeout: PropTypes.number,
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node])
 }
 
 export const Snackbar = Object.assign(SnackbarRoot, {
