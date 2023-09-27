@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Ripple } from 'actify'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
@@ -17,7 +17,7 @@ const variants = tv({
   }
 })
 
-const IconButton = React.forwardRef((props, ref) => {
+const IconButton = forwardRef((props, ref) => {
   const {
     tag,
     ripple,
@@ -68,4 +68,4 @@ IconButton.defaultProps = {
 
 IconButton.displayName = 'Actify.IconButton'
 
-export default IconButton
+export { IconButton }

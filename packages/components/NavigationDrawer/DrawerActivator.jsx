@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
 import { useDrawer } from './DrawerContext'
 
@@ -6,7 +6,7 @@ const variants = tv({
   base: ''
 })
 
-const DrawerActivator = React.forwardRef((props, ref) => {
+const DrawerActivator = forwardRef((props, ref) => {
   const { setOpen } = useDrawer()
   const { style, className, children, ...rest } = props
 
@@ -27,4 +27,4 @@ const DrawerActivator = React.forwardRef((props, ref) => {
   )
 })
 
-export default DrawerActivator
+export { DrawerActivator }

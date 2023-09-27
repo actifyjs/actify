@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useId, useState } from 'react'
 import { tv } from 'tailwind-variants'
 import { Icon, Ripple } from 'actify'
 import { setColor } from '@/packages/utils'
@@ -21,11 +21,11 @@ const dotVariants = tv({
   }
 })
 
-const Switch = React.forwardRef((props, ref) => {
-  const id = React.useId()
+const Switch = forwardRef((props, ref) => {
+  const id = useId()
   const { icons, selected, color, disabled, children, className, ...rest } =
     props
-  const [checked, setChecked] = React.useState(selected ?? false)
+  const [checked, setChecked] = useState(selected ?? false)
 
   const colorVariant = color ?? 'primary'
 
@@ -63,4 +63,4 @@ const Switch = React.forwardRef((props, ref) => {
 
 Switch.displayName = 'Actify.Switch'
 
-export default Switch
+export { Switch }

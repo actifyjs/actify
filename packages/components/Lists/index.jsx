@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
   base: 'py-2 bg-surface'
 })
 
-const List = React.forwardRef((props, ref) => {
+const List = forwardRef((props, ref) => {
   const { className, children, ...rest } = props
 
   return (
@@ -17,4 +17,4 @@ const List = React.forwardRef((props, ref) => {
 
 List.displayName = 'Actify.List'
 
-export default List
+export { List }

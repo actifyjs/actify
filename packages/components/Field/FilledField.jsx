@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState, Children } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
@@ -18,13 +18,13 @@ const variants = tv({
 })
 
 const FilledField = (props) => {
-  const inputRef = React.useRef()
+  const inputRef = useRef()
   const { color, label, className, children } = props
-  const [focused, setFocused] = React.useState(false)
+  const [focused, setFocused] = useState(false)
 
-  const [populated, setPopulated] = React.useState(false)
+  const [populated, setPopulated] = useState(false)
 
-  const childrenArray = React.Children.toArray(children)
+  const childrenArray = Children.toArray(children)
 
   const leadingIcon = childrenArray.find(
     (child) => child?.props?.name == 'leadingIcon'
@@ -136,4 +136,4 @@ FilledField.propTypes = {
 
 FilledField.displayName = 'Actify.FilledField'
 
-export default FilledField
+export { FilledField }

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import FilledTextField from './FilledTextField'
-import OutlinedTextField from './OutlinedTextField'
+import { FilledTextField } from './FilledTextField'
+import { OutlinedTextField } from './OutlinedTextField'
 
-const TextField = React.forwardRef((props, ref) => {
+const TextField = forwardRef((props, ref) => {
   const { variant, prefixText, suffixText, ...rest } = props
   return (
     <>
@@ -42,4 +42,4 @@ TextField.Slot = () => <></>
 
 TextField.displayName = 'Actify.TextField'
 
-export default TextField
+export { TextField }

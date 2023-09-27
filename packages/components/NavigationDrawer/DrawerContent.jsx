@@ -126,4 +126,4 @@ const DrawerContent = ({ className, children }) => {
   )
 }
 
-export default DrawerContent
+export { DrawerContent }

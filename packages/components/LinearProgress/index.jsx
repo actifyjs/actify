@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
@@ -32,7 +32,7 @@ const barInnerVariants = tv({
   }
 })
 
-const LinearProgress = React.forwardRef((props, ref) => {
+const LinearProgress = forwardRef((props, ref) => {
   const { value, indeterminate, style, color, className, ...rest } = props
 
   return (
@@ -190,4 +190,4 @@ LinearProgress.defaultProps = {
 
 LinearProgress.displayName = 'Actify.LinearProgress'
 
-export default LinearProgress
+export { LinearProgress }

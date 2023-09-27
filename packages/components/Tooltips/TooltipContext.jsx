@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
 import {
   flip,
@@ -13,15 +13,15 @@ import {
   useInteractions
 } from '@floating-ui/react'
 
-const TooltipContext = React.createContext()
+const TooltipContext = createContext()
 
-function useTooltip({
+const useTooltip = ({
   initialOpen = false,
   placement = 'top',
   open: controlledOpen,
   onOpenChange: setControlledOpen
-}) {
-  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
+}) => {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
 
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = setControlledOpen ?? setUncontrolledOpen
@@ -68,14 +68,14 @@ function useTooltip({
 }
 
 export const useTooltipContext = () => {
-  const context = React.useContext(TooltipContext)
+  const context = useContext(TooltipContext)
   if (context == null) {
     throw new Error('Tooltip components must be wrapped in <Tooltip />')
   }
   return context
 }
 
-export function TooltipProvider({ children, ...options }) {
+export const TooltipProvider = ({ children, ...options }) => {
   // This can accept any props as options, e.g. `placement`,
   // or other positioning options.
   const tooltip = useTooltip(options)

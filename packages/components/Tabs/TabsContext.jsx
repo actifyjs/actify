@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { createContext, useId, useRef, useContext } from 'react'
 import { createStore, useStore } from 'zustand'
 
-const TabsContext = React.createContext()
+const TabsContext = createContext()
 
 export const TabsProvider = ({ children, ...initialProp }) => {
   const useCreateStore = createStore()((set) => ({
-    layoutId: React.useId(),
+    layoutId: useId(),
     active: initialProp.value,
     setActive: (state) => set({ active: state })
   }))
 
-  const store = React.useRef(useCreateStore)
+  const store = useRef(useCreateStore)
 
   return (
     <TabsContext.Provider value={store.current}>
@@ -20,7 +20,7 @@ export const TabsProvider = ({ children, ...initialProp }) => {
 }
 
 export const useTabs = () => {
-  const store = React.useContext(TabsContext)
+  const store = useContext(TabsContext)
   if (!store) {
     throw new Error('Missing TabsContext.Provider in the tree')
   }

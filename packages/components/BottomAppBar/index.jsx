@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Children } from 'react'
 import { Elevation } from 'actify'
 
 const BottomAppBar = ({ children }) => {
-  const childrenArray = React.Children.toArray(children)
+  const childrenArray = Children.toArray(children)
 
   const icons = childrenArray.find((child) => child?.props?.name == 'icons')
   const fab = childrenArray.find((child) => child?.props?.name == 'fab')
@@ -22,4 +22,4 @@ BottomAppBar.Slot = () => <></>
 
 BottomAppBar.displayName = 'Actify.BottomAppBar'
 
-export default BottomAppBar
+export { BottomAppBar }

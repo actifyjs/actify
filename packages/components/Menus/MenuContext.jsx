@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { createContext } from 'react'
 
-const MenuContext = React.createContext({
+const MenuContext = createContext({
   getItemProps: () => ({}),
   activeIndex: null,
   setActiveIndex: () => {},
@@ -8,4 +8,4 @@ const MenuContext = React.createContext({
   isOpen: false
 })
 
-export default MenuContext
+export { MenuContext }

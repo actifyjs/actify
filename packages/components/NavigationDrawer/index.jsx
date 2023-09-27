@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
-import DrawerContent from './DrawerContent'
-import DrawerActivator from './DrawerActivator'
+import { DrawerContent } from './DrawerContent'
+import { DrawerActivator } from './DrawerActivator'
 import { DrawerProvider } from './DrawerContext'
 
 const variants = tv({
   base: 'relative'
 })
 
-const DrawerRoot = React.forwardRef((props, ref) => {
+const DrawerRoot = forwardRef((props, ref) => {
   const { className, children, ...rest } = props
 
   return (

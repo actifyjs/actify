@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useRef, useState, Children } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
@@ -20,8 +20,8 @@ const variants = tv({
   }
 })
 
-const FilledTextField = React.forwardRef((props, ref) => {
-  const inputRef = ref || React.useRef()
+const FilledTextField = forwardRef((props, ref) => {
+  const inputRef = ref || useRef()
   const {
     color,
     disabled,
@@ -34,11 +34,11 @@ const FilledTextField = React.forwardRef((props, ref) => {
     ...rest
   } = props
 
-  const [focused, setFocused] = React.useState(false)
+  const [focused, setFocused] = useState(false)
 
-  const [populated, setPopulated] = React.useState(false)
+  const [populated, setPopulated] = useState(false)
 
-  const childrenArray = React.Children.toArray(children)
+  const childrenArray = Children.toArray(children)
 
   const leadingIcon = childrenArray.find(
     (child) => child?.props?.name == 'leadingIcon'
@@ -169,4 +169,4 @@ FilledTextField.propTypes = {
 
 FilledTextField.displayName = 'Actify.FilledTextField'
 
-export default FilledTextField
+export { FilledTextField }

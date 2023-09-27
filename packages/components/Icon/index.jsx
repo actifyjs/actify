@@ -1,7 +1,7 @@
+import React, { lazy, Suspense } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
-import React, { lazy, Suspense } from 'react'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
 
 const variants = tv({
@@ -42,4 +42,4 @@ Icon.propTypes = {
 
 Icon.displayName = 'Actify.Icon'
 
-export default Icon
+export { Icon }

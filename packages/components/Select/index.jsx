@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { forwardRef, Children } from 'react'
 import PropTypes from 'prop-types'
 import ReactSelect from 'react-tailwindcss-select'
 
-const SelectRoot = React.forwardRef((props, ref) => {
+const SelectRoot = forwardRef((props, ref) => {
   const { children, multiple, ...rest } = props
 
-  const options = React.Children.toArray(children).map((child) => ({
+  const options = Children.toArray(children).map((child) => ({
     value: child.props.value ?? child.props.children,
     label: child.props.children
   }))

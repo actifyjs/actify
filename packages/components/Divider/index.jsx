@@ -33,4 +33,4 @@ Divider.propTypes = {
 
 Divider.displayName = 'Actify.Divider'
 
-export default Divider
+export { Divider }

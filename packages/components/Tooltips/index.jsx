@@ -1,9 +1,9 @@
-import React from 'react'
-import TooltipContent from './TooltipContent'
-import TooltipActivator from './TooltipActivator'
+import React, { forwardRef } from 'react'
+import { TooltipContent } from './TooltipContent'
+import { TooltipActivator } from './TooltipActivator'
 import { TooltipProvider } from './TooltipContext'
 
-const TooltipRoot = React.forwardRef((props, ref) => {
+const TooltipRoot = forwardRef((props, ref) => {
   const { children, ...rest } = props
   return (
     <TooltipProvider ref={ref} {...rest}>

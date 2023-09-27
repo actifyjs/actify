@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 const BottomSheets = () => {
-  const ref = React.useRef()
-  const [top, setTop] = React.useState(false)
-  const [height, setHeight] = React.useState(false)
+  const ref = useRef()
+  const [top, setTop] = useState(false)
+  const [height, setHeight] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => {
@@ -46,4 +46,4 @@ const BottomSheets = () => {
 
 BottomSheets.displayName = 'Actify.BottomSheets'
 
-export default BottomSheets
+export { BottomSheets }

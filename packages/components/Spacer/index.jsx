@@ -11,4 +11,4 @@ const Spacer = ({ className }) => {
 
 Spacer.displayName = 'Actify.Spacer'
 
-export default Spacer
+export { Spacer }

@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
   base: 'block w-full relative bg-transparent'
 })
 
-const TabsBody = React.forwardRef((props, ref) => {
+const TabsBody = forwardRef((props, ref) => {
   const { className, children, ...rest } = props
 
   return (
@@ -15,4 +15,4 @@ const TabsBody = React.forwardRef((props, ref) => {
   )
 })
 
-export default TabsBody
+export { TabsBody }

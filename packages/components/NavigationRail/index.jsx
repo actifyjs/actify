@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
@@ -11,7 +11,7 @@ const variants = tv({
   }
 })
 
-const NavigationRail = React.forwardRef((props, ref) => {
+const NavigationRail = forwardRef((props, ref) => {
   const { children, className, ...rest } = props
   return (
     <div ref={ref} {...rest} className={variants({ className })}>
@@ -22,4 +22,4 @@ const NavigationRail = React.forwardRef((props, ref) => {
 
 NavigationRail.displayName = 'Actify.NavigationRail'
 
-export default NavigationRail
+export { NavigationRail }

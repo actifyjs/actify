@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useId } from 'react'
 import { Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
@@ -20,16 +20,16 @@ const dotVariants = tv({
   base: 'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity text-black/90 peer-checked:text-current'
 })
 
-const RadioButton = React.forwardRef((props, ref) => {
-  const id = React.useId()
+const RadioButton = forwardRef((props, ref) => {
+  const id = useId()
   const { style, className, color, disabled, children, ...rest } = props
   const colorVariants = setColor(color ?? 'primary')
 
   return (
     <label
       htmlFor={id}
-      className={labelVariants({ disabled })}
       style={{ color: colorVariants }}
+      className={labelVariants({ disabled })}
     >
       <input
         type="radio"
@@ -57,4 +57,4 @@ const RadioButton = React.forwardRef((props, ref) => {
 
 RadioButton.displayName = 'Actify.RadioButton'
 
-export default RadioButton
+export { RadioButton }

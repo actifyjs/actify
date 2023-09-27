@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
@@ -7,7 +7,7 @@ const variants = tv({
   base: 'relative isolate h-10 gap-0 sm:gap-2 px-2 flex items-center justify-center text-base font-normal leading-relaxed select-none cursor-pointer'
 })
 
-const Tab = React.forwardRef((props, ref) => {
+const Tab = forwardRef((props, ref) => {
   const { layoutId, active, setActive } = useTabs()
   const { className, value, children, ...rest } = props
 
@@ -31,4 +31,4 @@ const Tab = React.forwardRef((props, ref) => {
   )
 })
 
-export default Tab
+export { Tab }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useId, useState } from 'react'
 import { Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
 
@@ -24,8 +24,8 @@ const variants = tv({
   }
 })
 
-const Checkbox = React.forwardRef((props, ref) => {
-  const checkboxId = React.useId()
+const Checkbox = forwardRef((props, ref) => {
+  const checkboxId = useId()
   const {
     style,
     color,
@@ -34,7 +34,7 @@ const Checkbox = React.forwardRef((props, ref) => {
     className,
     ...rest
   } = props
-  const [checked, setChecked] = React.useState(checkedProp ?? false)
+  const [checked, setChecked] = useState(checkedProp ?? false)
 
   return (
     <label
@@ -73,4 +73,4 @@ const Checkbox = React.forwardRef((props, ref) => {
   )
 })
 
-export default Checkbox
+export { Checkbox }

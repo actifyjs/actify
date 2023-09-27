@@ -21,4 +21,4 @@ const CarouselIndicator = () => {
   )
 }
 
-export default CarouselIndicator
+export { CarouselIndicator }

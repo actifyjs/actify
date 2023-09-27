@@ -1,5 +1,5 @@
-import React from 'react'
-import { createStore, useStore } from 'zustand'
+import React, { createContext, useState, useRef } from 'react'
+import { createStore } from 'zustand'
 
 import {
   flip,
@@ -13,7 +13,7 @@ import {
   useInteractions
 } from '@floating-ui/react'
 
-const PopoverContext = React.createContext()
+const PopoverContext = createContext()
 
 const usePopoverStore = (initialProp) => {
   const {
@@ -24,9 +24,9 @@ const usePopoverStore = (initialProp) => {
     onOpenChange: setControlledOpen
   } = initialProp
 
-  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
-  const [labelId, setLabelId] = React.useState()
-  const [descriptionId, setDescriptionId] = React.useState()
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
+  const [labelId, setLabelId] = useState()
+  const [descriptionId, setDescriptionId] = useState()
 
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = setControlledOpen ?? setUncontrolledOpen
@@ -68,7 +68,7 @@ const usePopoverStore = (initialProp) => {
     setDescriptionId
   }))
 
-  const store = React.useRef(useCreateStore)
+  const store = useRef(useCreateStore)
   return store.current
 }
 
@@ -128,11 +128,19 @@ const usePopover = ({
   )
 }
 
-export const PopoverProvider = ({ children, modal = false, ...initialProp }) => {
+export const PopoverProvider = ({
+  children,
+  modal = false,
+  ...initialProp
+}) => {
   // const store = usePopoverStore({ modal, ...initialProp })
 
   const popover = usePopover({ modal, ...initialProp })
-  return <PopoverContext.Provider value={popover}>{children}</PopoverContext.Provider>
+  return (
+    <PopoverContext.Provider value={popover}>
+      {children}
+    </PopoverContext.Provider>
+  )
 }
 
 // export const usePopoverContext = () => {

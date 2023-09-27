@@ -8,4 +8,4 @@ const Popover = (props) => {
   return <PopoverProvider {...rest}>{children}</PopoverProvider>
 }
 
-export default Popover
+export { Popover }

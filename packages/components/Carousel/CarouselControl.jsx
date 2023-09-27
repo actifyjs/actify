@@ -43,4 +43,4 @@ const CarouselControl = ({ control, autoPlay, infinite }) => {
   )
 }
 
-export default CarouselControl
+export { CarouselControl }

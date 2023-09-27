@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { useDialogContext } from './DialogContext'
 import {
   useMergeRefs,
@@ -8,7 +8,7 @@ import {
   FloatingFocusManager
 } from '@floating-ui/react'
 
-const DialogContent = React.forwardRef((props, propRef) => {
+const DialogContent = forwardRef((props, propRef) => {
   const { context: floatingContext, ...context } = useDialogContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
   const { isMounted, styles } = useTransitionStyles(context, {
@@ -53,4 +53,4 @@ const DialogContent = React.forwardRef((props, propRef) => {
   )
 })
 
-export default DialogContent
+export { DialogContent }

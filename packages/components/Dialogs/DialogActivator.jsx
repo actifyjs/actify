@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, isValidElement, cloneElement } from 'react'
 import { tv } from 'tailwind-variants'
 import { useMergeRefs } from '@floating-ui/react'
 import { useDialogContext } from './DialogContext'
@@ -7,15 +7,15 @@ const variants = tv({
   base: 'flex items-center'
 })
 
-const DialogActivator = React.forwardRef(
+const DialogActivator = forwardRef(
   ({ className, children, asChild = false, ...props }, propRef) => {
     const context = useDialogContext()
     const childrenRef = children.ref
     const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
 
     // `asChild` allows the user to pass any element as the anchor
-    if (asChild && React.isValidElement(children)) {
-      return React.cloneElement(
+    if (asChild && isValidElement(children)) {
+      return cloneElement(
         children,
         context.getReferenceProps({
           ref,
@@ -39,4 +39,4 @@ const DialogActivator = React.forwardRef(
   }
 )
 
-export default DialogActivator
+export { DialogActivator }

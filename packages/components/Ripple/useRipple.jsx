@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDebounce } from 'usehooks-ts'
 
 const useRipple = (ref) => {
-  const [ripples, setRipples] = React.useState([])
+  const [ripples, setRipples] = useState([])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (ref.current) {
       const element = ref.current
       const clickHandler = (e) => {
@@ -34,7 +34,7 @@ const useRipple = (ref) => {
 
   const debounced = useDebounce(ripples, 1000)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (debounced.length) {
       setRipples([])
     }
@@ -55,4 +55,4 @@ const useRipple = (ref) => {
   })
 }
 
-export default useRipple
+export { useRipple }

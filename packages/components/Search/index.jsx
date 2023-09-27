@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Icon } from 'actify'
 import { tv } from 'tailwind-variants'
 
@@ -14,7 +14,7 @@ const variants = tv(
   }
 )
 
-const Search = React.forwardRef((props, ref) => {
+const Search = forwardRef((props, ref) => {
   const { children, className, ...rest } = props
   return (
     <div className={variants({ className })}>
@@ -32,4 +32,4 @@ const Search = React.forwardRef((props, ref) => {
 
 Search.displayName = 'Actify.Search'
 
-export default Search
+export { Search }

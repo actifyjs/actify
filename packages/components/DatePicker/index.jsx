@@ -1,6 +1,6 @@
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
 import ReactDatepicker from 'react-tailwindcss-datepicker'
 
 const variants = tv({
@@ -62,4 +62,4 @@ DatePicker.defaultProps = {
 
 DatePicker.displayName = 'Actify.DatePicker'
 
-export default DatePicker
+export { DatePicker }

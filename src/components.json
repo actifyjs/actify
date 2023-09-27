@@ -3,148 +3,116 @@
     "label": "App bars",
     "children": [
       {
-        "name": "Bottom app bar",
-        "status": "❌"
+        "name": "Bottom app bar"
       },
       {
-        "name": "Top app bar",
-        "status": "❌"
+        "name": "Top app bar"
       }
     ]
   },
   {
-    "name": "Badges",
-    "status": "🟡"
+    "name": "Badges"
   },
   {
     "label": "Buttons",
     "children": [
       {
-        "name": "Button",
-        "status": "✅"
+        "name": "Button"
       },
       {
-        "name": "FAB",
-        "status": "✅"
+        "name": "FAB"
       },
       {
-        "name": "Icon button",
-        "status": "✅"
+        "name": "Icon button"
       },
       {
-        "name": "Segmented button",
-        "status": "🟡"
+        "name": "Segmented button"
       }
     ]
   },
   {
-    "name": "Cards",
-    "status": "❌"
+    "name": "Cards"
   },
   {
-    "name": "Carousel",
-    "status": "✅"
+    "name": "Carousel"
   },
   {
-    "name": "Checkbox",
-    "status": "✅"
+    "name": "Checkbox"
   },
   {
-    "name": "Chips",
-    "status": "✅"
+    "name": "Chips"
   },
   {
-    "name": "Date pickers",
-    "status": "❌"
+    "name": "Date pickers"
   },
   {
-    "name": "Dialogs",
-    "status": "✅"
+    "name": "Dialogs"
   },
   {
-    "name": "Divider",
-    "status": "✅"
+    "name": "Divider"
   },
   {
-    "name": "Lists",
-    "status": "✅"
+    "name": "Lists"
   },
   {
-    "name": "Menus",
-    "status": "✅"
+    "name": "Menus"
   },
   {
-    "name": "Select",
-    "status": "✅"
+    "name": "Select"
   },
   {
     "label": "Navigation",
     "children": [
       {
-        "name": "Navigation bar",
-        "status": "🟡"
+        "name": "Navigation bar"
       },
       {
-        "name": "Navigation drawer",
-        "status": "🟡"
+        "name": "Navigation drawer"
       },
       {
-        "name": "Navigation rail",
-        "status": "❌"
+        "name": "Navigation rail"
       }
     ]
   },
   {
-    "name": "Progress",
-    "status": "✅"
+    "name": "Progress"
   },
   {
-    "name": "Radio button",
-    "status": "✅"
+    "name": "Radio button"
   },
   {
-    "name": "Search",
-    "status": "❌"
+    "name": "Search"
   },
   {
     "label": "Sheets",
     "children": [
       {
-        "name": "Bottom sheets",
-        "status": "❌"
+        "name": "Bottom sheets"
       },
       {
-        "name": "Slide sheets",
-        "status": "❌"
+        "name": "Slide sheets"
       }
     ]
   },
   {
-    "name": "Sliders",
-    "status": "✅"
+    "name": "Sliders"
   },
   {
-    "name": "Snackbar",
-    "status": "❌"
+    "name": "Snackbar"
   },
   {
-    "name": "Switch",
-    "status": "✅"
+    "name": "Switch"
   },
   {
-    "name": "Tabs",
-    "status": "✅"
+    "name": "Tabs"
   },
   {
-    "name": "Text fields",
-    "status": "✅"
+    "name": "Text fields"
   },
   {
-    "name": "Time pickers",
-    "status": "❌"
+    "name": "Time pickers"
   },
   {
-    "name": "Tooltips",
-    "status": "❌"
+    "name": "Tooltips"
   }
 ]

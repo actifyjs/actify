@@ -1,4 +1,9 @@
-import React from 'react'
+import React, {
+  forwardRef,
+  Children,
+  isValidElement,
+  cloneElement
+} from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
@@ -27,22 +32,22 @@ const variants = tv({
   }
 })
 
-const SegmentedButton = React.forwardRef((props, ref) => {
+const SegmentedButton = forwardRef((props, ref) => {
   const { variant, color, ripple, style, className, children, ...rest } = props
 
   return (
     <div ref={ref} {...rest} style={style} className={variants({ variant })}>
-      {React.Children.map(
+      {Children.map(
         children,
         (child, index) =>
-          React.isValidElement(child) &&
-          React.cloneElement(child, {
+          isValidElement(child) &&
+          cloneElement(child, {
             variant,
             color,
             ripple,
             className: variants({
-              roundedRightNone: index !== React.Children.count(children) - 1,
-              borderRightZero: index !== React.Children.count(children) - 1,
+              roundedRightNone: index !== Children.count(children) - 1,
+              borderRightZero: index !== Children.count(children) - 1,
               roundedLeftNone: index !== 0,
               className: child.props.className
             })
@@ -63,4 +68,4 @@ SegmentedButton.defaultProps = {
 
 SegmentedButton.displayName = 'Actify.SegmentedButton'
 
-export default SegmentedButton
+export { SegmentedButton }

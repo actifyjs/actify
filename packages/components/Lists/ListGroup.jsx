@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useState } from 'react'
 import { Icon } from 'actify'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
@@ -7,9 +7,9 @@ const variants = tv({
   base: 'px-4 cursor-pointer relative isolate'
 })
 
-const ListGroup = React.forwardRef((props, ref) => {
-  const [open, setOpen] = React.useState(false)
-  const [hovered, setHovered] = React.useState(false)
+const ListGroup = forwardRef((props, ref) => {
+  const [open, setOpen] = useState(false)
+  const [hovered, setHovered] = useState(false)
   const { style, className, label, children, ...rest } = props
 
   return (
@@ -54,4 +54,4 @@ const ListGroup = React.forwardRef((props, ref) => {
 
 ListGroup.displayName = 'Actify.ListGroup'
 
-export default ListGroup
+export { ListGroup }

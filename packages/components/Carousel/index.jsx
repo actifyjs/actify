@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
-import CarouselContent from './CarouselContent'
-import CarouselControl from './CarouselControl'
-import CarouselIndicator from './CarouselIndicator'
+import { CarouselContent } from './CarouselContent'
+import { CarouselControl } from './CarouselControl'
+import { CarouselIndicator } from './CarouselIndicator'
 import { defaultValue, CarouselProvider } from './CarouselContext'
 
 const variants = tv({
   base: 'relative overflow-hidden rounded-lg w-full min-h-[400px] flex items-center justify-center'
 })
 
-const Carousel = React.forwardRef((props, ref) => {
+const Carousel = forwardRef((props, ref) => {
   const {
     style,
     autoPlay,
@@ -42,4 +42,4 @@ const Carousel = React.forwardRef((props, ref) => {
 
 Carousel.displayName = 'Actify.Carousel'
 
-export default Carousel
+export { Carousel }

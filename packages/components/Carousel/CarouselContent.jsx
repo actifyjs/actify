@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Children, useEffect, isValidElement } from 'react'
 import { wrap } from 'popmotion'
 import { twMerge } from 'tailwind-merge'
 import { useCarousel } from './CarouselContext'
@@ -38,11 +38,9 @@ const CarouselContent = ({ children }) => {
     setCurrent
   } = useCarousel()
 
-  const images = React.Children.toArray(children).map(
-    (child) => child.props.src
-  )
+  const images = Children.toArray(children).map((child) => child.props.src)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrent(wrap(0, images.length, page))
   }, [page, images.length])
 
@@ -53,8 +51,8 @@ const CarouselContent = ({ children }) => {
   return (
     <>
       <AnimatePresence initial={false} custom={direction}>
-        {React.Children.map(children, (child, index) => {
-          if (React.isValidElement(child)) {
+        {Children.map(children, (child, index) => {
+          if (isValidElement(child)) {
             const MotionComponent = motion(child.type)
             if (current == index) {
               return (
@@ -92,4 +90,4 @@ const CarouselContent = ({ children }) => {
   )
 }
 
-export default CarouselContent
+export { CarouselContent }

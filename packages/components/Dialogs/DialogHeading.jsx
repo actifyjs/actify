@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useId, useLayoutEffect } from 'react'
 import { tv } from 'tailwind-variants'
 import { useDialogContext } from './DialogContext'
 
@@ -6,14 +6,14 @@ const variants = tv({
   base: 'w-full flex items-center justify-between text-xl font-semibold leading-snug'
 })
 
-const DialogHeading = React.forwardRef((props, ref) => {
+const DialogHeading = forwardRef((props, ref) => {
   const { className, children, ...rest } = props
   const { setLabelId } = useDialogContext()
-  const id = React.useId()
+  const id = useId()
 
   // Only sets `aria-labelledby` on the Dialog root element
   // if this component is mounted inside it.
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     setLabelId(id)
     return () => setLabelId(undefined)
   }, [id, setLabelId])
@@ -25,4 +25,4 @@ const DialogHeading = React.forwardRef((props, ref) => {
   )
 })
 
-export default DialogHeading
+export { DialogHeading }

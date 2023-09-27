@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { createContext, useRef, useContext } from 'react'
 import { createStore, useStore } from 'zustand'
 
-const DrawerContext = React.createContext()
+const DrawerContext = createContext()
 
 export const DrawerProvider = ({ children, ...initialProp }) => {
   const useCreateStore = createStore()((set) => ({
@@ -11,7 +11,7 @@ export const DrawerProvider = ({ children, ...initialProp }) => {
     setOpen: (state) => set({ open: state })
   }))
 
-  const store = React.useRef(useCreateStore)
+  const store = useRef(useCreateStore)
 
   return (
     <DrawerContext.Provider value={store.current}>
@@ -21,7 +21,7 @@ export const DrawerProvider = ({ children, ...initialProp }) => {
 }
 
 export const useDrawer = () => {
-  const store = React.useContext(DrawerContext)
+  const store = useContext(DrawerContext)
   if (!store) {
     throw new Error('Msissing DrawerContext.Provider in the tree')
   }

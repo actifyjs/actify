@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { createContext, useState, useMemo, useContext } from 'react'
 
-import { useRole, useClick, useDismiss, useFloating, useInteractions } from '@floating-ui/react'
+import {
+  useRole,
+  useClick,
+  useDismiss,
+  useFloating,
+  useInteractions
+} from '@floating-ui/react'
 
-const DialogContext = React.createContext()
+const DialogContext = createContext()
 
-function useDialog({ initialOpen = false, open: controlledOpen, onOpenChange: setControlledOpen }) {
-  const [labelId, setLabelId] = React.useState()
-  const [descriptionId, setDescriptionId] = React.useState()
-  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
+function useDialog({
+  initialOpen = false,
+  open: controlledOpen,
+  onOpenChange: setControlledOpen
+}) {
+  const [labelId, setLabelId] = useState()
+  const [descriptionId, setDescriptionId] = useState()
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
 
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = setControlledOpen ?? setUncontrolledOpen
@@ -27,7 +37,7 @@ function useDialog({ initialOpen = false, open: controlledOpen, onOpenChange: se
 
   const interactions = useInteractions([click, dismiss, role])
 
-  return React.useMemo(
+  return useMemo(
     () => ({
       open,
       setOpen,
@@ -43,14 +53,16 @@ function useDialog({ initialOpen = false, open: controlledOpen, onOpenChange: se
 }
 
 export const useDialogContext = () => {
-  const context = React.useContext(DialogContext)
+  const context = useContext(DialogContext)
   if (context == null) {
     throw new Error('Dialog components must be wrapped in <Dialog />')
   }
   return context
 }
 
-export function DialogProvider({ children, ...options }) {
+export const DialogProvider = ({ children, ...options }) => {
   const dialog = useDialog(options)
-  return <DialogContext.Provider value={dialog}>{children}</DialogContext.Provider>
+  return (
+    <DialogContext.Provider value={dialog}>{children}</DialogContext.Provider>
+  )
 }

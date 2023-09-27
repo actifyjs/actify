@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 import { Ripple, Elevation } from 'actify'
@@ -48,7 +48,7 @@ const variants = tv({
   }
 })
 
-const Button = React.forwardRef((props, ref) => {
+const Button = forwardRef((props, ref) => {
   const {
     ripple,
     variant,
@@ -95,4 +95,4 @@ Button.defaultProps = {
 
 Button.displayName = 'Actify.Button'
 
-export default Button
+export { Button }

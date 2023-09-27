@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Icon, Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
@@ -15,9 +15,9 @@ const variants = tv({
   }
 })
 
-const Chip = React.forwardRef((props, ref) => {
-  const [show, setShow] = React.useState(true)
-  const [selected, setSelected] = React.useState(false)
+const Chip = forwardRef((props, ref) => {
+  const [show, setShow] = useState(true)
+  const [selected, setSelected] = useState(false)
   const {
     ripple,
     label,
@@ -84,4 +84,4 @@ Chip.defaultProps = {
 
 Chip.displayName = 'Actify.Chip'
 
-export default Chip
+export { Chip }

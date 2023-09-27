@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Icon, Spacer } from 'actify'
 import { tv } from 'tailwind-variants'
 
@@ -17,7 +17,7 @@ const variants = tv({
   }
 })
 
-const TopAppBar = React.forwardRef((props, ref) => {
+const TopAppBar = forwardRef((props, ref) => {
   const { title, size, className, ...rest } = props
   return (
     <div ref={ref} {...rest} className={variants({ size, className })}>
@@ -60,4 +60,4 @@ const TopAppBar = React.forwardRef((props, ref) => {
 
 TopAppBar.displayName = 'Actify.TopAppBar'
 
-export default TopAppBar
+export { TopAppBar }

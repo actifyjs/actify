@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { forwardRef, useRef } from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
   base: 'flex gap-2 p-2 bg-secondary/10 rounded-lg overflow-x-auto [&::-webkit-scrollbar]:hidden'
 })
 
-const TabsHeader = React.forwardRef((props, ref) => {
-  const tabRef = ref || React.useRef()
+const TabsHeader = forwardRef((props, ref) => {
+  const tabRef = ref || useRef()
   const { children, className, ...rest } = props
 
   return (
@@ -23,4 +23,4 @@ const TabsHeader = React.forwardRef((props, ref) => {
   )
 })
 
-export default TabsHeader
+export { TabsHeader }

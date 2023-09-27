@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Elevation } from 'actify'
 import { tv } from 'tailwind-variants'
@@ -21,7 +21,7 @@ const variants = tv({
   }
 })
 
-const Slider = React.forwardRef((props, ref) => {
+const Slider = forwardRef((props, ref) => {
   const {
     min,
     max,
@@ -36,9 +36,8 @@ const Slider = React.forwardRef((props, ref) => {
     ...rest
   } = props
 
-  const [_value, set_Value] = React.useState(value || 0)
-
-  const percent = React.useMemo(() => {
+  const [_value, set_Value] = useState(value || 0)
+  const percent = useMemo(() => {
     const _min = min || 0
     const _max = max || 100
     return _value / _max - _min
@@ -105,4 +104,4 @@ Slider.propTypes = {
 
 Slider.displayName = 'Actify.Slider'
 
-export default Slider
+export { Slider }

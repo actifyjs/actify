@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useState } from 'react'
 import { Ripple } from 'actify'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
@@ -7,9 +7,9 @@ const variants = tv({
   base: 'relative flex items-center h-14 pl-4 leading-normal cursor-pointer isolate'
 })
 
-const ListItem = React.forwardRef((props, ref) => {
+const ListItem = forwardRef((props, ref) => {
   const { className, children, ...rest } = props
-  const [current, setCurrent] = React.useState()
+  const [current, setCurrent] = useState()
 
   return (
     <li
@@ -33,4 +33,4 @@ const ListItem = React.forwardRef((props, ref) => {
 
 ListItem.displayName = 'Actify.ListItem'
 
-export default ListItem
+export { ListItem }

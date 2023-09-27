@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 import { Ripple, Elevation } from 'actify'
@@ -16,7 +16,7 @@ const variants = tv({
   }
 })
 
-const Card = React.forwardRef((props, ref) => {
+const Card = forwardRef((props, ref) => {
   const { ripple, type, elevation, children, className, ...rest } = props
 
   return (
@@ -42,4 +42,4 @@ Card.defaultProps = {
 
 Card.displayName = 'Actify.Card'
 
-export default Card
+export { Card }

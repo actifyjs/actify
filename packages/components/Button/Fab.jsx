@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
@@ -21,7 +21,7 @@ const iconSizeMap = {
   large: 36
 }
 
-const Fab = React.forwardRef((props, ref) => {
+const Fab = forwardRef((props, ref) => {
   const {
     label,
     style,
@@ -68,4 +68,4 @@ Fab.defaultProps = {
 
 Fab.displayName = 'Actify.Fab'
 
-export default Fab
+export { Fab }

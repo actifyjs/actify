@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, createContext, useContext } from 'react'
 import { createStore, useStore } from 'zustand'
 
 export const defaultValue = {
@@ -12,17 +12,17 @@ export const defaultValue = {
   infinite: false
 }
 
-const CarouselContext = React.createContext(defaultValue)
+const CarouselContext = createContext(defaultValue)
 
-export function useCarousel() {
-  const store = React.useContext(CarouselContext)
+export const useCarousel = () => {
+  const store = useContext(CarouselContext)
   if (!store) {
     throw new Error('Missing CarouselContext.Provider in the tree')
   }
   return useStore(store)
 }
 
-export function CarouselProvider(props) {
+export const CarouselProvider = (props) => {
   const { children, ...rest } = props
   const useCreateStore = createStore()((set) => ({
     page: [rest.current ?? defaultValue.current, 0],
@@ -40,7 +40,7 @@ export function CarouselProvider(props) {
     setInterval: (interval) => set({ interval })
   }))
 
-  const store = React.useRef(useCreateStore)
+  const store = useRef(useCreateStore)
 
   return (
     <CarouselContext.Provider value={store.current}>

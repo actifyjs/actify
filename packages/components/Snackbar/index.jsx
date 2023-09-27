@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Icon, IconButton } from 'actify'
-import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 let id = 0

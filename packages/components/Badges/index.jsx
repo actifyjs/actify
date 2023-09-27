@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
@@ -17,7 +17,7 @@ const variants = tv({
   }
 })
 
-const Badge = React.forwardRef((props, ref) => {
+const Badge = forwardRef((props, ref) => {
   const { style, color, value, className, children, ...rest } = props
   const number = isNaN(parseInt(value)) ? '' : parseInt(value)
 
@@ -36,4 +36,4 @@ Badge.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }
 
-export default Badge
+export { Badge }

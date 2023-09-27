@@ -1,11 +1,11 @@
-import React from 'react'
-import MenuContext from './MenuContext'
+import React, { forwardRef, useContext } from 'react'
+import { MenuContext } from './MenuContext'
 import { useListItem, useFloatingTree, useMergeRefs } from '@floating-ui/react'
 
-const MenuItem = React.forwardRef((props, ref) => {
+const MenuItem = forwardRef((props, ref) => {
   const { label, disabled, ...rest } = props
 
-  const menu = React.useContext(MenuContext)
+  const menu = useContext(MenuContext)
   const item = useListItem({ label: disabled ? null : label })
   const tree = useFloatingTree()
   const isActive = item.index === menu.activeIndex
@@ -37,4 +37,4 @@ const MenuItem = React.forwardRef((props, ref) => {
 
 MenuItem.displayName = 'Actify.MenuItem'
 
-export default MenuItem
+export { MenuItem }

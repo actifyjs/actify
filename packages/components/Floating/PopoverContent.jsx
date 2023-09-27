@@ -1,8 +1,13 @@
-import React from 'react'
-import { useMergeRefs, FloatingPortal, FloatingOverlay, FloatingFocusManager } from '@floating-ui/react'
+import React, { forwardRef } from 'react'
+import {
+  useMergeRefs,
+  FloatingPortal,
+  FloatingOverlay,
+  FloatingFocusManager
+} from '@floating-ui/react'
 import { usePopoverContext } from './PopoverContext'
 
-const PopoverContent = React.forwardRef(({ style, ...props }, propRef) => {
+const PopoverContent = forwardRef(({ style, ...props }, propRef) => {
   const { context: floatingContext, ...context } = usePopoverContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
 
@@ -31,4 +36,4 @@ const PopoverContent = React.forwardRef(({ style, ...props }, propRef) => {
   )
 })
 
-export default PopoverContent
+export { PopoverContent }
