@@ -27,7 +27,7 @@ const SyntaxHighlighter = (props) => {
   const copyCode = () => {
     navigator.clipboard.writeText(code || children).then(
       () => {
-        setIconName('Check')
+        setIconName('check')
         setTimeout(() => {
           setIconName('copy')
         }, 2000)
