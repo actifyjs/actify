@@ -1,7 +1,7 @@
 import path from 'path'
 import { defineConfig } from 'vite'
 import pages from 'vite-plugin-pages'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import mdPlugin, { Mode } from 'vite-plugin-markdown'
 import { name, peerDependencies } from './package.json'
 
