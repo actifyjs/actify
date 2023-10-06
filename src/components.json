@@ -114,5 +114,8 @@
   },
   {
     "name": "Tooltips"
+  },
+  {
+    "name": "Terminal"
   }
 ]
