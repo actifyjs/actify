@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import App from '@/src/components/App'
 import Main from '@/src/components/Main'
 import Header from '@/src/components/Header'
@@ -11,6 +12,19 @@ const spaces2Hyphen = (str) => str.toLowerCase().split(' ').join('-')
 
 const Layout = ({ children }) => {
   const { pathname } = useLocation()
+  useEffect(() => {
+    console.log(`
+
+    ___          __   _  ____      
+   /   |  _____ / /_ (_)/ __/__  __
+  / /| | / ___// __// // /_ / / / /
+ / ___ |/ /__ / /_ / // __// /_/ / 
+/_/  |_|\___/ \__//_//_/   \__, /  
+                          /____/   
+
+
+`)
+  }, [])
 
   return (
     <App>
