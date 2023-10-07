@@ -22,15 +22,14 @@ const PopoverActivator = forwardRef(
     }
 
     return (
-      <button
+      <div
         ref={ref}
-        type="button"
-        // The user can style the trigger based on the state
+        className="inline-flex cursor-pointer"
         data-state={context.open ? 'open' : 'closed'}
         {...context.getReferenceProps(props)}
       >
         {children}
-      </button>
+      </div>
     )
   }
 )

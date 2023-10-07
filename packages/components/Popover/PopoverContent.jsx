@@ -15,10 +15,7 @@ const PopoverContent = forwardRef(({ style, ...props }, propRef) => {
 
   return (
     <FloatingPortal>
-      <FloatingOverlay
-        lockScroll
-        className="z-[99] grid place-items-center bg-black/40 dark:bg-[rgba(3,3,3,.8)] backdrop-blur"
-      >
+      <FloatingOverlay lockScroll className="z-[99] grid place-items-center">
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
             ref={ref}
@@ -26,7 +23,7 @@ const PopoverContent = forwardRef(({ style, ...props }, propRef) => {
             {...context.getFloatingProps(props)}
             aria-describedby={context.descriptionId}
             style={{ ...context.floatingStyles, ...style }}
-            className="relative bg-white p-2 rounded-lg max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl"
+            className="relative bg-white p-2 shadow-lg rounded-lg max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl"
           >
             {props.children}
           </div>
