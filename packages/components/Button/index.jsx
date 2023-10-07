@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 import { Ripple, Elevation } from 'actify'
 
 const variants = tv({
-  base: 'relative inline-flex gap-2 items-center justify-center select-none h-10 text-sm px-6 rounded-full',
+  base: 'relative inline-flex gap-2 items-center justify-center select-none h-10 text-sm px-6 rounded-full transition-all duration-300 ease-in-out',
   variants: {
     color: {
       primary: 'bg-primary text-on-primary hover:bg-primary/90',
