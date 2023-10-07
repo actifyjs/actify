@@ -7,6 +7,7 @@ import Footer from '@/src/components/Footer'
 import components from './components.json'
 import { useLocation } from 'react-router-dom'
 import { List, ListItemLink, ListGroup } from 'actify'
+import { version } from '@/package.json'
 
 const spaces2Hyphen = (str) => str.toLowerCase().split(' ').join('-')
 
@@ -14,15 +15,13 @@ const Layout = ({ children }) => {
   const { pathname } = useLocation()
   useEffect(() => {
     console.log(`
-
     ___          __   _  ____      
    /   |  _____ / /_ (_)/ __/__  __
   / /| | / ___// __// // /_ / / / /
  / ___ |/ /__ / /_ / // __// /_/ / 
 /_/  |_|\___/ \__//_//_/   \__, /  
                           /____/   
-
-
+actify@${version}
 `)
   }, [])
 
