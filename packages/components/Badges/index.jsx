@@ -36,4 +36,6 @@ Badge.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }
 
+Badge.displayName = 'Actify.Badge'
+
 export { Badge }

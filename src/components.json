@@ -46,6 +46,9 @@
     "name": "Date pickers"
   },
   {
+    "name": "Time pickers"
+  },
+  {
     "name": "Dialogs"
   },
   {
@@ -108,9 +111,6 @@
   },
   {
     "name": "Text fields"
-  },
-  {
-    "name": "Time pickers"
   },
   {
     "name": "Tooltips"

@@ -73,4 +73,6 @@ const Checkbox = forwardRef((props, ref) => {
   )
 })
 
+Checkbox.displayName = 'Actify.Checkbox'
+
 export { Checkbox }
