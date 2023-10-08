@@ -56,10 +56,10 @@ const TimePicker = () => {
     getFloatingProps()
 
   return (
-    <div>
+    <>
       <TextField
-        label="select"
         id={buttonId}
+        label="select time"
         ref={refs.setReference}
         {...getReferenceProps()}
       >
@@ -78,12 +78,12 @@ const TimePicker = () => {
               aria-labelledby={buttonId}
               {...floatingProps}
             >
-              <Picker />
+              <Picker onChange={(time) => console.log(time)} />
             </div>
           </FloatingFocusManager>
         )}
       </FloatingPortal>
-    </div>
+    </>
   )
 }
 
