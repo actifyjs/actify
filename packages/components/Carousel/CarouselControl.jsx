@@ -6,6 +6,9 @@ import { useCarousel } from './CarouselContext'
 const CarouselControl = ({ control, autoPlay, infinite }) => {
   const { total, page, setPage, current, interval } = useCarousel()
   const prev = () => {
+    if (!infinite && current == 0) {
+      return
+    }
     setPage([parseInt(page) - 1, -1])
   }
   const next = () => {
