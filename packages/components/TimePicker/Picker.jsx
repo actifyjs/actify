@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, IconButton, Icon, Spacer } from 'actify'
 
-const Picker = ({ onChange }) => {
+const Picker = ({ value, onChange }) => {
   const [setting, setSetting] = useState('Hour')
   const [hour, setHour] = useState('12')
   const [minute, setMinute] = useState('00')
@@ -94,6 +94,12 @@ const Picker = ({ onChange }) => {
     }
   ]
 
+  useEffect(() => {
+    const [hour, minute] = value.split(':')
+    setHour(hour)
+    setMinute(minute)
+  }, [])
+
   const getActvieClass = (value) => {
     if (setting == 'Hour') {
       if (value == hour) {
@@ -151,17 +157,17 @@ const Picker = ({ onChange }) => {
                 >
                   <button
                     type="button"
-                    className={`pointer-events-none text-6xl ${
+                    className={`text-6xl ${
                       setting == 'Hour'
                         ? 'text-primary '
-                        : 'text-black opacity-[.54]'
-                    } border-none bg-transparent p-0 min-[320px]:max-[825px]:landscape:text-5xl min-[320px]:max-[825px]:landscape:font-normal cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none !opacity-100`}
+                        : 'text-on-surface opacity-[.54]'
+                    } border-none bg-transparent p-0 cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none !opacity-100`}
                     tabIndex="0"
                   >
                     {hour.toString().padStart(2, '0')}
                   </button>
                 </div>
-                <div className="w-6 text-center text-6xl opacity-[.54] border-none bg-transparent p-0 text-black">
+                <div className="w-6 text-center text-6xl opacity-[.54] border-none bg-transparent p-0 text-on-surface">
                   :
                 </div>
                 <div
@@ -173,8 +179,8 @@ const Picker = ({ onChange }) => {
                     className={`text-6xl ${
                       setting == 'Minute'
                         ? 'text-primary '
-                        : 'text-black opacity-[.54]'
-                    } border-none bg-transparent p-0 min-[320px]:max-[825px]:landscape:text-5xl min-[320px]:max-[825px]:landscape:font-normal cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none`}
+                        : 'text-on-surface opacity-[.54]'
+                    } border-none bg-transparent p-0 cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none`}
                     tabIndex="0"
                   >
                     {minute == 60 ? '00' : minute.toString().padStart(2, '0')}
@@ -183,22 +189,29 @@ const Picker = ({ onChange }) => {
               </div>
               <div className="flex flex-col w-[52px] h-20 justify-between rounded-lg border-2 border-outline">
                 <button
-                  type="button"
-                  className="flex-1 bg-transparent border-none text-black opacity-[.54] cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none"
                   tabIndex="0"
+                  type="button"
+                  onClick={() => setAm(true)}
+                  className={`flex-1 bg-transparent border-none text-on-surface ${
+                    am ? '' : 'opacity-[.54]'
+                  } cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none`}
                 >
                   AM
                 </button>
                 <button
-                  className="flex-1 bg-transparent border-none text-black cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none !opacity-100"
                   tabIndex="0"
+                  type="button"
+                  onClick={() => setAm(false)}
+                  className={`flex-1 bg-transparent border-none text-on-surface ${
+                    am ? 'opacity-[.54]' : ''
+                  } cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none`}
                 >
                   PM
                 </button>
               </div>
             </div>
           </div>
-          <div className="w-full mt-9 mb-5 px-3 overflow-x-hidden flex justify-center flex-col items-center dark:bg-zinc-500">
+          <div className="w-full mt-9 mb-5 px-3 overflow-x-hidden flex justify-center flex-col items-center">
             <div className="relative rounded-full w-64 h-64 cursor-default my-0 mx-auto bg-[#00000012] dark:bg-zinc-600/50 animate-[show-up-clock_350ms_linear]">
               <div className="absolute top-1/2 left-1/2 w-2 h-2 -translate-y-1/2 -translate-x-1/2 rounded-full bg-primary"></div>
               <div

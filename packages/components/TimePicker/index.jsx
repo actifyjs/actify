@@ -22,6 +22,7 @@ const TimePicker = () => {
   const [open, setOpen] = useState(false)
   const [placement, setPlacement] = useState(null)
   const buttonId = useId()
+  const [value, setValue] = useState('12:00')
 
   const {
     refs,
@@ -55,11 +56,17 @@ const TimePicker = () => {
   const { 'aria-activedescendant': ignoreAria, ...floatingProps } =
     getFloatingProps()
 
+  const handleChange = (time) => {
+    setValue(time.hour + ':' + time.minute)
+    setOpen(false)
+  }
+
   return (
     <>
       <TextField
         id={buttonId}
-        label="select time"
+        value={value}
+        label={value || 'select time'}
         ref={refs.setReference}
         {...getReferenceProps()}
       >
@@ -78,7 +85,7 @@ const TimePicker = () => {
               aria-labelledby={buttonId}
               {...floatingProps}
             >
-              <Picker onChange={(time) => console.log(time)} />
+              <Picker value={value} onChange={handleChange} />
             </div>
           </FloatingFocusManager>
         )}
