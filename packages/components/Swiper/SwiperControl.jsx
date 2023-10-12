@@ -1,3 +1,4 @@
+import React from 'react'
 import { useInterval } from 'usehooks-ts'
 import { Icon } from 'actify'
 import { useSwiper } from './SwiperContext'

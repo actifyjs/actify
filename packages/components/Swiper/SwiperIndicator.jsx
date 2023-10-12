@@ -1,3 +1,4 @@
+import React from 'react'
 import { useSwiper } from './SwiperContext'
 
 const SwiperIndicator = () => {
