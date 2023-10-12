@@ -1,4 +1,5 @@
 import React from 'react'
+import { createPortal } from 'react-dom'
 import { tv } from 'tailwind-variants'
 import { useDrawer } from './DrawerContext'
 
@@ -114,15 +115,22 @@ const DrawerContent = ({ className, children }) => {
   const { open, placement, setOpen } = useDrawer()
 
   return (
-    <nav className={variants({ open, placement })}>
-      <section className={sectionVariants({ open, placement, className })}>
-        <article className={contentVariants({ placement })}>{children}</article>
-      </section>
-      <section
-        onClick={() => setOpen(false)}
-        className="w-screen h-full cursor-pointer"
-      ></section>
-    </nav>
+    <>
+      {createPortal(
+        <nav className={variants({ open, placement })}>
+          <section className={sectionVariants({ open, placement, className })}>
+            <article className={contentVariants({ placement })}>
+              {children}
+            </article>
+          </section>
+          <section
+            onClick={() => setOpen(false)}
+            className="w-screen h-full cursor-pointer"
+          ></section>
+        </nav>,
+        document.body
+      )}
+    </>
   )
 }
 
