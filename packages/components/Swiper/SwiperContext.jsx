@@ -1,29 +1,35 @@
-import React from 'react'
+import React, { createContext, useRef, useContext } from 'react'
+import { createStore, useStore } from 'zustand'
 
-const defaultValue = {
-  current: 0,
-  autoPlay: false,
-  interval: 3000,
-  infinite: true
-}
+const SwiperContext = createContext()
 
-const SwiperContext = React.createContext(defaultValue)
+export const SwiperProvider = ({ children, ...initialProp }) => {
+  const useCreateStore = createStore()((set) => ({
+    count: initialProp.count ?? 0,
+    current: initialProp.current ?? 0,
+    autoPlay: initialProp.autoPlay ?? false,
+    interval: initialProp.interval ?? 3000,
+    infinite: initialProp.infinite ?? true,
+    setCount: (state) => set({ count: state }),
+    setCurrent: (state) => set({ current: state }),
+    setAutoPlay: (state) => set({ autoPlay: state }),
+    setInterval: (state) => set({ interval: state }),
+    setInfinite: (state) => set({ infinite: state })
+  }))
 
-export function useSwiper() {
-  return React.useContext(SwiperContext)
-}
+  const store = useRef(useCreateStore)
 
-export function SwiperProvider(props) {
-  const { current, autoPlay, interval, infinite, children } = props
-  const [swiper, setSwiper] = React.useState({
-    current: current || defaultValue.current,
-    autoPlay: autoPlay || defaultValue.autoPlay,
-    interval: interval || defaultValue.interval,
-    infinite: infinite || defaultValue.infinite
-  })
   return (
-    <SwiperContext.Provider value={{ swiper, setSwiper }}>
+    <SwiperContext.Provider value={store.current}>
       {children}
     </SwiperContext.Provider>
   )
+}
+
+export const useSwiper = () => {
+  const store = useContext(SwiperContext)
+  if (!store) {
+    throw new Error('Missing SwiperContext.Provider in the tree')
+  }
+  return useStore(store)
 }

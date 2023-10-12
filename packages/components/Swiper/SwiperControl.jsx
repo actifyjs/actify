@@ -3,34 +3,22 @@ import { Icon } from 'actify'
 import { useSwiper } from './SwiperContext'
 
 const SwiperControl = () => {
-  const { swiper, setSwiper } = useSwiper()
-  const { autoPlay, interval, infinite } = swiper
+  const { autoPlay, count, current, setCurrent, interval, infinite } =
+    useSwiper()
 
   const prev = () => {
-    if (swiper.current == 0) {
-      setSwiper({
-        ...swiper,
-        current: swiper.total - 1
-      })
+    if (current == 0) {
+      setCurrent(count - 1)
     } else {
-      setSwiper({
-        ...swiper,
-        current: swiper.current - 1
-      })
+      setCurrent(count - 1)
     }
   }
   const next = () => {
-    if (swiper.current < swiper.total - 1) {
-      setSwiper({
-        ...swiper,
-        current: swiper.current + 1
-      })
+    if (current < count - 1) {
+      setCurrent(current + 1)
     } else {
       if (infinite) {
-        setSwiper({
-          ...swiper,
-          current: 0
-        })
+        setCurrent(0)
       }
     }
   }
@@ -61,4 +49,4 @@ const SwiperControl = () => {
   )
 }
 
-export default SwiperControl
+export { SwiperControl }
