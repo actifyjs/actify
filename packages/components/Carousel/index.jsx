@@ -57,7 +57,7 @@ const CarsouselPropTypes = {
   className: PropTypes.string
 }
 
-CarouselRoot.PropTypes = CarsouselPropTypes
+CarouselRoot.propTypes = CarsouselPropTypes
 
 CarouselRoot.displayName = 'Actify.Carousel'
 
