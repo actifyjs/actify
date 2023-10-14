@@ -6,7 +6,7 @@ import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
 
 const variants = tv({
-  base: 'relative inline-flex h-10 w-10 rounded-full items-center justify-center hover:bg-black/5 hover:dark:bg-white/5 transition-all duration-300 ease-in-out',
+  base: 'relative inline-flex h-10 w-10 rounded-full items-center justify-center hover:bg-inverse-surface/25 transition-all duration-300 ease-in-out',
   variants: {
     variant: {
       standard: '',
