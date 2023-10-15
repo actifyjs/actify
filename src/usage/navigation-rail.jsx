@@ -26,7 +26,7 @@ export default () => {
         {list.map((item, index) => (
           <ListItem key={index} className="pl-0 py-2 flex flex-col">
             <Icon name={item.icon} />
-            <span className="text-sm mt-1">{item.label}</span>
+            <span className="text-xs font-semibold mt-1">{item.label}</span>
           </ListItem>
         ))}
       </List>
