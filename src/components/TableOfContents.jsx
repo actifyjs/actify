@@ -38,7 +38,7 @@ const TableOfContents = ({ hash, markdown }) => {
   }, [markdown])
 
   return (
-    <nav className="fixed top-16 right-16 h-screen w-64 hidden lg:grid lg:place-content-center">
+    <nav className="fixed bottom-14 right-16 h-screen w-64 hidden lg:grid lg:place-content-center">
       <ul>
         {toc.map((item) => (
           <li
