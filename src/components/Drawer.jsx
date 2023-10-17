@@ -12,37 +12,33 @@ const debounce = (fn, delay) => {
   }
 }
 
-const Drawer = ({ width, children }) => {
-  const location = useLocation()
-  const { top, setLeft, drawer, setDrawer } = useApp()
-
-  useEffect(() => {
-    if (window.innerWidth < 768) {
-      setDrawer(false)
-    }
-  }, [location])
+const Drawer = ({ children }) => {
+  const { pathname } = useLocation()
+  const { top, drawer, drawerWidth, setDrawer } = useApp()
 
   useEffect(() => {
     const handleResize = debounce(() => {
       if (window.innerWidth < 768) {
-        setLeft(16)
         setDrawer(false)
       } else {
-        setLeft(width)
-        setDrawer(true)
+        if (pathname == '/') {
+          setDrawer(false)
+        } else {
+          setDrawer(true)
+        }
       }
     }, 500)
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [pathname])
 
   return (
     <>
       <aside
         style={{
-          top: top,
-          width: `${width}px`,
+          top,
+          width: drawerWidth,
           height: `calc(100vh - ${top}px)`,
           transform: `${drawer ? 'translateX(0)' : 'translateX(-100%)'}`
         }}

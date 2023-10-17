@@ -1,14 +1,14 @@
 import { useApp } from './AppContext'
-import { useLocation } from 'react-router-dom'
 
 const Footer = () => {
-  const { left } = useApp()
-  const { pathname } = useLocation()
-  const marginLeft = pathname == '/' ? '0' : left
+  const { drawer, drawerWidth } = useApp()
 
   return (
-    <footer style={{ marginLeft }} className="shadow-inner">
-      <div className="mx-auto w-full max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+    <footer
+      className="shadow-inner"
+      style={{ marginLeft: drawer ? drawerWidth : 0 }}
+    >
+      <div className="mx-auto w-full max-w-screen-xl py-1 md:py-4 px-4 md:flex md:items-center md:justify-between">
         <p className="text-center">Copyright © 2023 Actify</p>
         <p className="text-center">
           Released under the{' '}

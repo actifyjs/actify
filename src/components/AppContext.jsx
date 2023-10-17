@@ -3,8 +3,8 @@ import { createStore, useStore } from 'zustand'
 
 const defaultValue = {
   top: 64,
-  left: 240,
-  drawer: false
+  drawer: false,
+  drawerWidth: 240
 }
 
 const AppContext = React.createContext()
@@ -12,11 +12,11 @@ const AppContext = React.createContext()
 export const AppProvider = ({ children, ...initialProp }) => {
   const useCreateStore = createStore()((set) => ({
     top: initialProp.value || defaultValue.top,
-    left: initialProp.value || defaultValue.left,
     drawer: initialProp.value || defaultValue.drawer,
+    drawerWidth: initialProp.value || defaultValue.drawerWidth,
     setTop: (state) => set({ top: state }),
-    setLeft: (state) => set({ left: state }),
-    setDrawer: (state) => set({ drawer: state })
+    setDrawer: (state) => set({ drawer: state }),
+    setDrawerWidth: (state) => set({ drawerWidth: state })
   }))
 
   const store = React.useRef(useCreateStore).current

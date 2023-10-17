@@ -1,15 +1,14 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { Icon, Button } from 'actify'
 import Logo from '@/src/components/Logo'
 
 export default () => {
   return (
-    <div className="container flex flex-col gap-4">
-      <div className="mx-auto w-80">
+    <div className="flex flex-col gap-4">
+      <div className="mx-auto w-80 max-sm:w-40">
         <Logo />
       </div>
-      <p className="text-center text-4xl font-extrabold ">
+      <p className="text-center text-2xl md:text-3xl lg:text-4xl font-extrabold ">
         React Material Design 3 Components Library
       </p>
       <div className="flex items-center justify-center gap-1 sm:gap-2">

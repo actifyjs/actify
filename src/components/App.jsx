@@ -1,10 +1,12 @@
-import React from 'react'
 import { AppProvider } from './AppContext'
 
 const App = ({ children }) => {
   return (
     <AppProvider>
-      <div id="actify" className="w-full bg-surface text-on-surface">
+      <div
+        id="actify"
+        className="min-h-screen grid grid-cols-1 gap-4 grid-rows-[64px_auto_56px] bg-surface text-on-surface"
+      >
         {children}
       </div>
     </AppProvider>
