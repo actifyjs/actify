@@ -21,10 +21,9 @@ const ListGroup = forwardRef((props, ref) => {
         onClick={() => setOpen(!open)}
       >
         {label}
-        <Icon
-          name="chevron-down"
-          className={`transition-transform ${open ? 'rotate-90' : ''}`}
-        />
+        <div className={`transition-transform ${open ? 'rotate-90' : ''}`}>
+          <Icon name="chevron-down" />
+        </div>
       </div>
       {hovered && (
         <motion.div
