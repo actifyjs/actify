@@ -11,7 +11,7 @@ export default () => {
         import.meta.env.VITE_AccessKey
       }`
     )
-    const [data] = await response.json()
+    const data = await response.json()
     setSplash(data.urls.regular)
   }
   useEffect(() => {
