@@ -1,5 +1,5 @@
 import { useEffect, useState, useTransition } from 'react'
-import { Icon, Tooltip, TextField, LinearProgress } from 'actify'
+import { Icon, TextField, LinearProgress } from 'actify'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
 
 const icons = Object.keys(dynamicIconImports)
@@ -42,18 +42,14 @@ export default () => {
       <LinearProgress indeterminate={isPending} value={0} />
       <div className="mt-2 gap-2 grid grid-cols-[repeat(auto-fill,minmax(52px,1fr))]">
         {filterIcons.map((item) => (
-          <Tooltip key={item}>
-            <Tooltip.Activator>
-              <Icon
-                size={36}
-                name={item}
-                color="primary"
-                onClick={() => cliptoboard(item)}
-                className="flex items-center justify-center cursor-pointer p-2 bg-black/10 dark:bg-white/10 rounded-md"
-              />
-            </Tooltip.Activator>
-            <Tooltip.Content>{item}</Tooltip.Content>
-          </Tooltip>
+          <Icon
+            key={item}
+            size={36}
+            name={item}
+            color="primary"
+            onClick={() => cliptoboard(item)}
+            className="flex items-center justify-center cursor-pointer p-2 bg-black/10 dark:bg-white/10 rounded-md"
+          />
         ))}
       </div>
     </>

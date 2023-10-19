@@ -118,13 +118,10 @@ export default defineConfig({
       action="https://codesandbox.io/api/v1/sandboxes/define"
     >
       <input type="hidden" name="parameters" value={parameters} />
-      <Tooltip placement="top">
-        <Tooltip.Activator>
-          <IconButton type="submit">
-            <Icon name="codesandbox" />
-          </IconButton>
-        </Tooltip.Activator>
-        <Tooltip.Content>Open in CodeSandbox</Tooltip.Content>
+      <Tooltip placement="top" content="Open in CodeSandbox">
+        <IconButton type="submit">
+          <Icon name="codesandbox" />
+        </IconButton>
       </Tooltip>
     </form>
   )

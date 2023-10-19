@@ -2,11 +2,8 @@ import { Button, Tooltip } from 'actify'
 
 export default () => {
   return (
-    <Tooltip>
-      <Tooltip.Activator>
-        <Button>Show Tooltip</Button>
-      </Tooltip.Activator>
-      <Tooltip.Content>Hello Tooltip</Tooltip.Content>
+    <Tooltip content="Hello Tooltip">
+      <Button>Show Tooltip</Button>
     </Tooltip>
   )
 }

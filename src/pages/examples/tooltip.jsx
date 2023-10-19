@@ -17,7 +17,7 @@ import {
   useDelayGroupContext
 } from '@floating-ui/react'
 
-import React, {
+import {
   useId,
   useRef,
   useState,
@@ -30,15 +30,15 @@ import React, {
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 
 const TooltipGroupContext = createContext({
-  placement: 'top',
+  placement: 'bottom',
   groupId: undefined
 })
 
-const TooltipGroup = ({
+export const TooltipGroup = ({
   timeout = 300,
   showDelay = 600,
   hideDelay = 200,
-  placement,
+  placement = 'bottom',
   children
 }) => {
   const groupId = useId()
@@ -55,7 +55,13 @@ const TooltipGroup = ({
   )
 }
 
-const Tooltip = ({ content, showDelay, hideDelay, placement, children }) => {
+export const Tooltip = ({
+  content,
+  showDelay,
+  hideDelay,
+  placement,
+  children
+}) => {
   const { placement: groupPlacement, groupId } = useContext(TooltipGroupContext)
   const { delay, isInstantPhase } = useDelayGroupContext()
   const showDelayFinal =
@@ -166,7 +172,7 @@ const Tooltip = ({ content, showDelay, hideDelay, placement, children }) => {
               {...getFloatingProps({
                 ref: refs.setFloating,
                 className:
-                  'z-50 bg-inverse-surface py-3 px-4 rounded max-w-xs grid grid-cols-[1fr_auto] items-center gap-2',
+                  'bg-inverse-surface py-3 px-4 rounded max-w-xs grid grid-cols-[1fr_auto] items-center gap-2',
                 style: {
                   top: y ?? 0,
                   left: x ?? 0,
@@ -193,5 +199,3 @@ const Tooltip = ({ content, showDelay, hideDelay, placement, children }) => {
     </>
   )
 }
-
-export { Tooltip, TooltipGroup }

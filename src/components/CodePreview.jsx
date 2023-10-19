@@ -1,79 +1,10 @@
-import React from 'react'
-
-import {
-  Badge,
-  Card,
-  Carousel,
-  Snackbar,
-  Button,
-  Fab,
-  IconButton,
-  SegmentedButton,
-  Checkbox,
-  Chip,
-  Dialog,
-  Divider,
-  Elevation,
-  Icon,
-  List,
-  ListItem,
-  Menu,
-  MenuItem,
-  LinearProgress,
-  CircularProgress,
-  RadioButton,
-  Ripple,
-  Select,
-  Slider,
-  Switch,
-  Tabs,
-  TextField,
-  Spacer,
-  Tooltip,
-  DatePicker,
-  Drawer
-} from 'actify'
-
+import * as Actify from 'actify'
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 import { LiveProvider, LiveEditor, LivePreview } from 'react-live'
 
-const scope = {
-  Badge,
-  Card,
-  Carousel,
-  Snackbar,
-  Button,
-  Fab,
-  IconButton,
-  SegmentedButton,
-  Checkbox,
-  Chip,
-  Dialog,
-  Divider,
-  Elevation,
-  Icon,
-  List,
-  ListItem,
-  Menu,
-  MenuItem,
-  LinearProgress,
-  CircularProgress,
-  RadioButton,
-  Ripple,
-  Select,
-  Slider,
-  Switch,
-  Tabs,
-  TextField,
-  Spacer,
-  Tooltip,
-  DatePicker,
-  Drawer
-}
-
 const CodePreview = ({ code }) => {
   return (
-    <LiveProvider code={code} scope={scope}>
+    <LiveProvider code={code} scope={...Actify}>
       <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
         <div className="flex border-b border-[#ccc] dark:border-[#222]">
           <Tabs.Header className="bg-transparent">

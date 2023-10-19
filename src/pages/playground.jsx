@@ -1,81 +1,12 @@
-import {
-  Badge,
-  Card,
-  Carousel,
-  Snackbar,
-  Button,
-  Fab,
-  IconButton,
-  SegmentedButton,
-  Checkbox,
-  Chip,
-  Dialog,
-  Divider,
-  Elevation,
-  Icon,
-  List,
-  ListItem,
-  Menu,
-  MenuItem,
-  LinearProgress,
-  CircularProgress,
-  RadioButton,
-  Ripple,
-  Select,
-  Slider,
-  Switch,
-  Tabs,
-  TextField,
-  Spacer,
-  Tooltip,
-  DatePicker,
-  Drawer
-} from 'actify'
+import * as Actify from 'actify'
 import { useEffect, useRef, useState } from 'react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
-
-const scope = {
-  Badge,
-  Card,
-  Carousel,
-  Snackbar,
-  Button,
-  Fab,
-  IconButton,
-  SegmentedButton,
-  Checkbox,
-  Chip,
-  Dialog,
-  Divider,
-  Elevation,
-  Icon,
-  List,
-  ListItem,
-  Menu,
-  MenuItem,
-  LinearProgress,
-  CircularProgress,
-  RadioButton,
-  Ripple,
-  Select,
-  Slider,
-  Switch,
-  Tabs,
-  TextField,
-  Spacer,
-  Tooltip,
-  DatePicker,
-  Drawer
-}
 
 const code = `() => {
   const [tips, setTips] = React.useState('Hello Actify');
   return (
-    <Tooltip>
-      <Tooltip.Activator>
-        <Button>Show Tooltip</Button>
-      </Tooltip.Activator>
-      <Tooltip.Content>{tips}</Tooltip.Content>
+    <Tooltip content={tips}>
+      <Button>Show Tooltip</Button>
     </Tooltip>
   )
 }`
@@ -132,7 +63,7 @@ export default () => {
   }
 
   return (
-    <LiveProvider code={code} scope={scope}>
+    <LiveProvider code={code} scope={...Actify}>
       <div
         ref={splitPaneRef}
         className="relative flex h-[calc(100vh-152px)] overflow-hidden"
