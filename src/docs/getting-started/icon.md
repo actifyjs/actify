@@ -8,4 +8,16 @@ title: Icon
 
 ## Usage
 
-<usage name="icon" icon="Home" hidecode="true" color="primary" size="36"></usage>
+<usage name="icon"></usage>
+
+## Props
+
+| Props | Type     | Description       | Default      |
+| ----- | -------- | ----------------- | ------------ |
+| name  | `string` | Icon name         | null         |
+| color | Color    | Change icon color | currentColor |
+| size  | `number` | Change icon size  | `24`         |
+
+## All Icons
+
+<preview name="icons"></preview>

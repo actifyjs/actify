@@ -6,7 +6,7 @@ import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
 
 const Usage = (props) => {
   const [rawString, setRawString] = useState('')
-  const { name, hidecode, ...rest } = props
+  const { name, ...rest } = props
   const LazyComponent = lazy(() => import(`./../usage/${name}.jsx`))
 
   useEffect(() => {
@@ -32,8 +32,8 @@ const Usage = (props) => {
             </Tabs.Tab>
             <Spacer />
             <TooltipGroup>
-              {!hidecode && <OpenInCodeSandbox title={name} code={rawString} />}
-              {!hidecode && <OpenInStackblitz title={name} code={rawString} />}
+              <OpenInCodeSandbox title={name} code={rawString} />
+              <OpenInStackblitz title={name} code={rawString} />
             </TooltipGroup>
           </Tabs.Header>
         </div>
@@ -42,9 +42,7 @@ const Usage = (props) => {
             <LazyComponent name={name} {...rest} />
           </Tabs.Panel>
           <Tabs.Panel value="code">
-            {!hidecode && (
-              <SyntaxHighlighter language="jsx">{rawString}</SyntaxHighlighter>
-            )}
+            <SyntaxHighlighter language="jsx">{rawString}</SyntaxHighlighter>
           </Tabs.Panel>
         </Tabs.Body>
       </Tabs>

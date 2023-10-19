@@ -1,10 +1,11 @@
 import { memo } from 'react'
-import Tabs from '@/src/tabs'
 import Usage from '@/src/usage'
+import Preview from '@/src/preview'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
 import ReactMarkdown from 'react-markdown'
+import Tabs from '@/src/components/Tabs'
 import CodePreview from '@/src/components/CodePreview'
 import EditOnGitHub from '@/src/components/EditOnGitHub'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -39,6 +40,9 @@ const Markdown = memo(({ pathname, markdown }) => {
           },
           tabs: ({ node, children, ...rest }) => <Tabs {...rest} />,
           usage: ({ node, children, ...rest }) => <Usage {...rest} />,
+          preview: ({ node, children, ...rest }) => (
+            <Preview {...rest}>{children}</Preview>
+          ),
           'code-preview': ({ node, children, ...rest }) => (
             <CodePreview {...rest}>{children}</CodePreview>
           )
