@@ -1,5 +1,6 @@
 import { useEffect, useState, useTransition } from 'react'
 import { Icon, TextField, LinearProgress } from 'actify'
+import { useToast } from '@/packages/components/Toast'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
 
 const icons = Object.keys(dynamicIconImports)
@@ -7,6 +8,7 @@ const icons = Object.keys(dynamicIconImports)
 export default () => {
   const [isPending, startTransition] = useTransition()
   const [filterIcons, setFilterIcons] = useState([])
+  const toast = useToast(4000)
 
   useEffect(() => {
     setFilterIcons(icons)
@@ -24,10 +26,10 @@ export default () => {
   const cliptoboard = (str) => {
     navigator.clipboard.writeText(str).then(
       () => {
-        console.log('Copied!')
+        toast('success', `${str} Copied!`)
       },
       () => {
-        console.log('Copy Failed!')
+        toast('error', 'Copy Failed!')
       }
     )
   }
