@@ -63,7 +63,7 @@ export default () => {
   }
 
   return (
-    <LiveProvider code={code} scope={...Actify}>
+    <LiveProvider code={code} scope={Actify}>
       <div
         ref={splitPaneRef}
         className="relative flex h-[calc(100vh-152px)] overflow-hidden"

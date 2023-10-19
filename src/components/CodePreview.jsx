@@ -4,7 +4,7 @@ import { LiveProvider, LiveEditor, LivePreview } from 'react-live'
 
 const CodePreview = ({ code }) => {
   return (
-    <LiveProvider code={code} scope={...Actify}>
+    <LiveProvider code={code} scope={Actify}>
       <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
         <div className="flex border-b border-[#ccc] dark:border-[#222]">
           <Tabs.Header className="bg-transparent">
