@@ -1,6 +1,6 @@
 import * as Actify from 'actify'
 import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
-import { LiveProvider, LiveEditor, LivePreview } from 'react-live'
+import { LiveProvider, LivePreview } from 'react-live'
 
 const CodePreview = ({ code }) => {
   return (
@@ -26,9 +26,7 @@ const CodePreview = ({ code }) => {
             <LivePreview className="flex gap-2" />
           </Actify.Tabs.Panel>
           <Actify.Tabs.Panel value="code">
-            <SyntaxHighlighter language="jsx">
-              <LiveEditor />
-            </SyntaxHighlighter>
+            <SyntaxHighlighter language="jsx">{code}</SyntaxHighlighter>
           </Actify.Tabs.Panel>
         </Actify.Tabs.Body>
       </Actify.Tabs>
