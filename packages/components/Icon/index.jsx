@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { memo, lazy, Suspense } from 'react'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
@@ -15,7 +15,7 @@ const variants = tv({
  * @param {number} size - default 24
  * @returns {JSX.Element} JSX Element
  */
-const Icon = ({ name, color, size, className, ...rest }) => {
+const Icon = memo(({ name, color, size, className, ...rest }) => {
   if (!dynamicIconImports.hasOwnProperty(name)) {
     return null
   }
@@ -32,7 +32,7 @@ const Icon = ({ name, color, size, className, ...rest }) => {
       </i>
     </Suspense>
   )
-}
+})
 
 Icon.propTypes = {
   color: PropTypes.string,
