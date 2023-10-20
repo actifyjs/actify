@@ -11,10 +11,16 @@ const variants = tv({
 })
 
 const TabsRoot = forwardRef((props, ref) => {
-  const { value, className, children, ...rest } = props
+  const { value, onChange, style, className, children, ...rest } = props
+
   return (
-    <TabsProvider value={value}>
-      <div ref={ref} {...rest} className={variants({ className })}>
+    <TabsProvider value={value} onChange={onChange}>
+      <div
+        ref={ref}
+        {...rest}
+        style={style}
+        className={variants({ className })}
+      >
         {children}
       </div>
     </TabsProvider>

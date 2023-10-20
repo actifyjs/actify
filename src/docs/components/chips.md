@@ -9,3 +9,12 @@ title: Chips
 ## Usage
 
 <usage name="chips"></usage>
+
+## Props
+
+| Prop     | Type     | Description            | Default |
+| -------- | -------- | ---------------------- | ------- |
+| `lable`  | `string` | The label of the chip  | `null`  |
+| `type`   | `string` | The type of the chip   | `null`  |
+| `href`   | `string` | The href of the chip   | `null`  |
+| `target` | `string` | The target of the chip | `null`  |

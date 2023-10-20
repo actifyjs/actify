@@ -8,8 +8,13 @@ const variants = tv({
 })
 
 const Tab = forwardRef((props, ref) => {
-  const { layoutId, active, setActive } = useTabs()
+  const { layoutId, active, setActive, onChange } = useTabs()
   const { className, value, children, ...rest } = props
+
+  const handleClick = (value) => {
+    setActive(value)
+    onChange?.(value)
+  }
 
   return (
     <li
@@ -17,7 +22,7 @@ const Tab = forwardRef((props, ref) => {
       {...rest}
       ref={ref}
       data-value={value}
-      onClick={() => setActive(value)}
+      onClick={() => handleClick(value)}
       className={variants({ className })}
     >
       {children}

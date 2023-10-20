@@ -12,6 +12,13 @@ title: Select
 
 ## Props
 
-| Props    | Type      | Description            | Default |
-| -------- | --------- | ---------------------- | ------- |
-| multiple | `boolean` | single or multi select | `false` |
+| Props      | Type      | Description            | Default |
+| ---------- | --------- | ---------------------- | ------- |
+| `value`    | `string`  | selected value         | `null`  |
+| `multiple` | `boolean` | single or multi select | `false` |
+
+## Events
+
+| Events     | Description              |
+| ---------- | ------------------------ |
+| `onChange` | fired when value changed |

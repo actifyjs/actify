@@ -7,6 +7,7 @@ export const TabsProvider = ({ children, ...initialProp }) => {
   const useCreateStore = createStore()((set) => ({
     layoutId: useId(),
     active: initialProp.value,
+    onChange: initialProp.onChange,
     setActive: (state) => set({ active: state })
   }))
 

@@ -9,3 +9,10 @@ title: Divider
 ## Usage
 
 <usage name="divider"></usage>
+
+## Props
+
+| Name        | Type     | Description                  | Default |
+| ----------- | -------- | ---------------------------- | ------- |
+| `color`     | `string` | The color of the divider     | `null`  |
+| `thickness` | `number` | The thickness of the divider | `1`     |

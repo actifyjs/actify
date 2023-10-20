@@ -9,3 +9,11 @@ title: Checkbox
 ## Usage
 
 <usage name="checkbox"></usage>
+
+## Props
+
+| Props    | Type      | Description                      | Default |
+| -------- | --------- | -------------------------------- | ------- |
+| color    | `string`  | The color of the checkbox        | `null`  |
+| checked  | `boolean` | Whether the checkbox is checked  | `false` |
+| disabled | `boolean` | Whether the checkbox is disabled | `false` |

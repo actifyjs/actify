@@ -9,3 +9,9 @@ title: Cards
 ## Usage
 
 <usage name="card"></usage>
+
+## Props
+
+| Props  | Type                | Description           | Default |
+| ------ | ------------------- | --------------------- | ------- |
+| `type` | `filled` `outlined` | The type of the Card. | null    |
