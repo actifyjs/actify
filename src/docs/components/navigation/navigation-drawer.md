@@ -9,3 +9,10 @@ title: Navigation drawer
 ## Usage
 
 <usage name="navigation-drawer"></usage>
+
+## Props
+
+| Props       | Type    | Description                       | Default |
+| ----------- | ------- | --------------------------------- | ------- |
+| `open`      | Boolean | Whether the drawer is open or not | `false` |
+| `placement` | String  | Where the drawer should be placed | `left`  |
