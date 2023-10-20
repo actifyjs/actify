@@ -106,7 +106,9 @@ const Playground = () => {
   useEffect(() => {
     const hash = location.hash.slice(1)
     const decoded = atob(hash)
-    setCode(decoded)
+    if (decoded) {
+      setCode(decoded)
+    }
   }, [])
 
   const shareCode = () => {
