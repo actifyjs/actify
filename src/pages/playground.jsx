@@ -1,18 +1,16 @@
 import * as Actify from 'actify'
 import { useEffect, useRef, useState } from 'react'
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
+import {
+  withLive,
+  LiveProvider,
+  LiveEditor,
+  LiveError,
+  LivePreview
+} from 'react-live'
 
-const code = `() => {
-  const [tips, setTips] = React.useState('Hello Actify');
-  return (
-    <Tooltip content={tips}>
-      <Button>Show Tooltip</Button>
-    </Tooltip>
-  )
-}`
 const MIN_WIDTH = 100
 
-export default () => {
+const Live = ({ live, onEdit }) => {
   const [isDragging, setIsDragging] = useState(false)
   const [xPosition, setXPosition] = useState()
   const [leftWidth, setLeftWidth] = useState()
@@ -63,30 +61,81 @@ export default () => {
   }
 
   return (
-    <LiveProvider code={code} scope={Actify}>
+    <div
+      ref={splitPaneRef}
+      className="relative flex h-[calc(100vh-192px)] overflow-hidden px-2 pb-2 bg-secondary/10"
+    >
+      <LiveEditor
+        onChange={onEdit}
+        style={{ width: leftWidth + 'px' }}
+        className={`${
+          isDragging ? 'pointer-events-none select-none' : ''
+        } overflow-auto [&>.prism-code]:h-full [&>.prism-code]:rounded-none`}
+      />
       <div
-        ref={splitPaneRef}
-        className="relative flex h-[calc(100vh-152px)] overflow-hidden"
-      >
-        <LiveEditor
-          style={{ width: leftWidth + 'px' }}
-          className={`${
-            isDragging ? 'pointer-events-none select-none' : ''
-          } overflow-auto [&>.prism-code]:h-full [&>.prism-code]:rounded-none`}
-        />
-        <div
-          onMouseDown={onMouseDown}
-          className={`${
-            isDragging ? 'cursor-col-resize' : 'cursor-ew-resize'
-          } w-1 bg-secondary`}
-        ></div>
-        <LiveError className="text-error" />
-        <LivePreview
-          className={`${
-            isDragging ? 'pointer-events-none select-none' : ''
-          } flex-1 overflow-auto border`}
-        />
+        onMouseDown={onMouseDown}
+        className={`${
+          isDragging ? 'cursor-col-resize' : 'cursor-ew-resize'
+        } w-1 bg-secondary`}
+      ></div>
+      <LiveError className="text-error" />
+      <LivePreview
+        className={`${
+          isDragging ? 'pointer-events-none select-none' : ''
+        } flex-1 overflow-auto border`}
+      />
+    </div>
+  )
+}
+
+const LiveComponent = withLive(Live)
+
+const Playground = () => {
+  const toast = Actify.useToast(2000)
+  const [code, setCode] = useState(
+    `() => {
+    const [tips, setTips] = React.useState('Hello Actify');
+    return (
+      <Tooltip content={tips}>
+        <Button>Show Tooltip</Button>
+      </Tooltip>
+    )
+  }`
+  )
+
+  useEffect(() => {
+    const hash = location.hash.slice(1)
+    const decoded = atob(hash)
+    setCode(decoded)
+  }, [])
+
+  const shareCode = () => {
+    const encoded = btoa(code)
+    history.pushState(null, null, `#${encoded}`)
+
+    navigator.clipboard.writeText(location.href).then(
+      () => {
+        toast('success', `Url Copied!`)
+      },
+      () => {
+        toast('error', 'Copy Failed!')
+      }
+    )
+  }
+
+  return (
+    <LiveProvider code={code} scope={Actify}>
+      <div className="h-10 border-b px-2 bg-secondary/10 rounded-t flex items-center justify-between">
+        <span className="flex-1"></span>
+        <span className="text-2xl font-medium">Live Editor</span>
+        <span className="flex-1"></span>
+        <Actify.IconButton onClick={shareCode}>
+          <Actify.Icon name="share-2"></Actify.Icon>
+        </Actify.IconButton>
       </div>
+      <LiveComponent onEdit={setCode} />
     </LiveProvider>
   )
 }
+
+export default Playground
