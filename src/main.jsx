@@ -3,10 +3,8 @@ import Layout from './layout'
 import routes from '~react-pages'
 import ReactDOM from 'react-dom/client'
 import { StrictMode, Suspense } from 'react'
-import { LinearProgress } from 'actify'
-import ToastContainer from '@/packages/components/Toast/ToastContainer'
-import { ToastProvider } from '@/packages/components/Toast/ToastContext'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
+import { LinearProgress, ToastProvider, ToastContainer } from 'actify'
 
 const Loading = () => (
   <div className="fixed z-50 w-full top-0 left-0">

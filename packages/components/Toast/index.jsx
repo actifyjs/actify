@@ -1,6 +1,8 @@
+import { ToastProvider } from './ToastContext'
+import { ToastContainer } from './ToastContainer'
 import { useToastDispatchContext } from './ToastContext'
 
-export const useToast = (delay) => {
+const useToast = (delay = 2000) => {
   const dispatch = useToastDispatchContext()
 
   const toast = (type, message) => {
@@ -21,3 +23,5 @@ export const useToast = (delay) => {
 
   return toast
 }
+
+export { useToast, ToastContainer, ToastProvider }

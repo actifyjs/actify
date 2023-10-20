@@ -110,6 +110,9 @@
     "name": "Snackbar"
   },
   {
+    "name": "Toast"
+  },
+  {
     "name": "Switch"
   },
   {

@@ -1,4 +1,5 @@
-import Toast from './Toast'
+import React from 'react'
+import { Toast } from './Toast'
 import { useToastStateContext } from './ToastContext'
 
 const ToastContainer = () => {
@@ -21,4 +22,4 @@ const ToastContainer = () => {
   )
 }
 
-export default ToastContainer
+export { ToastContainer }
