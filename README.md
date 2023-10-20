@@ -9,7 +9,7 @@
 ## 🚀 Introduction
 
 Actify is a React Components Library based on Material Design 3 Web Components.
-Inspired by Vuetify. Some features:
+Highly inspired by [Vuetify](https://www.vuetifyjs.com). Some features:
 
 - **[Vite](https://vitejs.dev/):** Use Vite to build libs and docs.
 - **[Icon](https://lucide.dev/):** Icon are based on [lucide-icon](https://lucide.dev/).
