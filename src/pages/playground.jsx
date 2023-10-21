@@ -63,7 +63,7 @@ const Live = ({ live, onEdit }) => {
   return (
     <div
       ref={splitPaneRef}
-      className="relative flex h-[calc(100vh-192px)] overflow-hidden px-2 pb-2 bg-secondary/10"
+      className="relative flex h-[calc(100vh-192px)] overflow-hidden p-2 bg-secondary/10"
     >
       <LiveEditor
         onChange={onEdit}
@@ -82,7 +82,7 @@ const Live = ({ live, onEdit }) => {
       <LivePreview
         className={`${
           isDragging ? 'pointer-events-none select-none' : ''
-        } flex-1 overflow-auto border`}
+        } flex-1 overflow-auto border border-outline p-2`}
       />
     </div>
   )
@@ -127,7 +127,7 @@ const Playground = () => {
 
   return (
     <LiveProvider code={code} scope={Actify}>
-      <div className="h-10 border-b px-2 bg-secondary/10 rounded-t flex items-center justify-between">
+      <div className="h-10 border-b border-outline px-2 bg-secondary/10 rounded-t flex items-center justify-between">
         <span className="flex-1"></span>
         <span className="text-2xl font-medium">Live Editor</span>
         <span className="flex-1"></span>
