@@ -91,7 +91,7 @@ const Live = ({ live, onEdit }) => {
 const LiveComponent = withLive(Live)
 
 const Playground = () => {
-  const toast = Actify.useToast(2000)
+  const toast = Actify.useToast()
   const [code, setCode] = useState(
     `() => {
     const [tips, setTips] = React.useState('Hello Actify');

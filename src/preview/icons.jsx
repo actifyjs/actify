@@ -39,13 +39,9 @@ export default () => {
 }
 
 const IconWrapper = ({ name }) => {
-  const toast = useToast(4000)
+  const toast = useToast()
   const ref = useRef(null)
   const isInView = useInView(ref)
-
-  useEffect(() => {
-    console.log('Element is in view: ', isInView)
-  }, [isInView])
 
   // copy icon
   const cliptoboard = (str) => {

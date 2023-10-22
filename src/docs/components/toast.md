@@ -13,7 +13,7 @@ title: Toast
 ## Hook API
 
 ```js
-const toast = useToast(2000)
+const toast = useToast()
 ```
 
 ## Result
@@ -24,9 +24,10 @@ const toast = useToast(2000)
 
 ## Params
 
-| Property | Description          | Type   | Default |
-| -------- | -------------------- | ------ | ------- |
-| `delay`  | automatic close time | number | 2000    |
+| Property   | Description                                                                     | Type   | Default        |
+| ---------- | ------------------------------------------------------------------------------- | ------ | -------------- |
+| `duration` | Time in milliseconds that should elapse before automatically closing the toast. | number | 2000           |
+| `position` | Position of the toast.                                                          | string | `bottom-right` |
 
 ## Child
 

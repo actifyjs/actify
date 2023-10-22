@@ -1,7 +1,7 @@
 import { useToast, ToastProvider, ToastContainer, Button } from 'actify'
 
 const Container = () => {
-  const toast = useToast(2000)
+  const toast = useToast()
   return (
     <div className="flex gap-2">
       <Button onClick={() => toast('success', 'hello from success toast')}>
