@@ -90,20 +90,6 @@
     "name": "Radio button"
   },
   {
-    "name": "Search"
-  },
-  {
-    "label": "Sheets",
-    "children": [
-      {
-        "name": "Bottom sheets"
-      },
-      {
-        "name": "Slide sheets"
-      }
-    ]
-  },
-  {
     "name": "Sliders"
   },
   {
