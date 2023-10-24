@@ -1,47 +1,13 @@
-import { Icon, Button, Spacer, Dialog, IconButton } from 'actify'
-
 import { useState } from 'react'
+import { Icon, Button, Spacer, Dialog, IconButton } from 'actify'
 
 export default () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="flex items-center gap-2">
-      <Dialog>
-        <Dialog.Activator>
-          <Button>Open dialog with activator</Button>
-        </Dialog.Activator>
-        <Dialog.Content>
-          <Dialog.Heading>
-            <p>This dialog opened by activator</p>
-            <Spacer />
-            <Dialog.Close>
-              <IconButton color="secondary">
-                <Icon name="x" />
-              </IconButton>
-            </Dialog.Close>
-          </Dialog.Heading>
-          <Dialog.Description>
-            <p>
-              Amet sunt fugiat irure Lorem commodo nulla officia cupidatat ipsum
-              duis quis minim Lorem incididunt. Non laboris mollit laborum
-              cillum deserunt aliqua amet dolor excepteur ea aliqua commodo
-              excepteur. Sint id est id deserunt magna aliquip consectetur
-              adipisicing pariatur dolor mollit velit ea deserunt.
-            </p>
-          </Dialog.Description>
-          <div className="flex items-center gap-2">
-            <Spacer />
-            <Dialog.Close>
-              <Button color="error">Cancel</Button>
-            </Dialog.Close>
-            <Button>Confirm</Button>
-          </div>
-        </Dialog.Content>
-      </Dialog>
-
+    <>
       <Button onClick={() => setOpen(true)} color="tertiary">
-        Open dialog without activator
+        Open dialog with button
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
         <Dialog.Content>
@@ -70,6 +36,6 @@ export default () => {
           </div>
         </Dialog.Content>
       </Dialog>
-    </div>
+    </>
   )
 }
