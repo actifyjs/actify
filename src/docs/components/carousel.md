@@ -12,11 +12,12 @@ title: Carousel
 
 ## Props
 
-| Props     | Type      | Description                                                 | Default |
-| --------- | --------- | ----------------------------------------------------------- | ------- |
-| autoPlay  | `boolean` | Sets the autoplay mode for carousel                         | `false` |
-| control   | `boolean` | Show prev and next button for carousel                      | `false` |
-| current   | `number`  | Sets carousel start play index                              | `0`     |
-| indicator | `boolean` | Show the indicator for carousel                             | `false` |
-| infinite  | `boolean` | Sets the infinite mode for carousel                         | `false` |
-| interval  | `number`  | Sets the interval duration for autoplay mode in miliseconds | `3000`  |
+| Props      | Type               | Description                                                 | Default |
+| ---------- | ------------------ | ----------------------------------------------------------- | ------- |
+| autoPlay   | `boolean`          | Sets the autoplay mode for carousel                         | `false` |
+| control    | `boolean`          | Show prev and next button for carousel                      | `false` |
+| current    | `number`           | Sets carousel start play index                              | `0`     |
+| indicator  | `boolean`          | Show the indicator for carousel                             | `false` |
+| infinite   | `boolean`          | Sets the infinite mode for carousel                         | `false` |
+| interval   | `number`           | Sets the interval duration for autoplay mode in miliseconds | `3000`  |
+| `children` | `React.React.Node` |                                                             | `null`  |

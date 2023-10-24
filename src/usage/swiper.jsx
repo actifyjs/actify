@@ -16,7 +16,7 @@ export default () => {
     }
   ]
   return (
-    <Swiper>
+    <Swiper autoPlay>
       {items.map((item, index) => (
         <Swiper.Item key={index}>
           <img

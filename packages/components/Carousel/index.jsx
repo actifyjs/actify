@@ -53,7 +53,6 @@ const CarsouselPropTypes = {
   control: PropTypes.bool,
   infinite: PropTypes.bool,
   indicator: PropTypes.bool,
-  children: PropTypes.node,
   className: PropTypes.string
 }
 

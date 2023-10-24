@@ -1,14 +1,27 @@
 import React, { forwardRef, useState } from 'react'
+import PropTypes from 'prop-types'
 import { IconButton, Icon } from 'actify'
 import { SwiperItem } from './SwiperItem'
 import { tv } from 'tailwind-variants'
+import { useInterval } from 'usehooks-ts'
 
 const variants = tv({
   base: 'grid w-full place-items-center overflow-hidden'
 })
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLDivElement, SwiperPropTypes>
+ */
 const SwiperRoot = forwardRef((props, ref) => {
-  const { current: index, style, className, children, ...rest } = props
+  const {
+    current: index,
+    interval = 3000,
+    style,
+    autoPlay,
+    className,
+    children,
+    ...rest
+  } = props
   const count = React.Children.count(children)
   const [current, setCurrent] = useState(index ?? 0)
   const [transition, setTransition] = useState('transform .5s ease-in-out')
@@ -40,6 +53,8 @@ const SwiperRoot = forwardRef((props, ref) => {
       setCurrent((_) => _ + 1)
     }
   }
+
+  autoPlay && useInterval(next, interval)
 
   return (
     <div ref={ref} {...rest} style={style} className={variants({ className })}>
@@ -86,6 +101,15 @@ const SwiperRoot = forwardRef((props, ref) => {
 })
 
 SwiperRoot.Item = SwiperItem
+
+const SwiperPropTypes = {
+  style: PropTypes.object,
+  autoPlay: PropTypes.bool,
+  interval: PropTypes.number,
+  className: PropTypes.string
+}
+
+SwiperRoot.propTypes = SwiperPropTypes
 
 SwiperRoot.displayName = 'Actify.Swiper'
 
