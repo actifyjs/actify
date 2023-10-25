@@ -62,7 +62,7 @@ const IconWrapper = ({ name }) => {
           size={36}
           name={name}
           color="primary"
-          onClick={() => cliptoboard(item)}
+          onClick={() => cliptoboard(name)}
           className="flex items-center justify-center cursor-pointer p-2 bg-black/10 dark:bg-white/10 rounded-md"
         />
       ) : (
