@@ -20,6 +20,9 @@ const SwiperRoot = forwardRef((props, ref) => {
     autoPlay,
     className,
     children,
+    prevArrow,
+    nextArrow,
+    navigation,
     ...rest
   } = props
   const count = React.Children.count(children)
@@ -70,31 +73,43 @@ const SwiperRoot = forwardRef((props, ref) => {
         {children[0]}
 
         {/* indicators */}
-        <ul className="absolute bottom-4 flex w-full justify-center gap-2">
-          {[...Array(count)].map((_, i) => (
-            <li
-              key={i}
-              className={`w-5 h-5 rounded-full cursor-pointer ${
-                i == current ? 'bg-white' : 'bg-gray-500'
-              }`}
-              onClick={() => setCurrent(i)}
-            ></li>
-          ))}
-        </ul>
+        {navigation ? (
+          navigation({ setCurrent, current, count })
+        ) : (
+          <ul className="absolute bottom-4 flex w-full justify-center gap-2">
+            {[...Array(count)].map((_, i) => (
+              <li
+                key={i}
+                className={`w-5 h-5 rounded-full cursor-pointer ${
+                  i == current ? 'bg-white' : 'bg-gray-500'
+                }`}
+                onClick={() => setCurrent(i)}
+              ></li>
+            ))}
+          </ul>
+        )}
 
         {/* controls */}
-        <IconButton
-          onClick={prev}
-          className="absolute top-1/2 -translate-y-1/2 bg-surface left-5"
-        >
-          <Icon name="arrow-left" color="primary" />
-        </IconButton>
-        <IconButton
-          onClick={next}
-          className="absolute top-1/2 -translate-y-1/2 bg-surface right-5"
-        >
-          <Icon name="arrow-right" color="primary" />
-        </IconButton>
+        {prevArrow ? (
+          prevArrow({ prev })
+        ) : (
+          <IconButton
+            onClick={prev}
+            className="absolute top-1/2 -translate-y-1/2 bg-surface left-5"
+          >
+            <Icon name="arrow-left" color="primary" />
+          </IconButton>
+        )}
+        {nextArrow ? (
+          nextArrow({ next })
+        ) : (
+          <IconButton
+            onClick={next}
+            className="absolute top-1/2 -translate-y-1/2 bg-surface right-5"
+          >
+            <Icon name="arrow-right" color="primary" />
+          </IconButton>
+        )}
       </div>
     </div>
   )
