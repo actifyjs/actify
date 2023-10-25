@@ -52,6 +52,11 @@ const Header = () => {
           </IconButton>
         )}
         <Spacer />
+        <Link to="/playground" className="block md:hidden">
+          <IconButton>
+            <Icon name="gamepad-2" color="primary" />
+          </IconButton>
+        </Link>
         <IconButton onClick={handleUpdateTheme}>
           <Icon name="palette" color="primary" />
         </IconButton>

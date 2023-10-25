@@ -61,30 +61,40 @@ const Live = ({ live, onEdit }) => {
   }
 
   return (
-    <div
-      ref={splitPaneRef}
-      className="relative flex h-[calc(100vh-192px)] overflow-hidden p-2 bg-secondary/10"
-    >
-      <LiveEditor
-        onChange={onEdit}
-        style={{ width: leftWidth + 'px' }}
-        className={`${
-          isDragging ? 'pointer-events-none select-none' : ''
-        } overflow-auto [&>.prism-code]:h-full [&>.prism-code]:rounded-none`}
-      />
+    <>
       <div
-        onMouseDown={onMouseDown}
-        className={`${
-          isDragging ? 'cursor-col-resize' : 'cursor-ew-resize'
-        } w-1 bg-secondary`}
-      ></div>
-      <LiveError className="text-error" />
-      <LivePreview
-        className={`${
-          isDragging ? 'pointer-events-none select-none' : ''
-        } flex-1 overflow-auto border border-outline p-2`}
-      />
-    </div>
+        ref={splitPaneRef}
+        className="hidden md:flex relative h-[calc(100vh-192px)] overflow-hidden p-2 bg-secondary/10"
+      >
+        <LiveEditor
+          onChange={onEdit}
+          style={{ width: leftWidth + 'px' }}
+          className={`${
+            isDragging ? 'pointer-events-none select-none' : ''
+          } overflow-auto [&>.prism-code]:h-full [&>.prism-code]:rounded-none`}
+        />
+        <div
+          onMouseDown={onMouseDown}
+          className={`${
+            isDragging ? 'cursor-col-resize' : 'cursor-ew-resize'
+          } w-1 bg-secondary`}
+        ></div>
+        <LiveError className="text-error" />
+        <LivePreview
+          className={`${
+            isDragging ? 'pointer-events-none select-none' : ''
+          } flex-1 overflow-auto border border-outline p-2`}
+        />
+      </div>
+      <div className="grid md:hidden">
+        <LiveEditor
+          onChange={onEdit}
+          className="overflow-auto [&>.prism-code]:h-full [&>.prism-code]:rounded-none"
+        />
+        <LiveError className="text-error" />
+        <LivePreview className="flex-1 overflow-auto border border-outline p-2" />
+      </div>
+    </>
   )
 }
 
