@@ -64,7 +64,7 @@ const Live = ({ live, onEdit }) => {
     <>
       <div
         ref={splitPaneRef}
-        className="hidden md:flex relative h-[calc(100vh-192px)] overflow-hidden p-2 bg-secondary/10"
+        className="hidden md:flex relative grow overflow-hidden p-2 bg-secondary/10"
       >
         <LiveEditor
           onChange={onEdit}

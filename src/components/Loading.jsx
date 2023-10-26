@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useInterval } from 'usehooks-ts'
-import { LinearProgress } from 'actify'
+import { LinearProgress, CircularProgress } from 'actify'
 
 const Loading = () => {
   const [step, setStep] = useState(0.5)
@@ -31,9 +31,14 @@ const Loading = () => {
   )
 
   return (
-    <div className="fixed z-50 w-full top-0 left-0">
-      <LinearProgress value={progress} />
-    </div>
+    <>
+      <div className="fixed z-50 w-full top-0 left-0">
+        <LinearProgress value={progress} />
+      </div>
+      <div className="grid h-screen place-content-center">
+        <CircularProgress indeterminate className="w-40 h-40" />
+      </div>
+    </>
   )
 }
 

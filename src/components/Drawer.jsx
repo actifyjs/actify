@@ -42,7 +42,7 @@ const Drawer = ({ children }) => {
           height: `calc(100vh - ${top}px)`,
           transform: `${drawer ? 'translateX(0)' : 'translateX(-100%)'}`
         }}
-        className="fixed bottom-0 left-0 right-auto bg-surface z-50 max-w-full overflow-y-auto overflow-x-hidden shadow duration-200 will-change-transform md:z-10 lg:flex lg:translate-x-0 lg:flex-col"
+        className="sticky top-16 row-start-2 row-end-4 col-start-1 col-end-2 bg-surface z-50 max-w-full overflow-y-auto overflow-x-hidden shadow duration-200 will-change-transform"
       >
         {children}
       </aside>

@@ -1,10 +1,10 @@
 import React from 'react'
 import { createStore, useStore } from 'zustand'
 
-const defaultValue = {
+export const defaultValue = {
   top: 64,
   drawer: false,
-  drawerWidth: 240
+  drawerWidth: 200
 }
 
 const AppContext = React.createContext()

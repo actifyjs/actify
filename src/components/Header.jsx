@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <header
       style={{ height: top }}
-      className="sticky top-0 z-30 h-16 bg-surface/25 px-2 shadow backdrop-blur"
+      className="sticky top-0 z-30 h-16 row-start-1 row-end-2 col-start-1 col-end-4 bg-surface/25 px-2 shadow backdrop-blur"
     >
       <div className="mx-auto flex h-full flex-wrap items-center justify-between">
         <Link to="/" className="flex items-center text-primary">

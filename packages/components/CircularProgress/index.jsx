@@ -23,6 +23,9 @@ const circleStyles = {
   fill: 'rgba(0, 0, 0, 0)'
 }
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLDivElement, CircularPropTypes>
+ */
 const CircularProgress = forwardRef((props, ref) => {
   const { value, indeterminate, style, color, className, ...rest } = props
 
@@ -110,10 +113,12 @@ const CircularProgress = forwardRef((props, ref) => {
   )
 })
 
-CircularProgress.propTypes = {
+const CircularPropTypes = {
   color: PropTypes.string,
   indeterminate: PropTypes.bool
 }
+
+CircularProgress.propTypes = CircularPropTypes
 
 CircularProgress.defaultProps = {
   color: 'primary',

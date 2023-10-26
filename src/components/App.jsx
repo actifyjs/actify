@@ -1,11 +1,15 @@
 import { AppProvider } from './AppContext'
+import { defaultValue } from './AppContext'
 
 const App = ({ children }) => {
   return (
     <AppProvider>
       <div
         id="actify"
-        className="min-h-screen grid grid-cols-1 gap-4 grid-rows-[64px_auto_56px] bg-surface"
+        style={{
+          gridTemplateColumns: `minmax(0,${defaultValue.drawerWidth}px) 1fr`
+        }}
+        className="min-h-screen bg-surface grid grid-rows-[64px_auto_56px]"
       >
         {children}
       </div>
