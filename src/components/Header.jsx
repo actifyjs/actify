@@ -7,6 +7,9 @@ import Dropdown from '@/src/components/Dropdown'
 import SwitchTheme from '@/src/components/SwitchTheme'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
+import { DocSearch } from '@docsearch/react'
+import '@docsearch/css'
+
 const Header = () => {
   const { pathname } = useLocation()
   const { top, drawer, setDrawer } = useApp()
@@ -51,6 +54,12 @@ const Header = () => {
             <Icon name="menu" color="primary" />
           </IconButton>
         )}
+        <Spacer />
+        <DocSearch
+          indexName="actify"
+          appId="QT1V8AWXWR"
+          apiKey="aea069649b0718ada66d001637c44dbf"
+        />
         <Spacer />
         <Link to="/playground" className="block md:hidden">
           <IconButton>

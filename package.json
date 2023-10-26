@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.22.5",
+    "@docsearch/js": "^3.5.2",
     "@floating-ui/react": "^0.25.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/react": "^18.2.15",
