@@ -1,12 +1,12 @@
 {
   "index_name": "actify",
-  "start_urls": ["https://actifyjs.com"],
+  "start_urls": ["https://actifyjs.com/getting-started/installation"],
   "rateLimit": 8,
   "maxDepth": 10,
   "selectors": {
     "lvl0": {
       "selector": "",
-      "defaultValue": "Documentation"
+      "defaultValue": "Started"
     },
     "lvl1": "article h1",
     "lvl2": "article h2",
