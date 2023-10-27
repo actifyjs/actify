@@ -47,7 +47,7 @@ const Search = ({ appId, apiKey, indexName }) => {
       >
         <Icon name="search" />
         <span className="font-semibold">Search</span>
-        <span className="text-xs border border-outline p-1.5 rounded-full">
+        <span className="hidden md:block text-xs border border-outline p-1.5 rounded-full">
           Ctrl+K
         </span>
       </Button>
