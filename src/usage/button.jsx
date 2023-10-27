@@ -2,7 +2,7 @@ import { Icon, Button } from 'actify'
 
 export default () => {
   return (
-    <div className="grid gap-2 grid-cols-5">
+    <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(160px,1fr))]">
       <Button variant="filled">Filled</Button>
       <Button variant="outlined">Outlined</Button>
       <Button variant="elevated">Elevated</Button>
