@@ -36,6 +36,9 @@ const Search = ({ appId, apiKey, indexName }) => {
 
   return (
     <>
+      <style>
+        {`:root{--docsearch-primary-color: rgb(var(--color-primary));}`}
+      </style>
       <Button
         className="px-1"
         variant="text"
@@ -57,6 +60,7 @@ const Search = ({ appId, apiKey, indexName }) => {
             onClose={onClose}
             initialQuery={initialQuery}
             initialScrollY={window.scrollY}
+            placeholder="Search Actify"
           />,
           document.body
         )}
