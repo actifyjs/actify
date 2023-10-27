@@ -3,12 +3,10 @@ import { useApp } from './AppContext'
 import { useLocation } from 'react-router-dom'
 import { Icon, Button, Spacer, IconButton } from 'actify'
 import Logo from '@/src/components/Logo'
+import Search from '@/src/components/Search'
 import Dropdown from '@/src/components/Dropdown'
 import SwitchTheme from '@/src/components/SwitchTheme'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
-
-import { DocSearch } from '@docsearch/react'
-import '@docsearch/css'
 
 const Header = () => {
   const { pathname } = useLocation()
@@ -40,9 +38,9 @@ const Header = () => {
       className="sticky top-0 z-30 h-16 row-start-1 row-end-2 col-start-1 col-end-4 bg-surface/25 px-2 shadow backdrop-blur"
     >
       <div className="mx-auto flex h-full flex-wrap items-center justify-between">
-        <Link to="/" className="flex items-center text-primary">
+        <Link to="/" className="hidden md:flex items-center text-primary">
           <Logo height={36} />
-          <span className="hidden self-center whitespace-nowrap text-2xl font-semibold md:inline">
+          <span className="self-center whitespace-nowrap text-2xl font-semibold">
             ctify
           </span>
         </Link>
@@ -54,12 +52,18 @@ const Header = () => {
             <Icon name="menu" color="primary" />
           </IconButton>
         )}
-        <Spacer />
-        <DocSearch
+        <Search
           indexName="actify"
           appId="QT1V8AWXWR"
           apiKey="aea069649b0718ada66d001637c44dbf"
         />
+        <Spacer />
+        <Link to="/" className="flex md:hidden items-center text-primary">
+          <Logo height={24} />
+          <span className="self-center whitespace-nowrap font-semibold">
+            ctify
+          </span>
+        </Link>
         <Spacer />
         <Link to="/playground" className="block md:hidden">
           <IconButton>

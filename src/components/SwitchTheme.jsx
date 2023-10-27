@@ -12,9 +12,11 @@ const SwitchTheme = () => {
     ) {
       setMode('dark')
       document.documentElement.classList.add('dark')
+      document.documentElement.setAttribute('data-theme', 'dark')
     } else {
       setMode('light')
       document.documentElement.classList.remove('dark')
+      document.documentElement.removeAttribute('data-theme')
     }
   }
   useEffect(() => {
@@ -27,9 +29,11 @@ const SwitchTheme = () => {
     if (mode == 'dark') {
       setMode('light')
       localStorage.setItem('theme', 'light')
+      document.documentElement.removeAttribute('data-theme')
     } else {
       setMode('dark')
       localStorage.setItem('theme', 'dark')
+      document.documentElement.setAttribute('data-theme', 'dark')
     }
   }
 
