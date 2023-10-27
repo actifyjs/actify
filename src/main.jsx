@@ -1,26 +1,26 @@
 import './main.css'
 import routes from '~react-pages'
 import ReactDOM from 'react-dom/client'
-import { StrictMode, Suspense, lazy } from 'react'
+import { StrictMode, Suspense } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import { ToastProvider, ToastContainer } from 'actify'
 import Loading from '@/src/components/Loading'
 import { useLocation } from 'react-router-dom'
+import EmptyLayout from '@/src/layouts/empty.jsx'
+import DefaultLayout from '@/src/layouts/default.jsx'
 
 const App = () => {
   const { pathname } = useLocation()
-  let layoutName = 'default'
+  let Layout = DefaultLayout
   if (pathname == '/' || pathname == '/playground') {
-    layoutName = 'empty'
+    Layout = EmptyLayout
   }
 
-  const Layout = lazy(() => import(`./layouts/${layoutName}.jsx`))
-
   return (
-    <Suspense fallback={<Loading />}>
-      <Layout>{useRoutes(routes)}</Layout>
-    </Suspense>
+    <Layout>
+      <Suspense fallback={<Loading />}>{useRoutes(routes)}</Suspense>
+    </Layout>
   )
 }
 
