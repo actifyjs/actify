@@ -1,7 +1,8 @@
 import './main.css'
 import routes from '~react-pages'
 import ReactDOM from 'react-dom/client'
-import { StrictMode, Suspense } from 'react'
+import { version } from '@/package.json'
+import { StrictMode, Suspense, useEffect } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import { ToastProvider, ToastContainer } from 'actify'
@@ -16,6 +17,23 @@ const App = () => {
   if (pathname == '/' || pathname == '/playground') {
     Layout = EmptyLayout
   }
+
+  useEffect(() => {
+    console.log(
+      '%c '.concat(`
+       ___          __   _  ____      
+      /   |  _____ / /_ (_)/ __/__  __
+     / /| | / ___// __// // /_ / / / /
+    / ___ |/ /__ / /_ / // __// /_/ / 
+   /_/  |_|\___/ \__//_//_/   \__, /  
+                              /____/   
+              v${version}
+    `),
+      `color: rgb(${getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-primary'
+      )})`
+    )
+  }, [])
 
   return (
     <Layout>
