@@ -10,7 +10,6 @@ title: Swiper
 
 <usage name="swiper"></usage>
 
-
 ## Custom Arrows
 
 <code-preview code='() => {
@@ -36,7 +35,7 @@ title: Swiper
 	          onClick={prev}
 	          className="absolute top-2/4 left-4 -translate-y-2/4"
 	        >
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" class="-ml-1 h-7 w-7"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3" className="-ml-1 h-7 w-7"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
 	        </IconButton>
 	      )} 
 	    nextArrow={({ next }) => (
@@ -45,7 +44,7 @@ title: Swiper
 	          onClick={next}
 	          className="absolute top-2/4 !right-4 -translate-y-2/4"
 	        >
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3" class="ml-1 h-7 w-7"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3" className="ml-1 h-7 w-7"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
 	        </IconButton>
 	      )}>
 	   {items.map((item, index) => (
@@ -63,6 +62,7 @@ title: Swiper
 </code-preview>
 
 ## Custom Navigation
+
 <code-preview code='() => {
 	const items = [{
 	   title: "Swiper 1",
@@ -107,7 +107,6 @@ title: Swiper
   )
 } '>
 </code-preview>
-
 
 ## Props
 

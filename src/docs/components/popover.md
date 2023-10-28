@@ -4,7 +4,7 @@ title: Popover
 
 # Popover
 
-> Tooltips display brief labels or messages
+> A Popover can be used to display some content on top of another.
 
 ## Usage
 
