@@ -12,7 +12,7 @@ title: Navigation drawer
 
 ## Props
 
-| Props       | Type    | Description                       | Default |
-| ----------- | ------- | --------------------------------- | ------- |
-| `open`      | Boolean | Whether the drawer is open or not | `false` |
-| `placement` | String  | Where the drawer should be placed | `left`  |
+| Props       | Type                          | Description                       | Default |
+| ----------- | ----------------------------- | --------------------------------- | ------- |
+| `open`      | `boolean`                     | Whether the drawer is open or not | `false` |
+| `placement` | `top` `right` `bottom` `left` | Where the drawer should be placed | `left`  |

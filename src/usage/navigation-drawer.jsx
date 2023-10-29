@@ -6,12 +6,10 @@ export default () => {
       <TooltipGroup>
         <Drawer placement="left">
           <Drawer.Activator>
-            <Tooltip>
-              <Tooltip content="open from left">
-                <IconButton>
-                  <Icon name="panel-left-close" />
-                </IconButton>
-              </Tooltip>
+            <Tooltip content="open from left">
+              <IconButton>
+                <Icon name="panel-left-close" />
+              </IconButton>
             </Tooltip>
           </Drawer.Activator>
           <Drawer.Content>
