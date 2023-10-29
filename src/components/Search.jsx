@@ -6,10 +6,6 @@ import { DocSearchModal, useDocSearchKeyboardEvents } from '@docsearch/react'
 
 import '@docsearch/css'
 
-const Hit = ({ hit, children }) => {
-  return <Link to={hit.url}>{children}</Link>
-}
-
 const Search = ({ appId, apiKey, indexName }) => {
   const navigate = useNavigate()
   const searchButtonRef = useRef(null)
@@ -71,7 +67,9 @@ const Search = ({ appId, apiKey, indexName }) => {
             initialQuery={initialQuery}
             initialScrollY={window.scrollY}
             placeholder="Search Actify"
-            hitComponent={Hit}
+            hitComponent={({ hit, children }) => (
+              <Link to={hit.url}>{children}</Link>
+            )}
             navigator={{
               navigate({ itemUrl }) {
                 navigate(itemUrl)
