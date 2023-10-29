@@ -4,7 +4,7 @@ import { createStore, useStore } from 'zustand'
 export const defaultValue = {
   top: 64,
   drawer: false,
-  drawerWidth: 200
+  drawerWidth: 240
 }
 
 const AppContext = React.createContext()
