@@ -1,8 +1,13 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon, Button } from 'actify'
 import Logo from '@/src/components/Logo'
 
 export default () => {
+  useEffect(() => {
+    document.title =
+      'Actify — 🌻React Tailwind CSS Material Design 3 Components Library'
+  }, [])
   return (
     <div className="flex flex-col gap-4 pt-2">
       <div className="mx-auto w-80 max-sm:w-40">

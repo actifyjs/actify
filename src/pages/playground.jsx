@@ -10,7 +10,7 @@ import {
 
 const MIN_WIDTH = 100
 
-const Live = ({ live, onEdit }) => {
+const Live = ({ onEdit }) => {
   const [isDragging, setIsDragging] = useState(false)
   const [xPosition, setXPosition] = useState()
   const [leftWidth, setLeftWidth] = useState()
@@ -114,6 +114,7 @@ const Playground = () => {
   )
 
   useEffect(() => {
+    document.title = 'Playground' + ' | Actify'
     const hash = location.hash.slice(1)
     const decoded = atob(hash)
     if (decoded) {

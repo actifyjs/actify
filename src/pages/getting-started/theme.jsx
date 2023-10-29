@@ -88,6 +88,10 @@ export default () => {
   const [primaryColor, setPrimaryColor] = useState('')
 
   useEffect(() => {
+    document.title = 'Theme | Actify'
+  }, [])
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       if (primaryColor) {
         updateTheme(
