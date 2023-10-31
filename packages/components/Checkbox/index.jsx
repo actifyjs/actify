@@ -1,6 +1,7 @@
-import React, { forwardRef, useId, useState } from 'react'
 import { Ripple } from 'actify'
+import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
+import React, { forwardRef, useId } from 'react'
 
 const variants = tv({
   base: "peer relative appearance-none w-[18px] h-[18px] rounded-sm border-2 border-outline cursor-pointer transition-all before:content[''] before:block before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity",
@@ -24,17 +25,13 @@ const variants = tv({
   }
 })
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLInputElement, CheckPropTypes>
+ */
 const Checkbox = forwardRef((props, ref) => {
   const checkboxId = useId()
-  const {
-    style,
-    color,
-    disabled,
-    checked: checkedProp,
-    className,
-    ...rest
-  } = props
-  const [checked, setChecked] = useState(checkedProp ?? false)
+
+  const { style, color, disabled, className, ...rest } = props
 
   return (
     <label
@@ -42,14 +39,12 @@ const Checkbox = forwardRef((props, ref) => {
       className="relative overflow-hidden flex items-center cursor-pointer p-3 rounded-full"
     >
       <input
-        ref={ref}
         {...rest}
+        ref={ref}
         style={style}
         type="checkbox"
         id={checkboxId}
         disabled={disabled}
-        defaultChecked={checked}
-        onClick={(e) => setChecked(e.target.checked)}
         className={variants({ color, disabled, className })}
       />
       <span className="text-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity">
@@ -72,6 +67,17 @@ const Checkbox = forwardRef((props, ref) => {
     </label>
   )
 })
+
+const CheckPropTypes = {
+  color: PropTypes.string,
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  defaultChecked: PropTypes.bool,
+  onChange: PropTypes.func
+}
+
+Checkbox.propTypes = CheckPropTypes
 
 Checkbox.displayName = 'Actify.Checkbox'
 
