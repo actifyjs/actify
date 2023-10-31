@@ -73,23 +73,23 @@ export default () => {
       </div>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-2">
         <label className="flex items-center">
-          <Checkbox checked />
+          <Checkbox defaultChecked />
           <span>primary</span>
         </label>
         <label className="flex items-center">
-          <Checkbox checked color="secondary" />
+          <Checkbox defaultChecked color="secondary" />
           <span>secondary</span>
         </label>
         <label className="flex items-center">
-          <Checkbox checked color="tertiary" />
+          <Checkbox defaultChecked color="tertiary" />
           <span>tertiary</span>
         </label>
         <label className="flex items-center">
-          <Checkbox checked color="error" />
+          <Checkbox defaultChecked color="error" />
           <span>error</span>
         </label>
         <label className="flex items-center">
-          <Checkbox checked color="error" disabled />
+          <Checkbox defaultChecked color="error" disabled />
           <span>disabled</span>
         </label>
       </div>

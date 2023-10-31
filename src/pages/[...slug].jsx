@@ -13,13 +13,11 @@ export default () => {
       const filePath = pathname.split('/')
       const fileName = filePath.pop()
       if (filePath.length == 2) {
-        importResult = await import(
-          `./../../../docs/${filePath[1]}/${fileName}.md`
-        )
+        importResult = await import(`./../docs/${filePath[1]}/${fileName}.md`)
       }
       if (filePath.length == 3) {
         importResult = await import(
-          `./../../../docs/${filePath[1]}/${filePath[2]}/${fileName}.md`
+          `./../docs/${filePath[1]}/${filePath[2]}/${fileName}.md`
         )
       }
       const { attributes, markdown } = importResult
