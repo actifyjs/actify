@@ -1,6 +1,7 @@
-import React, { forwardRef, useId } from 'react'
 import { Ripple } from 'actify'
+import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
+import React, { forwardRef } from 'react'
 import { setColor } from '@/packages/utils'
 
 const labelVariants = tv({
@@ -20,32 +21,33 @@ const dotVariants = tv({
   base: 'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity text-black/90 peer-checked:text-current'
 })
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLInputElement, RadioPropTypes>
+ */
 const RadioButton = forwardRef((props, ref) => {
-  const id = useId()
-  const { style, className, color, disabled, children, ...rest } = props
+  const { title, style, className, color, disabled, children, ...rest } = props
   const colorVariants = setColor(color ?? 'primary')
 
   return (
     <label
-      htmlFor={id}
+      title={title}
       style={{ color: colorVariants }}
       className={labelVariants({ disabled })}
     >
       <input
-        type="radio"
-        id={id}
         ref={ref}
         {...rest}
+        type="radio"
         style={style}
         disabled={disabled}
         className={variants({ className })}
       />
       <span className={dotVariants()}>
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-2.5 w-2.5"
-          viewBox="0 0 16 16"
           fill="currentColor"
+          viewBox="0 0 16 16"
+          className="h-2.5 w-2.5"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
         </svg>
@@ -54,6 +56,18 @@ const RadioButton = forwardRef((props, ref) => {
     </label>
   )
 })
+
+const RadioPropTypes = {
+  color: PropTypes.string,
+  title: PropTypes.string,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
+  checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
+  className: PropTypes.string
+}
+
+RadioButton.propTypes = RadioPropTypes
 
 RadioButton.displayName = 'Actify.RadioButton'
 

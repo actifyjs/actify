@@ -1,7 +1,8 @@
 import { Ripple } from 'actify'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef, useId } from 'react'
+import React, { forwardRef, useRef, useImperativeHandle } from 'react'
+import useMergedState from 'rc-util/lib/hooks/useMergedState'
 
 const variants = tv({
   base: "peer relative appearance-none w-[18px] h-[18px] rounded-sm border-2 border-outline cursor-pointer transition-all before:content[''] before:block before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity",
@@ -29,22 +30,56 @@ const variants = tv({
  * @type React.ForwardRefRenderFunction<HTMLInputElement, CheckPropTypes>
  */
 const Checkbox = forwardRef((props, ref) => {
-  const checkboxId = useId()
+  const {
+    title,
+    color,
+    style,
+    checked,
+    disabled,
+    onChange,
+    className,
+    defaultChecked = false,
+    ...rest
+  } = props
 
-  const { style, color, disabled, className, ...rest } = props
+  const inputRef = useRef(null)
+  const [rawValue, setRawValue] = useMergedState(defaultChecked, {
+    value: checked
+  })
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current?.focus()
+    },
+    blur: () => {
+      inputRef.current?.blur()
+    },
+    input: inputRef.current
+  }))
+
+  const handleChange = (e) => {
+    if (disabled) {
+      return
+    }
+    if (!('checked' in props)) {
+      setRawValue(e.target.checked)
+    }
+    onChange?.(e)
+  }
 
   return (
     <label
-      htmlFor={checkboxId}
+      title={title}
       className="relative overflow-hidden flex items-center cursor-pointer p-3 rounded-full"
     >
       <input
         {...rest}
-        ref={ref}
         style={style}
+        ref={inputRef}
         type="checkbox"
-        id={checkboxId}
         disabled={disabled}
+        checked={!!rawValue}
+        onChange={handleChange}
         className={variants({ color, disabled, className })}
       />
       <span className="text-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity">

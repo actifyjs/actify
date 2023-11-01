@@ -117,23 +117,23 @@ export default () => {
       </div>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-2">
         <label className="flex items-center gap-2">
-          <Switch selected />
+          <Switch defaultSelected />
           <span>primary</span>
         </label>
         <label className="flex items-center gap-2">
-          <Switch selected color="secondary" />
+          <Switch defaultSelected color="secondary" />
           <span>secondary</span>
         </label>
         <label className="flex items-center gap-2">
-          <Switch selected color="tertiary" />
+          <Switch defaultSelected color="tertiary" />
           <span>tertiary</span>
         </label>
         <label className="flex items-center gap-2">
-          <Switch selected color="error" />
+          <Switch defaultSelected color="error" />
           <span>error</span>
         </label>
         <label className="flex items-center gap-2">
-          <Switch selected color="error" disabled />
+          <Switch defaultSelected color="error" disabled />
           <span>disabled</span>
         </label>
       </div>

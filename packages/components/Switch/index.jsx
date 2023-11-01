@@ -1,7 +1,9 @@
-import React, { forwardRef, useId, useState } from 'react'
-import { tv } from 'tailwind-variants'
+import PropTypes from 'prop-types'
 import { Icon, Ripple } from 'actify'
+import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
+import useMergedState from 'rc-util/lib/hooks/useMergedState'
+import React, { forwardRef, useRef, useImperativeHandle } from 'react'
 
 const variants = tv({
   base: 'h-8 w-14 rounded-full border-[2px] border-current shadow-inner peer-checked:bg-current',
@@ -21,38 +23,74 @@ const dotVariants = tv({
   }
 })
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLInputElement, SwitchPropTypes>
+ */
 const Switch = forwardRef((props, ref) => {
-  const id = useId()
-  const { icons, selected, color, disabled, children, className, ...rest } =
-    props
-  const [checked, setChecked] = useState(selected ?? false)
+  const {
+    title,
+    color,
+    icons,
+    style,
+    selected,
+    disabled,
+    onChange,
+    className,
+    defaultSelected = false,
+    ...rest
+  } = props
+
+  const inputRef = useRef(null)
+  const [rawValue, setRawValue] = useMergedState(defaultSelected, {
+    value: selected
+  })
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current?.focus()
+    },
+    blur: () => {
+      inputRef.current?.blur()
+    },
+    input: inputRef.current
+  }))
+
+  const handleChange = (e) => {
+    if (disabled) {
+      return
+    }
+    if (!('checked' in props)) {
+      setRawValue(e.target.checked)
+    }
+    onChange?.(e)
+  }
 
   const colorVariant = color ?? 'primary'
 
   return (
     <label
-      htmlFor={id}
+      title={title}
       className="relative cursor-pointer"
       style={{ color: setColor(colorVariant) }}
     >
       <input
         hidden
-        id={id}
-        ref={ref}
         {...rest}
+        style={style}
+        ref={inputRef}
         type="checkbox"
         className="peer"
         disabled={disabled}
-        defaultChecked={checked}
-        onClick={(e) => setChecked(e.target.checked)}
+        checked={!!rawValue}
+        onChange={handleChange}
       />
       <div className={variants({ disabled, className })}></div>
       <i className={dotVariants({ icons })}>
         {icons && (
           <Icon
-            name={`${checked ? 'check' : 'x'}`}
             size={16}
-            color={`${checked ? 'black' : 'white'}`}
+            name={`${!!rawValue ? 'check' : 'x'}`}
+            color={`${!!rawValue ? 'black' : 'white'}`}
           />
         )}
       </i>
@@ -60,6 +98,18 @@ const Switch = forwardRef((props, ref) => {
     </label>
   )
 })
+
+const SwitchPropTypes = {
+  icons: PropTypes.bool,
+  color: PropTypes.string,
+  selected: PropTypes.bool,
+  disabled: PropTypes.bool,
+  title: PropTypes.string,
+  className: PropTypes.string,
+  onChange: PropTypes.func
+}
+
+Switch.propTypes = SwitchPropTypes
 
 Switch.displayName = 'Actify.Switch'
 

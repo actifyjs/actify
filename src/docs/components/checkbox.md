@@ -12,8 +12,9 @@ title: Checkbox
 
 ## Props
 
-| Props    | Type      | Description                      | Default |
-| -------- | --------- | -------------------------------- | ------- |
-| color    | `string`  | The color of the checkbox        | `null`  |
-| checked  | `boolean` | Whether the checkbox is checked  | `false` |
-| disabled | `boolean` | Whether the checkbox is disabled | `false` |
+| Props          | Type                                      | Description                      | Default |
+| -------------- | ----------------------------------------- | -------------------------------- | ------- |
+| color          | `primary` `secondary` `tertiaray` `error` | The color of the checkbox        | `null`  |
+| disabled       | `boolean`                                 | Whether the checkbox is disabled | `false` |
+| checked        | `boolean`                                 | Whether the checkbox is checked  | `null`  |
+| defaultChecked | `boolean`                                 | The checkbox default checked     | `false` |

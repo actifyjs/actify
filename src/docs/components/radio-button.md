@@ -9,3 +9,12 @@ title: Radio button
 ## Usage
 
 <usage name="radio-button"></usage>
+
+## Props
+
+| Props          | Type                                               | Description                   | Default |
+| -------------- | -------------------------------------------------- | ----------------------------- | ------- |
+| color          | `primary` `secondary` `tertiaray` `error` `string` | The color of the radio        | `null`  |
+| disabled       | `boolean`                                          | Whether the radio is disabled | `false` |
+| checked        | `boolean`                                          | Whether the radio is checked  | `null`  |
+| defaultChecked | `boolean`                                          | The radio default checked     | `false` |

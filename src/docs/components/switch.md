@@ -12,10 +12,10 @@ title: Switch
 
 ## Props
 
-| Props      | Type                                                 | Description      | Default   |
-| ---------- | ---------------------------------------------------- | ---------------- | --------- |
-| `icons`    | `boolean`                                            | show x or √ icon | `false`   |
-| `selected` | `boolean`                                            |                  | `false`   |
-| `color`    | `'primary' \| 'secondary' \| 'tertiaray' \| 'error'` |                  | `primary` |
-| `disabled` | `boolean`                                            |                  | `false`   |
-| `children` | `React.React.Node`                                   |                  | `null`    |
+| Props             | Type                                               | Description                    | Default   |
+| ----------------- | -------------------------------------------------- | ------------------------------ | --------- |
+| `icons`           | `boolean`                                          | Show x or √ icon               | `false`   |
+| `color`           | `primary` `secondary` `tertiaray` `error` `string` | The color of the switch        | `primary` |
+| `disabled`        | `boolean`                                          | Whether the switch is disabled | `false`   |
+| `selected`        | `boolean`                                          | Whether the switch is checked  | `null`    |
+| `defaultSelected` | `boolean`                                          | The switch default selected    | `false`   |
