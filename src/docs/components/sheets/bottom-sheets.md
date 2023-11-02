@@ -5,3 +5,14 @@ title: Bottom sheets
 # Bottom sheets
 
 > Bottom sheets show secondary content anchored to the bottom of the screen
+
+## Usage
+
+<usage name="bottom-sheets"></usage>
+
+## Slots
+
+| Name      | Description                        |
+| --------- | ---------------------------------- |
+| Activator | The activator of the bottom sheets |
+| Content   | The content of the bottom sheets   |

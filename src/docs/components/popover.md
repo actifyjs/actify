@@ -14,5 +14,5 @@ title: Popover
 
 | Name      | Description                 |
 | --------- | --------------------------- |
-| Activator | The activator of the dialog |
-| Content   | The content of the dialog   |
+| Activator | The activator of the popver |
+| Content   | The content of the popver   |

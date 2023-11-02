@@ -98,6 +98,17 @@ const components = [
     name: 'Radio button'
   },
   {
+    label: 'Sheets',
+    children: [
+      {
+        name: 'Bottom sheets'
+      },
+      {
+        name: 'Side sheets'
+      }
+    ]
+  },
+  {
     name: 'Sliders'
   },
   {
