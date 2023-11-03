@@ -34,9 +34,9 @@ export default () => {
       <div className="rounded-lg md:rounded-l-none md:rounded-r-lg p-10 bg-black/10 h-full flex flex-col gap-4 justify-center">
         <img alt="logo" className="mx-auto w-40 h-40" src="/actify.svg" />
         <TextField label="Email" className="w-full">
-          <TextField.Slot name="leadingIcon">
+          <TextField.LeadingIcon>
             <Icon name="mail" />
-          </TextField.Slot>
+          </TextField.LeadingIcon>
         </TextField>
 
         <TextField
@@ -44,15 +44,15 @@ export default () => {
           label="Password"
           type={showPassword ? 'text' : 'password'}
         >
-          <TextField.Slot name="leadingIcon">
+          <TextField.LeadingIcon>
             <Icon name="lock" />
-          </TextField.Slot>
+          </TextField.LeadingIcon>
 
-          <TextField.Slot name="trailingIcon">
+          <TextField.TrailingIcon>
             <IconButton onClick={() => setShowPassword((prev) => !prev)}>
               <Icon name="eye" />
             </IconButton>
-          </TextField.Slot>
+          </TextField.TrailingIcon>
         </TextField>
       </div>
     </div>

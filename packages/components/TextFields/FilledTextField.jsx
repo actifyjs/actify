@@ -44,6 +44,9 @@ const FilledTextField = forwardRef((props, ref) => {
     child.type.name === 'TrailingIcon' ? child : null
   )
 
+  const hasLeadingIcon = leadingIcon?.length > 0
+  const hasTrailingIcon = trailingIcon?.length > 0
+
   const handleClick = () => {
     if (inputRef.current) {
       inputRef.current.focus()
@@ -74,7 +77,7 @@ const FilledTextField = forwardRef((props, ref) => {
           {/* container */}
           <div className="relative flex flex-1 items-center rounded-[inherit] min-h-full max-h-full min-w-fit">
             {/* start */}
-            {leadingIcon && (
+            {hasLeadingIcon && (
               <div className="[margin-inline-end:4px] min-w-[48px] flex h-full relative items-center justify-center">
                 {leadingIcon}
               </div>
@@ -85,8 +88,8 @@ const FilledTextField = forwardRef((props, ref) => {
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  marginInlineStart: leadingIcon ? '' : '16px',
-                  marginInlineEnd: trailingIcon ? '' : '16px'
+                  marginInlineStart: hasLeadingIcon ? '' : '16px',
+                  marginInlineEnd: hasTrailingIcon ? '' : '16px'
                 }}
               >
                 <span
@@ -108,8 +111,8 @@ const FilledTextField = forwardRef((props, ref) => {
               >
                 <div
                   className={`flex w-full pt-6 pb-2${
-                    leadingIcon ? '' : ' pl-4'
-                  }${trailingIcon ? '' : ' pr-4'}`}
+                    hasLeadingIcon ? '' : ' pl-4'
+                  }${hasTrailingIcon ? '' : ' pr-4'}`}
                 >
                   {prefixText && (
                     <span className="text-base text-on-surface">
@@ -138,7 +141,7 @@ const FilledTextField = forwardRef((props, ref) => {
               </div>
             </div>
             {/* end */}
-            {trailingIcon && (
+            {hasTrailingIcon && (
               <div className="[margin-inline-start:4px] min-w-[48px] flex h-full relative items-center justify-center">
                 {trailingIcon}
               </div>

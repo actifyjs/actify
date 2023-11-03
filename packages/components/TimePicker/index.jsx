@@ -70,11 +70,11 @@ const TimePicker = () => {
         ref={refs.setReference}
         {...getReferenceProps()}
       >
-        <TextField.Slot name="trailingIcon">
+        <TextField.TrailingIcon>
           <IconButton>
             <Icon name="calendar-clock" />
           </IconButton>
-        </TextField.Slot>
+        </TextField.TrailingIcon>
       </TextField>
       <FloatingPortal>
         {open && (
