@@ -1,5 +1,4 @@
 import React, { forwardRef, useRef, useState, Children } from 'react'
-import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
@@ -38,13 +37,11 @@ const FilledTextField = forwardRef((props, ref) => {
 
   const [populated, setPopulated] = useState(false)
 
-  const childrenArray = Children.toArray(children)
-
-  const leadingIcon = childrenArray.find(
-    (child) => child?.props?.name == 'leadingIcon'
+  const leadingIcon = Children.map(children, (child) =>
+    child.type.name === 'LeadingIcon' ? child : null
   )
-  const trailingIcon = childrenArray.find(
-    (child) => child?.props?.name == 'trailingIcon'
+  const trailingIcon = Children.map(children, (child) =>
+    child.type.name === 'TrailingIcon' ? child : null
   )
 
   const handleClick = () => {
@@ -79,7 +76,7 @@ const FilledTextField = forwardRef((props, ref) => {
             {/* start */}
             {leadingIcon && (
               <div className="[margin-inline-end:4px] min-w-[48px] flex h-full relative items-center justify-center">
-                {leadingIcon.props?.children}
+                {leadingIcon}
               </div>
             )}
             {/* middle */}
@@ -143,7 +140,7 @@ const FilledTextField = forwardRef((props, ref) => {
             {/* end */}
             {trailingIcon && (
               <div className="[margin-inline-start:4px] min-w-[48px] flex h-full relative items-center justify-center">
-                {trailingIcon.props?.children}
+                {trailingIcon}
               </div>
             )}
           </div>
@@ -158,15 +155,5 @@ const FilledTextField = forwardRef((props, ref) => {
     </div>
   )
 })
-
-FilledTextField.Slot = () => <></>
-
-FilledTextField.propTypes = {
-  prefixText: PropTypes.string,
-  suffixText: PropTypes.string,
-  color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'error'])
-}
-
-FilledTextField.displayName = 'Actify.FilledTextField'
 
 export { FilledTextField }

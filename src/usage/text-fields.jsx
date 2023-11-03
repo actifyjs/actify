@@ -1,16 +1,16 @@
-import React from 'react'
+import { useState } from 'react'
 import { Icon, TextField, IconButton } from 'actify'
 
 export default () => {
-  const [showPassword, setShowPassword] = React.useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   return (
     <>
       <div className="flex items-center gap-2 flex-wrap">
         <TextField label="Email" suffixText="@actifyjs.com">
-          <TextField.Slot name="leadingIcon">
+          <TextField.LeadingIcon>
             <Icon name="mail" />
-          </TextField.Slot>
+          </TextField.LeadingIcon>
         </TextField>
 
         <TextField
@@ -18,15 +18,15 @@ export default () => {
           variant="outlined"
           type={showPassword ? 'text' : 'password'}
         >
-          <TextField.Slot name="leadingIcon">
+          <TextField.LeadingIcon>
             <Icon name="lock" />
-          </TextField.Slot>
+          </TextField.LeadingIcon>
 
-          <TextField.Slot name="trailingIcon">
+          <TextField.TrailingIcon>
             <IconButton onClick={() => setShowPassword((prev) => !prev)}>
               <Icon name="eye" />
             </IconButton>
-          </TextField.Slot>
+          </TextField.TrailingIcon>
         </TextField>
       </div>
     </>

@@ -19,3 +19,10 @@ title: Text fields
 | `disabled`   | `boolean`                                   | Disables the text field | `false`   |
 | `prefixText` | `string`                                    | Prefix text             | `''`      |
 | `suffixText` | `string`                                    | Suffix text             | `''`      |
+
+## Slots
+
+| Name         | Description                        |
+| ------------ | ---------------------------------- |
+| LeadingIcon  | The leadingIcon of the text field  |
+| TrailingIcon | The trailingIcon of the text field |
