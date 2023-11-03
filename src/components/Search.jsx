@@ -42,7 +42,7 @@ const Search = ({ appId, apiKey, indexName }) => {
         {`:root{--docsearch-primary-color: rgb(var(--color-primary));}`}
       </style>
       <Button
-        className="ml-0 md:ml-4"
+        className="ml-0 md:ml-2 lg:ml-4"
         variant="text"
         onClick={onOpen}
         ref={searchButtonRef}
