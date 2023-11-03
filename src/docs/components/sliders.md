@@ -12,12 +12,13 @@ title: Sliders
 
 ## Props
 
-| Props      | Type      | Description    | Default   |
-| ---------- | --------- | -------------- | --------- |
-| `value`    | `string`  | selected value | `null`    |
-| `color`    | `string`  | color          | `primary` |
-| `labeled ` | `boolean` | show label     | `true`    |
-| `disabled` | `boolean` | disable slider | `false`   |
+| Props          | Type                                      | Description          | Default   |
+| -------------- | ----------------------------------------- | -------------------- | --------- |
+| `color`        | `primary` `secondary` `tertiaray` `error` | color                | `primary` |
+| `value`        | `number`                                  | slider value         | `null`    |
+| `labeled `     | `boolean`                                 | show label           | `true`    |
+| `disabled`     | `boolean`                                 | disable slider       | `false`   |
+| `defaultValue` | `number`                                  | default slider value | `0`       |
 
 ## Events
 

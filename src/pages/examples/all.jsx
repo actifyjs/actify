@@ -138,11 +138,11 @@ export default () => {
         </label>
       </div>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-2">
-        <Slider value={50} labeled />
-        <Slider value={50} labeled color="secondary" />
-        <Slider value={50} labeled color="tertiary" />
-        <Slider value={50} labeled color="error" />
-        <Slider value={50} labeled disabled />
+        <Slider defaultValue={50} labeled />
+        <Slider defaultValue={50} labeled color="secondary" />
+        <Slider defaultValue={50} labeled color="tertiary" />
+        <Slider defaultValue={50} labeled color="error" />
+        <Slider defaultValue={50} labeled disabled />
       </div>
     </div>
   )

@@ -1,7 +1,14 @@
-import React, { forwardRef, useState, useMemo } from 'react'
+import React, {
+  useRef,
+  useState,
+  useMemo,
+  forwardRef,
+  useImperativeHandle
+} from 'react'
 import PropTypes from 'prop-types'
 import { Elevation } from 'actify'
 import { tv } from 'tailwind-variants'
+import useMergedState from 'rc-util/lib/hooks/useMergedState'
 
 const variants = tv({
   base: 'relative flex flex-1 items-center [block-size:40px] pointer-events-none touch-none',
@@ -21,32 +28,50 @@ const variants = tv({
   }
 })
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLInputElement, SliderPropTypes>
+ */
 const Slider = forwardRef((props, ref) => {
   const {
-    min,
-    max,
-    step,
+    min = 0,
+    max = 100,
+    step = 1,
     size,
     color,
+    value,
+    defaultValue = 0,
     labeled,
+    onChange,
     disabled,
     children,
     className,
-    value,
     ...rest
   } = props
 
-  const [_value, set_Value] = useState(value || 0)
-  const percent = useMemo(() => {
-    const _min = min || 0
-    const _max = max || 100
-    return _value / _max - _min
-  }, [_value])
+  const inputRef = useRef()
+  const [rawValue, setRawValue] = useMergedState(defaultValue, {
+    value
+  })
+
+  useImperativeHandle(ref, () => ({
+    focus: () => inputRef.current?.focus(),
+    blur: () => inputRef.current?.blur(),
+    input: inputRef.current
+  }))
 
   const handleChange = (e) => {
-    rest.onChange?.(e)
-    set_Value(e.target.value)
+    if (disabled) {
+      return
+    }
+    if (!('value' in props)) {
+      setRawValue(e.target.value)
+    }
+    onChange?.(e)
   }
+
+  const percent = useMemo(() => {
+    return rawValue / (max - min)
+  }, [rawValue])
 
   return (
     <div
@@ -61,11 +86,12 @@ const Slider = forwardRef((props, ref) => {
     >
       <input
         {...rest}
-        ref={ref}
+        min={min}
+        max={max}
+        step={step}
         type="range"
-        min={min || 0}
-        max={max || 100}
-        step={step || 1}
+        ref={inputRef}
+        value={rawValue}
         disabled={disabled}
         onChange={handleChange}
         className="peer opacity-0 [-webkit-tap-highlight-color:rgba(0,0,0,0)] absolute w-full h-full m-0 bg-transparent cursor-pointer pointer-events-auto appearance-none"
@@ -83,7 +109,7 @@ const Slider = forwardRef((props, ref) => {
               {/* label */}
               {labeled && (
                 <div className="label absolute flex p-1 place-content-center place-items-center rounded-full text-xs [inset-block-end:100%] [min-inline-size:28px] [min-block-size:28px] bg-current transition-transform duration-100 [transition-timing-function:cubic-bezier(0.2,0,0,1)] origin-[center_bottom] [transform:scale(0)] before:absolute before:block before:bg-[inherit] before:[inline-size:14px] before:[block-size:14px] before:bottom-[calc(28px/-10)] before:rotate-45 after:absolute after:block after:inset-0 after:rounded-[inherit] after:bg-[inherit]">
-                  <span className="z-[1] text-surface">{_value}</span>
+                  <span className="z-[1] text-surface">{rawValue}</span>
                 </div>
               )}
               {/* ring */}
@@ -98,9 +124,16 @@ const Slider = forwardRef((props, ref) => {
   )
 })
 
-Slider.propTypes = {
-  color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'error'])
+const SliderPropTypes = {
+  color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'error']),
+  value: PropTypes.number,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  defaultValue: PropTypes.number,
+  onChange: PropTypes.func
 }
+
+Slider.propTypes = SliderPropTypes
 
 Slider.displayName = 'Actify.Slider'
 
