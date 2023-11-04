@@ -36,7 +36,7 @@ const TooltipGroupContext = createContext({
 
 const TooltipGroup = ({
   timeout = 300,
-  showDelay = 600,
+  showDelay = 500,
   hideDelay = 200,
   placement,
   children
@@ -55,7 +55,14 @@ const TooltipGroup = ({
   )
 }
 
-const Tooltip = ({ content, showDelay, hideDelay, placement, children }) => {
+const Tooltip = ({
+  content,
+  showDelay,
+  hideDelay,
+  placement,
+  showArrow = true,
+  children
+}) => {
   const { placement: groupPlacement, groupId } = useContext(TooltipGroupContext)
   const { delay, isInstantPhase } = useDelayGroupContext()
   const showDelayFinal =
@@ -181,11 +188,13 @@ const Tooltip = ({ content, showDelay, hideDelay, placement, children }) => {
               >
                 {content}
               </motion.div>
-              <FloatingArrow
-                ref={arrowRef}
-                context={context}
-                className="fill-inverse-surface"
-              />
+              {showArrow && (
+                <FloatingArrow
+                  ref={arrowRef}
+                  context={context}
+                  className="fill-inverse-surface"
+                />
+              )}
             </motion.div>
           )}
         </AnimatePresence>
