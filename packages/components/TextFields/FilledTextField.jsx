@@ -1,5 +1,6 @@
 import React, { forwardRef, useRef, useState, Children } from 'react'
 import { tv } from 'tailwind-variants'
+import useMergedState from 'rc-util/lib/hooks/useMergedState'
 
 const variants = tv({
   base: 'cursor-text group',
@@ -22,20 +23,29 @@ const variants = tv({
 const FilledTextField = forwardRef((props, ref) => {
   const inputRef = ref || useRef()
   const {
+    label,
     color,
     disabled,
     required,
     prefixText,
-    label,
     suffixText,
+    value,
+    onChange,
+    defaultValue,
     className,
     children,
     ...rest
   } = props
 
+  const [innerValue, setInnerValue] = useMergedState('', {
+    value,
+    onChange,
+    defaultValue
+  })
+
   const [focused, setFocused] = useState(false)
 
-  const [populated, setPopulated] = useState(false)
+  const [populated, setPopulated] = useState(innerValue ? true : false)
 
   const leadingIcon = Children.map(children, (child) =>
     child.type.name === 'LeadingIcon' ? child : null
@@ -60,6 +70,10 @@ const FilledTextField = forwardRef((props, ref) => {
     } else {
       setPopulated(false)
     }
+  }
+
+  const handleChange = (e) => {
+    setInnerValue(e.target.value)
   }
 
   return (
@@ -126,6 +140,8 @@ const FilledTextField = forwardRef((props, ref) => {
                     disabled={disabled}
                     aria-invalid={false}
                     onInput={handleInput}
+                    value={innerValue}
+                    onChange={handleChange}
                     type={rest.type || 'text'}
                     aria-describedby="description"
                     onFocus={() => setFocused(true)}

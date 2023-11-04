@@ -66,7 +66,7 @@ const TimePicker = () => {
       <TextField
         id={buttonId}
         value={value}
-        label={value || 'select time'}
+        label="select time"
         ref={refs.setReference}
         {...getReferenceProps()}
       >
