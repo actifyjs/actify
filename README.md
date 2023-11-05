@@ -5,8 +5,12 @@
 </p>
 
 ---
- ![visitors](https://visitor-badge.laobi.icu/badge?page_id=actifyjs.actify)
- 
+<p align="center">
+  <a href="https://github.com/actifyjs/actify/blob/master/LICENSE.md">
+    <img src="https://badgen.net/github/license/actifyjs/actify?color=green" alt="License">
+  </a>
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=actifyjs.actify" alt="visitors" />
+</p>
 ---
 
 ## 🚀 Introduction
