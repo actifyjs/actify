@@ -24,7 +24,7 @@ const TableOfContents = ({ hash, markdown }) => {
   useEffect(() => {
     const regXHeader = /#{1,6}.+/g
     if (markdown) {
-      const matches = markdown.match(regXHeader)
+      const matches = markdown.match(regXHeader) ?? []
       const headings = matches.map((heading) => {
         const headingText = heading.replace(/#/g, '')
         const slug = generateSlug(headingText)
