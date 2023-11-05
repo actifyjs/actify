@@ -61,3 +61,9 @@ title: Dialogs
 | Content     | The content of the dialog      |
 | Close       | The close button of the dialog |
 | Description | The description of the dialog  |
+
+## Activator Props
+
+| Props     | Type      | Description                                | Default |
+| --------- | --------- | ------------------------------------------ | ------- |
+| `asChild` | `boolean` | set true pass any element as the activator | `false` |

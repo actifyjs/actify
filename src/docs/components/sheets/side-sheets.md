@@ -17,6 +17,12 @@ title: Side sheets
 | Activator | The activator of the bottom sheets |
 | Content   | The content of the bottom sheets   |
 
+## Activator Props
+
+| Props     | Type      | Description                                | Default |
+| --------- | --------- | ------------------------------------------ | ------- |
+| `asChild` | `boolean` | set true pass any element as the activator | `false` |
+
 ## Content Props
 
 | Props     | Type              | Description                | Default |
