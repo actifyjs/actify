@@ -17,12 +17,13 @@ import {
 
 import { TextField, IconButton, Icon } from 'actify'
 import Picker from './Picker'
+import dayjs from 'dayjs'
 
-const TimePicker = () => {
+const TimePicker = ({ onChange }) => {
   const [open, setOpen] = useState(false)
   const [placement, setPlacement] = useState(null)
   const buttonId = useId()
-  const [value, setValue] = useState('12:00')
+  const [value, setValue] = useState(dayjs().format('HH:mm'))
 
   const {
     refs,
@@ -57,6 +58,7 @@ const TimePicker = () => {
     getFloatingProps()
 
   const handleChange = (time) => {
+    onChange?.(time)
     setValue(time.hour + ':' + time.minute)
     setOpen(false)
   }
