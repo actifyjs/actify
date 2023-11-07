@@ -22,3 +22,4 @@ title: Bottom sheets
 | Props     | Type      | Description                                | Default |
 | --------- | --------- | ------------------------------------------ | ------- |
 | `asChild` | `boolean` | set true pass any element as the activator | `false` |
+| `open`    | `boolean` | Whether the sheets is open or not          | `false` |

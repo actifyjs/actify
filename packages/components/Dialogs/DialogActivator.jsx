@@ -8,7 +8,7 @@ const variants = tv({
 })
 
 const DialogActivator = forwardRef(
-  ({ className, children, asChild = false, ...props }, propRef) => {
+  ({ className, children, asChild = true, ...props }, propRef) => {
     const context = useDialogContext()
     const childrenRef = children.ref
     const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
@@ -21,6 +21,7 @@ const DialogActivator = forwardRef(
           ref,
           ...props,
           ...children.props,
+          role: 'button',
           'data-state': context.open ? 'open' : 'closed'
         })
       )
@@ -29,6 +30,7 @@ const DialogActivator = forwardRef(
     return (
       <div
         ref={ref}
+        role="button"
         className={variants({ className })}
         {...context.getReferenceProps(props)}
         data-state={context.open ? 'open' : 'closed'}

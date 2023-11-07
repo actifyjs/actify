@@ -12,16 +12,17 @@ title: Side sheets
 
 ## Slots
 
-| Name      | Description                        |
-| --------- | ---------------------------------- |
-| Activator | The activator of the bottom sheets |
-| Content   | The content of the bottom sheets   |
+| Name      | Description                      |
+| --------- | -------------------------------- |
+| Activator | The activator of the side sheets |
+| Content   | The content of the side sheets   |
 
 ## Activator Props
 
 | Props     | Type      | Description                                | Default |
 | --------- | --------- | ------------------------------------------ | ------- |
 | `asChild` | `boolean` | set true pass any element as the activator | `false` |
+| `open`    | `boolean` | Whether the sheets is open or not          | `false` |
 
 ## Content Props
 
