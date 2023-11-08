@@ -13,8 +13,7 @@ export default () => {
     setFilterIcons(icons)
   }, [])
 
-  const handleChange = (e) => {
-    const { value } = e.target
+  const handleChange = (value) => {
     const reg = new RegExp(value, 'i')
     startTransition(() => {
       setFilterIcons(icons.filter((item) => reg.test(item)))
