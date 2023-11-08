@@ -1,7 +1,15 @@
-import React, { forwardRef, useState } from 'react'
+import React, {
+  useState,
+  Children,
+  forwardRef,
+  useContext,
+  cloneElement,
+  isValidElement
+} from 'react'
 import { Icon } from 'actify'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
+import { ListContext } from './ListContext'
 
 const variants = tv({
   base: 'px-4 cursor-pointer relative isolate'
@@ -11,6 +19,8 @@ const ListGroup = forwardRef((props, ref) => {
   const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState(false)
   const { style, className, label, children, ...rest } = props
+
+  const { layoutId } = useContext(ListContext)
 
   return (
     <li ref={ref} {...rest} style={style} className={variants({ className })}>
@@ -27,7 +37,7 @@ const ListGroup = forwardRef((props, ref) => {
       </div>
       {hovered && (
         <motion.div
-          layoutId="actify-moving"
+          layoutId={layoutId}
           className="h-14 absolute inset-0 bg-secondary/25 z-[-1]"
         />
       )}
@@ -37,11 +47,11 @@ const ListGroup = forwardRef((props, ref) => {
         }`}
       >
         <ul className="overflow-hidden">
-          {React.Children.map(
+          {Children.map(
             children,
             (child) =>
-              React.isValidElement(child) &&
-              React.cloneElement(child, {
+              isValidElement(child) &&
+              cloneElement(child, {
                 ...child.props
               })
           )}

@@ -11,7 +11,7 @@ const Dropdown = (props) => {
         className="peer [&_svg]:transition-transform [&_svg]:duration-300 [&_svg]:hover:rotate-90"
       >
         {title}
-        <div slot="icon" className="flex items-center">
+        <div className="flex items-center">
           <Icon name="chevron-down" size={20} />
         </div>
       </Button>

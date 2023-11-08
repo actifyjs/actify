@@ -1,8 +1,9 @@
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, useState, useContext } from 'react'
 import { Ripple } from 'actify'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
 import { NavLink } from 'react-router-dom'
+import { ListContext } from './ListContext'
 
 const variants = tv({
   base: 'relative flex items-center h-14 pl-4 leading-normal cursor-pointer isolate'
@@ -11,6 +12,7 @@ const variants = tv({
 const ListItemLink = forwardRef((props, ref) => {
   const { to, className, children, ...rest } = props
   const [current, setCurrent] = useState()
+  const { layoutId } = useContext(ListContext)
 
   return (
     <li
@@ -31,7 +33,7 @@ const ListItemLink = forwardRef((props, ref) => {
         {children}
         {children == current && (
           <motion.div
-            layoutId="actify-moving"
+            layoutId={layoutId}
             className="absolute inset-0 bg-secondary/25 z-[-1]"
           />
         )}
