@@ -124,6 +124,9 @@ const components = [
     name: 'Tabs'
   },
   {
+    name: 'Accordion'
+  },
+  {
     name: 'Text fields'
   },
   {

@@ -1,3 +1,4 @@
+export { Accordion } from './Accordion'
 export { TopAppBar } from './TopAppBar'
 export { BottomAppBar } from './BottomAppBar'
 export { Drawer } from './NavigationDrawer'
