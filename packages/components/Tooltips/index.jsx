@@ -165,9 +165,11 @@ const Tooltip = ({
         >
           {open && state === 'positioned' && (
             <motion.div
-              initial={isInstantPhase ? {} : { opacity: 0, ...translate }}
-              animate={{ opacity: 1, translateX: 0, translateY: 0 }}
-              exit={{ opacity: 0, ...translate }}
+              initial={
+                isInstantPhase ? {} : { sacle: 0, opacity: 0, ...translate }
+              }
+              animate={{ scale: 1, opacity: 1, translateX: 0, translateY: 0 }}
+              exit={{ scale: 0, opacity: 0, ...translate }}
               transition={{ duration: 0.2 }}
               layoutId={groupId}
               {...getFloatingProps({
@@ -181,13 +183,7 @@ const Tooltip = ({
                 }
               })}
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                {content}
-              </motion.div>
+              {content}
               {showArrow && (
                 <FloatingArrow
                   ref={arrowRef}
