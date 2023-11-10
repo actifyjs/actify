@@ -22,9 +22,11 @@ const variants = tv({
 
 const OutlinedTextField = forwardRef((props, ref) => {
   const inputRef = ref || useRef()
+
   const {
     label,
     color,
+    type = 'text',
     disabled,
     required,
     prefixText,
@@ -37,6 +39,8 @@ const OutlinedTextField = forwardRef((props, ref) => {
     ...rest
   } = props
 
+  const TagName = type === 'textarea' ? 'textarea' : 'input'
+
   const [innerValue, setInnerValue] = useMergedState('', {
     value,
     onChange,
@@ -44,7 +48,6 @@ const OutlinedTextField = forwardRef((props, ref) => {
   })
 
   const [focused, setFocused] = useState(false)
-
   const [populated, setPopulated] = useState(innerValue ? true : false)
 
   const leadingIcon = Children.map(children, (child) =>
@@ -87,11 +90,7 @@ const OutlinedTextField = forwardRef((props, ref) => {
           {/* container */}
           <div className="relative flex flex-1 items-center rounded-[inherit] min-h-full max-h-full min-w-fit">
             {/* start */}
-            {hasLeadingIcon && (
-              <div className="[margin-inline-end:4px] min-w-[48px] flex h-full relative items-center justify-center">
-                {leadingIcon}
-              </div>
-            )}
+            {hasLeadingIcon && leadingIcon}
             {/* middle */}
             <div className="relative flex flex-1 h-full items-stretch self-baseline">
               {/* label-wrapper */}
@@ -123,8 +122,9 @@ const OutlinedTextField = forwardRef((props, ref) => {
                   }`}
                 >
                   {prefixText && <span>{prefixText}</span>}
-                  <input
+                  <TagName
                     {...rest}
+                    type={type}
                     ref={inputRef}
                     aria-label={label}
                     disabled={disabled}
@@ -132,7 +132,6 @@ const OutlinedTextField = forwardRef((props, ref) => {
                     onInput={handleInput}
                     value={innerValue}
                     onChange={handleChange}
-                    type={rest.type || 'text'}
                     aria-describedby="description"
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
@@ -143,11 +142,7 @@ const OutlinedTextField = forwardRef((props, ref) => {
               </div>
             </div>
             {/* end */}
-            {hasTrailingIcon && (
-              <div className="[margin-inline-start:4px] min-w-[48px] flex h-full relative items-center justify-center">
-                {trailingIcon}
-              </div>
-            )}
+            {hasTrailingIcon && trailingIcon}
           </div>
           {/* outline */}
           <div className="pointer-events-none absolute flex w-full h-full rounded-[inherit]">
@@ -160,7 +155,11 @@ const OutlinedTextField = forwardRef((props, ref) => {
               } after:absolute after:inset-0 after:[margin-inline-end:4px] after:rounded-l-[inherit] after:border-r-0 after:border-[3px]`}
             ></div>
             {/* outline-notch */}
-            <div className="relative flex items-start border-[inherit] px-1 [margin-inline-start:-4px] [margin-inline-end:4px] max-w-[calc(100%-32px)]">
+            <div
+              className={`${
+                label ? 'flex' : 'hidden'
+              } relative items-start border-[inherit] px-1 [margin-inline-start:-4px] [margin-inline-end:4px] max-w-[calc(100%-32px)]`}
+            >
               {/* outline-panel-inactive */}
               <div
                 className={`${

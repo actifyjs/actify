@@ -25,6 +25,7 @@ const FilledTextField = forwardRef((props, ref) => {
   const {
     label,
     color,
+    type = 'text',
     disabled,
     required,
     prefixText,
@@ -36,6 +37,8 @@ const FilledTextField = forwardRef((props, ref) => {
     children,
     ...rest
   } = props
+
+  const TagName = type === 'textarea' ? 'textarea' : 'input'
 
   const [innerValue, setInnerValue] = useMergedState('', {
     value,
@@ -91,11 +94,7 @@ const FilledTextField = forwardRef((props, ref) => {
           {/* container */}
           <div className="relative flex flex-1 items-center rounded-[inherit] min-h-full max-h-full min-w-fit">
             {/* start */}
-            {hasLeadingIcon && (
-              <div className="[margin-inline-end:4px] min-w-[48px] flex h-full relative items-center justify-center">
-                {leadingIcon}
-              </div>
-            )}
+            {hasLeadingIcon && leadingIcon}
             {/* middle */}
             <div className="relative flex flex-1 h-full items-stretch self-baseline">
               {/* label-wrapper */}
@@ -133,8 +132,9 @@ const FilledTextField = forwardRef((props, ref) => {
                       {prefixText}
                     </span>
                   )}
-                  <input
+                  <TagName
                     {...rest}
+                    type={type}
                     ref={inputRef}
                     aria-label={label}
                     disabled={disabled}
@@ -142,7 +142,6 @@ const FilledTextField = forwardRef((props, ref) => {
                     onInput={handleInput}
                     value={innerValue}
                     onChange={handleChange}
-                    type={rest.type || 'text'}
                     aria-describedby="description"
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
@@ -157,11 +156,7 @@ const FilledTextField = forwardRef((props, ref) => {
               </div>
             </div>
             {/* end */}
-            {hasTrailingIcon && (
-              <div className="[margin-inline-start:4px] min-w-[48px] flex h-full relative items-center justify-center">
-                {trailingIcon}
-              </div>
-            )}
+            {hasTrailingIcon && trailingIcon}
           </div>
           {/* active-indicator */}
           <div
