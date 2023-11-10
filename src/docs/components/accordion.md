@@ -12,6 +12,7 @@ title: Accordion
 
 ## Props
 
-| Props      | Type      | Description                                           | Default     |
-| ---------- | --------- | ----------------------------------------------------- | ----------- |
-| `multiple` | `boolean` | Allow multiple items to be expanded at the same time. | `undefined` |
+| Props      | Type      | Description                                                                  | Default     |
+| ---------- | --------- | ---------------------------------------------------------------------------- | ----------- |
+| `open`     | `array`   | Set which index item is open. eg. [,true] stands for the second item is open | `[]`        |
+| `multiple` | `boolean` | Allow multiple items to be expanded at the same time.                        | `undefined` |
