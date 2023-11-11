@@ -4,11 +4,10 @@ import { tv } from 'tailwind-variants'
 import { useDrawer } from './DrawerContext'
 
 const variants = tv({
-  base: 'fixed overflow-hidden z-50 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out ',
+  base: 'fixed overflow-hidden z-50 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out transition-opacity opacity-25 duration-500 pointer-events-none',
   variants: {
     open: {
-      true: 'transition-opacity opacity-100 duration-500',
-      false: 'transition-all delay-500 opacity-0'
+      true: 'opacity-100 pointer-events-auto'
     }
   },
   compoundVariants: [
@@ -46,7 +45,7 @@ const variants = tv({
 })
 
 const sectionVariants = tv({
-  base: 'absolute bg-white shadow-xl delay-400 duration-500 ease-in-out transition-all transform',
+  base: 'absolute bg-white shadow-xl duration-500 ease-in-out transition-all transform',
   variants: {
     open: {},
     placement: {
@@ -106,7 +105,7 @@ const contentVariants = tv({
   compoundVariants: [
     {
       placement: ['left', 'right'],
-      className: 'max-w-xs'
+      className: 'max-w-fit'
     }
   ]
 })
@@ -125,7 +124,7 @@ const DrawerContent = ({ className, children }) => {
           </section>
           <section
             onClick={() => setOpen(false)}
-            className="w-screen h-full cursor-pointer"
+            className="w-screen h-full"
           ></section>
         </nav>,
         document.body
