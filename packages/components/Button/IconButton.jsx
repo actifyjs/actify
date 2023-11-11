@@ -26,6 +26,7 @@ const IconButton = forwardRef((props, ref) => {
     variant,
     color,
     className,
+    type = 'button',
     children,
     ...rest
   } = props
@@ -44,6 +45,7 @@ const IconButton = forwardRef((props, ref) => {
     <Tag
       ref={ref}
       {...rest}
+      type={type}
       style={{ color: colorVariant, ...style }}
       className={variants({ className })}
     >

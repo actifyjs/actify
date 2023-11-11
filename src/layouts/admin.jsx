@@ -94,7 +94,7 @@ export default ({ children }) => {
           )}
         </List>
       </aside>
-      <main>{children}</main>
+      <main className="bg-secondary/10">{children}</main>
       <footer className="bg-inverse-surface flex items-center px-4 justify-end">
         <p>copyright &copy; {new Date().getFullYear()}</p>
       </footer>

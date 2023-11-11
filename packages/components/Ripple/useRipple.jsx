@@ -8,7 +8,7 @@ const useRipple = (ref) => {
     if (ref.current) {
       const element = ref.current
       const clickHandler = (e) => {
-        var rect = element.getBoundingClientRect()
+        const rect = element.getBoundingClientRect()
         const top = e.clientY - rect.top
         const left = e.clientX - rect.left
         const height = element.clientHeight

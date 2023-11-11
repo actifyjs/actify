@@ -20,7 +20,7 @@ export default () => {
     randomUnsplash()
   }, [])
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     navigate('/admin')
   }
 
@@ -40,7 +40,12 @@ export default () => {
         </div>
         <div className="rounded-lg md:rounded-l-none md:rounded-r-lg p-10 bg-black/10 h-full flex flex-col gap-4 justify-center">
           <img alt="logo" className="mx-auto w-40 h-40" src="/actify.svg" />
-          <TextField label="Email" className="w-full">
+          <TextField
+            label="Email"
+            className="w-full"
+            defaultValue="lerte"
+            suffixText="@actifyjs.com"
+          >
             <TextField.LeadingIcon>
               <Icon name="mail" />
             </TextField.LeadingIcon>
@@ -50,6 +55,7 @@ export default () => {
             label="Password"
             className="w-full"
             autoComplete="off"
+            defaultValue="actify"
             type={showPassword ? 'text' : 'password'}
           >
             <TextField.LeadingIcon>
@@ -57,12 +63,12 @@ export default () => {
             </TextField.LeadingIcon>
 
             <TextField.TrailingIcon>
-              <IconButton onClick={() => setShowPassword((prev) => !prev)}>
+              <IconButton onClick={() => setShowPassword((_) => !_)}>
                 <Icon name={showPassword ? 'eye-off' : 'eye'} />
               </IconButton>
             </TextField.TrailingIcon>
           </TextField>
-          <Button onClick={handleClick}>Login</Button>
+          <Button onClick={handleSubmit}>Login</Button>
         </div>
       </form>
     </div>
