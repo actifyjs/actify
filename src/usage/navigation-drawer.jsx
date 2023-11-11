@@ -5,7 +5,7 @@ export default () => {
     <div className="flex gap-2 items-center">
       <TooltipGroup>
         <Drawer placement="left">
-          <Drawer.Activator asChild>
+          <Drawer.Activator>
             <Tooltip content="open from left">
               <IconButton>
                 <Icon name="panel-left-close" />
@@ -21,7 +21,7 @@ export default () => {
         </Drawer>
 
         <Drawer placement="top">
-          <Drawer.Activator asChild>
+          <Drawer.Activator>
             <Tooltip content="open from top">
               <IconButton>
                 <Icon name="panel-top-close" />
@@ -37,7 +37,7 @@ export default () => {
         </Drawer>
 
         <Drawer placement="right">
-          <Drawer.Activator asChild>
+          <Drawer.Activator>
             <Tooltip content="open from right">
               <IconButton>
                 <Icon name="panel-left-open" />
@@ -53,7 +53,7 @@ export default () => {
         </Drawer>
 
         <Drawer placement="bottom">
-          <Drawer.Activator asChild>
+          <Drawer.Activator>
             <Tooltip content="open from bottom">
               <IconButton>
                 <Icon name="panel-bottom-close" />

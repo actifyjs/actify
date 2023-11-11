@@ -12,10 +12,13 @@ title: Side sheets
 
 ## Slots
 
-| Name      | Description                      |
-| --------- | -------------------------------- |
-| Activator | The activator of the side sheets |
-| Content   | The content of the side sheets   |
+| Name       | Description                      |
+| ---------- | -------------------------------- |
+| Activator  | The activator of the side sheets |
+| Content    | The content of the side sheets   |
+| \|- Header | The header of the side sheets    |
+| \|- Body   | The body of the side sheets      |
+| \|- Action | The action of the side sheets    |
 
 ## Activator Props
 
@@ -26,7 +29,6 @@ title: Side sheets
 
 ## Content Props
 
-| Props     | Type              | Description                | Default |
-| --------- | ----------------- | -------------------------- | ------- |
-| `divider` | `boolean`         | show divider top at action | `false` |
-| `action`  | `React.ReactNode` | bottom action              | `null`  |
+| Props     | Type      | Description                | Default |
+| --------- | --------- | -------------------------- | ------- |
+| `divider` | `boolean` | show divider top at action | `false` |

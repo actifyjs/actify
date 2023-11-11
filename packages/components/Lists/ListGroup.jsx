@@ -18,7 +18,7 @@ const variants = tv({
 const ListGroup = forwardRef((props, ref) => {
   const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState(false)
-  const { style, className, label, children, ...rest } = props
+  const { style, className, label, icon, children, ...rest } = props
 
   const { layoutId } = useContext(ListContext)
 
@@ -30,6 +30,7 @@ const ListGroup = forwardRef((props, ref) => {
         onMouseOut={() => setHovered(false)}
         onClick={() => setOpen(!open)}
       >
+        {icon && <Icon name={icon} />}
         {label}
         <div className={`transition-transform ${open ? 'rotate-90' : ''}`}>
           <Icon name="chevron-down" />

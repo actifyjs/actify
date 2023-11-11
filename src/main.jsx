@@ -9,11 +9,19 @@ import { ToastProvider, ToastContainer } from 'actify'
 import Loading from '@/src/components/Loading'
 import { useLocation } from 'react-router-dom'
 import EmptyLayout from '@/src/layouts/empty.jsx'
+import AdminLayout from '@/src/layouts/admin.jsx'
 import DefaultLayout from '@/src/layouts/default.jsx'
 
 const App = () => {
   const { pathname } = useLocation()
   let Layout = DefaultLayout
+  if (pathname.startsWith('/admin')) {
+    if (pathname == '/admin/login') {
+      Layout = ({ children }) => <>{children}</>
+    } else {
+      Layout = AdminLayout
+    }
+  }
   if (pathname == '/' || pathname == '/playground') {
     Layout = EmptyLayout
   }

@@ -60,6 +60,6 @@ TextFieldRoot.propTypes = TextFieldPropTypes
 TextFieldRoot.displayName = 'Actify.TextField'
 
 export const TextField = Object.assign(TextFieldRoot, {
-  LeadingIcon: LeadingIcon,
-  TrailingIcon: TrailingIcon
+  LeadingIcon,
+  TrailingIcon
 })

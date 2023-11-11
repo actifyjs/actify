@@ -28,7 +28,14 @@ SideSheetsRoot.propTypes = SideSheetsPropTypes
 
 SideSheetsRoot.displayName = 'Actify.SideSheets'
 
+const Header = ({ children }) => <>{children}</>
+const Body = ({ children }) => <>{children}</>
+const Action = ({ children }) => <>{children}</>
+
 export const SideSheets = Object.assign(SideSheetsRoot, {
   Activator,
-  Content
+  Content,
+  Header,
+  Body,
+  Action
 })

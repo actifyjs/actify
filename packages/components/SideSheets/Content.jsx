@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 import { createPortal } from 'react-dom'
-import React, { forwardRef } from 'react'
+import React, { forwardRef, Children } from 'react'
 import { useSideSheets } from './Context'
 import { Divider, IconButton, Icon } from 'actify'
 
@@ -15,7 +15,7 @@ const rootVariants = tv({
 })
 
 const innerVariants = tv({
-  base: 'absolute h-screen max-w-xs bg-surface dark:bg-inverse-surface rounded-2xl overflow-hidden top-0 right-0 translate-x-full transition-transform ease-in-out',
+  base: 'absolute h-screen max-w-xs bg-surface dark:bg-inverse-surface rounded-l-2xl overflow-hidden top-0 right-0 translate-x-full transition-transform ease-in-out',
   variants: {
     open: {
       true: 'translate-x-0'
@@ -27,8 +27,22 @@ const innerVariants = tv({
  * @type React.ForwardRefRenderFunction<HTMLDivElement, ContentPropTypes>
  */
 const Content = forwardRef(
-  ({ style, className, divider, action, children, ...rest }, ref) => {
+  ({ style, className, divider, children, ...rest }, ref) => {
     const { open, setOpen } = useSideSheets()
+
+    const header = Children.map(children, (child) =>
+      child?.type?.name === 'Header' ? child : null
+    )
+    const body = Children.map(children, (child) =>
+      child?.type?.name === 'Body' ? child : null
+    )
+    const action = Children.map(children, (child) =>
+      child?.type?.name === 'Action' ? child : null
+    )
+
+    const hasHeader = header?.length > 0
+    const hasBody = body?.length > 0
+    const hasAction = action?.length > 0
 
     return (
       <>
@@ -46,17 +60,19 @@ const Content = forwardRef(
             >
               {/* top title */}
               <div className="pl-6 pr-3 pt-3 pb-4 flex">
-                <p className="flex-grow text-[22px] text-[#49454f]">Title</p>
+                <p className="flex-grow text-[22px] text-[#49454f]">
+                  {hasHeader && header}
+                </p>
                 <IconButton onClick={() => setOpen(false)}>
                   <Icon name="x" />
                 </IconButton>
               </div>
               <div className="h-[calc(100vh-36px)] flex flex-col overflow-hidden">
-                <p className="grow p-2">{children}</p>
+                <p className="grow p-2">{hasBody && body}</p>
                 {/* divider */}
                 {divider && <Divider />}
                 {/* bottom actions */}
-                {action && (
+                {hasAction && (
                   <div className="pl-6 pb-6 pt-4 w-full h-24 flex gap-2">
                     {action}
                   </div>
