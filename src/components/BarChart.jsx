@@ -4,22 +4,16 @@ export default function BarChart({ data }) {
   return (
     <div className="rounded-xl bg-gray-50 p-4 w-full">
       <div className="sm:grid-cols-[repeat(13,minmax(0,1fr))] mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 md:gap-4">
-        <div
-          className="mb-6 hidden flex-col justify-between text-sm text-gray-400 sm:flex"
-          style={{ height: '350px' }}
-        >
-          <p>$5K</p>
-          <p>$4K</p>
-          <p>$3K</p>
-          <p>$2K</p>
-          <p>$1K</p>
-          <p>$0K</p>
+        <div className="h-[350px] mb-6 hidden flex-col-reverse justify-between text-sm text-gray-400 sm:flex">
+          {[...Array(6)].map((_, index) => (
+            <p key={index}>{`$${index}K`}</p>
+          ))}
         </div>
         {data.map((height, index) => (
           <div key={index} className="flex flex-col items-center gap-2">
             <div
-              className="w-full rounded-md bg-blue-300"
               style={{ height }}
+              className="w-full rounded-md bg-blue-300"
             ></div>
             <p className="-rotate-90 text-sm text-gray-400 sm:rotate-0">
               {dayjs(`2023${(index + 1).toString().padStart(2, 0)}16`).format(
@@ -31,12 +25,12 @@ export default function BarChart({ data }) {
       </div>
       <div className="flex items-center pb-2 pt-6">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
           aria-hidden="true"
+          strokeWidth="1.5"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5 text-gray-500"
         >
           <path

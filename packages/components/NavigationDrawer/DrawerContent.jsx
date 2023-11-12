@@ -4,10 +4,11 @@ import { tv } from 'tailwind-variants'
 import { useDrawer } from './DrawerContext'
 
 const variants = tv({
-  base: 'fixed overflow-hidden z-50 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out transition-opacity opacity-25 duration-500 pointer-events-none',
+  base: 'fixed overflow-hidden z-50 inset-0 ease-in-out transition-all duration-500',
   variants: {
     open: {
-      true: 'opacity-100 pointer-events-auto'
+      true: 'opacity-100 pointer-events-auto',
+      false: 'opacity-0'
     }
   },
   compoundVariants: [
@@ -45,7 +46,7 @@ const variants = tv({
 })
 
 const sectionVariants = tv({
-  base: 'absolute bg-white shadow-xl duration-500 ease-in-out transition-all transform',
+  base: 'absolute z-20 bg-white shadow-xl duration-500 ease-in-out transition-all transform',
   variants: {
     open: {},
     placement: {
@@ -96,18 +97,14 @@ const sectionVariants = tv({
     }
   ]
 })
-
-const contentVariants = tv({
-  base: 'relative w-screen flex flex-col overflow-y-scroll h-full',
+const scrimVariants = tv({
+  base: 'w-screen h-screen opacity-25 bg-gray-900 bg-opacity-25 z-0 isolate transition-opacity delay-500',
   variants: {
-    placement: {}
-  },
-  compoundVariants: [
-    {
-      placement: ['left', 'right'],
-      className: 'max-w-fit'
+    open: {
+      true: 'opacity-100',
+      false: 'opacity-0'
     }
-  ]
+  }
 })
 
 const DrawerContent = ({ className, children }) => {
@@ -117,15 +114,13 @@ const DrawerContent = ({ className, children }) => {
     <>
       {createPortal(
         <nav className={variants({ open, placement })}>
-          <section className={sectionVariants({ open, placement, className })}>
-            <article className={contentVariants({ placement })}>
-              {children}
-            </article>
-          </section>
-          <section
+          <div className={sectionVariants({ open, placement, className })}>
+            {children}
+          </div>
+          <div
             onClick={() => setOpen(false)}
-            className="w-screen h-full"
-          ></section>
+            className={scrimVariants({ open })}
+          ></div>
         </nav>,
         document.body
       )}

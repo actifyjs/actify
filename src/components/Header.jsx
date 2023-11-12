@@ -99,6 +99,10 @@ const Header = () => {
                     headline: 'GitHub',
                     target: '_blank',
                     to: 'https://github.com/actifyjs/actify'
+                  },
+                  {
+                    headline: 'Actify Admin',
+                    to: '/admin'
                   }
                 ]}
               />
