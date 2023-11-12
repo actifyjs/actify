@@ -10,7 +10,9 @@ const Footer = () => {
       } col-end-4`}
     >
       <div className="mx-auto w-full max-w-screen-xl py-1 md:py-4 px-4 md:flex md:items-center md:justify-between">
-        <p className="text-center">Copyright © 2023 Actify</p>
+        <p className="text-center">
+          Copyright © {new Date().getFullYear()} Actify
+        </p>
         <p className="text-center">
           Released under the{' '}
           <a
