@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 import { useDrawer } from './DrawerContext'
 
 const variants = tv({
-  base: 'fixed overflow-hidden z-50 inset-0 ease-in-out transition-all duration-500',
+  base: 'fixed overflow-hidden z-50 bg-gray-900 bg-opacity-25 inset-0 ease-in-out transition-opacity opacity-25 duration-500 pointer-events-none',
   variants: {
     open: {
       true: 'opacity-100 pointer-events-auto',
@@ -18,35 +18,15 @@ const variants = tv({
       className: 'translate-x-0'
     },
     {
-      open: false,
-      placement: 'left',
-      className: '-translate-x-full'
-    },
-    {
-      open: false,
-      placement: 'right',
-      className: 'translate-x-full'
-    },
-    {
       open: true,
       placement: ['top', 'bottom'],
       className: 'translate-y-0'
-    },
-    {
-      open: false,
-      placement: 'top',
-      className: 'translate-y-full'
-    },
-    {
-      open: false,
-      placement: 'bottom',
-      className: '-translate-y-full'
     }
   ]
 })
 
 const sectionVariants = tv({
-  base: 'absolute z-20 bg-white shadow-xl duration-500 ease-in-out transition-all transform',
+  base: 'absolute overflow-y-auto bg-white shadow-xl duration-500 ease-in-out transition-all',
   variants: {
     open: {},
     placement: {
@@ -97,15 +77,6 @@ const sectionVariants = tv({
     }
   ]
 })
-const scrimVariants = tv({
-  base: 'w-screen h-screen opacity-25 bg-gray-900 bg-opacity-25 z-0 isolate transition-opacity delay-500',
-  variants: {
-    open: {
-      true: 'opacity-100',
-      false: 'opacity-0'
-    }
-  }
-})
 
 const DrawerContent = ({ className, children }) => {
   const { open, placement, setOpen } = useDrawer()
@@ -117,9 +88,10 @@ const DrawerContent = ({ className, children }) => {
           <div className={sectionVariants({ open, placement, className })}>
             {children}
           </div>
+          {/* scrim */}
           <div
             onClick={() => setOpen(false)}
-            className={scrimVariants({ open })}
+            className="w-screen h-screen"
           ></div>
         </nav>,
         document.body
