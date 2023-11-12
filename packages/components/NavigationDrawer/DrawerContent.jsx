@@ -30,10 +30,10 @@ const sectionVariants = tv({
   variants: {
     open: {},
     placement: {
-      left: 'left-0',
-      right: 'right-0',
-      top: 'top-0',
-      bottom: 'bottom-0'
+      left: 'left-0 rounded-r-2xl',
+      right: 'right-0 rounded-l-2xl',
+      top: 'top-0 rounded-b-2xl',
+      bottom: 'bottom-0 rounded-t-2xl'
     }
   },
   compoundVariants: [
