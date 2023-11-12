@@ -97,16 +97,15 @@ const Aside = ({ className }) => {
 
 export default ({ children }) => {
   return (
-    <div className="min-h-screen grid grid-rows-[64px_1fr_56px] grid-cols-[0_1fr] md:grid-cols-[240px_1fr] transition-all">
+    <div className="min-h-screen grid grid-rows-[64px_1fr_56px] grid-cols-[0_1fr] lg:grid-cols-[240px_1fr] transition-all">
       <header className="sticky top-0 z-50 bg-inverse-surface col-start-1 col-end-3 px-4 flex gap-2 items-center justify-between">
         <Link to="/">
           <Button variant="text" className="text-white">
             Actify Admin
           </Button>
         </Link>
-
         <Drawer placement="left" className="overflow-hidden">
-          <Drawer.Activator className="md:hidden">
+          <Drawer.Activator className="lg:hidden">
             <IconButton>
               <Icon name="menu" />
             </IconButton>
@@ -115,7 +114,6 @@ export default ({ children }) => {
             <Aside className="w-full" />
           </Drawer.Content>
         </Drawer>
-
         <Spacer />
         <Popover>
           <Popover.Activator>
@@ -154,7 +152,7 @@ export default ({ children }) => {
           </SideSheets.Content>
         </SideSheets>
       </header>
-      <Aside className="top-16 -translate-x-full md:translate-x-0 w-[240px]" />
+      <Aside className="top-16 -translate-x-full lg:translate-x-0 w-[240px]" />
       <main className="bg-secondary/10 col-start-2 col-end-3">{children}</main>
       <footer className="col-start-2 col-en-3 bg-inverse-surface flex items-center px-4 justify-center lg:justify-between">
         <p>copyright &copy; {new Date().getFullYear()}</p>
