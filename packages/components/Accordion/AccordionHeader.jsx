@@ -9,7 +9,14 @@ import React, {
 } from 'react'
 
 const variants = tv({
-  base: 'font-black cursor-pointer flex items-center justify-between'
+  base: 'font-black cursor-pointer flex items-center justify-between',
+  variants: {
+    open: {
+      true: 'text-primary',
+      false: '',
+      undefined: ''
+    }
+  }
 })
 
 const AccordionHeader = forwardRef((props, ref) => {
@@ -44,7 +51,7 @@ const AccordionHeader = forwardRef((props, ref) => {
       ref={ref}
       style={style}
       onClick={handleClick}
-      className={variants({ className })}
+      className={variants({ className, open: open[index] })}
     >
       <p>{children}</p>
 

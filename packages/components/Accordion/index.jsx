@@ -40,7 +40,6 @@ const AccordionRoot = forwardRef((props, ref) => {
             isValidElement(child) &&
             cloneElement(child, {
               index,
-              active: open[index] ? 'active' : 'unactive',
               ...child.props
             })
         )}
