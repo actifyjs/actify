@@ -13,7 +13,7 @@ export default function BarChart({ data }) {
           <div key={index} className="flex flex-col items-center gap-2">
             <div
               style={{ height }}
-              className="w-full rounded-md bg-blue-300"
+              className="w-full rounded-md bg-primary"
             ></div>
             <p className="-rotate-90 text-sm text-gray-400 sm:rotate-0">
               {dayjs(`2023${(index + 1).toString().padStart(2, 0)}16`).format(

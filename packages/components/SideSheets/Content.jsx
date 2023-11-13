@@ -15,7 +15,7 @@ const rootVariants = tv({
 })
 
 const innerVariants = tv({
-  base: 'absolute h-screen max-w-xs bg-surface dark:bg-inverse-surface rounded-l-2xl overflow-hidden top-0 right-0 translate-x-full transition-transform ease-in-out',
+  base: 'absolute h-screen max-w-xs bg-surface rounded-l-2xl overflow-hidden top-0 right-0 translate-x-full transition-transform ease-in-out',
   variants: {
     open: {
       true: 'translate-x-0'
@@ -59,7 +59,7 @@ const Content = forwardRef(
               onClick={(e) => e.stopPropagation()}
             >
               {/* top title */}
-              <div className="pl-6 pr-3 pt-3 pb-4 flex">
+              <div className="pl-6 pr-3 pt-3 pb-4 flex items-center">
                 <p className="flex-grow text-[22px] text-[#49454f]">
                   {hasHeader && header}
                 </p>

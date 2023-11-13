@@ -38,13 +38,11 @@ const Content = forwardRef(({ style, className, children, ...rest }, ref) => {
             className={innerVariants({ open })}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="inline-flex h-9 w-full cursor-grab flex-col items-center justify-start gap-3 p-4 bg-surface dark:bg-inverse-surface rounded-t-[100px]">
+            <div className="inline-flex h-9 w-full cursor-grab flex-col items-center justify-start gap-3 p-4 bg-surface rounded-t-[100px]">
               <div className="h-1 w-8 bg-outline/40 rounded-[100px]"></div>
             </div>
             <div className="flex-1 max-h-[calc(100vh-72px)] overflow-y-auto">
-              <p className="bg-surface dark:bg-inverse-surface p-2">
-                {children}
-              </p>
+              <p className="bg-surface p-2">{children}</p>
             </div>
           </div>
         </div>,

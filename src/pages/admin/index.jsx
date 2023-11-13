@@ -1,5 +1,6 @@
 import BarChart from '@/src/components/BarChart'
-import { Card, Divider, Chip, Icon, Tabs } from 'actify'
+import SvgChart from '@/src/components/SvgChart'
+import { Card, Divider, Chip, Icon, Tabs, Button } from 'actify'
 
 export default () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
@@ -63,22 +64,32 @@ export default () => {
           </Card>
         ))}
       </section>
-      <Tabs value="actify" className="bg-surface rounded-xl">
-        <Tabs.Header className="rounded-b-none bg-secondary/20">
-          {barData.map(({ label, value }) => (
-            <Tabs.Tab key={value} value={value}>
-              {label}
-            </Tabs.Tab>
-          ))}
-        </Tabs.Header>
-        <Tabs.Body className="p-2">
-          {barData.map(({ value, content }) => (
-            <Tabs.Panel key={value} value={value}>
-              <BarChart data={content} />
-            </Tabs.Panel>
-          ))}
-        </Tabs.Body>
-      </Tabs>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Tabs value="actify" className="bg-surface rounded-xl">
+          <Tabs.Header className="rounded-b-none bg-secondary/20">
+            {barData.map(({ label, value }) => (
+              <Tabs.Tab key={value} value={value}>
+                {label}
+              </Tabs.Tab>
+            ))}
+          </Tabs.Header>
+          <Tabs.Body className="p-2">
+            {barData.map(({ value, content }) => (
+              <Tabs.Panel key={value} value={value}>
+                <BarChart data={content} />
+              </Tabs.Panel>
+            ))}
+          </Tabs.Body>
+        </Tabs>
+        <div className="rounded-xl overflow-hidden flex flex-col justify-between">
+          <div className="p-2 h-14 text-black bg-secondary/20">
+            <Button variant="text" className="text-on-surface">
+              Latest
+            </Button>
+          </div>
+          <SvgChart className=" bg-gray-50 grow" />
+        </div>
+      </div>
     </div>
   )
 }
