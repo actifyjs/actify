@@ -7,7 +7,7 @@ import React, {
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'rounded-md border border-outline p-4'
+  base: 'rounded-md border p-4'
 })
 
 const AccordionItem = forwardRef((props, ref) => {

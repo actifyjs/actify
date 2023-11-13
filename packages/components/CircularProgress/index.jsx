@@ -103,7 +103,7 @@ const CircularProgress = forwardRef((props, ref) => {
             <circle
               className="stroke-current"
               pathLength="100"
-              strokeDashoffset={(1 - value) * 100}
+              strokeDashoffset={(1 - value / 100) * 100}
               style={circleStyles}
             />
           </svg>

@@ -146,7 +146,7 @@ const LinearProgress = forwardRef((props, ref) => {
             transition: 'none 0s ease 0s',
             transformOrigin: 'left center',
             insetInlineStart: indeterminate ? '-145.167%' : 0,
-            transform: `scaleX(${indeterminate ? 1 : value})`
+            transform: `scaleX(${indeterminate ? 1 : value / 100})`
           }}
         >
           <div

@@ -19,3 +19,9 @@ title: Switch
 | `disabled`        | `boolean`                                          | Whether the switch is disabled | `false`   |
 | `selected`        | `boolean`                                          | Whether the switch is checked  | `null`    |
 | `defaultSelected` | `boolean`                                          | The switch default selected    | `false`   |
+
+## Events
+
+| Events     | Description                 |
+| ---------- | --------------------------- |
+| `onChange` | fired when selected changed |

@@ -92,7 +92,15 @@ const components = [
     ]
   },
   {
-    name: 'Progress'
+    label: 'Progress',
+    children: [
+      {
+        name: 'Linear progress'
+      },
+      {
+        name: 'Circular progress'
+      }
+    ]
   },
   {
     name: 'Radio button'

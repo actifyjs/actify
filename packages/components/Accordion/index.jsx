@@ -12,7 +12,7 @@ import { AccordionHeader } from './AccordionHeader'
 import { AccordionContent } from './AccordionContent'
 
 const variants = tv({
-  base: 'rounded-lg flex flex-col gap-4 bg-surface'
+  base: 'rounded-lg flex flex-col gap-4 bg-surface p-4'
 })
 
 const AccordionRoot = forwardRef((props, ref) => {
@@ -40,6 +40,7 @@ const AccordionRoot = forwardRef((props, ref) => {
             isValidElement(child) &&
             cloneElement(child, {
               index,
+              active: open[index] ? 'active' : 'unactive',
               ...child.props
             })
         )}

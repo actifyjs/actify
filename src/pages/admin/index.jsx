@@ -47,10 +47,10 @@ export default () => {
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {cardData.map((item, index) => (
           <Card key={index} className="bg-surface">
-            <p className="flex justify-between items-center p-2">
+            <div className="flex justify-between items-center p-2">
               <span className="text-2xl font-semibold">{item.title}</span>
               <Chip label="month" className="h-6" />
-            </p>
+            </div>
             <Divider />
             <div className="text-xl font-medium p-4 gap-4 grid grid-rows-2 grid-cols-2 place-items-center">
               <div>${item.total}</div>
