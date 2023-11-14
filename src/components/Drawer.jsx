@@ -50,7 +50,7 @@ const Drawer = ({ children }) => {
         onClick={() => setDrawer(false)}
         className={`${
           drawer ? 'opacity-100' : 'pointer-events-none opacity-0'
-        } transition-colors fixed inset-0 z-40 block md:hidden bg-white/25 dark:bg-black/25 backdrop-blur`}
+        } transition-colors fixed inset-0 z-40 block md:hidden bg-inverse-surface/25`}
       ></div>
     </>
   )

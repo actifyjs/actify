@@ -7356,19 +7356,35 @@ const images = [
   }
 ]
 
+import { motion } from 'framer-motion'
+import { useId, useState } from 'react'
+
 export default () => {
+  const layoutId = useId()
+  const [current, setCurrent] = useState()
+
   return (
     <div className="w-full p-4">
       <div className="columns-1 space-y-2 sm:columns-2 sm:space-y-4 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6">
         {images.map((image) => (
-          <img
-            key={image.id}
-            alt={image.prompt}
-            className="rounded-lg"
-            width={image.event.width}
-            height={image.event.height}
-            src={image.event.seedImageURL}
-          />
+          <div className="relative" onMouseOver={() => setCurrent(image.id)}>
+            <img
+              key={image.id}
+              alt={image.prompt}
+              className="rounded-lg"
+              width={image.event.width}
+              height={image.event.height}
+              src={image.event.seedImageURL}
+            />
+            {image.id == current && (
+              <motion.div
+                layoutId={layoutId}
+                className="absolute z-10 inset-0 rounded-lg border-primary border-4 bg-surface/50 p-4 overflow-hidden"
+              >
+                {image.prompt}
+              </motion.div>
+            )}
+          </div>
         ))}
       </div>
     </div>

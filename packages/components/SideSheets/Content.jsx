@@ -6,7 +6,7 @@ import { useSideSheets } from './Context'
 import { Divider, IconButton, Icon } from 'actify'
 
 const rootVariants = tv({
-  base: 'fixed overflow-hidden z-50 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out transition-opacity opacity-0 duration-500 pointer-events-none',
+  base: 'fixed overflow-hidden z-50 bg-black/40 dark:bg-[rgba(3,3,3,.8)] inset-0 transform ease-in-out transition-opacity opacity-0 duration-500 pointer-events-none',
   variants: {
     open: {
       true: 'opacity-100 pointer-events-auto'

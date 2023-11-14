@@ -1,6 +1,10 @@
 import BarChart from '@/src/components/BarChart'
 import SvgChart from '@/src/components/SvgChart'
 import { Card, Divider, Chip, Icon, Tabs, Button } from 'actify'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Doughnut } from 'react-chartjs-2'
+
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 export default () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
@@ -64,7 +68,7 @@ export default () => {
           </Card>
         ))}
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-4">
         <Tabs value="actify" className="bg-surface rounded-xl">
           <Tabs.Header className="rounded-b-none bg-secondary/20">
             {barData.map(({ label, value }) => (
@@ -87,7 +91,39 @@ export default () => {
               Latest
             </Button>
           </div>
-          <SvgChart className=" bg-gray-50 grow" />
+          <div className="rounded-b-xl bg-surface p-2 w-full grow">
+            <SvgChart className="overflow-hidden rounded-xl bg-gray-50 p-2 h-full" />
+          </div>
+        </div>
+        <div className="rounded-xl overflow-hidden flex flex-col justify-between">
+          <div className="p-2 h-14 text-black bg-secondary/20">
+            <Button variant="text" className="text-on-surface">
+              Framework
+            </Button>
+          </div>
+          <div className="rounded-b-xl bg-surface p-2 w-full grow grid place-content-center">
+            <Doughnut
+              data={{
+                labels: ['React', 'Vue', 'Tailwind CSS'],
+                datasets: [
+                  {
+                    label: 'Framework of Votes',
+                    data: [19, 9, 6],
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)'
+                    ],
+                    borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)'
+                    ]
+                  }
+                ]
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

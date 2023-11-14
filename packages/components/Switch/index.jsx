@@ -70,8 +70,8 @@ const Switch = forwardRef((props, ref) => {
   return (
     <label
       title={title}
-      className="relative cursor-pointer"
       style={{ color: setColor(colorVariant) }}
+      className="relative cursor-pointer inline-block w-fit h-fit"
     >
       <input
         hidden
