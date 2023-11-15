@@ -18,11 +18,11 @@ title: Tabs
 | `onChange` | `function`         | fired when current tab changed | `null`  |
 | `children` | `React.React.Node` |                                | `null`  |
 
-## Slots
+## Sub components
 
-| Name   | Description |
-| ------ | ----------- |
-| Tab    | tab list    |
-| Body   | tab content |
-| Panel  | tab panel   |
-| Header | tab header  |
+| Name        | Description |
+| ----------- | ----------- |
+| Tabs.Tab    | tab list    |
+| Tabs.Body   | tab content |
+| Tabs.Panel  | tab panel   |
+| Tabs.Header | tab header  |

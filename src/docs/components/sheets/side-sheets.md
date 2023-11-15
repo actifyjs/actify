@@ -10,15 +10,15 @@ title: Side sheets
 
 <usage name="side-sheets"></usage>
 
-## Slots
+## Sub components
 
-| Name       | Description                      |
-| ---------- | -------------------------------- |
-| Activator  | The activator of the side sheets |
-| Content    | The content of the side sheets   |
-| \|- Header | The header of the side sheets    |
-| \|- Body   | The body of the side sheets      |
-| \|- Action | The action of the side sheets    |
+| Name                 | Description                      |
+| -------------------- | -------------------------------- |
+| SideSheets.Activator | The activator of the side sheets |
+| SideSheets.Content   | The content of the side sheets   |
+| SideSheets.Header    | The header of the side sheets    |
+| SideSheets.Body      | The body of the side sheets      |
+| SideSheets.Action    | The action of the side sheets    |
 
 ## Activator Props
 

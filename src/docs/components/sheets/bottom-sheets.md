@@ -10,12 +10,12 @@ title: Bottom sheets
 
 <usage name="bottom-sheets"></usage>
 
-## Slots
+## Sub components
 
-| Name      | Description                        |
-| --------- | ---------------------------------- |
-| Activator | The activator of the bottom sheets |
-| Content   | The content of the bottom sheets   |
+| Name                   | Description                        |
+| ---------------------- | ---------------------------------- |
+| BottomSheets.Activator | The activator of the bottom sheets |
+| BottomSheets.Content   | The content of the bottom sheets   |
 
 ## Activator Props
 

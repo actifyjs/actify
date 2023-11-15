@@ -10,12 +10,12 @@ title: Navigation drawer
 
 <usage name="navigation-drawer"></usage>
 
-## Slots
+## Sub Components
 
-| Name      | Description                            |
-| --------- | -------------------------------------- |
-| Activator | The activator of the navigation drawer |
-| Content   | The content of the navigation drawer   |
+| Name             | Description                            |
+| ---------------- | -------------------------------------- |
+| Drawer.Activator | The activator of the navigation drawer |
+| Drawer.Content   | The content of the navigation drawer   |
 
 ## Props
 

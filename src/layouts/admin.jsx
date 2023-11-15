@@ -32,10 +32,12 @@ const Aside = ({ className }) => {
     },
     {
       icon: 'layers',
-      title: 'List',
+      title: 'User Interface',
       children: [
-        { title: 'Table', to: '/admin/table' },
-        { title: 'Grid', to: '/admin/grid' }
+        { title: 'Form', to: '/admin/form' },
+        { title: 'Grid', to: '/admin/grid' },
+        { title: 'List', to: '/admin/list' },
+        { title: 'Table', to: '/admin/table' }
       ]
     },
     {

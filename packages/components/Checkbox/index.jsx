@@ -70,7 +70,7 @@ const Checkbox = forwardRef((props, ref) => {
   return (
     <label
       title={title}
-      className="relative overflow-hidden flex items-center cursor-pointer p-3 rounded-full"
+      className="relative overflow-hidden flex items-center cursor-pointer p-3 rounded-full w-fit"
     >
       <input
         {...rest}

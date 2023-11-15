@@ -20,9 +20,9 @@ title: Text fields
 | `prefixText` | `string`                                    | Prefix text             | `''`      |
 | `suffixText` | `string`                                    | Suffix text             | `''`      |
 
-## Slots
+## Sub components
 
-| Name         | Description                        |
-| ------------ | ---------------------------------- |
-| LeadingIcon  | The leadingIcon of the text field  |
-| TrailingIcon | The trailingIcon of the text field |
+| Name                   | Description                        |
+| ---------------------- | ---------------------------------- |
+| TextField.LeadingIcon  | The leadingIcon of the text field  |
+| TextField.TrailingIcon | The trailingIcon of the text field |

@@ -52,15 +52,15 @@ title: Dialogs
 | `open`         | `boolean`  | Whether the dialog is open                  | `false`    |
 | `onOpenChange` | `function` | Callback function when dialog open or close | `() => {}` |
 
-## Slots
+## Sub components
 
-| Name        | Description                    |
-| ----------- | ------------------------------ |
-| Activator   | The activator of the dialog    |
-| Heading     | The header of the dialog       |
-| Content     | The content of the dialog      |
-| Close       | The close button of the dialog |
-| Description | The description of the dialog  |
+| Name               | Description                    |
+| ------------------ | ------------------------------ |
+| Dialog.Activator   | The activator of the dialog    |
+| Dialog.Heading     | The header of the dialog       |
+| Dialog.Content     | The content of the dialog      |
+| Dialog.Close       | The close button of the dialog |
+| Dialog.Description | The description of the dialog  |
 
 ## Activator Props
 

@@ -10,12 +10,12 @@ title: Popover
 
 <usage name="popover"></usage>
 
-## Slots
+## Sub components
 
-| Name      | Description                 |
-| --------- | --------------------------- |
-| Activator | The activator of the popver |
-| Content   | The content of the popver   |
+| Name              | Description                 |
+| ----------------- | --------------------------- |
+| Popover.Activator | The activator of the popver |
+| Popover.Content   | The content of the popver   |
 
 ## Activator Props
 

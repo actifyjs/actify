@@ -132,6 +132,9 @@ const components = [
     name: 'Tabs'
   },
   {
+    name: 'Table'
+  },
+  {
     name: 'Accordion'
   },
   {
