@@ -135,6 +135,9 @@ const components = [
     name: 'Table'
   },
   {
+    name: 'Pagination'
+  },
+  {
     name: 'Accordion'
   },
   {
