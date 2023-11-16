@@ -2,8 +2,8 @@ import dayjs from 'dayjs'
 
 export default function BarChart({ data }) {
   return (
-    <div className="rounded-xl bg-gray-50 p-4 w-full">
-      <div className="sm:grid-cols-[repeat(13,minmax(0,1fr))] mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 md:gap-4">
+    <div className="rounded-xl bg-inverse-surface/5 p-4 w-full">
+      <div className="sm:grid-cols-[repeat(13,minmax(0,1fr))] mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-surface p-4 md:gap-4">
         <div className="h-[350px] mb-6 hidden flex-col-reverse justify-between text-sm text-gray-400 sm:flex">
           {[...Array(6)].map((_, index) => (
             <p key={index}>{`$${index}K`}</p>

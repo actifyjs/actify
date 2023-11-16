@@ -1,10 +1,10 @@
 import { tv } from 'tailwind-variants'
 import { AccordionContext } from './AccordionContext'
 import React, {
+  useContext,
   forwardRef,
-  isValidElement,
   cloneElement,
-  useContext
+  isValidElement
 } from 'react'
 
 const variants = tv({
@@ -31,6 +31,7 @@ const AccordionContent = forwardRef((props, ref) => {
       className: variants({ className: children.props.className })
     })
   }
+
   return (
     <div
       {...rest}

@@ -1,10 +1,7 @@
-import BarChart from '@/src/components/BarChart'
-import SvgChart from '@/src/components/SvgChart'
+import BarChart from '@/src/components/admin/BarChart'
+import SvgChart from '@/src/components/admin/SvgChart'
+import PieChart from '@/src/components/admin/PieChart'
 import { Card, Divider, Chip, Icon, Tabs, Button } from 'actify'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
-import { Doughnut } from 'react-chartjs-2'
-
-ChartJS.register(ArcElement, Tooltip, Legend)
 
 export default () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
@@ -92,7 +89,7 @@ export default () => {
             </Button>
           </div>
           <div className="rounded-b-xl bg-surface p-2 w-full grow">
-            <SvgChart className="overflow-hidden rounded-xl bg-gray-50 p-2 h-full" />
+            <SvgChart className="overflow-hidden rounded-xl bg-surface p-2 h-full" />
           </div>
         </div>
         <div className="rounded-xl overflow-hidden flex flex-col justify-between">
@@ -102,26 +99,13 @@ export default () => {
             </Button>
           </div>
           <div className="rounded-b-xl bg-surface p-2 w-full grow grid place-content-center">
-            <Doughnut
-              data={{
-                labels: ['React', 'Vue', 'Tailwind CSS'],
-                datasets: [
-                  {
-                    label: 'Framework of Votes',
-                    data: [19, 9, 6],
-                    backgroundColor: [
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(54, 162, 235, 1)',
-                      'rgba(255, 206, 86, 1)'
-                    ],
-                    borderColor: [
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(54, 162, 235, 1)',
-                      'rgba(255, 206, 86, 1)'
-                    ]
-                  }
-                ]
-              }}
+            <PieChart
+              items={[
+                { value: 500, className: 'fill-primary' },
+                { value: 300, className: 'fill-secondary' },
+                { value: 200, className: 'fill-tertiary' },
+                { value: 100, className: 'fill-error' }
+              ]}
             />
           </div>
         </div>

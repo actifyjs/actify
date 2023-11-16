@@ -60,15 +60,15 @@ const Content = forwardRef(
             >
               {/* top title */}
               <div className="pl-6 pr-3 pt-3 pb-4 flex items-center">
-                <p className="flex-grow text-[22px] text-[#49454f]">
+                <div className="flex-grow text-[22px] text-[#49454f]">
                   {hasHeader && header}
-                </p>
+                </div>
                 <IconButton onClick={() => setOpen(false)}>
                   <Icon name="x" />
                 </IconButton>
               </div>
               <div className="h-[calc(100vh-36px)] flex flex-col overflow-hidden">
-                <p className="grow p-2">{hasBody && body}</p>
+                <div className="grow p-2">{hasBody && body}</div>
                 {/* divider */}
                 {divider && <Divider />}
                 {/* bottom actions */}
