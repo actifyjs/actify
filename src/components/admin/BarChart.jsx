@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import { motion } from 'framer-motion'
 
 export default function BarChart({ data }) {
   return (
@@ -11,10 +12,16 @@ export default function BarChart({ data }) {
         </div>
         {data.map((height, index) => (
           <div key={index} className="flex flex-col items-center gap-2">
-            <div
-              style={{ height }}
+            <motion.div
+              animate={{ height }}
+              transition={{
+                duration: 800,
+                stiffness: 50,
+                type: 'spring',
+                delay: 0.1 * index
+              }}
               className="w-full rounded-md bg-primary"
-            ></div>
+            ></motion.div>
             <p className="-rotate-90 text-sm text-gray-400 sm:rotate-0">
               {dayjs(`2023${(index + 1).toString().padStart(2, 0)}16`).format(
                 'MMM'
