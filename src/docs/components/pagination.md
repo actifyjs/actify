@@ -4,7 +4,7 @@ title: Pagination
 
 # Pagination
 
-> Cards display content and actions about a single subject
+> Pagination is a component that allows users to navigate between multiple pages.
 
 ## Usage
 
