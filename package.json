@@ -47,7 +47,7 @@
     "codesandbox": "^2.2.3",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.1",
-    "lucide-react": "^0.288.0",
+    "lucide-react": "^0.292.0",
     "popmotion": "^11.0.5",
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",

@@ -1,7 +1,7 @@
 import { useInView } from 'framer-motion'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
 import { useRef, useEffect, useState, useTransition } from 'react'
-import { Icon, TextField, LinearProgress, useToast } from 'actify'
+import { Icon, TextField, Tooltip, LinearProgress, useToast } from 'actify'
 
 const icons = Object.keys(dynamicIconImports)
 
@@ -55,15 +55,21 @@ const IconWrapper = ({ name }) => {
   }
 
   return (
-    <div ref={ref}>
+    <div
+      ref={ref}
+      className="flex items-center justify-center cursor-pointer p-2 bg-inverse-surface/10 rounded"
+    >
       {isInView ? (
-        <Icon
-          size={36}
-          name={name}
-          color="primary"
-          onClick={() => cliptoboard(name)}
-          className="flex items-center justify-center cursor-pointer p-2 bg-black/10 dark:bg-white/10 rounded-md"
-        />
+        <Tooltip content={name}>
+          <i>
+            <Icon
+              size={36}
+              name={name}
+              color="primary"
+              onClick={() => cliptoboard(name)}
+            />
+          </i>
+        </Tooltip>
       ) : (
         <div className="w-9 h-9 bg-black/10 dark:bg-white/10 p-2"></div>
       )}
