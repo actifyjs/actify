@@ -117,8 +117,8 @@ title: Swiper
 | interval   | `number`           | Sets the interval duration for autoplay mode in miliseconds | `3000`  |
 | `children` | `React.React.Node` |                                                             | `null`  |
 
-## Slot
+## Sub Component
 
-| Name | Description |
-| ---- | ----------- |
-| Item | Swiper item |
+| Name        | Description |
+| ----------- | ----------- |
+| Swiper.Item | Swiper item |

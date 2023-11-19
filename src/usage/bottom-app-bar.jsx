@@ -3,16 +3,16 @@ import { Fab, Icon, BottomAppBar } from 'actify'
 
 export default () => {
   return (
-    <BottomAppBar>
-      <BottomAppBar.Slot name="icons">
+    <BottomAppBar className="max-w-3xl">
+      <BottomAppBar.Icons>
         <Icon name="home" />
         <Icon name="user-2" />
         <Icon name="camera" />
         <Icon name="search" />
-      </BottomAppBar.Slot>
-      <BottomAppBar.Slot name="fab">
+      </BottomAppBar.Icons>
+      <BottomAppBar.Fab>
         <Fab name="fab" icon="plus" color="bg-surface" />
-      </BottomAppBar.Slot>
+      </BottomAppBar.Fab>
     </BottomAppBar>
   )
 }
