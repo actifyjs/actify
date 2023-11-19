@@ -48,7 +48,7 @@ const Search = ({ appId, apiKey, indexName }) => {
         ref={searchButtonRef}
       >
         <Icon name="search" />
-        <span className="font-semibold">Search</span>
+        <span className="font-semibold hidden sm:inline">Search</span>
         <span className="hidden md:block text-xs border border-outline p-1.5 rounded-full">
           {navigator?.userAgentData?.platform == 'Windows' ||
           navigator?.platform == 'Win32'
