@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TextField, Checkbox, Button, IconButton, Icon } from 'actify'
+import { TextField, Checkbox, Button, IconButton, Icon, Avatar } from 'actify'
 
 export default () => {
   const [list, setList] = useState([
@@ -116,10 +116,7 @@ export default () => {
                   <Checkbox checked={item.checked} />
                 </td>
                 <th className="flex gap-2 px-3 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <img
-                    className="h-11 w-11 rounded-full"
-                    src={`https://fakeimg.pl/200x200?text=${item.name}`}
-                  />
+                  <Avatar />
                   <div className="flex flex-col gap-2">
                     <span>{item.name}</span>
                     <p className="text-xs text-outline">{item.position}</p>
