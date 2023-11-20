@@ -1,12 +1,27 @@
-import React, { forwardRef, useState } from 'react'
+import React, { Children, forwardRef, isValidElement, useState } from 'react'
 import PropTypes from 'prop-types'
 import { IconButton, Icon } from 'actify'
-import { SwiperItem } from './SwiperItem'
 import { tv } from 'tailwind-variants'
 import { useInterval } from 'usehooks-ts'
 
 const variants = tv({
   base: 'grid w-full place-items-center overflow-hidden'
+})
+
+const buttonVariants = tv({
+  base: 'absolute top-1/2 -translate-y-1/2 bg-surface',
+  variants: {
+    prev: {
+      true: 'left-5'
+    },
+    next: {
+      true: 'right-5'
+    }
+  }
+})
+
+const itemVariants = tv({
+  base: 'w-full h-full inline-block flex-none [transition:var(--transition)] [transform:translateX(var(--transform))]'
 })
 
 /**
@@ -19,13 +34,16 @@ const SwiperRoot = forwardRef((props, ref) => {
     style,
     autoPlay,
     className,
+    indicator,
     children,
-    prevArrow,
-    nextArrow,
-    navigation,
     ...rest
   } = props
-  const count = React.Children.count(children)
+
+  const items = Children.map(children, (child) =>
+    child.type?.name === 'Item' ? child : null
+  )
+  const count = items.length
+
   const [current, setCurrent] = useState(index ?? 0)
   const [transition, setTransition] = useState('transform .5s ease-in-out')
   const [transform, setTransform] = useState('')
@@ -57,6 +75,44 @@ const SwiperRoot = forwardRef((props, ref) => {
     }
   }
 
+  const prevButton = Children.map(children, (child) => {
+    if (child.type?.name === 'PrevButton') {
+      if (isValidElement(child)) {
+        return (
+          <button
+            onClick={prev}
+            {...child.props}
+            className={buttonVariants({
+              prev: true,
+              className: child.props.className
+            })}
+          >
+            {child}
+          </button>
+        )
+      }
+    }
+  })
+
+  const nextButton = Children.map(children, (child) => {
+    if (child.type?.name === 'NextButton') {
+      if (isValidElement(child)) {
+        return (
+          <button
+            onClick={next}
+            {...child.props}
+            className={buttonVariants({
+              next: true,
+              className: child.props.className
+            })}
+          >
+            {child}
+          </button>
+        )
+      }
+    }
+  })
+
   autoPlay && useInterval(next, interval)
 
   return (
@@ -68,13 +124,31 @@ const SwiperRoot = forwardRef((props, ref) => {
         }}
         className="relative h-full overflow-hidden rounded-lg flex"
       >
-        {children[count - 1]}
-        {children}
-        {children[0]}
+        {items[count - 1]}
+        {items}
+        {items[0]}
+
+        {/* controls */}
+        {/* prev button */}
+        {prevButton.length ? (
+          prevButton
+        ) : (
+          <IconButton onClick={prev} className={buttonVariants({ prev: true })}>
+            <Icon name="arrow-left" color="primary" />
+          </IconButton>
+        )}
+        {/* next button */}
+        {nextButton.length ? (
+          nextButton
+        ) : (
+          <IconButton onClick={next} className={buttonVariants({ next: true })}>
+            <Icon name="arrow-right" color="primary" />
+          </IconButton>
+        )}
 
         {/* indicators */}
-        {navigation ? (
-          navigation({ setCurrent, current, count })
+        {indicator ? (
+          indicator({ setCurrent, current, count })
         ) : (
           <ul className="absolute bottom-4 flex w-full justify-center gap-2">
             {[...Array(count)].map((_, i) => (
@@ -88,34 +162,10 @@ const SwiperRoot = forwardRef((props, ref) => {
             ))}
           </ul>
         )}
-
-        {/* controls */}
-        {prevArrow ? (
-          prevArrow({ prev })
-        ) : (
-          <IconButton
-            onClick={prev}
-            className="absolute top-1/2 -translate-y-1/2 bg-surface left-5"
-          >
-            <Icon name="arrow-left" color="primary" />
-          </IconButton>
-        )}
-        {nextArrow ? (
-          nextArrow({ next })
-        ) : (
-          <IconButton
-            onClick={next}
-            className="absolute top-1/2 -translate-y-1/2 bg-surface right-5"
-          >
-            <Icon name="arrow-right" color="primary" />
-          </IconButton>
-        )}
       </div>
     </div>
   )
 })
-
-SwiperRoot.Item = SwiperItem
 
 const SwiperPropTypes = {
   style: PropTypes.object,
@@ -129,5 +179,14 @@ SwiperRoot.propTypes = SwiperPropTypes
 SwiperRoot.displayName = 'Actify.Swiper'
 
 export const Swiper = Object.assign(SwiperRoot, {
-  Item: SwiperItem
+  Item: (props) => {
+    const { style, className, children, ...rest } = props
+    return (
+      <div {...rest} style={style} className={itemVariants({ className })}>
+        {children}
+      </div>
+    )
+  },
+  PrevButton: (props) => <>{props.children}</>,
+  NextButton: (props) => <>{props.children}</>
 })
