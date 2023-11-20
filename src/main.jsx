@@ -3,7 +3,6 @@ import routes from '~react-pages'
 import ReactDOM from 'react-dom/client'
 import { version } from '@/package.json'
 import { StrictMode, Suspense, useEffect } from 'react'
-import { Analytics } from '@vercel/analytics/react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import { ToastProvider, ToastContainer } from 'actify'
 import Loading from '@/src/components/Loading'
@@ -57,7 +56,6 @@ ReactDOM.createRoot(document.getElementById('app')).render(
         <App />
         <ToastContainer />
       </ToastProvider>
-      <Analytics />
     </BrowserRouter>
   </StrictMode>
 )
