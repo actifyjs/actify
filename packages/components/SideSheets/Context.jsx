@@ -5,6 +5,7 @@ const SideSheetsContext = createContext()
 
 export const SideSheetsProvider = ({ children, ...initialProp }) => {
   const useCreateStore = createStore()((set) => ({
+    divider: initialProp.divider ?? false,
     open: initialProp.open,
     onChange: initialProp.onChange,
     setOpen: (state) => set({ open: state })

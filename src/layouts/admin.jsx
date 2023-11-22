@@ -110,17 +110,17 @@ const Settings = () => {
   }
 
   return (
-    <SideSheets>
+    <SideSheets divider>
       <SideSheets.Activator>
         <IconButton>
           <Icon name="settings" color="primary" />
         </IconButton>
       </SideSheets.Activator>
-      <SideSheets.Content divider>
+      <SideSheets.Content>
         <SideSheets.Header>Settings</SideSheets.Header>
-        <SideSheets.Body>
-          <p className="font-semibold text-xl">primary color</p>
-          <ul className="grid grid-cols-2">
+        <SideSheets.Body className="pl-0">
+          <p className="px-4 pb-4  font-semibold text-xl">primary color</p>
+          <ul className="grid grid-cols-2 px-4">
             {[
               {
                 bg: 'bg-stone-500',

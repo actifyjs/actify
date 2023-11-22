@@ -2,11 +2,11 @@ import { SideSheets, Button } from 'actify'
 
 export default () => {
   return (
-    <SideSheets>
+    <SideSheets divider>
       <SideSheets.Activator>
         <Button>Open side sheet</Button>
       </SideSheets.Activator>
-      <SideSheets.Content divider>
+      <SideSheets.Content>
         <SideSheets.Header>Tittle</SideSheets.Header>
         <SideSheets.Body>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque,

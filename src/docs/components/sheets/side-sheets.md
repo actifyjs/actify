@@ -10,6 +10,12 @@ title: Side sheets
 
 <usage name="side-sheets"></usage>
 
+## Props
+
+| Props     | Type      | Description                  | Default |
+| --------- | --------- | ---------------------------- | ------- |
+| `divider` | `boolean` | show divider in body content | `false` |
+
 ## Sub components
 
 | Name                 | Description                      |
@@ -26,9 +32,3 @@ title: Side sheets
 | --------- | --------- | ------------------------------------------ | ------- |
 | `asChild` | `boolean` | set true pass any element as the activator | `false` |
 | `open`    | `boolean` | Whether the sheets is open or not          | `false` |
-
-## Content Props
-
-| Props     | Type      | Description                | Default |
-| --------- | --------- | -------------------------- | ------- |
-| `divider` | `boolean` | show divider top at action | `false` |

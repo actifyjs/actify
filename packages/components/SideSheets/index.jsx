@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
 import { Content } from './Content'
 import { Activator } from './Activator'
+import { Header } from './Header'
+import { Body } from './Body'
+import { Action } from './Action'
 import React, { forwardRef } from 'react'
 import { SideSheetsProvider } from './Context'
 
@@ -27,10 +30,6 @@ const SideSheetsPropTypes = {
 SideSheetsRoot.propTypes = SideSheetsPropTypes
 
 SideSheetsRoot.displayName = 'Actify.SideSheets'
-
-const Header = ({ children }) => <>{children}</>
-const Body = ({ children }) => <>{children}</>
-const Action = ({ children }) => <>{children}</>
 
 export const SideSheets = Object.assign(SideSheetsRoot, {
   Activator,
