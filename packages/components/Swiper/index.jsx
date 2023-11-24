@@ -12,10 +12,10 @@ const buttonVariants = tv({
   base: 'absolute top-1/2 -translate-y-1/2 bg-surface',
   variants: {
     prev: {
-      true: 'left-5'
+      true: 'left-4'
     },
     next: {
-      true: 'right-5'
+      true: 'right-4'
     }
   }
 })
@@ -155,7 +155,7 @@ const SwiperRoot = forwardRef((props, ref) => {
               <li
                 key={i}
                 className={`w-5 h-5 rounded-full cursor-pointer ${
-                  i == current ? 'bg-white' : 'bg-gray-500'
+                  i == current ? 'bg-surface' : 'bg-inverse-surface'
                 }`}
                 onClick={() => setCurrent(i)}
               ></li>

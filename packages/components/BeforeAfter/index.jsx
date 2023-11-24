@@ -48,8 +48,8 @@ const BeforeAfter = ({ before, after, bgImage }) => {
             )
           }
         />
-        <div className="pointer-events-none absolute top-0 left-[--position] h-full w-1 bg-white"></div>
-        <div className="pointer-events-none absolute top-1/2 left-[--position] grid -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-black shadow">
+        <div className="pointer-events-none absolute top-0 left-[--position] h-full w-1 bg-surface"></div>
+        <div className="pointer-events-none absolute top-1/2 left-[--position] grid -translate-x-1/2 -translate-y-1/2 rounded-full bg-surface p-2 shadow">
           <Icon name="move-horizontal" />
         </div>
       </div>

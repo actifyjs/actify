@@ -15,7 +15,7 @@ const variants = tv({
 })
 
 const dotVariants = tv({
-  base: 'absolute grid place-content-center left-3 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-secondary shadow-inner transition-all peer-checked:left-[calc(100%-32px)] peer-checked:h-6 peer-checked:w-6 peer-checked:bg-white [&>span]:opacity-0 [&>span]:peer-checked:opacity-100',
+  base: 'absolute grid place-content-center left-3 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-inverse-surface/50 shadow-inner transition-all peer-checked:left-[calc(100%-32px)] peer-checked:h-6 peer-checked:w-6 peer-checked:bg-surface [&>span]:opacity-0 [&>span]:peer-checked:opacity-100',
   variants: {
     icons: {
       true: 'h-6 w-6 left-1 peer-checked:left-[calc(100%-28px)]'
@@ -90,7 +90,9 @@ const Switch = forwardRef((props, ref) => {
           <Icon
             size={16}
             name={`${!!rawValue ? 'check' : 'x'}`}
-            color={`${!!rawValue ? 'black' : 'white'}`}
+            className={`${
+              !!rawValue ? 'text-inverse-surface' : 'text-surface'
+            }`}
           />
         )}
       </i>

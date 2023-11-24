@@ -2,7 +2,7 @@ import React from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'border-b text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400'
+  base: 'border-b text-xs bg-inverse-surface/25'
 })
 
 const Thead = ({ style, className, children }) => {

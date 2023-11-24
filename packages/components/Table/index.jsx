@@ -62,7 +62,7 @@ const TableRoot = forwardRef((props, ref) => {
           {items?.map((item, index) => (
             <Tr
               key={index}
-              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              className="bg-surface border-b hover:bg-inverse-surface/10"
             >
               {headers.map(({ value }) => (
                 <Td key={value}>

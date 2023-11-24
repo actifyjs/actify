@@ -14,11 +14,11 @@ const labelVariants = tv({
 })
 
 const variants = tv({
-  base: "peer relative appearance-none w-5 h-5 border-2 rounded-full border-outline checked:border-current cursor-pointer transition-all before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity text-black/90 dark:text-white/10 checked:text-current after:absolute after:-inset-3 hover:after:bg-black/10 dark:hover:after:bg-white/10"
+  base: "peer relative appearance-none w-5 h-5 border-2 rounded-full border-outline checked:border-current cursor-pointer transition-all before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity checked:text-current after:absolute after:-inset-3 hover:after:bg-inverse-surface/10"
 })
 
 const dotVariants = tv({
-  base: 'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity text-black/90 peer-checked:text-current'
+  base: 'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity peer-checked:text-current'
 })
 
 /**
@@ -49,7 +49,7 @@ const RadioButton = forwardRef((props, ref) => {
           className="h-2.5 w-2.5"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
+          <circle cx="8" cy="8" r="8"></circle>
         </svg>
       </span>
       <Ripple />

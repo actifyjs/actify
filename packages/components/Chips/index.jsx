@@ -4,7 +4,7 @@ import { Icon, Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'relative inline-flex items-center gap-2 px-4 h-8 rounded-lg text-sm border border-outline no-underline hover:bg-black/10 dark:hover:bg-white/10',
+  base: 'relative inline-flex items-center gap-2 px-4 h-8 rounded-lg text-sm border border-outline no-underline bg-surface hover:bg-surface/10',
   variants: {
     type: {
       assist: '',
@@ -45,25 +45,20 @@ const Chip = forwardRef((props, ref) => {
         ref={ref}
         {...rest}
         style={style}
-        className={variants({ type, className })}
         onClick={handleClick}
+        className={variants({ type, className })}
       >
         {type == 'filter' && (
           <Icon
-            name={`${selected ? 'check' : 'circle'}`}
             size={18}
             color={color}
+            name={`${selected ? 'check' : 'circle'}`}
           />
         )}
         {label}
         {ripple && <Ripple />}
         {type == 'input' && (
-          <Icon
-            name="x"
-            size={18}
-            onClick={() => setShow(false)}
-            className="hover:after:rounded-full hover:after:absolute hover:after:-inset-1 hover:after:bg-black/5 dark:hover:after:bg-white/5"
-          />
+          <Icon name="x" size={18} onClick={() => setShow(false)} />
         )}
       </Tag>
     )

@@ -40,7 +40,7 @@ const rootVariants = tv({
 })
 
 const listVariants = tv({
-  base: 'flex flex-col rounded border border-slate-900/10 bg-white/80 bg-clip-padding p-1 shadow-lg outline-none backdrop-blur-lg dark:bg-gray-600/80'
+  base: 'flex flex-col rounded border border-outline/50 bg-surface bg-clip-padding p-1 shadow-lg outline-none backdrop-blur-lg'
 })
 
 export const MenuComponent = forwardRef(

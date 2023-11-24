@@ -1,11 +1,18 @@
 import React, { forwardRef } from 'react'
+import { usePopoverContext } from './PopoverContext'
 import {
   useMergeRefs,
   FloatingPortal,
   FloatingOverlay,
   FloatingFocusManager
 } from '@floating-ui/react'
-import { usePopoverContext } from './PopoverContext'
+import { tv } from 'tailwind-variants'
+import themes from '../../themes/index'
+const { scrim } = themes()
+
+const variants = tv({
+  base: 'relative overflow-x-hidden p-2 bg-surface rounded-lg focus-visible:outline-none'
+})
 
 const PopoverContent = forwardRef(({ style, ...props }, propRef) => {
   const { context: floatingContext, ...context } = usePopoverContext()
@@ -15,7 +22,10 @@ const PopoverContent = forwardRef(({ style, ...props }, propRef) => {
 
   return (
     <FloatingPortal>
-      <FloatingOverlay lockScroll className="z-[99] grid place-items-center">
+      <FloatingOverlay
+        lockScroll
+        className={scrim({ className: 'grid place-items-center' })}
+      >
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
             ref={ref}
@@ -23,7 +33,7 @@ const PopoverContent = forwardRef(({ style, ...props }, propRef) => {
             {...context.getFloatingProps(props)}
             aria-describedby={context.descriptionId}
             style={{ ...context.floatingStyles, ...style }}
-            className="relative bg-white p-2 shadow-lg rounded-lg max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl"
+            className={variants({ className: props.className })}
           >
             {props.children}
           </div>
