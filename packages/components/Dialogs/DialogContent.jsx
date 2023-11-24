@@ -7,6 +7,13 @@ import {
   useTransitionStyles,
   FloatingFocusManager
 } from '@floating-ui/react'
+import { tv } from 'tailwind-variants'
+import themes from '../../themes/index'
+const { scrim } = themes()
+
+const variants = tv({
+  base: 'relative overflow-x-hidden m-6 p-2 bg-surface rounded-lg'
+})
 
 const DialogContent = forwardRef((props, propRef) => {
   const { context: floatingContext, ...context } = useDialogContext()
@@ -32,7 +39,7 @@ const DialogContent = forwardRef((props, propRef) => {
     <FloatingPortal>
       <FloatingOverlay
         lockScroll
-        className="z-[99] grid place-items-center bg-black/40 dark:bg-[rgba(3,3,3,.8)]"
+        className={scrim({ className: 'grid place-items-center' })}
       >
         {isMounted && (
           <FloatingFocusManager context={floatingContext}>
@@ -42,7 +49,7 @@ const DialogContent = forwardRef((props, propRef) => {
               aria-labelledby={context.labelId}
               {...context.getFloatingProps(props)}
               aria-describedby={context.descriptionId}
-              className="relative p-2 bg-white dark:bg-[rgb(33,33,33)] text-black dark:text-white rounded-lg max-w-sm sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl"
+              className={variants({ className: props.className })}
             >
               {props.children}
             </div>

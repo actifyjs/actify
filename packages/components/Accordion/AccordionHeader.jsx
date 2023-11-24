@@ -7,6 +7,7 @@ import React, {
   cloneElement,
   useContext
 } from 'react'
+import { Text } from '../Text'
 
 const variants = tv({
   base: 'font-black cursor-pointer flex items-center justify-between',
@@ -53,7 +54,7 @@ const AccordionHeader = forwardRef((props, ref) => {
       onClick={handleClick}
       className={variants({ className, open: open[index] })}
     >
-      <p>{children}</p>
+      <Text>{children}</Text>
 
       <div
         className={`transition-transform duration-300 ${

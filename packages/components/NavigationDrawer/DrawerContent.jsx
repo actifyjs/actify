@@ -2,9 +2,15 @@ import React from 'react'
 import { createPortal } from 'react-dom'
 import { tv } from 'tailwind-variants'
 import { useDrawer } from './DrawerContext'
+import themes from '../../themes/index'
+
+const { scrim } = themes()
 
 const variants = tv({
-  base: 'fixed overflow-hidden z-50 bg-black/40 dark:bg-[rgba(3,3,3,.8)] inset-0 ease-in-out transition-opacity duration-500 pointer-events-none',
+  base: scrim({
+    className:
+      'fixed overflow-hidden inset-0 ease-in-out transition-opacity duration-500 pointer-events-none'
+  }),
   variants: {
     open: {
       true: 'opacity-100 pointer-events-auto',

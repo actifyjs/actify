@@ -2,9 +2,14 @@ import { tv } from 'tailwind-variants'
 import { createPortal } from 'react-dom'
 import React, { forwardRef } from 'react'
 import { useBottomSheets } from './Context'
+import themes from '../../themes/index'
+const { scrim } = themes()
 
 const rootVariants = tv({
-  base: 'fixed overflow-hidden z-50 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out transition-opacity opacity-0 duration-500 pointer-events-none',
+  base: scrim({
+    className:
+      'fixed overflow-hidden inset-0 transform ease-in-out transition-opacity opacity-0 duration-500 pointer-events-none'
+  }),
   variants: {
     open: {
       true: 'opacity-100 pointer-events-auto'
