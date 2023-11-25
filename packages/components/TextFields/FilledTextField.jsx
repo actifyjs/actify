@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, Children } from 'react'
+import React, { useRef, forwardRef, useState, Children } from 'react'
 import { tv } from 'tailwind-variants'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
 
@@ -37,6 +37,7 @@ const FilledTextField = forwardRef((props, ref) => {
     ...rest
   } = props
 
+  const inputRef = ref || useRef()
   const TagName = type === 'textarea' ? 'textarea' : 'input'
 
   const [inputValue, setInputValue] = useMergedState('', {
@@ -60,8 +61,8 @@ const FilledTextField = forwardRef((props, ref) => {
   const hasTrailingIcon = trailingIcon?.length > 0
 
   const handleClick = () => {
-    if (ref.current) {
-      ref.current.focus()
+    if (inputRef?.current) {
+      inputRef?.current.focus()
     }
   }
 
@@ -133,8 +134,8 @@ const FilledTextField = forwardRef((props, ref) => {
                   )}
                   <TagName
                     {...rest}
-                    ref={ref}
                     type={type}
+                    ref={inputRef}
                     aria-label={label}
                     disabled={disabled}
                     aria-invalid={false}

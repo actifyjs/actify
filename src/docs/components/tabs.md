@@ -12,11 +12,10 @@ title: Tabs
 
 ## Props
 
-| Props      | Type               | Description                    | Default |
-| ---------- | ------------------ | ------------------------------ | ------- |
-| `value`    | `string`           | selected value                 | `null`  |
-| `onChange` | `function`         | fired when current tab changed | `null`  |
-| `children` | `React.React.Node` |                                | `null`  |
+| Props      | Type               | Description   | Default |
+| ---------- | ------------------ | ------------- | ------- |
+| `value`    | `string`           | actived value | `null`  |
+| `children` | `React.React.Node` |               | `null`  |
 
 ## Sub components
 
@@ -26,3 +25,9 @@ title: Tabs
 | Tabs.Body   | tab content |
 | Tabs.Panel  | tab panel   |
 | Tabs.Header | tab header  |
+
+## Events
+
+| Events     | Description                    |
+| ---------- | ------------------------------ |
+| `onChange` | fired when current tab changed |

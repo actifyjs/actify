@@ -55,10 +55,10 @@ title: Tooltips
 
 ## Props
 
-| Props     | Type                                                                                                        | Description                     | Default |
-| --------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- | ------- |
-| placement | `top,top-start,top-end,right,right-start,right-end,bottom,bottom-start,bottom-end,left,left-start,left-end` | Set the placement position      | `top`   |
-| content   | `string`                                                                                                    | Set tooltips content            | `null`  |
-| showArrow | `boolean`                                                                                                   | Show a small triangle arrow     | `true`  |
-| showDelay | `number`                                                                                                    | Show tooltip delay milliseconds | `500`   |
-| hideDelay | `number`                                                                                                    | Hide tooltip delay milliseconds | `200`   |
+| Props       | Type                                                                                                        | Description                     | Default |
+| ----------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- | ------- |
+| `placement` | `top,top-start,top-end,right,right-start,right-end,bottom,bottom-start,bottom-end,left,left-start,left-end` | Set the placement position      | `top`   |
+| `content`   | `string`                                                                                                    | Set tooltips content            | `null`  |
+| `showArrow` | `boolean`                                                                                                   | Show a small triangle arrow     | `true`  |
+| `showDelay` | `number`                                                                                                    | Show tooltip delay milliseconds | `500`   |
+| `hideDelay` | `number`                                                                                                    | Hide tooltip delay milliseconds | `200`   |

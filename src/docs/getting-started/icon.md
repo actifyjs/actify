@@ -12,13 +12,13 @@ title: Icon
 
 ## Props
 
-| Props               | Type      | Description                                | Default      |
-| ------------------- | --------- | ------------------------------------------ | ------------ |
-| name                | `string`  | Icon name                                  | null         |
-| color               | `Color`   | Change icon color                          | currentColor |
-| size                | `number`  | Change icon size                           | `24`         |
-| strokeWidth         | `number`  | Change icon stroke width                   | `2`          |
-| absoluteStrokeWidth | `boolean` | Change icon stroke width to absolute value | `false`      |
+| Props                 | Type      | Description                                | Default        |
+| --------------------- | --------- | ------------------------------------------ | -------------- |
+| `name`                | `string`  | Icon name                                  | `null`         |
+| `size`                | `number`  | Change icon size                           | `24`           |
+| `color`               | `string`  | Change icon color                          | `currentColor` |
+| `strokeWidth`         | `number`  | Change icon stroke width                   | `2`            |
+| `absoluteStrokeWidth` | `boolean` | Change icon stroke width to absolute value | `false`        |
 
 ## All Icons
 

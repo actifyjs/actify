@@ -48,7 +48,10 @@ const Markdown = memo(({ pathname, markdown }) => {
           )
         }}
       />
-      {markdown && <EditOnGitHub pathname={pathname} />}
+
+      {!markdown.includes('<preview name="404">') && (
+        <EditOnGitHub pathname={pathname} />
+      )}
     </article>
   )
 })

@@ -12,10 +12,10 @@ title: Terminal
 
 ## Props
 
-| Props     | Type              | Description    | Default             |
-| --------- | ----------------- | -------------- | ------------------- |
-| title     | `string`          | terminal title | `Terminal`          |
-| lastlogin | `Date`            | last login     | `new Date()`        |
-| hostname  | `string`          | hostname       | `Lerte-MacBook-Pro` |
-| username  | `string`          | username       | `lerte`             |
-| children  | `React.ReactNode` |                | `null`              |
+| Props       | Type              | Description    | Default             |
+| ----------- | ----------------- | -------------- | ------------------- |
+| `title`     | `string`          | terminal title | `Terminal`          |
+| `lastlogin` | `Date`            | last login     | `new Date()`        |
+| `hostname`  | `string`          | hostname       | `Lerte-MacBook-Pro` |
+| `username`  | `string`          | username       | `lerte`             |
+| `children`  | `React.ReactNode` |                | `null`              |

@@ -14,8 +14,8 @@ title: Avatar
 
 | Props     | Type                                             | Description                              | Default |
 | --------- | ------------------------------------------------ | ---------------------------------------- | ------- |
-| `size`    | `xs` `sm` `md` `lg` `xl` `2xl`                   | The color of the badge.                  | `md`    |
 | `square`  | `boolean`                                        | use tailwind css class name rounded-none | `false` |
+| `size`    | `xs` `sm` `md` `lg` `xl` `2xl`                   | The color of the badge.                  | `md`    |
 | `rounded` | `boolean` `sm` `md` `lg` `xl` `2xl` `3xl` `full` | use tailwind css class name rounded-lg   | `full`  |
 
 ## Rounded

@@ -14,16 +14,12 @@ export default () => {
           icons
           color="primary"
           selected={indeterminate}
-          onChange={(e) => setIndeterminate(e.target.checked)}
+          onChange={(e) => setIndeterminate(e)}
         />
       </label>
       <label className="flex flex-1 items-center gap-2">
         <span>value</span>
-        <Slider
-          labeled
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <Slider labeled value={value} onChange={(e) => setValue(e)} />
       </label>
     </div>
   )

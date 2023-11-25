@@ -111,12 +111,12 @@ const Slider = forwardRef((props, ref) => {
 })
 
 const SliderPropTypes = {
-  color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'error']),
-  value: PropTypes.number,
+  onChange: PropTypes.func,
   disabled: PropTypes.bool,
   className: PropTypes.string,
-  defaultValue: PropTypes.number,
-  onChange: PropTypes.func
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'error']),
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }
 
 Slider.propTypes = SliderPropTypes
