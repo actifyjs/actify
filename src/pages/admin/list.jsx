@@ -62,8 +62,7 @@ export default () => {
   ])
   const [checekAll, setCheckAll] = useState(false)
 
-  const handleCheckAll = (e) => {
-    const { checked } = e.target
+  const handleCheckAll = (checked) => {
     setCheckAll(checked)
     setList([...list].map((item) => ({ ...item, checked })))
   }
