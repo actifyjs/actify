@@ -3,11 +3,11 @@ import {
   Badge,
   Button,
   Slider,
+  Radio,
   Switch,
   Checkbox,
   TextField,
-  IconButton,
-  RadioButton
+  IconButton
 } from 'actify'
 
 export default () => {
@@ -95,23 +95,23 @@ export default () => {
       </div>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-2">
         <label className="flex items-center gap-2">
-          <RadioButton name="actify" value="vue" />
+          <Radio name="actify" value="vue" />
           <span>primary</span>
         </label>
         <label className="flex items-center gap-2">
-          <RadioButton name="actify" value="react" color="secondary" />
+          <Radio name="actify" value="react" color="secondary" />
           <span>secondary</span>
         </label>
         <label className="flex items-center gap-2">
-          <RadioButton name="actify" value="nuxt" color="tertiary" />
+          <Radio name="actify" value="nuxt" color="tertiary" />
           <span>tertiary</span>
         </label>
         <label className="flex items-center gap-2">
-          <RadioButton name="actify" value="next" color="error" />
+          <Radio name="actify" value="next" color="error" />
           <span>error</span>
         </label>
         <label className="flex items-center gap-2">
-          <RadioButton name="actify" value="next" color="error" disabled />
+          <Radio name="actify" value="next" color="error" disabled />
           <span>disabled</span>
         </label>
       </div>

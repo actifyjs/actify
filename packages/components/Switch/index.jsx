@@ -3,7 +3,7 @@ import { Icon, Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
 import { setColor } from '@/packages/utils'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
-import React, { forwardRef, useRef, useImperativeHandle } from 'react'
+import React, { forwardRef } from 'react'
 
 const variants = tv({
   base: 'h-8 w-14 rounded-full border-[2px] border-current shadow-inner peer-checked:bg-current',
@@ -40,29 +40,17 @@ const Switch = forwardRef((props, ref) => {
     ...rest
   } = props
 
-  const inputRef = useRef(null)
-  const [rawValue, setRawValue] = useMergedState(defaultSelected, {
-    value: selected
+  const [inputValue, setInputValue] = useMergedState(false, {
+    onChange,
+    value: selected,
+    defaultValue: defaultSelected
   })
-
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      inputRef.current?.focus()
-    },
-    blur: () => {
-      inputRef.current?.blur()
-    },
-    input: inputRef.current
-  }))
 
   const handleChange = (e) => {
     if (disabled) {
       return
     }
-    if (!('checked' in props)) {
-      setRawValue(e.target.checked)
-    }
-    onChange?.(e)
+    setInputValue(e.target.checked)
   }
 
   const colorVariant = color ?? 'primary'
@@ -76,12 +64,12 @@ const Switch = forwardRef((props, ref) => {
       <input
         hidden
         {...rest}
+        ref={ref}
         style={style}
-        ref={inputRef}
         type="checkbox"
         className="peer"
         disabled={disabled}
-        checked={!!rawValue}
+        checked={inputValue}
         onChange={handleChange}
       />
       <div className={variants({ disabled, className })}></div>
@@ -89,9 +77,9 @@ const Switch = forwardRef((props, ref) => {
         {icons && (
           <Icon
             size={16}
-            name={`${!!rawValue ? 'check' : 'x'}`}
+            name={`${inputValue ? 'check' : 'x'}`}
             className={`${
-              !!rawValue ? 'text-inverse-surface' : 'text-surface'
+              inputValue ? 'text-inverse-surface' : 'text-surface'
             }`}
           />
         )}

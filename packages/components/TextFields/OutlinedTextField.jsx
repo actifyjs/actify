@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState, Children } from 'react'
+import React, { forwardRef, useState, Children } from 'react'
 import { tv } from 'tailwind-variants'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
 
@@ -21,8 +21,6 @@ const variants = tv({
 })
 
 const OutlinedTextField = forwardRef((props, ref) => {
-  const inputRef = ref || useRef()
-
   const {
     label,
     color,
@@ -41,14 +39,14 @@ const OutlinedTextField = forwardRef((props, ref) => {
 
   const TagName = type === 'textarea' ? 'textarea' : 'input'
 
-  const [innerValue, setInnerValue] = useMergedState('', {
+  const [inputValue, setInputValue] = useMergedState('', {
     value,
     onChange,
     defaultValue
   })
 
   const [focused, setFocused] = useState(false)
-  const [populated, setPopulated] = useState(innerValue ? true : false)
+  const [populated, setPopulated] = useState(inputValue ? true : false)
 
   const leadingIcon = Children.map(children, (child) =>
     child.type.name === 'LeadingIcon' ? child : null
@@ -61,8 +59,8 @@ const OutlinedTextField = forwardRef((props, ref) => {
   const hasTrailingIcon = trailingIcon?.length > 0
 
   const handleClick = () => {
-    if (inputRef.current) {
-      inputRef.current.focus()
+    if (ref.current) {
+      ref.current.focus()
     }
   }
 
@@ -76,7 +74,7 @@ const OutlinedTextField = forwardRef((props, ref) => {
   }
 
   const handleChange = (e) => {
-    setInnerValue(e.target.value)
+    setInputValue(e.target.value)
   }
 
   return (
@@ -124,13 +122,13 @@ const OutlinedTextField = forwardRef((props, ref) => {
                   {prefixText && <span>{prefixText}</span>}
                   <TagName
                     {...rest}
+                    ref={ref}
                     type={type}
-                    ref={inputRef}
                     aria-label={label}
                     disabled={disabled}
                     aria-invalid={false}
                     onInput={handleInput}
-                    value={innerValue}
+                    value={inputValue}
                     onChange={handleChange}
                     aria-describedby="description"
                     onFocus={() => setFocused(true)}

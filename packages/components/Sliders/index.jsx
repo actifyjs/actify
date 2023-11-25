@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, forwardRef, useImperativeHandle } from 'react'
+import React, { useMemo, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { Elevation } from 'actify'
 import { tv } from 'tailwind-variants'
@@ -33,39 +33,31 @@ const Slider = forwardRef((props, ref) => {
     size,
     color,
     value,
-    defaultValue = 0,
     labeled,
-    onChange,
     disabled,
     children,
+    onChange,
     className,
+    defaultValue,
     ...rest
   } = props
 
-  const inputRef = useRef()
-  const [rawValue, setRawValue] = useMergedState(defaultValue, {
-    value
+  const [inputValue, setInputValue] = useMergedState(0, {
+    value,
+    onChange,
+    defaultValue
   })
-
-  useImperativeHandle(ref, () => ({
-    focus: () => inputRef.current?.focus(),
-    blur: () => inputRef.current?.blur(),
-    input: inputRef.current
-  }))
 
   const handleChange = (e) => {
     if (disabled) {
       return
     }
-    if (!('value' in props)) {
-      setRawValue(e.target.value)
-    }
-    onChange?.(e)
+    setInputValue(e.target.value)
   }
 
   const percent = useMemo(() => {
-    return rawValue / (max - min)
-  }, [rawValue])
+    return inputValue / (max - min)
+  }, [inputValue])
 
   return (
     <div
@@ -80,12 +72,12 @@ const Slider = forwardRef((props, ref) => {
     >
       <input
         {...rest}
+        ref={ref}
         min={min}
         max={max}
         step={step}
         type="range"
-        ref={inputRef}
-        value={rawValue}
+        value={inputValue}
         disabled={disabled}
         onChange={handleChange}
         className="peer opacity-0 [-webkit-tap-highlight-color:rgba(0,0,0,0)] absolute w-full h-full m-0 bg-transparent cursor-pointer pointer-events-auto appearance-none"
@@ -103,7 +95,7 @@ const Slider = forwardRef((props, ref) => {
               {/* label */}
               {labeled && (
                 <div className="label absolute flex p-1 place-content-center place-items-center rounded-full text-xs [inset-block-end:100%] [min-inline-size:28px] [min-block-size:28px] bg-current transition-transform duration-100 [transition-timing-function:cubic-bezier(0.2,0,0,1)] origin-[center_bottom] [transform:scale(0)] before:absolute before:block before:bg-[inherit] before:[inline-size:14px] before:[block-size:14px] before:bottom-[calc(28px/-10)] before:rotate-45 after:absolute after:block after:inset-0 after:rounded-[inherit] after:bg-[inherit]">
-                  <span className="z-[1] text-surface">{rawValue}</span>
+                  <span className="z-[1] text-surface">{inputValue}</span>
                 </div>
               )}
               {/* ring */}

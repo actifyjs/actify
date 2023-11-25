@@ -14,6 +14,7 @@ title: Checkbox
 
 | Props          | Type                                      | Description                      | Default |
 | -------------- | ----------------------------------------- | -------------------------------- | ------- |
+| size           | `xs` `sm` `md` `lg` `xl` `2xl`            | The size of the checkbox         | `sm`    |
 | color          | `primary` `secondary` `tertiaray` `error` | The color of the checkbox        | `null`  |
 | disabled       | `boolean`                                 | Whether the checkbox is disabled | `false` |
 | checked        | `boolean`                                 | Whether the checkbox is checked  | `null`  |
