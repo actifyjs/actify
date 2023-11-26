@@ -213,7 +213,7 @@ const Settings = () => {
 export default ({ children }) => {
   return (
     <div className="min-h-screen grid grid-rows-[64px_1fr_56px] grid-cols-[0_1fr] lg:grid-cols-[240px_1fr] transition-all">
-      <header className="sticky top-0 z-50 shadow backdrop-blur col-start-1 col-end-3 px-4 flex gap-2 items-center justify-between">
+      <header className="bg-surface sticky top-0 z-50 shadow backdrop-blur col-start-1 col-end-3 px-4 flex gap-2 items-center justify-between">
         <Link to="/">
           <Button variant="text" className="font-black">
             Actify Admin

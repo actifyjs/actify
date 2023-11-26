@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useState, Children } from 'react'
+import React, { useMemo, useRef, forwardRef, useState, Children } from 'react'
 import { tv } from 'tailwind-variants'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
 
@@ -47,7 +47,6 @@ const OutlinedTextField = forwardRef((props, ref) => {
   })
 
   const [focused, setFocused] = useState(false)
-  const [populated, setPopulated] = useState(inputValue ? true : false)
 
   const leadingIcon = Children.map(children, (child) =>
     child.type?.displayName === 'LeadingIcon' ? child : null
@@ -65,14 +64,7 @@ const OutlinedTextField = forwardRef((props, ref) => {
     }
   }
 
-  const handleInput = (e) => {
-    rest.onInput?.(e)
-    if (e.target?.value?.length > 0) {
-      setPopulated(true)
-    } else {
-      setPopulated(false)
-    }
-  }
+  const populated = useMemo(() => inputValue?.length > 0, [inputValue])
 
   const handleChange = (e) => {
     setInputValue(e.target.value)
@@ -128,7 +120,6 @@ const OutlinedTextField = forwardRef((props, ref) => {
                     aria-label={label}
                     disabled={disabled}
                     aria-invalid={false}
-                    onInput={handleInput}
                     value={inputValue}
                     onChange={handleChange}
                     aria-describedby="description"
