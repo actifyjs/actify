@@ -7,25 +7,9 @@ const variants = tv({
 })
 
 const BottomAppBarRoot = ({ className, children }) => {
-  const icons = Children.map(children, (child) =>
-    child?.type?.name === 'Icons' ? child : null
-  )
-
-  const fab = Children.map(children, (child) =>
-    child?.type?.name === 'Fab' ? child : null
-  )
-
-  const hasFab = fab.length > 0
-  const hasIcons = icons.length > 0
-
   return (
     <div className={variants({ className })}>
-      {hasIcons && (
-        <div className="grow place-items-center grid grid-cols-[repeat(auto-fill,minmax(48px,1fr))]">
-          {icons}
-        </div>
-      )}
-      {hasFab && fab}
+      {children}
       <Elevation level={2} />
     </div>
   )
@@ -33,7 +17,7 @@ const BottomAppBarRoot = ({ className, children }) => {
 
 const Icons = ({ children }) => {
   return (
-    <>
+    <div className="grow place-items-center grid grid-cols-[repeat(auto-fill,minmax(48px,1fr))]">
       {Children.map(
         children,
         (child, index) =>
@@ -44,7 +28,7 @@ const Icons = ({ children }) => {
             className: 'cursor-pointer'
           })
       )}
-    </>
+    </div>
   )
 }
 

@@ -51,10 +51,10 @@ const FilledTextField = forwardRef((props, ref) => {
   const [populated, setPopulated] = useState(inputValue ? true : false)
 
   const leadingIcon = Children.map(children, (child) =>
-    child.type.name === 'LeadingIcon' ? child : null
+    child.type?.displayName === 'LeadingIcon' ? child : null
   )
   const trailingIcon = Children.map(children, (child) =>
-    child.type.name === 'TrailingIcon' ? child : null
+    child.type?.displayName === 'TrailingIcon' ? child : null
   )
 
   const hasLeadingIcon = leadingIcon?.length > 0

@@ -2,12 +2,15 @@ import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { FilledTextField } from './FilledTextField'
 import { OutlinedTextField } from './OutlinedTextField'
+import { LeadingIcon } from './LeadingIcon'
+import { TrailingIcon } from './TrailingIcon'
 
 /**
  * @types React.ForwardRefRenderFunction<HTMLInputElement, TextFieldPropTypes>
  */
 const TextFieldRoot = forwardRef((props, ref) => {
   const { variant, ...rest } = props
+
   return (
     <>
       {variant === 'filled' && <FilledTextField ref={ref} {...rest} />}
@@ -25,22 +28,6 @@ TextFieldRoot.propTypes = {
 
 TextFieldRoot.defaultProps = {
   variant: 'filled'
-}
-
-const LeadingIcon = ({ children }) => {
-  return (
-    <div className="[margin-inline-end:4px] min-w-[48px] flex h-full relative items-center justify-center">
-      {children}
-    </div>
-  )
-}
-
-const TrailingIcon = ({ children }) => {
-  return (
-    <div className="[margin-inline-start:4px] min-w-[48px] flex h-full relative items-center justify-center">
-      {children}
-    </div>
-  )
 }
 
 const TextFieldPropTypes = {

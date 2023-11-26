@@ -31,10 +31,10 @@ const TableRoot = forwardRef((props, ref) => {
   } = props
 
   const thead = Children.map(children, (child) =>
-    child.type.name === 'Thead' ? child : null
+    child.type?.displayName === 'Thead' ? child : null
   )
   const tbody = Children.map(children, (child) =>
-    child.type.name === 'Tbody' ? child : null
+    child.type?.displayName === 'Tbody' ? child : null
   )
   const hasThead = thead?.length > 0
   const hasToby = tbody?.length > 0

@@ -13,4 +13,6 @@ const Thead = ({ style, className, children }) => {
   )
 }
 
+Thead.displayName = 'Thead'
+
 export { Thead }

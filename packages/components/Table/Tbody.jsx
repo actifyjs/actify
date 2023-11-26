@@ -13,4 +13,6 @@ const Tbody = ({ style, className, children }) => {
   )
 }
 
+Tbody.displayName = 'Tbody'
+
 export { Tbody }
