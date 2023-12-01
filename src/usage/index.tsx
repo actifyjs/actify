@@ -7,11 +7,11 @@ import SyntaxHighlighter from 'src/components/SyntaxHighlighter'
 const Usage = (props) => {
   const [rawString, setRawString] = useState('')
   const { name, ...rest } = props
-  const LazyComponent = lazy(() => import(`./../usage/${name}.jsx`))
+  const LazyComponent = lazy(() => import(`./../usage/${name}.tsx`))
 
   useEffect(() => {
     async function loadData() {
-      const raw = await import(`./../usage/${name}.jsx?raw`)
+      const raw = await import(`./../usage/${name}.tsx?raw`)
       setRawString(raw.default)
     }
     loadData()
