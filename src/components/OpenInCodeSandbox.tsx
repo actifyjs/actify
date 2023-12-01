@@ -82,7 +82,7 @@ module.exports = withMaterialColors(
     darkMode: 'class',
     content: [
       '*.{html,js,jsx}',
-      './node_modules/actify/lib/*.{js,mjs}'
+      './node_modules/actify/lib/**/*.{js,cjs}'
     ],
     theme: {
       extend: {
