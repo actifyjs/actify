@@ -1,4 +1,3 @@
-// @ts-nocheck
 import './main.css'
 import routes from '~react-pages'
 import ReactDOM from 'react-dom/client'
