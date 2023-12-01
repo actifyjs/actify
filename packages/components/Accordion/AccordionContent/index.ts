@@ -1,0 +1,1 @@
+export { AccordionContent } from './AccordionContent'

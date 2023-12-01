@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.49",
+  "version": "0.1.50",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -20,28 +20,30 @@
   "files": [
     "lib/"
   ],
-  "main": "./lib/actify.umd.js",
-  "exports": {
-    ".": {
-      "import": "./lib/actify.mjs",
-      "require": "./lib/actify.umd.js"
-    },
-    "./style": "./lib/style.css"
-  },
+  "main": "./lib/index.js",
+  "module": "./lib/index.cjs",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "build:lib": "vite build --mode lib",
+    "rollup": "rollup -c rollup.config.mjs",
     "preview": "vite preview --host"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.22.5",
     "@docsearch/js": "^3.5.2",
     "@floating-ui/react": "^0.25.1",
-    "@tailwindcss/typography": "^0.5.9",
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react-swc": "^3.4.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.14",
     "codesandbox": "^2.2.3",
     "dayjs": "^1.11.10",
@@ -52,30 +54,35 @@
     "prettier": "^3.0.0",
     "prism-material-themes": "^1.0.4",
     "prismjs": "^1.29.0",
-    "prop-types": "^15.8.1",
     "rc-util": "^5.38.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-live": "^4.1.3",
+    "react-live": "^4.1.5",
     "react-markdown": "^8.0.7",
-    "react-router-dom": "^6.14.2",
+    "react-router-dom": "^6.20.0",
     "react-tailwindcss-datepicker": "^1.6.6",
     "react-tailwindcss-select": "^1.8.5",
     "rehype-autolink-headings": "^7.0.0",
     "rehype-raw": "^6.1.1",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^3.0.1",
-    "tailwind-material-colors": "^1.1.2",
-    "tailwind-variants": "^0.1.13",
-    "tailwindcss": "^3.3.3",
+    "rollup": "^4.6.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-preserve-directives": "^0.2.0",
+    "rollup-plugin-typescript-paths": "^1.4.0",
+    "tailwind-material-colors": "^1.2.0",
+    "tailwind-variants": "^0.1.18",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.3.2",
     "usehooks-ts": "^2.9.1",
     "vite": "^4.5.0",
+    "vite-plugin-dts": "^3.6.4",
     "vite-plugin-markdown": "^2.2.0-2",
-    "vite-plugin-pages": "^0.31.0",
-    "zustand": "^4.4.1"
+    "vite-plugin-pages": "^0.32.0",
+    "zustand": "^4.4.7"
   },
   "peerDependencies": {
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   }
 }
