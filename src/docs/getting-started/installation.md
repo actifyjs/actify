@@ -32,6 +32,10 @@ module.exports = {
         'on-error': 'rgb(var(--color-on-error, 255 255 255) / <alpha-value>)',
         surface: 'rgb(var(--color-surface, 250 253 252) / <alpha-value>)',
         'on-surface': 'rgb(var(--color-on-surface, 25 28 28) / <alpha-value>)',
+        'inverse-surface':
+          'rgb(var(--color-inverse-surface, 45 49 49) / <alpha-value>)',
+        'on-inverse-surface':
+          'rgb(var(--color-on-inverse-surface, 239 241 240) / <alpha-value>)',
         outline: 'rgb(var(--color-outline, 111 121 121) / <alpha-value>)'
       }
     }
