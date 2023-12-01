@@ -18,12 +18,7 @@ export default () => {
         </Badge>
       </div>
       <div className="mt-4 flex gap-4 flex-wrap">
-        <Slider
-          labeled
-          max={999}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <Slider labeled max={999} value={value} onChange={(e) => setValue(e)} />
         <Select value={color} onChange={(select) => setColor(select)}>
           <Select.Option value="primary">Primary</Select.Option>
           <Select.Option value="secondary">Secondary</Select.Option>

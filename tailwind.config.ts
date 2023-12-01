@@ -27,7 +27,7 @@ export default withMaterialColors(
     }
   },
   {
-    // primary: '#006a6a'
-    primary: '#5b6400'
+    primary: '#006a6a'
+    // primary: '#5b6400'
   }
 ) satisfies Config
