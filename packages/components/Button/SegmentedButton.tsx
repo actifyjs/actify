@@ -41,8 +41,15 @@ interface SegmentedButtonProps
 
 const SegmentedButton: React.FC<SegmentedButtonProps> = forwardRef(
   (props, ref?: React.Ref<HTMLDivElement>) => {
-    const { variant, color, ripple, style, className, children, ...rest } =
-      props
+    const {
+      color,
+      style,
+      variant,
+      className,
+      children,
+      ripple = true,
+      ...rest
+    } = props
 
     return (
       <div ref={ref} {...rest} style={style} className={variants({ variant })}>
@@ -67,10 +74,6 @@ const SegmentedButton: React.FC<SegmentedButtonProps> = forwardRef(
     )
   }
 )
-
-SegmentedButton.defaultProps = {
-  ripple: true
-}
 
 SegmentedButton.displayName = 'Actify.SegmentedButton'
 

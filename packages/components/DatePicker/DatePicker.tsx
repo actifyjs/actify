@@ -8,7 +8,13 @@ const inputVariants = tv({
 })
 
 const DatePicker: React.FC<DatepickerType> = (props) => {
-  const { inputClassName, ...rest } = props
+  const {
+    inputClassName,
+    useRange = true,
+    separator = '~',
+    displayFormat = 'DD/MM/YYYY',
+    ...rest
+  } = props
 
   return (
     <ReactDatepicker
@@ -17,12 +23,6 @@ const DatePicker: React.FC<DatepickerType> = (props) => {
       inputClassName={inputVariants({ className: inputClassName })}
     />
   )
-}
-
-DatePicker.defaultProps = {
-  useRange: true,
-  separator: '~',
-  displayFormat: 'DD/MM/YYYY'
 }
 
 DatePicker.displayName = 'Actify.DatePicker'

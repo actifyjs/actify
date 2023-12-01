@@ -22,18 +22,18 @@ interface IconButtonProps
     React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement> {
   tag?: string
   ripple?: boolean
-  size?: string
+  size?: string | number
 }
 
 const IconButton = forwardRef<React.Ref<HTMLButtonElement>, IconButtonProps>(
   (props, ref) => {
     const {
       tag,
-      ripple,
+      ripple = true,
       style,
-      size,
-      variant,
-      color,
+      size = 40,
+      variant = 'standard',
+      color = 'current',
       className,
       type = 'button',
       children,
@@ -66,13 +66,6 @@ const IconButton = forwardRef<React.Ref<HTMLButtonElement>, IconButtonProps>(
     )
   }
 )
-
-IconButton.defaultProps = {
-  ripple: true,
-  size: '40',
-  color: 'current',
-  variant: 'standard'
-}
 
 IconButton.displayName = 'Actify.IconButton'
 

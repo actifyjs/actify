@@ -21,29 +21,30 @@ interface CardProps
   extends VariantProps<typeof variants>,
     React.HTMLAttributes<HTMLDivElement> {
   ripple?: boolean
-  elevation: string | number
+  elevation: '0' | '1' | '2' | '3' | '4' | '5'
 }
 
 const Card: React.FC<CardProps> = forwardRef(
   (props, ref?: React.Ref<HTMLDivElement>) => {
-    const { ripple, type, elevation, children, className, ...rest } = props
+    const {
+      ripple = false,
+      type = 'elevated',
+      elevation = '1',
+      children,
+      className,
+      ...rest
+    } = props
 
     return (
       <div ref={ref} {...rest} className={variants({ type, className })}>
         <div className="relative overflow-hidden rounded-t-xl">{children}</div>
         {ripple && <Ripple />}
-        // @ts-ignore
+
         {type === 'elevated' && <Elevation level={elevation} />}
       </div>
     )
   }
 )
-
-Card.defaultProps = {
-  type: 'elevated',
-  ripple: false,
-  elevation: 1
-}
 
 Card.displayName = 'Actify.Card'
 

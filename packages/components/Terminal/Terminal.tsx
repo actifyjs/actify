@@ -15,8 +15,15 @@ interface TerminalProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Terminal = forwardRef<HTMLDivElement, TerminalProps>((props, ref) => {
-  const { title, lastlogin, hostname, username, children, className, ...rest } =
-    props
+  const {
+    title = 'Terminal',
+    username = 'lerte',
+    lastlogin = new Date(),
+    hostname = 'Lerte-MacBook-Pro',
+    children,
+    className,
+    ...rest
+  } = props
 
   const _lastLogin = useMemo(
     () => dayjs(lastlogin).format('ddd MMM DD HH:mm:ss'),
@@ -42,13 +49,6 @@ const Terminal = forwardRef<HTMLDivElement, TerminalProps>((props, ref) => {
     </div>
   )
 })
-
-Terminal.defaultProps = {
-  title: 'Terminal',
-  lastlogin: new Date(),
-  hostname: 'Lerte-MacBook-Pro',
-  username: 'lerte'
-}
 
 Terminal.displayName = 'Actify.Terminal'
 

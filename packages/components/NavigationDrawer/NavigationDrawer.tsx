@@ -26,10 +26,6 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
   )
 })
 
-Drawer.defaultProps = {
-  placement: 'left'
-}
-
 export default Object.assign(Drawer, {
   Content: DrawerContent,
   Activator: DrawerActivator

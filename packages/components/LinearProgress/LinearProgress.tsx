@@ -40,7 +40,14 @@ interface LinearProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const LinearProgress = forwardRef<HTMLDivElement, LinearProgressProps>(
   (props, ref) => {
-    const { value, indeterminate, style, color, className, ...rest } = props
+    const {
+      value,
+      style,
+      color = 'priamry',
+      indeterminate = false,
+      className,
+      ...rest
+    } = props
 
     return (
       <>
@@ -187,11 +194,6 @@ const LinearProgress = forwardRef<HTMLDivElement, LinearProgressProps>(
     )
   }
 )
-
-LinearProgress.defaultProps = {
-  color: 'primary',
-  indeterminate: false
-}
 
 LinearProgress.displayName = 'Actify.LinearProgress'
 

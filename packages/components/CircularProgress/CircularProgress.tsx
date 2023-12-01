@@ -49,8 +49,15 @@ interface CircularPropTypes
 
 const CircularProgress = forwardRef<HTMLDivElement, CircularPropTypes>(
   (props, ref) => {
-    const { value, indeterminate, style, size, color, className, ...rest } =
-      props
+    const {
+      value,
+      style,
+      size = 'sm',
+      color = 'primary',
+      indeterminate = false,
+      className,
+      ...rest
+    } = props
 
     return (
       <>
@@ -144,12 +151,6 @@ const CircularProgress = forwardRef<HTMLDivElement, CircularPropTypes>(
     )
   }
 )
-
-CircularProgress.defaultProps = {
-  size: 'sm',
-  color: 'primary',
-  indeterminate: false
-}
 
 CircularProgress.displayName = 'Actify.CircularProgress'
 

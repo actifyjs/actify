@@ -29,10 +29,10 @@ const Chip = forwardRef<HTMLAnchorElement | HTMLDivElement, ChipProps>(
     const [show, setShow] = useState(true)
     const [selected, setSelected] = useState(false)
     const {
-      ripple,
       label,
-      type,
-      color,
+      ripple = true,
+      type = 'assist',
+      color = 'primary',
       icon,
       style,
       className,
@@ -78,12 +78,6 @@ const Chip = forwardRef<HTMLAnchorElement | HTMLDivElement, ChipProps>(
     )
   }
 )
-
-Chip.defaultProps = {
-  ripple: true,
-  type: 'assist',
-  color: 'primary'
-}
 
 Chip.displayName = 'Actify.Chip'
 

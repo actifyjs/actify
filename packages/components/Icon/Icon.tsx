@@ -11,11 +11,11 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
 const Icon: React.FC<IconProps> = memo(
   ({
     name,
-    color,
-    size,
-    strokeWidth,
-    absoluteStrokeWidth,
     className,
+    size = 24,
+    strokeWidth = 2,
+    color = 'currentColor',
+    absoluteStrokeWidth = false,
     ...rest
   }) => {
     if (!dynamicIconImports.hasOwnProperty(name)) {
@@ -41,13 +41,6 @@ const Icon: React.FC<IconProps> = memo(
     )
   }
 )
-
-Icon.defaultProps = {
-  size: 24,
-  strokeWidth: 2,
-  color: 'currentColor',
-  absoluteStrokeWidth: false
-}
 
 Icon.displayName = 'Actify.Icon'
 
