@@ -21,7 +21,7 @@ interface CardProps
   extends VariantProps<typeof variants>,
     React.HTMLAttributes<HTMLDivElement> {
   ripple?: boolean
-  elevation: '0' | '1' | '2' | '3' | '4' | '5'
+  elevation?: '0' | '1' | '2' | '3' | '4' | '5'
 }
 
 const Card: React.FC<CardProps> = forwardRef(

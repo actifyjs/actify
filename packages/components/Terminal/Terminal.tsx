@@ -8,10 +8,10 @@ const variants = tv({
 })
 
 interface TerminalProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string
-  lastlogin: Date
-  hostname: string
-  username: string
+  title?: string
+  lastlogin?: Date
+  hostname?: string
+  username?: string
 }
 
 const Terminal = forwardRef<HTMLDivElement, TerminalProps>((props, ref) => {

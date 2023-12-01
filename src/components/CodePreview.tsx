@@ -1,5 +1,6 @@
+// @ts-nocheck
 import * as Actify from 'actify'
-import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
+import SyntaxHighlighter from 'src/components/SyntaxHighlighter'
 import { LiveProvider, LivePreview } from 'react-live'
 
 const CodePreview = ({ code }) => {

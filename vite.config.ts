@@ -9,7 +9,7 @@ import { peerDependencies } from './package.json'
 import preserveDirectives from 'rollup-plugin-preserve-directives'
 
 const alias = {
-  '@': fileURLToPath(new URL('.', import.meta.url)),
+  src: fileURLToPath(new URL('./src', import.meta.url)),
   actify: fileURLToPath(new URL('./packages', import.meta.url))
 }
 

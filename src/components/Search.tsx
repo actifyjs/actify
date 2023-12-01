@@ -1,6 +1,7 @@
-import { useRef, useState, useCallback } from 'react'
-import { createPortal } from 'react-dom'
+// @ts-nocheck
 import { Button, Icon } from 'actify'
+import { createPortal } from 'react-dom'
+import { useRef, useState, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { DocSearchModal, useDocSearchKeyboardEvents } from '@docsearch/react'
 

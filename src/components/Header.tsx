@@ -1,16 +1,24 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { useApp } from './AppContext'
 import { useLocation } from 'react-router-dom'
+import { useAppStore } from 'src/store/appStore'
+import { useShallow } from 'zustand/react/shallow'
 import { Icon, Button, Spacer, IconButton } from 'actify'
-import Logo from '@/src/components/Logo'
-import Search from '@/src/components/Search'
-import Dropdown from '@/src/components/Dropdown'
-import SwitchTheme from '@/src/components/SwitchTheme'
+import Logo from 'src/components/Logo'
+import Search from 'src/components/Search'
+import Dropdown from 'src/components/Dropdown'
+import SwitchTheme from 'src/components/SwitchTheme'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
-const Header = () => {
+const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
   const { pathname } = useLocation()
-  const { top, drawer, setDrawer } = useApp()
+  const { top, drawer, setDrawer } = useAppStore(
+    useShallow((state) => ({
+      top: state.top,
+      drawer: state.drawer,
+      setDrawer: state.setDrawer
+    }))
+  )
 
   const randomColor = () => {
     const letters = '0123456789ABCDEF'

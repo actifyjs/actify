@@ -20,7 +20,7 @@ export default () => {
         <span>error</span>
       </label>
       <label className="flex items-center">
-        <Checkbox disabled color="warning" />
+        <Checkbox disabled color="error" />
         <span>disabled</span>
       </label>
     </div>

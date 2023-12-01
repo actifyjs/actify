@@ -7,7 +7,10 @@ import { DialogActivator } from './DialogActivator'
 import { DialogDescription } from './DialogDescription'
 import { DialogProvider } from './DialogContext'
 
-interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+}
 
 const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const { children, ...rest } = props

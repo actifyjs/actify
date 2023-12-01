@@ -1,8 +1,8 @@
 import { Button } from 'actify'
 import All from '../examples/all'
 import { useEffect, useState } from 'react'
-import ThemePreview from '@/src/components/ThemePreview'
-import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
+import ThemePreview from 'src/components/ThemePreview'
+import SyntaxHighlighter from 'src/components/SyntaxHighlighter'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const colorVaribles = [

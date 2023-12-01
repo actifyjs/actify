@@ -7,7 +7,9 @@ import { Action } from './Action'
 import React, { forwardRef } from 'react'
 import { SideSheetsProvider } from './Context'
 
-interface SideSheetsPropTypes extends React.HTMLAttributes<HTMLDivElement> {}
+interface SideSheetsPropTypes extends React.HTMLAttributes<HTMLDivElement> {
+  divider?: boolean
+}
 
 const SideSheets = forwardRef<HTMLDivElement, SideSheetsPropTypes>(
   (props, ref) => {

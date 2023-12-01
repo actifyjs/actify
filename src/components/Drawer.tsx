@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
-import { useApp } from './AppContext'
+import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useAppStore } from 'src/store/appStore'
+import { useShallow } from 'zustand/react/shallow'
 
-const debounce = (fn, delay) => {
+const debounce = (fn: () => void, delay: number) => {
   let timer = null
-  return function (...args) {
+  return function (...args: unknown[]) {
     timer && clearTimeout(timer)
     timer = setTimeout(() => {
       fn.apply(this, args)
@@ -12,9 +13,16 @@ const debounce = (fn, delay) => {
   }
 }
 
-const Drawer = ({ children }) => {
+const Drawer: React.FC<React.HTMLAttributes<HTMLElement>> = ({ children }) => {
   const { pathname } = useLocation()
-  const { top, drawer, drawerWidth, setDrawer } = useApp()
+  const { top, drawer, drawerWidth, setDrawer } = useAppStore(
+    useShallow((state) => ({
+      top: state.top,
+      drawer: state.drawer,
+      setDrawer: state.setDrawer,
+      drawerWidth: state.drawerWidth
+    }))
+  )
 
   useEffect(() => {
     const handleResize = debounce(() => {

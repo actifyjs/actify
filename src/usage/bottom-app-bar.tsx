@@ -1,4 +1,3 @@
-import React from 'react'
 import { Fab, Icon, BottomAppBar } from 'actify'
 
 export default () => {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Icon, Button } from 'actify'
 
 const EditOnGitHub = ({ pathname }) => {

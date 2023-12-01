@@ -1,7 +1,15 @@
+// @ts-nocheck
+import React from 'react'
 import { Tooltip, IconButton } from 'actify'
-import { name, version } from '../../package.json'
+import { name, version } from './../../package.json'
 
-export default ({ title, code }) => {
+interface OpenInStackblitzProps
+  extends React.FormHTMLAttributes<HTMLFormElement> {
+  title: string
+  code: string
+}
+
+const OpenInStackblitz: React.FC<OpenInStackblitzProps> = ({ title, code }) => {
   const project = {
     title: 'Actify ' + title,
     template: 'node',
@@ -141,3 +149,5 @@ export default defineConfig({
     </form>
   )
 }
+
+export default OpenInStackblitz

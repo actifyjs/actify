@@ -13,7 +13,7 @@ import {
 } from 'actify'
 import { Link, NavLink } from 'react-router-dom'
 import { tv } from 'tailwind-variants'
-import SwitchTheme from '@/src/components/SwitchTheme'
+import SwitchTheme from 'src/components/SwitchTheme'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const asideVariants = tv({

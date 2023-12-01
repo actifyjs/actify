@@ -1,7 +1,16 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Icon } from 'actify'
 
-const Dropdown = (props) => {
+interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
+  items?: Array<{
+    to: string
+    label?: string
+    target?: string
+    headline?: string
+  }>
+}
+const Dropdown: React.FC<DropdownProps> = (props) => {
   const { title, items } = props
 
   return (

@@ -5,7 +5,7 @@ export default () => {
     <div className="flex-wrap xl:flex-nowrap flex gap-2 not-prose">
       <Card>
         <img
-          atl=""
+          alt=""
           className="w-full object-fit"
           src="https://images.unsplash.com/photo-1694736301344-0a2e4b5f51c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80"
         />
@@ -16,7 +16,7 @@ export default () => {
       </Card>
       <Card type="filled">
         <img
-          atl=""
+          alt=""
           className="w-full object-fit"
           src="https://images.unsplash.com/photo-1694732519038-dcc9379eb148?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
         />
@@ -30,7 +30,7 @@ export default () => {
       </Card>
       <Card type="outlined">
         <img
-          atl=""
+          alt=""
           className="w-full object-fit"
           src="https://images.unsplash.com/photo-1682687982029-edb9aecf5f89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
         />

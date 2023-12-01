@@ -1,6 +1,7 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 
-const Logo = ({ height }) => {
+const Logo: React.FC<React.SVGAttributes<SVGElement>> = ({ height }) => {
   return (
     <svg
       height={height}

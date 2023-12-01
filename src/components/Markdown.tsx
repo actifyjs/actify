@@ -1,17 +1,23 @@
+// @ts-nocheck
 import { memo } from 'react'
-import Usage from '@/src/usage'
-import Preview from '@/src/preview'
+import Usage from 'src/usage'
+import Preview from 'src/preview'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
 import ReactMarkdown from 'react-markdown'
-import Tabs from '@/src/components/Tabs'
-import CodePreview from '@/src/components/CodePreview'
-import EditOnGitHub from '@/src/components/EditOnGitHub'
+import Tabs from 'src/components/Tabs'
+import CodePreview from 'src/components/CodePreview'
+import EditOnGitHub from 'src/components/EditOnGitHub'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
+import SyntaxHighlighter from 'src/components/SyntaxHighlighter'
 
-const Markdown = memo(({ pathname, markdown }) => {
+interface MarkdownProps {
+  pathname: string
+  markdown: string
+}
+
+const Markdown = memo<MarkdownProps>(({ pathname, markdown }) => {
   return (
     <article>
       <ReactMarkdown

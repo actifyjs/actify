@@ -1,7 +1,13 @@
-import { useApp } from './AppContext'
+import React from 'react'
+import { useAppStore } from 'src/store/appStore'
+import { useShallow } from 'zustand/react/shallow'
 
-const Footer = () => {
-  const { drawer } = useApp()
+const Footer: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
+  const { drawer } = useAppStore(
+    useShallow((state) => ({
+      drawer: state.drawer
+    }))
+  )
 
   return (
     <footer

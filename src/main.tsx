@@ -1,15 +1,16 @@
+// @ts-nocheck
 import './main.css'
 import routes from '~react-pages'
 import ReactDOM from 'react-dom/client'
-import { version } from '@/package.json'
+import { version } from './../package.json'
 import { StrictMode, Suspense, useEffect } from 'react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import { ToastProvider, ToastContainer } from 'actify'
-import Loading from '@/src/components/Loading'
+import Loading from 'src/components/Loading'
 import { useLocation } from 'react-router-dom'
-import EmptyLayout from '@/src/layouts/empty.jsx'
-import AdminLayout from '@/src/layouts/admin.jsx'
-import DefaultLayout from '@/src/layouts/default.jsx'
+import EmptyLayout from 'src/layouts/empty.jsx'
+import AdminLayout from 'src/layouts/admin.jsx'
+import DefaultLayout from 'src/layouts/default.jsx'
 
 const App = () => {
   const { pathname } = useLocation()

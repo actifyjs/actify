@@ -1,8 +1,8 @@
 import { Icon, Tabs, Spacer, TooltipGroup } from 'actify'
 import { lazy, Suspense, useState, useEffect } from 'react'
-import OpenInCodeSandbox from '@/src/components/OpenInCodeSandbox'
-import OpenInStackblitz from '@/src/components/OpenInStackblitz'
-import SyntaxHighlighter from '@/src/components/SyntaxHighlighter'
+import OpenInCodeSandbox from 'src/components/OpenInCodeSandbox'
+import OpenInStackblitz from 'src/components/OpenInStackblitz'
+import SyntaxHighlighter from 'src/components/SyntaxHighlighter'
 
 const Usage = (props) => {
   const [rawString, setRawString] = useState('')

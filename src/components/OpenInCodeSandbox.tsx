@@ -1,8 +1,19 @@
-import { name, version } from '../../package.json'
+// @ts-nocheck
+import React from 'react'
+import { name, version } from './../../package.json'
 import { Icon, IconButton, Tooltip } from 'actify'
 import { getParameters } from 'codesandbox/lib/api/define'
 
-export default ({ title, code }) => {
+interface OpenInCodeSandboxProps
+  extends React.FormHTMLAttributes<HTMLFormElement> {
+  title: string
+  code: string
+}
+
+const OpenInCodeSandbox: React.FC<OpenInCodeSandboxProps> = ({
+  title,
+  code
+}) => {
   const parameters = getParameters({
     files: {
       'package.json': {
@@ -126,3 +137,5 @@ export default defineConfig({
     </form>
   )
 }
+
+export default OpenInCodeSandbox

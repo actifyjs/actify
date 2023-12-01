@@ -1,8 +1,9 @@
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { useInterval } from 'usehooks-ts'
 import { LinearProgress } from 'actify'
 
-const Loading = () => {
+const Loading: React.FC = () => {
   const [step, setStep] = useState(0.5)
   const [value, setValue] = useState(50)
   const [progress, setProgress] = useState(0)

@@ -2,7 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@": ["."],
       "actify": ["packages"]
     },
 
@@ -21,6 +20,12 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/", "src/**/*/.ts", "src/**/*/.tsx", "packages/index.ts"],
+  "include": [
+    "src/",
+    "src/**/*/.ts",
+    "src/**/*/.tsx",
+    "packages/index.ts",
+    "packages/**/*.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

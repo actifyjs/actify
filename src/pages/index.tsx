@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon, Button } from 'actify'
-import Logo from '@/src/components/Logo'
+import Logo from 'src/components/Logo'
 
 export default () => {
   useEffect(() => {

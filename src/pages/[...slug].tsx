@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import Markdown from '@/src/components/Markdown'
-import TableOfContents from '@/src/components/TableOfContents'
+import Markdown from 'src/components/Markdown'
+import TableOfContents from 'src/components/TableOfContents'
 
 export default () => {
   const { hash, pathname } = useLocation()

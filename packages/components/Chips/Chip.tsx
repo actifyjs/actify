@@ -20,6 +20,8 @@ interface ChipProps
     React.HTMLAttributes<HTMLAnchorElement | HTMLDivElement> {
   label?: string
   icon?: string
+  href?: string
+  target?: string
   ripple?: boolean
   selected?: boolean
 }

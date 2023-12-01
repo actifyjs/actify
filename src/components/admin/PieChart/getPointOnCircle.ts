@@ -3,7 +3,11 @@ const degreesInCircle = 360
 const degreesToRadians = (degrees) =>
   degrees * (Math.PI / (degreesInCircle / 2))
 
-export const getPointOnCircle = (radius, cutoutRadius, angleInDegrees) => {
+export const getPointOnCircle = (
+  radius: number,
+  cutoutRadius: number,
+  angleInDegrees: number
+) => {
   const angleInRadians = degreesToRadians(angleInDegrees - 90)
   return {
     x: radius + cutoutRadius * Math.cos(angleInRadians),

@@ -1,6 +1,6 @@
-import BarChart from '@/src/components/admin/BarChart'
-import SvgChart from '@/src/components/admin/SvgChart'
-import PieChart from '@/src/components/admin/PieChart'
+import BarChart from 'src/components/admin/BarChart'
+import SvgChart from 'src/components/admin/SvgChart'
+import PieChart from 'src/components/admin/PieChart'
 import { Card, Divider, Chip, Icon, Tabs, Button } from 'actify'
 
 export default () => {
