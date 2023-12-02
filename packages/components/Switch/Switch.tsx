@@ -2,8 +2,7 @@
 import { Icon, Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
 import { setColor } from './../../utils'
-import useMergedState from 'rc-util/lib/hooks/useMergedState'
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useState } from 'react'
 
 const variants = tv({
   base: 'h-8 w-14 rounded-full border-[2px] border-current shadow-inner peer-checked:bg-current',
@@ -47,18 +46,16 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
     ...rest
   } = props
 
-  const [inputValue, setInputValue] = useMergedState(false, {
-    // @ts-ignore
-    onChange,
-    value: selected,
-    defaultValue: defaultSelected
-  })
+  const [inputValue, setInputValue] = useState(
+    selected || defaultSelected || false
+  )
 
   const handleChange = (e) => {
     if (disabled) {
       return
     }
     setInputValue(e.target.checked)
+    onChange?.(e)
   }
 
   const colorVariant = color ?? 'primary'

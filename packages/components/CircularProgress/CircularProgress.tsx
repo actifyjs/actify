@@ -43,7 +43,7 @@ const spinnerVariants = tv({
 interface CircularPropTypes
   extends VariantProps<typeof variants>,
     React.HTMLAttributes<HTMLDivElement> {
-  value?: number
+  value?: number | string
   indeterminate?: boolean
 }
 

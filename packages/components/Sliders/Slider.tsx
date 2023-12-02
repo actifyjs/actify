@@ -1,8 +1,7 @@
 'use client'
-import React, { useMemo, forwardRef } from 'react'
+import React, { useMemo, forwardRef, useState } from 'react'
 import { Elevation } from 'actify'
 import { tv, VariantProps } from 'tailwind-variants'
-import useMergedState from 'rc-util/lib/hooks/useMergedState'
 
 const variants = tv({
   base: 'relative flex flex-1 items-center [block-size:40px] pointer-events-none touch-none',
@@ -44,18 +43,14 @@ const Slider = forwardRef<HTMLInputElement, SliderPropTypes>((props, ref) => {
     ...rest
   } = props
 
-  const [inputValue, setInputValue] = useMergedState(0, {
-    value,
-    // @ts-ignore
-    onChange,
-    defaultValue
-  })
+  const [inputValue, setInputValue] = useState(value || defaultValue || 0)
 
   const handleChange = (e) => {
     if (disabled) {
       return
     }
     setInputValue(e.target.value)
+    onChange?.(e)
   }
 
   const percent = useMemo(() => {

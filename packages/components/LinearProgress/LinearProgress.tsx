@@ -33,7 +33,7 @@ const barInnerVariants = tv({
 })
 
 interface LinearProgressProps extends React.HTMLAttributes<HTMLDivElement> {
-  value?: number
+  value?: number | string
   color?: string
   indeterminate?: boolean
 }
@@ -43,7 +43,7 @@ const LinearProgress = forwardRef<HTMLDivElement, LinearProgressProps>(
     const {
       value,
       style,
-      color = 'priamry',
+      color = 'primary',
       indeterminate = false,
       className,
       ...rest
@@ -162,7 +162,7 @@ const LinearProgress = forwardRef<HTMLDivElement, LinearProgressProps>(
               transition: 'none 0s ease 0s',
               transformOrigin: 'left center',
               insetInlineStart: indeterminate ? '-145.167%' : 0,
-              transform: `scaleX(${indeterminate ? 1 : value / 100})`
+              transform: `scaleX(${indeterminate ? 1 : Number(value) / 100})`
             }}
           >
             <div

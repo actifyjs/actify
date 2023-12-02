@@ -1,7 +1,6 @@
 'use client'
 import React, { useMemo, useRef, forwardRef, useState, Children } from 'react'
 import { tv } from 'tailwind-variants'
-import useMergedState from 'rc-util/lib/hooks/useMergedState'
 
 const variants = tv({
   base: 'cursor-text group',
@@ -51,12 +50,7 @@ const FilledTextField = forwardRef<
   const inputRef = ref || useRef()
   const TagName = type === 'textarea' ? 'textarea' : 'input'
 
-  const [inputValue, setInputValue] = useMergedState('', {
-    value,
-    // @ts-ignore
-    onChange,
-    defaultValue
-  })
+  const [inputValue, setInputValue] = useState(value || defaultValue || '')
 
   const [focused, setFocused] = useState(false)
 
@@ -85,6 +79,7 @@ const FilledTextField = forwardRef<
 
   const handleChange = (e) => {
     setInputValue(e.target.value)
+    onChange?.(e)
   }
 
   return (

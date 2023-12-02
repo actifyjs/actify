@@ -1,8 +1,7 @@
 'use client'
 import { Ripple } from 'actify'
 import { tv, VariantProps } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
-import useMergedState from 'rc-util/lib/hooks/useMergedState'
+import React, { forwardRef, useState } from 'react'
 
 const variants = tv({
   base: "peer relative appearance-none border-outline cursor-pointer transition-all before:content[''] before:block before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity",
@@ -58,18 +57,16 @@ const Checkbox = forwardRef<HTMLInputElement, CheckPropTypes>((props, ref) => {
     ...rest
   } = props
 
-  const [inputValue, setInputValue] = useMergedState(false, {
-    // @ts-ignore
-    onChange,
-    value: checked,
-    defaultValue: defaultChecked
-  })
+  const [inputValue, setInputValue] = useState(
+    checked || defaultChecked || false
+  )
 
   const handleChange = (e) => {
     if (disabled) {
       return
     }
     setInputValue(e.target.checked)
+    onChange?.(e)
   }
 
   return (
