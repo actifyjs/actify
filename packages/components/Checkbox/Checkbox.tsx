@@ -1,7 +1,7 @@
 'use client'
 import { Ripple } from 'actify'
 import { tv, VariantProps } from 'tailwind-variants'
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, useState, useEffect } from 'react'
 
 const variants = tv({
   base: "peer relative appearance-none border-outline cursor-pointer transition-all before:content[''] before:block before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity",
@@ -68,6 +68,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckPropTypes>((props, ref) => {
     setInputValue(e.target.checked)
     onChange?.(e)
   }
+
+  useEffect(() => {
+    setInputValue(checked)
+  }, [checked])
 
   return (
     <label

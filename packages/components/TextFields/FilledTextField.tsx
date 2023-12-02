@@ -1,5 +1,12 @@
 'use client'
-import React, { useMemo, useRef, forwardRef, useState, Children } from 'react'
+import React, {
+  useMemo,
+  useRef,
+  forwardRef,
+  useState,
+  Children,
+  useEffect
+} from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
@@ -81,6 +88,10 @@ const FilledTextField = forwardRef<
     setInputValue(e.target.value)
     onChange?.(e)
   }
+
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
 
   return (
     <div

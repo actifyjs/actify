@@ -2,7 +2,7 @@
 import { Icon, Ripple } from 'actify'
 import { tv } from 'tailwind-variants'
 import { setColor } from './../../utils'
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, useState, useEffect } from 'react'
 
 const variants = tv({
   base: 'h-8 w-14 rounded-full border-[2px] border-current shadow-inner peer-checked:bg-current',
@@ -57,6 +57,10 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
     setInputValue(e.target.checked)
     onChange?.(e)
   }
+
+  useEffect(() => {
+    setInputValue(selected)
+  }, [selected])
 
   const colorVariant = color ?? 'primary'
 
