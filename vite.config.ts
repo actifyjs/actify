@@ -39,22 +39,13 @@ export default defineConfig(({ mode }) => {
           input: './packages/index.ts',
           preserveEntrySignatures: 'exports-only',
           external: [...Object.keys(peerDependencies)],
-          output: [
-            {
-              dir: 'lib',
-              format: 'esm',
-              exports: 'auto',
-              entryFileNames: '[name].js',
-              ...outputOptions
-            },
-            {
-              dir: 'lib',
-              format: 'cjs',
-              exports: 'auto',
-              entryFileNames: '[name].cjs',
-              ...outputOptions
-            }
-          ],
+          output: {
+            dir: 'lib',
+            format: 'esm',
+            exports: 'auto',
+            entryFileNames: '[name].js',
+            ...outputOptions
+          },
           plugins: [preserveDirectives()]
         }
       }

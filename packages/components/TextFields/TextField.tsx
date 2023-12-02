@@ -11,7 +11,7 @@ interface TextFieldRootProps
 }
 const TextField = forwardRef<HTMLInputElement, TextFieldRootProps>(
   (props, ref) => {
-    const { variant, ...rest } = props
+    const { variant = 'filled', ...rest } = props
 
     return (
       <>

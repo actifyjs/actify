@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react'
 import { Tooltip, IconButton } from 'actify'
-import { name, version } from './../../package.json'
+import { name, version } from '../../package.json'
 
 interface OpenInStackblitzProps
   extends React.FormHTMLAttributes<HTMLFormElement> {

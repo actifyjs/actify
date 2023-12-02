@@ -22,6 +22,5 @@
     "emitDeclarationOnly": true
   },
   "exclude": ["node_modules"],
-  "include": ["packages/index.ts", "packages/**/*.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

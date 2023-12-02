@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "actify": ["packages"]
+    },
+    "outDir": "lib",
+    "target": "ESNext",
+    "module": "ESNext",
+    "declaration": true,
+    "skipLibCheck": true,
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "noEmit": false,
+    "emitDeclarationOnly": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["packages/index.ts", "packages/**/*.ts", "packages/**/*.tsx"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

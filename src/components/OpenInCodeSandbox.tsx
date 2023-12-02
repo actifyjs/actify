@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { name, version } from './../../package.json'
+import { name, version } from '../../package.json'
 import { Icon, IconButton, Tooltip } from 'actify'
 import { getParameters } from 'codesandbox/lib/api/define'
 

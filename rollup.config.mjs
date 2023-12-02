@@ -16,27 +16,19 @@ const outputOptions = {
 export default [
   {
     input: './packages/index.ts',
-    output: [
-      {
-        dir: 'lib',
-        format: 'cjs',
-        exports: 'named',
-        ...outputOptions
-      },
-      {
-        dir: 'lib',
-        format: 'esm',
-        exports: 'named',
-        ...outputOptions
-      }
-    ],
+    output: {
+      dir: 'lib',
+      format: 'esm',
+      exports: 'named',
+      ...outputOptions
+    },
     external: ['react', 'react-dom', '@babel/runtime'],
     plugins: [
       peerDepsExternal(),
       resolve(),
       commonjs(),
       typescript({
-        tsconfig: './tsconfig.json'
+        tsconfig: './tsconfig.rollup.json'
       }),
       typescriptPaths(),
       preserveDirectives(),

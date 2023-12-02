@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.51",
+  "version": "0.1.53",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -21,11 +21,11 @@
     "lib/"
   ],
   "main": "./lib/index.js",
-  "module": "./lib/index.cjs",
   "types": "./lib/index.d.ts",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
+    "build:lib": "tsc && vite build --mode lib",
     "rollup": "rollup -c rollup.config.mjs",
     "preview": "vite preview --host"
   },
