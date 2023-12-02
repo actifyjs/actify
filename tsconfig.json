@@ -4,7 +4,7 @@
     "paths": {
       "actify": ["packages"]
     },
-
+    "outDir": "lib",
     "target": "ESNext",
     "module": "ESNext",
     "declaration": true,
@@ -17,15 +17,11 @@
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noEmit": false,
+    "emitDeclarationOnly": true
   },
-  "include": [
-    "src/",
-    "src/**/*/.ts",
-    "src/**/*/.tsx",
-    "packages/index.ts",
-    "packages/**/*.tsx"
-  ],
+  "exclude": ["node_modules"],
+  "include": ["packages/index.ts", "packages/**/*.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -7,7 +7,8 @@ const variants = tv({
   base: 'relative p-2 -mx-2 mb-2 text-base leading-relaxed border-t border-t-black/10 dark:border-t-white/10 border-b border-b-black/10 dark:border-b-white/10 max-h-[calc(50vh)] overflow-y-auto'
 })
 
-interface DialogDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface DialogDescriptionProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
 const DialogDescription = forwardRef<HTMLDivElement, DialogDescriptionProps>(
   (props, ref) => {

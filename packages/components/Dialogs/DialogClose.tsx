@@ -7,7 +7,8 @@ const variants = tv({
   base: ''
 })
 
-interface DialogCloseProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface DialogCloseProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
 const DialogClose = forwardRef<HTMLDivElement, DialogCloseProps>(
   (props, ref) => {

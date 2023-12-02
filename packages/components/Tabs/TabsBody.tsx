@@ -6,7 +6,7 @@ const variants = tv({
   base: 'block w-full relative bg-transparent'
 })
 
-interface TabsBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface TabsBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const TabsBody = forwardRef<HTMLDivElement, TabsBodyProps>((props, ref) => {
   const { className, children, ...rest } = props

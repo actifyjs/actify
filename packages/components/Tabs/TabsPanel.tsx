@@ -7,7 +7,7 @@ const variants = tv({
   base: ''
 })
 
-interface TabsPanelProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TabsPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string
 }
 

@@ -7,7 +7,8 @@ const variants = tv({
   base: 'w-full flex items-center justify-between text-xl font-semibold leading-snug'
 })
 
-interface DialogHeadingProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface DialogHeadingProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
 const DialogHeading = forwardRef<HTMLDivElement, DialogHeadingProps>(
   (props, ref) => {

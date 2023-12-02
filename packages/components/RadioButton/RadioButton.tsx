@@ -34,44 +34,56 @@ const dotVariants = tv({
   base: 'absolute inset-0 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity peer-checked:text-current'
 })
 
-interface RadioProps extends React.HTMLAttributes<HTMLInputElement> {
+interface RadioProps extends React.HTMLAttributes<HTMLElement> {
+  name?: string
+  value?: string
   disabled?: boolean
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 }
 
-const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { title, style, className, size, color, disabled, children, ...rest } =
-    props
-  const colorVariants = setColor(color ?? 'primary')
+const Radio: React.FC<RadioProps> = forwardRef(
+  (props, ref?: React.Ref<HTMLInputElement>) => {
+    const {
+      title,
+      style,
+      className,
+      size,
+      color,
+      disabled,
+      children,
+      ...rest
+    } = props
+    const colorVariants = setColor(color ?? 'primary')
 
-  return (
-    <label
-      title={title}
-      style={{ color: colorVariants }}
-      className={labelVariants({ disabled })}
-    >
-      <input
-        {...rest}
-        ref={ref}
-        type="radio"
-        style={style}
-        disabled={disabled}
-        className={variants({ size, className })}
-      />
-      <div className={dotVariants()}>
-        <svg
-          fill="currentColor"
-          viewBox="0 0 16 16"
-          className="w-1/2 h-1/2"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="8" cy="8" r="8"></circle>
-        </svg>
-      </div>
-      <Ripple />
-    </label>
-  )
-})
+    return (
+      <label
+        title={title}
+        style={{ color: colorVariants }}
+        className={labelVariants({ disabled })}
+      >
+        <input
+          {...rest}
+          ref={ref}
+          type="radio"
+          style={style}
+          disabled={disabled}
+          className={variants({ size, className })}
+        />
+        <div className={dotVariants()}>
+          <svg
+            fill="currentColor"
+            viewBox="0 0 16 16"
+            className="w-1/2 h-1/2"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="8" cy="8" r="8"></circle>
+          </svg>
+        </div>
+        <Ripple />
+      </label>
+    )
+  }
+)
 
 Radio.displayName = 'Actify.Radio'
 

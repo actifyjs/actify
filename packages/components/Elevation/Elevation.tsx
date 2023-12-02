@@ -18,10 +18,11 @@ const variants = tv({
 
 interface ElevationProps {
   className?: string
-  level: VariantProps<typeof variants>['level']
+  level: 0 | 1 | 2 | 3 | 4 | 5 | VariantProps<typeof variants>['level']
 }
 
 const Elevation: React.FC<ElevationProps> = ({ level, className }) => {
+  // @ts-ignore
   return <span className={variants({ level, className })}></span>
 }
 

@@ -20,13 +20,13 @@ export default [
       {
         dir: 'lib',
         format: 'cjs',
-        entryFileNames: '[name].cjs',
-        exports: 'auto',
+        exports: 'named',
         ...outputOptions
       },
       {
         dir: 'lib',
         format: 'esm',
+        exports: 'named',
         ...outputOptions
       }
     ],

@@ -16,7 +16,8 @@ const variants = tv({
   base: 'relative overflow-x-hidden m-6 p-2 bg-surface rounded-lg'
 })
 
-interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface DialogContentProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
 const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
   (props, propRef) => {

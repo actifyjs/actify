@@ -4,7 +4,7 @@ import { Activator } from './Activator'
 import React, { forwardRef } from 'react'
 import { BottomSheetsProvider } from './Context'
 
-type BottomSheetsProps = {
+export type BottomSheetsProps = {
   open?: boolean
 } & React.HTMLAttributes<HTMLDivElement>
 

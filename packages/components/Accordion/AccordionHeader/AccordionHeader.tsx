@@ -22,8 +22,8 @@ const variants = tv({
   }
 })
 
-type AccordionHeaderProps = {
-  index: number
+export type AccordionHeaderProps = {
+  index?: number
   asChild?: boolean
 } & React.HTMLAttributes<HTMLDivElement>
 

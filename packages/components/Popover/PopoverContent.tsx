@@ -15,7 +15,8 @@ const variants = tv({
   base: 'relative overflow-x-hidden p-2 bg-surface rounded-lg focus-visible:outline-none'
 })
 
-interface PopoverContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface PopoverContentProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
 const PopoverContent: React.FC<PopoverContentProps> = forwardRef(
   ({ style, ...props }, propRef?: React.MutableRefObject<any>) => {

@@ -12,14 +12,14 @@ const variants = tv({
   base: 'rounded-md border p-4'
 })
 
-interface ItemProps
+export interface AccordionItemProps
   extends VariantProps<typeof variants>,
     React.HTMLAttributes<HTMLDivElement> {
-  index: number
+  index?: number
   children: React.ReactNode
 }
 
-const AccordionItem: React.FC<ItemProps> = forwardRef(
+const AccordionItem: React.FC<AccordionItemProps> = forwardRef(
   (props, ref?: React.Ref<HTMLDivElement>) => {
     const { index, style, className, children, ...rest } = props
 

@@ -2,7 +2,7 @@
 import React, { forwardRef, isValidElement, cloneElement } from 'react'
 import { useBottomSheets } from './Context'
 
-interface ActivatorProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ActivatorProps extends React.HTMLAttributes<HTMLDivElement> {
   asChild?: boolean
 }
 

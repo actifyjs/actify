@@ -28,7 +28,7 @@ const innerVariants = tv({
   }
 })
 
-interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
   divider?: boolean
 }
 

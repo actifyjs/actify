@@ -8,7 +8,8 @@ const variants = tv({
   base: 'flex items-center'
 })
 
-interface DialogActivatorProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DialogActivatorProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   asChild?: boolean
 }
 

@@ -7,7 +7,8 @@ const variants = tv({
   base: ''
 })
 
-interface DrawerActivatorProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DrawerActivatorProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   asChild?: boolean
 }
 

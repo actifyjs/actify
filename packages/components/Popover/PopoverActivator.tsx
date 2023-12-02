@@ -8,7 +8,8 @@ const variants = tv({
   base: 'inline-flex cursor-pointer'
 })
 
-interface PopoverActivatorProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PopoverActivatorProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   asChild?: boolean
 }
 

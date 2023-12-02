@@ -8,7 +8,7 @@ const variants = tv({
   base: 'relative isolate h-10 gap-0 sm:gap-2 px-2 flex items-center justify-center text-base font-normal leading-relaxed select-none cursor-pointer'
 })
 
-interface TabProps extends React.LiHTMLAttributes<HTMLLIElement> {}
+export interface TabProps extends React.LiHTMLAttributes<HTMLLIElement> {}
 
 const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
   // @ts-ignore

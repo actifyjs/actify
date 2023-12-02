@@ -21,10 +21,10 @@ const variants = tv({
   }
 })
 
-interface AccordionContentProps
+export interface AccordionContentProps
   extends VariantProps<typeof variants>,
     React.HTMLAttributes<HTMLDivElement> {
-  index: number
+  index?: number
   asChild?: boolean
   children: React.ReactNode
 }

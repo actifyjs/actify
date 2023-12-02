@@ -6,7 +6,8 @@ const variants = tv({
   base: 'flex gap-2 p-2 bg-secondary/10 rounded-lg overflow-x-auto [&::-webkit-scrollbar]:hidden'
 })
 
-interface TabsHeaderProps extends React.HTMLAttributes<HTMLUListElement> {}
+export interface TabsHeaderProps
+  extends React.HTMLAttributes<HTMLUListElement> {}
 const TabsHeader = forwardRef<HTMLUListElement, TabsHeaderProps>(
   (props, ref) => {
     const tabRef = ref || useRef()

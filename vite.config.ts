@@ -16,7 +16,11 @@ const alias = {
 const outputOptions = {
   sourcemap: false,
   preserveModules: true,
-  preserveModulesRoot: 'packages/'
+  preserveModulesRoot: 'packages/',
+  globals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  }
 }
 
 // https://vitejs.dev/config/
@@ -28,6 +32,7 @@ export default defineConfig(({ mode }) => {
         alias
       },
       publicDir: false,
+      plugins: [react(), dts({ rollupTypes: true })],
       build: {
         outDir: 'lib',
         rollupOptions: {
@@ -52,8 +57,7 @@ export default defineConfig(({ mode }) => {
           ],
           plugins: [preserveDirectives()]
         }
-      },
-      plugins: [dts({ rollupTypes: true })]
+      }
     }
   }
   return {
