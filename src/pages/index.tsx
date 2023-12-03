@@ -2,11 +2,14 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon, Button } from 'actify'
 import Logo from 'src/components/Logo'
+import { useAppStore } from 'src/store/appStore'
 
 export default () => {
+  const app = useAppStore()
   useEffect(() => {
     document.title =
       'Actify — 🌻React Tailwind CSS Material Design 3 Components Library'
+    app.setDrawer(false)
   }, [])
   return (
     <div className="flex flex-col gap-4 pt-2">

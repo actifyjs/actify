@@ -12,7 +12,7 @@ const variants = tv({
 })
 
 interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
-  value?: number
+  value?: number | string
 }
 
 const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {

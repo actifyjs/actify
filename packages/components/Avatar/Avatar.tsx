@@ -33,11 +33,11 @@ const variants = tv({
   }
 })
 
-interface AvatarPropTypes
+interface AvatarProps
   extends VariantProps<typeof variants>,
     React.ImgHTMLAttributes<HTMLImageElement> {}
 
-const Avatar: React.FC<AvatarPropTypes> = forwardRef(
+const Avatar: React.FC<AvatarProps> = forwardRef(
   (props, ref: React.Ref<HTMLImageElement>) => {
     const { style, className, size, square, rounded, alt, src, ...rest } = props
 

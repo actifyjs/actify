@@ -1,6 +1,6 @@
 import './main.css'
 import routes from '~react-pages'
-import ReactDOM from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 import { version } from '../package.json'
 import { StrictMode, Suspense, useEffect } from 'react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
@@ -49,7 +49,7 @@ const App = () => {
   )
 }
 
-ReactDOM.createRoot(document.getElementById('app')).render(
+createRoot(document.getElementById('app')).render(
   <StrictMode>
     <BrowserRouter>
       <ToastProvider>
