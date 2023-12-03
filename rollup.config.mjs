@@ -22,7 +22,23 @@ export default [
       exports: 'named',
       ...outputOptions
     },
-    external: ['react', 'react-dom', '@babel/runtime'],
+    external: [
+      'dayjs',
+      'zustand',
+      'react',
+      'popmotion',
+      'react-dom',
+      'lucide-react',
+      'usehooks-ts',
+      '@babel/runtime',
+      'framer-motion',
+      'react-router-dom',
+      'tailwind-merge',
+      'tailwind-variants',
+      '@floating-ui/react',
+      'react-tailwindcss-select',
+      'react-tailwindcss-datepicker'
+    ],
     plugins: [
       peerDepsExternal(),
       resolve(),
