@@ -29,8 +29,8 @@ const innerVariants = tv({
 
 const Content: React.FC<React.HTMLAttributes<HTMLDivElement>> = forwardRef(
   ({ style, className, children, ...rest }, ref: React.Ref<HTMLDivElement>) => {
-    // @ts-ignore
-    const { open, setOpen } = useBottomSheets()
+    const open = useBottomSheets((s) => s.open)
+    const setOpen = useBottomSheets((s) => s.setOpen)
 
     return (
       <>

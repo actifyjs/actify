@@ -1,21 +1,17 @@
 'use client'
+import React from 'react'
 import { Content } from './Content'
 import { Activator } from './Activator'
-import React, { forwardRef } from 'react'
-import { BottomSheetsProvider } from './Context'
+import { BottomSheetsProvider, BottomSheetsProviderProps } from './Context'
 
 export type BottomSheetsProps = {
   open?: boolean
 } & React.HTMLAttributes<HTMLDivElement>
 
-const BottomSheets: React.FC<BottomSheetsProps> = forwardRef((props, ref) => {
+const BottomSheets: React.FC<BottomSheetsProviderProps> = (props) => {
   const { children, ...rest } = props
-  return (
-    <BottomSheetsProvider ref={ref} {...rest}>
-      {children}
-    </BottomSheetsProvider>
-  )
-})
+  return <BottomSheetsProvider {...rest}>{children}</BottomSheetsProvider>
+}
 
 BottomSheets.displayName = 'Actify.BottomSheets'
 

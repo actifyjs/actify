@@ -11,8 +11,8 @@ const Activator: React.FC<ActivatorProps> = forwardRef(
     { asChild = false, style, className, children, ...rest },
     ref?: React.Ref<HTMLDivElement>
   ) => {
-    // @ts-ignore
-    const { open, setOpen } = useBottomSheets()
+    const open = useBottomSheets((s) => s.open)
+    const setOpen = useBottomSheets((s) => s.setOpen)
 
     // `asChild` allows the user to pass any element as the activator
     if (asChild && isValidElement(children)) {
