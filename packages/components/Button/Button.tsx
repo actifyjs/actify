@@ -65,25 +65,25 @@ interface ButtonProps<T extends ButtonTypes>
 const Button = forwardRef(
   <T extends ButtonTypes>(
     props: ButtonProps<T>,
-    ref?: React.Ref<HTMLAnchorElement | HTMLButtonElement>
+    ref?: React.Ref<ButtonTypes>
   ) => {
     const {
       href,
       style,
       disabled,
+      children,
+      className,
       ripple = true,
       color = 'primary',
-      variant = 'filled',
-      className,
-      children
+      variant = 'filled'
     } = props
 
     if (href) {
       return (
         <a
-          ref={ref as React.Ref<HTMLAnchorElement>}
           href={href}
           style={style}
+          ref={ref as React.Ref<HTMLAnchorElement>}
           {...{
             ...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>),
             className: variants({
@@ -102,9 +102,9 @@ const Button = forwardRef(
 
     return (
       <button
-        ref={ref as React.Ref<HTMLButtonElement>}
         style={style}
         disabled={disabled}
+        ref={ref as React.Ref<HTMLButtonElement>}
         {...{
           ...(props as React.ButtonHTMLAttributes<HTMLButtonElement>),
           className: variants({

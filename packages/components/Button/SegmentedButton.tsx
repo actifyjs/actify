@@ -57,11 +57,10 @@ const SegmentedButton: React.FC<SegmentedButtonProps> = forwardRef(
           children,
           (child, index) =>
             isValidElement(child) &&
-            cloneElement(child, {
-              // @ts-ignore
-              variant,
+            cloneElement<SegmentedButtonProps>(child, {
               color,
               ripple,
+              variant,
               className: variants({
                 roundedRightNone: index !== Children.count(children) - 1,
                 borderRightZero: index !== Children.count(children) - 1,

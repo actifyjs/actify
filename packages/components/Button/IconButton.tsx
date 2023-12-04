@@ -17,52 +17,70 @@ const variants = tv({
   }
 })
 
-interface IconButtonProps
+type IconButtonTypes = HTMLAnchorElement | HTMLButtonElement
+interface IconButtonProps<T extends IconButtonTypes>
   extends VariantProps<typeof variants>,
-    React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement> {
-  tag?: string
+    React.AnchorHTMLAttributes<T>,
+    React.ButtonHTMLAttributes<T> {
+  href?: string
   ripple?: boolean
-  size?: string | number
+  disabled?: boolean
+  type?: 'submit' | 'reset' | 'button'
 }
 
-const IconButton = forwardRef<React.Ref<HTMLButtonElement>, IconButtonProps>(
-  (props, ref) => {
+const IconButton = forwardRef(
+  <T extends IconButtonTypes>(
+    props: IconButtonProps<T>,
+    ref?: React.Ref<IconButtonTypes>
+  ) => {
     const {
-      tag,
-      ripple = true,
+      href,
       style,
-      size = 40,
-      variant = 'standard',
-      color = 'current',
-      className,
-      type = 'button',
+      disabled,
       children,
-      ...rest
+      className,
+      ripple = true,
+      color = 'current',
+      variant = 'standard'
     } = props
     const colorVariant = setColor(color)
 
-    let Tag = ''
-    // @ts-ignore
-    if (rest.href) {
-      Tag = 'a'
-    } else if (tag) {
-      Tag = tag
-    } else {
-      Tag = 'button'
+    if (href) {
+      return (
+        <a
+          href={href}
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          style={{ color: colorVariant, ...style }}
+          {...{
+            ...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>),
+            className: variants({
+              variant,
+              className
+            })
+          }}
+        >
+          {children}
+          {ripple && <Ripple />}
+        </a>
+      )
     }
 
     return (
-      // @ts-ignore
-      <Tag
-        ref={ref}
-        {...rest}
-        type={type}
+      <button
+        disabled={disabled}
+        ref={ref as React.Ref<HTMLButtonElement>}
         style={{ color: colorVariant, ...style }}
-        className={variants({ className })}
+        {...{
+          ...(props as React.ButtonHTMLAttributes<HTMLButtonElement>),
+          className: variants({
+            variant,
+            className
+          })
+        }}
       >
         {children}
         {ripple && <Ripple />}
-      </Tag>
+      </button>
     )
   }
 )
