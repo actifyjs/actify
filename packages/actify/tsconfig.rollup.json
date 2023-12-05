@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "declaration": true,
+    "outDir": "./lib",
+    "paths": {
+      "@actify/*": ["./src/components/*"]
+    }
+  },
+  "exclude": ["node_modules", "lib"]
+}
