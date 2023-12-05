@@ -19,8 +19,7 @@ const DatePicker: React.FC<DatepickerType> = (props) => {
   return (
     <ReactDatepicker
       {...rest}
-      // @ts-ignore
-      inputClassName={inputVariants({ className: inputClassName })}
+      inputClassName={inputVariants({ className: inputClassName as string })}
     />
   )
 }

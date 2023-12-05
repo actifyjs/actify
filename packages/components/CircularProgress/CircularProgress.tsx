@@ -142,7 +142,7 @@ const CircularProgress = forwardRef<HTMLDivElement, CircularPropTypes>(
                     r: `${50 * (1 - ActiveIndicatorWidth * 0.01)}%`
                   } as React.CSSProperties
                 }
-                strokeDashoffset={(1 - value / 100) * 100}
+                strokeDashoffset={(1 - Number(value) / 100) * 100}
               />
             </svg>
           )}
