@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tabs } from 'actify'
+import { Terminal, TerminalSquare, ChevronRightSquare } from 'lucide-react'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 
 interface ActifyTabsProps extends React.HTMLAttributes<HTMLElement> {
@@ -9,6 +10,16 @@ interface ActifyTabsProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 type TypeTab = [{ label: string; icon: string; content: string }]
+
+type IconProps = {
+  name: 'pnpm' | 'yarn' | 'npm'
+}
+
+const IconMap = {
+  pnpm: <Terminal />,
+  yarn: <TerminalSquare />,
+  npm: <ChevronRightSquare />
+}
 
 const ActifyTabs: React.FC<ActifyTabsProps> = (props) => {
   const { value, language, tabs } = props
@@ -25,7 +36,7 @@ const ActifyTabs: React.FC<ActifyTabsProps> = (props) => {
               value={tab.label}
               className="min-w-[120px]"
             >
-              {tab.icon}
+              {IconMap[tab.icon as IconProps['name']]}
               {tab.label}
             </Tabs.Tab>
           ))}

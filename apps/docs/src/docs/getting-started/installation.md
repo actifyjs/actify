@@ -8,14 +8,14 @@ title: Installation
 
 ## Install
 
-<tabs language="shell" value="yarn" tabs='[{"label":"npm","icon":"terminal","content":"npm install actify"},{"label":"yarn","icon":"terminal-square","content":"yarn add actify"}]'></tabs>
+<tabs language="shell" value="pnpm" tabs='[{"label":"pnpm","icon":"pnpm","content":"pnpm add actify"},{"label":"yarn","icon":"yarn","content":"yarn add actify"},{"label":"npm","icon":"npm","content":"npm install actify"}]'></tabs>
 
 ## tailwind.config.js
 
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./node_modules/actify/lib/*.{js,jsx}'],
+  content: ['./node_modules/actify/lib/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
