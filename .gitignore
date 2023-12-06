@@ -26,3 +26,5 @@ dist-ssr
 
 .next
 .turbo
+packages/*/README.md
+packages/*/LICENSE.md
