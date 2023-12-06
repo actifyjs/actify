@@ -10,7 +10,7 @@
     "@manypkg/cli": "latest",
     "eslint": "^8.35.0",
     "prettier": "^3.0.3",
-    "turbo": "^1.8.2"
+    "turbo": "^1.11.0"
   },
   "packageManager": "pnpm@8.11.0"
 }
