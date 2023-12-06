@@ -1,16 +1,17 @@
-import { Fab, Icon, BottomAppBar } from 'actify'
+import { Fab, BottomAppBar } from 'actify'
+import { Home, User2, Camera, Search, Plus } from 'lucide-react'
 
 export default () => {
   return (
     <BottomAppBar className="max-w-3xl">
       <BottomAppBar.Icons>
-        <Icon name="home" />
-        <Icon name="user-2" />
-        <Icon name="camera" />
-        <Icon name="search" />
+        <Home />
+        <User2 />
+        <Camera />
+        <Search />
       </BottomAppBar.Icons>
       <BottomAppBar.Fab>
-        <Fab name="fab" icon="plus" color="bg-surface" />
+        <Fab name="fab" icon={<Plus />} color="bg-surface" />
       </BottomAppBar.Fab>
     </BottomAppBar>
   )

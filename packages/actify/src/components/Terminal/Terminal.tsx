@@ -1,7 +1,7 @@
 'use client'
-import React, { forwardRef, useMemo } from 'react'
 import dayjs from 'dayjs'
 import { tv } from 'tailwind-variants'
+import React, { forwardRef, useMemo } from 'react'
 
 const variants = tv({
   base: 'mx-auto h-64 overflow-hidden rounded shadow-2xl bg-black'

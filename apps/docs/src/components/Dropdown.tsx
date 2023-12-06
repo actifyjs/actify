@@ -1,6 +1,7 @@
 import React from 'react'
+import { Button } from 'actify'
 import { Link } from 'react-router-dom'
-import { Button, Icon } from 'actify'
+import { ChevronDown } from 'lucide-react'
 
 interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
   items?: Array<{
@@ -21,7 +22,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
       >
         {title}
         <div className="flex items-center">
-          <Icon name="chevron-down" size={20} />
+          <ChevronDown size={20} />
         </div>
       </Button>
 

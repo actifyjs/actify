@@ -1,7 +1,7 @@
 'use client'
-import React, { forwardRef, useState } from 'react'
-import { Icon } from '@actify/Icon'
 import { Ripple } from '@actify/Ripple'
+import { X, Check, Circle } from 'lucide-react'
+import React, { forwardRef, useState } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const variants = tv({
@@ -20,11 +20,11 @@ interface ChipProps
   extends VariantProps<typeof variants>,
     React.HTMLAttributes<HTMLAnchorElement | HTMLDivElement> {
   label?: string
-  icon?: string
   href?: string
   target?: string
   ripple?: boolean
   selected?: boolean
+  icon?: React.ReactNode
 }
 
 const Chip = forwardRef<HTMLAnchorElement | HTMLDivElement, ChipProps>(
@@ -64,17 +64,15 @@ const Chip = forwardRef<HTMLAnchorElement | HTMLDivElement, ChipProps>(
           onClick={handleClick}
           className={variants({ type, className })}
         >
-          {type == 'filter' && (
-            <Icon
-              size={18}
-              color={color}
-              name={`${selected ? 'check' : 'circle'}`}
-            />
+          {type == 'filter' && selected ? (
+            <Check size={18} color={color} />
+          ) : (
+            <Circle size={18} color={color} />
           )}
           {label}
           {ripple && <Ripple />}
           {type == 'input' && (
-            <Icon name="x" size={18} onClick={() => setShow(false)} />
+            <X size={18} color={color} onClick={() => setShow(false)} />
           )}
         </Tag>
       )

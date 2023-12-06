@@ -1,22 +1,23 @@
-import { NavigationBar, ListItem, Icon } from 'actify'
+import { NavigationBar, ListItem } from 'actify'
+import { Home, Camera, UserRound, Settings } from 'lucide-react'
 
 export default () => {
   const list = [
     {
       label: 'Home',
-      icon: 'home'
+      icon: <Home />
     },
     {
       label: 'Camera',
-      icon: 'camera'
+      icon: <Camera />
     },
     {
       label: 'User',
-      icon: 'user-round'
+      icon: <UserRound />
     },
     {
       label: 'Settings',
-      icon: 'settings'
+      icon: <Settings />
     }
   ]
 
@@ -27,7 +28,7 @@ export default () => {
           key={index}
           className="h-[52px] p-0 flex flex-col justify-between"
         >
-          <Icon name={item.icon} />
+          {item.icon}
           <span className="text-xs font-semibold mt-1">{item.label}</span>
         </ListItem>
       ))}

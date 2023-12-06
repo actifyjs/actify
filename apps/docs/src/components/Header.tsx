@@ -1,10 +1,11 @@
-//@ts-nocheck
 import React from 'react'
+import { Menu } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useAppStore } from '@/store/appStore'
 import { useShallow } from 'zustand/react/shallow'
-import { Icon, Button, Spacer, IconButton } from 'actify'
+import { Button, Spacer, IconButton } from 'actify'
+import { Gamepad2, Palette } from 'lucide-react'
 import Logo from '@/components/Logo'
 import Search from '@/components/Search'
 import Dropdown from '@/components/Dropdown'
@@ -58,7 +59,7 @@ const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
             className="inline-flex md:hidden"
             onClick={() => setDrawer(!drawer)}
           >
-            <Icon name="menu" color="primary" />
+            <Menu color="primary" />
           </IconButton>
         )}
         <Search
@@ -76,11 +77,11 @@ const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
         <Spacer />
         <Link to="/playground" className="block md:hidden">
           <IconButton>
-            <Icon name="gamepad-2" color="primary" />
+            <Gamepad2 />
           </IconButton>
         </Link>
-        <IconButton onClick={handleUpdateTheme}>
-          <Icon name="palette" color="primary" />
+        <IconButton onClick={handleUpdateTheme} color="primary">
+          <Palette />
         </IconButton>
         <SwitchTheme />
         <div className="hidden w-full md:block md:w-auto">

@@ -1,8 +1,9 @@
+import { Button } from 'actify'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Icon, Button } from 'actify'
 import Logo from '@/components/Logo'
+import { Link } from 'react-router-dom'
 import { useAppStore } from '@/store/appStore'
+import { ArrowRight, Github, HelpCircle } from 'lucide-react'
 
 export default () => {
   const app = useAppStore()
@@ -23,12 +24,12 @@ export default () => {
         <Link to="/getting-started/installation">
           <Button className="sm:before:content-['Get']">
             Started
-            <Icon name="arrow-right" />
+            <ArrowRight />
           </Button>
         </Link>
         <Link to="/getting-started/why-actify">
           <Button color="secondary" className="sm:after:content-['Actify']">
-            <Icon name="help-circle" />
+            <HelpCircle />
             Why
           </Button>
         </Link>
@@ -37,7 +38,7 @@ export default () => {
           variant="outlined"
           href="https://github.com/actifyjs/actify"
         >
-          <Icon name="github" />
+          <Github />
           GitHub
         </Button>
       </div>

@@ -1,7 +1,8 @@
-import React from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Prism from 'prismjs'
 import { tv } from 'tailwind-variants'
-import { Icon, IconButton } from 'actify'
+import { Check, Copy, CopyX } from 'lucide-react'
+import { IconButton } from 'actify'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-css.min.js'
 import 'prismjs/components/prism-jsx.min.js'
@@ -11,12 +12,16 @@ const variants = tv({
   base: 'group !overflow-x-hidden'
 })
 
-const SyntaxHighlighter = (props) => {
-  const ref = React.useRef()
-  const { className, code, language, children } = props
-  const [iconName, setIconName] = React.useState('copy')
+type CopyIconProps = {
+  name: 'copy' | 'copy-x' | 'check'
+}
 
-  React.useEffect(() => {
+const SyntaxHighlighter = (props) => {
+  const ref = useRef()
+  const { className, code, language, children } = props
+  const [iconName, setIconName] = useState<CopyIconProps['name']>('copy')
+
+  useEffect(() => {
     highlight()
   }, [children])
 
@@ -51,7 +56,7 @@ const SyntaxHighlighter = (props) => {
         </div>
         <div className="mt-6 cursor-pointer text-white opacity-0 transition-opacity hover:text-white/75 group-hover:opacity-100">
           <IconButton variant="filled" onClick={copyCode} color="surface">
-            <Icon name={iconName} />
+            <CopyIcon name={iconName} />
           </IconButton>
         </div>
       </div>
@@ -67,6 +72,15 @@ const SyntaxHighlighter = (props) => {
       </pre>
     </div>
   )
+}
+
+const IconMap = {
+  copy: <Copy />,
+  'copy-x': <CopyX />,
+  check: <Check />
+}
+const CopyIcon: React.FC<CopyIconProps> = ({ name }) => {
+  return IconMap[name]
 }
 
 export default SyntaxHighlighter

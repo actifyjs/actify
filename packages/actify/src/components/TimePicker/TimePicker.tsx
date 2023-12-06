@@ -16,11 +16,11 @@ import {
   FloatingFocusManager
 } from '@floating-ui/react'
 
-import { Icon } from '@actify/Icon'
+import dayjs from 'dayjs'
+import { Picker } from './Picker'
+import { CalendarClock } from 'lucide-react'
 import { TextField } from '@actify/TextFields'
 import { IconButton } from '@actify/Button/IconButton'
-import { Picker } from './Picker'
-import dayjs from 'dayjs'
 
 const TimePicker = ({ onChange }) => {
   const [open, setOpen] = useState(false)
@@ -78,7 +78,7 @@ const TimePicker = ({ onChange }) => {
       >
         <TextField.TrailingIcon>
           <IconButton>
-            <Icon name="calendar-clock" />
+            <CalendarClock />
           </IconButton>
         </TextField.TrailingIcon>
       </TextField>

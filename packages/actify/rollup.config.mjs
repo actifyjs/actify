@@ -57,7 +57,6 @@ export default [
       'tslib',
       'popmotion',
       'react-dom',
-      'lucide-react',
       'usehooks-ts',
       '@babel/runtime',
       'framer-motion',
@@ -65,8 +64,7 @@ export default [
       'tailwind-merge',
       'tailwind-variants',
       '@floating-ui/react',
-      'react-tailwindcss-select',
-      'react-tailwindcss-datepicker'
+      'react-tailwindcss-select'
     ],
     plugins: [
       peerDepsExternal(),

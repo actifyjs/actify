@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Icon, TextField, Button, IconButton } from 'actify'
+import { TextField, Button, IconButton } from 'actify'
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
 export default () => {
   const navigate = useNavigate()
@@ -47,7 +48,7 @@ export default () => {
             suffixText="@actifyjs.com"
           >
             <TextField.LeadingIcon>
-              <Icon name="mail" />
+              <Mail />
             </TextField.LeadingIcon>
           </TextField>
 
@@ -59,12 +60,12 @@ export default () => {
             type={showPassword ? 'text' : 'password'}
           >
             <TextField.LeadingIcon>
-              <Icon name="lock" />
+              <Lock />
             </TextField.LeadingIcon>
 
             <TextField.TrailingIcon>
               <IconButton onClick={() => setShowPassword((_) => !_)}>
-                <Icon name={showPassword ? 'eye-off' : 'eye'} />
+                {showPassword ? <EyeOff /> : <Eye />}
               </IconButton>
             </TextField.TrailingIcon>
           </TextField>

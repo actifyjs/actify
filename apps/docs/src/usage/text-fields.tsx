@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Icon, TextField, IconButton } from 'actify'
+import { TextField, IconButton } from 'actify'
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
 export default () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -8,7 +9,7 @@ export default () => {
     <form className="flex items-center gap-2 flex-wrap">
       <TextField label="Email" suffixText="@actifyjs.com">
         <TextField.LeadingIcon>
-          <Icon name="mail" />
+          <Mail />
         </TextField.LeadingIcon>
       </TextField>
 
@@ -19,12 +20,12 @@ export default () => {
         type={showPassword ? 'text' : 'password'}
       >
         <TextField.LeadingIcon>
-          <Icon name="lock" />
+          <Lock />
         </TextField.LeadingIcon>
 
         <TextField.TrailingIcon>
           <IconButton onClick={() => setShowPassword((prev) => !prev)}>
-            <Icon name={showPassword ? 'eye-off' : 'eye'} />
+            {showPassword ? <EyeOff /> : <Eye />}
           </IconButton>
         </TextField.TrailingIcon>
       </TextField>

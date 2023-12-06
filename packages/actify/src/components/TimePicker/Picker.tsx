@@ -1,8 +1,8 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import { Icon } from '@actify/Icon'
+import { Keyboard } from 'lucide-react'
 import { Spacer } from '@actify/Spacer'
 import { Button } from '@actify/Button'
+import React, { useEffect, useState } from 'react'
 import { IconButton } from '@actify/Button/IconButton'
 
 const Picker = ({ value, onChange }) => {
@@ -248,7 +248,7 @@ const Picker = ({ value, onChange }) => {
         <div className="rounded-b-lg flex justify-between items-center w-full h-14 px-3 bg-white dark:bg-zinc-500">
           <div className="w-full flex justify-between">
             <IconButton>
-              <Icon name="keyboard" />
+              <Keyboard />
             </IconButton>
             <Spacer />
             <Button variant="text">Cancel</Button>

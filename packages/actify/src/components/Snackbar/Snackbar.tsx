@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Icon } from '@actify/Icon'
+import { X } from 'lucide-react'
 import { IconButton } from '@actify/Button/IconButton'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -60,7 +60,7 @@ const Snackbar: React.FC<SnackbarProps> = ({ timeout = 3000, children }) => {
                 onClick={(e) => remove(e, item.key)}
                 className="h-12 cursor-pointer pointer-events-auto flex justify-center"
               >
-                <Icon name="x" size={24} className="text-on-inverse-surface" />
+                <X size={24} className="text-on-inverse-surface" />
               </IconButton>
             </div>
           </motion.li>

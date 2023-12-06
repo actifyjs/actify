@@ -1,5 +1,6 @@
+import { IconButton } from 'actify'
 import React, { useState } from 'react'
-import { IconButton, Icon } from 'actify'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 const Swiper = ({ children }) => {
   const count = React.Children.count(children)
@@ -37,10 +38,12 @@ const Swiper = ({ children }) => {
   return (
     <div className="grid w-full place-items-center overflow-hidden">
       <div
-        style={{
-          '--transition': transition,
-          '--transform': transform || `-${current + 1}00%`
-        }}
+        style={
+          {
+            '--transition': transition,
+            '--transform': transform || `-${current + 1}00%`
+          } as React.CSSProperties
+        }
         className="relative h-full overflow-hidden rounded-lg flex"
       >
         {children[count - 1]}
@@ -65,13 +68,13 @@ const Swiper = ({ children }) => {
           onClick={prev}
           className="absolute top-1/2 -translate-y-1/2 bg-white left-5"
         >
-          <Icon name="arrow-left" />
+          <ArrowLeft />
         </IconButton>
         <IconButton
           onClick={next}
           className="absolute top-1/2 -translate-y-1/2 bg-white right-5"
         >
-          <Icon name="arrow-right" />
+          <ArrowRight />
         </IconButton>
       </div>
     </div>

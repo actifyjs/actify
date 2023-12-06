@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Icon } from '@actify/Icon'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { IconButton } from '@actify/Button/IconButton'
 import { useInterval } from 'usehooks-ts'
 import { useCarousel } from './CarouselContext'
@@ -40,14 +40,14 @@ const CarouselControl: React.FC<CarouselControlProps> = ({
           onClick={prev}
           className="bg-inverse-surface absolute z-30 left-4 top-1/2 -translate-y-1/2"
         >
-          <Icon name="chevron-left" />
+          <ChevronLeft />
           <span className="sr-only">Previous</span>
         </IconButton>
         <IconButton
           onClick={next}
           className="bg-inverse-surface absolute z-30 right-4 top-1/2 -translate-y-1/2"
         >
-          <Icon name="chevron-right" />
+          <ChevronRight />
           <span className="sr-only">Next</span>
         </IconButton>
       </>

@@ -1,5 +1,5 @@
 'use client'
-import { Icon } from '@actify/Icon'
+import { X, Check } from 'lucide-react'
 import { Ripple } from '@actify/Ripple'
 import { tv } from 'tailwind-variants'
 import { setColor } from './../../utils'
@@ -84,10 +84,16 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
       />
       <div className={variants({ disabled, className })}></div>
       <i className={dotVariants({ icons })}>
-        {icons && (
-          <Icon
+        {icons && inputValue ? (
+          <Check
             size={16}
-            name={`${inputValue ? 'check' : 'x'}`}
+            className={`${
+              inputValue ? 'text-inverse-surface' : 'text-surface'
+            }`}
+          />
+        ) : (
+          <X
+            size={16}
             className={`${
               inputValue ? 'text-inverse-surface' : 'text-surface'
             }`}

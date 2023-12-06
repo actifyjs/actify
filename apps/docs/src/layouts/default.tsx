@@ -165,7 +165,6 @@ const Layout = ({ children }) => {
       <Header />
       <Drawer>
         <List>
-          <ListItemLink to="/getting-started/icon">Icon</ListItemLink>
           <ListItemLink to="/getting-started/theme">Theme</ListItemLink>
           {components.map((component, index) =>
             component.children ? (

@@ -1,4 +1,5 @@
-import { Icon, Button } from 'actify'
+import { Button } from 'actify'
+import { PenSquare } from 'lucide-react'
 
 const EditOnGitHub = ({ pathname }) => {
   return (
@@ -8,7 +9,7 @@ const EditOnGitHub = ({ pathname }) => {
       href={`https://github.com/actifyjs/actify/blob/main/src/docs${pathname}.md`}
     >
       Edit this page on GitHub
-      <Icon name="pen-square" size={18} />
+      <PenSquare name="pen-square" size={18} />
     </Button>
   )
 }

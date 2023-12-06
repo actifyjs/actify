@@ -1,6 +1,6 @@
 'use client'
 import React, { forwardRef } from 'react'
-import { Icon } from '@actify/Icon'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@actify/Button'
 import { tv } from 'tailwind-variants'
 
@@ -60,7 +60,7 @@ const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
             onClick={() => onPageChange(1)}
             disabled={currentPage === 1}
           >
-            <Icon name="chevron-left" />
+            <ChevronLeft />
           </Button>
         </li>
         {pagination().map((page) => (
@@ -86,7 +86,7 @@ const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
             onClick={() => onPageChange(totalPages)}
             disabled={currentPage === totalPages}
           >
-            <Icon name="chevron-right" />
+            <ChevronRight />
           </Button>
         </li>
       </ul>

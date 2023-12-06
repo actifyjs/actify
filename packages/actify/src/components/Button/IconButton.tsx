@@ -40,6 +40,7 @@ const IconButton = forwardRef(
       children,
       className,
       ripple = true,
+      type = 'button',
       color = 'current',
       variant = 'standard'
     } = props
@@ -67,6 +68,7 @@ const IconButton = forwardRef(
 
     return (
       <button
+        type={type}
         disabled={disabled}
         ref={ref as React.Ref<HTMLButtonElement>}
         style={{ color: colorVariant, ...style }}

@@ -1,7 +1,8 @@
 import BarChart from '@/components/admin/BarChart'
 import SvgChart from '@/components/admin/SvgChart'
 import PieChart from '@/components/admin/PieChart'
-import { Card, Divider, Chip, Icon, Tabs, Button } from 'actify'
+import { Card, Divider, Chip, Tabs, Button } from 'actify'
+import { BadgeDollarSign, Fan, Atom, Lollipop } from 'lucide-react'
 
 export default () => {
   const random = (min: number, max: number) =>
@@ -23,25 +24,25 @@ export default () => {
       title: 'lorem',
       total: '2,000',
       content: 'month',
-      icon: 'badge-dollar-sign'
+      icon: <BadgeDollarSign />
     },
     {
       title: 'ipsum',
       total: '3,000',
       content: 'month',
-      icon: 'fan'
+      icon: <Fan />
     },
     {
       title: 'dolor',
       total: '5,000',
       content: 'month',
-      icon: 'atom'
+      icon: <Atom />
     },
     {
       title: 'sit',
       total: '3,000',
       content: 'month',
-      icon: 'lollipop'
+      icon: <Lollipop />
     }
   ]
 
@@ -58,7 +59,7 @@ export default () => {
             <div className="text-xl font-medium p-4 gap-4 grid grid-rows-2 grid-cols-2 place-items-center">
               <div>${item.total}</div>
               <div className="bg-primary rounded-full w-10 h-10 grid place-content-center">
-                <Icon name={item.icon} size={32} />
+                {item.icon}
               </div>
               <div>total</div>
               <p>$5,000</p>

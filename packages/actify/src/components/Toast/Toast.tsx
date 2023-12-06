@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Icon } from '@actify/Icon'
+import { XCircle, CheckCircle2 } from 'lucide-react'
 import { IconButton } from '@actify/Button/IconButton'
 import { useToastDispatchContext } from './ToastContext'
 
@@ -19,7 +19,7 @@ const Toast: React.FC<ToastProps> = ({ type, message, id }) => {
         <div className="rounded bg-green-50 py-3 px-4 m-3">
           <div className="flex">
             <div className="flex-shrink-0">
-              <Icon name="check-circle-2" className="text-green-400" />
+              <CheckCircle2 className="text-green-400" />
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-green-800">{message}</p>
@@ -33,7 +33,7 @@ const Toast: React.FC<ToastProps> = ({ type, message, id }) => {
                   className="text-green-500"
                 >
                   <span className="sr-only">Dismiss</span>
-                  <Icon name="x-circle" />
+                  <XCircle />
                 </IconButton>
               </div>
             </div>
@@ -44,7 +44,7 @@ const Toast: React.FC<ToastProps> = ({ type, message, id }) => {
         <div className="rounded bg-red-50 py-3 px-4 m-3">
           <div className="flex">
             <div className="flex-shrink-0">
-              <Icon name="x-circle" className="text-red-400" />
+              <XCircle className="text-red-400" />
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-red-800">{message}</p>
@@ -58,7 +58,7 @@ const Toast: React.FC<ToastProps> = ({ type, message, id }) => {
                   className="text-red-500"
                 >
                   <span className="sr-only">Dismiss</span>
-                  <Icon name="x-circle" />
+                  <XCircle />
                 </IconButton>
               </div>
             </div>

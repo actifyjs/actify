@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
+import { X } from 'lucide-react'
 import { tv } from 'tailwind-variants'
-import { Icon } from '@actify/Icon'
 import { IconButton } from '@actify/Button/IconButton'
 import { useSideSheets } from './Context'
 
@@ -20,7 +20,7 @@ const Header: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
     <div className="pl-6 pr-3 pt-3 pb-4 flex items-center">
       <div className={variants({ className })}>{children}</div>
       <IconButton onClick={() => setOpen(false)}>
-        <Icon name="x" />
+        <X />
       </IconButton>
     </div>
   )

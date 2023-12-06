@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Tabs } from 'actify'
+import { Tabs } from 'actify'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 
 interface ActifyTabsProps extends React.HTMLAttributes<HTMLElement> {
@@ -25,7 +25,7 @@ const ActifyTabs: React.FC<ActifyTabsProps> = (props) => {
               value={tab.label}
               className="min-w-[120px]"
             >
-              <Icon name={tab.icon} size={18} />
+              {tab.icon}
               {tab.label}
             </Tabs.Tab>
           ))}

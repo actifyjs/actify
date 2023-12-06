@@ -1,6 +1,4 @@
-// @ts-nocheck
 import {
-  Icon,
   List,
   Drawer,
   Button,
@@ -13,8 +11,10 @@ import {
   IconButton
 } from 'actify'
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Menu, User } from 'lucide-react'
 import { tv } from 'tailwind-variants'
+import { LayoutDashboard, Layers, Settings } from 'lucide-react'
+import { Link, NavLink } from 'react-router-dom'
 import SwitchTheme from '@/components/SwitchTheme'
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
@@ -27,7 +27,7 @@ const Aside: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 }) => {
   const list = [
     {
-      icon: 'layout-dashboard',
+      icon: <LayoutDashboard />,
       title: 'Dashboard',
       to: '/admin'
     },
@@ -35,7 +35,7 @@ const Aside: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       divider: true
     },
     {
-      icon: 'layers',
+      icon: <Layers />,
       title: 'User Interface',
       children: [
         { title: 'Form', to: '/admin/form' },
@@ -49,7 +49,7 @@ const Aside: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
     },
     {
       title: 'Settings',
-      icon: 'settings',
+      icon: <Settings />,
       children: [
         { title: 'System Settings', to: '/admin/system-setting' },
         { title: 'User Settings', to: '/admin/user-setting' }
@@ -91,7 +91,7 @@ const Aside: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
               }
             >
               <ListItem className="gap-4 justify-between">
-                <Icon name={icon} />
+                {icon}
                 {title}
                 <div className="w-6"></div>
               </ListItem>
@@ -103,7 +103,7 @@ const Aside: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   )
 }
 
-const Settings = () => {
+const SettingTheme = () => {
   const handleClick = (color) => {
     updateTheme(
       {
@@ -116,8 +116,8 @@ const Settings = () => {
   return (
     <SideSheets divider>
       <SideSheets.Activator>
-        <IconButton>
-          <Icon name="settings" color="primary" />
+        <IconButton color="primary">
+          <Settings />
         </IconButton>
       </SideSheets.Activator>
       <SideSheets.Content>
@@ -226,7 +226,7 @@ export default ({ children }) => {
         <Drawer placement="left" className="overflow-hidden">
           <Drawer.Activator className="lg:hidden">
             <IconButton color="primary">
-              <Icon name="menu" />
+              <Menu />
             </IconButton>
           </Drawer.Activator>
           <Drawer.Content className="w-[240px]">
@@ -236,7 +236,9 @@ export default ({ children }) => {
         <Spacer />
         <Popover>
           <Popover.Activator>
-            <Icon name="user" color="primary" />
+            <IconButton color="primary">
+              <User />
+            </IconButton>
           </Popover.Activator>
           <Popover.Content>
             <List className="py-0 focus-visible:outline-none">
@@ -252,7 +254,7 @@ export default ({ children }) => {
           </Popover.Content>
         </Popover>
         <SwitchTheme />
-        <Settings />
+        <SettingTheme />
       </header>
       <Aside className="top-16 -translate-x-full lg:translate-x-0 w-[240px]" />
       <main className="bg-secondary/10 col-start-2 col-end-3">{children}</main>

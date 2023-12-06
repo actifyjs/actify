@@ -1,4 +1,5 @@
-import { Icon, IconButton } from 'actify'
+import { IconButton } from 'actify'
+import { Sun, MoonStar } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const SwitchTheme = () => {
@@ -78,8 +79,8 @@ const SwitchTheme = () => {
   }
 
   return (
-    <IconButton onClick={toggleTheme}>
-      <Icon name={mode == 'dark' ? 'sun' : 'moon-star'} color="primary" />
+    <IconButton onClick={toggleTheme} color="primary">
+      {mode == 'dark' ? <Sun /> : <MoonStar />}
     </IconButton>
   )
 }

@@ -1,4 +1,5 @@
-import { Icon, Tabs, Spacer, TooltipGroup } from 'actify'
+import { Eye, Code2 } from 'lucide-react'
+import { Tabs, Spacer, TooltipGroup } from 'actify'
 import { lazy, Suspense, useState, useEffect } from 'react'
 import OpenInCodeSandbox from '@/components/OpenInCodeSandbox'
 import OpenInStackblitz from '@/components/OpenInStackblitz'
@@ -23,11 +24,11 @@ const Usage = (props) => {
         <div className="flex border-b border-[#ccc] dark:border-[#222] w-full">
           <Tabs.Header className="bg-transparent w-full">
             <Tabs.Tab value="preview">
-              <Icon name="eye" size={18} />
+              <Eye size={18} />
               Preview
             </Tabs.Tab>
             <Tabs.Tab value="code">
-              <Icon name="code-2" size={18} />
+              <Code2 size={18} />
               Code
             </Tabs.Tab>
             <Spacer />

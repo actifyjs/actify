@@ -1,9 +1,9 @@
 'use client'
-import React, { Children, forwardRef, isValidElement, useState } from 'react'
-import { Icon } from '@actify/Icon'
-import { IconButton } from '@actify/Button/IconButton'
 import { tv } from 'tailwind-variants'
 import { useInterval } from 'usehooks-ts'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { IconButton } from '@actify/Button/IconButton'
+import React, { Children, forwardRef, isValidElement, useState } from 'react'
 
 const variants = tv({
   base: 'grid w-full place-items-center overflow-hidden'
@@ -143,16 +143,24 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
         {prevButton.length ? (
           prevButton
         ) : (
-          <IconButton onClick={prev} className={buttonVariants({ prev: true })}>
-            <Icon name="arrow-left" color="primary" />
+          <IconButton
+            onClick={prev}
+            className={buttonVariants({ prev: true })}
+            color="primary"
+          >
+            <ArrowLeft />
           </IconButton>
         )}
         {/* next button */}
         {nextButton.length ? (
           nextButton
         ) : (
-          <IconButton onClick={next} className={buttonVariants({ next: true })}>
-            <Icon name="arrow-right" color="primary" />
+          <IconButton
+            onClick={next}
+            className={buttonVariants({ next: true })}
+            color="primary"
+          >
+            <ArrowRight />
           </IconButton>
         )}
 

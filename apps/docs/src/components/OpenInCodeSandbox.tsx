@@ -1,7 +1,8 @@
 // @ts-nocheck
 import React from 'react'
 import { name, version } from '../../package.json'
-import { Icon, IconButton, Tooltip } from 'actify'
+import { Codesandbox } from 'lucide-react'
+import { IconButton, Tooltip } from 'actify'
 import { getParameters } from 'codesandbox/lib/api/define'
 
 interface OpenInCodeSandboxProps
@@ -131,7 +132,7 @@ export default defineConfig({
       <input type="hidden" name="parameters" value={parameters} />
       <Tooltip placement="top" content="Open in CodeSandbox">
         <IconButton type="submit">
-          <Icon name="codesandbox" />
+          <Codesandbox />
         </IconButton>
       </Tooltip>
     </form>

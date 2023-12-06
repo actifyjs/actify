@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Badge, Icon, Slider, Select, Button, IconButton } from 'actify'
+import { User } from 'lucide-react'
+import { Badge, Slider, Select, Button, IconButton } from 'actify'
 
 export default () => {
   const [value, setValue] = useState(99)
@@ -10,7 +11,7 @@ export default () => {
       <div className="flex gap-8">
         <Badge value={value} color={color.value}>
           <IconButton>
-            <Icon name="user" />
+            <User />
           </IconButton>
         </Badge>
         <Badge value={value} color={color.value}>

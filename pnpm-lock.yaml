@@ -32,6 +32,9 @@ importers:
       framer-motion:
         specifier: ^10.16.14
         version: 10.16.14(react-dom@18.2.0)(react@18.2.0)
+      lucide-react:
+        specifier: ^0.294.0
+        version: 0.294.0(react@18.2.0)
       react-router-dom:
         specifier: ^6.20.1
         version: 6.20.1(react-dom@18.2.0)(react@18.2.0)
@@ -181,9 +184,6 @@ importers:
       framer-motion:
         specifier: ^10.16.12
         version: 10.16.14(react-dom@18.2.0)(react@18.2.0)
-      lucide-react:
-        specifier: ^0.294.0
-        version: 0.294.0(react@18.2.0)
       popmotion:
         specifier: ^11.0.5
         version: 11.0.5
@@ -236,6 +236,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.16(postcss@8.4.32)
+      lucide-react:
+        specifier: ^0.294.0
+        version: 0.294.0(react@18.2.0)
       postcss:
         specifier: ^8.4.27
         version: 8.4.32
@@ -4430,7 +4433,6 @@ packages:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
-    dev: false
 
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}

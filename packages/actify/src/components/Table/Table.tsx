@@ -7,7 +7,7 @@ import { Th } from './Th'
 import { Tr } from './Tr'
 import { Td } from './Td'
 
-import { Icon } from '@actify/Icon'
+import { Delete, Pencil } from 'lucide-react'
 import { IconButton } from '@actify/Button/IconButton'
 
 const variants = tv({
@@ -84,13 +84,13 @@ const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
                     color="error"
                     onClick={() => onItemDelete?.(item)}
                   >
-                    <Icon name="delete" />
+                    <Delete />
                   </IconButton>
                   <IconButton
                     color="primary"
                     onClick={() => onItemEdit?.(item)}
                   >
-                    <Icon name="pencil" />
+                    <Pencil />
                   </IconButton>
                 </Td>
               )}

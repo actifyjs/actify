@@ -1,12 +1,5 @@
-import {
-  Button,
-  Icon,
-  IconButton,
-  Spacer,
-  Dialog,
-  Switch,
-  TextField
-} from 'actify'
+import { X, Pencil } from 'lucide-react'
+import { Button, IconButton, Spacer, Dialog, Switch, TextField } from 'actify'
 
 export default () => {
   const list = [
@@ -124,7 +117,7 @@ export default () => {
                     <Dialog>
                       <Dialog.Activator>
                         <Button>
-                          <Icon name="pencil" />
+                          <Pencil />
                           Edit
                         </Button>
                       </Dialog.Activator>
@@ -134,7 +127,7 @@ export default () => {
                           <Spacer />
                           <Dialog.Close>
                             <IconButton color="secondary">
-                              <Icon name="x" />
+                              <X />
                             </IconButton>
                           </Dialog.Close>
                         </Dialog.Heading>

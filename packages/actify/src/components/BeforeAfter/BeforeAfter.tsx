@@ -1,6 +1,6 @@
 'use client'
 import React, { useMemo } from 'react'
-import { Icon } from '@actify/Icon'
+import { MoveHorizontal } from 'lucide-react'
 
 type BeforeAfterProps = {
   before: string
@@ -65,7 +65,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({
         />
         <div className="pointer-events-none absolute top-0 left-[--position] h-full w-1 bg-surface"></div>
         <div className="pointer-events-none absolute top-1/2 left-[--position] grid -translate-x-1/2 -translate-y-1/2 rounded-full bg-surface p-2 shadow">
-          <Icon name="move-horizontal" />
+          <MoveHorizontal />
         </div>
       </div>
     </div>

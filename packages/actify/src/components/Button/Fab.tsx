@@ -2,7 +2,6 @@
 import React, { forwardRef } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 import { setColor } from './../../utils'
-import { Icon } from '@actify/Icon'
 import { Ripple } from '@actify/Ripple'
 import { Elevation } from '@actify/Elevation'
 
@@ -27,7 +26,7 @@ interface FabProps
   extends VariantProps<typeof variants>,
     React.ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string
-  icon?: string
+  icon?: JSX.Element
   variant?: 'surface' | 'primary' | 'secondary' | 'tertiary'
 }
 
@@ -57,7 +56,7 @@ const Fab: React.FC<FabProps> = forwardRef(
         type={type || 'button'}
         className={variants({ size, className })}
       >
-        {icon && <Icon name={icon} size={iconSizeMap[size]} />}
+        {icon}
         {children}
         {label}
         <Ripple />

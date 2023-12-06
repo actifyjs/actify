@@ -1,5 +1,6 @@
 // @ts-nocheck
-import { Button, Icon } from 'actify'
+import { Button } from 'actify'
+import { Search } from 'lucide-react'
 import { createPortal } from 'react-dom'
 import { useRef, useState, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -7,7 +8,7 @@ import { DocSearchModal, useDocSearchKeyboardEvents } from '@docsearch/react'
 
 import '@docsearch/css'
 
-const Search = ({ appId, apiKey, indexName }) => {
+const DocSearch = ({ appId, apiKey, indexName }) => {
   const navigate = useNavigate()
   const searchButtonRef = useRef(null)
   const [isOpen, setIsOpen] = useState(false)
@@ -48,7 +49,7 @@ const Search = ({ appId, apiKey, indexName }) => {
         onClick={onOpen}
         ref={searchButtonRef}
       >
-        <Icon name="search" />
+        <Search />
         <span className="font-semibold hidden sm:inline">Search</span>
         <span className="hidden md:block text-xs border border-outline p-1.5 rounded-full">
           {navigator?.userAgentData?.platform == 'Windows' ||
@@ -83,4 +84,4 @@ const Search = ({ appId, apiKey, indexName }) => {
   )
 }
 
-export default Search
+export default DocSearch

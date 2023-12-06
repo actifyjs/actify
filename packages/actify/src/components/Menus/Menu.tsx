@@ -34,8 +34,8 @@ import React, {
   useEffect
 } from 'react'
 import { Button } from '@actify/Button'
-import { Icon } from '@actify/Icon'
 import { List } from '@actify/Lists'
+import { ChevronDown } from 'lucide-react'
 import { ListItem } from '@actify/Lists/ListItem'
 import { tv } from 'tailwind-variants'
 import { MenuContext } from './MenuContext'
@@ -172,7 +172,7 @@ export const MenuComponent = forwardRef<HTMLDivElement, MenuProps>(
                 isOpen ? 'rotate-90' : 'rotate-0'
               }`}
             >
-              <Icon name="chevron-down" />
+              <ChevronDown />
             </div>
           </ListItem>
         ) : (
@@ -203,7 +203,7 @@ export const MenuComponent = forwardRef<HTMLDivElement, MenuProps>(
                 isOpen ? 'rotate-90' : 'rotate-0'
               }`}
             >
-              <Icon name="chevron-down" size={20} />
+              <ChevronDown size={20} />
             </div>
           </Button>
         )}

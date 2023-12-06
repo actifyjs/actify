@@ -1,10 +1,12 @@
 import { Fab } from 'actify'
+import { Camera, Home } from 'lucide-react'
 
 export default () => {
   return (
     <div className="flex gap-4">
-      <Fab color="error" icon="camera" size="small" />
-      <Fab color="error" icon="home" />
+      <Fab color="error" icon={<Camera />} size="small" />
+
+      <Fab color="error" icon={<Home />} />
       <Fab color="primary" label="ctify" size="large">
         <svg
           width="33.455"

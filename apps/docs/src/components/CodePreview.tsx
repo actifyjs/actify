@@ -1,4 +1,5 @@
 import * as Actify from 'actify'
+import { Eye, Code2 } from 'lucide-react'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 import { LiveProvider, LivePreview } from 'react-live'
 
@@ -16,11 +17,11 @@ const CodePreview = ({ code }: CodePreviewProps) => {
         <div className="flex border-b border-[#ccc] dark:border-[#222]">
           <Actify.Tabs.Header className="bg-transparent">
             <Actify.Tabs.Tab value="preview" className="min-w-[120px]">
-              <Actify.Icon name="eye" size={18} />
+              <Eye size={18} />
               Preview
             </Actify.Tabs.Tab>
             <Actify.Tabs.Tab value="code" className="min-w-[120px]">
-              <Actify.Icon name="code-2" size={18} />
+              <Code2 size={18} />
               Code
             </Actify.Tabs.Tab>
           </Actify.Tabs.Header>

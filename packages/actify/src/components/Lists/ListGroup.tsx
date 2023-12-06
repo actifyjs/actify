@@ -7,9 +7,9 @@ import React, {
   cloneElement,
   isValidElement
 } from 'react'
-import { Icon } from '@actify/Icon'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
+import { ChevronDown } from 'lucide-react'
 import { ListContext } from './ListContext'
 
 const variants = tv({
@@ -17,8 +17,8 @@ const variants = tv({
 })
 
 interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
-  icon?: string
   label?: string
+  icon?: React.ReactNode
 }
 
 const ListGroup = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
@@ -36,10 +36,10 @@ const ListGroup = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
         onMouseOut={() => setHovered(false)}
         onClick={() => setOpen(!open)}
       >
-        {icon && <Icon name={icon} />}
+        {icon}
         {label}
         <div className={`transition-transform ${open ? 'rotate-90' : ''}`}>
-          <Icon name="chevron-down" />
+          <ChevronDown />
         </div>
       </div>
       {hovered && (

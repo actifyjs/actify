@@ -1,10 +1,11 @@
-import { Icon, IconButton } from 'actify'
+import { Menu } from 'lucide-react'
+import { IconButton } from 'actify'
 
 export default () => {
   return (
     <div className="flex items-center gap-4">
       <IconButton>
-        <Icon name="menu" />
+        <Menu />
       </IconButton>
       <IconButton>
         <svg

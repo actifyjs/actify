@@ -1,5 +1,15 @@
 import { useState } from 'react'
-import { TextField, Button, IconButton, Icon, Checkbox } from 'actify'
+import { TextField, Button, IconButton, Checkbox } from 'actify'
+import {
+  X,
+  Eye,
+  Lock,
+  User,
+  Mail,
+  Check,
+  EyeOff,
+  Smartphone
+} from 'lucide-react'
 
 export default () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -9,22 +19,22 @@ export default () => {
         <p>filled with icon</p>
         <TextField label="username">
           <TextField.LeadingIcon>
-            <Icon name="user" />
+            <User />
           </TextField.LeadingIcon>
         </TextField>
         <TextField label="email">
           <TextField.LeadingIcon>
-            <Icon name="mail" />
+            <Mail />
           </TextField.LeadingIcon>
         </TextField>
         <TextField type="number" label="mobile">
           <TextField.LeadingIcon>
-            <Icon name="smartphone" />
+            <Smartphone />
           </TextField.LeadingIcon>
         </TextField>
         <TextField label="pasword" type="password">
           <TextField.LeadingIcon>
-            <Icon name="lock" />
+            <Lock />
           </TextField.LeadingIcon>
         </TextField>
         <label className="flex items-center">
@@ -42,17 +52,17 @@ export default () => {
         <p>outlined leading/trailing icon suffixText</p>
         <TextField variant="outlined" label="username">
           <TextField.LeadingIcon>
-            <Icon name="user" />
+            <User />
           </TextField.LeadingIcon>
         </TextField>
         <TextField variant="outlined" label="email" suffixText="@actifyjs.com">
           <TextField.LeadingIcon>
-            <Icon name="mail" />
+            <Mail />
           </TextField.LeadingIcon>
         </TextField>
         <TextField type="number" variant="outlined" label="mobile">
           <TextField.LeadingIcon>
-            <Icon name="smartphone" />
+            <Smartphone />
           </TextField.LeadingIcon>
         </TextField>
         <TextField
@@ -61,11 +71,11 @@ export default () => {
           type={showPassword ? 'text' : 'password'}
         >
           <TextField.LeadingIcon>
-            <Icon name="lock" />
+            <Lock />
           </TextField.LeadingIcon>
           <TextField.TrailingIcon>
             <IconButton onClick={() => setShowPassword((_) => !_)}>
-              <Icon name={showPassword ? 'eye-off' : 'eye'} />
+              {showPassword ? <EyeOff /> : <Eye />}
             </IconButton>
           </TextField.TrailingIcon>
         </TextField>
@@ -75,11 +85,11 @@ export default () => {
         </label>
         <div className="flex gap-4">
           <Button className="rounded-lg" type="button" variant="outlined">
-            <Icon name="check"></Icon>
+            <Check />
             Submit
           </Button>
           <Button className="rounded-lg" type="button" variant="outlined">
-            <Icon name="x"></Icon>
+            <X />
             Rest
           </Button>
         </div>

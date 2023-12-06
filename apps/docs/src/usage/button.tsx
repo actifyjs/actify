@@ -1,4 +1,5 @@
-import { Icon, Button } from 'actify'
+import { Button } from 'actify'
+import { Upload } from 'lucide-react'
 
 export default () => {
   return (
@@ -9,23 +10,23 @@ export default () => {
       <Button variant="tonal">Tonal</Button>
       <Button variant="text">Text Button</Button>
       <Button variant="filled">
-        <Icon name="upload" />
+        <Upload />
         Filled
       </Button>
       <Button variant="outlined">
-        <Icon name="upload" />
+        <Upload />
         Outlined
       </Button>
       <Button variant="elevated">
-        <Icon name="upload" />
+        <Upload />
         Elevated
       </Button>
       <Button variant="tonal">
-        <Icon name="upload" />
+        <Upload />
         Tonal
       </Button>
       <Button variant="text">
-        <Icon name="upload" />
+        <Upload />
         Text
       </Button>
     </div>

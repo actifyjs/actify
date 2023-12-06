@@ -1,5 +1,5 @@
 'use client'
-import { Icon } from '@actify/Icon'
+import { ChevronDown } from 'lucide-react'
 import { tv } from 'tailwind-variants'
 import { AccordionContext } from '../AccordionContext'
 
@@ -69,7 +69,7 @@ const AccordionHeader: React.FC<AccordionHeaderProps> = forwardRef(
             open[index] ? 'rotate-90' : 'rotate-0'
           }`}
         >
-          <Icon name="chevron-down" />
+          <ChevronDown />
         </div>
       </div>
     )

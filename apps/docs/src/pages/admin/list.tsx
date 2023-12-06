@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { TextField, Checkbox, Button, IconButton, Icon, Avatar } from 'actify'
+import { Trash, Delete, Pencil, Contact } from 'lucide-react'
 
 export default () => {
   const [list, setList] = useState([
@@ -79,11 +80,11 @@ export default () => {
         <TextField variant="outlined" label="search" />
         <div className="flex gap-2 justify-center">
           <Button color="error">
-            <Icon name="trash" />
+            <Trash />
             Delete All Row
           </Button>
           <Button>
-            <Icon name="contact" />
+            <Contact />
             Add Contact
           </Button>
         </div>
@@ -126,10 +127,10 @@ export default () => {
                 <td>{item.phone}</td>
                 <td>
                   <IconButton color="error" onClick={() => handleDelete(item)}>
-                    <Icon name="delete" />
+                    <Delete />
                   </IconButton>
                   <IconButton color="primary">
-                    <Icon name="pencil" />
+                    <Pencil />
                   </IconButton>
                 </td>
               </tr>

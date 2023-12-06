@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Icon, Button, Spacer, Dialog, IconButton } from 'actify'
+import { X } from 'lucide-react'
+import { Button, Spacer, Dialog, IconButton } from 'actify'
 
 export default () => {
   const [open, setOpen] = useState(false)
@@ -16,7 +17,7 @@ export default () => {
             <Spacer />
             <Dialog.Close>
               <IconButton color="secondary">
-                <Icon name="x" />
+                <X />
               </IconButton>
             </Dialog.Close>
           </Dialog.Heading>

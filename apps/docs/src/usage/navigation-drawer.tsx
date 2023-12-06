@@ -1,4 +1,10 @@
-import { Icon, IconButton, Drawer, Tooltip, TooltipGroup } from 'actify'
+import { IconButton, Drawer, Tooltip, TooltipGroup } from 'actify'
+import {
+  PanelTopClose,
+  PanelLeftClose,
+  PanelRightClose,
+  PanelBottomClose
+} from 'lucide-react'
 
 export default () => {
   return (
@@ -8,7 +14,7 @@ export default () => {
           <Drawer.Activator>
             <Tooltip content="open from left">
               <IconButton>
-                <Icon name="panel-left-close" />
+                <PanelLeftClose />
               </IconButton>
             </Tooltip>
           </Drawer.Activator>
@@ -24,7 +30,7 @@ export default () => {
           <Drawer.Activator>
             <Tooltip content="open from top">
               <IconButton>
-                <Icon name="panel-top-close" />
+                <PanelTopClose />
               </IconButton>
             </Tooltip>
           </Drawer.Activator>
@@ -40,7 +46,7 @@ export default () => {
           <Drawer.Activator>
             <Tooltip content="open from right">
               <IconButton>
-                <Icon name="panel-left-open" />
+                <PanelRightClose />
               </IconButton>
             </Tooltip>
           </Drawer.Activator>
@@ -56,7 +62,7 @@ export default () => {
           <Drawer.Activator>
             <Tooltip content="open from bottom">
               <IconButton>
-                <Icon name="panel-bottom-close" />
+                <PanelBottomClose />
               </IconButton>
             </Tooltip>
           </Drawer.Activator>
