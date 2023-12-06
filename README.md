@@ -40,7 +40,7 @@ yarn add actify
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./node_modules/actify/lib/*.{js,jsx}'],
+  content: ['./node_modules/actify/lib/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
