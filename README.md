@@ -60,7 +60,7 @@ Contributions are always welcome!
 
 ## 📜 License
 
-Actify React Components Library is licensed under the MIT License - see the [MIT licensed](?tab=MIT-1-ov-file) file for details..
+Actify React Components Library is licensed under the MIT License - see the [MIT licensed](./LICENSE.md) file for details..
 
 ## 🙏 Acknowledgments
 
