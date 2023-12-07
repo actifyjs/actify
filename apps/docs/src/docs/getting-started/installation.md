@@ -15,7 +15,7 @@ title: Installation
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./node_modules/actify/lib/**/*.{js,jsx}'],
+  content: ['./node_modules/actify/dist/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {

@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.58",
+  "version": "0.1.59",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -18,19 +18,20 @@
     "directory": "packages/components"
   },
   "files": [
-    "lib/**"
+    "dist/**"
   ],
-  "main": "lib/index.cjs",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "prebuild": "rm -rf lib",
+    "prebuild": "rm -rf dist",
     "dev": "pnpm run build --watch",
     "build": "rollup -c rollup.config.mjs"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.5",
@@ -40,7 +41,6 @@
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
     "autoprefixer": "^10.4.14",
-    "lucide-react": "^0.294.0",
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",
     "react": "^18.2.0",
@@ -60,6 +60,7 @@
     "@floating-ui/react": "^0.26.3",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.12",
+    "lucide-react": "^0.294.0",
     "popmotion": "^11.0.5",
     "react-router-dom": "^6.20.1",
     "react-tailwindcss-datepicker": "^1.6.6",

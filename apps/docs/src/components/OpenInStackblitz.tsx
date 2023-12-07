@@ -1,7 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { Tooltip, IconButton } from 'actify'
-import { name, version } from '../../package.json'
+import { name, version, Tooltip, IconButton } from 'actify'
 
 interface OpenInStackblitzProps
   extends React.FormHTMLAttributes<HTMLFormElement> {
@@ -82,7 +81,7 @@ module.exports = withMaterialColors(
     darkMode: 'class',
     content: [
       '*.{html,js,jsx}',
-      './node_modules/actify/lib/**/*.{js,jsx}'
+      './node_modules/actify/dist/**/*.{js,jsx}'
     ],
     theme: {
       extend: {

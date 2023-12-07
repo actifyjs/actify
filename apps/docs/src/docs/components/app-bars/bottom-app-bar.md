@@ -16,15 +16,3 @@ title: Bottom app bar
 | ------------------ | ------------ |
 | BottomAppBar.Icons | Icon buttons |
 | BottomAppBar.Fab   | FAB          |
-
-## No Fab
-
-<code-preview code='<BottomAppBar className="max-w-3xl">
-      <BottomAppBar.Icons>
-        <Icon name="home" />
-        <Icon name="user-2" />
-        <Icon name="camera" />
-        <Icon name="search" />
-      </BottomAppBar.Icons>
-    </BottomAppBar>'>
-</code-preview>

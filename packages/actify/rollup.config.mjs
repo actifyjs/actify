@@ -5,6 +5,7 @@ import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
 
 import copy from 'rollup-plugin-copy'
+import json from '@rollup/plugin-json'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import { typescriptPaths } from 'rollup-plugin-typescript-paths'
 import preserveDirectives from 'rollup-plugin-preserve-directives'
@@ -37,14 +38,14 @@ export default [
     input: 'src/index.ts',
     output: [
       {
-        dir: 'lib',
+        dir: 'dist',
         format: 'cjs',
         entryFileNames: '[name].cjs',
         exports: 'named',
         ...outputOptions
       },
       {
-        dir: 'lib',
+        dir: 'dist',
         format: 'esm',
         exports: 'named',
         ...outputOptions
@@ -60,14 +61,17 @@ export default [
       'usehooks-ts',
       '@babel/runtime',
       'framer-motion',
+      'lucide-react',
       'react-router-dom',
       'tailwind-merge',
       'tailwind-variants',
       '@floating-ui/react',
-      'react-tailwindcss-select'
+      'react-tailwindcss-select',
+      'react-tailwindcss-datepicker'
     ],
     plugins: [
       peerDepsExternal(),
+      json(),
       resolve(),
       commonjs(),
       typescript({

@@ -46,3 +46,5 @@ export * from './components/TimePicker'
 export * from './components/Terminal'
 export * from './components/BeforeAfter'
 export * from './components/Toast'
+
+export { name, version } from '../package.json'

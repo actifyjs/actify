@@ -13,85 +13,62 @@
 
 ---
 
-## 🚀 Introduction
+## 🌟Overview
 
-Actify is a React Components Library based on Material Design 3 Web Components.
-Highly inspired by [Vuetify](https://www.vuetifyjs.com). Some features:
+Welcome to Actify, an open-source React Components Library designed to accelerate your React application development. Actify leverages TypeScript, Tailwind CSS, Floating-UI, Framer Motion, Material Design 3, and more to provide a comprehensive set of modern and customizable UI components.
 
-- **[Vite](https://vitejs.dev/):** Use Vite to build libs and docs.
-- **[Tailwind CSS](https://tailwindcss.com/):** Build with Tailwind CSS.
-- **[Tailwind Variants](https://www.tailwind-variants.org/):** For variants and smart className merge.
-- **[Floating UI](https://floating-ui.com/):** The future of Popper to deal with smart anchor positioning.
-- **[Framer Motion](https://www.framer.com/motion/):** It powers the amazing animations and interactions in Framer, the web builder for creative pros. Zero code, maximum speed.
-- **Theme System:** A powerful color system that makes it easy to style your application with a consistent color palette.
+## ✨ Features
 
-## 🌻 Get Started
+- **TypeScript**: Benefit from enhanced developer experience and static typing.
+- **Tailwind CSS**: Embrace a utility-first CSS framework for effortless and flexible styling.
+- **Floating-UI**: Elevate your UI with floating elements for a modern and dynamic user experience.
+- **Framer Motion**: Bring fluid animations and transitions to your components with Framer Motion.
+- **Material Design 3**: Implement the latest Material Design principles for a cohesive and visually appealing interface.
+
+## 🚀 Getting Started
+
+### 📦 Installation
 
 ```bash
-# with npm
-npm install actify
-
+# with pnpm
+pnpm add actify
 # with yarn
 yarn add actify
+# with npm
+npm install actify
 ```
 
-## ⚙️ Set tailwind.config.js
-
-```js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./node_modules/actify/lib/**/*.{js,jsx}'],
-  theme: {
-    extend: {
-      colors: {
-        primary: 'rgb(var(--color-primary, 0 106 106) / <alpha-value>)',
-        'on-primary':
-          'rgb(var(--color-on-primary, 255 255 255) / <alpha-value>)',
-        secondary: 'rgb(var(--color-secondary, 74 99 99) / <alpha-value>)',
-        'on-secondary':
-          'rgb(var(--color-on-secondary, 255 255 255) / <alpha-value>)',
-        tertiary: 'rgb(var(--color-tertiary, 75 96 124) / <alpha-value>)',
-        'on-tertiary':
-          'rgb(var(--color-on-tertiary, 255 255 255) / <alpha-value>)',
-        error: 'rgb(var(--color-error, 186 26 26) / <alpha-value>)',
-        'on-error': 'rgb(var(--color-on-error, 255 255 255) / <alpha-value>)',
-        surface: 'rgb(var(--color-surface, 250 253 252) / <alpha-value>)',
-        'on-surface': 'rgb(var(--color-on-surface, 25 28 28) / <alpha-value>)',
-        outline: 'rgb(var(--color-outline, 111 121 121) / <alpha-value>)'
-      }
-    }
-  },
-  plugins: []
-}
-```
-
-## 🎨 Config color theme (optional)
-
-- go to [actify theme config page](https://actifyjs.com/getting-started/theme)
-- select your primary color
-- copy the bottom live css code
-- paste it to tailwind css main.css
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    --color-primary: 0 106 106;
-    --color-on-primary: 255 255 255;
-    /* ... */
-  }
-}
-```
-
-## 🎉 Example
+### 💻 Usage
 
 ```jsx
 import { Button } from 'actify'
 
-export default () => {
+export const App = () => {
   return <Button>Hello Actify</Button>
 }
 ```
+
+Refer to the [documentation](https://actifyjs.com/getting-started/installation) for in-depth information on each component and their usage.
+
+## 📚 Documentation
+
+Explore our [documentation](https://actifyjs.com/getting-started/installation) for detailed insights, examples, and customization options for each component in the Actify library.
+
+## 🤝 Contributing
+
+Contributions are always welcome!
+
+## 📜 License
+
+Actify React Components Library is licensed under the MIT License - see the [MIT licensed](./LICENSE) file for details..
+
+## 🙏 Acknowledgments
+
+- Special thanks to our contributors and the open-source community for making Actify possible.
+- Highly inspired by [Vuetify](https://vuetifyjs.com) for its impactful contributions to UI design and development trends.
+
+## 📧 Support
+
+If you have any questions or need assistance, feel free to reach out to us at [lertesmith@outlook.com](mailto:lertesmith@outlook.com).
+
+Happy coding with Actify! 🚀

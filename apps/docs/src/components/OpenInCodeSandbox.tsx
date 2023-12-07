@@ -1,8 +1,7 @@
 // @ts-nocheck
 import React from 'react'
-import { name, version } from '../../package.json'
 import { Codesandbox } from 'lucide-react'
-import { IconButton, Tooltip } from 'actify'
+import { name, version, IconButton, Tooltip } from 'actify'
 import { getParameters } from 'codesandbox/lib/api/define'
 
 interface OpenInCodeSandboxProps
@@ -83,7 +82,7 @@ module.exports = withMaterialColors(
     darkMode: 'class',
     content: [
       '*.{html,js,jsx}',
-      './node_modules/actify/lib/**/*.{js,jsx}'
+      './node_modules/actify/dist/**/*.{js,jsx}'
     ],
     theme: {
       extend: {

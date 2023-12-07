@@ -1,4 +1,5 @@
 import * as Actify from 'actify'
+import { Share2 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import {
   withLive,
@@ -143,7 +144,7 @@ const Playground = () => {
         <span className="text-2xl font-medium">Live Editor</span>
         <span className="flex-1"></span>
         <Actify.IconButton onClick={shareCode}>
-          <Actify.Icon name="share-2"></Actify.Icon>
+          <Share2 />
         </Actify.IconButton>
       </div>
       <LiveComponent onEdit={setCode} />

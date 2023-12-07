@@ -112,7 +112,7 @@ const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
                   },
                   {
                     headline: 'Actify Admin',
-                    to: '/admin'
+                    to: '/admin/login'
                   }
                 ]}
               />
