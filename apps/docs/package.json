@@ -1,7 +1,6 @@
 {
   "name": "actify-docs",
   "private": true,
-  "version": "0.1.0",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
