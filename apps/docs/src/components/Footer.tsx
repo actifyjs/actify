@@ -1,4 +1,5 @@
 import React from 'react'
+import { ExternalLink } from 'lucide-react'
 import { useAppStore } from '@/store/appStore'
 import { useShallow } from 'zustand/react/shallow'
 
@@ -22,12 +23,13 @@ const Footer: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
         <p className="text-center">
           Released under the{' '}
           <a
-            className="underline"
-            href="https://opensource.org/licenses/MIT"
             target="_blank"
             rel="noreferrer"
+            className="inline-flex gap-1"
+            href="https://opensource.org/licenses/MIT"
           >
             MIT License
+            <ExternalLink size={20} />
           </a>
         </p>
       </div>
