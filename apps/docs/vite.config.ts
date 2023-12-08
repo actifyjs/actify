@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import pages from 'vite-plugin-pages'
 import react from '@vitejs/plugin-react'
+import { VitePWA } from 'vite-plugin-pwa'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import mdPlugin, { Mode } from 'vite-plugin-markdown'
 
@@ -8,8 +9,11 @@ import mdPlugin, { Mode } from 'vite-plugin-markdown'
 export default defineConfig({
   plugins: [
     react(),
-    tsconfigPaths(),
     pages(),
+    VitePWA({
+      registerType: 'autoUpdate'
+    }),
+    tsconfigPaths(),
     mdPlugin({ mode: [Mode.MARKDOWN] })
   ]
 })
