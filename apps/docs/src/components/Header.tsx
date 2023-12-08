@@ -56,10 +56,11 @@ const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
         </Link>
         {pathname != '/' && (
           <IconButton
+            color="primary"
             className="inline-flex md:hidden"
             onClick={() => setDrawer(!drawer)}
           >
-            <Menu color="primary" />
+            <Menu />
           </IconButton>
         )}
         <Search
@@ -76,7 +77,7 @@ const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
         </Link>
         <Spacer />
         <Link to="/playground" className="block md:hidden">
-          <IconButton>
+          <IconButton color="primary">
             <Gamepad2 />
           </IconButton>
         </Link>
