@@ -63,8 +63,6 @@ export default [
       'framer-motion',
       'lucide-react',
       'react-router-dom',
-      'tailwind-merge',
-      'tailwind-variants',
       '@floating-ui/react',
       'react-tailwindcss-select',
       'react-tailwindcss-datepicker'

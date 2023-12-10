@@ -26,6 +26,7 @@ const OpenInCodeSandbox: React.FC<OpenInCodeSandboxProps> = ({
           },
           dependencies: {
             [name]: `^${version}`,
+            'lucide-react': 'latest',
             react: '^18.2.0',
             'react-dom': '^18.2.0'
           },
@@ -34,8 +35,8 @@ const OpenInCodeSandbox: React.FC<OpenInCodeSandboxProps> = ({
             autoprefixer: '^10.4.5',
             postcss: '^8.4.13',
             'tailwind-material-colors': '^1.1.2',
-            tailwindcss: '^3.3.3',
-            vite: '^4.4.9'
+            tailwindcss: 'latest',
+            vite: '^5.0.7'
           }
         }
       },

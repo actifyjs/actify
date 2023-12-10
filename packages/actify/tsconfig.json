@@ -23,7 +23,9 @@
     "skipLibCheck": true,
     "strict": true,
     "paths": {
-      "@actify/*": ["./src/components/*"]
+      "@actify/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

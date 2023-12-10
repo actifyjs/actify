@@ -8,7 +8,7 @@ import React, {
   isValidElement
 } from 'react'
 import { tv } from 'tailwind-variants'
-import { AccordionContext } from './AccordionContext'
+import { AccordionContext, AccordionContextProps } from './AccordionContext'
 import { AccordionItem } from './AccordionItem'
 import { AccordionHeader } from './AccordionHeader'
 import { AccordionContent } from './AccordionContent'
@@ -17,13 +17,9 @@ const variants = tv({
   base: 'rounded-lg flex flex-col gap-4 bg-surface p-4'
 })
 
-type AccordionProps = {
-  open?: boolean[]
-  multiple?: boolean
-  style?: React.CSSProperties
-  className?: string
-  children: React.ReactNode
-} & React.HTMLAttributes<HTMLDivElement>
+interface AccordionProps
+  extends AccordionContextProps,
+    React.HTMLAttributes<HTMLDivElement> {}
 
 const AccordionRoot: React.FC<AccordionProps> = forwardRef(
   (props, ref?: React.Ref<HTMLDivElement>) => {
@@ -35,7 +31,9 @@ const AccordionRoot: React.FC<AccordionProps> = forwardRef(
       children,
       ...rest
     } = props
-    const [open, setOpen] = useState(openProp ?? [])
+    const [open, setOpen] = useState<AccordionContextProps['open']>(
+      openProp ?? []
+    )
 
     return (
       <AccordionContext.Provider value={{ multiple, open, setOpen }}>

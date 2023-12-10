@@ -1,20 +1,17 @@
 'use client'
-import { ChevronDown } from 'lucide-react'
 import { tv } from 'tailwind-variants'
+import { ChevronDown } from 'lucide-react'
 import { AccordionContext } from '../AccordionContext'
 
-import React, {
-  useContext,
-  forwardRef,
-  cloneElement,
-  isValidElement
-} from 'react'
-import { Text } from './../../Text'
+import React, { useMemo, useContext, forwardRef } from 'react'
+
+import { Text } from '@actify/Text'
+import { Slot } from '@actify/Slot'
 
 const variants = tv({
   base: 'font-black cursor-pointer flex items-center justify-between',
   variants: {
-    open: {
+    active: {
       true: 'text-primary',
       false: '',
       undefined: ''
@@ -25,48 +22,60 @@ const variants = tv({
 export type AccordionHeaderProps = {
   index?: number
   asChild?: boolean
-} & React.HTMLAttributes<HTMLDivElement>
+} & React.HTMLAttributes<HTMLElement>
 
 const AccordionHeader: React.FC<AccordionHeaderProps> = forwardRef(
   (props, ref?: React.Ref<HTMLDivElement>) => {
-    const { index, style, className, asChild, children, ...rest } = props
+    const { index, asChild, className, ...rest } = props
     const { multiple, open, setOpen } = useContext(AccordionContext)
+
+    const active = useMemo(() => {
+      if (open !== undefined) {
+        return open[index as number]
+      }
+    }, [open, index])
 
     const handleClick = () => {
       let arr: boolean[] = []
       if (multiple) {
-        arr = [...open]
+        arr = [...(open as boolean[])]
       } else {
-        arr = open.map((_, i) => i != index && false)
+        arr = (open as boolean[]).map((_, i) => i != index && false)
       }
-      arr[index] = !arr[index]
-      setOpen(arr)
+      arr[index as number] = !arr[index as number]
+      setOpen?.(arr)
     }
 
-    // `asChild` allows the user to pass any element as the header
-    if (asChild && isValidElement(children)) {
-      return cloneElement(children, {
-        ref,
-        ...rest,
-        ...children.props,
-        onClick: handleClick,
-        className: variants({ className: children.props.className })
-      })
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref}
+          onClick={handleClick}
+          {...{
+            active,
+            ...rest
+          }}
+          className={variants({ className })}
+        >
+          {typeof rest.children === 'function'
+            ? // @ts-expect-error
+              rest.children({ active })
+            : rest.children}
+        </Slot>
+      )
     }
 
     return (
       <div
-        {...rest}
         ref={ref}
-        style={style}
+        {...rest}
         onClick={handleClick}
-        className={variants({ className, open: open[index] })}
+        className={variants({ active, className })}
       >
-        <Text>{children}</Text>
-
+        <Text>{rest.children}</Text>
         <div
           className={`transition-transform duration-300 ${
-            open[index] ? 'rotate-90' : 'rotate-0'
+            active ? 'rotate-90' : 'rotate-0'
           }`}
         >
           <ChevronDown />

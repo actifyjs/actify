@@ -1,10 +1,12 @@
 'use client'
 import { createContext } from 'react'
 
-const AccordionContext = createContext({
-  open: [false],
-  multiple: false,
-  setOpen: (T: boolean[]) => undefined
-})
+type AccordionContextProps = {
+  multiple?: boolean
+  open?: Array<boolean | undefined>
+  setOpen?: (value: boolean[] | undefined) => void
+}
 
-export { AccordionContext }
+const AccordionContext = createContext<AccordionContextProps>({})
+
+export { AccordionContext, type AccordionContextProps }
