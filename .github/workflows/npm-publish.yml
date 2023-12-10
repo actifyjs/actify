@@ -23,17 +23,17 @@ jobs:
       - name: Setup Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
-          cache: 'pnpm'
+          node-version: '18.x'
 
       - name: Install Dependencies
         run: pnpm install
 
       - name: Build Package
         run: pnpm -F actify build
+
       - name: Publish Package
         run: |
           cd packages/actify
           npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
