@@ -36,7 +36,7 @@ const OpenInCodeSandbox: React.FC<OpenInCodeSandboxProps> = ({
             postcss: '^8.4.13',
             'tailwind-material-colors': '^1.1.2',
             tailwindcss: 'latest',
-            vite: '^5.0.7'
+            vite: '^4.5.1'
           }
         }
       },

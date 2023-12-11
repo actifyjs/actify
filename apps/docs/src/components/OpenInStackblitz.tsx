@@ -55,7 +55,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     "postcss": "^8.4.13",
     "tailwind-material-colors": "^1.1.2",
     "tailwindcss": "^3.3.3",
-    "vite": "^4.4.9"
+    "vite": "^5.0.7"
   }
 }`,
       'main.css': `@tailwind base;
