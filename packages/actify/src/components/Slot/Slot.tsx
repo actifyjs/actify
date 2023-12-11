@@ -136,7 +136,6 @@ function mergeProps(slotProps: AnyProps, childProps: AnyProps) {
       }
     } else if (propName === 'className') {
       if (typeof overrideProps[propName] == 'function') {
-        console.log({ ...parentProps })
         overrideProps[propName] = overrideProps[propName]({ ...parentProps })
       } else {
         overrideProps[propName] = twMerge(slotPropValue, childPropValue)
