@@ -63,9 +63,7 @@ export default [
       'framer-motion',
       'lucide-react',
       'react-router-dom',
-      '@floating-ui/react',
-      'react-tailwindcss-select',
-      'react-tailwindcss-datepicker'
+      '@floating-ui/react'
     ],
     plugins: [
       peerDepsExternal(),
