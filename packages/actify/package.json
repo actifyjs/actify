@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.61",
+  "version": "0.1.62",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -55,7 +55,8 @@
     "tailwindcss": "^3.3.6",
     "tsc-alias": "^1.8.8",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.2",
+    "usehooks-ts": "^2.9.1"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.3",
@@ -66,12 +67,14 @@
     "react-router-dom": "^6.20.1",
     "react-tailwindcss-datepicker": "^1.6.6",
     "react-tailwindcss-select": "^1.8.5",
-    "usehooks-ts": "^2.9.1",
     "zustand": "^4.4.7"
   },
   "peerDependencies": {
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0"
+  },
+  "engines": {
+    "node": ">=14.21.3"
   },
   "publishConfig": {
     "access": "public"
