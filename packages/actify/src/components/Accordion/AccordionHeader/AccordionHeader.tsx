@@ -22,6 +22,7 @@ const variants = tv({
 export type AccordionHeaderProps = {
   index?: number
   asChild?: boolean
+  children?: ((_?: any) => React.ReactNode) | React.ReactNode
 } & React.HTMLAttributes<HTMLElement>
 
 const AccordionHeader: React.FC<AccordionHeaderProps> = forwardRef(
@@ -58,8 +59,7 @@ const AccordionHeader: React.FC<AccordionHeaderProps> = forwardRef(
           className={variants({ className })}
         >
           {typeof rest.children === 'function'
-            ? // @ts-expect-error
-              rest.children({ active })
+            ? rest.children({ active })
             : rest.children}
         </Slot>
       )

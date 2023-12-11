@@ -3,17 +3,14 @@
 import { tv, VariantProps } from 'tailwind-variants'
 import { AccordionContext } from '../AccordionContext'
 
-import React, {
-  useContext,
-  forwardRef,
-  cloneElement,
-  isValidElement
-} from 'react'
+import React, { useMemo, useContext, forwardRef } from 'react'
+
+import { Slot } from '@actify/Slot'
 
 const variants = tv({
   base: 'transition-all duration-300 ease-in-out grid',
   variants: {
-    open: {
+    active: {
       true: 'grid-rows-[1fr]',
       false: 'grid-rows-[0fr]',
       undefined: 'grid-rows-[0fr]'
@@ -21,39 +18,52 @@ const variants = tv({
   }
 })
 
-export interface AccordionContentProps
-  extends VariantProps<typeof variants>,
-    React.HTMLAttributes<HTMLDivElement> {
+export type AccordionContentProps = {
   index?: number
   asChild?: boolean
-  children: React.ReactNode
-}
+  children?: ((_?: any) => React.ReactNode) | React.ReactNode
+} & VariantProps<typeof variants> &
+  React.HTMLAttributes<HTMLDivElement>
 
 const AccordionContent: React.FC<AccordionContentProps> = forwardRef(
   (props, ref?: React.Ref<HTMLDivElement>) => {
-    const { index, style, className, asChild, children, ...rest } = props
+    const { index, style, className, asChild, ...rest } = props
     const { open } = useContext(AccordionContext)
 
-    // `asChild` allows the user to pass any element as the content
-    if (asChild && isValidElement(children)) {
-      return cloneElement(children, {
-        ref,
-        ...rest,
-        ...children.props,
-        className: variants({ className: children.props.className })
-      })
-    }
+    const active = useMemo(() => {
+      if (open !== undefined) {
+        return open[index as number]
+      }
+    }, [open, index])
 
-    return (
-      <div
-        {...rest}
-        ref={ref}
-        style={style}
-        className={variants({ className, open: open[index] })}
-      >
-        <p className="overflow-hidden">{children}</p>
-      </div>
-    )
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref}
+          style={style}
+          {...{
+            active,
+            ...rest
+          }}
+          className={variants({ className })}
+        >
+          {typeof rest.children === 'function'
+            ? rest.children({ active })
+            : rest.children}
+        </Slot>
+      )
+    } else {
+      return (
+        <div
+          {...rest}
+          ref={ref}
+          style={style}
+          className={variants({ className, active })}
+        >
+          <p className="overflow-hidden">{rest.children}</p>
+        </div>
+      )
+    }
   }
 )
 
