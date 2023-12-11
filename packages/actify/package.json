@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.62",
+  "version": "0.1.63",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -72,9 +72,6 @@
   "peerDependencies": {
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0"
-  },
-  "engines": {
-    "node": ">=14.21.3"
   },
   "publishConfig": {
     "access": "public"
