@@ -58,7 +58,6 @@ export default [
       'tslib',
       'popmotion',
       'react-dom',
-      'usehooks-ts',
       '@babel/runtime',
       'framer-motion',
       'lucide-react',
