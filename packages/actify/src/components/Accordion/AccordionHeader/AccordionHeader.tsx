@@ -39,11 +39,11 @@ const AccordionHeader: React.FC<AccordionHeaderProps> = forwardRef(
       let arr: boolean[] = []
       if (multiple) {
         arr = [...(open as boolean[])]
+        arr[index as number] = !arr[index as number]
       } else {
-        arr = (open as boolean[]).map((_, i) => i != index && false)
+        arr[index as number] = !open?.[index as number]
       }
-      arr[index as number] = !arr[index as number]
-      setOpen?.(arr)
+      setOpen?.([...arr])
     }
 
     if (asChild) {
