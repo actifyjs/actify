@@ -17,6 +17,12 @@ const variants = tv({
     open: {
       true: 'opacity-100 pointer-events-auto',
       false: 'opacity-0'
+    },
+    placement: {
+      left: '',
+      right: '',
+      top: '',
+      bottom: ''
     }
   },
   compoundVariants: [
@@ -36,7 +42,10 @@ const variants = tv({
 const sectionVariants = tv({
   base: 'absolute overflow-y-auto bg-surface shadow-xl duration-500 ease-in-out transition-all',
   variants: {
-    open: {},
+    open: {
+      true: '',
+      false: ''
+    },
     placement: {
       left: 'left-0 rounded-r-2xl',
       right: 'right-0 rounded-l-2xl',
@@ -54,37 +63,31 @@ const sectionVariants = tv({
       className: 'w-screen max-w-xs h-full'
     },
     {
-      // @ts-ignore
       open: true,
       placement: ['left', 'right'],
       className: 'translate-x-0'
     },
     {
-      // @ts-ignore
       open: false,
       placement: 'left',
       className: '-translate-x-full'
     },
     {
-      // @ts-ignore
       open: false,
       placement: 'right',
       className: 'translate-x-full'
     },
     {
-      // @ts-ignore
       open: true,
       placement: ['top', 'bottom'],
       className: 'translate-y-0'
     },
     {
-      // @ts-ignore
       open: false,
       placement: 'top',
       className: '-translate-y-full'
     },
     {
-      // @ts-ignore
       open: false,
       placement: 'bottom',
       className: 'translate-y-full'
@@ -92,16 +95,18 @@ const sectionVariants = tv({
   ]
 })
 
-const DrawerContent = ({ className, children }) => {
-  // @ts-ignore
-  const { open, placement, setOpen } = useDrawer()
+const DrawerContent: React.FC<React.HTMLAttributes<HTMLElement>> = ({
+  className,
+  children
+}) => {
+  const open = useDrawer((_) => _.open)
+  const placement = useDrawer((_) => _.placement)
+  const setOpen = useDrawer((_) => _.setOpen)
 
   return (
     <>
       {createPortal(
-        // @ts-ignore
         <nav className={variants({ open, placement })}>
-          {/* @ts-ignore */}
           <div className={sectionVariants({ open, placement, className })}>
             {children}
           </div>

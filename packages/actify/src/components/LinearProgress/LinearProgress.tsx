@@ -11,6 +11,7 @@ const barVariants = tv({
   base: 'absolute animate-[auto_ease_0s_1_normal_none_running_none] transition-transform',
   variants: {
     indeterminate: {
+      undefined: '',
       hidden: 'hidden',
       primary:
         'animate-[2s_linear_0s_infinite_normal_none_running_primary-indeterminate-translate]',
@@ -154,7 +155,7 @@ const LinearProgress = forwardRef<HTMLDivElement, LinearProgressProps>(
           />
           <div
             className={barVariants({
-              indeterminate: indeterminate ? 'primary' : null
+              indeterminate: indeterminate ? 'primary' : undefined
             })}
             style={{
               blockSize: '100%',
@@ -167,7 +168,7 @@ const LinearProgress = forwardRef<HTMLDivElement, LinearProgressProps>(
           >
             <div
               className={barInnerVariants({
-                indeterminate: indeterminate ? 'primary' : null
+                indeterminate: indeterminate ? 'primary' : undefined
               })}
             ></div>
           </div>
@@ -185,7 +186,7 @@ const LinearProgress = forwardRef<HTMLDivElement, LinearProgressProps>(
           >
             <div
               className={barInnerVariants({
-                indeterminate: indeterminate ? 'secondary' : null
+                indeterminate: indeterminate ? 'secondary' : undefined
               })}
             ></div>
           </div>

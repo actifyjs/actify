@@ -1,7 +1,7 @@
 'use client'
-import React, { forwardRef, isValidElement, cloneElement } from 'react'
 import { tv } from 'tailwind-variants'
 import { useDrawer } from './DrawerContext'
+import React, { forwardRef, isValidElement, cloneElement } from 'react'
 
 const variants = tv({
   base: ''
@@ -14,8 +14,7 @@ export interface DrawerActivatorProps
 
 const DrawerActivator = forwardRef<HTMLDivElement, DrawerActivatorProps>(
   (props, ref) => {
-    // @ts-ignore
-    const { setOpen } = useDrawer()
+    const setOpen = useDrawer((_) => _.setOpen)
     const { style, className, asChild, children, ...rest } = props
 
     const handleClick = () => {

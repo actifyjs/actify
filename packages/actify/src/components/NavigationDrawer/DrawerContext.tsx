@@ -1,36 +1,53 @@
 'use client'
-import React, { createContext, useRef, useContext } from 'react'
 import { createStore, useStore } from 'zustand'
+import React, { createContext, useRef, useContext } from 'react'
 
-const DrawerContext = createContext({
-  open: false,
-  placement: 'left',
-  setOpen: () => {}
-})
+interface DrawerProps {
+  open?: boolean
+  placement?: 'left' | 'right' | 'top' | 'bottom'
+}
 
-export const DrawerProvider = ({ children, ...initialProp }) => {
-  const useCreateStore = createStore()((set) => ({
-    open: initialProp.value.open || false,
-    placement: initialProp.value.placement || 'left',
-    setPlacement: (state) => set({ placement: state }),
-    setOpen: (state) => set({ open: state })
-  }))
+interface DrawerState extends DrawerProps {
+  setOpen: (open: boolean) => void
+}
 
-  const store = useRef(useCreateStore)
+type DrawerStore = ReturnType<typeof createDrawerStore>
+
+const DrawerContext = createContext<DrawerStore | null>(null)
+
+export interface DrawerProviderProps
+  extends React.PropsWithChildren<DrawerProps> {}
+
+export const DrawerProvider = ({ children, ...props }: DrawerProviderProps) => {
+  const storeRef = useRef<DrawerStore>()
+  if (!storeRef.current) {
+    storeRef.current = createDrawerStore(props)
+  }
 
   return (
-    // @ts-ignore
-    <DrawerContext.Provider value={store.current}>
+    <DrawerContext.Provider value={storeRef.current}>
       {children}
     </DrawerContext.Provider>
   )
 }
 
-export const useDrawer = () => {
+const createDrawerStore = (initialProp?: Partial<DrawerProps>) => {
+  const DEFAULT_PROPS: DrawerProps = {
+    open: false,
+    placement: 'left'
+  }
+  return createStore<DrawerState>()((set) => ({
+    ...DEFAULT_PROPS,
+    ...initialProp,
+    setOpen: (state) => set({ open: state }),
+    setPlacement: (state: DrawerProps['placement']) => set({ placement: state })
+  }))
+}
+
+export function useDrawer<T>(selector: (state: DrawerState) => T): T {
   const store = useContext(DrawerContext)
   if (!store) {
     throw new Error('Msissing DrawerContext.Provider in the tree')
   }
-  // @ts-ignore
-  return useStore(store)
+  return useStore(store, selector)
 }

@@ -1,30 +1,27 @@
 'use client'
-import React, { forwardRef } from 'react'
+import React from 'react'
 import { tv } from 'tailwind-variants'
-
 import { DrawerContent } from './DrawerContent'
 import { DrawerActivator } from './DrawerActivator'
-import { DrawerProvider } from './DrawerContext'
+import { DrawerProvider, DrawerProviderProps } from './DrawerContext'
 
 const variants = tv({
   base: 'relative'
 })
 
-interface DrawerProps extends React.HTMLAttributes<HTMLDivElement> {
-  placement: 'left' | 'right' | 'top' | 'bottom'
+type DrawerProps = DrawerProviderProps & {
+  className?: string
 }
 
-const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
+const Drawer: React.FC<DrawerProps> = (props) => {
   const { className, children, ...rest } = props
 
   return (
-    <DrawerProvider value={{ ...rest }}>
-      <div ref={ref} {...rest} className={variants({ className })}>
-        {children}
-      </div>
+    <DrawerProvider {...rest}>
+      <div className={variants({ className })}>{children}</div>
     </DrawerProvider>
   )
-})
+}
 
 export default Object.assign(Drawer, {
   Content: DrawerContent,

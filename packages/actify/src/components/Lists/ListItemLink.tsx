@@ -16,7 +16,7 @@ interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
 
 const ListItemLink = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const { to, className, children, ...rest } = props
-  const [current, setCurrent] = useState('')
+  const [current, setCurrent] = useState<string | undefined>('')
   const { layoutId } = useContext(ListContext)
 
   return (
@@ -24,7 +24,7 @@ const ListItemLink = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
       ref={ref}
       {...rest}
       className={variants({ className })}
-      onMouseOver={() => setCurrent(children.toString())}
+      onMouseOver={() => setCurrent(children?.toString())}
       onMouseOut={() => setCurrent(undefined)}
     >
       <NavLink

@@ -16,7 +16,10 @@ const variants = tv({
   }
 })
 
-type Level = 0 | 1 | 2 | 3 | 4 | 5 | '0' | '1' | '2' | '3' | '4' | '5'
+type LevelNumber = 0 | 1 | 2 | 3 | 4 | 5
+type LevelString = '0' | '1' | '2' | '3' | '4' | '5'
+type Level = LevelNumber | LevelString
+
 export interface ElevationProps extends React.HTMLAttributes<HTMLSpanElement> {
   level?: Level
 }
@@ -25,7 +28,7 @@ const Elevation: React.FC<ElevationProps> = ({ level = 0, className }) => {
   return (
     <span
       className={variants({
-        level: level as any,
+        level: level as LevelString,
         className
       })}
     ></span>

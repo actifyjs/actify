@@ -4,10 +4,6 @@ import { Content } from './Content'
 import { Activator } from './Activator'
 import { BottomSheetsProvider, BottomSheetsProviderProps } from './Context'
 
-export type BottomSheetsProps = {
-  open?: boolean
-} & React.HTMLAttributes<HTMLDivElement>
-
 const BottomSheets: React.FC<BottomSheetsProviderProps> = (props) => {
   const { children, ...rest } = props
   return <BottomSheetsProvider {...rest}>{children}</BottomSheetsProvider>

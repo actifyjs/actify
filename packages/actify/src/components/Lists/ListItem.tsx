@@ -13,7 +13,7 @@ interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {}
 
 const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const { className, children, ...rest } = props
-  const [current, setCurrent] = useState('')
+  const [current, setCurrent] = useState<string | undefined>('')
   const { layoutId } = useContext(ListContext)
 
   const handleMouseOver = () => {
