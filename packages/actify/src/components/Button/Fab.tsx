@@ -16,12 +16,6 @@ const variants = tv({
   }
 })
 
-const iconSizeMap = {
-  small: 24,
-  medium: 24,
-  large: 36
-}
-
 interface FabProps
   extends VariantProps<typeof variants>,
     React.ButtonHTMLAttributes<HTMLButtonElement> {

@@ -7,12 +7,9 @@ const variants = tv({
   base: 'relative flex h-20 w-full max-w-xs items-center justify-between bg-primary px-4'
 })
 
-type BottomAppBarProps = {
-  className?: string
-  children?: React.ReactNode
-} & React.HTMLAttributes<HTMLDivElement>
+type DivProps = React.HTMLAttributes<HTMLDivElement>
 
-const BottomAppBar: React.FC<BottomAppBarProps> = ({ className, children }) => {
+const BottomAppBar: React.FC<DivProps> = ({ className, children }) => {
   return (
     <div className={variants({ className })}>
       {children}
@@ -21,9 +18,7 @@ const BottomAppBar: React.FC<BottomAppBarProps> = ({ className, children }) => {
   )
 }
 
-const Icons: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  children
-}) => {
+const Icons: React.FC<DivProps> = ({ children }) => {
   return (
     <div className="grow place-items-center grid grid-cols-[repeat(auto-fill,minmax(48px,1fr))]">
       {Children.map(
@@ -40,7 +35,7 @@ const Icons: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   )
 }
 
-const Fab: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children }) => {
+const Fab: React.FC<DivProps> = ({ children }) => {
   return (
     <div className="[margin-inline-end:4px] min-w-[48px] flex h-full relative items-center justify-center">
       {children}

@@ -1,12 +1,18 @@
 'use client'
 import React from 'react'
 import { useCarousel } from './CarouselContext'
+import { useShallow } from 'zustand/react/shallow'
 
 const CarouselIndicator: React.FC<
   React.HTMLAttributes<HTMLDivElement>
 > = () => {
-  // @ts-ignore
-  const { total, current, setCurrent } = useCarousel()
+  const { total, current, setCurrent } = useCarousel(
+    useShallow((_) => ({
+      total: _.total,
+      current: _.current,
+      setCurrent: _.setCurrent
+    }))
+  )
 
   return (
     <div className="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3">

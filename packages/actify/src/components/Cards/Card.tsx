@@ -1,8 +1,8 @@
 'use client'
+import { Ripple } from '@actify/Ripple'
 import React, { forwardRef } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
-import { Ripple } from '@actify/Ripple'
-import { Elevation } from '@actify/Elevation'
+import { Elevation, ElevationProps } from '@actify/Elevation'
 
 const variants = tv({
   base: 'relative inline-flex flex-col rounded-xl',
@@ -22,7 +22,7 @@ interface CardProps
   extends VariantProps<typeof variants>,
     React.HTMLAttributes<HTMLDivElement> {
   ripple?: boolean
-  elevation?: '0' | '1' | '2' | '3' | '4' | '5'
+  elevation?: ElevationProps['level']
 }
 
 const Card: React.FC<CardProps> = forwardRef(
@@ -40,7 +40,6 @@ const Card: React.FC<CardProps> = forwardRef(
       <div ref={ref} {...rest} className={variants({ type, className })}>
         <div className="relative overflow-hidden rounded-t-xl">{children}</div>
         {ripple && <Ripple />}
-
         {type === 'elevated' && <Elevation level={elevation} />}
       </div>
     )

@@ -57,7 +57,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({
           type="range"
           className="absolute top-0 h-full w-full cursor-pointer opacity-0"
           onInput={({ target }: React.ChangeEvent<HTMLInputElement>) =>
-            target.parentElement.style.setProperty(
+            target.parentElement?.style.setProperty(
               '--position',
               target.value + '%'
             )

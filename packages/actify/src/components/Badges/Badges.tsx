@@ -19,13 +19,12 @@ const variants = tv({
 
 interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: string | number
-  children?: React.ReactNode
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
 const Badge: React.FC<BadgeProps> = forwardRef(
   (props, ref?: React.Ref<HTMLDivElement>) => {
-    const { style, color, value, className, children, ...rest } = props
+    const { style, color, value = '', className, children, ...rest } = props
 
     const badge = useMemo(() => {
       if (parseInt(value.toString()) > 999) {

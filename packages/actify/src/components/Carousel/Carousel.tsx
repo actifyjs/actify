@@ -5,7 +5,7 @@ import { CrouselItem } from './CarouselItem'
 import { CarouselContent } from './CarouselContent'
 import { CarouselControl } from './CarouselControl'
 import { CarouselIndicator } from './CarouselIndicator'
-import { defaultValue, CarouselProvider } from './CarouselContext'
+import { CarouselProvider } from './CarouselContext'
 
 const variants = tv({
   base: 'relative overflow-hidden rounded-lg w-full min-h-[400px] flex items-center justify-center'
@@ -32,7 +32,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
   } = props
 
   return (
-    <CarouselProvider {...{ total: children.length, ...rest }}>
+    <CarouselProvider {...{ total: children?.length, ...rest }}>
       <div
         ref={ref}
         {...rest}
@@ -40,11 +40,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
         className={variants({ className })}
       >
         <CarouselContent>{children}</CarouselContent>
-        <CarouselControl
-          control={control ?? defaultValue.control}
-          autoPlay={autoPlay ?? defaultValue.autoPlay}
-          infinite={infinite ?? defaultValue.infinite}
-        />
+        <CarouselControl {...{ control, autoPlay, infinite }} />
         {indicator && <CarouselIndicator />}
       </div>
     </CarouselProvider>

@@ -4,9 +4,10 @@ import { wrap } from 'popmotion'
 import { twMerge } from 'tailwind-merge'
 import { useCarousel } from './CarouselContext'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useShallow } from 'zustand/react/shallow'
 
 const variants = {
-  enter: (direction) => {
+  enter: (direction: number) => {
     return {
       x: direction > 0 ? 1000 : -1000,
       opacity: 0
@@ -17,7 +18,7 @@ const variants = {
     x: 0,
     opacity: 1
   },
-  exit: (direction) => {
+  exit: (direction: number) => {
     return {
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
@@ -27,32 +28,30 @@ const variants = {
 }
 
 const swipeConfidenceThreshold = 10000
-const swipePower = (offset, velocity) => {
+const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity
 }
 
 const CarouselContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   children
 }) => {
-  const {
-    // @ts-ignore
-    page: [page, direction],
-    // @ts-ignore
-    setPage,
-    // @ts-ignore
-    current,
-    // @ts-ignore
-    setCurrent
-  } = useCarousel()
+  const { setPage, current, setCurrent } = useCarousel(
+    useShallow((_) => ({
+      setPage: _.setPage,
+      current: _.current,
+      setCurrent: _.setCurrent
+    }))
+  )
+  const [page, direction] = useCarousel((s) => s.page) as Array<number>
 
-  // @ts-ignore
+  // @ts-expect-error
   const images = Children.toArray(children).map((child) => child.props.src)
 
   useEffect(() => {
     setCurrent(wrap(0, images.length, page))
   }, [page, images.length])
 
-  const paginate = (newDirection) => {
+  const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection])
   }
 
@@ -79,7 +78,7 @@ const CarouselContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={1}
-                onDragEnd={(e, { offset, velocity }) => {
+                onDragEnd={(e: any, { offset, velocity }: any) => {
                   const swipe = swipePower(offset.x, velocity.x)
                   if (swipe < -swipeConfidenceThreshold) {
                     paginate(1)

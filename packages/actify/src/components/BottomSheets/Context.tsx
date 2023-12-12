@@ -1,5 +1,5 @@
 'use client'
-import { createStore, useStore, StoreApi } from 'zustand'
+import { createStore, useStore } from 'zustand'
 import React, { createContext, useRef, useContext } from 'react'
 
 interface BottomSheetsProps {

@@ -16,7 +16,7 @@ const variants = tv({
   }
 })
 
-interface ElevationProps {
+export interface ElevationProps {
   className?: string
   level: 0 | 1 | 2 | 3 | 4 | 5 | VariantProps<typeof variants>['level']
 }
