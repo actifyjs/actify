@@ -3,8 +3,8 @@ import React, { forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
 import { Button } from '@actify/Button'
 import { generatePagination } from '@utils/index'
-import { PaginationNumber } from '@actify/Pagination'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import PaginationNumber from '@actify/Pagination/PaginationNumber'
 
 const variants = tv({
   base: 'bg-surface rounded-lg p-4 flex justify-center'

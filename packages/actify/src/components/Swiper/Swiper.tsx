@@ -1,6 +1,6 @@
 'use client'
 import { tv } from 'tailwind-variants'
-import { useInterval } from 'usehooks-ts'
+import useInterval from '@hooks/useInterval'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { IconButton } from '@actify/Button/IconButton'
 import React, { Children, forwardRef, isValidElement, useState } from 'react'

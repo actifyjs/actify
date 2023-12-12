@@ -1,14 +1,21 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { useDebounce } from 'usehooks-ts'
+import useDebounce from '@hooks/useDebounce'
+
+type RippleProps = {
+  top?: number
+  left?: number
+  width?: number
+  height?: number
+}[]
 
 const useRipple = (ref: React.MutableRefObject<any>) => {
-  const [ripples, setRipples] = useState([])
+  const [ripples, setRipples] = useState<RippleProps>([])
 
   useEffect(() => {
     if (ref.current) {
       const element = ref.current
-      const clickHandler = (e) => {
+      const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = element.getBoundingClientRect()
         const top = e.clientY - rect.top
         const left = e.clientX - rect.left
@@ -41,13 +48,13 @@ const useRipple = (ref: React.MutableRefObject<any>) => {
     }
   }, [debounced.length])
 
-  return ripples?.map((style, i) => {
+  return ripples?.map((style, index) => {
     return (
-      <span
-        key={i}
+      <div
+        key={index}
         className="absolute rounded-full bg-inverse-surface/25"
         style={{
-          ...style,
+          ...(style as React.CSSProperties),
           transform: 'scale(0)',
           animation: 'ripple 600ms cubic-bezier(0.4, 0, 0.2, 1)'
         }}

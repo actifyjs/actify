@@ -12,7 +12,7 @@ interface RippleProps extends React.HTMLAttributes<HTMLSpanElement> {}
 const Ripple: React.FC<RippleProps> = (props) => {
   const { className, ...rest } = props
 
-  const ref = useRef()
+  const ref = useRef<any>()
   const ripples = useRipple(ref)
   return (
     <>
