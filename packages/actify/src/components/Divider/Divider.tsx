@@ -14,7 +14,7 @@ interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Divider: React.FC<DividerProps> = (props) => {
   const { style, color, thickness, className, ...rest } = props
-  const styles = { ...style }
+  const styles: React.CSSProperties & Record<string, any> = { ...style }
   if (color) {
     styles['--color'] = setColor(color)
   } else {

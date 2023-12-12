@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { tv, VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 
 const variants = tv({
   base: 'pointer-events-none rounded-[inherit] absolute inset-0 before:absolute before:inset-0 before:transition-all after:absolute after:inset-0 after:transition-all before:rounded-[inherit] before:text-black before:opacity-30 after:opacity-[0.15] after:rounded-[inherit] after:text-black',
@@ -16,14 +16,20 @@ const variants = tv({
   }
 })
 
-export interface ElevationProps {
-  className?: string
-  level: 0 | 1 | 2 | 3 | 4 | 5 | VariantProps<typeof variants>['level']
+type Level = 0 | 1 | 2 | 3 | 4 | 5 | '0' | '1' | '2' | '3' | '4' | '5'
+export interface ElevationProps extends React.HTMLAttributes<HTMLSpanElement> {
+  level?: Level
 }
 
-const Elevation: React.FC<ElevationProps> = ({ level, className }) => {
-  // @ts-ignore
-  return <span className={variants({ level, className })}></span>
+const Elevation: React.FC<ElevationProps> = ({ level = 0, className }) => {
+  return (
+    <span
+      className={variants({
+        level: level as any,
+        className
+      })}
+    ></span>
+  )
 }
 
 export default Elevation

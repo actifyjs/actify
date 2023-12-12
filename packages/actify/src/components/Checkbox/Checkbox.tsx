@@ -1,6 +1,6 @@
 'use client'
 import { Ripple } from '@actify/Ripple'
-import { tv, VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 import React, { forwardRef, useState, useEffect } from 'react'
 
 const variants = tv({
@@ -38,10 +38,13 @@ const checkVariants = tv({
   base: 'text-surface absolute inset-0 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity'
 })
 
-// @ts-ignore
-interface CheckPropTypes
-  extends VariantProps<typeof variants>,
-    React.InputHTMLAttributes<HTMLInputElement> {}
+type CheckPropTypes = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'size' | 'color'
+> & {
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
+}
 
 const Checkbox = forwardRef<HTMLInputElement, CheckPropTypes>((props, ref) => {
   const {
@@ -57,11 +60,11 @@ const Checkbox = forwardRef<HTMLInputElement, CheckPropTypes>((props, ref) => {
     ...rest
   } = props
 
-  const [inputValue, setInputValue] = useState(
+  const [inputValue, setInputValue] = useState<boolean | undefined>(
     checked || defaultChecked || false
   )
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
       return
     }

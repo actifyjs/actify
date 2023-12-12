@@ -1,8 +1,8 @@
 'use client'
-import React, { forwardRef, isValidElement, cloneElement } from 'react'
 import { tv } from 'tailwind-variants'
 import { useMergeRefs } from '@floating-ui/react'
 import { useDialogContext } from './DialogContext'
+import React, { forwardRef, isValidElement, cloneElement } from 'react'
 
 const variants = tv({
   base: 'flex items-center'
@@ -13,8 +13,11 @@ export interface DialogActivatorProps
   asChild?: boolean
 }
 
-const DialogActivator = forwardRef<HTMLDivElement, DialogActivatorProps>(
-  ({ className, children, asChild = true, ...props }, propRef) => {
+const DialogActivator: React.FC<DialogActivatorProps> = forwardRef(
+  (
+    { className, children, asChild, ...props },
+    propRef?: React.Ref<HTMLDivElement>
+  ) => {
     const context = useDialogContext()
     // @ts-ignore
     const childrenRef = children.ref

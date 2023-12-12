@@ -43,7 +43,7 @@ const Chip = forwardRef<HTMLAnchorElement | HTMLDivElement, ChipProps>(
       ...rest
     } = props
 
-    const handleClick = (e) => {
+    const handleClick = (e: any) => {
       rest.onClick?.(e)
       if (type == 'filter') {
         setSelected(!selected)
@@ -51,16 +51,14 @@ const Chip = forwardRef<HTMLAnchorElement | HTMLDivElement, ChipProps>(
     }
 
     const Tag =
-      // @ts-ignore
       ['assist', 'suggestion'].includes(type) && rest.href ? 'a' : 'div'
 
     return (
       show && (
         <Tag
-          // @ts-ignore
-          ref={ref}
           {...rest}
           style={style}
+          ref={ref as any}
           onClick={handleClick}
           className={variants({ type, className })}
         >
