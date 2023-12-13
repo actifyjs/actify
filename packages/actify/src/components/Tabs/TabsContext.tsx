@@ -19,9 +19,10 @@ const TabsContext = createContext<TabsStore | null>(null)
 export interface TabsProviderProps extends React.PropsWithChildren<TabsProps> {}
 
 export const TabsProvider = ({ children, ...props }: TabsProviderProps) => {
+  const layoutId = useId()
   const storeRef = useRef<TabsStore>()
   if (!storeRef.current) {
-    storeRef.current = createContextStore(props)
+    storeRef.current = createContextStore({ layoutId, ...props })
   }
 
   return (
@@ -32,13 +33,8 @@ export const TabsProvider = ({ children, ...props }: TabsProviderProps) => {
 }
 
 const createContextStore = (initialProps?: Partial<TabsProps>) => {
-  const DEFAULT_PROPS: TabsProps = {
-    layoutId: useId()
-  }
-
   return createStore<TabsState>((set) => ({
-    ...DEFAULT_PROPS,
-    value: initialProps?.value,
+    ...initialProps,
     setValue: (state) => set({ value: state })
   }))
 }

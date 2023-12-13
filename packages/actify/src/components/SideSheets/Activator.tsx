@@ -33,7 +33,7 @@ const Activator: React.FC<ActivatorProps> = forwardRef(
         role="button"
         style={style}
         className={className}
-        onClick={() => handleClick}
+        onClick={handleClick}
       >
         {rest.children}
       </div>

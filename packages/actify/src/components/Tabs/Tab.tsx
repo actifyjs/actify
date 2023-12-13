@@ -3,7 +3,6 @@ import React, { forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
-import { useShallow } from 'zustand/react/shallow'
 
 const variants = tv({
   base: 'relative isolate h-10 gap-0 sm:gap-2 px-2 flex items-center justify-center text-base font-normal leading-relaxed select-none cursor-pointer'
@@ -16,20 +15,12 @@ export interface TabProps extends React.LiHTMLAttributes<HTMLLIElement> {
 }
 
 const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
-  const {
-    layoutId,
-    value: activeValue,
-    setValue,
-    onChange
-  } = useTabs(
-    useShallow((_) => ({
-      value: _.value,
-      onChange: _.onChange,
-      layoutId: _.layoutId,
-      setValue: _.setValue
-    }))
-  )
   const { className, value, children, ...rest } = props
+
+  const activeValue = useTabs((_) => _.value)
+  const layoutId = useTabs((_) => _.layoutId)
+  const onChange = useTabs((_) => _.onChange)
+  const setValue = useTabs((_) => _.setValue)
 
   const handleClick = (value: Value) => {
     setValue(value)
