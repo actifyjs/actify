@@ -1,11 +1,24 @@
 'use client'
 import React from 'react'
+import { type ToastProps } from './Toast'
 import { createContext, useReducer, useContext } from 'react'
 
-const ToastStateContext = createContext({ toasts: [] })
-const ToastDispatchContext = createContext(null)
+type ToastState = {
+  toasts: ToastProps[]
+}
 
-const ToastReducer = (state, action) => {
+export type ToastAction = {
+  id: string
+  toast: ToastProps
+  type: 'ADD_TOAST' | 'DELETE_TOAST'
+}
+
+const ToastStateContext = createContext<ToastState>({} as ToastState)
+const ToastDispatchContext = createContext<React.Dispatch<ToastAction>>(
+  {} as React.Dispatch<ToastAction>
+)
+
+const ToastReducer = (state: ToastState, action: ToastAction) => {
   switch (action.type) {
     case 'ADD_TOAST': {
       return {
@@ -14,7 +27,7 @@ const ToastReducer = (state, action) => {
       }
     }
     case 'DELETE_TOAST': {
-      const updatedToasts = state.toasts.filter((e) => e.id != action.id)
+      const updatedToasts = state.toasts?.filter((e) => e.id != action.id)
       return {
         ...state,
         toasts: updatedToasts
@@ -26,10 +39,8 @@ const ToastReducer = (state, action) => {
   }
 }
 
-export const ToastProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(ToastReducer, {
-    toasts: []
-  })
+export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
+  const [state, dispatch] = useReducer(ToastReducer, { toasts: [] })
 
   return (
     <ToastStateContext.Provider value={state}>

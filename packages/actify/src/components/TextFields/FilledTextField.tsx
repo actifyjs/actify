@@ -33,6 +33,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<TextFieldTypes> {
   prefixText?: string
   suffixText?: string
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
+  children?: React.JSX.Element | React.JSX.Element[]
 }
 const FilledTextField: React.FC<TextFieldProps> = forwardRef(
   (props, ref?: React.Ref<TextFieldTypes>) => {
@@ -55,34 +56,40 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
     const inputRef = ref || useRef()
     const TagName = type === 'textarea' ? 'textarea' : 'input'
 
-    const [inputValue, setInputValue] = useState(value || defaultValue || '')
+    const [inputValue, setInputValue] = useState<
+      string | number | readonly string[] | undefined
+    >(value || defaultValue || '')
 
     const [focused, setFocused] = useState(false)
 
     const leadingIcon = Children.map(children, (child) =>
-      // @ts-ignore
-      child.type?.displayName === 'LeadingIcon' ? child : null
+      child?.type?.displayName === 'LeadingIcon' ? child : null
     )
     const trailingIcon = Children.map(children, (child) =>
-      // @ts-ignore
-      child.type?.displayName === 'TrailingIcon' ? child : null
+      child?.type?.displayName === 'TrailingIcon' ? child : null
     )
 
-    const hasLeadingIcon = leadingIcon?.length > 0
-    const hasTrailingIcon = trailingIcon?.length > 0
+    const hasLeadingIcon = leadingIcon ? leadingIcon.length > 0 : false
+    const hasTrailingIcon = trailingIcon ? trailingIcon.length > 0 : false
 
     const handleClick = () => {
-      // @ts-ignore
+      // @ts-expect-error
       if (inputRef?.current) {
-        // @ts-ignore
+        // @ts-expect-error
         inputRef?.current.focus()
       }
     }
 
-    // @ts-ignore
-    const populated = useMemo(() => inputValue?.length > 0, [inputValue])
+    const populated = useMemo(() => {
+      if (inputValue) {
+        return inputValue.toString().length > 0
+      }
+      return false
+    }, [inputValue])
 
-    const handleChange = (e) => {
+    const handleChange = (
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
       setInputValue(e.target.value)
       onChange?.(e)
     }

@@ -1,24 +1,29 @@
 'use client'
-import React, { forwardRef, isValidElement, cloneElement } from 'react'
+import { Slot } from '@actify/Slot'
+import React, { forwardRef } from 'react'
 import { useSideSheets } from './Context'
 
 export interface ActivatorProps extends React.HTMLAttributes<HTMLDivElement> {
   asChild?: boolean
 }
-const Activator = forwardRef<HTMLDivElement, ActivatorProps>(
-  ({ asChild, style, className, children, ...rest }, ref) => {
-    // @ts-ignore
-    const { open, setOpen } = useSideSheets()
+const Activator: React.FC<ActivatorProps> = forwardRef(
+  ({ asChild, style, className, ...rest }, ref?: React.Ref<HTMLDivElement>) => {
+    const open = useSideSheets((_) => _.open)
+    const setOpen = useSideSheets((_) => _.setOpen)
 
-    // `asChild` allows the user to pass any element as the activator
-    if (asChild && isValidElement(children)) {
-      return cloneElement(children, {
-        ref,
-        ...rest,
-        ...children.props,
-        role: 'button',
-        onClick: () => setOpen(!open)
-      })
+    const handleClick = () => {
+      setOpen(!open)
+    }
+
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref}
+          style={style}
+          className={className}
+          {...{ ...rest, open, onClick: handleClick }}
+        />
+      )
     }
 
     return (
@@ -28,9 +33,9 @@ const Activator = forwardRef<HTMLDivElement, ActivatorProps>(
         role="button"
         style={style}
         className={className}
-        onClick={() => setOpen(!open)}
+        onClick={() => handleClick}
       >
-        {children}
+        {rest.children}
       </div>
     )
   }

@@ -2,36 +2,55 @@
 import { createStore, useStore } from 'zustand'
 import React, { createContext, useRef, useContext } from 'react'
 
-const SideSheetsContext = createContext({
-  setOpen: () => {},
-  open: false,
-  divider: false,
-  onChange: () => {}
-})
+interface SideSheetsProps {
+  open?: boolean
+  divider?: boolean
+  onChange?: () => void
+}
 
-export const SideSheetsProvider = ({ children, ...initialProp }) => {
-  const useCreateStore = createStore()((set) => ({
-    divider: initialProp.divider ?? false,
-    open: initialProp.open,
-    onChange: initialProp.onChange,
-    setOpen: (state) => set({ open: state })
-  }))
+interface SideSheetsState extends SideSheetsProps {
+  setOpen: (open: boolean) => void
+}
 
-  const store = useRef(useCreateStore)
+type SideSheetsStore = ReturnType<typeof createContextStore>
+
+const SideSheetsContext = createContext<SideSheetsStore | null>(null)
+
+export interface SideSheetsProviderProps
+  extends React.PropsWithChildren<SideSheetsProps> {}
+
+export const SideSheetsProvider = ({
+  children,
+  ...props
+}: SideSheetsProviderProps) => {
+  const storeRef = useRef<SideSheetsStore>()
+  if (!storeRef.current) {
+    storeRef.current = createContextStore(props)
+  }
 
   return (
-    // @ts-ignore
-    <SideSheetsContext.Provider value={store.current}>
+    <SideSheetsContext.Provider value={storeRef.current}>
       {children}
     </SideSheetsContext.Provider>
   )
 }
 
-export const useSideSheets = () => {
+const createContextStore = (initProps?: Partial<SideSheetsProps>) => {
+  const DEFAULT_PROPS: SideSheetsProps = {
+    open: false,
+    divider: false
+  }
+  return createStore<SideSheetsState>()((set) => ({
+    ...DEFAULT_PROPS,
+    ...initProps,
+    setOpen: (state: boolean) => set({ open: state })
+  }))
+}
+
+export function useSideSheets<T>(selector: (state: SideSheetsState) => T): T {
   const store = useContext(SideSheetsContext)
   if (!store) {
     throw new Error('Missing SideSheetsContext.Provider in the tree')
   }
-  // @ts-ignore
-  return useStore(store)
+  return useStore(store, selector)
 }

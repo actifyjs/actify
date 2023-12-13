@@ -9,8 +9,7 @@ const variants = tv({
 })
 
 const Body: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
-  // @ts-ignore
-  const { divider } = useSideSheets()
+  const divider = useSideSheets((_) => _.divider)
   const { className, children } = props
 
   return (

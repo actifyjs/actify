@@ -1,36 +1,52 @@
 'use client'
-import React, { createContext, useId, useRef, useContext } from 'react'
 import { createStore, useStore } from 'zustand'
+import React, { createContext, useId, useRef, useContext } from 'react'
 
-const TabsContext = createContext({
-  layoutId: '',
-  active: '',
-  onChange: () => {}
-})
+interface TabsProps {
+  layoutId?: string
+  value?: number | string
+  onChange?: (_: number | string) => void
+}
 
-export const TabsProvider = ({ children, ...initialProp }) => {
-  const useCreateStore = createStore()((set) => ({
-    layoutId: useId(),
-    active: initialProp.value,
-    onChange: initialProp.onChange,
-    setActive: (state) => set({ active: state })
-  }))
+interface TabsState extends TabsProps {
+  setValue: (_: number | string) => void
+}
 
-  const store = useRef(useCreateStore)
+type TabsStore = ReturnType<typeof createContextStore>
+
+const TabsContext = createContext<TabsStore | null>(null)
+
+export interface TabsProviderProps extends React.PropsWithChildren<TabsProps> {}
+
+export const TabsProvider = ({ children, ...props }: TabsProviderProps) => {
+  const storeRef = useRef<TabsStore>()
+  if (!storeRef.current) {
+    storeRef.current = createContextStore(props)
+  }
 
   return (
-    // @ts-ignore
-    <TabsContext.Provider value={store.current}>
+    <TabsContext.Provider value={storeRef.current}>
       {children}
     </TabsContext.Provider>
   )
 }
 
-export const useTabs = () => {
+const createContextStore = (initialProps?: Partial<TabsProps>) => {
+  const DEFAULT_PROPS: TabsProps = {
+    layoutId: useId()
+  }
+
+  return createStore<TabsState>((set) => ({
+    ...DEFAULT_PROPS,
+    value: initialProps?.value,
+    setValue: (state) => set({ value: state })
+  }))
+}
+
+export function useTabs<T>(selector: (state: TabsState) => T): T {
   const store = useContext(TabsContext)
   if (!store) {
     throw new Error('Missing TabsContext.Provider in the tree')
   }
-  // @ts-ignore
-  return useStore(store)
+  return useStore(store, selector)
 }

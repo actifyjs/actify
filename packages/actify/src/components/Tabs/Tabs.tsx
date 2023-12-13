@@ -11,8 +11,9 @@ const variants = tv({
   base: 'relative'
 })
 
-interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
-  value?: number | string
+type TabsProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> & {
+  value: number | string
+  onChange?: (value: number | string) => void
 }
 
 const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {

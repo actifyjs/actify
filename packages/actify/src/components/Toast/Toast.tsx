@@ -2,12 +2,12 @@
 import React from 'react'
 import { XCircle, CheckCircle2 } from 'lucide-react'
 import { IconButton } from '@actify/Button/IconButton'
-import { useToastDispatchContext } from './ToastContext'
+import { useToastDispatchContext, ToastAction } from './ToastContext'
 
-interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
-  type: 'success' | 'error'
-  message: string
+export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
   id: string
+  message: string
+  type: 'success' | 'error'
 }
 
 const Toast: React.FC<ToastProps> = ({ type, message, id }) => {
@@ -28,7 +28,7 @@ const Toast: React.FC<ToastProps> = ({ type, message, id }) => {
               <div className="-mx-1.5 -my-1.5">
                 <IconButton
                   onClick={() => {
-                    dispatch({ id, type: 'DELETE_TOAST' })
+                    dispatch({ id, type: 'DELETE_TOAST' } as ToastAction)
                   }}
                   className="text-green-500"
                 >
@@ -53,7 +53,7 @@ const Toast: React.FC<ToastProps> = ({ type, message, id }) => {
               <div className="-mx-1.5 -my-1.5">
                 <IconButton
                   onClick={() => {
-                    dispatch({ id, type: 'DELETE_TOAST' })
+                    dispatch({ id, type: 'DELETE_TOAST' } as ToastAction)
                   }}
                   className="text-red-500"
                 >

@@ -34,8 +34,9 @@ export interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Content = forwardRef<HTMLDivElement, ContentProps>((props, ref) => {
   const { style, className, divider, children, ...rest } = props
-  // @ts-ignore
-  const { open, setOpen } = useSideSheets()
+
+  const open = useSideSheets((_) => _.open)
+  const setOpen = useSideSheets((_) => _.setOpen)
 
   return (
     <>

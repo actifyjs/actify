@@ -1,26 +1,23 @@
 'use client'
-import { Content } from './Content'
-import { Activator } from './Activator'
-import { Header } from './Header'
+import React from 'react'
 import { Body } from './Body'
 import { Action } from './Action'
-import React, { forwardRef } from 'react'
+import { Header } from './Header'
+import { Content } from './Content'
+import { Activator } from './Activator'
 import { SideSheetsProvider } from './Context'
 
-interface SideSheetsPropTypes extends React.HTMLAttributes<HTMLDivElement> {
+type SideSheetsPropTypes = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'onChange'
+> & {
   divider?: boolean
+  onChange: () => void
 }
 
-const SideSheets = forwardRef<HTMLDivElement, SideSheetsPropTypes>(
-  (props, ref) => {
-    const { children, ...rest } = props
-    return (
-      <SideSheetsProvider ref={ref} {...rest}>
-        {children}
-      </SideSheetsProvider>
-    )
-  }
-)
+const SideSheets: React.FC<SideSheetsPropTypes> = ({ children, ...rest }) => {
+  return <SideSheetsProvider {...rest}>{children}</SideSheetsProvider>
+}
 
 SideSheets.displayName = 'Actify.SideSheets'
 

@@ -12,8 +12,7 @@ export interface TabsPanelProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>((props, ref) => {
-  // @ts-ignore
-  const { active } = useTabs()
+  const activeValue = useTabs((_) => _.value)
   const { value, className, children, ...rest } = props
 
   return (
@@ -24,7 +23,7 @@ const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>((props, ref) => {
       data-value={value}
       className={variants({ className })}
     >
-      {active == value && children}
+      {activeValue == value && children}
     </div>
   )
 })
