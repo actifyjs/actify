@@ -8,6 +8,7 @@ import {
   useRole,
   useFocus,
   useHover,
+  Placement,
   useDismiss,
   autoUpdate,
   useFloating,
@@ -31,10 +32,21 @@ import React, {
 
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 
-const TooltipGroupContext = createContext({
+const TooltipGroupContext = createContext<{
+  placement: Placement | undefined
+  groupId: string | undefined
+}>({
   placement: 'top',
   groupId: undefined
 })
+
+type TooltipGroupProps = {
+  timeout?: number
+  showDelay?: number
+  hideDelay?: number
+  placement?: Placement
+  children: React.ReactNode
+}
 
 const TooltipGroup = ({
   timeout = 300,
@@ -42,7 +54,7 @@ const TooltipGroup = ({
   hideDelay = 200,
   placement,
   children
-}) => {
+}: TooltipGroupProps) => {
   const groupId = useId()
 
   return (
@@ -64,6 +76,13 @@ const Tooltip = ({
   placement,
   showArrow = true,
   children
+}: {
+  content: string | React.ReactNode
+  showDelay?: number
+  hideDelay?: number
+  placement?: Placement
+  showArrow?: boolean
+  children?: any
 }) => {
   const { placement: groupPlacement, groupId } = useContext(TooltipGroupContext)
   const { delay, isInstantPhase } = useDelayGroupContext()
@@ -139,7 +158,7 @@ const Tooltip = ({
     <>
       {cloneElement(
         children,
-        getReferenceProps({ ref: refs.setReference, ...children.props })
+        getReferenceProps({ ref: refs.setReference, ...children?.props })
       )}
       <FloatingPortal>
         {/* This element used to measure its size for position calculation, and later we render true tooltip */}
@@ -168,8 +187,7 @@ const Tooltip = ({
           {open && state === 'positioned' && (
             <motion.div
               initial={
-                // @ts-ignore
-                isInstantPhase ? {} : { sacle: 0, opacity: 0, ...translate }
+                isInstantPhase ? {} : { scale: 0, opacity: 0, ...translate }
               }
               animate={{ scale: 1, opacity: 1, translateX: 0, translateY: 0 }}
               exit={{ scale: 0, opacity: 0, ...translate }}
