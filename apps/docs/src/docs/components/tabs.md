@@ -14,7 +14,7 @@ title: Tabs
 
 | Props      | Type               | Description   | Default |
 | ---------- | ------------------ | ------------- | ------- |
-| `value`    | `string`           | actived value | `null`  |
+| `value`    | `number` `string`  | actived value | `null`  |
 | `children` | `React.React.Node` |               | `null`  |
 
 ## Sub components
