@@ -1,77 +1,73 @@
-import { useState } from 'react'
-import { TextField, Checkbox, Button, IconButton, Icon, Avatar } from 'actify'
+import { useState, useEffect } from 'react'
+import {
+  TextField,
+  Checkbox,
+  Tooltip,
+  Button,
+  IconButton,
+  Avatar
+} from 'actify'
 import { Trash, Delete, Pencil, Contact } from 'lucide-react'
 
-export default () => {
-  const [list, setList] = useState([
-    {
-      name: 'Emma Adams',
-      position: 'Web Developer',
-      email: 'adams@mail.com',
-      location: 'Boston, USA',
-      phone: '+91 (070) 123-4567'
-    },
-    {
-      name: 'Olivia Allen',
-      position: 'Web Designer',
-      email: 'allen@mail.com',
-      location: 'Sydney, Australia',
-      phone: '+91 (125) 450-1500'
-    },
-    {
-      name: 'Isabella Anderson',
-      position: 'UX/UI Designer',
-      email: 'anderson@mail.com',
-      location: 'Miami, USA',
-      phone: '+91 (100) 154-1254'
-    },
-    {
-      name: 'Amelia Armstrong',
-      position: 'Ethical Hacker',
-      email: 'armstrong@mail.com',
-      location: 'Tokyo, Japan',
-      phone: '+91 (154) 199- 1540'
-    },
-    {
-      name: 'Emily Atkinson',
-      position: 'Web developer',
-      email: 'atkinson@mail.com',
-      location: 'Edinburgh, UK',
-      phone: '+91 (900) 150- 1500'
-    },
-    {
-      name: 'Sofia Bailey',
-      position: 'UX/UI Designer',
-      email: 'bailey@mail.com',
-      location: 'New York, USA',
-      phone: '+91 (001) 160- 1845'
-    },
-    {
-      name: 'Victoria Sharma',
-      position: 'Project Manager',
-      email: 'sharma@mail.com',
-      location: 'Miami, USA',
-      phone: '+91 (110) 180- 1600'
-    },
-    {
-      name: 'Penelope Baker',
-      position: 'Web Developer',
-      email: 'baker@mail.com',
-      location: 'Edinburgh, UK',
-      phone: '+91 (405) 483- 4512'
+type User = {
+  id: number
+  name: string
+  username: string
+  email: string
+  address: {
+    street: string
+    suite: string
+    city: string
+    zipcode: string
+    geo: {
+      lat: string
+      lng: string
     }
-  ])
-  const [checekAll, setCheckAll] = useState(false)
+  }
+  phone: string
+  website: string
+  company: {
+    name: string
+    catchPhrase: string
+    bs: string
+  }
+  checked?: boolean
+}
 
-  const handleCheckAll = (checked) => {
-    setCheckAll(checked)
-    setList([...list].map((item) => ({ ...item, checked })))
+export default () => {
+  const [users, setUsers] = useState<User[]>([])
+
+  const fetchUsers = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users')
+    const data = await response.json()
+    setUsers(data)
   }
 
-  const handleDelete = (item) => {
-    const index = list.indexOf(item)
-    list.splice(index, 1)
-    setList([...list])
+  useEffect(() => {
+    fetchUsers()
+  }, [])
+
+  const [checekAll, setCheckAll] = useState(false)
+
+  const handleCheckAll = (checked: boolean) => {
+    setCheckAll(checked)
+    setUsers([...users].map((item) => ({ ...item, checked })))
+  }
+
+  const handleDelete = (item: User) => {
+    const index = users.indexOf(item)
+    users.splice(index, 1)
+    setUsers([...users])
+  }
+
+  const handleItemChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    item: User
+  ) => {
+    const { checked } = e.target
+    const index = users.indexOf(item)
+    users[index].checked = checked
+    setUsers([...users])
   }
 
   return (
@@ -94,36 +90,47 @@ export default () => {
           <thead className="border-b text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr className="[&>th]:px-3 [&>th]:py-2">
               <th className="w-10">
-                <Checkbox
-                  defaultChecked={checekAll}
-                  onChange={handleCheckAll}
-                />
+                <Tooltip content="全选">
+                  <Checkbox
+                    defaultChecked={checekAll}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      handleCheckAll(e.target.checked)
+                    }
+                  />
+                </Tooltip>
               </th>
               <th>Name</th>
               <th>Email</th>
-              <th>Location</th>
+              <th>Address</th>
               <th>Phone</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {list.map((item) => (
+            {users.map((item) => (
               <tr
                 key={item.name}
                 className="[&>td]:px-3 [&>td]:py-2 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
                 <td>
-                  <Checkbox checked={item.checked} />
+                  <Checkbox
+                    checked={item.checked}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      handleItemChange(e, item)
+                    }
+                  />
                 </td>
                 <th className="flex gap-2 px-3 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <Avatar />
                   <div className="flex flex-col gap-2">
                     <span>{item.name}</span>
-                    <p className="text-xs text-outline">{item.position}</p>
+                    <p className="text-xs text-outline">
+                      {item.address.street}
+                    </p>
                   </div>
                 </th>
                 <td>{item.email}</td>
-                <td>{item.location}</td>
+                <td>{item.address.street}</td>
                 <td>{item.phone}</td>
                 <td>
                   <IconButton color="error" onClick={() => handleDelete(item)}>

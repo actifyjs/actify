@@ -1,5 +1,5 @@
 'use client'
-import React, { useMemo, forwardRef, useState, useEffect } from 'react'
+import React, { useMemo, forwardRef, useState } from 'react'
 import { Elevation } from '@actify/Elevation'
 import { tv, VariantProps } from 'tailwind-variants'
 
@@ -50,18 +50,18 @@ const Slider: React.FC<SliderPropTypes> = forwardRef(
       ? [value, onChange]
       : useState(defaultValue || '')
 
-    useEffect(() => {
-      if (isControlled) {
-        setInputValue?.(value as any)
-      }
-    }, [value, isControlled])
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (disabled) {
         return
       }
-      setInputValue?.(e.target.value as any)
-      onChange?.(e.target.value as any)
+      if (isControlled) {
+        // @ts-expect-error
+        setInputValue?.(e)
+      } else {
+        // @ts-expect-error
+        setInputValue?.(e.target.value)
+        onChange?.(e)
+      }
     }
 
     const percent = useMemo(() => {

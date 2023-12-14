@@ -3,7 +3,7 @@ import { X, Check } from 'lucide-react'
 import { Ripple } from '@actify/Ripple'
 import { tv } from 'tailwind-variants'
 import { setColor } from './../../utils'
-import React, { forwardRef, useState, useEffect } from 'react'
+import React, { forwardRef, useState } from 'react'
 
 const variants = tv({
   base: 'h-8 w-14 rounded-full border-[2px] border-current shadow-inner peer-checked:bg-current',
@@ -50,18 +50,18 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
     ? [selected, onChange]
     : useState(defaultSelected || false)
 
-  useEffect(() => {
-    if (isControlled) {
-      setInputValue?.(selected as any)
-    }
-  }, [selected, isControlled])
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
       return
     }
-    setInputValue?.(e.target.checked as any)
-    onChange?.(e.target.checked as any)
+    if (isControlled) {
+      // @ts-expect-error
+      setInputValue?.(e)
+    } else {
+      // @ts-expect-error
+      setInputValue?.(e.target.checked)
+      onChange?.(e)
+    }
   }
 
   return (

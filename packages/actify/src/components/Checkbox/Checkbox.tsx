@@ -1,7 +1,7 @@
 'use client'
 import { Ripple } from '@actify/Ripple'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef, useState, useEffect } from 'react'
+import React, { forwardRef, useState } from 'react'
 
 const variants = tv({
   base: "peer relative appearance-none border-outline cursor-pointer transition-all before:content[''] before:block before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity",
@@ -40,14 +40,17 @@ const checkVariants = tv({
 
 type CheckPropTypes = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  'size' | 'color'
+  'size' | 'color' | 'onChange'
 > & {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
+  onChange?:
+    | ((checked: boolean) => void)
+    | ((e: React.ChangeEvent<HTMLInputElement>) => void)
 }
 
 const Checkbox: React.FC<CheckPropTypes> = forwardRef(
-  (props, ref?: React.Ref<HTMLInputElement>) => {
+  (props, ref?: React.Ref<HTMLLabelElement>) => {
     const {
       size,
       title,
@@ -67,28 +70,29 @@ const Checkbox: React.FC<CheckPropTypes> = forwardRef(
       ? [checked, onChange]
       : useState(defaultChecked || false)
 
-    useEffect(() => {
-      if (isControlled) {
-        setInputValue?.(checked as any)
-      }
-    }, [checked, isControlled])
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (disabled) {
         return
       }
-      setInputValue?.(e.target.checked as any)
-      onChange?.(e.target.checked as any)
+      if (isControlled) {
+        // @ts-expect-error
+        setInputValue?.(e)
+      } else {
+        // @ts-expect-error
+        setInputValue?.(e.target.checked)
+        // @ts-expect-error
+        onChange?.(e)
+      }
     }
 
     return (
       <label
+        ref={ref}
         title={title}
         className="relative overflow-hidden flex items-center cursor-pointer p-2.5 rounded-full w-fit"
       >
         <input
           {...rest}
-          ref={ref}
           style={style}
           type="checkbox"
           disabled={disabled}
