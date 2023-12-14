@@ -98,7 +98,7 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
       e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
       setInputValue?.(e.target.value as any)
-      onChange?.(e.target.value as any)
+      onChange?.(e as any)
     }
 
     return (

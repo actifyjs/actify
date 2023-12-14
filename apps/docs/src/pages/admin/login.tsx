@@ -44,7 +44,7 @@ export default () => {
           <TextField
             label="Email"
             className="w-full"
-            value="lerte"
+            defaultValue="lerte"
             suffixText="@actifyjs.com"
           >
             <TextField.LeadingIcon>
@@ -56,7 +56,7 @@ export default () => {
             label="Password"
             className="w-full"
             autoComplete="off"
-            value="actify"
+            defaultValue="actify"
             type={showPassword ? 'text' : 'password'}
           >
             <TextField.LeadingIcon>
