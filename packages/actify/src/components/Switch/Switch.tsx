@@ -23,52 +23,51 @@ const dotVariants = tv({
   }
 })
 
-interface SwitchProps extends React.HTMLAttributes<HTMLInputElement> {
+interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   color?: string
   icons?: boolean
   selected?: boolean
-  disabled?: boolean
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  className?: string
   defaultSelected?: boolean
 }
 
 const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
   const {
     title,
-    color,
+    color = 'primary',
     icons,
     style,
     selected,
     disabled,
     onChange,
     className,
-    defaultSelected = false,
+    defaultSelected,
     ...rest
   } = props
 
-  const [inputValue, setInputValue] = useState(
-    selected || defaultSelected || false
-  )
+  const isControlled = selected !== undefined
 
-  const handleChange = (e) => {
+  const [inputValue, setInputValue] = isControlled
+    ? [selected, onChange]
+    : useState(defaultSelected || false)
+
+  useEffect(() => {
+    if (isControlled) {
+      setInputValue?.(selected as any)
+    }
+  }, [selected, isControlled])
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
       return
     }
-    setInputValue(e.target.checked)
-    onChange?.(e)
+    setInputValue?.(e.target.checked as any)
+    onChange?.(e.target.checked as any)
   }
-
-  useEffect(() => {
-    setInputValue(selected)
-  }, [selected])
-
-  const colorVariant = color ?? 'primary'
 
   return (
     <label
       title={title}
-      style={{ color: setColor(colorVariant) }}
+      style={{ color: setColor(color) }}
       className="relative cursor-pointer inline-block w-fit h-fit"
     >
       <input
@@ -79,8 +78,9 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
         type="checkbox"
         className="peer"
         disabled={disabled}
-        checked={inputValue}
         onChange={handleChange}
+        checked={isControlled ? inputValue : undefined}
+        defaultChecked={!isControlled ? inputValue : undefined}
       />
       <div className={variants({ disabled, className })}></div>
       <i className={dotVariants({ icons })}>

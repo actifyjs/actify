@@ -54,11 +54,12 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
     } = props
 
     const inputRef = ref || useRef()
+    const isControlled = value !== undefined
     const TagName = type === 'textarea' ? 'textarea' : 'input'
 
-    const [inputValue, setInputValue] = useState<
-      string | number | readonly string[] | undefined
-    >(value || defaultValue || '')
+    const [inputValue, setInputValue] = isControlled
+      ? [value, onChange]
+      : useState(defaultValue || '')
 
     const [focused, setFocused] = useState(false)
 
@@ -71,6 +72,12 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
 
     const hasLeadingIcon = leadingIcon ? leadingIcon.length > 0 : false
     const hasTrailingIcon = trailingIcon ? trailingIcon.length > 0 : false
+
+    useEffect(() => {
+      if (isControlled) {
+        setInputValue?.(value as any)
+      }
+    }, [value, isControlled])
 
     const handleClick = () => {
       // @ts-expect-error
@@ -90,13 +97,9 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
     const handleChange = (
       e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-      setInputValue(e.target.value)
-      onChange?.(e)
+      setInputValue?.(e.target.value as any)
+      onChange?.(e.target.value as any)
     }
-
-    useEffect(() => {
-      setInputValue(value)
-    }, [value])
 
     return (
       <div
@@ -151,11 +154,12 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
                       aria-label={label}
                       disabled={disabled}
                       aria-invalid={false}
-                      value={inputValue}
                       onChange={handleChange}
                       aria-describedby="description"
                       onFocus={() => setFocused(true)}
                       onBlur={() => setFocused(false)}
+                      value={isControlled ? inputValue : undefined}
+                      defaultValue={!isControlled ? inputValue : undefined}
                       className="inline-flex w-full outline-0 bg-transparent text-base text-on-surface focus:outline-none [-webkit-tap-highlight-color:rgba(0,0,0,0)]"
                     />
                     {suffixText && <span>{suffixText}</span>}
