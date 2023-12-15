@@ -1,20 +1,26 @@
 'use client'
-import React, { useEffect, useState } from 'react'
 import { X } from 'lucide-react'
+import React, { useEffect, useState } from 'react'
 import { IconButton } from '@actify/Button/IconButton'
 import { motion, AnimatePresence } from 'framer-motion'
 
 let id = 0
 
-interface SnackbarProps extends React.HTMLAttributes<HTMLDivElement> {
+type SnackbarProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
   timeout?: number
+  children: Function
 }
 
+type Items = {
+  key: number
+  msg: string
+  duration: number
+}[]
+
 const Snackbar: React.FC<SnackbarProps> = ({ timeout = 3000, children }) => {
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState<Items>([])
 
   useEffect(() => {
-    // @ts-ignore
     children((msg: string) => {
       setItems((state) => [
         ...state,
@@ -23,7 +29,7 @@ const Snackbar: React.FC<SnackbarProps> = ({ timeout = 3000, children }) => {
     })
   }, [])
 
-  const remove = (e, key) => {
+  const remove = (e: null | React.ChangeEvent<any>, key: number) => {
     e?.stopPropagation()
     setItems((state) =>
       state.filter((i) => {
@@ -37,9 +43,8 @@ const Snackbar: React.FC<SnackbarProps> = ({ timeout = 3000, children }) => {
       <AnimatePresence initial={false}>
         {items.map((item) => (
           <motion.li
+            layout
             key={item.key}
-            // @ts-ignore
-            positionTransition
             animate={{ opacity: 1, y: 0, scale: 1 }}
             initial={{ opacity: 0, y: 50, scale: 0.3 }}
             className="relative overflow-hidden w-full md:w-80"

@@ -1,5 +1,5 @@
 'use client'
-import React, { forwardRef } from 'react'
+import React from 'react'
 import { DialogClose } from './DialogClose'
 import { DialogHeading } from './DialogHeading'
 import { DialogContent } from './DialogContent'
@@ -7,19 +7,12 @@ import { DialogActivator } from './DialogActivator'
 import { DialogDescription } from './DialogDescription'
 import { DialogProvider } from './DialogContext'
 
-interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {
-  open?: boolean
-  onOpenChange?: (open: boolean) => void
-}
+interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
+const Dialog: React.FC<DialogProps> = (props) => {
   const { children, ...rest } = props
-  return (
-    <DialogProvider ref={ref} {...rest}>
-      {children}
-    </DialogProvider>
-  )
-})
+  return <DialogProvider {...rest}>{children}</DialogProvider>
+}
 
 export default Object.assign(Dialog, {
   Close: DialogClose,

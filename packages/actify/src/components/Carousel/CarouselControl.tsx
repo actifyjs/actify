@@ -31,16 +31,16 @@ const CarouselControl: React.FC<CarouselControlProps> = ({
     if (!infinite && current == 0) {
       return
     }
-    setPage([parseInt(page) - 1, -1])
+    setPage([(page ? Number(page) : 0) - 1, -1])
   }
   const next = () => {
-    if (!infinite && current == total - 1) {
+    if (!infinite && current == (total ?? 0) - 1) {
       return
     }
-    setPage([parseInt(page) + 1, 1])
+    setPage([(page ? Number(page) : 0) + 1, 1])
   }
 
-  autoPlay && useInterval(next, interval)
+  autoPlay && useInterval(next, interval ?? 0)
 
   return (
     control && (

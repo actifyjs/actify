@@ -1,5 +1,5 @@
 'use client'
-import React, { forwardRef, Children } from 'react'
+import React, { forwardRef, Children, ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 import { Thead } from './Thead'
 import { Tbody } from './Tbody'
@@ -14,12 +14,15 @@ const variants = tv({
   base: 'w-full text-sm text-left rtl:text-right rounded-xl overflow-hidden bg-surface'
 })
 
-interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> {
-  headers: React.ReactNode[]
-  items: React.ReactNode[]
-  actions?: React.ReactNode[]
+type Headers = Record<string, any>[]
+type Items = Record<string, any>[]
+interface TableProps extends ComponentProps<'table'> {
+  headers: Headers
+  items: Items
+  actions?: boolean
   onItemEdit?: (item: any) => void
   onItemDelete?: (item: any) => void
+  children?: React.JSX.Element | React.JSX.Element[]
 }
 const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
   const {
@@ -35,15 +38,14 @@ const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
   } = props
 
   const thead = Children.map(children, (child) =>
-    // @ts-ignore
-    child.type?.displayName === 'Thead' ? child : null
+    child?.type?.displayName === 'Thead' ? child : null
   )
   const tbody = Children.map(children, (child) =>
-    // @ts-ignore
-    child.type?.displayName === 'Tbody' ? child : null
+    child?.type?.displayName === 'Tbody' ? child : null
   )
-  const hasThead = thead?.length > 0
-  const hasToby = tbody?.length > 0
+
+  const hasThead = thead ? thead.length > 0 : false
+  const hasToby = tbody ? tbody.length > 0 : false
 
   return (
     <table ref={ref} {...rest} className={variants({ className })}>
@@ -52,7 +54,6 @@ const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
       ) : (
         <Thead>
           <Tr className="h-11">
-            {/* @ts-ignore */}
             {headers?.map((head) => <Th key={head.value}>{head.text}</Th>)}
 
             {actions && <Th>Actions</Th>}
@@ -69,13 +70,9 @@ const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
               key={index}
               className="bg-surface border-b hover:bg-inverse-surface/10"
             >
-              {/* @ts-ignore */}
               {headers.map(({ value }) => (
                 <Td key={value}>
-                  {/* @ts-ignore */}
-                  <p variant="small" color="blue-gray" className="font-normal">
-                    {item[value]}
-                  </p>
+                  <p className="font-normal">{item[value]}</p>
                 </Td>
               ))}
               {actions && (

@@ -30,6 +30,7 @@ interface SwiperPropTypes extends React.HTMLAttributes<HTMLDivElement> {
   interval?: number
   autoPlay?: boolean
   indicator?: React.FunctionComponent
+  children?: React.JSX.Element | React.JSX.Element[]
 }
 
 const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
@@ -45,10 +46,9 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
   } = props
 
   const items = Children.map(children, (child) =>
-    // @ts-ignore
-    child.type?.name === 'Item' ? child : null
+    child?.type?.name === 'Item' ? child : null
   )
-  const count = items.length
+  const count = items?.length
 
   const [current, setCurrent] = useState(index ?? 0)
   const [transition, setTransition] = useState('transform .5s ease-in-out')
@@ -57,18 +57,18 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
   const prev = () => {
     if (current === 0) {
       setTransition('none')
-      setTransform(`-${count + 1}00%`)
+      setTransform(`-${count ?? 0 + 1}00%`)
       requestAnimationFrame(() => {
         setTransform('')
         setTransition('transform .5s ease-in-out')
       })
-      setCurrent(count - 1)
+      setCurrent(count ?? 0 - 1)
     } else {
       setCurrent((_) => _ - 1)
     }
   }
   const next = () => {
-    if (current === count - 1) {
+    if (current === count ?? 0 - 1) {
       setTransition('none')
       setTransform('0')
       requestAnimationFrame(() => {
@@ -82,15 +82,16 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
   }
 
   const prevButton = Children.map(children, (child) => {
-    // @ts-ignore
-    if (child.type?.name === 'PrevButton') {
+    if (child?.type?.name === 'PrevButton') {
       if (isValidElement(child)) {
         return (
           <button
             onClick={prev}
+            // @ts-expect-error
             {...child.props}
             className={buttonVariants({
               prev: true,
+              // @ts-expect-error
               className: child.props.className
             })}
           >
@@ -102,15 +103,16 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
   })
 
   const nextButton = Children.map(children, (child) => {
-    // @ts-ignore
-    if (child.type?.name === 'NextButton') {
+    if (child?.type?.name === 'NextButton') {
       if (isValidElement(child)) {
         return (
           <button
             onClick={next}
+            // @ts-expect-error
             {...child.props}
             className={buttonVariants({
               next: true,
+              // @ts-expect-error
               className: child.props.className
             })}
           >
@@ -134,13 +136,13 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
         }
         className="relative h-full overflow-hidden rounded-lg flex"
       >
-        {items[count - 1]}
+        {items?.[count ?? 0 - 1]}
         {items}
-        {items[0]}
+        {items?.[0]}
 
         {/* controls */}
         {/* prev button */}
-        {prevButton.length ? (
+        {prevButton?.length ? (
           prevButton
         ) : (
           <IconButton
@@ -152,7 +154,7 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
           </IconButton>
         )}
         {/* next button */}
-        {nextButton.length ? (
+        {nextButton?.length ? (
           nextButton
         ) : (
           <IconButton

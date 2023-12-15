@@ -17,9 +17,10 @@ const variants = tv({
 interface MenuItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
   label: string
   disabled?: boolean
+  type?: 'button' | 'submit'
 }
 
-const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
+const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
   ({ label, disabled, ...props }, forwardedRef) => {
     const menu = useContext(MenuContext)
     const item = useListItem({ label: disabled ? null : label })
@@ -29,22 +30,18 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
     return (
       <ListItem
         {...props}
-        type="button"
         role="menuitem"
-        disabled={disabled}
         className={variants({ disabled })}
         tabIndex={isActive ? 0 : -1}
-        // @ts-ignore
         ref={useMergeRefs([item.ref, forwardedRef])}
-        // @ts-ignore
+        // @ts-expect-error
         {...menu.getItemProps({
-          onClick(event) {
+          onClick(event: React.MouseEvent<HTMLLIElement>) {
             props.onClick?.(event)
             tree?.events.emit('click')
           },
-          onFocus(event) {
+          onFocus(event: React.FocusEvent<HTMLLIElement>) {
             props.onFocus?.(event)
-            // @ts-ignore
             menu.setHasFocusInside(true)
           }
         })}

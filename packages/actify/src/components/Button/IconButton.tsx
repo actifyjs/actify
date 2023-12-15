@@ -22,6 +22,7 @@ interface IconButtonProps<T extends IconButtonTypes>
   extends VariantProps<typeof variants>,
     React.AnchorHTMLAttributes<T>,
     React.ButtonHTMLAttributes<T> {
+  tag?: string
   href?: string
   ripple?: boolean
   disabled?: boolean
@@ -34,7 +35,7 @@ const IconButton = forwardRef(
     ref?: React.Ref<IconButtonTypes>
   ) => {
     const {
-      href,
+      tag,
       style,
       disabled,
       children,
@@ -42,47 +43,31 @@ const IconButton = forwardRef(
       ripple = true,
       type = 'button',
       color = 'current',
-      variant = 'standard'
+      variant = 'standard',
+      ...rest
     } = props
-    const colorVariant = setColor(color)
 
-    if (href) {
-      return (
-        <a
-          href={href}
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          style={{ color: colorVariant, ...style }}
-          {...{
-            ...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>),
-            className: variants({
-              variant,
-              className
-            })
-          }}
-        >
-          {children}
-          {ripple && <Ripple />}
-        </a>
-      )
+    let Tag = ''
+    if (rest.href) {
+      Tag = 'a'
+    } else if (tag) {
+      Tag = tag
+    } else {
+      Tag = 'button'
     }
 
     return (
-      <button
+      // @ts-expect-error
+      <Tag
+        ref={ref}
+        {...rest}
         type={type}
-        disabled={disabled}
-        ref={ref as React.Ref<HTMLButtonElement>}
-        style={{ color: colorVariant, ...style }}
-        {...{
-          ...(props as React.ButtonHTMLAttributes<HTMLButtonElement>),
-          className: variants({
-            variant,
-            className
-          })
-        }}
+        className={variants({ className })}
+        style={{ color: setColor(color), ...style }}
       >
         {children}
         {ripple && <Ripple />}
-      </button>
+      </Tag>
     )
   }
 )

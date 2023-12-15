@@ -19,10 +19,10 @@ export interface PopoverContentProps
   extends React.HTMLAttributes<HTMLDivElement> {}
 
 const PopoverContent: React.FC<PopoverContentProps> = forwardRef(
-  ({ style, ...props }, propRef?: React.MutableRefObject<any>) => {
-    // @ts-ignore
+  ({ style, ...props }, propRef?: React.Ref<HTMLDivElement>) => {
+    // @ts-expect-error
     const { context: floatingContext, ...context } = usePopoverContext()
-    // @ts-ignore
+    // @ts-expect-error
     const ref = useMergeRefs([context.refs.setFloating, propRef])
 
     if (!floatingContext.open) return null
@@ -33,17 +33,16 @@ const PopoverContent: React.FC<PopoverContentProps> = forwardRef(
           lockScroll
           className={scrim({ className: 'grid place-items-center' })}
         >
-          {/* @ts-ignore */}
           <FloatingFocusManager context={floatingContext} modal={context.modal}>
             <div
               ref={ref}
-              // @ts-ignore
+              // @ts-expect-error
               aria-labelledby={context.labelId}
-              // @ts-ignore
+              // @ts-expect-error
               {...context.getFloatingProps(props)}
-              // @ts-ignore
+              // @ts-expect-error
               aria-describedby={context.descriptionId}
-              // @ts-ignore
+              // @ts-expect-error
               style={{ ...context.floatingStyles, ...style }}
               className={variants({ className: props.className })}
             >

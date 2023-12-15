@@ -48,15 +48,15 @@ const listVariants = tv({
   base: 'flex flex-col rounded border border-outline/50 bg-surface bg-clip-padding p-1 shadow-lg outline-none backdrop-blur-lg'
 })
 
-interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
+interface MenuProps extends React.LiHTMLAttributes<HTMLLIElement> {
   label?: string
 }
 
-export const MenuComponent = forwardRef<HTMLDivElement, MenuProps>(
+export const MenuComponent = forwardRef<HTMLLIElement, MenuProps>(
   ({ children, className, label, ...props }, forwardedRef) => {
     const [isOpen, setIsOpen] = useState(false)
     const [hasFocusInside, setHasFocusInside] = useState(false)
-    const [activeIndex, setActiveIndex] = useState(null)
+    const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
     const elementsRef = useRef([])
     const labelsRef = useRef([])
@@ -122,7 +122,7 @@ export const MenuComponent = forwardRef<HTMLDivElement, MenuProps>(
         setIsOpen(false)
       }
 
-      function onSubMenuOpen(event) {
+      function onSubMenuOpen(event: { nodeId: string; parentId: string }) {
         if (event.nodeId !== nodeId && event.parentId === parentId) {
           setIsOpen(false)
         }
@@ -147,20 +147,16 @@ export const MenuComponent = forwardRef<HTMLDivElement, MenuProps>(
       <FloatingNode id={nodeId}>
         {isNested ? (
           <ListItem
-            // @ts-ignore
-            type="button"
             role="menuitem"
             className="pr-4 focus-visible:outline-none justify-between"
-            // @ts-ignore
             ref={useMergeRefs([refs.setReference, item.ref, forwardedRef])}
             {...getReferenceProps(
-              // @ts-ignore
+              // @ts-expect-error
               parent.getItemProps({
                 ...props,
-                onFocus(event) {
+                onFocus(event: React.FocusEvent<HTMLLIElement>) {
                   props.onFocus?.(event)
                   setHasFocusInside(false)
-                  // @ts-ignore
                   parent.setHasFocusInside(true)
                 }
               })
@@ -182,16 +178,15 @@ export const MenuComponent = forwardRef<HTMLDivElement, MenuProps>(
             role={isNested ? 'menuitem' : undefined}
             data-focus-inside={hasFocusInside ? '' : undefined}
             className={rootVariants({ className })}
-            // @ts-ignore
+            // @ts-expect-error
             ref={useMergeRefs([refs.setReference, item.ref, forwardedRef])}
             {...getReferenceProps(
-              // @ts-ignore
+              // @ts-expect-error
               parent.getItemProps({
                 ...props,
-                onFocus(event) {
+                onFocus(event: React.FocusEvent<HTMLLIElement>) {
                   props.onFocus?.(event)
                   setHasFocusInside(false)
-                  // @ts-ignore
                   parent.setHasFocusInside(true)
                 }
               })
@@ -209,13 +204,12 @@ export const MenuComponent = forwardRef<HTMLDivElement, MenuProps>(
         )}
         <MenuContext.Provider
           value={{
+            isOpen,
             activeIndex,
-            // @ts-ignore
-            setActiveIndex,
+            // @ts-expect-error
             getItemProps,
-            // @ts-ignore
-            setHasFocusInside,
-            isOpen
+            setActiveIndex,
+            setHasFocusInside
           }}
         >
           <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
@@ -245,7 +239,7 @@ export const MenuComponent = forwardRef<HTMLDivElement, MenuProps>(
   }
 )
 
-const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
+const Menu = forwardRef<HTMLLIElement, MenuProps>((props, ref) => {
   const parentId = useFloatingParentNodeId()
 
   if (parentId === null) {

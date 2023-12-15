@@ -57,6 +57,7 @@ const SegmentedButton: React.FC<SegmentedButtonProps> = forwardRef(
           children,
           (child, index) =>
             isValidElement(child) &&
+            // @ts-expect-error
             cloneElement<SegmentedButtonProps>(child, {
               color,
               ripple,

@@ -3,6 +3,7 @@ import React, { createContext } from 'react'
 
 import {
   flip,
+  Side,
   shift,
   offset,
   useRole,
@@ -10,21 +11,27 @@ import {
   autoUpdate,
   useDismiss,
   useFloating,
-  useInteractions
+  useInteractions,
+  AlignedPlacement
 } from '@floating-ui/react'
 
-const PopoverContext = createContext({
-  open: false,
-  onOpenChange: () => {}
-})
+type PopoverProps = {
+  open?: boolean
+  modal?: boolean
+  initialOpen?: boolean
+  placement?: Side | AlignedPlacement
+  onOpenChange?: (open: boolean) => void
+}
+
+const PopoverContext = createContext<PopoverProps | null>(null)
 
 const usePopover = ({
+  modal = false,
   initialOpen = false,
   placement = 'bottom',
-  modal,
   open: controlledOpen,
   onOpenChange: setControlledOpen
-}) => {
+}: PopoverProps) => {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
   const [labelId, setLabelId] = React.useState()
   const [descriptionId, setDescriptionId] = React.useState()
@@ -33,7 +40,6 @@ const usePopover = ({
   const setOpen = setControlledOpen ?? setUncontrolledOpen
 
   const data = useFloating({
-    // @ts-ignore
     placement,
     open,
     onOpenChange: setOpen,
@@ -79,11 +85,12 @@ export const PopoverProvider = ({
   children,
   modal = false,
   ...initialProp
+}: {
+  modal?: boolean
+  children: React.ReactNode
 }) => {
-  // @ts-ignore
   const popover = usePopover({ modal, ...initialProp })
   return (
-    // @ts-ignore
     <PopoverContext.Provider value={popover}>
       {children}
     </PopoverContext.Provider>

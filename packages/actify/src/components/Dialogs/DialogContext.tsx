@@ -9,16 +9,19 @@ import {
   useInteractions
 } from '@floating-ui/react'
 
-const DialogContext = createContext({
-  open: false,
-  onOpenChange: () => {}
-})
+type DialogProps = {
+  open?: boolean
+  initialOpen?: boolean
+  onOpenChange?: (open: boolean) => void
+}
+
+const DialogContext = createContext<DialogProps | null>(null)
 
 function useDialog({
   initialOpen = false,
   open: controlledOpen,
   onOpenChange: setControlledOpen
-}) {
+}: DialogProps) {
   const [labelId, setLabelId] = useState()
   const [descriptionId, setDescriptionId] = useState()
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
@@ -64,11 +67,14 @@ export const useDialogContext = () => {
   return context
 }
 
-export const DialogProvider = ({ children, ...options }) => {
-  // @ts-ignore
+export const DialogProvider = ({
+  children,
+  ...options
+}: {
+  children: React.ReactNode
+}) => {
   const dialog = useDialog(options)
   return (
-    // @ts-ignore
     <DialogContext.Provider value={dialog}>{children}</DialogContext.Provider>
   )
 }
