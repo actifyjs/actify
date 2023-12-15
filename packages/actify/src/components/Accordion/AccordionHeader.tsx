@@ -1,9 +1,9 @@
 'use client'
 import { tv } from 'tailwind-variants'
 import { ChevronDown } from 'lucide-react'
-import { AccordionContext } from '../AccordionContext'
+import { useAccordion } from './AccordionContext'
 
-import React, { useMemo, useContext, forwardRef } from 'react'
+import React, { useMemo, forwardRef } from 'react'
 
 import { Text } from '@actify/Text'
 import { Slot } from '@actify/Slot'
@@ -28,7 +28,7 @@ export type AccordionHeaderProps = {
 const AccordionHeader: React.FC<AccordionHeaderProps> = forwardRef(
   (props, ref?: React.Ref<HTMLDivElement>) => {
     const { index, asChild, className, ...rest } = props
-    const { multiple, open, setOpen } = useContext(AccordionContext)
+    const { multiple, open, setOpen } = useAccordion()
 
     const active = useMemo(() => {
       if (open !== undefined) {

@@ -1,1 +1,0 @@
-export { AccordionHeader } from './AccordionHeader'

@@ -1,11 +1,9 @@
 'use client'
 
-import { tv, VariantProps } from 'tailwind-variants'
-import { AccordionContext } from '../AccordionContext'
-
-import React, { useMemo, useContext, forwardRef } from 'react'
-
 import { Slot } from '@actify/Slot'
+import { useAccordion } from './AccordionContext'
+import React, { useMemo, forwardRef } from 'react'
+import { tv, VariantProps } from 'tailwind-variants'
 
 const variants = tv({
   base: 'transition-all duration-300 ease-in-out grid',
@@ -28,7 +26,7 @@ export type AccordionContentProps = {
 const AccordionContent: React.FC<AccordionContentProps> = forwardRef(
   (props, ref?: React.Ref<HTMLDivElement>) => {
     const { index, style, className, asChild, ...rest } = props
-    const { open } = useContext(AccordionContext)
+    const { open } = useAccordion()
 
     const active = useMemo(() => {
       if (open !== undefined) {

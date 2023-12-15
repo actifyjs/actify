@@ -5,38 +5,38 @@ import React, {
   useState,
   forwardRef,
   cloneElement,
-  isValidElement
+  isValidElement,
+  ComponentPropsWithRef
 } from 'react'
 import { tv } from 'tailwind-variants'
-import { AccordionContext, AccordionContextProps } from './AccordionContext'
+
 import { AccordionItem } from './AccordionItem'
 import { AccordionHeader } from './AccordionHeader'
 import { AccordionContent } from './AccordionContent'
+import { AccordionProps, AccordionProvider } from './AccordionContext'
 
 const variants = tv({
   base: 'rounded-lg flex flex-col gap-4 bg-surface p-4'
 })
 
-interface AccordionProps
-  extends AccordionContextProps,
-    React.HTMLAttributes<HTMLDivElement> {}
+interface AccordionRootProps
+  extends AccordionProps,
+    ComponentPropsWithRef<'div'> {}
 
-const AccordionRoot: React.FC<AccordionProps> = forwardRef(
-  (props, ref?: React.Ref<HTMLDivElement>) => {
+const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(
+  (props, ref) => {
     const {
-      open: openProp,
-      multiple,
       style,
-      className,
+      multiple,
       children,
+      className,
+      open: openProp,
       ...rest
     } = props
-    const [open, setOpen] = useState<AccordionContextProps['open']>(
-      openProp ?? []
-    )
+    const [open, setOpen] = useState<AccordionProps['open']>(openProp ?? [])
 
     return (
-      <AccordionContext.Provider value={{ multiple, open, setOpen }}>
+      <AccordionProvider {...{ open, setOpen, multiple }}>
         <div
           ref={ref}
           {...rest}
@@ -53,7 +53,7 @@ const AccordionRoot: React.FC<AccordionProps> = forwardRef(
               })
           )}
         </div>
-      </AccordionContext.Provider>
+      </AccordionProvider>
     )
   }
 )
