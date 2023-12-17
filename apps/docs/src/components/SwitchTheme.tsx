@@ -1,6 +1,6 @@
 import { IconButton } from 'actify'
 import { Sun, MoonStar } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const SwitchTheme = () => {
   const [mode, setMode] = useState('') // dark mode
@@ -25,6 +25,7 @@ const SwitchTheme = () => {
   }, [])
 
   const toggleMode = () => {
+    // @ts-expect-error
     const classList = document.querySelector('html').classList
     classList.toggle('dark')
     if (mode == 'dark') {
@@ -38,8 +39,9 @@ const SwitchTheme = () => {
     }
   }
 
-  const toggleTheme = (event) => {
+  const toggleTheme = (event: MouseEvent) => {
     const isAppearanceTransition =
+      // @ts-expect-error
       document.startViewTransition &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -79,6 +81,7 @@ const SwitchTheme = () => {
   }
 
   return (
+    // @ts-expect-error
     <IconButton onClick={toggleTheme} color="primary">
       {mode == 'dark' ? <Sun /> : <MoonStar />}
     </IconButton>

@@ -1,6 +1,11 @@
 import { getPointOnCircle } from './getPointOnCircle'
 
-const getArcPath = (radius, cutoutRadius, startAngle, endAngle) => {
+const getArcPath = (
+  radius: number,
+  cutoutRadius: number,
+  startAngle: number,
+  endAngle: number
+) => {
   const start = getPointOnCircle(radius, radius, endAngle)
   const end = getPointOnCircle(radius, radius, startAngle)
   const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1
@@ -49,6 +54,12 @@ export const SvgArc = ({
   className,
   startAngle,
   cutoutRadius
+}: {
+  radius: number
+  endAngle: number
+  className?: string
+  startAngle: number
+  cutoutRadius: number
 }) => {
   const path = getArcPath(radius, cutoutRadius, startAngle, endAngle)
 

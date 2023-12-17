@@ -1,9 +1,9 @@
-// @ts-nocheck
 import { Button } from 'actify'
 import All from '../examples/all'
 import { useEffect, useState } from 'react'
 import ThemePreview from '@/components/ThemePreview'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
+// @ts-expect-error
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const colorVaribles = [

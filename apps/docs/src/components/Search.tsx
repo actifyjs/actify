@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Button } from 'actify'
 import { Search } from 'lucide-react'
 import { createPortal } from 'react-dom'
@@ -8,11 +7,17 @@ import { DocSearchModal, useDocSearchKeyboardEvents } from '@docsearch/react'
 
 import '@docsearch/css'
 
-const DocSearch = ({ appId, apiKey, indexName }) => {
+type DocSearchProps = {
+  appId: string
+  apiKey: string
+  indexName: string
+}
+
+const DocSearch = ({ appId, apiKey, indexName }: DocSearchProps) => {
   const navigate = useNavigate()
   const searchButtonRef = useRef(null)
   const [isOpen, setIsOpen] = useState(false)
-  const [initialQuery, setInitialQuery] = useState(null)
+  const [initialQuery, setInitialQuery] = useState('')
 
   const onOpen = useCallback(() => {
     setIsOpen(true)
@@ -23,7 +28,7 @@ const DocSearch = ({ appId, apiKey, indexName }) => {
   }, [setIsOpen])
 
   const onInput = useCallback(
-    (event) => {
+    (event: any) => {
       setIsOpen(true)
       setInitialQuery(event.key)
     },
@@ -52,10 +57,13 @@ const DocSearch = ({ appId, apiKey, indexName }) => {
         <Search />
         <span className="font-semibold hidden sm:inline">Search</span>
         <span className="hidden md:block text-xs border border-outline p-1.5 rounded-full">
-          {navigator?.userAgentData?.platform == 'Windows' ||
-          navigator?.platform == 'Win32'
-            ? 'Ctrl'
-            : '⌘'}
+          {
+            // @ts-expect-error
+            navigator?.userAgentData?.platform == 'Windows' ||
+            navigator?.platform == 'Win32'
+              ? 'Ctrl'
+              : '⌘'
+          }
           +K
         </span>
       </Button>

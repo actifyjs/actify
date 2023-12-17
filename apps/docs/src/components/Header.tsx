@@ -10,6 +10,7 @@ import Logo from '@/components/Logo'
 import Search from '@/components/Search'
 import Dropdown from '@/components/Dropdown'
 import SwitchTheme from '@/components/SwitchTheme'
+// @ts-expect-error
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {

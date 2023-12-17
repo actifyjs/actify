@@ -3,13 +3,20 @@ import { useLocation } from 'react-router-dom'
 import Markdown from '@/components/Markdown'
 import TableOfContents from '@/components/TableOfContents'
 
+type ImportProps = {
+  attributes?: {
+    title?: string
+  }
+  markdown?: string
+}
+
 export default () => {
   const { hash, pathname } = useLocation()
-  const [markdown, setMarkdown] = useState('')
+  const [markdown, setMarkdown] = useState<string | undefined>('')
 
   useEffect(() => {
     const loadData = async () => {
-      let importResult = {}
+      let importResult: ImportProps = {}
       const filePath = pathname.split('/')
       const fileName = filePath.pop()
       if (filePath.length == 2) {
@@ -30,7 +37,7 @@ export default () => {
       }
       const { attributes, markdown } = importResult
       setMarkdown(markdown)
-      document.title = attributes.title + ' | Actify'
+      document.title = attributes?.title + ' | Actify'
     }
     loadData()
   }, [pathname])

@@ -8,6 +8,11 @@ export const PieChartLabel = ({
   endAngle,
   radius,
   cutoutRadius
+}: {
+  startAngle: number
+  endAngle: number
+  radius: number
+  cutoutRadius: number
 }) => {
   const labelAngle = startAngle + (endAngle - startAngle) / 2
   const labelPosition = getPointOnCircle(

@@ -27,7 +27,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
       </Button>
 
       <div className="absolute hidden w-28 flex-col bg-surface text-on-surface drop-shadow-lg hover:flex peer-hover:flex">
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <Link
             key={index}
             to={item.to}

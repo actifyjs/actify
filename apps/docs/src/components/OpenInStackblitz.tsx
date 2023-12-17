@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { name, version, Tooltip, IconButton } from 'actify'
 
@@ -120,6 +119,7 @@ export default defineConfig({
             key={item}
             type="hidden"
             name={`project[${item}]`}
+            // @ts-expect-error
             value={project[item]}
           />
         ) : (
@@ -128,6 +128,7 @@ export default defineConfig({
               key={file}
               type="hidden"
               name={`project[files][${file}]`}
+              // @ts-expect-error
               value={project[item][file]}
             />
           ))

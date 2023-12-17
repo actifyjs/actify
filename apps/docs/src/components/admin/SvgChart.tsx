@@ -4,7 +4,7 @@ const variants = tv({
   base: ''
 })
 
-export default ({ className }) => {
+export default ({ className }: { className: string }) => {
   return (
     <div className={variants({ className })}>
       <svg

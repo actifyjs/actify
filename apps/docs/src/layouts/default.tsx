@@ -157,9 +157,9 @@ const components = [
   }
 ]
 
-const spaces2Hyphen = (str) => str.toLowerCase().split(' ').join('-')
+const spaces2Hyphen = (str: string) => str.toLowerCase().split(' ').join('-')
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <App>
       <Header />

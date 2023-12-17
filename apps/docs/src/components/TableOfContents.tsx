@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const generateSlug = (str) => {
+const generateSlug = (str: string) => {
   str = str?.replace(/^\s+|\s+$/g, '')
   str = str?.toLowerCase()
   const from = 'àáãäâèéëêìíïîòóöôùúüûñç·/_,:;'
@@ -18,8 +18,19 @@ const generateSlug = (str) => {
   return str
 }
 
-const TableOfContents = ({ hash, markdown }) => {
-  const [toc, setToc] = useState([])
+type TocProps = {
+  slug: string
+  title: string
+}[]
+
+const TableOfContents = ({
+  hash,
+  markdown
+}: {
+  hash: string
+  markdown: string
+}) => {
+  const [toc, setToc] = useState<TocProps>([])
 
   useEffect(() => {
     const regXHeader = /#{1,6}.+/g

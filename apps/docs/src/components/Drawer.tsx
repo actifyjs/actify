@@ -3,11 +3,12 @@ import { useLocation } from 'react-router-dom'
 import { useAppStore } from '@/store/appStore'
 import { useShallow } from 'zustand/react/shallow'
 
-const debounce = (fn: () => void, delay: number) => {
-  let timer = null
-  return function (...args: unknown[]) {
+const debounce = (fn: Function, delay: number) => {
+  let timer: string | number | NodeJS.Timeout | null | undefined = null
+  return function (...args: any) {
     timer && clearTimeout(timer)
     timer = setTimeout(() => {
+      // @ts-expect-error
       fn.apply(this, args)
     }, delay)
   }

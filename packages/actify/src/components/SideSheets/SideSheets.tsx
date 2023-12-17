@@ -12,7 +12,7 @@ type SideSheetsPropTypes = Omit<
   'onChange'
 > & {
   divider?: boolean
-  onChange: () => void
+  onChange?: () => void
 }
 
 const SideSheets: React.FC<SideSheetsPropTypes> = ({ children, ...rest }) => {

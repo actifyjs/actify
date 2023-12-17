@@ -21,6 +21,7 @@ const App = () => {
     }
   }
   if (pathname == '/' || pathname == '/playground') {
+    // @ts-expect-error
     Layout = EmptyLayout
   }
 
@@ -48,7 +49,7 @@ const App = () => {
   )
 }
 
-// @ts-ignore
+// @ts-expect-error
 createRoot(document.getElementById('app')).render(
   <StrictMode>
     <BrowserRouter>

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Codesandbox } from 'lucide-react'
 import { name, version, IconButton, Tooltip } from 'actify'
@@ -17,7 +16,7 @@ const OpenInCodeSandbox: React.FC<OpenInCodeSandboxProps> = ({
   const parameters = getParameters({
     files: {
       'package.json': {
-        content: {
+        content: JSON.stringify({
           name: `actify-${title}`,
           private: true,
           version: '0.0.0',
@@ -38,10 +37,12 @@ const OpenInCodeSandbox: React.FC<OpenInCodeSandboxProps> = ({
             tailwindcss: 'latest',
             vite: '^4.5.1'
           }
-        }
+        }),
+        isBinary: false
       },
       'App.jsx': {
-        content: code
+        content: code,
+        isBinary: false
       },
       'main.jsx': {
         content: `import './main.css'
@@ -53,12 +54,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
   </StrictMode>
-)`
+)`,
+        isBinary: false
       },
       'main.css': {
         content: `@tailwind base;
 @tailwind components;
-@tailwind utilities;`
+@tailwind utilities;`,
+        isBinary: false
       },
       'postcss.config.js': {
         content: `module.exports = {
@@ -66,7 +69,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     tailwindcss: {},
     autoprefixer: {}
   }
-}`
+}`,
+        isBinary: false
       },
       'tailwind.config.js': {
         content: `const colors = require('tailwindcss/colors')
@@ -96,7 +100,8 @@ module.exports = withMaterialColors(
   {
     primary: '#006a6a'
   }
-)`
+)`,
+        isBinary: false
       },
       'vite.config.js': {
         content: `import { defineConfig } from 'vite'
@@ -104,7 +109,8 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()]
-})`
+})`,
+        isBinary: false
       },
       'index.html': {
         content: `<!DOCTYPE html>
@@ -118,7 +124,8 @@ export default defineConfig({
     <div id="root"></div>
     <script type="module" src="main.jsx"></script>
   </body>
-</html>`
+</html>`,
+        isBinary: false
       }
     }
   })

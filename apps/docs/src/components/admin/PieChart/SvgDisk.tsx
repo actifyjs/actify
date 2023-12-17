@@ -1,9 +1,17 @@
-export const SvgDisk = ({ color, radius, cutoutRadius }) => (
+export const SvgDisk = ({
+  color,
+  radius,
+  cutoutRadius
+}: {
+  color: string
+  radius: number
+  cutoutRadius: number
+}) => (
   <circle
     cx={radius}
     cy={radius}
+    stroke={color}
     fill="transparent"
-    stroke={color.toCssValue()}
     strokeWidth={radius - cutoutRadius}
     r={radius - (radius - cutoutRadius) / 2}
   />

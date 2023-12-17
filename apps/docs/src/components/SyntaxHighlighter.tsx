@@ -1,4 +1,10 @@
-import { useRef, useState, useEffect } from 'react'
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  HtmlHTMLAttributes,
+  HTMLAttributes
+} from 'react'
 import Prism from 'prismjs'
 import { tv } from 'tailwind-variants'
 import { Check, Copy, CopyX } from 'lucide-react'
@@ -16,8 +22,13 @@ type CopyIconProps = {
   name: 'copy' | 'copy-x' | 'check'
 }
 
-const SyntaxHighlighter = (props) => {
-  const ref = useRef()
+type SyntaxHighlighterProps = React.ComponentProps<'div'> & {
+  code?: string
+  language: string
+}
+
+const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = (props) => {
+  const ref = useRef<any>()
   const { className, code, language, children } = props
   const [iconName, setIconName] = useState<CopyIconProps['name']>('copy')
 
@@ -30,7 +41,7 @@ const SyntaxHighlighter = (props) => {
   }
 
   const copyCode = () => {
-    navigator.clipboard.writeText(code || children).then(
+    navigator.clipboard.writeText(code || (children as string)).then(
       () => {
         setIconName('check')
         setTimeout(() => {

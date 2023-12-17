@@ -14,7 +14,7 @@ import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 
 interface MarkdownProps {
   pathname: string
-  markdown: string
+  markdown?: string
 }
 
 const Markdown = memo<MarkdownProps>(({ pathname, markdown }) => {

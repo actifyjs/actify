@@ -6,12 +6,25 @@ import { degreesInCircle } from './degreesToRadians'
 
 const cutoutRadiusShare = 0.52
 
-export const sum = (numbers) => numbers.reduce((acc, value) => acc + value, 0)
+export const sum = (numbers: number[]) =>
+  numbers.reduce((acc, value) => acc + value, 0)
 
-const getItemsWithAngles = (items) => {
+type Item = {
+  value: number
+  color: string
+  className: string
+}
+type Angle = {
+  value: number
+  endAngle: number
+  className: string
+  startAngle: number
+}
+
+const getItemsWithAngles = (items: Item[]) => {
   const total = sum(items.map((item) => item.value))
 
-  const itemsWithAngles = []
+  const itemsWithAngles: Angle[] = []
 
   items.forEach((item, index) => {
     const startAngle = index === 0 ? 0 : itemsWithAngles[index - 1].endAngle
@@ -29,7 +42,7 @@ const getItemsWithAngles = (items) => {
 
 const svgViewBoxSize = 100
 
-export default function PieChart({ items }) {
+export default function PieChart({ items }: { items: Item[] }) {
   const itemsWithAngles = useMemo(() => getItemsWithAngles(items), [items])
 
   const radius = svgViewBoxSize / 2
@@ -46,7 +59,7 @@ export default function PieChart({ items }) {
         <SvgDisk
           radius={radius}
           cutoutRadius={cutoutRadius}
-          color={items.length === 0 ? colors.mist : items[0].color}
+          color={items[0].color}
         />
       ) : (
         itemsWithAngles.map(

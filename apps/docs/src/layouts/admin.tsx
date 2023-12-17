@@ -16,6 +16,7 @@ import { tv } from 'tailwind-variants'
 import { LayoutDashboard, Layers, Settings } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import SwitchTheme from '@/components/SwitchTheme'
+// @ts-expect-error
 import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
 
 const asideVariants = tv({
@@ -63,14 +64,14 @@ const Aside: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
         {list.map(({ title, icon, divider, to, children }, index) =>
           divider ? (
             <Divider key={index} />
-          ) : children?.length > 0 ? (
+          ) : (children ? children.length > 0 : false) ? (
             <ListGroup
               key={index}
               label={title}
               icon={icon}
               className="justify-start"
             >
-              {children.map(({ title, to }, index) => (
+              {children?.map(({ title, to }, index) => (
                 <NavLink
                   key={index}
                   to={to}
@@ -85,7 +86,7 @@ const Aside: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
           ) : (
             <NavLink
               key={index}
-              to={to}
+              to={to as string}
               className={({ isActive }) =>
                 isActive ? 'block bg-black/10' : ''
               }
@@ -104,7 +105,7 @@ const Aside: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 }
 
 const SettingTheme = () => {
-  const handleClick = (color) => {
+  const handleClick = (color: string) => {
     updateTheme(
       {
         primary: color
@@ -214,7 +215,7 @@ const SettingTheme = () => {
   )
 }
 
-export default ({ children }) => {
+export default ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen grid grid-rows-[64px_1fr_56px] grid-cols-[0_1fr] lg:grid-cols-[240px_1fr] transition-all">
       <header className="bg-surface sticky top-0 z-50 shadow backdrop-blur col-start-1 col-end-3 px-4 flex gap-2 items-center justify-between">
