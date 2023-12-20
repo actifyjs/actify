@@ -69,6 +69,6 @@ Actify React Components Library is licensed under the MIT License - see the [MIT
 
 ## 📧 Support
 
-If you have any questions or need assistance, feel free to reach out to us at [lertesmith@outlook.com](mailto:hell@actifyjs.com).
+If you have any questions or need assistance, feel free to reach out to us at [hello@actifyjs.com](mailto:hello@actifyjs.com).
 
 Happy coding with Actify! 🚀
