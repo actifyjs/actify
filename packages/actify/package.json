@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.66",
+  "version": "0.1.67",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -25,9 +25,8 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "prebuild": "rm -rf dist",
-    "dev": "pnpm run build --watch",
-    "build": "rollup -c rollup.config.mjs"
+    "prebuild": "rm -rf dist && node ../../scripts/prebuild",
+    "build": "npm run prebuild && rollup -c rollup.config.mjs"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -46,9 +45,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^3.29.4",
+    "rollup-plugin-banner2": "^1.2.2",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-preserve-directives": "^0.2.0",
     "rollup-plugin-typescript-paths": "^1.4.0",
     "tailwind-material-colors": "^1.2.0",
     "tailwind-variants": "^0.1.18",
@@ -64,8 +63,6 @@
     "lucide-react": "^0.294.0",
     "popmotion": "^11.0.5",
     "react-router-dom": "^6.20.1",
-    "react-tailwindcss-datepicker": "^1.6.6",
-    "react-tailwindcss-select": "^1.8.5",
     "zustand": "^4.4.7"
   },
   "peerDependencies": {

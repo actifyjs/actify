@@ -57,18 +57,18 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
   const prev = () => {
     if (current === 0) {
       setTransition('none')
-      setTransform(`-${count ?? 0 + 1}00%`)
+      setTransform(`-${count! + 1}00%`)
       requestAnimationFrame(() => {
         setTransform('')
         setTransition('transform .5s ease-in-out')
       })
-      setCurrent(count ?? 0 - 1)
+      setCurrent(count! - 1)
     } else {
       setCurrent((_) => _ - 1)
     }
   }
   const next = () => {
-    if (current === count ?? 0 - 1) {
+    if (current === count! - 1) {
       setTransition('none')
       setTransform('0')
       requestAnimationFrame(() => {
@@ -136,7 +136,7 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
         }
         className="relative h-full overflow-hidden rounded-lg flex"
       >
-        {items?.[count ?? 0 - 1]}
+        {items?.[count! - 1]}
         {items}
         {items?.[0]}
 

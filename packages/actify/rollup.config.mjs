@@ -1,5 +1,6 @@
 import { exec } from 'child_process'
 import terser from '@rollup/plugin-terser'
+import banner2 from 'rollup-plugin-banner2'
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
@@ -8,12 +9,11 @@ import copy from 'rollup-plugin-copy'
 import json from '@rollup/plugin-json'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import { typescriptPaths } from 'rollup-plugin-typescript-paths'
-import preserveDirectives from 'rollup-plugin-preserve-directives'
 
 const outputOptions = {
   sourcemap: false,
-  preserveModules: true,
-  preserveModulesRoot: 'src'
+  preserveModulesRoot: 'src',
+  inlineDynamicImports: true
 }
 
 const tscAlias = () => {
@@ -73,7 +73,6 @@ export default [
         tsconfig: './tsconfig.json'
       }),
       typescriptPaths(),
-      preserveDirectives(),
       terser({ compress: { directives: false } }),
       copy({
         targets: [
@@ -81,7 +80,8 @@ export default [
           { src: './../../LICENSE.md', dest: '.' }
         ]
       }),
-      tscAlias()
+      tscAlias(),
+      banner2(() => `"use client";\n`)
     ],
     onwarn(warning, warn) {
       if (warning.code !== 'MODULE_LEVEL_DIRECTIVE') {

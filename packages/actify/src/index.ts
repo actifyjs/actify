@@ -50,5 +50,5 @@ export * from './components/Text'
 export * from './components/Slot'
 
 export * from './utils/index'
-export * from './hooks/useMergeRefs'
+export * from './hooks/index'
 export { name, version } from '../package.json'

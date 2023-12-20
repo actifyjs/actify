@@ -159,12 +159,6 @@ importers:
       react-router-dom:
         specifier: ^6.20.1
         version: 6.20.1(react-dom@18.2.0)(react@18.2.0)
-      react-tailwindcss-datepicker:
-        specifier: ^1.6.6
-        version: 1.6.6(dayjs@1.11.10)(react@18.2.0)
-      react-tailwindcss-select:
-        specifier: ^1.8.5
-        version: 1.8.5(react@18.2.0)
       zustand:
         specifier: ^4.4.7
         version: 4.4.7(@types/react@18.2.42)(react@18.2.0)
@@ -217,15 +211,15 @@ importers:
       rollup:
         specifier: ^3.29.4
         version: 3.29.4
+      rollup-plugin-banner2:
+        specifier: ^1.2.2
+        version: 1.2.2
       rollup-plugin-copy:
         specifier: ^3.5.0
         version: 3.5.0
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
         version: 2.2.4(rollup@3.29.4)
-      rollup-plugin-preserve-directives:
-        specifier: ^0.2.0
-        version: 0.2.0(rollup@3.29.4)
       rollup-plugin-typescript-paths:
         specifier: ^1.4.0
         version: 1.4.0(typescript@5.3.2)
@@ -7155,24 +7149,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-tailwindcss-datepicker@1.6.6(dayjs@1.11.10)(react@18.2.0):
-    resolution: {integrity: sha512-kHSUonRO86PoYQQWPqpaSw2JeEn9OafdLsLBG85zO5Sfs23Ku8Ixt/YO+Is3TCBcFeOKnZgzhGLmP3NAXVlFkA==}
-    peerDependencies:
-      dayjs: ^1.11.6
-      react: ^17.0.2 || ^18.2.0
-    dependencies:
-      dayjs: 1.11.10
-      react: 18.2.0
-    dev: false
-
-  /react-tailwindcss-select@1.8.5(react@18.2.0):
-    resolution: {integrity: sha512-x29IrLiqBT5FnkC9oFQReOr05tEOZHtDtZdha84nlSWcj3qD67yonKFHXIf69yc8ElFlKUxCEv0zCllN8jHBFA==}
-    peerDependencies:
-      react: ^18.2.0
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -7466,6 +7442,13 @@ packages:
     dependencies:
       glob: 7.2.3
 
+  /rollup-plugin-banner2@1.2.2:
+    resolution: {integrity: sha512-ShlyRFlJfh7fxHT0rkmIxBv+lIWfdvaWcZmra7xAQFGAHHnd7f93zoa0wdDWHrguR9vR+BxWKToabR6DJQHC9g==}
+    engines: {node: '>=12.13.0'}
+    dependencies:
+      magic-string: 0.25.9
+    dev: true
+
   /rollup-plugin-copy@3.5.0:
     resolution: {integrity: sha512-wI8D5dvYovRMx/YYKtUNt3Yxaw4ORC9xo6Gt9t22kveWz1enG9QrhVlagzwrxSC455xD1dHMKhIJkbsQ7d48BA==}
     engines: {node: '>=8.3'}
@@ -7482,15 +7465,6 @@ packages:
     peerDependencies:
       rollup: '*'
     dependencies:
-      rollup: 3.29.4
-    dev: true
-
-  /rollup-plugin-preserve-directives@0.2.0(rollup@3.29.4):
-    resolution: {integrity: sha512-KUwbBaFvD1zFIDNnOkR+u64sSod3m0l6q46/SzTOa4GTQ6hp6w0FRr2u7x99YkY9qhlna5panmTmuLWeJ/2KWw==}
-    peerDependencies:
-      rollup: 2.x || 3.x
-    dependencies:
-      magic-string: 0.30.5
       rollup: 3.29.4
     dev: true
 

@@ -15,9 +15,8 @@ export default withMaterialColors(
     darkMode: 'class',
     content: [
       './src/**/*.{html,md,js,ts,jsx,tsx}',
-      './node_modules/actify/dist/**/*.{js,ts,jsx,tsx}',
-      './node_modules/react-tailwindcss-select/dist/index.esm.js',
-      './node_modules/react-tailwindcss-datepicker/dist/index.esm.js'
+      '../../packages/actify/**/*.{js,ts,jsx,tsx}',
+      './node_modules/actify/dist/**/*.{js,ts,jsx,tsx}'
     ],
     plugins: [typography],
     theme: {
