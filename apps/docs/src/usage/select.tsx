@@ -1,8 +1,9 @@
+// @ts-nocheck
 import { useState } from 'react'
-import { Select, SelectValue } from 'actify'
+import { Select } from 'actify'
 
 export default () => {
-  const [selected, setSelected] = useState<SelectValue>(null)
+  const [selected, setSelected] = useState(null)
 
   return (
     <div className="flex gap-2">

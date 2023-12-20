@@ -32,7 +32,7 @@ export interface ClassNames {
   closeIcon?: string
 }
 
-export type SelectValue = Option | Option[] | null
+export type SelectValue = Option | Option[] | null | undefined
 
 export interface SelectProps {
   options?: Options
