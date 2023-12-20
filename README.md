@@ -43,7 +43,7 @@ npm install actify
 ```jsx
 import { Button } from 'actify'
 
-export const App = () => {
+export default () => {
   return <Button>Hello Actify</Button>
 }
 ```
@@ -69,6 +69,6 @@ Actify React Components Library is licensed under the MIT License - see the [MIT
 
 ## 📧 Support
 
-If you have any questions or need assistance, feel free to reach out to us at [lertesmith@outlook.com](mailto:lertesmith@outlook.com).
+If you have any questions or need assistance, feel free to reach out to us at [lertesmith@outlook.com](mailto:hell@actifyjs.com).
 
 Happy coding with Actify! 🚀
