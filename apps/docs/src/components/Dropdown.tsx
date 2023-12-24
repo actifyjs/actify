@@ -26,13 +26,13 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
         </div>
       </Button>
 
-      <div className="absolute hidden w-28 flex-col bg-surface text-on-surface drop-shadow-lg hover:flex peer-hover:flex">
+      <div className="absolute hidden w-28 flex-col bg-surface drop-shadow-lg hover:flex peer-hover:flex">
         {items?.map((item, index) => (
           <Link
             key={index}
             to={item.to}
             target={item.target}
-            className="block px-4 py-2 text-sm hover:bg-on-surface hover:bg-opacity-5"
+            className="block px-4 py-2 text-sm interactive-bg-surface"
           >
             {item.headline}
           </Link>

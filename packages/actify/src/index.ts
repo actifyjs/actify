@@ -49,6 +49,6 @@ export * from './components/Toast'
 export * from './components/Text'
 export * from './components/Slot'
 
-export * from './utils/index'
-export * from './hooks/index'
+export * from './utils/'
+export * from './hooks/'
 export { name, version } from '../package.json'

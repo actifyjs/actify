@@ -1,8 +1,11 @@
 'use client'
 import React from 'react'
-import { Content } from './Content'
-import { Activator } from './Activator'
-import { BottomSheetsProvider, BottomSheetsProviderProps } from './Context'
+import { Content } from './BottomSheetsContent'
+import { Activator } from './BottomSheetsActivator'
+import {
+  BottomSheetsProvider,
+  BottomSheetsProviderProps
+} from './BottomSheetsContext'
 
 const BottomSheets: React.FC<BottomSheetsProviderProps> = (props) => {
   const { children, ...rest } = props

@@ -11,7 +11,7 @@ export const sum = (numbers: number[]) =>
 
 type Item = {
   value: number
-  color: string
+  color?: string
   className: string
 }
 type Angle = {
@@ -59,7 +59,7 @@ export default function PieChart({ items }: { items: Item[] }) {
         <SvgDisk
           radius={radius}
           cutoutRadius={cutoutRadius}
-          color={items[0].color}
+          color={items[0].color as string}
         />
       ) : (
         itemsWithAngles.map(

@@ -19,12 +19,12 @@ const variants = tv({
       true: 'rounded-none'
     },
     size: {
-      xs: 'w-6 h-6',
-      sm: 'w-9 h-9',
-      md: 'w-12 h-12',
-      lg: 'w-[58px] h-[58px]',
-      xl: 'w-[74px] h-[74px]',
-      '2xl': 'w-[110px] h-[110px]'
+      xs: 'size-6',
+      sm: 'size-9',
+      md: 'size-12',
+      lg: 'size-[58px]',
+      xl: 'size-[74px]',
+      '2xl': 'size-[110px]'
     }
   },
   defaultVariants: {

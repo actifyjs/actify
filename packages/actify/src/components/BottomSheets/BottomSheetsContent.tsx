@@ -2,7 +2,7 @@
 import { tv } from 'tailwind-variants'
 import { createPortal } from 'react-dom'
 import React, { forwardRef } from 'react'
-import { useBottomSheets } from './Context'
+import { useBottomSheets } from './BottomSheetsContext'
 import themes from '../../themes'
 const { scrim } = themes()
 

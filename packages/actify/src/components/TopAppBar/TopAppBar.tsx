@@ -30,7 +30,7 @@ const TopAppBar = forwardRef<HTMLDivElement, TopAppBarProps>((props, ref) => {
       <div className="inline-flex h-12 w-12 flex-col items-center justify-center gap-2.5">
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
-            <div className="relative h-6 w-6 text-on-surface">
+            <div className="relative size-6 text-on-surface">
               <Menu size={24} />
             </div>
           </div>
@@ -46,7 +46,7 @@ const TopAppBar = forwardRef<HTMLDivElement, TopAppBarProps>((props, ref) => {
       <div className="inline-flex h-12 w-12 flex-col items-center justify-center gap-2.5">
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
-            <div className="relative h-6 w-6 text-on-surface">
+            <div className="relative size-6 text-on-surface">
               <User size={24} />
             </div>
           </div>

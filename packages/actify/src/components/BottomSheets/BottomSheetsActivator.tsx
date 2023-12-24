@@ -1,7 +1,7 @@
 'use client'
 import { Slot } from '@actify/Slot'
 import React, { forwardRef } from 'react'
-import { useBottomSheets } from './Context'
+import { useBottomSheets } from './BottomSheetsContext'
 
 export interface ActivatorProps extends React.HTMLAttributes<HTMLDivElement> {
   asChild?: boolean
