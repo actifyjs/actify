@@ -3,7 +3,7 @@ import React from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: '[margin-inline-end:4px] min-w-[48px] flex h-full relative items-center justify-center'
+  base: 'me-1 min-w-[48px] flex h-full relative items-center justify-center'
 })
 
 const LeadingIcon: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({

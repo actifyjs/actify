@@ -37,7 +37,7 @@ const Icons: React.FC<DivProps> = ({ children }) => {
 
 const Fab: React.FC<DivProps> = ({ children }) => {
   return (
-    <div className="[margin-inline-end:4px] min-w-[48px] flex h-full relative items-center justify-center">
+    <div className="me-1 min-w-[48px] flex h-full relative items-center justify-center">
       {children}
     </div>
   )
