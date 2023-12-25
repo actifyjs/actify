@@ -15,13 +15,10 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   const { title, items } = props
 
   return (
-    <div className="relative inline-block">
-      <Button
-        variant="text"
-        className="peer [&_svg]:transition-transform [&_svg]:duration-300 [&_svg]:hover:rotate-90"
-      >
+    <div className="relative">
+      <Button variant="text" className="group peer">
         {title}
-        <div className="flex items-center">
+        <div className="flex items-center transition-transform duration-300 group-hover:rotate-90">
           <ChevronDown size={20} />
         </div>
       </Button>

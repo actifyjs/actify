@@ -7,6 +7,7 @@ import React, {
   Children,
   useEffect
 } from 'react'
+import { SupportingText } from './SupportingText'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const variants = tv({
@@ -32,6 +33,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<TextFieldTypes> {
   label?: string
   prefixText?: string
   suffixText?: string
+  supportingText?: string
   color?: VariantProps<typeof variants>['color']
   children?: React.JSX.Element | React.JSX.Element[]
 }
@@ -45,6 +47,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
       required,
       prefixText,
       suffixText,
+      supportingText,
       value,
       onChange,
       defaultValue,
@@ -191,6 +194,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
             ></div>
           </div>
         </div>
+        {supportingText && <SupportingText supportingText={supportingText} />}
       </div>
     )
   }

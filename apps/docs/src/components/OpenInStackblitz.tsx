@@ -53,7 +53,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     "autoprefixer": "^10.4.5",
     "postcss": "^8.4.13",
     "tailwind-material-colors": "^1.1.2",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "latest",
     "vite": "^5.0.7"
   }
 }`,

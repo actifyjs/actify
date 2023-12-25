@@ -7,7 +7,8 @@ import React, {
   Children,
   useEffect
 } from 'react'
-import { tv } from 'tailwind-variants'
+import { SupportingText } from './SupportingText'
+import { tv, VariantProps } from 'tailwind-variants'
 
 const variants = tv({
   base: 'cursor-text group',
@@ -32,7 +33,8 @@ interface TextFieldProps extends React.InputHTMLAttributes<TextFieldTypes> {
   label?: string
   prefixText?: string
   suffixText?: string
-  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
+  supportingText?: string
+  color?: VariantProps<typeof variants>['color']
   children?: React.JSX.Element | React.JSX.Element[]
 }
 const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
@@ -45,6 +47,7 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
       required,
       prefixText,
       suffixText,
+      supportingText,
       value,
       onChange,
       defaultValue,
@@ -173,17 +176,17 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
             <div className="pointer-events-none absolute flex w-full h-full rounded-[inherit]">
               {/* outline-start */}
               <div
-                className={`relative rounded-[inherit] [padding-inline-start:16px] before:[margin-inline-end:4px] before:border-r-0 before:absolute before:inset-0 before:rounded-l-[inherit] before:border ${
+                className={`relative rounded-[inherit] [padding-inline-start:16px] before:me-1 before:border-r-0 before:absolute before:inset-0 before:rounded-l-[inherit] before:border ${
                   focused
                     ? 'before:border-current after:border-current after:opacity-100'
                     : 'before:border-outline after:border-outline after:opacity-0'
-                } after:absolute after:inset-0 after:[margin-inline-end:4px] after:rounded-l-[inherit] after:border-r-0 after:border-[3px]`}
+                } after:absolute after:inset-0 after:me-1 after:rounded-l-[inherit] after:border-r-0 after:border-[3px]`}
               ></div>
               {/* outline-notch */}
               <div
                 className={`${
                   label ? 'flex' : 'hidden'
-                } relative items-start border-[inherit] px-1 [margin-inline-start:-4px] [margin-inline-end:4px] max-w-[calc(100%-32px)]`}
+                } relative items-start border-[inherit] px-1 -ms-1 me-1 max-w-[calc(100%-32px)]`}
               >
                 {/* outline-panel-inactive */}
                 <div
@@ -213,7 +216,7 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
               </div>
               {/* outline-end */}
               <div
-                className={`relative rounded-[inherit] flex-grow [margin-inline-start:-4px] before:border-l-0 before:absolute before:inset-0 before:rounded-r-[inherit] before:border ${
+                className={`relative rounded-[inherit] flex-grow -ms-1 before:border-l-0 before:absolute before:inset-0 before:rounded-r-[inherit] before:border ${
                   focused
                     ? 'before:border-current after:border-current after:opacity-100'
                     : 'before:border-outline after:border-outline after:opacity-0'
@@ -222,6 +225,7 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
             </div>
           </div>
         </div>
+        {supportingText && <SupportingText supportingText={supportingText} />}
       </div>
     )
   }
