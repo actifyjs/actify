@@ -7,7 +7,8 @@ import React, {
   Children,
   useEffect
 } from 'react'
-import { tv } from 'tailwind-variants'
+import { SupportingText } from './SupportingText'
+import { tv, VariantProps } from 'tailwind-variants'
 
 const variants = tv({
   base: 'cursor-text group',
@@ -32,7 +33,8 @@ interface TextFieldProps extends React.InputHTMLAttributes<TextFieldTypes> {
   label?: string
   prefixText?: string
   suffixText?: string
-  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
+  supportingText?: string
+  color?: VariantProps<typeof variants>['color']
   children?: React.JSX.Element | React.JSX.Element[]
 }
 const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
@@ -45,6 +47,7 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
       required,
       prefixText,
       suffixText,
+      supportingText,
       value,
       onChange,
       defaultValue,
@@ -222,6 +225,7 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
             </div>
           </div>
         </div>
+        {supportingText && <SupportingText supportingText={supportingText} />}
       </div>
     )
   }
