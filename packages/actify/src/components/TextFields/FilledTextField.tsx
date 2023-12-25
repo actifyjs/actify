@@ -132,7 +132,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
                       focused || populated
                         ? 'top-2 text-xs text-current'
                         : 'top-4 text-base text-on-surface'
-                    } absolute z-[1] overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full origin-top-left transition-all`}
+                    } absolute overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full origin-top-left transition-all`}
                   >
                     {label}
                     {required && '*'}
