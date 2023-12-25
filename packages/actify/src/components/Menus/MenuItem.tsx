@@ -6,7 +6,7 @@ import { tv } from 'tailwind-variants'
 import { MenuContext } from './MenuContext'
 
 const variants = tv({
-  base: 'pr-4 focus-visible:outline-none justify-between',
+  base: 'pr-4 focus-visible:outline-none items-center',
   variants: {
     disabled: {
       true: 'text-gray-400 cursor-not-allowed'
@@ -18,10 +18,13 @@ interface MenuItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
   label: string
   disabled?: boolean
   type?: 'button' | 'submit'
+  description?: string
+  leading?: React.ReactNode
+  trailing?: React.ReactNode
 }
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ label, disabled, ...props }, forwardedRef) => {
+  ({ label, disabled, description, trailing, leading, ...props }, forwardedRef) => {
     const menu = useContext(MenuContext)
     const item = useListItem({ label: disabled ? null : label })
     const tree = useFloatingTree()
@@ -46,7 +49,12 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
           }
         })}
       >
-        {label}
+        {leading}
+        <div className={"flex-1" + (leading !== undefined ? " ml-4" : "") + (trailing !== undefined ? " mr-4" : "")}>
+          <p className={'text-on-surface' + (description && " mb-1/2")}>{label}</p>
+          {description && <p className='text-sm text-on-surface-variant'>{description}</p>}
+        </div>
+        {trailing}
       </ListItem>
     )
   }

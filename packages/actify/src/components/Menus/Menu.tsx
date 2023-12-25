@@ -50,10 +50,12 @@ const listVariants = tv({
 
 interface MenuProps extends React.LiHTMLAttributes<HTMLLIElement> {
   label?: string
+  variant?: 'outlined' | 'filled'
+  disabled?: boolean
 }
 
 export const MenuComponent = forwardRef<HTMLLIElement, MenuProps>(
-  ({ children, className, label, ...props }, forwardedRef) => {
+  ({ children, className, label, variant, disabled, ...props }, forwardedRef) => {
     const [isOpen, setIsOpen] = useState(false)
     const [hasFocusInside, setHasFocusInside] = useState(false)
     const [activeIndex, setActiveIndex] = useState<number | null>(null)
@@ -177,6 +179,8 @@ export const MenuComponent = forwardRef<HTMLLIElement, MenuProps>(
             data-nested={isNested ? '' : undefined}
             role={isNested ? 'menuitem' : undefined}
             data-focus-inside={hasFocusInside ? '' : undefined}
+            variant={variant ?? 'filled'}
+            disabled={disabled}
             className={rootVariants({ className })}
             // @ts-expect-error
             ref={useMergeRefs([refs.setReference, item.ref, forwardedRef])}
