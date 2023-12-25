@@ -126,7 +126,7 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
                   <span
                     className={`${
                       focused || populated ? 'opacity-0' : 'opacity-100'
-                    } absolute z-[1] overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full top-4 text-base text-on-surface`}
+                    } absolute overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full top-4 text-base text-on-surface`}
                   >
                     {label}
                     {required && '*'}
