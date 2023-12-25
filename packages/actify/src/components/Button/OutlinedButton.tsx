@@ -7,10 +7,10 @@ const variants = tv({
   base: 'relative inline-flex gap-2 items-center justify-center select-none h-10 text-sm px-6 rounded-full transition-all duration-300 ease-in-out interactive-bg-surface border border-outline',
   variants: {
     color: {
-      primary: 'hover:bg-primary/10',
-      secondary: 'hover:bg-secondary/10',
-      tertiary: 'hover:bg-tertiary/10',
-      error: 'hover:bg-error/10'
+      primary: 'text-primary hover:bg-primary/10',
+      secondary: 'text-secondary hover:bg-secondary/10',
+      tertiary: 'text-tertiary hover:bg-tertiary/10',
+      error: 'text-error hover:bg-error/10'
     },
     disabled: {
       true: 'pointer-events-none'
