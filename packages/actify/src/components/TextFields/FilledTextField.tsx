@@ -34,6 +34,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<TextFieldTypes> {
   prefixText?: string
   suffixText?: string
   supportingText?: string
+  maxLength?: number
   color?: VariantProps<typeof variants>['color']
   children?: React.JSX.Element | React.JSX.Element[]
 }
@@ -48,6 +49,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
       prefixText,
       suffixText,
       supportingText,
+      maxLength = 524288,
       value,
       onChange,
       defaultValue,
@@ -163,6 +165,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
                         inputRef as React.Ref<HTMLInputElement> &
                           React.Ref<HTMLTextAreaElement>
                       }
+                      maxLength={maxLength}
                       aria-label={label}
                       disabled={disabled}
                       aria-invalid={false}
@@ -193,7 +196,13 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
             ></div>
           </div>
         </div>
-        {supportingText && <SupportingText supportingText={supportingText} className={supportingTextClassName} {...props} />}
+        {
+          supportingText !== undefined ?
+            <SupportingText supportingText={supportingText} {...props} />
+          : props.maxLength !== undefined ?
+            <SupportingText supportingText={`${inputValue.toString().length}/${maxLength}`} {...props} />
+            : <></>
+        }
       </div>
     )
   }

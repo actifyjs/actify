@@ -12,7 +12,8 @@ interface TextFieldRootProps
   suffixText?: string
   supportingText?: string
   variant?: 'filled' | 'outlined'
-  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error',
+  maxLength?: number
 }
 const TextField = forwardRef<HTMLInputElement, TextFieldRootProps>(
   (props, ref) => {

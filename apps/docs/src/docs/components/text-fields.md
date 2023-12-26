@@ -21,7 +21,8 @@ title: Text fields
 | `disabled`     | `boolean`                                 | Disables the text field        | `false`   |
 | `prefixText`   | `string`                                  | Prefix text of text field      | `null`    |
 | `suffixText`   | `string`                                  | Suffix text of text field      | `null`    |
-| `supportingText`   | `string`                                  | Supporting text of text field      | `null`    |
+| `supportingText`   | `string`                              | Supporting text of text field  | `null`    |
+| `maxLength`   | `number`                                   | The maximum number of characters of text in the text field.     | `null`    |
 
 ## Sub components
 
