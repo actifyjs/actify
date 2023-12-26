@@ -60,7 +60,7 @@
     "@floating-ui/react": "^0.26.3",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.12",
-    "lucide-react": "^0.294.0",
+    "lucide-react": "^0.302.0",
     "popmotion": "^11.0.5",
     "react-router-dom": "^6.20.1",
     "zustand": "^4.4.7"

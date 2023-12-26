@@ -165,7 +165,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <Header />
       <Drawer>
         <List>
-          <ListItemLink to="/getting-started/theme">Theme</ListItemLink>
+          <ListGroup label="Getting started">
+            <ListItemLink to="/getting-started/installation">
+              Installation
+            </ListItemLink>
+            <ListItemLink to="/getting-started/theme">Theme</ListItemLink>
+            <ListItemLink to="/getting-started/icons">Icons</ListItemLink>
+          </ListGroup>
           {components.map((component, index) =>
             component.children ? (
               <ListGroup key={index} label={component.label}>
