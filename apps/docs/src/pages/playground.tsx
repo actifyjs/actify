@@ -1,5 +1,6 @@
 import * as Actify from 'actify'
 import { Share2 } from 'lucide-react'
+import { useAppStore } from '@/store/appStore'
 import { useEffect, useRef, useState } from 'react'
 import {
   withLive,
@@ -11,11 +12,11 @@ import {
 
 const MIN_WIDTH = 100
 
-const Live = ({ onEdit }) => {
+const Live = ({ onEdit }: { onEdit: (_: string) => void }) => {
   const [isDragging, setIsDragging] = useState(false)
-  const [xPosition, setXPosition] = useState()
-  const [leftWidth, setLeftWidth] = useState()
-  const splitPaneRef = useRef(null)
+  const [xPosition, setXPosition] = useState<number>()
+  const [leftWidth, setLeftWidth] = useState<number>()
+  const splitPaneRef = useRef<any>()
 
   useEffect(() => {
     if (splitPaneRef.current) {
@@ -37,12 +38,12 @@ const Live = ({ onEdit }) => {
   const onMouseUp = () => {
     setIsDragging(false)
   }
-  const onMouseDown = (e) => {
+  const onMouseDown = (e: any) => {
     setXPosition(e.clientX)
     setIsDragging(true)
   }
 
-  const onMouseMove = (e) => {
+  const onMouseMove = (e: any) => {
     if (isDragging && leftWidth && xPosition) {
       const newLeftWidth = leftWidth + e.clientX - xPosition
       setXPosition(e.clientX)
@@ -102,6 +103,7 @@ const Live = ({ onEdit }) => {
 const LiveComponent = withLive(Live)
 
 const Playground = () => {
+  const setDrawer = useAppStore((_) => _.setDrawer)
   const toast = Actify.useToast()
   const [code, setCode] = useState(
     `() => {
@@ -115,6 +117,7 @@ const Playground = () => {
   )
 
   useEffect(() => {
+    setDrawer(false)
     document.title = 'Playground' + ' | Actify'
     const hash = location.hash.slice(1)
     const decoded = atob(hash)
@@ -125,6 +128,7 @@ const Playground = () => {
 
   const shareCode = () => {
     const encoded = btoa(code)
+    // @ts-expect-error
     history.pushState(null, null, `#${encoded}`)
 
     navigator.clipboard.writeText(location.href).then(

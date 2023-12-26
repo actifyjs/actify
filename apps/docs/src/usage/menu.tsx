@@ -6,7 +6,7 @@ export default () => {
     <Menu label="Menu">
       <MenuItem label="Undo" onClick={() => console.log('Undo')} />
       <MenuItem label="Redo" disabled />
-      <MenuItem label="Cut" leading={<ScissorsIcon />}/>
+      <MenuItem label="Cut" leading={<ScissorsIcon />} />
       <Menu label="Copy as">
         <MenuItem label="Text" />
         <MenuItem label="Video" />
@@ -19,7 +19,10 @@ export default () => {
         <MenuItem label="Audio" />
       </Menu>
       <Menu label="Share">
-        <MenuItem label="Mail" description="Your default email app will be opened." />
+        <MenuItem
+          label="Mail"
+          description="Your default email app will be opened."
+        />
         <MenuItem label="Instagram" />
       </Menu>
     </Menu>
