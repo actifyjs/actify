@@ -104,12 +104,11 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
       onChange?.(e as any)
     }
 
+    const supportingTextClassName = disabled ? "text-on-surface" : color === "error" ? "text-error" : "text-on-surface-variant"
+
     return (
-      <div
-        onClick={handleClick}
-        className={variants({ color, disabled, className })}
-      >
-        <div className="[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full">
+      <div>
+        <div className={"[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full " + variants({ color, disabled, className })} onClick={handleClick}>
           {/* container-overflow */}
           <div className="relative flex h-full rounded-t">
             {/* background */}
@@ -134,7 +133,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
                     className={`${
                       focused || populated
                         ? 'top-2 text-xs text-current'
-                        : 'top-4 text-base text-on-surface'
+                        : `top-4 text-base ${supportingTextClassName}`
                     } absolute overflow-hidden text-ellipsis whitespace-nowrap w-min max-w-full origin-top-left transition-all`}
                   >
                     {label}
@@ -153,7 +152,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
                     }${hasTrailingIcon ? '' : ' pr-4'}`}
                   >
                     {prefixText && (
-                      <span className="text-base text-on-surface">
+                      <span className={supportingTextClassName}>
                         {prefixText}
                       </span>
                     )}
@@ -176,7 +175,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
                       className="inline-flex w-full outline-0 bg-transparent text-base text-on-surface focus:outline-none [-webkit-tap-highlight-color:rgba(0,0,0,0)]"
                     />
                     {suffixText && (
-                      <span className="text-base text-on-surface">
+                      <span className={supportingTextClassName}>
                         {suffixText}
                       </span>
                     )}
@@ -194,7 +193,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
             ></div>
           </div>
         </div>
-        {supportingText && <SupportingText supportingText={supportingText} />}
+        {supportingText && <SupportingText supportingText={supportingText} className={supportingTextClassName} {...props} />}
       </div>
     )
   }
