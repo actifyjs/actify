@@ -9,7 +9,7 @@
   "dependencies": {
     "actify": "workspace:*",
     "framer-motion": "^10.16.14",
-    "lucide-react": "^0.294.0",
+    "lucide-react": "^0.302.0",
     "react-router-dom": "^6.20.1",
     "tailwind-variants": "^0.1.18",
     "usehooks-ts": "^2.9.1",
