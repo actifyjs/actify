@@ -6,7 +6,7 @@ import { tv } from 'tailwind-variants'
 import { ListContext } from './ListContext'
 
 const variants = tv({
-  base: 'relative flex items-center h-14 pl-4 leading-normal cursor-pointer isolate'
+  base: 'relative flex items-center min-h-14 pl-4 py-2 leading-normal cursor-pointer isolate'
 })
 
 interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {}

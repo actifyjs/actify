@@ -227,6 +227,8 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
                   <span
                     className={`text-xs ${
                       focused || populated ? 'opacity-100' : 'opacity-0'
+                    } ${
+                      populated && !focused ? 'text-on-surface-variant': ''
                     }`}
                   >
                     {label}
