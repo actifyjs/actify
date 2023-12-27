@@ -106,11 +106,21 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
       onChange?.(e as any)
     }
 
-    const supportingTextClassName = disabled ? "text-on-surface" : color === "error" ? "text-error" : "text-on-surface-variant"
+    const supportingTextClassName = disabled
+      ? 'text-on-surface'
+      : color === 'error'
+        ? 'text-error'
+        : 'text-on-surface-variant'
 
     return (
       <div>
-        <div className={"[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full " + variants({ color, disabled, className })} onClick={handleClick}>
+        <div
+          className={
+            '[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full ' +
+            variants({ color, disabled, className })
+          }
+          onClick={handleClick}
+        >
           {/* container-overflow */}
           <div className="relative flex h-full rounded-t">
             {/* background */}
@@ -196,13 +206,14 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
             ></div>
           </div>
         </div>
-        {
-          supportingText !== undefined ?
-            <SupportingText supportingText={supportingText} {...props} />
-          : props.maxLength !== undefined ?
-            <SupportingText supportingText={`${inputValue.toString().length}/${maxLength}`} {...props} />
-            : <></>
-        }
+        {supportingText !== undefined ? (
+          <SupportingText supportingText={supportingText} {...props} />
+        ) : props.maxLength !== undefined ? (
+          <SupportingText
+            supportingText={`${inputValue.toString().length}/${maxLength}`}
+            {...props}
+          />
+        ) : null}
       </div>
     )
   }

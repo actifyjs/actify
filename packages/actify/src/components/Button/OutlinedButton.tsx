@@ -8,12 +8,14 @@ const variants = tv({
   variants: {
     color: {
       primary: 'fill-primary text-primary hover:bg-primary/10 border-outline',
-      secondary: 'fill-secondary text-secondary hover:bg-secondary/10 border-outline',
-      tertiary: 'fill-tertiary text-tertiary hover:bg-tertiary/10 border-outline',
+      secondary:
+        'fill-secondary text-secondary hover:bg-secondary/10 border-outline',
+      tertiary:
+        'fill-tertiary text-tertiary hover:bg-tertiary/10 border-outline',
       error: 'fill-error text-error hover:bg-error/10 border-error'
     },
     disabled: {
-      true: 'fill-on-surface/38 text-on-surface/[38%] pointer-events-none border-on-surface/[12%]'
+      true: 'fill-on-surface/[38%] text-on-surface/[38%] pointer-events-none border-on-surface/[12%]'
     }
   },
   defaultVariants: {

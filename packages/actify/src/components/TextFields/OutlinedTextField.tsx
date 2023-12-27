@@ -106,11 +106,21 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
       onChange?.(e as any)
     }
 
-    const supportingTextClassName = disabled ? "text-on-surface" : color === "error" ? "text-error" : "text-on-surface-variant"
+    const supportingTextClassName = disabled
+      ? 'text-on-surface'
+      : color === 'error'
+        ? 'text-error'
+        : 'text-on-surface-variant'
 
     return (
       <div>
-        <div className={"[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full " + variants({ color, disabled, className })} onClick={handleClick}>
+        <div
+          className={
+            '[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full ' +
+            variants({ color, disabled, className })
+          }
+          onClick={handleClick}
+        >
           {/* container-overflow */}
           <div className="relative flex h-full rounded">
             {/* container */}
@@ -147,7 +157,11 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
                       hasLeadingIcon ? '' : ' pl-4'
                     }${hasTrailingIcon ? '' : ' pr-4'}`}
                   >
-                    {prefixText && <span className={supportingTextClassName}>{prefixText}</span>}
+                    {prefixText && (
+                      <span className={supportingTextClassName}>
+                        {prefixText}
+                      </span>
+                    )}
                     <TagName
                       {...rest}
                       type={type}
@@ -167,7 +181,11 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
                       defaultValue={!isControlled ? inputValue : undefined}
                       className="inline-flex w-full outline-0 bg-transparent text-base text-on-surface focus:outline-none [-webkit-tap-highlight-color:rgba(0,0,0,0)]"
                     />
-                    {suffixText && <span className={supportingTextClassName}>{suffixText}</span>}
+                    {suffixText && (
+                      <span className={supportingTextClassName}>
+                        {suffixText}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -229,13 +247,14 @@ const OutlinedTextField: React.FC<TextFieldProps> = forwardRef(
             </div>
           </div>
         </div>
-        {
-          supportingText !== undefined ?
-            <SupportingText supportingText={supportingText} {...props} />
-          : props.maxLength !== undefined ?
-            <SupportingText supportingText={`${inputValue.toString().length}/${maxLength}`} {...props} />
-            : <></>
-        }
+        {supportingText !== undefined ? (
+          <SupportingText supportingText={supportingText} {...props} />
+        ) : props.maxLength !== undefined ? (
+          <SupportingText
+            supportingText={`${inputValue.toString().length}/${maxLength}`}
+            {...props}
+          />
+        ) : null}
       </div>
     )
   }
