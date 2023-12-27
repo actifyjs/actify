@@ -1,10 +1,10 @@
 'use client'
 
-import React from 'react'
-import { createPortal } from 'react-dom'
+import themes from '@themes/index'
 import { tv } from 'tailwind-variants'
+import { createPortal } from 'react-dom'
 import { useDrawer } from './DrawerContext'
-import themes from '../../themes/index'
+import React, { useState, useEffect } from 'react'
 
 const { scrim } = themes()
 
@@ -99,9 +99,18 @@ const DrawerContent: React.FC<React.HTMLAttributes<HTMLElement>> = ({
   className,
   children
 }) => {
+  const [container, setContainer] = useState<HTMLElement>()
   const open = useDrawer((_) => _.open)
   const placement = useDrawer((_) => _.placement)
   const setOpen = useDrawer((_) => _.setOpen)
+
+  useEffect(() => {
+    setContainer(document.body)
+  }, [])
+
+  if (!container) {
+    return null
+  }
 
   return (
     <>
@@ -116,7 +125,7 @@ const DrawerContent: React.FC<React.HTMLAttributes<HTMLElement>> = ({
             className="w-screen h-screen"
           ></div>
         </nav>,
-        document.body
+        container
       )}
     </>
   )

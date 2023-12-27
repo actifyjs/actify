@@ -51,4 +51,5 @@ export * from './components/Slot'
 
 export * from './utils/'
 export * from './hooks/'
+export * from './themes'
 export { name, version } from '../package.json'
