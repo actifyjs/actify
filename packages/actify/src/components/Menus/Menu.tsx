@@ -45,7 +45,7 @@ const rootVariants = tv({
 })
 
 const listVariants = tv({
-  base: 'flex flex-col rounded border border-outline/50 bg-surface bg-clip-padding p-1 shadow-lg outline-none backdrop-blur-lg'
+  base: 'flex flex-col rounded border border-outline/50 bg-surface bg-clip-padding p-1 shadow-lg outline-none backdrop-blur-lg mr-4'
 })
 
 interface MenuProps extends React.LiHTMLAttributes<HTMLLIElement> {
@@ -87,6 +87,7 @@ export const MenuComponent = forwardRef<HTMLLIElement, MenuProps>(
         flip(),
         shift()
       ],
+      transform: false,
       whileElementsMounted: autoUpdate
     })
 
