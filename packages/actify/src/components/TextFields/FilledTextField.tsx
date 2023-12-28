@@ -113,14 +113,11 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
         : 'text-on-surface-variant'
 
     return (
-      <div>
-        <div
-          className={
-            '[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full ' +
-            variants({ color, disabled, className })
-          }
-          onClick={handleClick}
-        >
+      <div className={
+        '[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full ' +
+        variants({ color, disabled, className })
+      }>
+        <div onClick={handleClick}>
           {/* container-overflow */}
           <div className="relative flex h-full rounded-t">
             {/* background */}
