@@ -5,18 +5,19 @@ import { tv } from 'tailwind-variants'
 import { createPortal } from 'react-dom'
 import { useDrawer } from './DrawerContext'
 import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const { scrim } = themes()
 
-const variants = tv({
+const rootVariants = tv({
   base: scrim({
     className:
       'fixed overflow-hidden inset-0 ease-in-out transition-opacity duration-500 pointer-events-none'
   }),
   variants: {
     open: {
-      true: 'opacity-100 pointer-events-auto',
-      false: 'opacity-0'
+      true: 'pointer-events-auto',
+      false: ''
     },
     placement: {
       left: '',
@@ -39,7 +40,7 @@ const variants = tv({
   ]
 })
 
-const sectionVariants = tv({
+const contentVariants = tv({
   base: 'absolute overflow-y-auto bg-surface shadow-xl duration-500 ease-in-out transition-all',
   variants: {
     open: {
@@ -61,41 +62,12 @@ const sectionVariants = tv({
     {
       placement: ['left', 'right'],
       className: 'w-screen max-w-xs h-full'
-    },
-    {
-      open: true,
-      placement: ['left', 'right'],
-      className: 'translate-x-0'
-    },
-    {
-      open: false,
-      placement: 'left',
-      className: '-translate-x-full'
-    },
-    {
-      open: false,
-      placement: 'right',
-      className: 'translate-x-full'
-    },
-    {
-      open: true,
-      placement: ['top', 'bottom'],
-      className: 'translate-y-0'
-    },
-    {
-      open: false,
-      placement: 'top',
-      className: '-translate-y-full'
-    },
-    {
-      open: false,
-      placement: 'bottom',
-      className: 'translate-y-full'
     }
   ]
 })
 
-const DrawerContent: React.FC<React.HTMLAttributes<HTMLElement>> = ({
+const DrawerContent: React.FC<React.ComponentProps<'div'>> = ({
+  style,
   className,
   children
 }) => {
@@ -108,26 +80,105 @@ const DrawerContent: React.FC<React.HTMLAttributes<HTMLElement>> = ({
     setContainer(document.body)
   }, [])
 
+  useEffect(() => {
+    if (!open) return
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = 'auto'
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open])
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (!open || event.key !== 'Escape') return
+    setOpen(false)
+  }
+
   if (!container) {
     return null
   }
 
-  return (
-    <>
-      {createPortal(
-        <nav className={variants({ open, placement })}>
-          <div className={sectionVariants({ open, placement, className })}>
+  const getAnimationProps = () => {
+    switch (placement) {
+      case 'left':
+        return {
+          initial: {
+            transform: 'translateX(-100%)'
+          },
+          animate: {
+            transform: 'translateX(0)'
+          },
+          exit: {
+            transform: 'translateX(-100%)'
+          }
+        }
+      case 'right':
+        return {
+          initial: {
+            transform: 'translateX(100%)'
+          },
+          animate: {
+            transform: 'translateX(0)'
+          },
+          exit: {
+            transform: 'translateX(100%)'
+          }
+        }
+      case 'top':
+        return {
+          initial: {
+            transform: 'translateY(-100%)'
+          },
+          animate: {
+            transform: 'translateY(0)'
+          },
+          exit: {
+            transform: 'translateY(-100%)'
+          }
+        }
+      case 'bottom':
+        return {
+          initial: {
+            transform: 'translateY(100%)'
+          },
+          animate: {
+            transform: 'translateY(0)'
+          },
+          exit: {
+            transform: 'translateY(100%)'
+          }
+        }
+    }
+  }
+
+  return createPortal(
+    <AnimatePresence mode="wait" initial={false}>
+      {open && (
+        <motion.nav
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          style={style}
+          className={rootVariants({ open })}
+        >
+          <motion.div
+            {...getAnimationProps()}
+            className={contentVariants({ placement, className })}
+          >
             {children}
-          </div>
+          </motion.div>
           {/* scrim */}
           <div
             onClick={() => setOpen(false)}
             className="w-screen h-screen"
           ></div>
-        </nav>,
-        container
+        </motion.nav>
       )}
-    </>
+    </AnimatePresence>,
+    container
   )
 }
 
