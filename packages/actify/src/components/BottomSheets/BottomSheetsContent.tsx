@@ -1,9 +1,10 @@
 'use client'
+import themes from '@themes/index'
 import { tv } from 'tailwind-variants'
 import { createPortal } from 'react-dom'
-import React, { forwardRef } from 'react'
 import { useBottomSheets } from './BottomSheetsContext'
-import themes from '../../themes'
+import React, { useState, useEffect, forwardRef } from 'react'
+
 const { scrim } = themes()
 
 const rootVariants = tv({
@@ -31,6 +32,15 @@ const Content: React.FC<React.HTMLAttributes<HTMLDivElement>> = forwardRef(
   ({ style, className, children, ...rest }, ref: React.Ref<HTMLDivElement>) => {
     const open = useBottomSheets((s) => s.open)
     const setOpen = useBottomSheets((s) => s.setOpen)
+    const [container, setContainer] = useState<HTMLElement>()
+
+    useEffect(() => {
+      setContainer(document.body)
+    }, [])
+
+    if (!container) {
+      return null
+    }
 
     return (
       <>
@@ -54,7 +64,7 @@ const Content: React.FC<React.HTMLAttributes<HTMLDivElement>> = forwardRef(
               </div>
             </div>
           </div>,
-          document.body
+          container
         )}
       </>
     )

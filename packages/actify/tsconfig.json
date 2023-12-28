@@ -25,7 +25,8 @@
     "paths": {
       "@actify/*": ["./src/components/*"],
       "@utils/*": ["./src/utils/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@themes/*": ["./src/themes/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

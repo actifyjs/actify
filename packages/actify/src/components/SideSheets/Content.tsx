@@ -1,9 +1,9 @@
 'use client'
+import themes from '@themes/index'
 import { tv } from 'tailwind-variants'
 import { createPortal } from 'react-dom'
-import React, { forwardRef } from 'react'
 import { useSideSheets } from './Context'
-import themes from '../../themes'
+import React, { useState, useEffect, forwardRef } from 'react'
 
 const { scrim } = themes()
 
@@ -38,6 +38,16 @@ const Content = forwardRef<HTMLDivElement, ContentProps>((props, ref) => {
   const open = useSideSheets((_) => _.open)
   const setOpen = useSideSheets((_) => _.setOpen)
 
+  const [container, setContainer] = useState<HTMLElement>()
+
+  useEffect(() => {
+    setContainer(document.body)
+  }, [])
+
+  if (!container) {
+    return null
+  }
+
   return (
     <>
       {createPortal(
@@ -55,7 +65,7 @@ const Content = forwardRef<HTMLDivElement, ContentProps>((props, ref) => {
             {children}
           </div>
         </div>,
-        document.body
+        container
       )}
     </>
   )
