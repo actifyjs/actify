@@ -16,7 +16,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
 
   return (
     <div className="relative">
-      <Button variant="text" className="group peer">
+      <Button variant="text" className="group peer px-2.5">
         {title}
         <div className="flex items-center transition-transform duration-300 group-hover:rotate-90">
           <ChevronDown size={20} />
