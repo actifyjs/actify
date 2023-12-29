@@ -1,19 +1,17 @@
 import React from 'react'
-import { Menu } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useAppStore } from '@/store/appStore'
 import { useShallow } from 'zustand/react/shallow'
-import { Button, Spacer, IconButton } from 'actify'
-import { Gamepad2, Palette } from 'lucide-react'
+import { Button, Menu, MenuItem, Spacer, IconButton } from 'actify'
+import { MenuIcon, Gamepad2, Palette } from 'lucide-react'
 import Logo from '@/components/Logo'
 import Search from '@/components/Search'
 import Dropdown from '@/components/Dropdown'
 import SwitchTheme from '@/components/SwitchTheme'
-// @ts-expect-error
-import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm'
+import SettingTheme from '@/components/SettingTheme'
 
-const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
+const Header: React.FC<React.ComponentProps<'nav'>> = () => {
   const { pathname } = useLocation()
   const { top, drawer, setDrawer } = useAppStore(
     useShallow((state) => ({
@@ -22,26 +20,6 @@ const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
       setDrawer: state.setDrawer
     }))
   )
-
-  const randomColor = () => {
-    const letters = '0123456789ABCDEF'
-    let color = '#'
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)]
-    }
-    return color
-  }
-
-  const handleUpdateTheme = () => {
-    updateTheme(
-      {
-        // set a new primary color (and optionally any other colors in your theme)
-        primary: randomColor()
-      },
-      // second argument is your chosen dark mode strategy (usually 'media' or 'class')
-      'class'
-    )
-  }
 
   return (
     <header
@@ -61,7 +39,7 @@ const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
             className="inline-flex md:hidden"
             onClick={() => setDrawer(!drawer)}
           >
-            <Menu />
+            <MenuIcon />
           </IconButton>
         )}
         <Search
@@ -82,10 +60,6 @@ const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
             <Gamepad2 />
           </IconButton>
         </Link>
-        <IconButton onClick={handleUpdateTheme} color="primary">
-          <Palette />
-        </IconButton>
-        <SwitchTheme />
         <IconButton href="https://x.com/actifyjs" target="_blank">
           <svg viewBox="0 0 24 24" aria-hidden="true" className="w-6 h-6">
             <path
@@ -94,6 +68,8 @@ const Header: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
             />
           </svg>
         </IconButton>
+        <SwitchTheme />
+        <SettingTheme />
         <div className="hidden w-full md:block md:w-auto">
           <ul className="flex flex-row gap-2 font-medium">
             <li>

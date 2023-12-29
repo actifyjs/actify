@@ -1,6 +1,6 @@
 import { IconButton } from 'actify'
 import { Sun, MoonStar } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const SwitchTheme = () => {
   const [mode, setMode] = useState('') // dark mode
