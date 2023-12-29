@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react'
 import { Ripple } from '@actify/Ripple'
 import { tv, VariantProps } from 'tailwind-variants'
 
-import { setColor } from './../../utils'
+import { setColor } from '@utils/index'
 
 const variants = tv({
   base: 'relative inline-flex h-10 w-10 rounded-full items-center justify-center hover:bg-inverse-surface/25 transition-all duration-300 ease-in-out',

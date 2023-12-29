@@ -4,7 +4,7 @@ import { tv, VariantProps } from 'tailwind-variants'
 import { Ripple } from '@actify/Ripple'
 
 const variants = tv({
-  base: 'relative inline-flex gap-2 items-center justify-center select-none h-10 text-sm px-6 rounded-full transition-all duration-300 ease-in-out',
+  base: 'relative inline-flex gap-2 items-center justify-center select-none h-10 text-sm px-6 py-2 rounded-full transition-all duration-300 ease-in-out',
   variants: {
     color: {
       primary: 'interactive-bg-primary',
