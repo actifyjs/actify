@@ -1,12 +1,8 @@
 'use client'
-import React, {
-  forwardRef,
-  Children,
-  isValidElement,
-  cloneElement
-} from 'react'
-
+import Root from './Root'
+import React, { forwardRef } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
+import { SegmentedButtonProvider } from './Context'
 
 const variants = tv({
   base: 'flex',
@@ -15,8 +11,11 @@ const variants = tv({
       elevated: 'divide-x divide-surface',
       filled: 'divide-x divide-surface',
       tonal: 'divide-x divide-surface',
-      outlined: '',
+      outlined: 'divide',
       text: 'divide-x divide-surface'
+    },
+    active: {
+      true: 'bg-secondary-container'
     },
     roundedRightNone: {
       true: 'rounded-r-none'
@@ -33,10 +32,11 @@ const variants = tv({
   }
 })
 
-interface SegmentedButtonProps
+export interface SegmentedButtonProps
   extends VariantProps<typeof variants>,
     React.HTMLAttributes<HTMLDivElement> {
   ripple?: boolean
+  mutiple?: boolean
 }
 
 const SegmentedButton: React.FC<SegmentedButtonProps> = forwardRef(
@@ -45,6 +45,7 @@ const SegmentedButton: React.FC<SegmentedButtonProps> = forwardRef(
       color,
       style,
       variant,
+      mutiple,
       className,
       children,
       ripple = true,
@@ -52,25 +53,16 @@ const SegmentedButton: React.FC<SegmentedButtonProps> = forwardRef(
     } = props
 
     return (
-      <div ref={ref} {...rest} style={style} className={variants({ variant })}>
-        {Children.map(
-          children,
-          (child, index) =>
-            isValidElement(child) &&
-            // @ts-expect-error
-            cloneElement<SegmentedButtonProps>(child, {
-              color,
-              ripple,
-              variant,
-              className: variants({
-                roundedRightNone: index !== Children.count(children) - 1,
-                borderRightZero: index !== Children.count(children) - 1,
-                roundedLeftNone: index !== 0,
-                className: child.props.className
-              })
-            })
-        )}
-      </div>
+      <SegmentedButtonProvider multiple={mutiple}>
+        <div
+          ref={ref}
+          {...rest}
+          style={style}
+          className={variants({ variant })}
+        >
+          <Root {...{ color, ripple, variant }}>{children}</Root>
+        </div>
+      </SegmentedButtonProvider>
     )
   }
 )

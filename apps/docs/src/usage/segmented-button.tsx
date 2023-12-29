@@ -1,12 +1,19 @@
 import { SegmentedButton, Button } from 'actify'
+import { Moon, Monitor, Sun } from 'lucide-react'
 
 export default () => {
   return (
     <div className="flex items-center gap-4">
-      <SegmentedButton>
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
+      <SegmentedButton variant="outlined">
+        <Button>
+          <Moon />
+        </Button>
+        <Button>
+          <Monitor />
+        </Button>
+        <Button>
+          <Sun />
+        </Button>
       </SegmentedButton>
     </div>
   )
