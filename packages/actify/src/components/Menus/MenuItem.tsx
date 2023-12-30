@@ -34,6 +34,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
       <ListItem
         {...props}
         role="menuitem"
+        index={item.index}
         className={variants({ disabled })}
         tabIndex={isActive ? 0 : -1}
         ref={useMergeRefs([item.ref, forwardedRef])}
