@@ -154,6 +154,7 @@ export const MenuComponent = forwardRef<HTMLLIElement, MenuProps>(
         {isNested ? (
           <ListItem
             role="menuitem"
+            index={item.index}
             className="pr-4 focus-visible:outline-none justify-between"
             ref={useMergeRefs([refs.setReference, item.ref, forwardedRef])}
             {...getReferenceProps(
