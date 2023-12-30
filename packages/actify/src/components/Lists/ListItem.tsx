@@ -9,10 +9,12 @@ const variants = tv({
   base: 'relative flex items-center min-h-14 pl-4 py-2 leading-normal cursor-pointer isolate'
 })
 
-interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {}
+interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+  index?:number
+}
 
 const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
-  const { className, children, ...rest } = props
+  const { index, className, children, ...rest } = props
   const [current, setCurrent] = useState<string | undefined>('')
   const { layoutId } = useContext(ListContext)
 
@@ -21,7 +23,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
       setCurrent(children)
     }
     if (Array.isArray(children)) {
-      setCurrent(children[0])
+      setCurrent(index?.toString())
     }
   }
 
@@ -30,7 +32,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
       return children == current
     }
     if (Array.isArray(children)) {
-      return children[0] == current
+      return index == current
     }
   }, [current, children])
 
