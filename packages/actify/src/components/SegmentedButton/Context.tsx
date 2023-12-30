@@ -1,8 +1,9 @@
-import { useState, createContext, useContext } from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 
 export type ContextProps = {
   multiple?: boolean
   activeIndex?: number[]
+  onChange?: (_: number[]) => void
   setMutiple?: (value: boolean) => void
   setActiveIndex?: (value: number[]) => void
 }
@@ -24,10 +25,16 @@ export const SegmentedButtonProvider = ({
   children,
   ...initialProps
 }: ProviderProps) => {
-  const [activeIndex, setActiveIndex] = useState<number[]>([])
+  const defaultActiveIndex = initialProps.activeIndex ?? []
+  const [activeIndex, setActiveIndex] = useState(defaultActiveIndex)
 
   const defaultMutiple = initialProps.multiple ?? false
   const [multiple, setMutiple] = useState(defaultMutiple)
+
+  useEffect(() => {
+    initialProps.onChange?.(activeIndex)
+  }, [activeIndex])
+
   return (
     <SegmentedButtonContext.Provider
       value={{ multiple, activeIndex, setMutiple, setActiveIndex }}

@@ -32,11 +32,18 @@ const variants = tv({
   }
 })
 
-export interface SegmentedButtonProps
-  extends VariantProps<typeof variants>,
-    React.HTMLAttributes<HTMLDivElement> {
+export interface SegmentedButtonProps {
+  color?: string
+  className?: string
+  style?: React.CSSProperties
+  children: React.ReactNode
   ripple?: boolean
-  mutiple?: boolean
+  multiple?: boolean
+  activeIndex?: number[]
+  variant?: VariantProps<typeof variants>['variant']
+  onChange?: (_: number[]) => void
+  setMutiple?: (value: boolean) => void
+  setActiveIndex?: (value: number[]) => void
 }
 
 const SegmentedButton: React.FC<SegmentedButtonProps> = forwardRef(
@@ -45,15 +52,17 @@ const SegmentedButton: React.FC<SegmentedButtonProps> = forwardRef(
       color,
       style,
       variant,
-      mutiple,
+      multiple,
       className,
       children,
+      onChange,
+      activeIndex,
       ripple = true,
       ...rest
     } = props
 
     return (
-      <SegmentedButtonProvider multiple={mutiple}>
+      <SegmentedButtonProvider {...{ activeIndex, multiple, onChange }}>
         <div
           ref={ref}
           {...rest}
