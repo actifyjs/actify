@@ -5,7 +5,7 @@ import { tv, VariantProps } from 'tailwind-variants'
 import { SegmentedButtonProvider } from './Context'
 
 const variants = tv({
-  base: 'flex',
+  base: 'flex font-medium tracking-wide',
   variants: {
     variant: {
       elevated: 'divide-x divide-surface',

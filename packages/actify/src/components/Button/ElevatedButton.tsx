@@ -5,7 +5,7 @@ import { Ripple } from '@actify/Ripple'
 import { Elevation } from '@actify/Elevation'
 
 const variants = tv({
-  base: 'relative inline-flex gap-2 items-center justify-center select-none h-10 text-sm px-6 py-2 rounded-full transition-all duration-300 ease-in-out interactive-bg-surface',
+  base: 'relative inline-flex gap-2 items-center justify-center select-none h-10 text-sm px-6 py-2 rounded-full transition-all duration-300 ease-in-out interactive-bg-surface font-medium tracking-wide',
   variants: {
     color: {
       primary: 'text-primary hover:bg-primary/5',
