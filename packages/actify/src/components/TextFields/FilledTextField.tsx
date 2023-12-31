@@ -114,7 +114,7 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
 
     return (
       <div className={
-        '[resize:inherit] [writing-mode:horizontal-tb] flex flex-1 flex-col max-w-full ' +
+        '[resize:inherit] [writing-mode:horizontal-tb] flex flex-col max-w-full ' +
         variants({ color, disabled, className })
       }>
         <div onClick={handleClick}>
