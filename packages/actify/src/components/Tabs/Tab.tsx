@@ -5,7 +5,7 @@ import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
 
 const variants = tv({
-  base: 'relative isolate h-10 gap-0 sm:gap-2 px-2 flex items-center justify-center text-base font-normal leading-relaxed select-none cursor-pointer'
+  base: 'relative isolate h-10 gap-0 sm:gap-2 px-2 flex items-center justify-center text-base font-medium leading-relaxed select-none cursor-pointer'
 })
 
 type Value = number | string
@@ -40,8 +40,10 @@ const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       {activeValue == value && (
         <motion.div
           layoutId={layoutId}
-          className="absolute -z-10 rounded-lg inset-0 bg-surface"
-        />
+          className="absolute -z-10 w-full bottom-0"
+        >
+          <div className="h-0.5 rounded-lg w-full bg-primary"></div>
+        </motion.div>
       )}
     </li>
   )
