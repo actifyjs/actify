@@ -6,7 +6,7 @@ import { Ripple } from '@actify/Ripple'
 import { Elevation } from '@actify/Elevation'
 
 const variants = tv({
-  base: 'relative inline-flex items-center justify-center w-fit',
+  base: 'relative inline-flex items-center justify-center w-fit font-medium tracking-wide',
   variants: {
     size: {
       small: 'h-10 px-2 rounded-xl',
