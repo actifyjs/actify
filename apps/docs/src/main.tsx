@@ -21,8 +21,7 @@ const App = () => {
     }
   }
   if (pathname == '/' || pathname == '/playground') {
-    // @ts-expect-error
-    Layout = EmptyLayout
+    Layout = (props) => <EmptyLayout {...props}></EmptyLayout>
   }
 
   useEffect(() => {
@@ -49,8 +48,7 @@ const App = () => {
   )
 }
 
-// @ts-expect-error
-createRoot(document.getElementById('app')).render(
+createRoot(document.getElementById('app') as HTMLElement).render(
   <StrictMode>
     <BrowserRouter>
       <ToastProvider>

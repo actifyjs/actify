@@ -5,10 +5,9 @@ import { useShallow } from 'zustand/react/shallow'
 
 const debounce = (fn: Function, delay: number) => {
   let timer: string | number | NodeJS.Timeout | null | undefined = null
-  return function (...args: any) {
+  return function (this: any, ...args: any) {
     timer && clearTimeout(timer)
     timer = setTimeout(() => {
-      // @ts-expect-error
       fn.apply(this, args)
     }, delay)
   }
