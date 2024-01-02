@@ -2,10 +2,9 @@
   "name": "actify",
   "private": true,
   "scripts": {
-    "prebuild": "node ./scripts/prebuild.js",
-    "build": "npm run prebuild && turbo run build",
-    "predev": "node ./scripts/predev.js",
-    "dev": "npm run predev && turbo run dev --no-cache --continue"
+    "modify": "node ./scripts/modify.js",
+    "build": "cross-env COMMAND=build npm run modify && turbo run build",
+    "dev": "cross-env COMMAND=dev npm run modify && turbo run dev --no-cache --continue"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
