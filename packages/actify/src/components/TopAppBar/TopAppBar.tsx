@@ -54,7 +54,7 @@ const TopAppBar = forwardRef<HTMLDivElement, TopAppBarProps>((props, ref) => {
       </div>
 
       {size == 'medium' || size == 'large' ? (
-        <div className="w-full items-start justify-start gap-2.5 self-stretch px-4">
+        <div className="w-full items-center inline-flex justify-start gap-2.5 px-4">
           <div className="text-on-surface text-[24px] font-normal leading-loose">
             {title}
           </div>
