@@ -21,13 +21,12 @@
   "files": [
     "dist/**"
   ],
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./src/index.ts",
+  "module": "",
+  "types": "",
   "sideEffects": false,
   "scripts": {
-    "prebuild": "rm -rf dist && node ../../scripts/prebuild",
-    "build": "npm run prebuild && rollup -c rollup.config.mjs"
+    "build": " rm -rf dist && node ../../scripts/modify && rollup -c rollup.config.mjs"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
