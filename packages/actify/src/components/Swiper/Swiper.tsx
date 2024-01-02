@@ -87,12 +87,11 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
         return (
           <button
             onClick={prev}
-            // @ts-expect-error
-            {...child.props}
+            {...(child.props as {})}
             className={buttonVariants({
               prev: true,
-              // @ts-expect-error
-              className: child.props.className
+              className: (child.props as React.AllHTMLAttributes<HTMLElement>)
+                .className
             })}
           >
             {child}
@@ -108,12 +107,11 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
         return (
           <button
             onClick={next}
-            // @ts-expect-error
-            {...child.props}
+            {...(child.props as {})}
             className={buttonVariants({
               next: true,
-              // @ts-expect-error
-              className: child.props.className
+              className: (child.props as React.AllHTMLAttributes<HTMLElement>)
+                .className
             })}
           >
             {child}
