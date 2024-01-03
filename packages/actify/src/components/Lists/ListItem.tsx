@@ -10,7 +10,7 @@ const variants = tv({
 })
 
 interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
-  index?:number
+  index?: number
 }
 
 const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {

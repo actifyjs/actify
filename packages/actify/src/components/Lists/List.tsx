@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 import { ListContext } from './ListContext'
 
 const variants = tv({
-  base: 'py-2 bg-surface'
+  base: 'py-2 bg-surface overflow-hidden'
 })
 
 interface ListProps extends React.HTMLAttributes<HTMLUListElement> {}
