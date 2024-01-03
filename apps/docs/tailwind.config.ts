@@ -6,7 +6,7 @@ export default withMaterialColors(
     darkMode: 'class',
     content: [
       './src/**/*.{html,md,js,ts,jsx,tsx}',
-      './node_modules/actify/dist/**/*.{js,ts,jsx,tsx}'
+      './node_modules/actify/src/**/*.{js,ts,jsx,tsx}'
     ],
     plugins: [typography]
   },
