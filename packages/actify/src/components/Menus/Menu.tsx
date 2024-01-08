@@ -235,6 +235,7 @@ export const MenuComponent = forwardRef<HTMLLIElement, MenuProps>(
                     style={floatingStyles}
                     {...getFloatingProps()}
                     className={listVariants({ className })}
+                    transition={{ duration: 0.1, ease: 'linear' }}
                   >
                     {children}
                   </List>
