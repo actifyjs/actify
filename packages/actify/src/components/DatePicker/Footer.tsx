@@ -1,10 +1,9 @@
 import dayjs from 'dayjs'
 import React, { useCallback, useContext } from 'react'
 
+import { Button } from '@actify/Button'
 import { DATE_FORMAT } from './constants'
 import DatepickerContext from './DatePickerContext'
-
-import { PrimaryButton, SecondaryButton } from './utils'
 
 const Footer: React.FC = () => {
   // Contexts
@@ -26,14 +25,15 @@ const Footer: React.FC = () => {
   return (
     <div className={getClassName()}>
       <div className="w-full md:w-auto flex items-center justify-center space-x-3">
-        <SecondaryButton
+        <Button
+          color="secondary"
           onClick={() => {
             hideDatepicker()
           }}
         >
           <>{configs?.footer?.cancel ? configs.footer.cancel : 'Cancel'}</>
-        </SecondaryButton>
-        <PrimaryButton
+        </Button>
+        <Button
           onClick={() => {
             if (period.start && period.end) {
               changeDatepickerValue({
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
           disabled={!(period.start && period.end)}
         >
           <>{configs?.footer?.apply ? configs.footer.apply : 'Apply'}</>
-        </PrimaryButton>
+        </Button>
       </div>
     </div>
   )
