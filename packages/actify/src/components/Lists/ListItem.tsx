@@ -16,7 +16,7 @@ interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
 const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const { index, className, children, ...rest } = props
   const [current, setCurrent] = useState<string | undefined>('')
-  const { layoutId } = useContext(ListContext)
+  const { layoutId, transition } = useContext(ListContext)
 
   const handleMouseOver = () => {
     if (typeof children === 'string') {
@@ -48,6 +48,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
       {isHovered && (
         <motion.div
           layoutId={layoutId}
+          transition={transition}
           className="absolute inset-0 bg-secondary/25 z-[-1]"
         />
       )}

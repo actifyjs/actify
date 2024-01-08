@@ -1,8 +1,10 @@
 'use client'
 import { createContext } from 'react'
+import { type Transition } from 'framer-motion'
 
 const ListContext = createContext({
-  layoutId: ''
+  layoutId: '',
+  transition: undefined as undefined | Transition
 })
 
 export { ListContext }
