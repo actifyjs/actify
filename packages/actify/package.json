@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.76",
+  "version": "0.1.77",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -21,9 +21,9 @@
   "files": [
     "dist/**"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "module": "",
+  "types": "",
   "sideEffects": false,
   "scripts": {
     "build": " rm -rf dist && node ../../scripts/modify && rollup -c rollup.config.mjs"

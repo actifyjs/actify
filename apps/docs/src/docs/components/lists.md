@@ -12,10 +12,10 @@ title: Lists
 
 ## Props
 
-| Name         | Type              | Description                                                                                      | Default |
-| ------------ | ----------------- | ------------------------------------------------------------------------------------------------ | ------- |
-| `transition` | `Object`          | framer motion <a target="_blank" href="https://www.framer.com/motion/transition/">transition</a> | `null`  |
-| `children`   | `React.ReactNode` | children                                                                                         | `null`  |
+| Name         | Type              | Description                                                                                                                 | Default |
+| ------------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `transition` | `Object`          | Item hover trantisition is framer motion <a target="_blank" href="https://www.framer.com/motion/transition/">transition</a> | `null`  |
+| `children`   | `React.ReactNode` | children                                                                                                                    | `null`  |
 
 ## Child
 
