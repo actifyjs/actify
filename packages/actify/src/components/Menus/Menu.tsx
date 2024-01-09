@@ -39,6 +39,7 @@ import { ChevronDown } from 'lucide-react'
 import { ListItem } from '@actify/Lists/ListItem'
 import { tv } from 'tailwind-variants'
 import { MenuContext } from './MenuContext'
+import { Transition } from 'framer-motion'
 
 const rootVariants = tv({
   base: ''
@@ -51,12 +52,13 @@ const listVariants = tv({
 interface MenuProps extends React.LiHTMLAttributes<HTMLLIElement> {
   label?: string
   disabled?: boolean
-  variant?: 'filled' | 'elevated' | 'outlined' | 'tonal' | 'text'
+  variant?: 'filled' | 'elevated' | 'outlined' | 'tonal' | 'text',
+  transition?: Transition,
 }
 
 export const MenuComponent = forwardRef<HTMLLIElement, MenuProps>(
   (
-    { children, className, label, variant = 'filled', disabled, ...props },
+    { children, className, label, variant = 'filled', disabled, transition, ...props },
     forwardedRef
   ) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -235,7 +237,7 @@ export const MenuComponent = forwardRef<HTMLLIElement, MenuProps>(
                     style={floatingStyles}
                     {...getFloatingProps()}
                     className={listVariants({ className })}
-                    transition={{ duration: 0.1, ease: 'linear' }}
+                    transition={transition}
                   >
                     {children}
                   </List>
