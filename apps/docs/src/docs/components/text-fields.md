@@ -8,21 +8,23 @@ title: Text fields
 
 ## Usage
 
+> Below example,you need install `lucide-react`
+
 <usage name="text-fields"></usage>
 
 ## Props
 
-| Props          | Type                                      | Description                    | Default   |
-| -------------- | ----------------------------------------- | ------------------------------ | --------- |
-| `color`        | `primary` `secondary` `tertiaray` `error` | The color of text field        | `primary` |
-| `value`        | `string`                                  | The value of text field        | `null`    |
-| `defaultValue` | `string`                                  | The defaultValue of text field | `null`    |
-| `variant`      | `filled` `outlined`                       | The variant of text field      | `filled`  |
-| `disabled`     | `boolean`                                 | Disables the text field        | `false`   |
-| `prefixText`   | `string`                                  | Prefix text of text field      | `null`    |
-| `suffixText`   | `string`                                  | Suffix text of text field      | `null`    |
-| `supportingText`   | `string`                              | Supporting text of text field  | `null`    |
-| `maxLength`   | `number`                                   | The maximum number of characters of text in the text field.     | `null`    |
+| Props            | Type                                      | Description                                                 | Default   |
+| ---------------- | ----------------------------------------- | ----------------------------------------------------------- | --------- |
+| `color`          | `primary` `secondary` `tertiaray` `error` | The color of text field                                     | `primary` |
+| `value`          | `string`                                  | The value of text field                                     | `null`    |
+| `defaultValue`   | `string`                                  | The defaultValue of text field                              | `null`    |
+| `variant`        | `filled` `outlined`                       | The variant of text field                                   | `filled`  |
+| `disabled`       | `boolean`                                 | Disables the text field                                     | `false`   |
+| `prefixText`     | `string`                                  | Prefix text of text field                                   | `null`    |
+| `suffixText`     | `string`                                  | Suffix text of text field                                   | `null`    |
+| `supportingText` | `string`                                  | Supporting text of text field                               | `null`    |
+| `maxLength`      | `number`                                  | The maximum number of characters of text in the text field. | `null`    |
 
 ## Sub components
 
