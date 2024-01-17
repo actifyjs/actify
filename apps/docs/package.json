@@ -12,8 +12,7 @@
     "lucide-react": "^0.302.0",
     "react-router-dom": "^6.20.1",
     "tailwind-variants": "^0.1.18",
-    "usehooks-ts": "^2.9.1",
-    "zustand": "^4.4.7"
+    "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
     "@docsearch/js": "^3.5.2",

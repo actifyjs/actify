@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useState,
-  useEffect,
-  HtmlHTMLAttributes,
-  HTMLAttributes
-} from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Prism from 'prismjs'
 import { tv } from 'tailwind-variants'
 import { Check, Copy, CopyX } from 'lucide-react'

@@ -43,7 +43,7 @@ export default () => {
   }, [pathname])
 
   return (
-    <div className="lg:pr-64">
+    <div className="lg:pr-60 grid grid-cols-1 overflow-hidden">
       <Markdown pathname={pathname} markdown={markdown} />
       <TableOfContents hash={hash} markdown={markdown} />
     </div>

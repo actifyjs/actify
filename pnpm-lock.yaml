@@ -47,9 +47,6 @@ importers:
       usehooks-ts:
         specifier: ^2.9.1
         version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
-      zustand:
-        specifier: ^4.4.7
-        version: 4.4.7(@types/react@18.2.42)(react@18.2.0)
     devDependencies:
       '@docsearch/js':
         specifier: ^3.5.2

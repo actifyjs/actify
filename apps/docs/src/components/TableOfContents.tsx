@@ -28,7 +28,7 @@ const TableOfContents = ({
   markdown
 }: {
   hash: string
-  markdown: string
+  markdown?: string
 }) => {
   const [toc, setToc] = useState<TocProps>([])
 
@@ -49,7 +49,7 @@ const TableOfContents = ({
   }, [markdown])
 
   return (
-    <nav className="fixed bottom-14 right-0 w-64 h-[calc(100vh-120px)] hidden lg:grid lg:place-content-center">
+    <nav className="fixed bottom-14 right-0 w-60 h-[calc(100vh-120px)] hidden lg:grid lg:place-content-center">
       <ul>
         {toc.map((item) => (
           <li

@@ -2,15 +2,12 @@ import { Button } from 'actify'
 import { useEffect } from 'react'
 import Logo from '@/components/Logo'
 import { Link } from 'react-router-dom'
-import { useAppStore } from '@/store/appStore'
 import { ArrowRight, Github, HelpCircle } from 'lucide-react'
 
 export default () => {
-  const app = useAppStore()
   useEffect(() => {
     document.title =
       'Actify — 🌻React Tailwind CSS Material Design 3 Components Library'
-    app.setDrawer(false)
   }, [])
   return (
     <div className="flex flex-col gap-4 pt-2">

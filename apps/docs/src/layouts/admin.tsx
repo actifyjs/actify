@@ -259,7 +259,7 @@ export default ({ children }: { children: React.ReactNode }) => {
       </header>
       <Aside className="top-16 -translate-x-full lg:translate-x-0 w-[240px]" />
       <main className="bg-secondary/10 col-start-2 col-end-3">{children}</main>
-      <footer className="col-start-2 col-en-3 bg-surface flex items-center px-4 justify-center lg:justify-between">
+      <footer className="col-start-2 col-end-3 bg-surface flex items-center px-4 justify-center lg:justify-between">
         <p>copyright &copy; {new Date().getFullYear()}</p>
       </footer>
     </div>

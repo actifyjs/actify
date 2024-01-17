@@ -1,6 +1,5 @@
 import * as Actify from 'actify'
 import { Share2 } from 'lucide-react'
-import { useAppStore } from '@/store/appStore'
 import { useEffect, useRef, useState } from 'react'
 import {
   withLive,
@@ -103,7 +102,6 @@ const Live = ({ onEdit }: { onEdit: (_: string) => void }) => {
 const LiveComponent = withLive(Live)
 
 const Playground = () => {
-  const setDrawer = useAppStore((_) => _.setDrawer)
   const toast = Actify.useToast()
   const [code, setCode] = useState(
     `() => {
@@ -117,7 +115,6 @@ const Playground = () => {
   )
 
   useEffect(() => {
-    setDrawer(false)
     document.title = 'Playground' + ' | Actify'
     const hash = location.hash.slice(1)
     const decoded = atob(hash)

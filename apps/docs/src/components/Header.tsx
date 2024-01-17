@@ -1,31 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import { useAppStore } from '@/store/appStore'
-import { useShallow } from 'zustand/react/shallow'
-import { Button, Menu, MenuItem, Spacer, IconButton } from 'actify'
-import { MenuIcon, Gamepad2, Palette } from 'lucide-react'
+import { Button, Spacer, IconButton } from 'actify'
+import { Gamepad2 } from 'lucide-react'
 import Logo from '@/components/Logo'
+import AppDrawer from '@/components/AppDrawer'
 import Search from '@/components/Search'
 import Dropdown from '@/components/Dropdown'
 import SwitchTheme from '@/components/SwitchTheme'
 import SettingTheme from '@/components/SettingTheme'
 
-const Header: React.FC<React.ComponentProps<'nav'>> = () => {
+const Header: React.FC<React.ComponentProps<'header'>> = () => {
   const { pathname } = useLocation()
-  const { top, drawer, setDrawer } = useAppStore(
-    useShallow((state) => ({
-      top: state.top,
-      drawer: state.drawer,
-      setDrawer: state.setDrawer
-    }))
-  )
 
   return (
-    <header
-      style={{ height: top }}
-      className="sticky top-0 z-30 h-16 row-start-1 row-end-2 col-start-1 col-end-4 bg-surface/25 px-2 shadow backdrop-blur"
-    >
+    <header className="sticky top-0 z-30 h-16 col-start-1 col-end-3 bg-surface/25 px-2 shadow backdrop-blur">
       <div className="mx-auto flex h-full flex-wrap items-center justify-between">
         <Link to="/" className="hidden md:flex items-center text-primary">
           <Logo height={36} />
@@ -34,13 +23,9 @@ const Header: React.FC<React.ComponentProps<'nav'>> = () => {
           </span>
         </Link>
         {pathname != '/' && (
-          <IconButton
-            color="primary"
-            className="inline-flex md:hidden"
-            onClick={() => setDrawer(!drawer)}
-          >
-            <MenuIcon />
-          </IconButton>
+          <div className="inline-flex md:hidden">
+            <AppDrawer />
+          </div>
         )}
         <Search
           indexName="actify"

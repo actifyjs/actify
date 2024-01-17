@@ -1,21 +1,14 @@
 import React from 'react'
 import { ExternalLink } from 'lucide-react'
-import { useAppStore } from '@/store/appStore'
-import { useShallow } from 'zustand/react/shallow'
+import { tv } from 'tailwind-variants'
 
-const Footer: React.FC<React.HTMLAttributes<HTMLElement>> = () => {
-  const { drawer } = useAppStore(
-    useShallow((state) => ({
-      drawer: state.drawer
-    }))
-  )
+const variants = tv({
+  base: '*:shadow-inner col-start-2 col-end-3'
+})
 
+const Footer: React.FC<React.ComponentProps<'footer'>> = ({ className }) => {
   return (
-    <footer
-      className={`shadow-inner row-start-3 row-end-4 ${
-        drawer ? 'col-start-2' : 'col-start-1'
-      } col-end-4`}
-    >
+    <footer className={variants({ className })}>
       <div className="mx-auto w-full max-w-screen-xl py-1 md:py-4 px-4 md:flex md:items-center md:justify-between">
         <p className="text-center">
           Copyright © {new Date().getFullYear()} Actify
