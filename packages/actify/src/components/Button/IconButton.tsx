@@ -61,7 +61,7 @@ const IconButton = forwardRef(
       <Tag
         ref={ref}
         {...rest}
-        type={type}
+        type={Tag == 'button' ? type : null}
         className={variants({ className })}
         style={{ color: setColor(color), ...style }}
       >
