@@ -6,7 +6,7 @@ export default () => {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <form className="flex items-center gap-2 flex-wrap">
+    <form className="grid gap-2 grid-cols-1 sm:grid-cols-2">
       <TextField label="Email" suffixText="@actifyjs.com">
         <TextField.LeadingIcon>
           <Mail />
