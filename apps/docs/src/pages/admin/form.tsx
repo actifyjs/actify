@@ -32,7 +32,7 @@ export default () => {
             <Smartphone />
           </TextField.LeadingIcon>
         </TextField>
-        <TextField label="pasword" type="password">
+        <TextField label="password" type="password">
           <TextField.LeadingIcon>
             <Lock />
           </TextField.LeadingIcon>
@@ -67,7 +67,7 @@ export default () => {
         </TextField>
         <TextField
           variant="outlined"
-          label="pasword"
+          label="password"
           type={showPassword ? 'text' : 'password'}
         >
           <TextField.LeadingIcon>
