@@ -1,12 +1,25 @@
 'use client'
 import React, { useId, forwardRef } from 'react'
-import { Ripple } from '@actify/Ripple'
 import { tv, VariantProps } from 'tailwind-variants'
+import { Ripple } from '@actify/Ripple'
+import { FocusRing } from '@actify/FocusRing'
 
 import { setColor } from '@utils/index'
 
 const variants = tv({
-  base: 'relative inline-flex h-10 w-10 rounded-full items-center justify-center hover:bg-inverse-surface/25 transition-all duration-300 ease-in-out',
+  base: [
+    'size-10',
+    'relative',
+    'outline-none',
+    'ease-in-out',
+    'inline-flex',
+    'rounded-full',
+    'duration-300',
+    'items-center',
+    'justify-center',
+    'transition-all',
+    'hover:bg-inverse-surface/25'
+  ],
   variants: {
     variant: {
       standard: '',
@@ -68,8 +81,9 @@ const IconButton = forwardRef(
         className={variants({ className })}
         style={{ color: setColor(color), ...style }}
       >
+        <FocusRing id={id} />
         {children}
-        {ripple && <Ripple id={id} />}
+        {ripple && <Ripple id={id} disabled={disabled} />}
       </Tag>
     )
   }
