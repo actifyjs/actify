@@ -3,7 +3,7 @@ import { ExternalLink } from 'lucide-react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: '*:shadow-inner col-start-2 col-end-3'
+  base: 'shadow-inner col-start-2 col-end-3'
 })
 
 const Footer: React.FC<React.ComponentProps<'footer'>> = ({ className }) => {
