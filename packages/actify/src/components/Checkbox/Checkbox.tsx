@@ -1,18 +1,51 @@
 'use client'
+import { tv, VariantProps } from 'tailwind-variants'
 import { Ripple } from '@actify/Ripple'
-import { tv } from 'tailwind-variants'
-import React, { forwardRef, useState } from 'react'
+import { FocusRing } from '@actify/FocusRing'
+import React, { useId, forwardRef, useState } from 'react'
+
+const root = tv({
+  base: [
+    'flex',
+    'p-2.5',
+    'w-fit',
+    'relative',
+    'rounded-full',
+    'items-center',
+    'cursor-pointer'
+  ]
+})
 
 const variants = tv({
-  base: "peer relative appearance-none border-outline cursor-pointer transition-all before:content[''] before:block before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity",
+  base: [
+    'peer',
+    'relative',
+    'outline-none',
+    'appearance-none',
+    'border-outline',
+    'cursor-pointer',
+    'transition-all',
+    "before:content['']",
+    'before:block',
+    'before:size-12',
+    'before:rounded-full',
+    'before:absolute',
+    'before:top-1/2',
+    'before:left-1/2',
+    'before:-translate-y-1/2',
+    'before:-translate-x-1/2',
+    'before:opacity-0',
+    'hover:before:opacity-10',
+    'before:transition-opacity'
+  ],
   variants: {
     size: {
-      xs: 'w-5 h-5 border-2 rounded-sm',
-      sm: 'w-7 h-7 border-[3px] rounded',
-      md: 'w-9 h-9 border-4 rounded-md',
-      lg: 'w-11 h-11 border-[5px] rounded-lg',
-      xl: 'w-12 h-12 border-[6px] rounded-xl',
-      '2xl': 'w-14 h-14 border-[7px] rounded-2xl'
+      xs: 'size-5 border-2 rounded-sm',
+      sm: 'size-7 border-[3px] rounded',
+      md: 'size-9 border-4 rounded-md',
+      lg: 'size-11 border-[5px] rounded-lg',
+      xl: 'size-12 border-[6px] rounded-xl',
+      '2xl': 'size-14 border-[7px] rounded-2xl'
     },
     color: {
       primary:
@@ -35,15 +68,30 @@ const variants = tv({
 })
 
 const checkVariants = tv({
-  base: 'text-surface absolute inset-0 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity'
+  base: [
+    'flex',
+    'absolute',
+    'inset-0',
+    'top-1/2',
+    'left-1/2',
+    'opacity-0',
+    'text-surface',
+    'items-center',
+    'justify-center',
+    '-translate-y-1/2',
+    '-translate-x-1/2',
+    'transition-opacity',
+    'pointer-events-none',
+    'peer-checked:opacity-100'
+  ]
 })
 
 type CheckPropTypes = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'size' | 'color' | 'onChange'
 > & {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
+  size?: VariantProps<typeof variants>['size']
+  color?: VariantProps<typeof variants>['color']
   onChange?:
     | ((checked: boolean) => void)
     | ((e: React.ChangeEvent<HTMLInputElement>) => void)
@@ -64,6 +112,7 @@ const Checkbox: React.FC<CheckPropTypes> = forwardRef(
       ...rest
     } = props
 
+    const id = useId()
     const isControlled = checked !== undefined
 
     const [inputValue, setInputValue] = isControlled
@@ -86,12 +135,9 @@ const Checkbox: React.FC<CheckPropTypes> = forwardRef(
     }
 
     return (
-      <label
-        ref={ref}
-        title={title}
-        className="relative overflow-hidden flex items-center cursor-pointer p-2.5 rounded-full w-fit"
-      >
+      <label ref={ref} title={title} className={root()}>
         <input
+          id={id}
           {...rest}
           style={style}
           type="checkbox"
@@ -117,7 +163,8 @@ const Checkbox: React.FC<CheckPropTypes> = forwardRef(
             />
           </svg>
         </div>
-        <Ripple />
+        <FocusRing id={id} />
+        <Ripple id={id} disabled={disabled} />
       </label>
     )
   }
