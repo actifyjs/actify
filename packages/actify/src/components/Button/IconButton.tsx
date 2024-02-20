@@ -1,5 +1,5 @@
 'use client'
-import React, { forwardRef } from 'react'
+import React, { useId, forwardRef } from 'react'
 import { Ripple } from '@actify/Ripple'
 import { tv, VariantProps } from 'tailwind-variants'
 
@@ -47,6 +47,8 @@ const IconButton = forwardRef(
       ...rest
     } = props
 
+    const id = useId()
+
     let Tag = ''
     if (rest.href) {
       Tag = 'a'
@@ -60,13 +62,14 @@ const IconButton = forwardRef(
       // @ts-expect-error
       <Tag
         ref={ref}
+        id={id}
         {...rest}
         type={Tag == 'button' ? type : null}
         className={variants({ className })}
         style={{ color: setColor(color), ...style }}
       >
         {children}
-        {ripple && <Ripple />}
+        {ripple && <Ripple id={id} />}
       </Tag>
     )
   }

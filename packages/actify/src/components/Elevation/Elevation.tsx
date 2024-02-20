@@ -2,8 +2,35 @@
 import React from 'react'
 import { tv } from 'tailwind-variants'
 
-const variants = tv({
-  base: 'pointer-events-none rounded-[inherit] absolute inset-0 before:absolute before:inset-0 before:transition-all after:absolute after:inset-0 after:transition-all before:rounded-[inherit] before:text-black before:opacity-30 after:opacity-[0.15] after:rounded-[inherit] after:text-black',
+const root = tv({
+  base: [
+    'flex',
+    'absolute',
+    'inset-0',
+    'rounded-[inherit]',
+    'pointer-events-none',
+    'duration-[280ms]'
+  ]
+})
+
+const shadow = tv({
+  base: [
+    'absolute',
+    'inset-0',
+    'rounded-[inherit]',
+    'before:absolute',
+    'before:inset-0',
+    'before:opacity-30',
+    'before:text-black',
+    'before:[transition-property:box-shadow,opacity]',
+    'before:rounded-[inherit]',
+    'after:absolute',
+    'after:inset-0',
+    'after:rounded-[inherit]',
+    'after:[transition-property:box-shadow,opacity]',
+    'after:opacity-[0.15]',
+    'after:text-black'
+  ],
   variants: {
     level: {
       '0': 'before:shadow-[0_0_0_0] after:shadow-[0_0_0_0]',
@@ -23,14 +50,15 @@ export interface ElevationProps extends React.HTMLAttributes<HTMLSpanElement> {
   level?: Level
 }
 
-const Elevation: React.FC<ElevationProps> = ({ level = 0, className }) => {
+const Elevation: React.FC<ElevationProps> = ({ level = 0 }) => {
   return (
-    <span
-      className={variants({
-        className,
-        level: level as `${LevelNumber}`
-      })}
-    ></span>
+    <div aria-hidden={true} className={root()}>
+      <span
+        className={shadow({
+          level: level as `${LevelNumber}`
+        })}
+      ></span>
+    </div>
   )
 }
 

@@ -9,7 +9,8 @@
       "@actify/*": ["./src/components/*"],
       "@utils/*": ["./src/utils/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@themes/*": ["./src/themes/*"]
+      "@themes/*": ["./src/themes/*"],
+      "@animations/*": ["./src/animations/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

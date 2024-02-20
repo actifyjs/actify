@@ -6,30 +6,31 @@ import TonalButton from './TonalButton'
 import OutlinedButton from './OutlinedButton'
 import TextButton from './TextButton'
 
-type ButtonTypes = HTMLAnchorElement | HTMLButtonElement
-interface ButtonProps<T extends ButtonTypes>
-  extends React.AnchorHTMLAttributes<T>,
-    React.ButtonHTMLAttributes<T> {
+interface ButtonProps extends React.ComponentProps<'button'> {
+  href?: string
   ripple?: boolean
   disabled?: boolean
+  target?: React.HTMLAttributeAnchorTarget
   type?: 'submit' | 'reset' | 'button'
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
   variant?: 'filled' | 'elevated' | 'outlined' | 'tonal' | 'text'
 }
 
 const Button = forwardRef(
-  <T extends ButtonTypes>(
-    props: ButtonProps<T>,
-    ref?: React.Ref<ButtonTypes>
-  ) => {
+  (props: ButtonProps, ref?: React.Ref<HTMLButtonElement>) => {
     const { variant = 'filled', ...rest } = props
 
     return (
       <>
+        {/* @ts-expect-error */}
         {variant === 'filled' && <FilledButton ref={ref} {...rest} />}
+        {/* @ts-expect-error */}
         {variant === 'elevated' && <ElevatedButton ref={ref} {...rest} />}
+        {/* @ts-expect-error */}
         {variant === 'tonal' && <TonalButton ref={ref} {...rest} />}
+        {/* @ts-expect-error */}
         {variant === 'outlined' && <OutlinedButton ref={ref} {...rest} />}
+        {/* @ts-expect-error */}
         {variant === 'text' && <TextButton ref={ref} {...rest} />}
       </>
     )

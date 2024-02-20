@@ -1,6 +1,7 @@
 'use client'
 import { tv } from 'tailwind-variants'
 import { useAttachable } from '@hooks/index'
+import { EASING } from '@animations/index'
 import React, { useState, useRef, useEffect } from 'react'
 
 const root = tv({
@@ -8,11 +9,9 @@ const root = tv({
     'absolute',
     'pointer-events-none',
     '[color:var(--md-focus-ring-color,var(--md-sys-color-secondary,#625b71))]',
-
     '[animation-delay:0s,calc(var(--md-focus-ring-duration,600ms)*.25)]',
     '[animation-duration:calc(var(--md-focus-ring-duration,600ms)*.25),calc(var(--md-focus-ring-duration,600ms)*.75)]',
-    '[animation-timing-function:cubic-bezier(0.2,0,0,1)]',
-
+    `[animation-timing-function:${EASING.STANDARD}]`,
     '[animation-name:outward-grow,outward-shrink]',
     'inset-[calc(-1*var(--md-focus-ring-outward-offset,2px))]',
     '[outline:var(--md-focus-ring-width,3px)_solid_currentColor]',

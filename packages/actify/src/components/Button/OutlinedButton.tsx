@@ -1,10 +1,31 @@
 'use client'
-import React, { forwardRef } from 'react'
+import React, { useId, forwardRef } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 import { Ripple } from '@actify/Ripple'
+import { Elevation } from '@actify/Elevation'
+import { FocusRing } from '@actify/FocusRing'
 
-const variants = tv({
-  base: 'relative inline-flex gap-2 items-center justify-center select-none h-10 text-sm px-6 py-2 rounded-full transition-all duration-300 ease-in-out border font-medium tracking-wide',
+const root = tv({
+  base: [
+    'gap-2',
+    'h-10',
+    'px-6',
+    'py-2',
+    'text-sm',
+    'border',
+    'relative',
+    'cursor-pointer',
+    'inline-flex',
+    'items-center',
+    'justify-center',
+    'select-none',
+    'rounded-full',
+    'transition-all',
+    'duration-300',
+    'ease-in-out',
+    'font-medium',
+    'tracking-wide'
+  ],
   variants: {
     color: {
       primary: 'fill-primary text-primary hover:bg-primary/10 border-outline',
@@ -23,11 +44,52 @@ const variants = tv({
   }
 })
 
-type ButtonTypes = HTMLAnchorElement | HTMLButtonElement
-interface ButtonProps<T extends ButtonTypes>
-  extends VariantProps<typeof variants>,
-    React.AnchorHTMLAttributes<T>,
-    React.ButtonHTMLAttributes<T> {
+const background = tv({
+  base: [
+    'absolute',
+    'inset-0',
+    'rounded-[inherit]',
+    '[background-color:--_container-color]'
+  ]
+})
+
+const button = tv({
+  base: [
+    '[text-overflow:inherit]',
+    'rounded-[inherit]',
+    '[cursor:inherit]',
+    'inline-flex',
+    'items-center',
+    'justify-center',
+    '[border:none]',
+    '[outline:none]',
+    'appearance-none',
+    '[vertical-align:middle]',
+    'bg-[#00000000]',
+    '[text-decoration:none]',
+    '[min-width:calc(64px_-_var(--leading-space)_-_var(--trailing-space))]',
+    'w-full',
+    'z-0',
+    'h-full',
+    '[font:inherit]',
+    '[color:var(--label-text-color)]',
+    'p-0',
+    '[gap:inherit]'
+  ]
+})
+
+const touch = tv({
+  base: ['absolute', 'top-1/2', 'h-12', 'left-0', 'right-0', '-translate-y-1/2']
+})
+
+const label = tv({
+  base: ['flex', 'gap-2', 'items-center', 'overflow-hidden']
+})
+
+interface ButtonProps
+  extends React.ComponentProps<'button'>,
+    VariantProps<typeof root> {
+  href?: string
   ripple?: boolean
   disabled?: boolean
   type?: 'submit' | 'reset' | 'button'
@@ -35,58 +97,47 @@ interface ButtonProps<T extends ButtonTypes>
 }
 
 const OutlinedButton = forwardRef(
-  <T extends ButtonTypes>(
-    props: ButtonProps<T>,
-    ref?: React.Ref<ButtonTypes>
-  ) => {
+  (props: ButtonProps, ref?: React.Ref<HTMLButtonElement>) => {
     const {
       href,
       style,
-      disabled,
+      disabled = false,
       children,
       className,
       ripple = true,
-      color = 'primary'
+      color = 'primary',
+      ...rest
     } = props
 
-    if (href) {
-      return (
-        <a
-          href={href}
-          style={style}
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          {...{
-            ...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>),
-            className: variants({
-              color,
-              disabled,
-              className
-            })
-          }}
-        >
-          {children}
-          {ripple && <Ripple />}
-        </a>
-      )
-    }
+    const id = useId()
+    const Tag = href ? 'a' : 'button'
 
     return (
-      <button
-        style={style}
-        disabled={disabled}
-        ref={ref as React.Ref<HTMLButtonElement>}
-        {...{
-          ...(props as React.ButtonHTMLAttributes<HTMLButtonElement>),
-          className: variants({
-            color,
-            disabled,
-            className
-          })
-        }}
+      <div
+        className={root({
+          color,
+          disabled,
+          className
+        })}
       >
-        {children}
-        {ripple && !disabled && <Ripple />}
-      </button>
+        <Elevation />
+        <div className={background()}></div>
+        <FocusRing id={id} />
+        {ripple && <Ripple id={id} disabled={disabled} />}
+        <Tag
+          // @ts-expect-error
+          ref={ref}
+          id={id}
+          {...rest}
+          href={href}
+          style={style}
+          className={button()}
+          disabled={disabled}
+        >
+          <span className={touch()}></span>
+          <span className={label()}>{children}</span>
+        </Tag>
+      </div>
     )
   }
 )
