@@ -7,8 +7,8 @@ import { TabsBody } from './TabsBody'
 import { TabsPanel } from './TabsPanel'
 import { TabsHeader } from './TabsHeader'
 
-const variants = tv({
-  base: 'relative'
+const root = tv({
+  base: ['flex', 'relative', 'flex-col', 'overflow-auto', 'scroll-smooth']
 })
 
 type TabsProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> & {
@@ -21,12 +21,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
 
   return (
     <TabsProvider value={value} onChange={onChange}>
-      <div
-        ref={ref}
-        {...rest}
-        style={style}
-        className={variants({ className })}
-      >
+      <div ref={ref} {...rest} style={style} className={root({ className })}>
         {children}
       </div>
     </TabsProvider>

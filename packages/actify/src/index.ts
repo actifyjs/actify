@@ -1,3 +1,4 @@
+export * from './components/Icon'
 export * from './components/Accordion'
 export * from './components/TopAppBar'
 export * from './components/BottomAppBar'

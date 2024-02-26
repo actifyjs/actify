@@ -1,31 +1,15 @@
 'use client'
 import React, { useId, forwardRef } from 'react'
-import { tv, VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 import { Ripple } from '@actify/Ripple'
 import { Elevation } from '@actify/Elevation'
 import { FocusRing } from '@actify/FocusRing'
+import { ButtonProps } from './Button'
+import { ButtonBase } from './ButtonBase'
 
 const root = tv({
-  base: [
-    'gap-2',
-    'h-10',
-    'px-6',
-    'py-2',
-    'text-sm',
-    'border',
-    'relative',
-    'cursor-pointer',
-    'inline-flex',
-    'items-center',
-    'justify-center',
-    'select-none',
-    'rounded-full',
-    'transition-all',
-    'duration-300',
-    'ease-in-out',
-    'font-medium',
-    'tracking-wide'
-  ],
+  extend: ButtonBase,
+  base: ['border'],
   variants: {
     color: {
       primary: 'fill-primary text-primary hover:bg-primary/10 border-outline',
@@ -86,18 +70,8 @@ const label = tv({
   base: ['flex', 'gap-2', 'items-center', 'overflow-hidden']
 })
 
-interface ButtonProps
-  extends React.ComponentProps<'button'>,
-    VariantProps<typeof root> {
-  href?: string
-  ripple?: boolean
-  disabled?: boolean
-  type?: 'submit' | 'reset' | 'button'
-  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
-}
-
 const OutlinedButton = forwardRef(
-  (props: ButtonProps, ref?: React.Ref<HTMLButtonElement>) => {
+  (props: Omit<ButtonProps, 'variant'>, ref?: React.Ref<HTMLButtonElement>) => {
     const {
       href,
       style,

@@ -6,12 +6,13 @@ import TonalButton from './TonalButton'
 import OutlinedButton from './OutlinedButton'
 import TextButton from './TextButton'
 
-interface ButtonProps extends React.ComponentProps<'button'> {
+export interface ButtonProps extends React.ComponentProps<'button'> {
   href?: string
   ripple?: boolean
   disabled?: boolean
-  target?: React.HTMLAttributeAnchorTarget
+  trailingIcon?: boolean
   type?: 'submit' | 'reset' | 'button'
+  target?: React.HTMLAttributeAnchorTarget
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
   variant?: 'filled' | 'elevated' | 'outlined' | 'tonal' | 'text'
 }

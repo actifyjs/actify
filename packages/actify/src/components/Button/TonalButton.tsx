@@ -1,30 +1,14 @@
 'use client'
 import React, { useId, forwardRef } from 'react'
-import { tv, VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 import { Ripple } from '@actify/Ripple'
 import { Elevation } from '@actify/Elevation'
 import { FocusRing } from '@actify/FocusRing'
+import { ButtonProps } from './Button'
+import { ButtonBase } from './ButtonBase'
 
 const root = tv({
-  base: [
-    'h-10',
-    'px-6',
-    'py-2',
-    'gap-2',
-    'text-sm',
-    'relative',
-    'inline-flex',
-    'items-center',
-    'cursor-pointer',
-    'justify-center',
-    'select-none',
-    'rounded-full',
-    'transition-all',
-    'duration-300',
-    'ease-in-out',
-    'font-medium',
-    'tracking-wide'
-  ],
+  extend: ButtonBase,
   variants: {
     color: {
       primary: 'interactive-bg-primary-container',
@@ -83,18 +67,8 @@ const label = tv({
   base: ['flex', 'gap-2', 'items-center', 'overflow-hidden']
 })
 
-interface ButtonProps
-  extends React.ComponentProps<'button'>,
-    VariantProps<typeof root> {
-  href?: string
-  ripple?: boolean
-  disabled?: boolean
-  type?: 'submit' | 'reset' | 'button'
-  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
-}
-
 const TonalButton = forwardRef(
-  (props: ButtonProps, ref?: React.Ref<HTMLButtonElement>) => {
+  (props: Omit<ButtonProps, 'variant'>, ref?: React.Ref<HTMLButtonElement>) => {
     const {
       href,
       style,

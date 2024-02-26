@@ -1,16 +1,38 @@
 'use client'
-import React, { forwardRef } from 'react'
+import React, { useId, forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
+import { Ripple } from '@actify/Ripple'
+import { Elevation } from '@actify/Elevation'
+import { FocusRing } from '@actify/FocusRing'
 
-const variants = tv({
-  base: 'relative isolate h-10 gap-0 sm:gap-2 px-2 flex items-center justify-center text-base font-medium leading-relaxed select-none cursor-pointer'
+const root = tv({
+  base: [
+    'h-10',
+    'flex',
+    'px-2',
+    'gap-0',
+    'isolate',
+    'sm:gap-2',
+    'relative',
+    'text-base',
+    'select-none',
+    'font-medium',
+    'items-center',
+    'justify-center',
+    'cursor-pointer',
+    'leading-relaxed'
+  ]
+})
+
+const button = tv({
+  base: ['outline-none', 'flex', 'items-center', 'gap-1']
 })
 
 type Value = number | string
 
-export interface TabProps extends React.LiHTMLAttributes<HTMLLIElement> {
+export interface TabProps extends React.ComponentProps<'li'> {
   value: Value
 }
 
@@ -27,6 +49,8 @@ const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
     onChange?.(value)
   }
 
+  const id = useId()
+
   return (
     <li
       role="tab"
@@ -34,9 +58,14 @@ const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       ref={ref}
       data-value={value}
       onClick={() => handleClick(value)}
-      className={variants({ className })}
+      className={root({ className })}
     >
-      {children}
+      <FocusRing id={id} />
+      <Elevation />
+      <Ripple id={id} />
+      <button id={id} className={button()}>
+        {children}
+      </button>
       {activeValue == value && (
         <motion.div
           layoutId={layoutId}
