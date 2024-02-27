@@ -1,44 +1,56 @@
 'use client'
-import React, { forwardRef } from 'react'
+import React, { useId, forwardRef } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 import { setColor } from './../../utils'
 import { Ripple } from '@actify/Ripple'
+import { FocusRing } from '@actify/FocusRing'
 import { Elevation } from '@actify/Elevation'
 
-const variants = tv({
-  base: 'relative inline-flex items-center justify-center w-fit font-medium tracking-wide',
+const root = tv({
+  base: [
+    'w-fit',
+    'relative',
+    'font-medium',
+    'inline-flex',
+    'items-center',
+    'justify-center',
+    'tracking-wide',
+    'outline-none'
+  ],
   variants: {
     size: {
-      small: 'h-10 px-2 rounded-xl',
-      medium: 'h-14 px-4 rounded-2xl',
-      large: 'h-24 px-8 rounded-[28px]'
+      small: ['h-10', 'px-2', 'rounded-xl', '[--md-focus-ring-shape:12px]'],
+      medium: ['h-14', 'px-4', 'rounded-2xl', '[--md-focus-ring-shape:16px]'],
+      large: ['h-24', 'px-8', 'rounded-[28px]', '[--md-focus-ring-shape:28px]']
     }
   }
 })
 
 interface FabProps
-  extends VariantProps<typeof variants>,
-    React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends React.ComponentProps<'button'>,
+    VariantProps<typeof root> {
   label?: string
   icon?: JSX.Element
   variant?: 'surface' | 'primary' | 'secondary' | 'tertiary'
 }
 
-const Fab: React.FC<FabProps> = forwardRef(
-  (props, ref?: React.Ref<HTMLButtonElement>) => {
+const Fab = forwardRef(
+  (props: FabProps, ref?: React.Ref<HTMLButtonElement>) => {
     const {
-      label,
-      style,
+      type,
       icon,
+      style,
+      label,
       size = 'medium',
       color = 'primary',
       variant = 'primary',
-      type,
+      disabled = false,
       className,
       children,
       ...rest
     } = props
 
+    const id = useId()
     let styles = { ...style }
     styles['color'] = setColor(color)
 
@@ -46,15 +58,18 @@ const Fab: React.FC<FabProps> = forwardRef(
       <button
         ref={ref}
         {...rest}
+        id={id}
         style={styles}
+        disabled={disabled}
         type={type || 'button'}
-        className={variants({ size, className })}
+        className={root({ size, className })}
       >
         {icon}
         {children}
         {label}
-        <Ripple />
         <Elevation level={3} />
+        <FocusRing id={id} />
+        <Ripple id={id} disabled={disabled} />
       </button>
     )
   }
