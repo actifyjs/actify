@@ -8,8 +8,6 @@ export default () => {
         <Switch color="secondary" />
         <Switch color="tertiary" />
         <Switch defaultSelected color="error" />
-        <Switch color="purple" />
-        <Switch color="#f26f21" />
         <Switch disabled />
       </div>
 
