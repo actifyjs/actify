@@ -55,11 +55,36 @@ const root = tv({
     'inset-0',
     'overflow-hidden',
     'rounded-[inherit]',
-    '[--md-ripple-hover-color:var(--md-sys-color-primary,#6750a4)]',
-    '[--md-ripple-pressed-color:var(--md-sys-color-primary,#6750a4)]',
     '[--md-ripple-hover-opacity:0.08]',
     '[--md-ripple-pressed-opacity:0.12]'
-  ]
+  ],
+  variants: {
+    color: {
+      primary: [
+        '[--md-ripple-hover-color:rgb(var(--color-primary,#6750a4))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-primary,#6750a4))]'
+      ],
+      secondary: [
+        '[--md-ripple-hover-color:rgb(var(--color-secondary,#6750a4))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-secondary,#6750a4))]'
+      ],
+      tertiary: [
+        '[--md-ripple-hover-color:rgb(var(--color-tertiary,#6750a4))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-tertiary,#6750a4))]'
+      ],
+      error: [
+        '[--md-ripple-hover-color:rgb(var(--color-error,#6750a4))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-error,#6750a4))]'
+      ],
+      undefined: [
+        '[--md-ripple-hover-color:rgb(var(--color-primary,#6750a4))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-primary,#6750a4))]'
+      ]
+    }
+  },
+  defaultVariants: {
+    color: 'primary'
+  }
 })
 
 const surface = tv({
@@ -86,7 +111,7 @@ const surface = tv({
   variants: {
     hovered: {
       true: [
-        'before:bg-[var(--md-ripple-hover-color,var(--md-sys-color-on-surface,#1d1b20))]',
+        'before:[background-color:var(--md-ripple-hover-color,var(--md-sys-color-on-surface,#1d1b20))]',
         'before:[opacity:var(--md-ripple-hover-opacity,0.08)]'
       ],
       false: ''
@@ -113,13 +138,14 @@ const EVENTS = [
 
 interface RippleProps extends React.ComponentProps<'label'> {
   disabled?: boolean
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
 const Ripple: React.FC<RippleProps> = (props) => {
-  const { id, disabled = false } = props
+  const { id, disabled = false, color, className } = props
 
   const [hovered, setHovered] = useState(false)
-  const [pressed, setPressed] = useState(true)
+  const [pressed, setPressed] = useState(false)
 
   const ref = useRef<HTMLLabelElement>(null)
   const control = useAttachable(ref)
@@ -397,7 +423,7 @@ const Ripple: React.FC<RippleProps> = (props) => {
   }, [ref.current])
 
   return (
-    <div className={root()}>
+    <div className={root({ color, className })}>
       <label
         ref={ref}
         htmlFor={id}
