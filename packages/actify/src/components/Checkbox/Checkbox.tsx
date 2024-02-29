@@ -1,174 +1,310 @@
 'use client'
-import { tv, VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 import { Ripple } from '@actify/Ripple'
 import { FocusRing } from '@actify/FocusRing'
-import React, { useId, forwardRef, useState } from 'react'
+import { EASING } from '@animations/index'
+import React, { useState, forwardRef, useId } from 'react'
 
 const root = tv({
   base: [
-    'flex',
-    'p-2.5',
-    'w-fit',
+    '[margin:max(0px,(48px_-_var(--md-checkbox-container-size,18px))/2)]',
     'relative',
-    'rounded-full',
-    'items-center',
-    'cursor-pointer'
+    'inline-flex',
+    'cursor-pointer',
+    '[vertical-align:top]',
+    '[-webkit-tap-highlight-color:rgba(0,0,0,0)]',
+    'w-[var(--md-checkbox-container-size,18px)]',
+    'h-[var(--md-checkbox-container-size,18px)]',
+    '[border-start-start-radius:var(--md-checkbox-container-shape-start-start,var(--md-checkbox-container-shape,2px))]',
+    '[border-start-end-radius:var(--md-checkbox-container-shape-start-end,var(--md-checkbox-container-shape,2px))]',
+    '[border-end-end-radius:var(--md-checkbox-container-shape-end-end,var(--md-checkbox-container-shape,2px))]',
+    '[border-end-start-radius:var(--md-checkbox-container-shape-end-start,var(--md-checkbox-container-shape,2px))]'
   ]
 })
 
-const variants = tv({
+const container = tv({
   base: [
-    'peer',
+    'flex',
+    'w-full',
+    'h-full',
     'relative',
+    'rounded-[inherit]',
+    'place-items-center',
+    'place-content-center'
+  ]
+})
+
+const input = tv({
+  base: [
+    'm-0',
+    'w-12',
+    'h-12',
+    'z-[1]',
+    'absolute',
+    'opacity-0',
     'outline-none',
     'appearance-none',
-    'border-outline',
-    'cursor-pointer',
-    'transition-all',
-    "before:content['']",
-    'before:block',
-    'before:size-12',
-    'before:rounded-full',
-    'before:absolute',
-    'before:top-1/2',
-    'before:left-1/2',
-    'before:-translate-y-1/2',
-    'before:-translate-x-1/2',
-    'before:opacity-0',
-    'hover:before:opacity-10',
-    'before:transition-opacity'
+    'cursor-[inherit]'
+  ]
+})
+
+const outline = tv({
+  base: [
+    'absolute',
+    'inset-0',
+    'rounded-[inherit]',
+    'box-border',
+    'border-solid',
+    '[border-width:var(--md-checkbox-outline-width,2px)]',
+    '[border-color:var(--md-checkbox-outline-color,rgb(var(--color-on-surface-variant)))]'
   ],
   variants: {
-    size: {
-      xs: 'size-5 border-2 rounded-sm',
-      sm: 'size-7 border-[3px] rounded',
-      md: 'size-9 border-4 rounded-md',
-      lg: 'size-11 border-[5px] rounded-lg',
-      xl: 'size-12 border-[6px] rounded-xl',
-      '2xl': 'size-14 border-[7px] rounded-2xl'
-    },
+    disabled: {
+      true: [
+        'opacity-[var(--md-checkbox-disabled-container-opacity,0.38)]',
+        '[border-width:var(--md-checkbox-disabled-outline-width,2px)]',
+        '[border-color:var(--md-checkbox-disabled-outline-color,var(--color-on-surface,#1d1b20))]'
+      ]
+    }
+  }
+})
+
+const background = tv({
+  base: [
+    'absolute',
+    'inset-0',
+    'rounded-[inherit]',
+    'transition-[transform,opacity]'
+  ],
+  variants: {
     color: {
       primary:
-        'before:bg-primary checked:bg-primary checked:border-primary checked:before:bg-primary',
+        '[background-color:var(--md-checkbox-selected-container-color,rgb(var(--color-primary)))]',
       secondary:
-        'before:bg-secondary checked:bg-secondary checked:border-secondary checked:before:bg-secondary',
+        '[background-color:var(--md-checkbox-selected-container-color,rgb(var(--color-secondary)))]',
       tertiary:
-        'before:bg-tertiary checked:bg-tertiary checked:border-tertiary checked:before:bg-tertiary',
+        '[background-color:var(--md-checkbox-selected-container-color,rgb(var(--color-tertiary)))]',
       error:
-        'before:bg-error checked:bg-error checked:border-error checked:before:bg-error'
+        '[background-color:var(--md-checkbox-selected-container-color,rgb(var(--color-error)))]'
     },
     disabled: {
-      true: 'opacity-[.12] pointer-events-none'
+      true: ''
+    },
+    indeterminate: {
+      true: ''
+    },
+    selected: {
+      true: [
+        'scale-100',
+        'opacity-100',
+        'duration-[350ms,50ms]',
+        `[transition-timing-function:${EASING.EMPHASIZED_DECELERATE},linear]`
+      ],
+      false: [
+        'scale-[0.6]',
+        'opacity-0',
+        'duration-[150ms,50ms]',
+        `[transition-timing-function:${EASING.EMPHASIZED_ACCELERATE},linear]`
+      ]
     }
   },
+  compoundVariants: [
+    {
+      disabled: true,
+      selected: true,
+      className: [
+        'opacity-[var(--md-checkbox-selected-disabled-container-opacity,0.38)]',
+        '[background: var(--md-checkbox-selected-disabled-container-color,var(--color-on-surface,#1d1b20))]'
+      ]
+    },
+    {
+      selected: false,
+      indeterminate: true,
+      className: 'opacity-100 scale-100'
+    }
+  ],
   defaultVariants: {
-    size: 'sm',
     color: 'primary'
   }
 })
 
-const checkVariants = tv({
+const icon = tv({
   base: [
-    'flex',
     'absolute',
     'inset-0',
-    'top-1/2',
-    'left-1/2',
-    'opacity-0',
-    'text-surface',
-    'items-center',
-    'justify-center',
-    '-translate-y-1/2',
-    '-translate-x-1/2',
-    'transition-opacity',
-    'pointer-events-none',
-    'peer-checked:opacity-100'
+    'rounded-[inherit]',
+    'transition-[transform,opacity]',
+    'h-[var(--md-checkbox-icon-size,18px)]',
+    'w-[var(--md-checkbox-icon-size,18px)]'
+  ],
+  variants: {
+    color: {
+      primary:
+        'fill-[var(--md-checkbox-selected-icon-color,rgb(var(--color-on-primary)))]',
+      secondary:
+        'fill-[var(--md-checkbox-selected-icon-color,rgb(var(--color-on-secondary)))]',
+      tertiary:
+        'fill-[var(--md-checkbox-selected-icon-color,rgb(var(--color-on-tertiary)))]',
+      error:
+        'fill-[var(--md-checkbox-selected-icon-color,rgb(var(--color-on-error)))]'
+    },
+    selected: {
+      true: [
+        'opacity-100',
+        'scale-100',
+        'duration-[350ms,50ms]',
+        `[transition-timing-function:${EASING.EMPHASIZED_DECELERATE},linear]`
+      ],
+      false: [
+        'opacity-0',
+        'scale-[0.6]',
+        'duration-[150ms,50ms]',
+        `[transition-timing-function:${EASING.EMPHASIZED_ACCELERATE},linear]`
+      ]
+    },
+    indeterminate: {
+      true: ''
+    }
+  },
+  compoundVariants: [
+    {
+      selected: false,
+      indeterminate: true,
+      className: 'opacity-100 scale-100'
+    }
+  ],
+  defaultVariants: {
+    color: 'primary'
+  }
+})
+
+const mark = tv({
+  base: [
+    'duration-150',
+    '[animation-duration:150ms]',
+    `[animation-timing-function:${EASING.EMPHASIZED_ACCELERATE}]`,
+    `[transition-timing-function:${EASING.EMPHASIZED_ACCELERATE}]`,
+    '[transform:scaleY(-1)_translate(7px,-14px)_rotate(45deg)]'
+  ],
+  variants: {
+    selected: {
+      true: ''
+    },
+    indeterminate: {
+      false: ''
+    },
+    short: {
+      true: 'w-0.5 h-0.5 transition-[transform,height]'
+    },
+    long: {
+      true: 'w-2.5 h-0.5 transition-[transform,width]'
+    }
+  },
+  compoundVariants: [
+    {
+      selected: false,
+      indeterminate: true,
+      className: '[transform:scaleY(-1)_translate(4px,-10px)_rotate(0deg)]'
+    },
+    {
+      short: true,
+      indeterminate: false,
+      className: 'h-[5.65685px]'
+    },
+    {
+      long: true,
+      indeterminate: false,
+      className: 'w-[11.3137px]'
+    }
   ]
 })
 
-type CheckPropTypes = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'size' | 'color' | 'onChange'
-> & {
-  size?: VariantProps<typeof variants>['size']
-  color?: VariantProps<typeof variants>['color']
-  onChange?:
-    | ((checked: boolean) => void)
-    | ((e: React.ChangeEvent<HTMLInputElement>) => void)
+interface CheckboxProps extends React.ComponentPropsWithRef<'input'> {
+  indeterminate?: boolean
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
-const Checkbox: React.FC<CheckPropTypes> = forwardRef(
-  (props, ref?: React.Ref<HTMLLabelElement>) => {
-    const {
-      size,
-      title,
-      color,
-      style,
-      checked,
-      disabled,
-      onChange,
-      className,
-      defaultChecked,
-      ...rest
-    } = props
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
+  const {
+    style,
+    color,
+    checked,
+    onChange,
+    disabled,
+    className,
+    defaultChecked,
+    indeterminate = false,
+    type = 'checkbox',
+    ...rest
+  } = props
 
-    const id = useId()
-    const isControlled = checked !== undefined
+  const id = useId()
 
-    const [inputValue, setInputValue] = isControlled
-      ? [checked, onChange]
-      : useState(defaultChecked || false)
+  const isControlled = typeof checked != 'undefined'
+  const hasDefaultChecked = typeof defaultChecked != 'undefined'
+  const [internalChecked, setInternalChecked] = useState(
+    hasDefaultChecked ? defaultChecked : false
+  )
+  const inputChecked = isControlled ? checked : internalChecked
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (disabled) {
-        return
-      }
-      if (isControlled) {
-        // @ts-expect-error
-        setInputValue?.(e)
-      } else {
-        // @ts-expect-error
-        setInputValue?.(e.target.checked)
-        // @ts-expect-error
-        onChange?.(e)
-      }
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event)
+    if (!isControlled) {
+      setInternalChecked(event.target.checked)
     }
-
-    return (
-      <label ref={ref} title={title} className={root()}>
+  }
+  return (
+    <div style={style} className={root({ className })}>
+      <div className={container()}>
         <input
           id={id}
+          ref={ref}
           {...rest}
-          style={style}
-          type="checkbox"
+          type={type}
           disabled={disabled}
+          className={input()}
+          checked={inputChecked}
           onChange={handleChange}
-          checked={isControlled ? inputValue : undefined}
-          defaultChecked={!isControlled ? inputValue : undefined}
-          className={variants({ size, color, disabled, className })}
         />
-        <div className={checkVariants()}>
-          <svg
-            strokeWidth="1"
-            className="h-2/3 w-2/3"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            stroke="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              clipRule="evenodd"
-              fillRule="evenodd"
-              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-            />
-          </svg>
-        </div>
-        <FocusRing id={id} />
-        <Ripple id={id} disabled={disabled} />
-      </label>
-    )
-  }
-)
+        <div className={outline({ disabled })}></div>
+        <div
+          className={background({
+            color,
+            disabled,
+            indeterminate,
+            selected: inputChecked
+          })}
+        ></div>
+        <FocusRing id={id} className="size-11 inset-[unset]" />
+        <Ripple
+          id={id}
+          disabled={disabled}
+          className="rounded-full inset-[unset] size-10"
+        />
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 18 18"
+          className={icon({ color, indeterminate, selected: inputChecked })}
+        >
+          <rect
+            className={mark({
+              indeterminate,
+              short: true,
+              selected: inputChecked
+            })}
+          ></rect>
+          <rect
+            className={mark({
+              indeterminate,
+              long: true,
+              selected: inputChecked
+            })}
+          ></rect>
+        </svg>
+      </div>
+    </div>
+  )
+})
 
 Checkbox.displayName = 'Actify.Checkbox'
 

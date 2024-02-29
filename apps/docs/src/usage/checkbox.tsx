@@ -1,28 +1,28 @@
 import { Checkbox } from 'actify'
+import React, { useState } from 'react'
 
 export default () => {
+  const [selected, setSelected] = useState(false)
+  const [indeterminate, setIndeterminate] = useState(true)
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelected(event.target.checked)
+    if (indeterminate == true) {
+      setIndeterminate(false)
+    }
+  }
+
   return (
     <div className="flex flex-wrap gap-4">
-      <label className="flex items-center">
-        <Checkbox />
-        <span>primary</span>
-      </label>
-      <label className="flex items-center">
-        <Checkbox color="secondary" />
-        <span>secondary</span>
-      </label>
-      <label className="flex items-center">
-        <Checkbox color="tertiary" />
-        <span>tertiary</span>
-      </label>
-      <label className="flex items-center">
-        <Checkbox color="error" />
-        <span>error</span>
-      </label>
-      <label className="flex items-center">
-        <Checkbox disabled color="error" />
-        <span>disabled</span>
-      </label>
+      <Checkbox
+        checked={selected}
+        indeterminate={indeterminate}
+        onChange={handleChange}
+      />
+      <Checkbox color="secondary" />
+      <Checkbox color="tertiary" />
+      <Checkbox color="error" />
+      <Checkbox disabled color="error" />
     </div>
   )
 }

@@ -12,13 +12,13 @@ title: Checkbox
 
 ## Props
 
-| Props            | Type                                      | Description                      | Default |
-| ---------------- | ----------------------------------------- | -------------------------------- | ------- |
-| `size`           | `xs` `sm` `md` `lg` `xl` `2xl`            | The size of the checkbox         | `sm`    |
-| `color`          | `primary` `secondary` `tertiaray` `error` | The color of the checkbox        | `null`  |
-| `disabled`       | `boolean`                                 | Whether the checkbox is disabled | `false` |
-| `checked`        | `boolean`                                 | Whether the checkbox is checked  | `null`  |
-| `defaultChecked` | `boolean`                                 | The checkbox default checked     | `false` |
+| Props            | Type                                      | Description                            | Default |
+| ---------------- | ----------------------------------------- | -------------------------------------- | ------- |
+| `indeterminate`  | `boolean`                                 | whether the item is toggled on or off. | `false` |
+| `color`          | `primary` `secondary` `tertiaray` `error` | The color of the checkbox              | `null`  |
+| `disabled`       | `boolean`                                 | Whether the checkbox is disabled       | `false` |
+| `checked`        | `boolean`                                 | Whether the checkbox is checked        | `null`  |
+| `defaultChecked` | `boolean`                                 | The checkbox default checked           | `false` |
 
 ## Events
 
