@@ -32,7 +32,7 @@ const EVENTS = ['focusin', 'focusout', 'pointerdown']
 interface FocusRingProps extends React.ComponentProps<'label'> {}
 
 const FocusRing = (props: FocusRingProps) => {
-  const { id, ...rest } = props
+  const { id, className, ...rest } = props
   const [visible, setVisible] = useState(false)
   const ref = useRef(null)
   const control = useAttachable(ref)
@@ -96,7 +96,8 @@ const FocusRing = (props: FocusRingProps) => {
         htmlFor={id}
         aria-hidden="true"
         className={root({
-          visible
+          visible,
+          className
         })}
       ></label>
     </>
