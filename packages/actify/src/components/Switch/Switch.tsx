@@ -24,7 +24,12 @@ const root = tv({
     'cursor-pointer',
     '[vertical-align:top]',
     '[-webkit-tap-highlight-color:rgba(0,0,0,0)]'
-  ]
+  ],
+  variants: {
+    disabled: {
+      true: 'cursor-default'
+    }
+  }
 })
 
 const switcher = tv({
@@ -70,17 +75,25 @@ const track = tv({
   ],
   variants: {
     color: {
-      primary: {},
-      secondary: {},
-      tertiary: {},
-      error: {}
+      primary: '',
+      secondary: '',
+      tertiary: '',
+      error: ''
+    },
+    disabled: {
+      true: [
+        '[border-color:rgba(0,0,0,0)]',
+        '[background-color:rgba(0,0,0,0)]',
+        'before:[transition:none]',
+        'before:[opacity:var(--md-switch-disabled-track-opacity,0.12)]'
+      ]
     },
     selected: {
-      // true: 'before:[background-color:var(--md-switch-selected-track-color,rgb(var(--color-primary)))]',
+      true: 'before:[background-color:var(--md-switch-selected-track-color,rgb(var(--color-primary)))]',
       false: [
         'before:border-solid',
         'before:[border-width:var(--md-switch-track-outline-width,2px)]',
-        'before:border-[var(--md-switch-track-outline-color,var(--md-sys-color-outline,#79747e))]',
+        'before:border-[var(--md-switch-track-outline-color,rgb(var(--color-outline)))]',
         'before:[background-color:var(--md-switch-track-color,var(--md-sys-color-surface-container-highest,#e6e0e9))]'
       ]
     }
@@ -153,23 +166,64 @@ const handle = tv({
     '[transition:background-color_67ms_linear_0s]'
   ],
   variants: {
+    color: {
+      primary: '',
+      secondary: '',
+      tertiary: '',
+      error: ''
+    },
+    disabled: {
+      true: [
+        '[background-color:var(--md-switch-disabled-handle-color,rgb(var(--color-on-surface)))]',
+        '[opacity:var(--md-switch-disabled-handle-opacity,0.38)]'
+      ]
+    },
     selected: {
       true: [
         'w-[var(--md-switch-handle-width,24px)]',
         'h-[var(--md-switch-handle-height,24px)]',
-        '[background-color:var(--md-switch-selected-handle-color,var(--md-sys-color-on-primary,#fff))]'
+        '[background-color:var(--md-switch-selected-handle-color,rgb(var(--color-on-primary)))]'
       ],
       false: [
         'w-[var(--md-switch-handle-width,16px)]',
         'h-[var(--md-switch-handle-height,16px)]',
-        '[background-color:var(--md-switch-handle-color,var(--md-sys-color-outline,#79747e))]'
+        '[background-color:var(--md-switch-handle-color,rgb(var(--color-outline)))]',
+        'before:[background-color:var(--md-switch-handle-color,rgb(var(--color-outline)))]'
       ]
     }
-  }
+  },
+  compoundVariants: [
+    {
+      selected: true,
+      color: 'primary',
+      className:
+        '[background-color:var(--md-switch-selected-handle-color,rgb(var(--color-on-primary)))]'
+    },
+    {
+      selected: true,
+      color: 'secondary',
+      className:
+        '[background-color:var(--md-switch-selected-handle-color,rgb(var(--color-on-secondary)))]'
+    },
+    {
+      selected: true,
+      color: 'tertiary',
+      className:
+        '[background-color:var(--md-switch-selected-handle-color,rgb(var(--color-on-tertiary)))]'
+    },
+    {
+      selected: true,
+      color: 'error',
+      className:
+        '[background-color:var(--md-switch-selected-handle-color,rgb(var(--color-on-error)))]'
+    }
+  ]
 })
 
 const icon = tv({
   base: [
+    'w-[var(--md-switch-icon-size,16px)]',
+    'h-[var(--md-switch-icon-size,16px)]',
     'flex',
     'm-auto',
     'inset-0',
@@ -180,6 +234,12 @@ const icon = tv({
     '[transition:fill_67ms_linear_0s,opacity_33ms_linear_0s,transform_167ms_cubic-bezier(0.2,0,0,1)_0s]'
   ],
   variants: {
+    on: {
+      true: 'text-[var(--md-switch-selected-icon-color,var(--md-sys-color-on-primary-container,#21005d))]'
+    },
+    off: {
+      true: 'text-[var(--md-switch-icon-color,var(--md-sys-color-surface-container-highest,#e6e0e9))]'
+    },
     selected: {
       true: 'opacity-100',
       false: 'opacity-0'
@@ -226,11 +286,17 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
   const renderIcons = () => {
     return (
       <div className="relative w-full h-full">
-        <svg viewBox="0 0 24 24" className={icon({ selected })}>
+        <svg
+          viewBox="0 0 24 24"
+          className={icon({ selected: checked, on: true })}
+        >
           <path d="M9.55 18.2 3.65 12.3 5.275 10.675 9.55 14.95 18.725 5.775 20.35 7.4Z" />
         </svg>
         {!showOnlySelectedIcon && (
-          <svg viewBox="0 0 24 24" className={icon({ selected: !selected })}>
+          <svg
+            viewBox="0 0 24 24"
+            className={icon({ selected: !checked, off: true })}
+          >
             <path d="M6.4 19.2 4.8 17.6 10.4 12 4.8 6.4 6.4 4.8 12 10.4 17.6 4.8 19.2 6.4 13.6 12 19.2 17.6 17.6 19.2 12 13.6Z" />
           </svg>
         )}
@@ -239,7 +305,11 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
   }
 
   return (
-    <div role="presentation" style={style} className={root({ className })}>
+    <div
+      style={style}
+      role="presentation"
+      className={root({ disabled, className })}
+    >
       <div className={switcher()}>
         <input
           id={id}
@@ -248,6 +318,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
           role="switch"
           type="checkbox"
           checked={checked}
+          disabled={disabled}
           className={touch()}
           onChange={handleChange}
         />
@@ -255,6 +326,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
         <span
           className={track({
             color,
+            disabled,
             selected: checked
           })}
         >
@@ -270,6 +342,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
             />
             <span
               className={handle({
+                disabled,
                 selected: checked
               })}
             >
