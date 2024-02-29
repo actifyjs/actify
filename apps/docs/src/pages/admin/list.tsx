@@ -48,10 +48,31 @@ export default () => {
   }, [])
 
   const [checekAll, setCheckAll] = useState(false)
+  const [indeterminate, setIndeterminate] = useState(false)
 
-  const handleCheckAll = (checked: boolean) => {
-    setCheckAll(checked)
-    setUsers([...users].map((item) => ({ ...item, checked })))
+  useEffect(() => {
+    if (users.length > 0) {
+      if (users.some((user) => user.checked == true)) {
+        setIndeterminate(true)
+      } else {
+        setIndeterminate(false)
+      }
+      if (users.every((user) => user.checked == true)) {
+        setCheckAll(true)
+      } else {
+        setCheckAll(false)
+      }
+    }
+  }, [users])
+
+  const handleCheckAll = () => {
+    if (checekAll) {
+      setCheckAll(false)
+      setUsers([...users].map((item) => ({ ...item, checked: false })))
+    } else {
+      setCheckAll(true)
+      setUsers([...users].map((item) => ({ ...item, checked: true })))
+    }
   }
 
   const handleDelete = (item: User) => {
@@ -92,10 +113,9 @@ export default () => {
               <th className="w-10">
                 <Tooltip content="全选">
                   <Checkbox
-                    defaultChecked={checekAll}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      handleCheckAll(e.target.checked)
-                    }
+                    checked={checekAll}
+                    indeterminate={indeterminate}
+                    onChange={handleCheckAll}
                   />
                 </Tooltip>
               </th>
