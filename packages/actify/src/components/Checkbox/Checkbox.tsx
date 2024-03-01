@@ -13,8 +13,7 @@ const root = tv({
     'cursor-pointer',
     '[vertical-align:top]',
     '[-webkit-tap-highlight-color:rgba(0,0,0,0)]',
-    'w-[var(--md-checkbox-container-size,18px)]',
-    'h-[var(--md-checkbox-container-size,18px)]',
+    'size-[var(--md-checkbox-container-size,18px)]',
     '[border-start-start-radius:var(--md-checkbox-container-shape-start-start,var(--md-checkbox-container-shape,2px))]',
     '[border-start-end-radius:var(--md-checkbox-container-shape-start-end,var(--md-checkbox-container-shape,2px))]',
     '[border-end-end-radius:var(--md-checkbox-container-shape-end-end,var(--md-checkbox-container-shape,2px))]',
@@ -25,9 +24,8 @@ const root = tv({
 const container = tv({
   base: [
     'flex',
-    'w-full',
-    'h-full',
     'relative',
+    'size-full',
     'rounded-[inherit]',
     'place-items-center',
     'place-content-center'
@@ -37,9 +35,8 @@ const container = tv({
 const input = tv({
   base: [
     'm-0',
-    'w-12',
-    'h-12',
     'z-[1]',
+    'size-12',
     'absolute',
     'opacity-0',
     'outline-none',
@@ -114,7 +111,7 @@ const background = tv({
       selected: true,
       className: [
         'opacity-[var(--md-checkbox-selected-disabled-container-opacity,0.38)]',
-        '[background: var(--md-checkbox-selected-disabled-container-color,var(--color-on-surface,#1d1b20))]'
+        '[background: var(--md-checkbox-selected-disabled-container-color,rgb(var(--color-on-surface)))]'
       ]
     },
     {
@@ -134,8 +131,7 @@ const icon = tv({
     'inset-0',
     'rounded-[inherit]',
     'transition-[transform,opacity]',
-    'h-[var(--md-checkbox-icon-size,18px)]',
-    'w-[var(--md-checkbox-icon-size,18px)]'
+    'size-[var(--md-checkbox-icon-size,18px)]'
   ],
   variants: {
     color: {

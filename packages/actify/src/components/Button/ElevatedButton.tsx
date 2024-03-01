@@ -38,7 +38,7 @@ const background = tv({
     'absolute',
     'inset-0',
     'rounded-[inherit]',
-    '[background-color:--_container-color]'
+    '[background-color:--container-color]'
   ]
 })
 
@@ -57,12 +57,11 @@ const button = tv({
     'bg-[#00000000]',
     '[text-decoration:none]',
     '[min-width:calc(64px_-_var(--leading-space)_-_var(--trailing-space))]',
-    'w-full',
+    'p-0',
     'z-0',
-    'h-full',
+    'size-full',
     '[font:inherit]',
     '[color:var(--label-text-color)]',
-    'p-0',
     '[gap:inherit]'
   ]
 })

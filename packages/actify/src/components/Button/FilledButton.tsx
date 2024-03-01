@@ -15,7 +15,7 @@ const root = tv({
     '[--with-trailing-icon-leading-space:24px]',
     '[--with-trailing-icon-trailing-space:16px]',
     '[--disabled-container-opacity:.12]',
-    '[--disabled-container-color:var(--md-filled-button-disabled-container-color,var(--md-sys-color-on-surface,#1d1b20))]'
+    '[--disabled-container-color:var(--md-filled-button-disabled-container-color,rgb(var(--color-on-surface)))]'
   ],
   variants: {
     color: {
@@ -85,12 +85,11 @@ const button = tv({
     'bg-[#00000000]',
     '[text-decoration:none]',
     '[min-width:calc(64px_-_var(--leading-space)_-_var(--trailing-space))]',
-    'w-full',
     'z-0',
-    'h-full',
+    'p-0',
+    'size-full',
     '[font:inherit]',
     '[color:var(--label-text-color)]',
-    'p-0',
     '[gap:inherit]'
   ]
 })

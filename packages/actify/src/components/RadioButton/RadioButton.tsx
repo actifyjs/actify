@@ -1,89 +1,239 @@
 'use client'
-import { Ripple } from '@actify/Ripple'
+import React, { useState, useId, forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef } from 'react'
-import { setColor } from './../../utils'
+import { Ripple } from '@actify/Ripple'
+import { FocusRing } from '@actify/FocusRing'
 
-const labelVariants = tv({
-  base: 'relative overflow-hidden flex items-center cursor-pointer p-2.5 rounded-full',
-  variants: {
-    disabled: {
-      true: 'opacity-[.12] pointer-events-none'
-    }
-  }
+const root = tv({
+  base: [
+    '[margin:max(0px,(48px_-_var(--md-radio-icon-size,20px))/2)]',
+    'relative',
+    'inline-flex',
+    'outline-none',
+    'cursor-pointer',
+    '[vertical-align:top]',
+    'size-[var(--md-radio-icon-size,20px)]',
+    '[-webkit-tap-highlight-color:rgba(0,0,0,0)]',
+    '[--md-ripple-hover-color:var(--md-radio-hover-state-layer-color,rgb(var(--color-on-surface)))]',
+    '[--md-ripple-hover-opacity:var(--md-radio-hover-state-layer-opacity,0.08)]',
+    '[--md-ripple-pressed-color:var(--md-radio-pressed-state-layer-color,rgb(var(--color-primary)))]',
+    '[--md-ripple-pressed-opacity:var(--md-radio-pressed-state-layer-opacity,0.12)]'
+  ]
 })
 
-const variants = tv({
-  base: "peer relative appearance-none rounded-full border-outline checked:border-current cursor-pointer transition-all before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:opacity-0 hover:before:opacity-10 before:transition-opacity checked:text-current after:absolute after:-inset-3 hover:after:bg-inverse-surface/10",
+const container = tv({
+  base: ['flex', 'size-full', 'place-items-center', 'place-content-center'],
   variants: {
-    size: {
-      xs: 'w-5 h-5 border-2',
-      sm: 'w-7 h-7 border-[3px]',
-      md: 'w-9 h-9 border-4',
-      lg: 'w-11 h-11 border-[5px]',
-      xl: 'w-12 h-12 border-[6px]',
-      '2xl': 'w-14 h-14 border-[7px]'
+    color: {
+      primary: '',
+      secondary: '',
+      tertiary: '',
+      error: ''
+    },
+    checked: {
+      true: [
+        '[--md-ripple-hover-opacity:var(--md-radio-selected-hover-state-layer-opacity,0.08)]',
+        '[--md-ripple-pressed-color:var(--md-radio-selected-pressed-state-layer-color,rgb(var(--color-on-surface)))]',
+        '[--md-ripple-pressed-opacity:var(--md-radio-selected-pressed-state-layer-opacity,0.12)]'
+      ]
     }
   },
+  compoundVariants: [
+    {
+      checked: true,
+      color: 'primary',
+      className:
+        '[-md-ripple-hover-color:var(--md-radio-selected-hover-state-layer-color,rgb(var(--color-primary)))]'
+    },
+    {
+      checked: true,
+      color: 'secondary',
+      className:
+        '[-md-ripple-hover-color:var(--md-radio-selected-hover-state-layer-color,rgb(var(--color-secondary)))]'
+    },
+    {
+      checked: true,
+      color: 'tertiary',
+      className:
+        '[-md-ripple-hover-color:var(--md-radio-selected-hover-state-layer-color,rgb(var(--color-tertiary)))]'
+    },
+    {
+      checked: true,
+      color: 'error',
+      className:
+        '[-md-ripple-hover-color:var(--md-radio-selected-hover-state-layer-color,rgb(var(--color-error)))]'
+    }
+  ],
   defaultVariants: {
-    size: 'sm'
+    color: 'primary'
   }
 })
 
-const dotVariants = tv({
-  base: 'absolute inset-0 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity peer-checked:text-current'
+const input = tv({
+  base: ['m-0', 'size-12', 'absolute', 'appearance-none', 'cursor-[inherit]']
 })
 
-interface RadioProps extends React.HTMLAttributes<HTMLElement> {
-  name?: string
-  value?: string
-  disabled?: boolean
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+interface RadioProps extends React.ComponentPropsWithRef<'input'> {
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
-const Radio: React.FC<RadioProps> = forwardRef(
-  (props, ref?: React.Ref<HTMLInputElement>) => {
-    const {
-      title,
-      style,
-      className,
-      size,
-      color,
-      disabled,
-      children,
-      ...rest
-    } = props
-    const colorVariants = setColor(color ?? 'primary')
+const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+  const {
+    name,
+    style,
+    color,
+    value,
+    checked,
+    onChange,
+    className,
+    defaultChecked,
+    disabled = false,
+    type = 'radio',
+    ...rest
+  } = props
 
-    return (
-      <label
-        title={title}
-        style={{ color: colorVariants }}
-        className={labelVariants({ disabled })}
-      >
-        <input
-          {...rest}
-          ref={ref}
-          type="radio"
-          style={style}
-          disabled={disabled}
-          className={variants({ size, className })}
-        />
-        <div className={dotVariants()}>
-          <svg
-            fill="currentColor"
-            viewBox="0 0 16 16"
-            className="w-1/2 h-1/2"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="8" cy="8" r="8"></circle>
-          </svg>
-        </div>
-        <Ripple />
-      </label>
-    )
+  const id = useId()
+
+  const isControlled = typeof checked != 'undefined'
+  const hasDefaultChecked = typeof defaultChecked != 'undefined'
+  const [internalChecked, setInternalChecked] = useState(
+    hasDefaultChecked ? defaultChecked : false
+  )
+  const inputChecked = isControlled ? checked : internalChecked
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event)
+    if (!isControlled) {
+      setInternalChecked(event.target.checked)
+    }
   }
-)
+
+  return (
+    <div style={style} className={root({ className })}>
+      <style>
+        {`
+          @keyframes inner-circle-grow {
+            0% {
+              transform: scale(0);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }       
+        `}
+      </style>
+      <div
+        aria-hidden="true"
+        className={container({ color, checked: inputChecked })}
+      >
+        <Ripple
+          id={id}
+          disabled={disabled}
+          className="rounded-full inset-[unset] size-10"
+        />
+        <FocusRing id={id} className="size-11 inset-[unset]" />
+        <RadioIcon checked={inputChecked} disabled={disabled} />
+        <input
+          id={id}
+          ref={ref}
+          {...rest}
+          name={name}
+          type={type}
+          value={value}
+          disabled={disabled}
+          className={input()}
+          checked={inputChecked}
+          onChange={handleChange}
+        />
+      </div>
+    </div>
+  )
+})
+
+const icon = tv({
+  base: [
+    'absolute',
+    'inset-0',
+    'fill-[var(--md-radio-icon-color,rgb(var(--color-on-surface-variant)))]'
+  ],
+  variants: {
+    disabled: {
+      true: [
+        'opacity-[var(--md-radio-disabled-unselected-icon-opacity,0.38)]',
+        'fill-[var(--md-radio-disabled-unselected-icon-color,rgb(var(--color-on-surface)))]'
+      ]
+    }
+  }
+})
+
+const circle = tv({
+  base: [],
+  variants: {
+    checked: {
+      true: ''
+    },
+    outer: {
+      true: '[transition:fill_50ms_linear]'
+    },
+    inner: {
+      true: [
+        'opacity-0',
+        'ease-linear',
+        'origin-center',
+        'duration-[50ms]',
+        'transition-opacity'
+      ]
+    }
+  },
+  compoundVariants: [
+    {
+      checked: true,
+      inner: true,
+      className: [
+        'opacity-100',
+        '[animation:300ms_cubic-bezier(0.05,0.7,0.1,1)_0s_1_normal_none_running_inner-circle-grow]'
+      ]
+    }
+  ]
+})
+
+const RadioIcon = ({
+  checked,
+  disabled
+}: {
+  checked: boolean
+  disabled: boolean
+}) => {
+  const id = useId()
+  return (
+    <>
+      <svg
+        className={icon({
+          disabled
+        })}
+        viewBox="0 0 20 20"
+      >
+        <mask id={id}>
+          <rect width="100%" height="100%" fill="white" />
+          <circle cx="10" cy="10" r="8" fill="black" />
+        </mask>
+        <circle
+          className={circle({ checked, outer: true })}
+          cx="10"
+          cy="10"
+          r="10"
+          mask={`url(#${id})`}
+        />
+        <circle
+          className={circle({ checked, inner: true })}
+          cx="10"
+          cy="10"
+          r="5"
+        />
+      </svg>
+    </>
+  )
+}
 
 Radio.displayName = 'Actify.Radio'
 

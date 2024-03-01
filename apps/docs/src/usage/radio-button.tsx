@@ -4,11 +4,11 @@ export default () => {
   return (
     <>
       <div className="flex gap-2">
-        <Radio name="actify" value="vue" />
-        <Radio name="actify" value="react" color="pink" />
-        <Radio name="actify" value="angular" color="#f26f21" />
-        <Radio name="actify" value="svelte" color="rgb(23,213,1)" />
-        <Radio name="actify" disabled />
+        <Radio name="group" value="vue" />
+        <Radio name="group" value="react" color="secondary" />
+        <Radio name="group" value="angular" color="tertiary" />
+        <Radio name="group" value="svelte" color="error" />
+        <Radio name="group" disabled />
       </div>
 
       <div className="flex gap-2">
@@ -17,15 +17,15 @@ export default () => {
           <span>vue</span>
         </label>
         <label className="flex items-center">
-          <Radio name="actify" value="react" color="pink" />
+          <Radio name="actify" value="react" color="secondary" />
           <span>react</span>
         </label>
         <label className="flex items-center">
-          <Radio name="actify" value="angular" color="#f26f21" />
+          <Radio name="actify" value="angular" color="tertiary" />
           <span>angular</span>
         </label>
         <label className="flex items-center">
-          <Radio name="actify" value="svelte" color="rgb(23,213,1)" />
+          <Radio name="actify" value="svelte" color="error" />
           <span>svelte</span>
         </label>
       </div>

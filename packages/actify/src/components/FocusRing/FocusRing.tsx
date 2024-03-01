@@ -8,7 +8,7 @@ const root = tv({
   base: [
     'absolute',
     'pointer-events-none',
-    '[color:var(--md-focus-ring-color,var(--md-sys-color-secondary,#625b71))]',
+    '[color:var(--md-focus-ring-color,rgb(var(--color-secondary)))]',
     '[animation-delay:0s,calc(var(--md-focus-ring-duration,600ms)*.25)]',
     '[animation-duration:calc(var(--md-focus-ring-duration,600ms)*.25),calc(var(--md-focus-ring-duration,600ms)*.75)]',
     `[animation-timing-function:${EASING.STANDARD}]`,
