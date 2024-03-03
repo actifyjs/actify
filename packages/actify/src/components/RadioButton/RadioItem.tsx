@@ -1,10 +1,15 @@
 'use client'
-import React, { useState, useId, forwardRef } from 'react'
-import { tv } from 'tailwind-variants'
+import React, { useMemo, useId, forwardRef } from 'react'
+import { tv, VariantProps } from 'tailwind-variants'
 import { Ripple } from '@actify/Ripple'
 import { FocusRing } from '@actify/FocusRing'
+import { useRadio } from './RadioContext'
 
 const root = tv({
+  base: ['flex', 'items-center']
+})
+
+const inner = tv({
   base: [
     '[margin:max(0px,(48px_-_var(--md-radio-icon-size,20px))/2)]',
     'relative',
@@ -18,7 +23,12 @@ const root = tv({
     '[--md-ripple-hover-opacity:var(--md-radio-hover-state-layer-opacity,0.08)]',
     '[--md-ripple-pressed-color:var(--md-radio-pressed-state-layer-color,rgb(var(--color-primary)))]',
     '[--md-ripple-pressed-opacity:var(--md-radio-pressed-state-layer-opacity,0.12)]'
-  ]
+  ],
+  variants: {
+    disabled: {
+      true: 'cursor-default'
+    }
+  }
 })
 
 const container = tv({
@@ -73,20 +83,18 @@ const input = tv({
   base: ['m-0', 'size-12', 'absolute', 'appearance-none', 'cursor-[inherit]']
 })
 
-interface RadioProps extends React.ComponentPropsWithRef<'input'> {
+export interface RadioItemProps extends React.ComponentPropsWithRef<'input'> {
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
-const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>((props, ref) => {
   const {
     name,
     style,
-    color,
     value,
-    checked,
-    onChange,
+    children,
     className,
-    defaultChecked,
+    color = 'primary',
     disabled = false,
     type = 'radio',
     ...rest
@@ -94,58 +102,54 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
 
   const id = useId()
 
-  const isControlled = typeof checked != 'undefined'
-  const hasDefaultChecked = typeof defaultChecked != 'undefined'
-  const [internalChecked, setInternalChecked] = useState(
-    hasDefaultChecked ? defaultChecked : false
-  )
-  const inputChecked = isControlled ? checked : internalChecked
+  const { value: contextValue, onChange } = useRadio()
+
+  const checked = useMemo(() => {
+    return contextValue == value
+  }, [value, contextValue])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(event)
-    if (!isControlled) {
-      setInternalChecked(event.target.checked)
-    }
   }
 
   return (
-    <div style={style} className={root({ className })}>
-      <style>
-        {`
-          @keyframes inner-circle-grow {
-            0% {
-              transform: scale(0);
-            }
-            100% {
-              transform: scale(1);
-            }
-          }       
-        `}
-      </style>
-      <div
-        aria-hidden="true"
-        className={container({ color, checked: inputChecked })}
-      >
-        <Ripple
-          id={id}
-          disabled={disabled}
-          className="rounded-full inset-[unset] size-10"
-        />
-        <FocusRing id={id} className="size-11 inset-[unset]" />
-        <RadioIcon checked={inputChecked} disabled={disabled} />
-        <input
-          id={id}
-          ref={ref}
-          {...rest}
-          name={name}
-          type={type}
-          value={value}
-          disabled={disabled}
-          className={input()}
-          checked={inputChecked}
-          onChange={handleChange}
-        />
+    <div className={root({ className })}>
+      <div style={style} className={inner({ disabled })}>
+        <style>
+          {`
+            @keyframes inner-circle-grow {
+              0% {
+                transform: scale(0);
+              }
+              100% {
+                transform: scale(1);
+              }
+            }       
+          `}
+        </style>
+        <div aria-hidden="true" className={container({ color, checked })}>
+          <Ripple
+            id={id}
+            disabled={disabled}
+            className="rounded-full inset-[unset] size-10"
+          />
+          <FocusRing id={id} className="size-11 inset-[unset]" />
+          <RadioIcon color={color} checked={checked} disabled={disabled} />
+          <input
+            id={id}
+            ref={ref}
+            {...rest}
+            name={name}
+            type={type}
+            value={value}
+            checked={checked}
+            disabled={disabled}
+            className={input()}
+            onChange={handleChange}
+          />
+        </div>
       </div>
+      <label htmlFor={id}>{children}</label>
     </div>
   )
 })
@@ -157,6 +161,19 @@ const icon = tv({
     'fill-[var(--md-radio-icon-color,rgb(var(--color-on-surface-variant)))]'
   ],
   variants: {
+    color: {
+      primary:
+        '[--selected-icon-color:var(--md-radio-selected-icon-color,rgb(var(--color-primary)))]',
+      secondary:
+        '[--selected-icon-color:var(--md-radio-selected-icon-color,rgb(var(--color-secondary)))]',
+      tertiary:
+        '[--selected-icon-color:var(--md-radio-selected-icon-color,rgb(var(--color-tertiary)))]',
+      error:
+        '[--selected-icon-color:var(--md-radio-selected-icon-color,rgb(var(--color-error)))]'
+    },
+    checked: {
+      true: 'fill-[var(--selected-icon-color)]'
+    },
     disabled: {
       true: [
         'opacity-[var(--md-radio-disabled-unselected-icon-opacity,0.38)]',
@@ -198,9 +215,11 @@ const circle = tv({
 })
 
 const RadioIcon = ({
+  color,
   checked,
   disabled
 }: {
+  color: VariantProps<typeof icon>['color']
   checked: boolean
   disabled: boolean
 }) => {
@@ -209,6 +228,8 @@ const RadioIcon = ({
     <>
       <svg
         className={icon({
+          color,
+          checked,
           disabled
         })}
         viewBox="0 0 20 20"
@@ -235,6 +256,4 @@ const RadioIcon = ({
   )
 }
 
-Radio.displayName = 'Actify.Radio'
-
-export default Radio
+export { RadioItem }

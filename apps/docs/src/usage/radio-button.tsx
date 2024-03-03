@@ -1,33 +1,32 @@
-import { Radio } from 'actify'
+import { Divider, Radio } from 'actify'
 
 export default () => {
   return (
     <>
+      <p>Radio without label and singleline</p>
       <div className="flex gap-2">
-        <Radio name="group" value="vue" />
-        <Radio name="group" value="react" color="secondary" />
-        <Radio name="group" value="angular" color="tertiary" />
-        <Radio name="group" value="svelte" color="error" />
-        <Radio name="group" disabled />
+        <Radio defaultValue="React">
+          <Radio.Item value="React" />
+          <Radio.Item value="Vue" color="secondary" />
+          <Radio.Item value="Next.js" color="error" />
+          <Radio.Item value="Nuxt" disabled />
+        </Radio>
       </div>
-
+      <Divider />
+      <p>Radio with label and multiline</p>
       <div className="flex gap-2">
-        <label className="flex items-center">
-          <Radio name="actify" value="vue" />
-          <span>vue</span>
-        </label>
-        <label className="flex items-center">
-          <Radio name="actify" value="react" color="secondary" />
-          <span>react</span>
-        </label>
-        <label className="flex items-center">
-          <Radio name="actify" value="angular" color="tertiary" />
-          <span>angular</span>
-        </label>
-        <label className="flex items-center">
-          <Radio name="actify" value="svelte" color="error" />
-          <span>svelte</span>
-        </label>
+        <Radio defaultValue="React" className="flex-col">
+          <Radio.Item value="React">React</Radio.Item>
+          <Radio.Item value="Vue" color="secondary">
+            Vue
+          </Radio.Item>
+          <Radio.Item value="Next.js" color="error">
+            Next.js
+          </Radio.Item>
+          <Radio.Item value="Nuxt" disabled>
+            Nuxt
+          </Radio.Item>
+        </Radio>
       </div>
     </>
   )

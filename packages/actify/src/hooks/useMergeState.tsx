@@ -2,10 +2,10 @@ import { useState, ChangeEvent } from 'react'
 
 // This hook is for controlled and uncontrolled component
 export default function useMergeState(
-  initailValue?: string,
-  value?: string,
-  defaultValue?: string,
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  value?: string | number | readonly string[],
+  defaultValue?: string | number | readonly string[],
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void,
+  initailValue?: string
 ) {
   // A component can be considered controlled when its value prop is
   // not undefined.
