@@ -203,13 +203,13 @@ const mark = tv({
       className: '[transform:scaleY(-1)_translate(4px,-10px)_rotate(0deg)]'
     },
     {
+      selected: true,
       short: true,
-      indeterminate: false,
       className: 'h-[5.65685px]'
     },
     {
+      selected: true,
       long: true,
-      indeterminate: false,
       className: 'w-[11.3137px]'
     }
   ]

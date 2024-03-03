@@ -111,7 +111,7 @@ export default () => {
           <thead className="border-b text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr className="[&>th]:px-3 [&>th]:py-2">
               <th className="w-10">
-                <Tooltip content="全选">
+                <Tooltip content="select all">
                   <Checkbox
                     checked={checekAll}
                     indeterminate={indeterminate}
