@@ -1,5 +1,5 @@
 'use client'
-import React, { forwardRef, useState, useContext } from 'react'
+import React, { useId, forwardRef, useState, useContext } from 'react'
 import { Ripple } from '@actify/Ripple'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
@@ -7,7 +7,16 @@ import { NavLink } from 'react-router-dom'
 import { ListContext } from './ListContext'
 
 const variants = tv({
-  base: 'relative flex items-center h-14 pl-4 leading-normal cursor-pointer isolate'
+  base: [
+    'flex',
+    'pl-4',
+    'h-14',
+    'isolate',
+    'relative',
+    'items-center',
+    'leading-normal',
+    'cursor-pointer'
+  ]
 })
 
 interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
@@ -19,8 +28,11 @@ const ListItemLink = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const [current, setCurrent] = useState<string | undefined>('')
   const { layoutId } = useContext(ListContext)
 
+  const id = useId()
+
   return (
     <li
+      id={id}
       ref={ref}
       {...rest}
       className={variants({ className })}
@@ -42,7 +54,7 @@ const ListItemLink = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
             className="absolute inset-0 bg-secondary/25 z-[-1]"
           />
         )}
-        <Ripple />
+        <Ripple id={id} />
       </NavLink>
     </li>
   )
