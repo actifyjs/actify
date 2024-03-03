@@ -80,7 +80,14 @@ const container = tv({
 })
 
 const input = tv({
-  base: ['m-0', 'size-12', 'absolute', 'appearance-none', 'cursor-[inherit]']
+  base: [
+    'm-0',
+    'size-12',
+    'absolute',
+    'outline-none',
+    'appearance-none',
+    'cursor-[inherit]'
+  ]
 })
 
 export interface RadioItemProps extends React.ComponentPropsWithRef<'input'> {
