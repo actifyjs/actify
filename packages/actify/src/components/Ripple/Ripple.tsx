@@ -61,24 +61,24 @@ const root = tv({
   variants: {
     color: {
       primary: [
-        '[--md-ripple-hover-color:rgb(var(--color-primary,#6750a4))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-primary,#6750a4))]'
+        '[--md-ripple-hover-color:rgb(var(--color-primary))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-primary))]'
       ],
       secondary: [
-        '[--md-ripple-hover-color:rgb(var(--color-secondary,#6750a4))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-secondary,#6750a4))]'
+        '[--md-ripple-hover-color:rgb(var(--color-secondary))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-secondary))]'
       ],
       tertiary: [
-        '[--md-ripple-hover-color:rgb(var(--color-tertiary,#6750a4))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-tertiary,#6750a4))]'
+        '[--md-ripple-hover-color:rgb(var(--color-tertiary))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-tertiary))]'
       ],
       error: [
-        '[--md-ripple-hover-color:rgb(var(--color-error,#6750a4))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-error,#6750a4))]'
+        '[--md-ripple-hover-color:rgb(var(--color-error))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-error))]'
       ],
       undefined: [
-        '[--md-ripple-hover-color:rgb(var(--color-primary,#6750a4))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-primary,#6750a4))]'
+        '[--md-ripple-hover-color:rgb(var(--color-primary))]',
+        '[--md-ripple-pressed-color:rgb(var(--color-primary))]'
       ]
     }
   },
@@ -99,19 +99,19 @@ const surface = tv({
     'before:absolute',
     'before:opacity-0',
     'before:inset-0',
-    'before:[background-color:var(--md-ripple-hover-color,var(--md-sys-color-on-surface,#1d1b20))]',
+    'before:[background-color:var(--md-ripple-hover-color,rgb(var(--color-on-surface)))]',
     'before:[transition:opacity_15ms_linear,background-color_15ms_linear]',
     'after:absolute',
     'after:z-50',
     'after:opacity-0',
     'after:origin-center',
-    'after:[background:radial-gradient(closest-side,var(--md-ripple-pressed-color,var(--md-sys-color-on-surface,#1d1b20))_max(100%_-_70px,65%),transparent_100%)]',
+    'after:[background:radial-gradient(closest-side,var(--md-ripple-pressed-color,rgb(var(--color-on-surface)))_max(100%_-_70px,65%),transparent_100%)]',
     'after:[transition:opacity_375ms_linear]'
   ],
   variants: {
     hovered: {
       true: [
-        'before:[background-color:var(--md-ripple-hover-color,var(--md-sys-color-on-surface,#1d1b20))]',
+        'before:[background-color:var(--md-ripple-hover-color,rgb(var(--color-on-surface)))]',
         'before:[opacity:var(--md-ripple-hover-opacity,0.08)]'
       ],
       false: ''
