@@ -29,14 +29,13 @@ export const RadioProvider = ({
 
   const radioWithSameName = Children.map(children, (child) => {
     if (isValidElement(child)) {
-      // @ts-expect-error
+      // @ts-ignore
       return cloneElement(child, { name })
     }
     return child
   })
 
   return (
-    // @ts-expect-error
     <RadioContext.Provider value={{ value, onChange }}>
       {radioWithSameName}
     </RadioContext.Provider>

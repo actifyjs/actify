@@ -17,18 +17,17 @@ enum SIZE {
 
 const root = tv({
   base: [
-    '[--icon-color:--color-on-primary]',
-    '[--disabled-icon-opacity:var(--md-filled-button-disabled-icon-opacity,0.38)]',
-    '[--disabled-icon-color:var(--md-filled-button-disabled-icon-color,var(--md-sys-color-on-surface,#1d1b20))]',
     'relative',
     'shrink-0',
     'inline-flex',
     'fill-current',
-    'text-[--icon-color]',
+    'text-[inherit]',
     '[font-size:--icon-size]',
-    '[inline-size:--icon-size]',
     '[block-size:--icon-size]',
-    '[writing-mode:horizontal-tb]'
+    '[inline-size:--icon-size]',
+    '[writing-mode:horizontal-tb]',
+    '[--disabled-icon-opacity:var(--md-filled-button-disabled-icon-opacity,0.38)]',
+    '[--disabled-icon-color:var(--md-filled-button-disabled-icon-color,rgb(var(--color-on-surface)))]'
   ],
   variants: {
     size: {
@@ -57,7 +56,7 @@ interface IconProps
     VariantProps<typeof root> {}
 
 const Icon = forwardRef((props: IconProps, ref?: React.Ref<HTMLElement>) => {
-  const { size, style, disabled = false, className, children } = props
+  const { size = 'sm', style, disabled = false, className, children } = props
 
   return (
     <i
@@ -75,7 +74,7 @@ const Icon = forwardRef((props: IconProps, ref?: React.Ref<HTMLElement>) => {
         (child) =>
           isValidElement(child) &&
           cloneElement(child, {
-            size: SIZE[size!],
+            size: SIZE[size],
             ...child.props
           })
       )}
