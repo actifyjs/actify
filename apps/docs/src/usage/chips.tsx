@@ -52,6 +52,26 @@ export default () => {
         </Chip>
       </div>
 
+      <p>Input chips</p>
+      <div className="flex gap-2">
+        <Chip>
+          <Chip.Item type="input" label="Input chip" />
+          <Chip.Item type="input" label="Input chip with icon">
+            <Icon>
+              <Speaker />
+            </Icon>
+          </Chip.Item>
+          <Chip.Item type="input" label="Input Chip with avatar" />
+          <Chip.Item type="input" label="Input link chip" />
+          <Chip.Item type="input" label="Remove-only input chip" />
+          <Chip.Item
+            type="input"
+            disabled
+            label="Disabled input chip (focusable)"
+          />
+        </Chip>
+      </div>
+
       <p>Suggestion chips</p>
       <div className="flex gap-2">
         <Chip>
