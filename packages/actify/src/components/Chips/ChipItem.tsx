@@ -5,10 +5,12 @@ import SuggestionChip from './SuggestionChip'
 import React, { forwardRef } from 'react'
 
 export interface ChipProps extends React.ComponentPropsWithRef<'div'> {
+  index?: number
   href?: string
   label?: string
   elevated?: boolean
   disabled?: boolean
+  removable?: boolean
   target?: React.HTMLAttributeAnchorTarget
   type?: 'assit' | 'filter' | 'input' | 'suggestion'
 }

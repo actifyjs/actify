@@ -35,15 +35,20 @@ export default () => {
 
       <p>Filter chips</p>
       <div className="flex gap-2">
-        <Chip>
+        <Chip defaultSelected={[1]} onChange={(value) => console.log(value)}>
           <Chip.Item type="filter" label="Filter chip" />
           <Chip.Item type="filter" label="Filter chip with icon">
             <Icon>
               <Speaker />
             </Icon>
           </Chip.Item>
-          <Chip.Item label="Removable filter chip" />
-          <Chip.Item label="Disabled filter chip (focusable)" disabled />
+          <Chip.Item type="filter" removable label="Removable filter chip" />
+          <Chip.Item
+            type="filter"
+            disabled
+            removable
+            label="Disabled filter chip (focusable)"
+          />
         </Chip>
       </div>
 

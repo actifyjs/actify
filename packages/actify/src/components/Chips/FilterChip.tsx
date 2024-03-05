@@ -4,7 +4,9 @@ import { tv } from 'tailwind-variants'
 import { Ripple } from '@actify/Ripple'
 import { Elevation } from '@actify/Elevation'
 import { FocusRing } from '@actify/FocusRing'
-import React, { forwardRef, useId } from 'react'
+import { useChip } from './ChipContext'
+import RemoveButton from './RemoveButton'
+import React, { useState, forwardRef, useId } from 'react'
 
 const root = tv({
   base: [
@@ -34,6 +36,8 @@ const root = tv({
     '[--pressed-state-layer-opacity:var(--md-assist-chip-pressed-state-layer-opacity,0.12)]',
     '[--disabled-outline-color:var(--md-assist-chip-disabled-outline-color,rgb(var(--color-on-surface)))]',
     '[--disabled-outline-opacity:var(--md-assist-chip-disabled-outline-opacity,0.12)]',
+    '[--disabled-trailing-icon-color:var(--md-filter-chip-disabled-trailing-icon-color,rgb(var(--color-on-surface)))]',
+    '[--disabled-trailing-icon-opacity:var(--md-filter-chip-disabled-trailing-icon-opacity,0.38)]',
     '[--focus-outline-color:var(--md-assist-chip-focus-outline-color,rgb(var(--color-on-surface)))]',
     '[--outline-color:var(--md-assist-chip-outline-color,rgb(var(--color-outline)))]',
     '[--outline-width:var(--md-assist-chip-outline-width,1px)]',
@@ -52,6 +56,7 @@ const root = tv({
     '[--trailing-space:var(--md-assist-chip-trailing-space,16px)]',
     '[--icon-label-space:var(--md-assist-chip-icon-label-space,8px)]',
     '[--with-leading-icon-leading-space:var(--md-assist-chip-with-leading-icon-leading-space,8px)]',
+    '[--with-trailing-icon-trailing-space:var(--md-filter-chip-with-trailing-icon-trailing-space,8px)]',
     // border
     '[border-start-start-radius:var(--container-shape-start-start)]',
     '[border-start-end-radius:var(--container-shape-start-end)]',
@@ -64,7 +69,10 @@ const root = tv({
     '[--md-ripple-hover-color:var(--hover-state-layer-color)]',
     '[--md-ripple-hover-opacity:var(--hover-state-layer-opacity)]',
     '[--md-ripple-pressed-color:var(--pressed-state-layer-color)]',
-    '[--md-ripple-pressed-opacity:var(--pressed-state-layer-opacity)]'
+    '[--md-ripple-pressed-opacity:var(--pressed-state-layer-opacity)]',
+    '[--selected-outline-width:var(--md-filter-chip-selected-outline-width,0px)]',
+    '[--selected-container-color:var(--md-filter-chip-selected-container-color,rgb(var(--color-secondary-container)))]',
+    '[--selected-leading-icon-color:var(--md-filter-chip-selected-leading-icon-color,rgb(var(--color-on-secondary-container)))]'
   ],
   variants: {
     disabled: {
@@ -90,6 +98,16 @@ const container = tv({
     disabled: {
       true: 'pointer-events-none',
       false: 'cursor-pointer'
+    },
+    selected: {
+      true: [
+        '[--md-ripple-hover-color:var(--selected-hover-state-layer-color)]',
+        '[--md-ripple-hover-opacity:var(--selected-hover-state-layer-opacity)]',
+        '[--md-ripple-pressed-color:var(--selected-pressed-state-layer-color)]',
+        '[--md-ripple-pressed-opacity:var(--selected-pressed-state-layer-opacity)]',
+        // before
+        'before:[background:var(--selected-container-color)]'
+      ]
     }
   }
 })
@@ -103,6 +121,9 @@ const outline = tv({
     '[border:var(--outline-width)_solid_var(--outline-color)]'
   ],
   variants: {
+    selected: {
+      true: '[border-width:var(--selected-outline-width)]'
+    },
     disabled: {
       true: [
         '[border-color:var(--disabled-outline-color)]',
@@ -131,6 +152,9 @@ const action = tv({
     },
     hasIcon: {
       true: ''
+    },
+    removable: {
+      true: 'pe-0'
     }
   },
   compoundVariants: [
@@ -149,6 +173,10 @@ const icon = tv({
       true: 'text[--leading-icon-color]'
     }
   }
+})
+
+const checkmark = tv({
+  base: ['size-[--icon-size]', 'text-[var(--selected-leading-icon-color)]']
 })
 
 const label = tv({
@@ -201,17 +229,22 @@ interface AssitChipProps extends Omit<ChipProps, 'type'> {}
 const FilterChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
   const {
     href,
+    index,
     style,
     target,
-    className,
-    elevated,
     children,
+    className,
+    elevated = false,
     disabled = false,
+    removable = false,
     label: labelString,
     ...rest
   } = props
 
   const id = useId()
+  const chip = useChip()
+  const [hide, setHide] = useState(false)
+  const selected = chip.selected?.includes(index!)
 
   const hasIcon = React.Children.toArray(children).find(
     (child) =>
@@ -222,13 +255,23 @@ const FilterChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
     : false
 
   const renderLeadingIcon = () => {
+    if (!selected) {
+      return (
+        hasIcon && (
+          <span className={icon({ leading: true })} aria-hidden="true">
+            {React.Children.toArray(children).filter(
+              // @ts-ignore
+              (child) => child?.type?.displayName == 'Actify.Icon'
+            )}
+          </span>
+        )
+      )
+    }
     return (
       <span className={icon({ leading: true })} aria-hidden="true">
-        {hasIcon &&
-          React.Children.toArray(children).filter(
-            // @ts-ignore
-            (child) => child?.type?.displayName == 'Actify.Icon'
-          )}
+        <svg className={checkmark()} viewBox="0 0 18 18" aria-hidden="true">
+          <path d="M6.75012 12.1274L3.62262 8.99988L2.55762 10.0574L6.75012 14.2499L15.7501 5.24988L14.6926 4.19238L6.75012 12.1274Z" />
+        </svg>
       </span>
     )
   }
@@ -245,19 +288,40 @@ const FilterChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
         id={id}
         href={href}
         target="_blank"
-        className={action({ hasIcon, primary })}
+        className={action({ removable, hasIcon, primary })}
       >
         {renderLeadingIcon()}
         <span className={label({ disabled })}>{labelString}</span>
         <span className={touch()}></span>
       </a>
     ) : (
-      <button id={id} type="button" className={action({ hasIcon, primary })}>
+      <button
+        id={id}
+        type="button"
+        className={action({ removable, hasIcon, primary })}
+      >
         {renderLeadingIcon()}
         <span className={label({ disabled })}>{labelString}</span>
         <span className={touch()}></span>
       </button>
     )
+  }
+
+  const handleClick = () => {
+    if (selected) {
+      const _index = chip.selected?.findIndex((item) => item == index)
+      const _selected = [...chip.selected!]
+      _selected.splice(_index as number, 1)
+      chip.onChange?.(_selected)
+    } else {
+      const _selected = [...chip.selected!]
+      _selected.push(index!)
+      chip.onChange?.(_selected)
+    }
+  }
+
+  if (hide) {
+    return null
   }
 
   return (
@@ -268,15 +332,16 @@ const FilterChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
       role="presentation"
       className={root({ disabled, className })}
     >
-      <div className={container({ disabled })}>
+      <div onClick={handleClick} className={container({ selected, disabled })}>
         {elevated ? (
           <Elevation level={1} />
         ) : (
-          <span className={outline({ disabled })}></span>
+          <span className={outline({ selected, disabled })}></span>
         )}
         <FocusRing id={id} className={ring()} />
         <Ripple id={id} disabled={disabled} />
         {renderPrimaryAction({ href, primary: true })}
+        {removable && <RemoveButton disabled={disabled} setHide={setHide} />}
       </div>
     </div>
   )
