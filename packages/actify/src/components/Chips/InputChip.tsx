@@ -218,7 +218,7 @@ const InputChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
     disabled = false,
     removable = true,
     removeOnly = false,
-    label: labelString,
+    label: content,
     ...rest
   } = props
 
@@ -253,25 +253,39 @@ const InputChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
     href?: string
     primary: boolean
   }) => {
-    return href ? (
-      <a
-        id={id}
-        href={href}
-        target="_blank"
-        className={action({ removable, hasIcon, primary })}
-      >
-        {renderLeadingIcon()}
-        <span className={label({ disabled })}>{labelString}</span>
-        <span className={touch()}></span>
-      </a>
-    ) : (
+    if (href) {
+      return (
+        <a
+          id={id}
+          href={href}
+          target="_blank"
+          className={action({ removable, hasIcon, primary })}
+        >
+          {renderLeadingIcon()}
+          <span className={label({ disabled })}>{content}</span>
+          <span className={touch()}></span>
+        </a>
+      )
+    }
+
+    if (removeOnly) {
+      return (
+        <span className={action({ removable, hasIcon, primary })}>
+          {renderLeadingIcon()}
+          <span className={label({ disabled })}>{content}</span>
+          <span className={touch()}></span>
+        </span>
+      )
+    }
+
+    return (
       <button
         id={id}
         type="button"
         className={action({ removable, hasIcon, primary })}
       >
         {renderLeadingIcon()}
-        <span className={label({ disabled })}>{labelString}</span>
+        <span className={label({ disabled })}>{content}</span>
         <span className={touch()}></span>
       </button>
     )
