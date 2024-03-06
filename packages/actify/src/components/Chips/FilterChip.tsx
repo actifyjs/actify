@@ -1,4 +1,5 @@
 'use client'
+import { motion } from 'framer-motion'
 import { ChipProps } from './ChipItem'
 import { tv } from 'tailwind-variants'
 import { Ripple } from '@actify/Ripple'
@@ -332,7 +333,11 @@ const FilterChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
       role="presentation"
       className={root({ disabled, className })}
     >
-      <div onClick={handleClick} className={container({ selected, disabled })}>
+      <motion.div
+        layout
+        onClick={handleClick}
+        className={container({ selected, disabled })}
+      >
         {elevated ? (
           <Elevation level={1} />
         ) : (
@@ -342,7 +347,7 @@ const FilterChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
         <Ripple id={id} disabled={disabled} />
         {renderPrimaryAction({ href, primary: true })}
         {removable && <RemoveButton disabled={disabled} setHide={setHide} />}
-      </div>
+      </motion.div>
     </div>
   )
 })
