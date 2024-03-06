@@ -3,10 +3,10 @@ import { Tabs } from 'actify'
 import { Terminal, TerminalSquare, ChevronRightSquare } from 'lucide-react'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 
-interface ActifyTabsProps extends React.HTMLAttributes<HTMLElement> {
-  value: string
-  language: string
+interface ActifyTabsProps extends React.ComponentProps<'html'> {
   tabs: string
+  language: string
+  activeTabIndex: number
 }
 
 type TypeTab = [{ label: string; icon: string; content: string }]
@@ -22,12 +22,15 @@ const IconMap = {
 }
 
 const ActifyTabs: React.FC<ActifyTabsProps> = (props) => {
-  const { value, language, tabs } = props
+  const { activeTabIndex, language, tabs } = props
 
   const _tabs: TypeTab = JSON.parse(tabs)
 
   return (
-    <Tabs value={value} className="not-prose rounded-lg bg-secondary/10">
+    <Tabs
+      activeTabIndex={activeTabIndex}
+      className="not-prose rounded-lg bg-secondary/10"
+    >
       <div className="flex border-b border-[#ccc] dark:border-[#222]">
         <Tabs.Header className="bg-transparent">
           {_tabs.map((tab) => (
@@ -44,7 +47,7 @@ const ActifyTabs: React.FC<ActifyTabsProps> = (props) => {
       </div>
       <Tabs.Body className="p-2">
         {_tabs.map((tab) => (
-          <Tabs.Panel key={tab.label} value={tab.label}>
+          <Tabs.Panel key={tab.label}>
             <SyntaxHighlighter language={language || 'jsx'}>
               {tab.content}
             </SyntaxHighlighter>

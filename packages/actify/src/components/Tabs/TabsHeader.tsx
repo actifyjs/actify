@@ -1,6 +1,12 @@
 'use client'
 import { tv } from 'tailwind-variants'
-import React, { forwardRef, useRef } from 'react'
+import React, {
+  useRef,
+  forwardRef,
+  Children,
+  isValidElement,
+  cloneElement
+} from 'react'
 
 const variants = tv({
   base: 'flex gap-2 p-2 overflow-x-auto [&::-webkit-scrollbar]:hidden'
@@ -23,7 +29,15 @@ const TabsHeader: React.FC<TabsHeaderProps> = forwardRef(
           ref={tabRef as TabRef}
           className={variants({ className })}
         >
-          {children}
+          {Children.map(
+            children,
+            (child, index) =>
+              isValidElement(child) &&
+              cloneElement(child, {
+                index,
+                ...child.props
+              })
+          )}
         </ul>
       </nav>
     )

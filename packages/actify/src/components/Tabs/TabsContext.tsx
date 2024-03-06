@@ -1,48 +1,35 @@
-'use client'
-import { createStore, useStore } from 'zustand'
-import React, { createContext, useId, useRef, useContext } from 'react'
+import React, { useState, useId, createContext, useContext } from 'react'
 
-interface TabsProps {
+type Tab = {}
+export interface TabsProps {
+  tabs?: Tab[]
+  activeTab?: Tab
   layoutId?: string
-  value?: number | string
-  onChange?: (_: number | string) => void
+  activeTabIndex?: number
+  autoActivate?: boolean
+  scrollToTab?: (index: number) => void
 }
 
-interface TabsState extends TabsProps {
-  setValue: (_: number | string) => void
-}
+const TabsContext = createContext<TabsProps>({})
 
-type TabsStore = ReturnType<typeof createContextStore>
-
-const TabsContext = createContext<TabsStore | null>(null)
-
-export interface TabsProviderProps extends React.PropsWithChildren<TabsProps> {}
-
-export const TabsProvider = ({ children, ...props }: TabsProviderProps) => {
+interface TabsProviderProps extends React.PropsWithChildren<TabsProps> {}
+export const TabsProvider = (props: TabsProviderProps) => {
   const layoutId = useId()
-  const storeRef = useRef<TabsStore>()
-  if (!storeRef.current) {
-    storeRef.current = createContextStore({ layoutId, ...props })
-  }
-
+  const { children, activeTabIndex = 0 } = props
+  const [index, setIndex] = useState(activeTabIndex)
   return (
-    <TabsContext.Provider value={storeRef.current}>
+    <TabsContext.Provider
+      value={{ layoutId, activeTabIndex: index, scrollToTab: setIndex }}
+    >
       {children}
     </TabsContext.Provider>
   )
 }
 
-const createContextStore = (initialProps?: Partial<TabsProps>) => {
-  return createStore<TabsState>((set) => ({
-    ...initialProps,
-    setValue: (state) => set({ value: state })
-  }))
-}
-
-export function useTabs<T>(selector: (state: TabsState) => T): T {
-  const store = useContext(TabsContext)
-  if (!store) {
-    throw new Error('Missing TabsContext.Provider in the tree')
+export const useTabs = () => {
+  const context = useContext(TabsContext)
+  if (context == null) {
+    throw new Error('Tab components must be wrapped in <Tabs />')
   }
-  return useStore(store, selector)
+  return context
 }

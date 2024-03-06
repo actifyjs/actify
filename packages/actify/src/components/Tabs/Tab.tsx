@@ -1,17 +1,14 @@
 'use client'
-import React, { useId, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
-import { Ripple } from '@actify/Ripple'
-import { Elevation } from '@actify/Elevation'
-import { FocusRing } from '@actify/FocusRing'
+import { Button } from '@actify/Button'
 
 const root = tv({
   base: [
     'h-10',
     'flex',
-    'px-2',
     'gap-0',
     'isolate',
     'sm:gap-2',
@@ -26,47 +23,31 @@ const root = tv({
   ]
 })
 
-const button = tv({
-  base: ['outline-none', 'flex', 'items-center', 'gap-1']
-})
-
-type Value = number | string
-
 export interface TabProps extends React.ComponentProps<'li'> {
-  value: Value
+  index?: number
 }
 
 const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
-  const { className, value, children, ...rest } = props
+  const { index, className, children, ...rest } = props
 
-  const activeValue = useTabs((_) => _.value)
-  const layoutId = useTabs((_) => _.layoutId)
-  const onChange = useTabs((_) => _.onChange)
-  const setValue = useTabs((_) => _.setValue)
+  const { layoutId, activeTabIndex, scrollToTab } = useTabs()
 
-  const handleClick = (value: Value) => {
-    setValue(value)
-    onChange?.(value)
+  const handleClick = (index: number) => {
+    scrollToTab?.(index)
   }
-
-  const id = useId()
 
   return (
     <li
       role="tab"
-      {...rest}
       ref={ref}
-      data-value={value}
-      onClick={() => handleClick(value)}
+      {...rest}
       className={root({ className })}
+      onClick={() => handleClick(index!)}
     >
-      <FocusRing id={id} />
-      <Elevation />
-      <Ripple id={id} />
-      <button id={id} className={button()}>
+      <Button variant="text" className="rounded-none [--md-focus-ring-shape:0]">
         {children}
-      </button>
-      {activeValue == value && (
+      </Button>
+      {activeTabIndex == index && (
         <motion.div
           layoutId={layoutId}
           className="absolute -z-10 w-full bottom-0"

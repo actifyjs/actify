@@ -5,7 +5,10 @@ import OpenInCodeSandbox from '@/components/OpenInCodeSandbox'
 import OpenInStackblitz from '@/components/OpenInStackblitz'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 
-const Usage = (props) => {
+type UseageProps = {
+  name: string
+}
+const Usage = (props: UseageProps) => {
   const [rawString, setRawString] = useState('')
   const { name, ...rest } = props
   const LazyComponent = lazy(() => import(`./../usage/${name}.tsx`))
@@ -20,7 +23,7 @@ const Usage = (props) => {
 
   return (
     <Suspense>
-      <Tabs value="preview" className="not-prose rounded-lg bg-secondary/10">
+      <Tabs activeTabIndex={0} className="not-prose rounded-lg bg-secondary/10">
         <div className="flex border-b border-[#ccc] dark:border-[#222] w-full">
           <Tabs.Header className="bg-transparent w-full">
             <Tabs.Tab value="preview">
@@ -39,10 +42,10 @@ const Usage = (props) => {
           </Tabs.Header>
         </div>
         <Tabs.Body className="p-2">
-          <Tabs.Panel value="preview">
+          <Tabs.Panel>
             <LazyComponent name={name} {...rest} />
           </Tabs.Panel>
-          <Tabs.Panel value="code">
+          <Tabs.Panel>
             <SyntaxHighlighter language="jsx">{rawString}</SyntaxHighlighter>
           </Tabs.Panel>
         </Tabs.Body>

@@ -7,23 +7,22 @@ const variants = tv({
   base: ''
 })
 
-export interface TabsPanelProps extends React.HTMLAttributes<HTMLDivElement> {
-  value: string
+export interface TabsPanelProps extends React.ComponentProps<'div'> {
+  index?: number
 }
 
 const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>((props, ref) => {
-  const activeValue = useTabs((_) => _.value)
-  const { value, className, children, ...rest } = props
+  const { activeTabIndex } = useTabs()
+  const { index, className, children, ...rest } = props
 
   return (
     <div
       ref={ref}
       {...rest}
       role="tabpanel"
-      data-value={value}
       className={variants({ className })}
     >
-      {activeValue == value && children}
+      {activeTabIndex == index && children}
     </div>
   )
 })

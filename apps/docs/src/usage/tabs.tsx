@@ -30,19 +30,15 @@ export default () => {
   ]
 
   return (
-    <Tabs value="react">
+    <Tabs activeTabIndex={0}>
       <Tabs.Header>
         {data.map(({ label, value }) => (
-          <Tabs.Tab key={value} value={value}>
-            {label}
-          </Tabs.Tab>
+          <Tabs.Tab key={value}>{label}</Tabs.Tab>
         ))}
       </Tabs.Header>
       <Tabs.Body>
         {data.map(({ value, content }) => (
-          <Tabs.Panel key={value} value={value}>
-            {content}
-          </Tabs.Panel>
+          <Tabs.Panel key={value}>{content}</Tabs.Panel>
         ))}
       </Tabs.Body>
     </Tabs>
