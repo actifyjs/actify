@@ -18,13 +18,13 @@ export default () => {
         React Material Design 3 Components Library
       </p>
       <div className="flex items-center justify-center gap-1 sm:gap-2">
-        <Link to="/getting-started/installation">
+        <Link to="/getting-started/installation" tabIndex={-1}>
           <Button className="sm:before:content-['Get']">
             Started
             <ArrowRight />
           </Button>
         </Link>
-        <Link to="/getting-started/why-actify">
+        <Link to="/getting-started/why-actify" tabIndex={-1}>
           <Button color="secondary" className="sm:after:content-['Actify']">
             <HelpCircle />
             Why

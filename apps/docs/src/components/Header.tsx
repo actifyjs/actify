@@ -16,11 +16,10 @@ const Header: React.FC<React.ComponentProps<'header'>> = () => {
   return (
     <header className="sticky top-0 z-30 h-16 col-start-1 col-end-3 bg-surface/25 px-2 shadow backdrop-blur">
       <div className="mx-auto flex h-full flex-wrap items-center justify-between">
-        <Link to="/" className="hidden md:flex items-center text-primary">
-          <Logo height={36} />
-          <span className="self-center whitespace-nowrap text-2xl font-semibold">
-            ctify
-          </span>
+        <Link to="/" className="hidden md:flex items-center text-primary" tabIndex={-1}>
+          <Button variant="text" className='self-center whitespace-nowrap text-2xl font-semibold'>
+            <Logo height={36} />ctify
+          </Button>
         </Link>
         {pathname != '/' && (
           <div className="inline-flex md:hidden">
@@ -89,7 +88,7 @@ const Header: React.FC<React.ComponentProps<'header'>> = () => {
               />
             </li>
             <li>
-              <Link to="/playground">
+              <Link to="/playground" tabIndex={-1}>
                 <Button variant="text">Playground</Button>
               </Link>
             </li>
