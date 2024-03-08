@@ -34,11 +34,7 @@ const ActifyTabs: React.FC<ActifyTabsProps> = (props) => {
       <div className="flex border-b border-[#ccc] dark:border-[#222]">
         <Tabs.Header className="bg-transparent">
           {_tabs.map((tab) => (
-            <Tabs.Tab
-              key={tab.label}
-              value={tab.label}
-              className="min-w-[120px]"
-            >
+            <Tabs.Tab key={tab.label} value={tab.label} className="">
               {IconMap[tab.icon as IconProps['name']]}
               {tab.label}
             </Tabs.Tab>
