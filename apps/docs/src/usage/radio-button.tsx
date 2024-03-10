@@ -15,7 +15,7 @@ export default () => {
       <Divider />
       <p>Radio with label and multiline</p>
       <div className="flex gap-2">
-        <Radio defaultValue="React" className="flex-col">
+        <Radio className="flex-col">
           <Radio.Item value="React">React</Radio.Item>
           <Radio.Item value="Vue" color="secondary">
             Vue

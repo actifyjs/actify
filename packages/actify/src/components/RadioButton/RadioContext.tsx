@@ -7,7 +7,7 @@ import React, {
   createContext,
   isValidElement
 } from 'react'
-import useMergeState from '@hooks/useMergeState'
+import useInputState from '@hooks/useInputState'
 
 export interface RadioProps extends React.ComponentProps<'input'> {}
 
@@ -21,11 +21,11 @@ export const RadioProvider = ({
   ...props
 }: RadioProviderProps) => {
   const name = nameAttr || useId()
-  const [value, onChange] = useMergeState(
-    props.value,
-    props.defaultValue,
-    props.onChange
-  )
+  const [value, onChange] = useInputState({
+    value: props.value,
+    defaultValue: props.defaultValue,
+    onChange: props.onChange
+  })
 
   const radioWithSameName = Children.map(children, (child) => {
     if (isValidElement(child)) {
