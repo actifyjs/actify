@@ -1,20 +1,26 @@
 import { tv, VariantProps } from 'tailwind-variants'
 import { useSegmentedButtonContext } from './Context'
-import { SegmentedButtonProps } from './SegmentedButton'
 import React, { Children, isValidElement, cloneElement } from 'react'
 
-const variants = tv({
+const root = tv({
   base: 'flex',
   variants: {
     variant: {
-      elevated: 'divide-x divide-surface',
-      filled: 'divide-x divide-surface',
-      tonal: 'divide-x divide-surface',
-      outlined: 'divide',
-      text: 'divide-x divide-surface'
+      elevated: '',
+      filled: '',
+      tonal: '',
+      outlined: '',
+      text: ''
+    },
+    color: {
+      primary: '',
+      secondary: '',
+      tertiary: '',
+      error: ''
     },
     active: {
-      true: 'bg-secondary-container'
+      true: '',
+      false: ''
     },
     roundedRightNone: {
       true: 'rounded-r-none'
@@ -26,18 +32,42 @@ const variants = tv({
       true: 'rounded-l-none'
     }
   },
-  defaultVariants: {
-    variant: 'filled'
-  }
+  compoundVariants: [
+    {
+      active: true,
+      color: 'primary',
+      className: 'bg-primary-container'
+    },
+    {
+      active: true,
+      color: 'secondary',
+      className: 'bg-secondary-container'
+    },
+    {
+      active: true,
+      color: 'tertiary',
+      className: 'bg-tertiary-container'
+    },
+    {
+      active: true,
+      color: 'error',
+      className: 'bg-error-container'
+    }
+  ]
 })
 
-interface RootProps
-  extends React.ComponentProps<'div'>,
-    VariantProps<typeof variants> {
+export interface RootProps
+  extends Omit<React.ComponentProps<'div'>, 'color'>,
+    VariantProps<typeof root> {
   ripple?: boolean
 }
 
-const Root: React.FC<RootProps> = ({ color, ripple, variant, children }) => {
+const Root = ({
+  ripple,
+  color = 'primary',
+  variant = 'outlined',
+  children
+}: RootProps) => {
   const { multiple, activeIndex, setActiveIndex } = useSegmentedButtonContext()
 
   const handleClick = (index: number) => {
@@ -62,13 +92,14 @@ const Root: React.FC<RootProps> = ({ color, ripple, variant, children }) => {
     (child, index) =>
       isValidElement(child) &&
       // @ts-expect-error
-      cloneElement<SegmentedButtonProps>(child, {
+      cloneElement<RootProps>(child, {
         color,
         ripple,
         variant,
-        id: `segmented-button-${JSON.stringify(activeIndex)}`,
         onClick: () => handleClick(index),
-        className: variants({
+        className: root({
+          color,
+          variant,
           active: activeIndex?.includes(index),
           roundedRightNone: index !== Children.count(children) - 1,
           borderRightZero: index !== Children.count(children) - 1,

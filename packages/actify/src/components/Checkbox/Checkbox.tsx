@@ -271,7 +271,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
             selected: inputChecked
           })}
         ></div>
-        <FocusRing id={id} className="size-11 inset-[unset]" />
+        <FocusRing id={id} className="size-11 inset-[unset] rounded-full" />
         <Ripple
           id={id}
           disabled={disabled}

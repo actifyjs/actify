@@ -140,7 +140,7 @@ const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>((props, ref) => {
             disabled={disabled}
             className="rounded-full inset-[unset] size-10"
           />
-          <FocusRing id={id} className="size-11 inset-[unset]" />
+          <FocusRing id={id} className="size-11 inset-[unset] rounded-full" />
           <RadioIcon color={color} checked={checked} disabled={disabled} />
           <input
             id={id}

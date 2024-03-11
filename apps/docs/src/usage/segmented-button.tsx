@@ -5,7 +5,6 @@ export default () => {
   return (
     <div className="flex items-center gap-4">
       <SegmentedButton
-        variant="outlined"
         activeIndex={[1]}
         onChange={(value) => console.log(value)}
       >

@@ -7,6 +7,7 @@ import React, { useState, useRef, useEffect } from 'react'
 const root = tv({
   base: [
     'absolute',
+    'rounded-[inherit]',
     'pointer-events-none',
     'text-[var(--md-focus-ring-color,rgb(var(--color-secondary)))]',
     '[animation-delay:0s,calc(var(--md-focus-ring-duration,600ms)*.25)]',
@@ -14,11 +15,11 @@ const root = tv({
     `[animation-timing-function:${EASING.STANDARD}]`,
     '[animation-name:outward-grow,outward-shrink]',
     'inset-[calc(-1*var(--md-focus-ring-outward-offset,2px))]',
-    '[outline:var(--md-focus-ring-width,3px)_solid_currentColor]',
-    '[border-end-end-radius:calc(var(--md-focus-ring-shape-end-end,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]',
-    '[border-end-start-radius:calc(var(--md-focus-ring-shape-end-start,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]',
-    '[border-start-end-radius:calc(var(--md-focus-ring-shape-start-end,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]',
-    '[border-start-start-radius:calc(var(--md-focus-ring-shape-start-start,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]'
+    '[outline:var(--md-focus-ring-width,3px)_solid_currentColor]'
+    // '[border-end-end-radius:calc(var(--md-focus-ring-shape-end-end,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]',
+    // '[border-end-start-radius:calc(var(--md-focus-ring-shape-end-start,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]',
+    // '[border-start-end-radius:calc(var(--md-focus-ring-shape-start-end,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]',
+    // '[border-start-start-radius:calc(var(--md-focus-ring-shape-start-start,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]'
   ],
   variants: {
     visible: {
