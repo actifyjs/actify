@@ -1,21 +1,20 @@
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent, ChangeEventHandler } from 'react'
 
 type Value = string | readonly string[] | number | undefined
-type ChangeType = (event: ChangeEvent<HTMLInputElement>) => void
 
-interface useInputStateProps {
+interface useInputStateProps<T> {
   value?: Value
   defaultValue?: Value
-  onChange?: ChangeType
   initialValue?: Value
+  onChange?: ChangeEventHandler<T> | undefined
 }
 // This hook is for controlled and uncontrolled component
-export default function useInputState({
+export default function useInputState<T>({
   value,
   defaultValue,
   initialValue = '',
   onChange
-}: useInputStateProps): [Value, ChangeType] {
+}: useInputStateProps<T>) {
   // A component can be considered controlled when its value prop is
   // not undefined.
   const isControlled = typeof value != 'undefined'
@@ -31,7 +30,7 @@ export default function useInputState({
   // the component is controlled or not, that value comes from its
   // props or from its internal state.
   const inputValue = isControlled ? value : internalValue
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<T>) => {
     // When the user types, we will call props.onChange if it exists.
     // We do this even if there is no props.value (and the component
     // is uncontrolled.)
@@ -40,7 +39,7 @@ export default function useInputState({
     // If the component is uncontrolled, we need to update our
     // internal value here.
     if (!isControlled) {
-      setInternalValue(event.target.value)
+      setInternalValue((event.target as unknown as HTMLInputElement).value)
     }
   }
   return [inputValue, handleChange] as const
