@@ -13,12 +13,12 @@ const Header: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   children
 }) => {
-  const setOpen = useSideSheets((_) => _.setOpen)
+  const { setOpen } = useSideSheets()
 
   return (
     <div className="pl-6 pr-3 pt-3 pb-4 flex items-center">
       <div className={variants({ className })}>{children}</div>
-      <IconButton onClick={() => setOpen(false)}>
+      <IconButton onClick={() => setOpen?.(false)}>
         <X />
       </IconButton>
     </div>

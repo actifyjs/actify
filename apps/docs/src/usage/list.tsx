@@ -9,7 +9,7 @@ export default () => {
         <ListItem key={item}>{item}</ListItem>
       ))}
       <ListGroup label="React">
-        {['Next.js', 'Zustand', 'Framer Motion', 'Actify'].map((item) => (
+        {['Next.js', 'Floating-UI', 'Framer Motion', 'Actify'].map((item) => (
           <ListItem key={item}>{item}</ListItem>
         ))}
       </ListGroup>

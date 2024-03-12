@@ -25,10 +25,9 @@ export interface ContentProps extends React.ComponentProps<'div'> {
 }
 
 const Content = forwardRef<HTMLDivElement, ContentProps>((props, ref) => {
-  const { style, className, divider, children, ...rest } = props
+  const { style, className, divider, children } = props
 
-  const open = useSideSheets((_) => _.open)
-  const setOpen = useSideSheets((_) => _.setOpen)
+  const { open, setOpen } = useSideSheets()
   const [container, setContainer] = useState<HTMLElement>()
 
   useEffect(() => {
@@ -49,7 +48,7 @@ const Content = forwardRef<HTMLDivElement, ContentProps>((props, ref) => {
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (!open || event.key !== 'Escape') return
-    setOpen(false)
+    setOpen?.(false)
   }
 
   if (!container) {
@@ -64,7 +63,7 @@ const Content = forwardRef<HTMLDivElement, ContentProps>((props, ref) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={() => setOpen(false)}
+          onClick={() => setOpen?.(false)}
           className={rootVariants({ className })}
         >
           <motion.div

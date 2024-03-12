@@ -53,7 +53,6 @@ export default [
     ],
     external: [
       'dayjs',
-      'zustand',
       'react',
       'tslib',
       'popmotion',

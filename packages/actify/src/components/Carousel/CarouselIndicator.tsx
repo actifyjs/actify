@@ -1,25 +1,15 @@
 'use client'
-import React from 'react'
 import { useCarousel } from './CarouselContext'
-import { useShallow } from 'zustand/react/shallow'
 
-const CarouselIndicator: React.FC<
-  React.HTMLAttributes<HTMLDivElement>
-> = () => {
-  const { total, current, setCurrent } = useCarousel(
-    useShallow((_) => ({
-      total: _.total,
-      current: _.current,
-      setCurrent: _.setCurrent
-    }))
-  )
+const CarouselIndicator = () => {
+  const { total, current, setCurrent } = useCarousel()
 
   return (
     <div className="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3">
       {[...Array(total)].map((item, index) => (
         <button
           key={index}
-          onClick={() => setCurrent(index)}
+          onClick={() => setCurrent?.(index)}
           className={`${
             index == current
               ? 'bg-primary dark:bg-primary'

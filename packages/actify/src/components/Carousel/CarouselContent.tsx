@@ -1,10 +1,9 @@
 'use client'
-import React, { Children, useEffect, isValidElement } from 'react'
 import { wrap } from 'popmotion'
 import { twMerge } from 'tailwind-merge'
 import { useCarousel } from './CarouselContext'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useShallow } from 'zustand/react/shallow'
+import React, { Children, useEffect, isValidElement } from 'react'
 
 const variants = {
   enter: (direction: number) => {
@@ -32,27 +31,19 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity
 }
 
-const CarouselContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  children
-}) => {
-  const { setPage, current, setCurrent } = useCarousel(
-    useShallow((_) => ({
-      setPage: _.setPage,
-      current: _.current,
-      setCurrent: _.setCurrent
-    }))
-  )
-  const [page, direction] = useCarousel((s) => s.page) as Array<number>
+const CarouselContent = ({ children }: React.ComponentProps<'div'>) => {
+  const { page: pages, setPage, current, setCurrent } = useCarousel()
+  const [page, direction] = pages as Array<number>
 
   // @ts-expect-error
   const images = Children.toArray(children).map((child) => child.props.src)
 
   useEffect(() => {
-    setCurrent(wrap(0, images.length, page))
+    setCurrent?.(wrap(0, images.length, page))
   }, [page, images.length])
 
   const paginate = (newDirection: number) => {
-    setPage([page + newDirection, newDirection])
+    setPage?.([page + newDirection, newDirection])
   }
 
   return (

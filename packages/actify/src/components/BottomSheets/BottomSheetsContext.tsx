@@ -1,16 +1,15 @@
-'use client'
-import { createStore, useStore } from 'zustand'
-import React, { createContext, useRef, useContext } from 'react'
+import React, { createContext, useContext } from 'react'
+import { useControllableState } from '@hooks/useControllableState'
 
 interface BottomSheetsProps {
   open?: boolean
+  defaultOpen?: boolean
+  setOpen?: (open: boolean) => void
 }
-interface BottomSheetsState extends BottomSheetsProps {
-  setOpen: (open: boolean) => void
-}
-type BottomSheetsStore = ReturnType<typeof createContextStore>
 
-const BottomSheetsContext = createContext<BottomSheetsStore | null>(null)
+const BottomSheetsContext = createContext<BottomSheetsProps | undefined>(
+  undefined
+)
 
 export interface BottomSheetsProviderProps
   extends React.PropsWithChildren<BottomSheetsProps> {}
@@ -19,35 +18,26 @@ export const BottomSheetsProvider = ({
   children,
   ...props
 }: BottomSheetsProviderProps) => {
-  const storeRef = useRef<BottomSheetsStore>()
-  if (!storeRef.current) {
-    storeRef.current = createContextStore(props)
-  }
+  const { open, defaultOpen, setOpen } = props
+  const [value, setValue] = useControllableState({
+    value: open,
+    defaultValue: defaultOpen,
+    onChange: setOpen
+  })
 
   return (
-    <BottomSheetsContext.Provider value={storeRef.current}>
+    <BottomSheetsContext.Provider value={{ open: value, setOpen: setValue }}>
       {children}
     </BottomSheetsContext.Provider>
   )
 }
 
-const createContextStore = (initProps?: Partial<BottomSheetsProps>) => {
-  const DEFAULT_PROPS: BottomSheetsProps = {
-    open: false
+export function useBottomSheets() {
+  const context = useContext(BottomSheetsContext)
+  if (!context) {
+    throw new Error(
+      'BottomSheets components must be wrapped in <BottomSheets />'
+    )
   }
-  return createStore<BottomSheetsState>()((set) => ({
-    ...DEFAULT_PROPS,
-    ...initProps,
-    setOpen: (state: boolean) => set({ open: state })
-  }))
-}
-
-export function useBottomSheets<T>(
-  selector: (state: BottomSheetsState) => T
-): T {
-  const store = useContext(BottomSheetsContext)
-  if (!store) {
-    throw new Error('Missing BottomSheetsContext.Provider in the tree')
-  }
-  return useStore(store, selector)
+  return context
 }

@@ -25,8 +25,7 @@ const Content: React.FC<React.ComponentProps<'div'>> = ({
   className,
   children
 }) => {
-  const open = useBottomSheets((s) => s.open)
-  const setOpen = useBottomSheets((s) => s.setOpen)
+  const { open, setOpen } = useBottomSheets()
   const [container, setContainer] = useState<HTMLElement>()
 
   useEffect(() => {
@@ -47,7 +46,7 @@ const Content: React.FC<React.ComponentProps<'div'>> = ({
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (!open || event.key !== 'Escape') return
-    setOpen(false)
+    setOpen?.(false)
   }
 
   if (!container) {
@@ -62,7 +61,7 @@ const Content: React.FC<React.ComponentProps<'div'>> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={() => setOpen(false)}
+          onClick={() => setOpen?.(false)}
           className={rootVariants({ className })}
         >
           <motion.div

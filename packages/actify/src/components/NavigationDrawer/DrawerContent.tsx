@@ -72,9 +72,7 @@ const DrawerContent: React.FC<React.ComponentProps<'div'>> = ({
   children
 }) => {
   const [container, setContainer] = useState<HTMLElement>()
-  const open = useDrawer((_) => _.open)
-  const placement = useDrawer((_) => _.placement)
-  const setOpen = useDrawer((_) => _.setOpen)
+  const { open, placement, setOpen } = useDrawer()
 
   useEffect(() => {
     setContainer(document.body)
@@ -94,7 +92,7 @@ const DrawerContent: React.FC<React.ComponentProps<'div'>> = ({
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (!open || event.key !== 'Escape') return
-    setOpen(false)
+    setOpen?.(false)
   }
 
   if (!container) {
@@ -172,7 +170,7 @@ const DrawerContent: React.FC<React.ComponentProps<'div'>> = ({
           </motion.div>
           {/* scrim */}
           <div
-            onClick={() => setOpen(false)}
+            onClick={() => setOpen?.(false)}
             className="w-screen h-screen"
           ></div>
         </motion.nav>

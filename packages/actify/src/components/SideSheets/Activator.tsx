@@ -8,11 +8,10 @@ export interface ActivatorProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 const Activator: React.FC<ActivatorProps> = forwardRef(
   ({ asChild, style, className, ...rest }, ref?: React.Ref<HTMLDivElement>) => {
-    const open = useSideSheets((_) => _.open)
-    const setOpen = useSideSheets((_) => _.setOpen)
+    const { open, setOpen } = useSideSheets()
 
     const handleClick = () => {
-      setOpen(!open)
+      setOpen?.(!open)
     }
 
     if (asChild) {

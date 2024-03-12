@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { IconButton } from '@actify/Button/IconButton'
 import useInterval from '@hooks/useInterval'
 import { useCarousel } from './CarouselContext'
-import { useShallow } from 'zustand/react/shallow'
 
 type CarouselControlProps = {
   control?: boolean
@@ -17,27 +16,19 @@ const CarouselControl: React.FC<CarouselControlProps> = ({
   autoPlay,
   infinite
 }) => {
-  const { total, page, setPage, current, interval } = useCarousel(
-    useShallow((_) => ({
-      total: _.total,
-      page: _.page,
-      setPage: _.setPage,
-      current: _.current,
-      interval: _.interval
-    }))
-  )
+  const { total, page, setPage, current, interval } = useCarousel()
 
   const prev = () => {
     if (!infinite && current == 0) {
       return
     }
-    setPage([(page ? Number(page) : 0) - 1, -1])
+    setPage?.([(page ? Number(page[0]) : 0) - 1, -1])
   }
   const next = () => {
     if (!infinite && current == (total ?? 0) - 1) {
       return
     }
-    setPage([(page ? Number(page) : 0) + 1, 1])
+    setPage?.([(page ? Number(page[0]) : 0) + 1, 1])
   }
 
   autoPlay && useInterval(next, interval ?? 0)

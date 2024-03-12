@@ -14,11 +14,11 @@ export interface DrawerActivatorProps
 
 const DrawerActivator = forwardRef<HTMLDivElement, DrawerActivatorProps>(
   (props, ref) => {
-    const setOpen = useDrawer((_) => _.setOpen)
+    const { setOpen } = useDrawer()
     const { style, className, asChild, children, ...rest } = props
 
     const handleClick = () => {
-      setOpen(true)
+      setOpen?.(true)
     }
 
     // `asChild` allows the user to pass any element as the activator
