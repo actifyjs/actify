@@ -1,7 +1,8 @@
 'use client'
-import React, { useMemo, useRef, forwardRef, useState, Children } from 'react'
 import { SupportingText } from './SupportingText'
 import { tv, VariantProps } from 'tailwind-variants'
+import useInputState from '@hooks/useInputState'
+import React, { useMemo, useRef, forwardRef, useState, Children } from 'react'
 
 const variants = tv({
   base: 'cursor-text group',
@@ -31,8 +32,8 @@ interface TextFieldProps extends React.InputHTMLAttributes<TextFieldTypes> {
   color?: VariantProps<typeof variants>['color']
   children?: React.JSX.Element | React.JSX.Element[]
 }
-const FilledTextField: React.FC<TextFieldProps> = forwardRef(
-  (props, ref?: React.Ref<TextFieldTypes>) => {
+const FilledTextField = forwardRef<TextFieldTypes, TextFieldProps>(
+  (props, ref?) => {
     const {
       label,
       color,
@@ -52,12 +53,13 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
     } = props
 
     const inputRef = ref || useRef()
-    const isControlled = value !== undefined
     const TagName = type === 'textarea' ? 'textarea' : 'input'
 
-    const [inputValue, setInputValue] = isControlled
-      ? [value, onChange]
-      : useState(defaultValue || '')
+    const [inputValue, setInputValue] = useInputState({
+      value,
+      defaultValue,
+      onChange
+    })
 
     const [focused, setFocused] = useState(false)
 
@@ -85,13 +87,6 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
       }
       return false
     }, [inputValue])
-
-    const handleChange = (
-      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-      onChange?.(e)
-      setInputValue?.(e.target.value as any)
-    }
 
     const supportingTextClassName = disabled
       ? 'text-on-surface'
@@ -162,12 +157,11 @@ const FilledTextField: React.FC<TextFieldProps> = forwardRef(
                     aria-label={label}
                     disabled={disabled}
                     aria-invalid={false}
-                    onChange={handleChange}
+                    value={inputValue}
+                    onChange={setInputValue}
                     aria-describedby="description"
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
-                    value={isControlled ? inputValue : undefined}
-                    defaultValue={!isControlled ? inputValue : undefined}
                     className="inline-flex w-full outline-0 bg-transparent text-base text-on-surface focus:outline-none [-webkit-tap-highlight-color:rgba(0,0,0,0)]"
                   />
                   {suffixText && (
