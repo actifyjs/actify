@@ -44,7 +44,7 @@ const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       className={root({ className })}
       onClick={() => handleClick(index!)}
     >
-      <Button variant="text" className="rounded-none [--md-focus-ring-shape:0]">
+      <Button variant="text" className="rounded-none">
         {children}
       </Button>
       {activeTabIndex == index && (
