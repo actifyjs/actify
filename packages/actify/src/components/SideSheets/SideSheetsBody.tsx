@@ -1,11 +1,19 @@
 'use client'
 import React from 'react'
 import { tv } from 'tailwind-variants'
-import { useSideSheets } from './Context'
 import { Divider } from '@actify/Divider'
+import { useSideSheets } from './SideSheetsContext'
 
 const variants = tv({
-  base: 'pl-6 pt-6 h-[calc(100vh-176px)] min-h-[120px] flex flex-col overflow-y-auto'
+  base: [
+    'pt-6',
+    'pl-6',
+    'flex',
+    'flex-col',
+    'min-h-[120px]',
+    'overflow-y-auto',
+    'h-[calc(100vh-176px)]'
+  ]
 })
 
 const Body: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {

@@ -3,7 +3,7 @@
 import themes from '@themes/index'
 import { tv } from 'tailwind-variants'
 import { createPortal } from 'react-dom'
-import { useSideSheets } from './Context'
+import { useSideSheets } from './SideSheetsContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import React, { useState, useEffect, forwardRef } from 'react'
 
@@ -25,7 +25,7 @@ export interface ContentProps extends React.ComponentProps<'div'> {
 }
 
 const Content = forwardRef<HTMLDivElement, ContentProps>((props, ref) => {
-  const { style, className, divider, children } = props
+  const { style, className, children } = props
 
   const { open, setOpen } = useSideSheets()
   const [container, setContainer] = useState<HTMLElement>()

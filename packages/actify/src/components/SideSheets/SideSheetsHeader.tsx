@@ -2,7 +2,7 @@
 import React from 'react'
 import { X } from 'lucide-react'
 import { tv } from 'tailwind-variants'
-import { useSideSheets } from './Context'
+import { useSideSheets } from './SideSheetsContext'
 import { IconButton } from '@actify/Button/IconButton'
 
 const variants = tv({

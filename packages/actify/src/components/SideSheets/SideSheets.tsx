@@ -1,11 +1,11 @@
 'use client'
 import React from 'react'
-import { Body } from './Body'
-import { Action } from './Action'
-import { Header } from './Header'
-import { Content } from './Content'
-import { Activator } from './Activator'
-import { SideSheetsProvider } from './Context'
+import { Body } from './SideSheetsBody'
+import { Action } from './SideSheetsAction'
+import { Header } from './SideSheetsHeader'
+import { Content } from './SideSheetsContent'
+import { Activator } from './SideSheetsActivator'
+import { SideSheetsProvider } from './SideSheetsContext'
 
 type SideSheetsPropTypes = Omit<
   React.HTMLAttributes<HTMLDivElement>,
