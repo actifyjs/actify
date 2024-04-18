@@ -1,6 +1,7 @@
 import { Eye, Code2 } from 'lucide-react'
 import { Tabs, Spacer, TooltipGroup } from 'actify'
 import { lazy, Suspense, useState, useEffect } from 'react'
+import ViewSource from '@components/ViewSource'
 import OpenInCodeSandbox from '@/components/OpenInCodeSandbox'
 import OpenInStackblitz from '@/components/OpenInStackblitz'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
@@ -36,6 +37,7 @@ const Usage = (props: UseageProps) => {
             </Tabs.Tab>
             <Spacer />
             <TooltipGroup>
+              <ViewSource name={name} />
               <OpenInCodeSandbox title={name} code={rawString} />
               <OpenInStackblitz title={name} code={rawString} />
             </TooltipGroup>
