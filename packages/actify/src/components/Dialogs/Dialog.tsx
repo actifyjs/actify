@@ -7,9 +7,9 @@ import { DialogActivator } from './DialogActivator'
 import { DialogDescription } from './DialogDescription'
 import { DialogProvider } from './DialogContext'
 
-interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface DialogProps extends React.ComponentProps<'div'> {}
 
-const Dialog: React.FC<DialogProps> = (props) => {
+const Dialog = (props: DialogProps) => {
   const { children, ...rest } = props
   return <DialogProvider {...rest}>{children}</DialogProvider>
 }

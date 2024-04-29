@@ -1,8 +1,9 @@
 'use client'
+import { Slot } from '@actify/Slot'
 import { tv } from 'tailwind-variants'
-import { useMergeRefs } from '@floating-ui/react'
+import React, { forwardRef } from 'react'
+import { useMergedRefs } from '@hooks/mergeRefs'
 import { useDialogContext } from './DialogContext'
-import React, { forwardRef, isValidElement, cloneElement } from 'react'
 
 const variants = tv({
   base: 'flex items-center'
@@ -13,43 +14,27 @@ export interface DialogActivatorProps
   asChild?: boolean
 }
 
-const DialogActivator: React.FC<DialogActivatorProps> = forwardRef(
-  (
-    { className, children, asChild, ...props },
-    propRef?: React.Ref<HTMLDivElement>
-  ) => {
+const DialogActivator = forwardRef<HTMLElement, DialogActivatorProps>(
+  (props, forwardedRef) => {
+    const { className, children, asChild, ...rest } = props
     const context = useDialogContext()
-    // @ts-ignore
-    const childrenRef = children.ref
-    // @ts-ignore
-    const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
 
-    // `asChild` allows the user to pass any element as the anchor
-    if (asChild && isValidElement(children)) {
-      return cloneElement(
-        children,
-        // @ts-ignore
-        context.getReferenceProps({
-          ref,
-          ...props,
-          ...children.props,
-          role: 'button',
-          'data-state': context.open ? 'open' : 'closed'
-        })
-      )
-    }
+    // @ts-ignore
+    const mergedRefs = useMergedRefs([context.refs.setReference, forwardedRef])
+    const Comp = asChild ? Slot : 'div'
 
     return (
-      <div
-        ref={ref}
+      <Comp
+        {...rest}
         role="button"
+        ref={mergedRefs}
         className={variants({ className })}
         // @ts-ignore
-        {...context.getReferenceProps(props)}
+        {...context.getReferenceProps(rest)}
         data-state={context.open ? 'open' : 'closed'}
       >
         {children}
-      </div>
+      </Comp>
     )
   }
 )

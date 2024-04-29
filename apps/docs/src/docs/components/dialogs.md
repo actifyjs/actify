@@ -14,7 +14,9 @@ title: Dialogs
 
 <code-preview code='<Dialog>
     <Dialog.Activator>
-      <Button>Open dialog with activator</Button>
+      <Button>
+        Open dialog with activator
+      </Button>
     </Dialog.Activator>
     <Dialog.Content>
       <Dialog.Heading>

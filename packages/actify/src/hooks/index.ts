@@ -1,6 +1,6 @@
 export { default as useInterval } from './useInterval'
 export { default as useDebounce } from './useDebounce'
-export { mergeRefs, useMergeRefs } from './useMergeRefs'
+export { mergeRefs, useMergedRefs } from './mergeRefs'
 export { default as useInputState } from './useInputState'
 export { default as useAttachable } from './useAttachable'
 export { default as useOnClickOutside } from './useOnClickOutside'

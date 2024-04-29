@@ -1,4 +1,5 @@
 'use client'
+import { useControllableState } from '@hooks/useControllableState'
 import React, { createContext, useState, useMemo, useContext } from 'react'
 
 import {
@@ -17,17 +18,15 @@ type DialogProps = {
 
 const DialogContext = createContext<DialogProps | null>(null)
 
-function useDialog({
-  initialOpen = false,
-  open: controlledOpen,
-  onOpenChange: setControlledOpen
-}: DialogProps) {
+function useDialog(props: DialogProps) {
+  const { open: controlledOpen, initialOpen } = props
+  const [open, setOpen] = useControllableState({
+    value: controlledOpen,
+    defaultValue: initialOpen
+  })
+
   const [labelId, setLabelId] = useState()
   const [descriptionId, setDescriptionId] = useState()
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
-
-  const open = controlledOpen ?? uncontrolledOpen
-  const setOpen = setControlledOpen ?? setUncontrolledOpen
 
   const data = useFloating({
     open,
@@ -48,11 +47,11 @@ function useDialog({
     () => ({
       open,
       setOpen,
-      ...interactions,
-      ...data,
       labelId,
-      descriptionId,
+      ...data,
       setLabelId,
+      descriptionId,
+      ...interactions,
       setDescriptionId
     }),
     [open, setOpen, interactions, data, labelId, descriptionId]

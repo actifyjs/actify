@@ -1,5 +1,4 @@
 {
-  "name": "actify",
   "private": true,
   "scripts": {
     "modify": "node ./scripts/modify.js",

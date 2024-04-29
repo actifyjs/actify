@@ -1,8 +1,8 @@
-import { useMemo } from 'react'
+import { useCallback } from 'react'
 
 type PossibleRef<T> = React.Ref<T> | null | undefined
 
-export function setRef<T>(ref: PossibleRef<T>, value: T) {
+function setRef<T>(ref: PossibleRef<T>, value: T) {
   if (typeof ref === 'function') {
     ref(value)
   } else if (ref !== null && ref !== undefined) {
@@ -10,7 +10,7 @@ export function setRef<T>(ref: PossibleRef<T>, value: T) {
   }
 }
 
-export function mergeRefs<T>(...refs: PossibleRef<T>[]) {
+function mergeRefs<T>(...refs: PossibleRef<T>[]) {
   return (node: T | null) => {
     refs.forEach((ref) => {
       setRef(ref, node)
@@ -18,7 +18,9 @@ export function mergeRefs<T>(...refs: PossibleRef<T>[]) {
   }
 }
 
-export function useMergeRefs<T>(...refs: PossibleRef<T>[]) {
+function useMergedRefs<T>(...refs: PossibleRef<T>[]) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useMemo(() => mergeRefs(...refs), refs)
+  return useCallback(mergeRefs(...refs), [refs])
 }
+
+export { mergeRefs, useMergedRefs }

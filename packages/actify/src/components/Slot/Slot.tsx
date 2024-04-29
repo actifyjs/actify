@@ -1,6 +1,6 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeRefs } from '@hooks/useMergeRefs'
+import { mergeRefs } from '@hooks/mergeRefs'
 
 /* -------------------------------------------------------------------------------------------------
  * Slot
@@ -66,7 +66,7 @@ const SlotClone = React.forwardRef<any, SlotCloneProps>(
     if (React.isValidElement(children)) {
       return React.cloneElement(children, {
         ...mergeProps(slotProps, children.props),
-        // @ts-expect-error
+        // @ts-ignore
         ref: forwardedRef
           ? mergeRefs(forwardedRef, (children as any).ref)
           : (children as any).ref
