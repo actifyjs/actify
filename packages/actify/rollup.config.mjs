@@ -1,19 +1,19 @@
-import { exec } from 'child_process'
-import terser from '@rollup/plugin-terser'
-import banner2 from 'rollup-plugin-banner2'
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
+import terser from '@rollup/plugin-terser'
+import { exec } from 'child_process'
 
 import copy from 'rollup-plugin-copy'
 import json from '@rollup/plugin-json'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import { typescriptPaths } from 'rollup-plugin-typescript-paths'
+import preserveDirectives from 'rollup-plugin-preserve-directives'
 
 const outputOptions = {
   sourcemap: false,
-  preserveModulesRoot: 'src',
-  inlineDynamicImports: true
+  preserveModules: true,
+  preserveModulesRoot: 'src'
 }
 
 const tscAlias = () => {
@@ -41,13 +41,12 @@ export default [
         dir: 'dist',
         format: 'cjs',
         entryFileNames: '[name].cjs',
-        exports: 'named',
+        exports: 'auto',
         ...outputOptions
       },
       {
         dir: 'dist',
         format: 'esm',
-        exports: 'named',
         ...outputOptions
       }
     ],
@@ -55,12 +54,11 @@ export default [
       'dayjs',
       'react',
       'tslib',
-      'popmotion',
       'react-dom',
-      '@babel/runtime',
+      'popmotion',
       'framer-motion',
-      'lucide-react',
-      'react-router-dom',
+      '@babel/runtime',
+      'tailwind-variants',
       '@floating-ui/react'
     ],
     plugins: [
@@ -72,15 +70,15 @@ export default [
         tsconfig: './tsconfig.json'
       }),
       typescriptPaths(),
+      preserveDirectives(),
       terser({ compress: { directives: false } }),
       copy({
         targets: [
-          { src: './../../README.md', dest: '.' },
-          { src: './../../LICENSE.md', dest: '.' }
+          { src: './../../README.md', dest: 'dist' },
+          { src: './../../LICENSE.md', dest: 'dist' }
         ]
       }),
-      tscAlias(),
-      banner2(() => `"use client";\n`)
+      tscAlias()
     ],
     onwarn(warning, warn) {
       if (warning.code !== 'MODULE_LEVEL_DIRECTIVE') {

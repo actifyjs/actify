@@ -23,15 +23,10 @@ const Button = forwardRef(
 
     return (
       <>
-        {/* @ts-expect-error */}
         {variant === 'filled' && <FilledButton ref={ref} {...rest} />}
-        {/* @ts-expect-error */}
         {variant === 'elevated' && <ElevatedButton ref={ref} {...rest} />}
-        {/* @ts-expect-error */}
         {variant === 'tonal' && <TonalButton ref={ref} {...rest} />}
-        {/* @ts-expect-error */}
         {variant === 'outlined' && <OutlinedButton ref={ref} {...rest} />}
-        {/* @ts-expect-error */}
         {variant === 'text' && <TextButton ref={ref} {...rest} />}
       </>
     )

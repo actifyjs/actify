@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useId, createContext, useContext } from 'react'
 
 type Tab = {}

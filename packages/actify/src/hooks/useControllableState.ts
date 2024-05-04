@@ -1,3 +1,5 @@
+'use client'
+
 import { useMemo, useState, useRef, useEffect, useCallback } from 'react'
 
 export function useCallbackRef<T extends (...args: any[]) => any>(

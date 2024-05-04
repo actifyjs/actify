@@ -1,5 +1,4 @@
 'use client'
-
 import themes from '@themes/index'
 import { tv } from 'tailwind-variants'
 import { createPortal } from 'react-dom'
@@ -66,11 +65,8 @@ const contentVariants = tv({
   ]
 })
 
-const DrawerContent: React.FC<React.ComponentProps<'div'>> = ({
-  style,
-  className,
-  children
-}) => {
+interface DrawerContentProps extends React.ComponentProps<'div'> {}
+const DrawerContent = ({ style, className, children }: DrawerContentProps) => {
   const [container, setContainer] = useState<HTMLElement>()
   const { open, placement, setOpen } = useDrawer()
 

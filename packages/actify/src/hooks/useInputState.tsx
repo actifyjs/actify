@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, ChangeEvent, ChangeEventHandler } from 'react'
 
 type Value = string | readonly string[] | number | undefined

@@ -5,14 +5,15 @@ export default withMaterialColors(
   {
     darkMode: 'class',
     content: [
-      './src/**/*.{html,md,js,ts,jsx,tsx}',
-      './node_modules/actify/src/**/*.{js,ts,jsx,tsx}'
+      './pages/**/*.{js,ts,jsx,tsx,mdx}',
+      './components/**/*.{js,ts,jsx,tsx,mdx}',
+      './app/**/*.{js,ts,jsx,tsx,mdx}',
+      './node_modules/actify/**/*.tsx'
     ],
     plugins: [typography]
   },
   {
     primary: '#006a6a'
-    // primary: '#5b6400'
   },
   {
     extend: true

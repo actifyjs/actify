@@ -3,7 +3,6 @@ import React, { useId, forwardRef, useState, useContext } from 'react'
 import { Ripple } from '@actify/Ripple'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
-import { NavLink } from 'react-router-dom'
 import { ListContext } from './ListContext'
 
 const variants = tv({
@@ -39,13 +38,9 @@ const ListItemLink = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
       onMouseOver={() => setCurrent(children?.toString())}
       onMouseOut={() => setCurrent(undefined)}
     >
-      <NavLink
-        to={to}
-        className={({ isActive }) =>
-          isActive
-            ? 'text-primary bg-black/10 w-[calc(100%+16px)] h-full flex items-center pl-4 -ml-4'
-            : ''
-        }
+      <a
+        href={to}
+        className="text-primary bg-black/10 w-[calc(100%+16px)] h-full flex items-center pl-4 -ml-4"
       >
         {children}
         {children == current && (
@@ -55,7 +50,7 @@ const ListItemLink = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
           />
         )}
         <Ripple id={id} />
-      </NavLink>
+      </a>
     </li>
   )
 })

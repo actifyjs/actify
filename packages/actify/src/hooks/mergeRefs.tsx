@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback } from 'react'
 
 type PossibleRef<T> = React.Ref<T> | null | undefined
