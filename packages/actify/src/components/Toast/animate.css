@@ -1,0 +1,28 @@
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc((var(--index) - 1) * -100%));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, calc(var(--index) * -100%));
+  }
+}
+
+@keyframes slide-down {
+  from {
+    /* opacity: 1; */
+    transform: translate(-50%, calc(var(--index) * -100%));
+  }
+  to {
+    /* opacity: 0; */
+    transform: translate(-50%, calc((var(--index) - 1) * -100%));
+  }
+}
+
+.toast-entry {
+  animation: slide-up 0.3s ease-in-out;
+}
+.toast-leave {
+  animation: slide-down 0.3s ease-in-out;
+}
