@@ -5,7 +5,6 @@ import { Eye, Code2 } from 'lucide-react'
 import { Tabs, Spacer, TooltipGroup } from 'actify'
 import { allUsages, Usage } from 'contentlayer/generated'
 
-import InvertColor from '@/components/InvertColor'
 import ViewSource from '@/components/ViewSource'
 import OpenInCodeSandbox from '@/components/OpenInCodeSandbox'
 import OpenInStackblitz from '@/components/OpenInStackblitz'
@@ -38,7 +37,6 @@ const DocUsage = ({ component }: { component: string }) => {
           </Tabs.Tab>
           <Spacer />
           <TooltipGroup>
-            <InvertColor />
             <ViewSource name={name} />
             <OpenInCodeSandbox title={name} code={rawString} />
             <OpenInStackblitz title={name} code={rawString} />
