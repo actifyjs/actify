@@ -1,4 +1,4 @@
-name: Deploy Vite Static site to Pages
+name: Deploy Next.js SSG site to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -40,8 +40,12 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install dependencies
         run: pnpm install
-      - name: Build
-        run: pnpm -F actify-docs build
+      - name: Build Actify
+        run: pnpm -F actify build
+      - name: Build Next.js
+        run: |
+          cd apps/docs 
+          pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

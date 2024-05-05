@@ -5,7 +5,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat'
 dayjs.extend(weekday)
 dayjs.extend(customParseFormat)
 
-import { DATE_FORMAT, LANGUAGE } from './constants'
+const [DATE_FORMAT, LANGUAGE] = ['YYYY-MM-DD', 'en']
 
 export function classNames(...classes: (false | null | undefined | string)[]) {
   return classes.filter(Boolean).join(' ')

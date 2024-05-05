@@ -5,7 +5,8 @@ const nextConfig = {
   distDir: 'dist',
   output: 'export',
   trailingSlash: true,
-  skipTrailingSlashRedirect: true
+  skipTrailingSlashRedirect: true,
+  transpilePackages: ['lucide-react']
 }
 
 export default withContentlayer(nextConfig)
