@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { tv } from 'tailwind-variants'
-import { Divider } from '@actify/Divider'
+import { Divider } from './../Divider'
 import { useSideSheets } from './SideSheetsContext'
 
 const variants = tv({

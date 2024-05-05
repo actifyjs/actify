@@ -1,7 +1,7 @@
 'use client'
 import { SupportingText } from './SupportingText'
 import { tv, VariantProps } from 'tailwind-variants'
-import useInputState from '@hooks/useInputState'
+import useInputState from './../../hooks/useInputState'
 import React, { useMemo, useRef, forwardRef, useState, Children } from 'react'
 
 const variants = tv({

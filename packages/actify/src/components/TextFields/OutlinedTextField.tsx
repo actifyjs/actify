@@ -7,7 +7,7 @@ import React, {
   useState,
   Children
 } from 'react'
-import useInputState from '@hooks/useInputState'
+import useInputState from './../../hooks/useInputState'
 import { SupportingText } from './SupportingText'
 import { motion, cubicBezier } from 'framer-motion'
 import { tv, VariantProps } from 'tailwind-variants'

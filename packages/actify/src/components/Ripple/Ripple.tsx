@@ -1,7 +1,7 @@
 'use client'
 import { tv } from 'tailwind-variants'
-import { EASING } from '@animations/index'
-import { useAttachable } from '@hooks/index'
+import { EASING } from './../../animations'
+import { useAttachable } from './../../hooks'
 import React, { useState, useRef, useEffect } from 'react'
 
 const TOUCH_DELAY_MS = 150

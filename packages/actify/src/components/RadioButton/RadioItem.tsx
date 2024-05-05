@@ -1,8 +1,8 @@
 'use client'
 import React, { useMemo, useId, forwardRef } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
-import { Ripple } from '@actify/Ripple'
-import { FocusRing } from '@actify/FocusRing'
+import { Ripple } from './../Ripple'
+import { FocusRing } from './../FocusRing'
 import { useRadio } from './RadioContext'
 
 const root = tv({

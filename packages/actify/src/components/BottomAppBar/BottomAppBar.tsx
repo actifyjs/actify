@@ -1,6 +1,6 @@
 'use client'
 import React, { Children, isValidElement, cloneElement } from 'react'
-import { Elevation } from '@actify/Elevation'
+import { Elevation } from './../Elevation'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({

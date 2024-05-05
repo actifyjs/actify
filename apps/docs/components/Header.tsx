@@ -2,7 +2,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { Button, Spacer, IconButton } from 'actify'
-import { Gamepad2 } from 'lucide-react'
 import Logo from '@/components/Logo'
 import AppDrawer from '@/components/AppDrawer'
 import Search from '@/components/Search'
@@ -43,11 +42,6 @@ const Header: React.FC<React.ComponentProps<'header'>> = () => {
           </span>
         </Link>
         <Spacer />
-        <Link href="/playground" className="block md:hidden">
-          <IconButton color="primary">
-            <Gamepad2 />
-          </IconButton>
-        </Link>
         <IconButton href="https://x.com/actifyjs" target="_blank">
           <svg viewBox="0 0 24 24" aria-hidden="true" className="w-6 h-6">
             <path
@@ -90,11 +84,6 @@ const Header: React.FC<React.ComponentProps<'header'>> = () => {
                   }
                 ]}
               />
-            </li>
-            <li>
-              <Link href="/playground" tabIndex={-1}>
-                <Button variant="text">Playground</Button>
-              </Link>
             </li>
           </ul>
         </div>

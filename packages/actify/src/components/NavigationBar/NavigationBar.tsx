@@ -1,6 +1,6 @@
 'use client'
 import React, { forwardRef } from 'react'
-import { List } from '@actify/Lists'
+import { List } from './../Lists'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({

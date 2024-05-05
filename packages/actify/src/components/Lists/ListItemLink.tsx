@@ -1,6 +1,6 @@
 'use client'
 import React, { useId, forwardRef, useState, useContext } from 'react'
-import { Ripple } from '@actify/Ripple'
+import { Ripple } from './../Ripple'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
 import { ListContext } from './ListContext'

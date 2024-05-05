@@ -1,8 +1,8 @@
 'use client'
-import { Slot } from '@actify/Slot'
+import { Slot } from './../Slot'
 import { tv } from 'tailwind-variants'
 import React, { forwardRef } from 'react'
-import { useMergedRefs } from '@hooks/mergeRefs'
+import { useMergedRefs } from './../../hooks/mergeRefs'
 import { useDialogContext } from './DialogContext'
 
 const variants = tv({

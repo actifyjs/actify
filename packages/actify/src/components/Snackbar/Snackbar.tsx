@@ -1,7 +1,7 @@
 'use client'
 import { X } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import { IconButton } from '@actify/Button/IconButton'
+import { IconButton } from './../Button/IconButton'
 import { motion, AnimatePresence } from 'framer-motion'
 
 let id = 0

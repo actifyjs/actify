@@ -1,8 +1,8 @@
 'use client'
 import { tv } from 'tailwind-variants'
-import { Ripple } from '@actify/Ripple'
-import { FocusRing } from '@actify/FocusRing'
-import { EASING } from '@animations/index'
+import { Ripple } from './../Ripple'
+import { FocusRing } from './../FocusRing'
+import { EASING } from './../../animations'
 import React, { useState, forwardRef, useId } from 'react'
 
 const root = tv({

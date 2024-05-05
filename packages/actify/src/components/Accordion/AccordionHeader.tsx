@@ -5,8 +5,8 @@ import { useAccordion } from './AccordionContext'
 
 import React, { useMemo, forwardRef } from 'react'
 
-import { Text } from '@actify/Text'
-import { Slot } from '@actify/Slot'
+import { Text } from './../Text'
+import { Slot } from './../Slot'
 
 const variants = tv({
   base: 'font-black cursor-pointer flex items-center justify-between',

@@ -1,5 +1,5 @@
 'use client'
-import { Slot } from '@actify/Slot'
+import { Slot } from './../Slot'
 import React, { forwardRef } from 'react'
 import { useSideSheets } from './SideSheetsContext'
 

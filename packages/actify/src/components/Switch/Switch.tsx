@@ -1,7 +1,7 @@
 'use client'
 import { tv } from 'tailwind-variants'
-import { Ripple } from '@actify/Ripple'
-import { FocusRing } from '@actify/FocusRing'
+import { Ripple } from './../Ripple'
+import { FocusRing } from './../FocusRing'
 import React, { useState, forwardRef, useId } from 'react'
 
 const input = tv({

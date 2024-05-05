@@ -1,5 +1,5 @@
 'use client'
-import { ListItem } from '@actify/Lists/ListItem'
+import { ListItem } from './../Lists/ListItem'
 import React, { useContext, forwardRef } from 'react'
 import { useListItem, useFloatingTree, useMergeRefs } from '@floating-ui/react'
 import { tv } from 'tailwind-variants'
@@ -24,7 +24,10 @@ interface MenuItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
 }
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ label, disabled, description, trailing, leading, ...props }, forwardedRef) => {
+  (
+    { label, disabled, description, trailing, leading, ...props },
+    forwardedRef
+  ) => {
     const menu = useContext(MenuContext)
     const item = useListItem({ label: disabled ? null : label })
     const tree = useFloatingTree()
@@ -51,9 +54,19 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
         })}
       >
         {leading}
-        <div className={"flex-1" + (leading !== undefined ? " ml-4" : "") + (trailing !== undefined ? " mr-4" : "")}>
-          <p className={'text-on-surface' + (description && " mb-1/2")}>{label}</p>
-          {description && <p className='text-sm text-on-surface-variant'>{description}</p>}
+        <div
+          className={
+            'flex-1' +
+            (leading !== undefined ? ' ml-4' : '') +
+            (trailing !== undefined ? ' mr-4' : '')
+          }
+        >
+          <p className={'text-on-surface' + (description && ' mb-1/2')}>
+            {label}
+          </p>
+          {description && (
+            <p className="text-sm text-on-surface-variant">{description}</p>
+          )}
         </div>
         {trailing}
       </ListItem>

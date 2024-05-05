@@ -1,8 +1,8 @@
 'use client'
-import { Ripple } from '@actify/Ripple'
+import { Ripple } from './../Ripple'
 import React, { forwardRef } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
-import { Elevation, ElevationProps } from '@actify/Elevation'
+import { Elevation, ElevationProps } from './../Elevation'
 
 const variants = tv({
   base: 'relative inline-flex flex-col rounded-xl',

@@ -4,14 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "module": "ESNext",
     "declaration": true,
-    "outDir": "./dist",
-    "paths": {
-      "@actify/*": ["./src/components/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@themes/*": ["./src/themes/*"],
-      "@animations/*": ["./src/animations/*"]
-    }
+    "outDir": "./dist"
   },
   "exclude": ["node_modules", "dist"]
 }

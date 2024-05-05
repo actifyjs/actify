@@ -9,7 +9,7 @@ import {
   FloatingFocusManager
 } from '@floating-ui/react'
 import { tv } from 'tailwind-variants'
-import themes from '../../themes/index'
+import themes from '../../themes'
 const { scrim } = themes()
 
 const variants = tv({

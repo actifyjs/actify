@@ -8,7 +8,7 @@ import { Tr } from './Tr'
 import { Td } from './Td'
 
 import { Delete, Pencil } from 'lucide-react'
-import { IconButton } from '@actify/Button/IconButton'
+import { IconButton } from './../Button/IconButton'
 
 const variants = tv({
   base: 'w-full text-sm text-left rtl:text-right rounded-xl overflow-hidden bg-surface'

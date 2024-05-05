@@ -1,6 +1,6 @@
 'use client'
 
-import React, {
+import {
   Children,
   useState,
   forwardRef,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { CircularProgress } from '@actify/CircularProgress'
+import { CircularProgress } from './../CircularProgress'
 
 interface Props {}
 

@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react'
-import { useControllableState } from '@hooks/useControllableState'
+import { useControllableState } from './../../hooks/useControllableState'
 
 interface BottomSheetsProps {
   open?: boolean

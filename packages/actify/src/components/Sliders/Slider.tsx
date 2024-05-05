@@ -1,6 +1,6 @@
 'use client'
 import React, { useMemo, forwardRef, useState } from 'react'
-import { Elevation } from '@actify/Elevation'
+import { Elevation } from './../Elevation'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const variants = tv({

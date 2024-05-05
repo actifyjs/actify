@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 
 import { COLORS, DEFAULT_THEME, THEME_DATA } from './constants'
-import useOnClickOutside from '@hooks/useOnClickOutside'
+import useOnClickOutside from './../../hooks/useOnClickOutside'
 
 import { ChevronIcon, CloseIcon } from './Icons'
 import Options from './Options'
@@ -182,7 +182,7 @@ const Select: React.FC<SelectProps> = ({
         formatGroupLabel,
         formatOptionLabel
       }}
-      value={value}
+      value={value!}
       handleValueChange={handleValueChange}
     >
       <div className="relative w-full" ref={ref}>
@@ -301,7 +301,7 @@ const Select: React.FC<SelectProps> = ({
               noOptionsMessage={noOptionsMessage}
               text={inputValue}
               multiple={multiple}
-              value={value}
+              value={value!}
               primaryColor={primaryColor || DEFAULT_THEME}
             />
           </div>

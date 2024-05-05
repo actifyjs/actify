@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { IconButton } from '@actify/Button/IconButton'
-import useInterval from '@hooks/useInterval'
+import { IconButton } from './../Button/IconButton'
+import useInterval from './../../hooks/useInterval'
 import { useCarousel } from './CarouselContext'
 
 type CarouselControlProps = {

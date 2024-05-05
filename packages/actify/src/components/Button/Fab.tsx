@@ -2,9 +2,9 @@
 import React, { useId, forwardRef } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 import { setColor } from './../../utils'
-import { Ripple } from '@actify/Ripple'
-import { FocusRing } from '@actify/FocusRing'
-import { Elevation } from '@actify/Elevation'
+import { Ripple } from './../Ripple'
+import { FocusRing } from './../FocusRing'
+import { Elevation } from './../Elevation'
 
 const root = tv({
   base: [

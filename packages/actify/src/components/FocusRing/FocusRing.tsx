@@ -1,7 +1,7 @@
 'use client'
 import { tv } from 'tailwind-variants'
-import { useAttachable } from '@hooks/index'
-import { EASING } from '@animations/index'
+import { useAttachable } from './../../hooks'
+import { EASING } from './../../animations'
 import React, { useState, useRef, useEffect } from 'react'
 
 const root = tv({

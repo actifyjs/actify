@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import React, { useCallback, useContext } from 'react'
 
-import { Button } from '@actify/Button'
+import { Button } from './../Button'
 import { DATE_FORMAT } from './constants'
 import DatepickerContext from './DatePickerContext'
 

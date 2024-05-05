@@ -1,6 +1,6 @@
 'use client'
 
-import { Slot } from '@actify/Slot'
+import { Slot } from './../Slot'
 import { useAccordion } from './AccordionContext'
 import React, { useMemo, forwardRef } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'

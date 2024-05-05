@@ -33,10 +33,10 @@ import React, {
   useRef,
   useEffect
 } from 'react'
-import { Button } from '@actify/Button'
-import { List } from '@actify/Lists'
+import { Button } from './../Button'
+import { List } from './../Lists'
 import { ChevronDown } from 'lucide-react'
-import { ListItem } from '@actify/Lists/ListItem'
+import { ListItem } from './../Lists/ListItem'
 import { tv } from 'tailwind-variants'
 import { MenuContext } from './MenuContext'
 import { Transition } from 'framer-motion'
@@ -52,13 +52,21 @@ const listVariants = tv({
 interface MenuProps extends React.LiHTMLAttributes<HTMLLIElement> {
   label?: string
   disabled?: boolean
-  variant?: 'filled' | 'elevated' | 'outlined' | 'tonal' | 'text',
-  transition?: Transition,
+  variant?: 'filled' | 'elevated' | 'outlined' | 'tonal' | 'text'
+  transition?: Transition
 }
 
 export const MenuComponent = forwardRef<HTMLLIElement, MenuProps>(
   (
-    { children, className, label, variant = 'filled', disabled, transition, ...props },
+    {
+      children,
+      className,
+      label,
+      variant = 'filled',
+      disabled,
+      transition,
+      ...props
+    },
     forwardedRef
   ) => {
     const [isOpen, setIsOpen] = useState(false)

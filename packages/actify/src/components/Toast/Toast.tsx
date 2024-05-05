@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { XCircle, CheckCircle2 } from 'lucide-react'
-import { IconButton } from '@actify/Button/IconButton'
+import { IconButton } from './../Button/IconButton'
 import { useToastDispatchContext, ToastAction } from './ToastContext'
 
 export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -1,6 +1,6 @@
 'use client'
 
-import themes from '@themes/index'
+import themes from './../../themes'
 import { tv } from 'tailwind-variants'
 import { createPortal } from 'react-dom'
 import React, { useState, useEffect } from 'react'

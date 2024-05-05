@@ -1,5 +1,5 @@
 'use client'
-import { Slot } from '@actify/Slot'
+import { Slot } from './../Slot'
 import { tv } from 'tailwind-variants'
 import React, { forwardRef } from 'react'
 import { useDialogContext } from './DialogContext'
@@ -14,7 +14,7 @@ export interface DialogCloseProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const DialogClose = forwardRef<HTMLElement, DialogCloseProps>(
   (props, forwardedRef) => {
-    const { setOpen } = useDialogContext()
+    const { onOpenChange } = useDialogContext()
     const { className, children, asChild, ...rest } = props
     const Comp = asChild ? Slot : 'div'
 
@@ -23,7 +23,7 @@ const DialogClose = forwardRef<HTMLElement, DialogCloseProps>(
         {...rest}
         // @ts-ignore
         ref={forwardedRef}
-        onClick={() => setOpen?.(false)}
+        onClick={() => onOpenChange?.(false)}
         className={variants({ className })}
       >
         {children}

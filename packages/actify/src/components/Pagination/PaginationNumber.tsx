@@ -1,6 +1,6 @@
 'use client'
 import { tv } from 'tailwind-variants'
-import { Button } from '@actify/Button'
+import { Button } from './../Button'
 
 const buttonVariants = tv({
   base: 'p-2 w-10 rounded-lg'

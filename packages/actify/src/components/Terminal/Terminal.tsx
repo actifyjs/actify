@@ -33,9 +33,9 @@ const Terminal = forwardRef<HTMLDivElement, TerminalProps>((props, ref) => {
   return (
     <div ref={ref} {...rest} className={variants({ className })}>
       <div className="flex h-6 items-center border-b bg-surface">
-        <div className="ml-2 h-3 w-3 rounded-full border-red-900 bg-red-500 shadow-inner"></div>
-        <div className="ml-2 h-3 w-3 rounded-full border-yellow-900 bg-yellow-500 shadow-inner"></div>
-        <div className="ml-2 h-3 w-3 rounded-full border-green-900 bg-green-500 shadow-inner"></div>
+        <div className="ml-2 size-3 rounded-full border-red-900 bg-red-500 shadow-inner"></div>
+        <div className="ml-2 size-3 rounded-full border-yellow-900 bg-yellow-500 shadow-inner"></div>
+        <div className="ml-2 size-3 rounded-full border-green-900 bg-green-500 shadow-inner"></div>
         <div className="mx-auto pr-16">
           <p className="text-center text-sm">{title}</p>
         </div>

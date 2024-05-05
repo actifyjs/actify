@@ -1,6 +1,6 @@
 'use client'
 import React, { forwardRef } from 'react'
-import { Spacer } from '@actify/Spacer'
+import { Spacer } from './../Spacer'
 import { Menu, User } from 'lucide-react'
 import { tv, VariantProps } from 'tailwind-variants'
 

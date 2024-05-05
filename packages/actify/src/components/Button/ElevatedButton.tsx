@@ -1,10 +1,10 @@
 'use client'
 import React, { useId, forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
-import { Ripple } from '@actify/Ripple'
-import { Elevation } from '@actify/Elevation'
-import { FocusRing } from '@actify/FocusRing'
+import { Ripple } from './../Ripple'
 import { ButtonProps } from './Button'
+import { Elevation } from './../Elevation'
+import { FocusRing } from './../FocusRing'
 import { ButtonBase } from './ButtonBase'
 
 const root = tv({

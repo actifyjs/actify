@@ -3,7 +3,7 @@ import React from 'react'
 import { X } from 'lucide-react'
 import { tv } from 'tailwind-variants'
 import { useSideSheets } from './SideSheetsContext'
-import { IconButton } from '@actify/Button/IconButton'
+import { IconButton } from './../Button/IconButton'
 
 const variants = tv({
   base: 'flex-grow text-[22px] text-inverse'

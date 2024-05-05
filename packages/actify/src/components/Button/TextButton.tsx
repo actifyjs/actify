@@ -1,9 +1,9 @@
 'use client'
 import React, { useId, forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
-import { Ripple } from '@actify/Ripple'
-import { Elevation } from '@actify/Elevation'
-import { FocusRing } from '@actify/FocusRing'
+import { Ripple } from './../Ripple'
+import { Elevation } from './../Elevation'
+import { FocusRing } from './../FocusRing'
 import { ButtonProps } from './Button'
 import { ButtonBase } from './ButtonBase'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeRefs } from '@hooks/mergeRefs'
+import { mergeRefs } from './../../hooks/mergeRefs'
 
 /* -------------------------------------------------------------------------------------------------
  * Slot

@@ -21,14 +21,7 @@
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
-    "strict": true,
-    "paths": {
-      "@actify/*": ["./src/components/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@themes/*": ["./src/themes/*"],
-      "@animations/*": ["./src/animations/*"]
-    }
+    "strict": true
   },
   "exclude": ["node_modules"]
 }

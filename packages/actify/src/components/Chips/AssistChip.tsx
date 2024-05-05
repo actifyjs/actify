@@ -1,9 +1,9 @@
 'use client'
 import { ChipProps } from './ChipItem'
 import { tv } from 'tailwind-variants'
-import { Ripple } from '@actify/Ripple'
-import { Elevation } from '@actify/Elevation'
-import { FocusRing } from '@actify/FocusRing'
+import { Ripple } from './../Ripple'
+import { Elevation } from './../Elevation'
+import { FocusRing } from './../FocusRing'
 import React, { forwardRef, useId } from 'react'
 
 const root = tv({

@@ -1,11 +1,11 @@
 'use client'
 import dayjs from 'dayjs'
 import { Keyboard } from 'lucide-react'
-import { Spacer } from '@actify/Spacer'
-import { Button } from '@actify/Button'
+import { Spacer } from './../Spacer'
+import { Button } from './../Button'
 import { tv } from 'tailwind-variants'
 import React, { useEffect, useState } from 'react'
-import { IconButton } from '@actify/Button/IconButton'
+import { IconButton } from './../Button/IconButton'
 
 const buttonVariants = tv({
   base: 'text-6xl leading-[64px] w-full h-full rounded-lg border-none bg-transparent cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none !opacity-100',

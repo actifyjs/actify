@@ -33,7 +33,7 @@ const SegmentedButton = forwardRef<HTMLDivElement, SegmentedButtonProps>(
 
     return (
       <SegmentedButtonProvider {...{ activeIndex, multiple, onChange }}>
-        <div ref={ref} {...rest} style={style} className={root({ variant })}>
+        <div ref={ref} {...rest} style={style} className={root()}>
           <Root {...{ color, ripple, variant }}>{children}</Root>
         </div>
       </SegmentedButtonProvider>

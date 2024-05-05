@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
-import { Button } from '@actify/Button'
+import { Button } from './../Button'
 
 const root = tv({
   base: [

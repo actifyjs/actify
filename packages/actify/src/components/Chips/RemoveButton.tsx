@@ -1,7 +1,7 @@
 import React, { useId } from 'react'
 import { tv } from 'tailwind-variants'
-import { Ripple } from '@actify/Ripple'
-import { FocusRing } from '@actify/FocusRing'
+import { Ripple } from './../Ripple'
+import { FocusRing } from './../FocusRing'
 
 const action = tv({
   base: [

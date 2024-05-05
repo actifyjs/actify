@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import {
   flip,
@@ -20,8 +20,8 @@ import {
 import dayjs from 'dayjs'
 import { TimeClock } from './TimeClock'
 import { CalendarClock } from 'lucide-react'
-import { TextField } from '@actify/TextFields'
-import { IconButton } from '@actify/Button/IconButton'
+import { TextField } from './../TextFields'
+import { IconButton } from './../Button/IconButton'
 
 interface TimeValue extends dayjs.Dayjs {}
 

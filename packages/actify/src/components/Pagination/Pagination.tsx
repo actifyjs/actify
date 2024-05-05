@@ -1,10 +1,10 @@
 'use client'
 import React, { forwardRef } from 'react'
 import { tv } from 'tailwind-variants'
-import { Button } from '@actify/Button'
-import { generatePagination } from '@utils/index'
+import { Button } from './../Button'
+import { generatePagination } from './../../utils'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import PaginationNumber from '@actify/Pagination/PaginationNumber'
+import PaginationNumber from './PaginationNumber'
 
 const variants = tv({
   base: 'bg-surface rounded-lg p-4 flex justify-center'
