@@ -4,8 +4,6 @@ import { withContentlayer } from 'next-contentlayer'
 const nextConfig = {
   distDir: 'dist',
   output: 'export',
-  trailingSlash: true,
-  skipTrailingSlashRedirect: true,
   transpilePackages: ['lucide-react']
 }
 
