@@ -43,6 +43,8 @@ const PageLayout = async ({ params }: PageProps) => {
 
   return (
     <article className="prose text-sm sm:text-base md:text-lg mb-4 max-w-full dark:prose-invert prose-pre:p-0 [&_a]:no-underline">
+      <h1>{page.title}</h1>
+      <blockquote>{page.description}</blockquote>
       <Mdx code={page.body.code} />
       <Toc toc={toc} />
     </article>

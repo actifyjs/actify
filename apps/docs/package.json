@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "cl-dev": "contentlayer dev",
     "dev": "next dev",
+    "cl-dev": "contentlayer dev",
+    "cl-build": "contentlayer build",
     "build": "contentlayer build && next build",
     "start": "next start",
     "lint": "next lint"

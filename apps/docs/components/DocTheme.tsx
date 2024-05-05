@@ -1,5 +1,5 @@
 import { Button } from 'actify'
-import All from './All'
+import DocAll from './DocAll'
 import { useEffect, useState } from 'react'
 import ThemePreview from '@/components/ThemePreview'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
@@ -146,7 +146,7 @@ export default () => {
         <Button onClick={exportColors}>Export Colors</Button>
       </div>
       <h2>Components live</h2>
-      <All />
+      <DocAll />
 
       <h2>How to use?</h2>
       <ul>

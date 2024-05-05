@@ -53,8 +53,8 @@ import {
   Slot
 } from 'actify'
 import DocTabs from './DocTabs'
-import PageIcon from '@/pages/Icons'
-import PageTheme from '@/pages/Theme'
+import DocIcon from './DocIcons'
+import DocTheme from './DocTheme'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 
@@ -106,11 +106,10 @@ const components = {
   th: ({ ...props }) => <th className="text-left" {...props} />,
   td: ({ ...props }) => <td {...props} />,
   option: ({ ...props }) => <option {...props} />,
-  // Doc Pages
-  PageIcon: ({ ...props }) => <PageIcon {...props} />,
-  PageTheme: ({ ...props }) => <PageTheme {...props} />,
-  // Doc Components
+  // Doc Pages or Components
   DocTabs: ({ ...props }) => <DocTabs {...props} />,
+  DocIcon: ({ ...props }) => <DocIcon {...props} />,
+  DocTheme: ({ ...props }) => <DocTheme {...props} />,
   // Actify Components
   Icon: ({ ...props }) => <Icon {...props} />,
   Accordion: ({ ...props }) => <Accordion {...props} />,

@@ -38,7 +38,7 @@ export function Toc({ toc }: TocProps) {
   }
 
   return (
-    <div className="translate-x-full lg:translate-x-0 transition-transform fixed pl-4 right-0 h-[calc(100%-14rem)] space-y-2 w-[16rem] overflow-auto">
+    <div className="translate-x-full lg:translate-x-0 transition-transform fixed pl-4 right-0 top-1/2 -translate-y-1/2 space-y-2 w-64 overflow-auto">
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
   )
