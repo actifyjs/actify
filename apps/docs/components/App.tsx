@@ -1,4 +1,5 @@
 import React from 'react'
+import { version } from 'actify'
 import { tv } from 'tailwind-variants'
 
 const base = tv({
@@ -11,9 +12,11 @@ const base = tv({
   ]
 })
 
-export default function App({ children }: { children: React.ReactNode }) {
+interface AppProps extends React.ComponentProps<'div'> {}
+
+export default function App({ children }: AppProps) {
   return (
-    <div id="actify" className={base()}>
+    <div id="actify" data-version={version} className={base()}>
       {children}
     </div>
   )
