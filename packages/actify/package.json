@@ -62,8 +62,8 @@
     "popmotion": "^11.0.5"
   },
   "peerDependencies": {
-    "react": ">=19",
-    "react-dom": ">=19"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.js",
