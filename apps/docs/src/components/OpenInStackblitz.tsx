@@ -45,8 +45,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   },
   "dependencies": {
     "${name}": "^${version}",
-    react: 'rc',
-    'react-dom': 'rc'
+    "react": "rc",
+    "react-dom": "rc"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.3.0",

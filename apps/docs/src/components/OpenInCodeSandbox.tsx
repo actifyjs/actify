@@ -12,26 +12,30 @@ const OpenInCodeSandbox = ({ title, code }: OpenInCodeSandboxProps) => {
   const parameters = getParameters({
     files: {
       'package.json': {
-        content: JSON.stringify({
-          name: `actify-${title}`,
-          private: true,
-          version: '0.0.0',
-          scripts: {
-            dev: 'vite'
+        content: JSON.stringify(
+          {
+            name: `actify-${title}`,
+            private: true,
+            version: '0.0.0',
+            scripts: {
+              dev: 'vite'
+            },
+            dependencies: {
+              [name]: `^${version}`,
+              react: 'rc',
+              'react-dom': 'rc'
+            },
+            devDependencies: {
+              '@vitejs/plugin-react': '^1.3.0',
+              autoprefixer: '^10.4.5',
+              postcss: '^8.4.13',
+              tailwindcss: 'latest',
+              vite: '^4.5.1'
+            }
           },
-          dependencies: {
-            [name]: `^${version}`,
-            react: 'rc',
-            'react-dom': 'rc'
-          },
-          devDependencies: {
-            '@vitejs/plugin-react': '^1.3.0',
-            autoprefixer: '^10.4.5',
-            postcss: '^8.4.13',
-            tailwindcss: 'latest',
-            vite: '^4.5.1'
-          }
-        }),
+          null,
+          2
+        ),
         isBinary: false
       },
       'App.jsx': {
