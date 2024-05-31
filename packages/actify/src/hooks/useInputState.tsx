@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, ChangeEvent, ChangeEventHandler } from 'react'
+import { ChangeEvent, ChangeEventHandler, useState } from 'react'
 
 type Value = string | readonly string[] | number | undefined
 
@@ -11,7 +11,7 @@ interface useInputStateProps<T> {
   onChange?: ChangeEventHandler<T> | undefined
 }
 // This hook is for controlled and uncontrolled component
-export default function useInputState<T>({
+function useInputState<T>({
   value,
   defaultValue,
   initialValue = '',
@@ -46,3 +46,5 @@ export default function useInputState<T>({
   }
   return [inputValue, handleChange] as const
 }
+
+export { useInputState }

@@ -1,20 +1,22 @@
 'use client'
-import dayjs from 'dayjs'
-import { tv } from 'tailwind-variants'
-import React, { forwardRef, useMemo } from 'react'
 
-const variants = tv({
+import React, { useMemo } from 'react'
+
+import { format } from 'date-fns'
+import { tv } from 'tailwind-variants'
+
+const root = tv({
   base: 'mx-auto h-64 overflow-hidden rounded shadow-2xl bg-black'
 })
 
-interface TerminalProps extends React.HTMLAttributes<HTMLDivElement> {
+interface TerminalProps extends React.ComponentProps<'div'> {
   title?: string
   lastlogin?: Date
   hostname?: string
   username?: string
 }
 
-const Terminal = forwardRef<HTMLDivElement, TerminalProps>((props, ref) => {
+const Terminal = (props: TerminalProps) => {
   const {
     title = 'Terminal',
     username = 'lerte',
@@ -26,12 +28,12 @@ const Terminal = forwardRef<HTMLDivElement, TerminalProps>((props, ref) => {
   } = props
 
   const _lastLogin = useMemo(
-    () => dayjs(lastlogin).format('ddd MMM DD HH:mm:ss'),
+    () => format(lastlogin, 'ddd MMM dd HH:mm:ss'),
     [lastlogin]
   )
 
   return (
-    <div ref={ref} {...rest} className={variants({ className })}>
+    <div {...rest} className={root({ className })}>
       <div className="flex h-6 items-center border-b bg-surface">
         <div className="ml-2 size-3 rounded-full border-red-900 bg-red-500 shadow-inner"></div>
         <div className="ml-2 size-3 rounded-full border-yellow-900 bg-yellow-500 shadow-inner"></div>
@@ -48,8 +50,8 @@ const Terminal = forwardRef<HTMLDivElement, TerminalProps>((props, ref) => {
       </div>
     </div>
   )
-})
+}
 
 Terminal.displayName = 'Actify.Terminal'
 
-export default Terminal
+export { Terminal }

@@ -1,1 +1,1 @@
-export { default as FocusRing } from './FocusRing'
+export { FocusRing } from './FocusRing'

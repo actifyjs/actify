@@ -1,2 +1,2 @@
-export { default as Pagination } from './Pagination'
-export { default as PaginationNumber } from './PaginationNumber'
+export { Pagination } from './Pagination'
+export { PaginationNumber } from './PaginationNumber'

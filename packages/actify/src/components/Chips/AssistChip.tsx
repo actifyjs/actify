@@ -1,49 +1,51 @@
 'use client'
+
+import React, { useId } from 'react'
+
 import { ChipProps } from './ChipItem'
-import { tv } from 'tailwind-variants'
-import { Ripple } from './../Ripple'
 import { Elevation } from './../Elevation'
 import { FocusRing } from './../FocusRing'
-import React, { forwardRef, useId } from 'react'
+import { Ripple } from './../Ripple'
+import { tv } from 'tailwind-variants'
 
 const root = tv({
   base: [
     '[--container-height:var(--md-assist-chip-container-height,32px)]',
-    '[--disabled-label-text-color:var(--md-assist-chip-disabled-label-text-color,rgb(var(--color-on-surface)))]',
+    '[--disabled-label-text-color:var(--md-assist-chip-disabled-label-text-color,var(--md-sys-color-surface))]',
     '[--disabled-label-text-opacity:var(--md-assist-chip-disabled-label-text-opacity,0.38)]',
     '[--elevated-container-color:var(--md-assist-chip-elevated-container-color,var(--md-sys-color-surface-container-low,#f7f2fa))]',
     '[--elevated-container-elevation:var(--md-assist-chip-elevated-container-elevation,1)]',
     '[--elevated-container-shadow-color:var(--md-assist-chip-elevated-container-shadow-color,var(--md-sys-color-shadow,#000))]',
-    '[--elevated-disabled-container-color:var(--md-assist-chip-elevated-disabled-container-color,var(--color-on-surface,#1d1b20))]',
+    '[--elevated-disabled-container-color:var(--md-assist-chip-elevated-disabled-container-color,var(--md-sys-color-on-surface,#1d1b20))]',
     '[--elevated-disabled-container-elevation:var(--md-assist-chip-elevated-disabled-container-elevation,0)]',
     '[--elevated-disabled-container-opacity:var(--md-assist-chip-elevated-disabled-container-opacity,0.12)]',
     '[--elevated-focus-container-elevation:var(--md-assist-chip-elevated-focus-container-elevation,1)]',
     '[--elevated-hover-container-elevation:var(--md-assist-chip-elevated-hover-container-elevation,2)]',
     '[--elevated-pressed-container-elevation:var(--md-assist-chip-elevated-pressed-container-elevation,1)]',
-    '[--focus-label-text-color:var(--md-assist-chip-focus-label-text-color,rgb(var(--color-on-surface)))]',
-    '[--hover-label-text-color:var(--md-assist-chip-hover-label-text-color,rgb(var(--color-on-surface)))]',
-    '[--hover-state-layer-color:var(--md-assist-chip-hover-state-layer-color,rgb(var(--color-on-surface)))]',
+    '[--focus-label-text-color:var(--md-assist-chip-focus-label-text-color,var(--md-sys-color-on-surface))]',
+    '[--hover-label-text-color:var(--md-assist-chip-hover-label-text-color,var(--md-sys-color-on-surface))]',
+    '[--hover-state-layer-color:var(--md-assist-chip-hover-state-layer-color,var(--md-sys-color-on-surface))]',
     '[--hover-state-layer-opacity:var(--md-assist-chip-hover-state-layer-opacity,0.08)]',
-    '[--label-text-color:var(--md-assist-chip-label-text-color,rgb(var(--color-on-surface)))]',
+    '[--label-text-color:var(--md-assist-chip-label-text-color,var(--md-sys-color-on-surface))]',
     '[--label-text-font:var(--md-assist-chip-label-text-font,var(--md-sys-typescale-label-large-font,var(--md-ref-typeface-plain,Roboto)))]',
     '[--label-text-line-height:var(--md-assist-chip-label-text-line-height,var(--md-sys-typescale-label-large-line-height,1.25rem))]',
     '[--label-text-size:var(--md-assist-chip-label-text-size,var(--md-sys-typescale-label-large-size,0.875rem))]',
     '[--label-text-weight:var(--md-assist-chip-label-text-weight,var(--md-sys-typescale-label-large-weight,var(--md-ref-typeface-weight-medium, 500)))]',
-    '[--pressed-label-text-color:var(--md-assist-chip-pressed-label-text-color,rgb(var(--color-on-surface)))]',
-    '[--pressed-state-layer-color:var(--md-assist-chip-pressed-state-layer-color,rgb(var(--color-on-surface)))]',
+    '[--pressed-label-text-color:var(--md-assist-chip-pressed-label-text-color,var(--md-sys-color-on-surface))]',
+    '[--pressed-state-layer-color:var(--md-assist-chip-pressed-state-layer-color,var(--md-sys-color-on-surface))]',
     '[--pressed-state-layer-opacity:var(--md-assist-chip-pressed-state-layer-opacity,0.12)]',
-    '[--disabled-outline-color:var(--md-assist-chip-disabled-outline-color,rgb(var(--color-on-surface)))]',
+    '[--disabled-outline-color:var(--md-assist-chip-disabled-outline-color,var(--md-sys-color-on-surface))]',
     '[--disabled-outline-opacity:var(--md-assist-chip-disabled-outline-opacity,0.12)]',
-    '[--focus-outline-color:var(--md-assist-chip-focus-outline-color,rgb(var(--color-on-surface)))]',
-    '[--outline-color:var(--md-assist-chip-outline-color,rgb(var(--color-outline)))]',
+    '[--focus-outline-color:var(--md-assist-chip-focus-outline-color,var(--md-sys-color-on-surface))]',
+    '[--outline-color:var(--md-assist-chip-outline-color,var(--md-sys-color-outline))]',
     '[--outline-width:var(--md-assist-chip-outline-width,1px)]',
-    '[--disabled-leading-icon-color:var(--md-assist-chip-disabled-leading-icon-color,rgb(var(--color-on-surface)))]',
+    '[--disabled-leading-icon-color:var(--md-assist-chip-disabled-leading-icon-color,var(--md-sys-color-on-surface))]',
     '[--disabled-leading-icon-opacity:var(--md-assist-chip-disabled-leading-icon-opacity,0.38)]',
-    '[--focus-leading-icon-color:var(--md-assist-chip-focus-leading-icon-color,rgb(var(--color-primary)))]',
-    '[--hover-leading-icon-color:var(--md-assist-chip-hover-leading-icon-color,rgb(var(--color-primary))]',
-    '[--leading-icon-color:var(--md-assist-chip-leading-icon-color,rgb(var(--color-primary)))]',
+    '[--focus-leading-icon-color:var(--md-assist-chip-focus-leading-icon-color,var(--md-sys-color-primary))]',
+    '[--hover-leading-icon-color:var(--md-assist-chip-hover-leading-icon-color,var(--md-sys-color-primary))]',
+    '[--leading-icon-color:var(--md-assist-chip-leading-icon-color,var(--md-sys-color-primary))]',
     '[--icon-size:var(--md-assist-chip-icon-size,18px)]',
-    '[--pressed-leading-icon-color:var(--md-assist-chip-pressed-leading-icon-color,rgb(var(--color-primary)))]',
+    '[--pressed-leading-icon-color:var(--md-assist-chip-pressed-leading-icon-color,var(--md-sys-color-primary))]',
     '[--container-shape-start-start:var(--md-assist-chip-container-shape-start-start,var(--md-assist-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
     '[--container-shape-start-end:var(--md-assist-chip-container-shape-start-end,var(--md-assist-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
     '[--container-shape-end-end:var(--md-assist-chip-container-shape-end-end,var(--md-assist-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
@@ -189,6 +191,7 @@ const touch = tv({
 
 const ring = tv({
   base: [
+    'text-primary',
     '[--md-focus-ring-shape-start-start:var(--container-shape-start-start)]',
     '[--md-focus-ring-shape-start-end:var(--container-shape-start-end)]',
     '[--md-focus-ring-shape-end-end:var(--container-shape-end-end)]',
@@ -198,10 +201,10 @@ const ring = tv({
 
 interface AssitChipProps extends Omit<ChipProps, 'type'> {}
 
-const AssitChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
+const AssitChip = (props: AssitChipProps) => {
   const {
+    id,
     href,
-    style,
     target,
     className,
     elevated,
@@ -211,7 +214,7 @@ const AssitChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
     ...rest
   } = props
 
-  const id = useId()
+  const chipId = id || `actify-assit-chip${useId()}`
 
   const hasIcon = React.Children.toArray(children).find(
     (child) =>
@@ -242,20 +245,24 @@ const AssitChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
   }) => {
     return href ? (
       <a
-        id={id}
+        id={chipId}
         href={href}
         target="_blank"
         className={action({ hasIcon, primary })}
       >
         {renderLeadingIcon()}
         <span className={label({ disabled })}>{labelString}</span>
-        <span className={touch()}></span>
+        <span className={touch()} />
       </a>
     ) : (
-      <button id={id} type="button" className={action({ hasIcon, primary })}>
+      <button
+        id={chipId}
+        type="button"
+        className={action({ hasIcon, primary })}
+      >
         {renderLeadingIcon()}
         <span className={label({ disabled })}>{labelString}</span>
-        <span className={touch()}></span>
+        <span className={touch()} />
       </button>
     )
   }
@@ -263,25 +270,23 @@ const AssitChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
   return (
     <div
       {...rest}
-      ref={ref}
-      style={style}
       role="presentation"
       className={root({ disabled, className })}
     >
       <div className={container({ disabled })}>
         {elevated ? (
-          <Elevation level={1} />
+          <Elevation className="[--md-elevation-level:1]" />
         ) : (
-          <span className={outline({ disabled })}></span>
+          <span className={outline({ disabled })} />
         )}
-        <FocusRing id={id} className={ring()} />
-        <Ripple id={id} disabled={disabled} />
+        <FocusRing id={chipId} className={ring()} />
+        <Ripple id={chipId} disabled={disabled} />
         {renderPrimaryAction({ href, primary: true })}
       </div>
     </div>
   )
-})
+}
 
 AssitChip.displayName = 'Actify.AssitChip'
 
-export default AssitChip
+export { AssitChip }

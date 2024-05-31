@@ -1,7 +1,8 @@
 import React, { useId } from 'react'
-import { tv } from 'tailwind-variants'
-import { Ripple } from './../Ripple'
+
 import { FocusRing } from './../FocusRing'
+import { Ripple } from './../Ripple'
+import { tv } from 'tailwind-variants'
 
 const action = tv({
   base: [
@@ -32,6 +33,9 @@ const icon = tv({
     'text-[--trailing-icon-color]'
   ],
   variants: {
+    selected: {
+      true: ['text-[--selected-trailing-icon-color]']
+    },
     disabled: {
       true: [
         'text-[--disabled-trailing-icon-color]',
@@ -53,11 +57,12 @@ const touch = tv({
 })
 
 interface RemoveButtonProps extends React.ComponentProps<'button'> {
+  selected?: boolean
   setHide: (hide: boolean) => void
 }
 
 const RemoveButton = (props: RemoveButtonProps) => {
-  const { disabled, setHide } = props
+  const { selected, disabled, setHide } = props
   const id = useId()
 
   const handleClick = (e: React.MouseEvent) => {
@@ -67,6 +72,7 @@ const RemoveButton = (props: RemoveButtonProps) => {
   return (
     <button
       id={id}
+      tabIndex={-1}
       disabled={disabled}
       onClick={handleClick}
       className={action()}
@@ -77,7 +83,7 @@ const RemoveButton = (props: RemoveButtonProps) => {
         disabled={disabled}
         className="rounded-full self-center mx-auto size-[calc(1.3333333333*var(--icon-size))]"
       />
-      <span className={icon({ disabled })} aria-hidden="true">
+      <span className={icon({ selected, disabled })} aria-hidden="true">
         <svg viewBox="0 96 960 960">
           <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
         </svg>

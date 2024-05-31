@@ -1,9 +1,11 @@
 'use client'
-import React, { useId, forwardRef, useState, useMemo, useContext } from 'react'
+
+import React, { useContext, useId, useMemo, useState } from 'react'
+
+import { ListContext } from './ListContext'
 import { Ripple } from './../Ripple'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
-import { ListContext } from './ListContext'
 
 const root = tv({
   base: [
@@ -19,16 +21,16 @@ const root = tv({
   ]
 })
 
-interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+interface ListItemProps extends React.ComponentProps<'li'> {
   index?: number
 }
 
-const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
-  const { index, className, children, ...rest } = props
+const ListItem = (props: ListItemProps) => {
+  const { id, index, className, children, ...rest } = props
   const [current, setCurrent] = useState<string | undefined>('')
   const { layoutId, transition } = useContext(ListContext)
 
-  const id = useId()
+  const listItemId = id || `actify-list-item${useId()}`
 
   const handleMouseOver = () => {
     if (typeof children === 'string') {
@@ -50,9 +52,8 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
 
   return (
     <li
-      id={id}
-      ref={ref}
       {...rest}
+      id={listItemId}
       className={root({ className })}
       onMouseOver={handleMouseOver}
       onMouseOut={() => setCurrent(undefined)}
@@ -62,13 +63,13 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
         <motion.div
           layoutId={layoutId}
           transition={transition}
-          className="absolute inset-0 bg-secondary/25 z-[-1]"
+          className="absolute inset-0 bg-surface-variant z-[-1]"
         />
       )}
-      <Ripple id={id} />
+      <Ripple id={listItemId} />
     </li>
   )
-})
+}
 
 ListItem.displayName = 'Actify.ListItem'
 

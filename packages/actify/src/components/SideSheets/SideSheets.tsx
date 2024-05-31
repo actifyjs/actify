@@ -1,21 +1,19 @@
 'use client'
-import React from 'react'
-import { Body } from './SideSheetsBody'
+
 import { Action } from './SideSheetsAction'
-import { Header } from './SideSheetsHeader'
-import { Content } from './SideSheetsContent'
 import { Activator } from './SideSheetsActivator'
+import { Body } from './SideSheetsBody'
+import { Content } from './SideSheetsContent'
+import { Header } from './SideSheetsHeader'
+import React from 'react'
 import { SideSheetsProvider } from './SideSheetsContext'
 
-type SideSheetsPropTypes = Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  'onChange'
-> & {
+type SideSheetsProps = Omit<React.ComponentProps<'div'>, 'onChange'> & {
   divider?: boolean
   onChange?: () => void
 }
 
-const SideSheets: React.FC<SideSheetsPropTypes> = ({ children, ...rest }) => {
+const SideSheets = ({ children, ...rest }: SideSheetsProps) => {
   return <SideSheetsProvider {...rest}>{children}</SideSheetsProvider>
 }
 

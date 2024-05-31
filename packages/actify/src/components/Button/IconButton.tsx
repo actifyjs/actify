@@ -1,15 +1,17 @@
 'use client'
-import React, { useId, forwardRef } from 'react'
-import { tv, VariantProps } from 'tailwind-variants'
-import { Ripple } from './../Ripple'
+
+import React, { useId } from 'react'
+import { VariantProps, tv } from 'tailwind-variants'
+
 import { FocusRing } from './../FocusRing'
+import { Ripple } from './../Ripple'
 
-import { setColor } from './../../utils'
-
-const variants = tv({
+const root = tv({
   base: [
     'size-10',
     'relative',
+    'cursor-pointer',
+    'text-current',
     'outline-none',
     'ease-in-out',
     'inline-flex',
@@ -17,8 +19,7 @@ const variants = tv({
     'duration-300',
     'items-center',
     'justify-center',
-    'transition-all',
-    'hover:bg-inverse-surface/25'
+    'transition-all'
   ],
   variants: {
     variant: {
@@ -30,64 +31,41 @@ const variants = tv({
   }
 })
 
-type IconButtonTypes = HTMLAnchorElement | HTMLButtonElement
-interface IconButtonProps<T extends IconButtonTypes>
-  extends VariantProps<typeof variants>,
-    React.AnchorHTMLAttributes<T>,
-    React.ButtonHTMLAttributes<T> {
-  tag?: string
-  href?: string
+interface IconButtonProps extends React.ComponentProps<'button'> {
   ripple?: boolean
   disabled?: boolean
   type?: 'submit' | 'reset' | 'button'
+  variant?: VariantProps<typeof root>['variant']
 }
 
-const IconButton = forwardRef(
-  <T extends IconButtonTypes>(
-    props: IconButtonProps<T>,
-    ref?: React.Ref<IconButtonTypes>
-  ) => {
-    const {
-      tag,
-      style,
-      disabled,
-      children,
-      className,
-      ripple = true,
-      type = 'button',
-      color = 'current',
-      variant = 'standard',
-      ...rest
-    } = props
+const IconButton = (props: IconButtonProps) => {
+  const {
+    id,
+    disabled,
+    children,
+    className,
+    ripple = true,
+    type = 'button',
+    variant = 'standard',
+    ...rest
+  } = props
 
-    const id = useId()
+  const iconButtonId = id || `actify-icon-button${useId()}`
 
-    let Tag = ''
-    if (rest.href) {
-      Tag = 'a'
-    } else if (tag) {
-      Tag = tag
-    } else {
-      Tag = 'button'
-    }
-
-    return (
-      // @ts-expect-error
-      <Tag
-        ref={ref}
-        id={id}
-        {...rest}
-        type={Tag == 'button' ? type : null}
-        className={variants({ className })}
-        style={{ color: setColor(color), ...style }}
-      >
-        <FocusRing id={id} />
-        {children}
-        {ripple && <Ripple id={id} disabled={disabled} />}
-      </Tag>
-    )
-  }
-)
+  return (
+    <button
+      {...rest}
+      id={iconButtonId}
+      disabled={disabled}
+      className={root({ className })}
+    >
+      <FocusRing id={iconButtonId} />
+      {ripple && <Ripple id={iconButtonId} disabled={disabled} />}
+      {children}
+      <span className="absolute size-[max(48px,100%)]" />
+    </button>
+  )
+}
 
 IconButton.displayName = 'Actify.IconButton'
 

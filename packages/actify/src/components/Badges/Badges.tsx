@@ -1,9 +1,27 @@
 'use client'
-import React, { forwardRef, useMemo } from 'react'
+
+import React, { useMemo } from 'react'
+
 import { tv } from 'tailwind-variants'
 
-const variants = tv({
-  base: "absolute rounded-full p-1 text-xs font-medium content-[''] leading-none grid place-items-center top-[4%] right-[2%] translate-x-1/2 -translate-y-1/2 text-white min-w-[24px] min-h-[24px]",
+const root = tv({
+  base: [
+    'p-1',
+    'grid',
+    'text-xs',
+    'min-w-6',
+    'min-h-6',
+    'top-[4%]',
+    'absolute',
+    'text-white',
+    'right-[2%]',
+    'font-medium',
+    'leading-none',
+    'rounded-full',
+    'translate-x-1/2',
+    '-translate-y-1/2',
+    'place-items-center'
+  ],
   variants: {
     color: {
       primary: 'bg-primary',
@@ -17,34 +35,32 @@ const variants = tv({
   }
 })
 
-interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
+interface BadgeProps extends React.ComponentProps<'div'> {
   value?: string | number
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
-const Badge: React.FC<BadgeProps> = forwardRef(
-  (props, ref?: React.Ref<HTMLDivElement>) => {
-    const { style, color, value = '', className, children, ...rest } = props
+const Badge = (props: BadgeProps) => {
+  const { color, value = '', className, children, ...rest } = props
 
-    const badge = useMemo(() => {
-      if (parseInt(value.toString()) > 999) {
-        return '999+'
-      } else {
-        return value
-      }
-    }, [value])
+  const badge = useMemo(() => {
+    if (parseInt(value.toString()) > 999) {
+      return '999+'
+    } else {
+      return value
+    }
+  }, [value])
 
-    return (
-      <div className="inline-flex relative" ref={ref} {...rest}>
-        {children}
-        <span className={variants({ color, className })} style={style}>
-          {badge}
-        </span>
-      </div>
-    )
-  }
-)
+  return (
+    <div className="inline-flex relative">
+      {children}
+      <span className={root({ color, className })} {...rest}>
+        {badge}
+      </span>
+    </div>
+  )
+}
 
 Badge.displayName = 'Actify.Badge'
 
-export default Badge
+export { Badge }

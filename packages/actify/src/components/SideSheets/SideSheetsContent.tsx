@@ -1,13 +1,15 @@
 'use client'
 
-import themes from './../../themes'
-import { tv } from 'tailwind-variants'
-import { createPortal } from 'react-dom'
-import { useSideSheets } from './SideSheetsContext'
-import { motion, AnimatePresence } from 'framer-motion'
-import React, { useState, useEffect, forwardRef } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
 
-const { scrim } = themes()
+import { createPortal } from 'react-dom'
+import { tv } from 'tailwind-variants'
+import { useSideSheets } from './SideSheetsContext'
+
+const scrim = tv({
+  base: 'z-50 bg-black/40 dark:bg-[rgba(3,3,3,.8)]'
+})
 
 const rootVariants = tv({
   base: scrim({
@@ -24,7 +26,7 @@ export interface ContentProps extends React.ComponentProps<'div'> {
   divider?: boolean
 }
 
-const Content = forwardRef<HTMLDivElement, ContentProps>((props, ref) => {
+const Content = (props: ContentProps) => {
   const { style, className, children } = props
 
   const { open, setOpen } = useSideSheets()
@@ -86,6 +88,6 @@ const Content = forwardRef<HTMLDivElement, ContentProps>((props, ref) => {
     </AnimatePresence>,
     container
   )
-})
+}
 
 export { Content }

@@ -1,44 +1,38 @@
 'use client'
+
+import React from 'react'
 import { Slot } from './../Slot'
-import React, { forwardRef } from 'react'
 import { useBottomSheets } from './BottomSheetsContext'
 
-export interface ActivatorProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ActivatorProps extends React.ComponentProps<'div'> {
   asChild?: boolean
 }
 
-const Activator: React.FC<ActivatorProps> = forwardRef(
-  ({ asChild, style, className, ...rest }, ref?: React.Ref<HTMLDivElement>) => {
-    const { open, setOpen } = useBottomSheets()
+const Activator = ({
+  asChild,
+  className,
+  children,
+  ...rest
+}: ActivatorProps) => {
+  const { open, setOpen } = useBottomSheets()
 
-    const handleClick = () => {
-      setOpen?.(!open)
-    }
+  const handleClick = () => {
+    setOpen?.(!open)
+  }
 
-    if (asChild) {
-      return (
-        <Slot
-          ref={ref}
-          style={style}
-          className={className}
-          {...{ ...rest, open, onClick: handleClick }}
-        />
-      )
-    }
-
+  if (asChild) {
     return (
-      <div
-        {...rest}
-        ref={ref}
-        role="button"
-        style={style}
-        className={className}
-        onClick={handleClick}
-      >
-        {rest.children}
-      </div>
+      <Slot className={className} {...{ ...rest, open, onClick: handleClick }}>
+        {children}
+      </Slot>
     )
   }
-)
+
+  return (
+    <div {...rest} role="button" className={className} onClick={handleClick}>
+      {children}
+    </div>
+  )
+}
 
 export { Activator }

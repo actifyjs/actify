@@ -1,61 +1,77 @@
 'use client'
+
+import React, { useId, useState } from 'react'
+
 import { ChipProps } from './ChipItem'
-import { tv } from 'tailwind-variants'
-import { Ripple } from './../Ripple'
 import { Elevation } from './../Elevation'
 import { FocusRing } from './../FocusRing'
-import { useChip } from './ChipContext'
 import RemoveButton from './RemoveButton'
-import React, { useState, forwardRef, useId } from 'react'
+import { Ripple } from './../Ripple'
+import { tv } from 'tailwind-variants'
 
 const root = tv({
   base: [
-    '[--container-height:var(--md-assist-chip-container-height,32px)]',
-    '[--disabled-label-text-color:var(--md-assist-chip-disabled-label-text-color,rgb(var(--color-on-surface)))]',
-    '[--disabled-label-text-opacity:var(--md-assist-chip-disabled-label-text-opacity,0.38)]',
-    '[--elevated-container-color:var(--md-assist-chip-elevated-container-color,var(--md-sys-color-surface-container-low,#f7f2fa))]',
-    '[--elevated-container-elevation:var(--md-assist-chip-elevated-container-elevation,1)]',
-    '[--elevated-container-shadow-color:var(--md-assist-chip-elevated-container-shadow-color,var(--md-sys-color-shadow,#000))]',
-    '[--elevated-disabled-container-color:var(--md-assist-chip-elevated-disabled-container-color,var(--color-on-surface,#1d1b20))]',
-    '[--elevated-disabled-container-elevation:var(--md-assist-chip-elevated-disabled-container-elevation,0)]',
-    '[--elevated-disabled-container-opacity:var(--md-assist-chip-elevated-disabled-container-opacity,0.12)]',
-    '[--elevated-focus-container-elevation:var(--md-assist-chip-elevated-focus-container-elevation,1)]',
-    '[--elevated-hover-container-elevation:var(--md-assist-chip-elevated-hover-container-elevation,2)]',
-    '[--elevated-pressed-container-elevation:var(--md-assist-chip-elevated-pressed-container-elevation,1)]',
-    '[--focus-label-text-color:var(--md-assist-chip-focus-label-text-color,rgb(var(--color-on-surface)))]',
-    '[--hover-label-text-color:var(--md-assist-chip-hover-label-text-color,rgb(var(--color-on-surface)))]',
-    '[--hover-state-layer-color:var(--md-assist-chip-hover-state-layer-color,rgb(var(--color-on-surface)))]',
-    '[--hover-state-layer-opacity:var(--md-assist-chip-hover-state-layer-opacity,0.08)]',
-    '[--label-text-color:var(--md-assist-chip-label-text-color,rgb(var(--color-on-surface)))]',
-    '[--label-text-font:var(--md-assist-chip-label-text-font,var(--md-sys-typescale-label-large-font,var(--md-ref-typeface-plain,Roboto)))]',
-    '[--label-text-line-height:var(--md-assist-chip-label-text-line-height,var(--md-sys-typescale-label-large-line-height,1.25rem))]',
-    '[--label-text-size:var(--md-assist-chip-label-text-size,var(--md-sys-typescale-label-large-size,0.875rem))]',
-    '[--label-text-weight:var(--md-assist-chip-label-text-weight,var(--md-sys-typescale-label-large-weight,var(--md-ref-typeface-weight-medium, 500)))]',
-    '[--pressed-label-text-color:var(--md-assist-chip-pressed-label-text-color,rgb(var(--color-on-surface)))]',
-    '[--pressed-state-layer-color:var(--md-assist-chip-pressed-state-layer-color,rgb(var(--color-on-surface)))]',
-    '[--pressed-state-layer-opacity:var(--md-assist-chip-pressed-state-layer-opacity,0.12)]',
-    '[--disabled-outline-color:var(--md-assist-chip-disabled-outline-color,rgb(var(--color-on-surface)))]',
-    '[--disabled-outline-opacity:var(--md-assist-chip-disabled-outline-opacity,0.12)]',
-    '[--disabled-trailing-icon-color:var(--md-filter-chip-disabled-trailing-icon-color,rgb(var(--color-on-surface)))]',
+    '[--container-height:var(--md-input-chip-container-height,32px)]',
+    '[--disabled-label-text-color:var(--md-input-chip-disabled-label-text-color,var(--md-sys-color-on-surface))]',
+    '[--disabled-label-text-opacity:var(--md-input-chip-disabled-label-text-opacity,0.38)]',
+
+    '[--elevated-container-color:var(--md-input-chip-elevated-container-color,var(--md-sys-color-surface-container-low,#f7f2fa))]',
+    '[--elevated-container-elevation:var(--md-input-chip-elevated-container-elevation,1)]',
+    '[--elevated-container-shadow-color:var(--md-input-chip-elevated-container-shadow-color,var(--md-sys-color-shadow,#000))]',
+    '[--elevated-disabled-container-color:var(--md-input-chip-elevated-disabled-container-color,var(--md-sys-color-on-surface,#1d1b20))]',
+    '[--elevated-disabled-container-elevation:var(--md-input-chip-elevated-disabled-container-elevation,0)]',
+    '[--elevated-disabled-container-opacity:var(--md-input-chip-elevated-disabled-container-opacity,0.12)]',
+    '[--elevated-focus-container-elevation:var(--md-input-chip-elevated-focus-container-elevation,1)]',
+    '[--elevated-hover-container-elevation:var(--md-input-chip-elevated-hover-container-elevation,2)]',
+    '[--elevated-pressed-container-elevation:var(--md-input-chip-elevated-pressed-container-elevation,1)]',
+
+    '[--focus-label-text-color:var(--md-input-chip-focus-label-text-color,var(--md-sys-color-on-surface))]',
+    '[--hover-label-text-color:var(--md-input-chip-hover-label-text-color,var(--md-sys-color-on-surface))]',
+    '[--hover-state-layer-color:var(--md-input-chip-hover-state-layer-color,var(--md-sys-color-on-surface))]',
+    '[--hover-state-layer-opacity:var(--md-input-chip-hover-state-layer-opacity,0.08)]',
+    '[--label-text-color:var(--md-input-chip-label-text-color,var(--on-surface))]',
+    '[--label-text-font:var(--md-input-chip-label-text-font,var(--md-sys-typescale-label-large-font,var(--md-ref-typeface-plain,Roboto)))]',
+    '[--label-text-line-height:var(--md-input-chip-label-text-line-height,var(--md-sys-typescale-label-large-line-height,1.25rem))]',
+    '[--label-text-size:var(--md-input-chip-label-text-size,var(--md-sys-typescale-label-large-size,0.875rem))]',
+    '[--label-text-weight:var(--md-input-chip-label-text-weight,var(--md-sys-typescale-label-large-weight,var(--md-ref-typeface-weight-medium, 500)))]',
+    '[--pressed-label-text-color:var(--md-input-chip-pressed-label-text-color,var(--md-sys-color-on-surface)))]',
+    '[--pressed-state-layer-color:var(--md-input-chip-pressed-state-layer-color,var(--md-sys-color-on-surface))]',
+    '[--pressed-state-layer-opacity:var(--md-input-chip-pressed-state-layer-opacity,0.12)]',
+    '[--disabled-outline-color:var(--md-input-chip-disabled-outline-color,var(--md-sys-color-on-surface))]',
+    '[--disabled-outline-opacity:var(--md-input-chip-disabled-outline-opacity,0.12)]',
+    '[--disabled-trailing-icon-color:var(--md-filter-chip-disabled-trailing-icon-color,var(--md-sys-color-on-surface))]',
     '[--disabled-trailing-icon-opacity:var(--md-filter-chip-disabled-trailing-icon-opacity,0.38)]',
-    '[--focus-outline-color:var(--md-assist-chip-focus-outline-color,rgb(var(--color-on-surface)))]',
-    '[--outline-color:var(--md-assist-chip-outline-color,rgb(var(--color-outline)))]',
-    '[--outline-width:var(--md-assist-chip-outline-width,1px)]',
-    '[--disabled-leading-icon-color:var(--md-assist-chip-disabled-leading-icon-color,rgb(var(--color-on-surface)))]',
-    '[--disabled-leading-icon-opacity:var(--md-assist-chip-disabled-leading-icon-opacity,0.38)]',
-    '[--focus-leading-icon-color:var(--md-assist-chip-focus-leading-icon-color,rgb(var(--color-primary)))]',
-    '[--hover-leading-icon-color:var(--md-assist-chip-hover-leading-icon-color,rgb(var(--color-primary))]',
-    '[--leading-icon-color:var(--md-assist-chip-leading-icon-color,rgb(var(--color-primary)))]',
-    '[--icon-size:var(--md-assist-chip-icon-size,18px)]',
-    '[--pressed-leading-icon-color:var(--md-assist-chip-pressed-leading-icon-color,rgb(var(--color-primary)))]',
-    '[--container-shape-start-start:var(--md-assist-chip-container-shape-start-start,var(--md-assist-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
-    '[--container-shape-start-end:var(--md-assist-chip-container-shape-start-end,var(--md-assist-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
-    '[--container-shape-end-end:var(--md-assist-chip-container-shape-end-end,var(--md-assist-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
-    '[--container-shape-end-start:var(--md-assist-chip-container-shape-end-start,var(--md-assist-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
-    '[--leading-space:var(--md-assist-chip-leading-space,16px)]',
-    '[--trailing-space:var(--md-assist-chip-trailing-space,16px)]',
-    '[--icon-label-space:var(--md-assist-chip-icon-label-space,8px)]',
-    '[--with-leading-icon-leading-space:var(--md-assist-chip-with-leading-icon-leading-space,8px)]',
+    '[--focus-outline-color:var(--md-input-chip-focus-outline-color,var(--md-sys-color-on-surface))]',
+    '[--outline-color:var(--md-input-chip-outline-color,var(--md-sys-color-outline))]',
+    '[--outline-width:var(--md-input-chip-outline-width,1px)]',
+
+    '[--disabled-leading-icon-color:var(--md-input-chip-disabled-leading-icon-color,var(--md-sys-color-on-surface))]',
+    '[--disabled-leading-icon-opacity:var(--md-input-chip-disabled-leading-icon-opacity,0.38)]',
+    '[--focus-leading-icon-color:var(--md-input-chip-focus-leading-icon-color,var(--md-sys-color-primary))]',
+    '[--hover-leading-icon-color:var(--md-input-chip-hover-leading-icon-color,var(--md-sys-color-primary)]',
+    '[--leading-icon-color:var(--md-input-chip-leading-icon-color,var(--md-sys-color-primary))]',
+    '[--icon-size:var(--md-input-chip-icon-size,18px)]',
+    '[--pressed-leading-icon-color:var(--md-input-chip-pressed-leading-icon-color,var(--md-sys-color-primary))]',
+
+    '[--disabled-trailing-icon-color:var(--md-input-chip-disabled-trailing-icon-color,var(--md-sys-color-on-surface,#1d1b20))]',
+    '[--disabled-trailing-icon-opacity:var(--md-input-chip-disabled-trailing-icon-opacity,0.38)]',
+    '[--selected-focus-trailing-icon-color:var(--md-input-chip-selected-focus-trailing-icon-color,var(--md-sys-color-on-secondary-container,#1d192b))]',
+    '[--selected-hover-trailing-icon-color:var(--md-input-chip-selected-hover-trailing-icon-color,var(--md-sys-color-on-secondary-container,#1d192b))]',
+    '[--selected-pressed-trailing-icon-color:var(--md-input-chip-selected-pressed-trailing-icon-color,var(--md-sys-color-on-secondary-container,#1d192b))]',
+    '[--selected-trailing-icon-color:var(--md-input-chip-selected-trailing-icon-color,var(--md-sys-color-on-secondary-container,#1d192b))]',
+    '[--focus-trailing-icon-color:var(--md-input-chip-focus-trailing-icon-color,var(--md-sys-color-on-surface-variant,#49454f))]',
+    '[--hover-trailing-icon-color:var(--md-input-chip-hover-trailing-icon-color,var(--md-sys-color-on-surface-variant,#49454f))]',
+    '[--pressed-trailing-icon-color:var(--md-input-chip-pressed-trailing-icon-color,var(--md-sys-color-on-surface-variant,#49454f))]',
+    '[--trailing-icon-color:var(--md-input-chip-trailing-icon-color,var(--md-sys-color-on-surface-variant,#49454f))]',
+
+    '[--container-shape-start-start:var(--md-input-chip-container-shape-start-start,var(--md-input-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
+    '[--container-shape-start-end:var(--md-input-chip-container-shape-start-end,var(--md-input-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
+    '[--container-shape-end-end:var(--md-input-chip-container-shape-end-end,var(--md-input-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
+    '[--container-shape-end-start:var(--md-input-chip-container-shape-end-start,var(--md-input-chip-container-shape,var(--md-sys-shape-corner-small,8px)))]',
+    '[--leading-space:var(--md-input-chip-leading-space,16px)]',
+    '[--trailing-space:var(--md-input-chip-trailing-space,16px)]',
+    '[--icon-label-space:var(--md-input-chip-icon-label-space,8px)]',
+    '[--with-leading-icon-leading-space:var(--md-input-chip-with-leading-icon-leading-space,8px)]',
     '[--with-trailing-icon-trailing-space:var(--md-filter-chip-with-trailing-icon-trailing-space,8px)]',
     // border
     '[border-start-start-radius:var(--container-shape-start-start)]',
@@ -197,6 +213,7 @@ const touch = tv({
 
 const ring = tv({
   base: [
+    'text-primary',
     '[--md-focus-ring-shape-start-start:var(--container-shape-start-start)]',
     '[--md-focus-ring-shape-start-end:var(--container-shape-start-end)]',
     '[--md-focus-ring-shape-end-end:var(--container-shape-end-end)]',
@@ -204,13 +221,13 @@ const ring = tv({
   ]
 })
 
-interface AssitChipProps extends Omit<ChipProps, 'type'> {}
+interface InputChipProps extends Omit<ChipProps, 'type'> {}
 
-const InputChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
+const InputChip = (props: InputChipProps) => {
   const {
+    id,
     href,
     index,
-    style,
     target,
     children,
     className,
@@ -222,7 +239,8 @@ const InputChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
     ...rest
   } = props
 
-  const id = useId()
+  const chipId = id || `actify-assit-chip${useId()}`
+
   const [hide, setHide] = useState(false)
 
   const hasIcon = React.Children.toArray(children).find(
@@ -256,14 +274,14 @@ const InputChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
     if (href) {
       return (
         <a
-          id={id}
+          id={chipId}
           href={href}
           target="_blank"
           className={action({ removable, hasIcon, primary })}
         >
           {renderLeadingIcon()}
           <span className={label({ disabled })}>{content}</span>
-          <span className={touch()}></span>
+          <span className={touch()} />
         </a>
       )
     }
@@ -273,20 +291,20 @@ const InputChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
         <span className={action({ removable, hasIcon, primary })}>
           {renderLeadingIcon()}
           <span className={label({ disabled })}>{content}</span>
-          <span className={touch()}></span>
+          <span className={touch()} />
         </span>
       )
     }
 
     return (
       <button
-        id={id}
+        id={chipId}
         type="button"
         className={action({ removable, hasIcon, primary })}
       >
         {renderLeadingIcon()}
         <span className={label({ disabled })}>{content}</span>
-        <span className={touch()}></span>
+        <span className={touch()} />
       </button>
     )
   }
@@ -298,26 +316,24 @@ const InputChip = forwardRef<HTMLDivElement, AssitChipProps>((props, ref) => {
   return (
     <div
       {...rest}
-      ref={ref}
-      style={style}
       role="presentation"
       className={root({ disabled, className })}
     >
       <div className={container({ disabled })}>
         {elevated ? (
-          <Elevation level={1} />
+          <Elevation className="[--md-elevation-level:1]" />
         ) : (
-          <span className={outline({ disabled })}></span>
+          <span className={outline({ disabled })} />
         )}
-        <FocusRing id={id} className={ring()} />
-        <Ripple id={id} disabled={disabled} />
+        <FocusRing id={chipId} className={ring()} />
+        <Ripple id={chipId} disabled={disabled} />
         {renderPrimaryAction({ href, primary: true })}
         {removable && <RemoveButton disabled={disabled} setHide={setHide} />}
       </div>
     </div>
   )
-})
+}
 
 InputChip.displayName = 'Actify.InputChip'
 
-export default InputChip
+export { InputChip }

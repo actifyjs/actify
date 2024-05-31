@@ -1,4 +1,5 @@
 'use client'
+
 import { useCarousel } from './CarouselContext'
 
 const CarouselIndicator = () => {
@@ -12,9 +13,9 @@ const CarouselIndicator = () => {
           onClick={() => setCurrent?.(index)}
           className={`${
             index == current
-              ? 'bg-primary dark:bg-primary'
-              : 'bg-primary/50 hover:bg-primary/80 dark:bg-primary/50 dark:hover:bg-primary/80'
-          } h-3 w-3 rounded-full`}
+              ? 'bg-primary hover:bg-on-primary'
+              : 'bg-primary-container hover:bg-on-primary-container'
+          } size-3 rounded-full`}
         ></button>
       ))}
     </div>

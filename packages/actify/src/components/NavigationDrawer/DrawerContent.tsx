@@ -1,12 +1,15 @@
 'use client'
-import themes from './../../themes'
-import { tv } from 'tailwind-variants'
-import { createPortal } from 'react-dom'
-import { useDrawer } from './DrawerContext'
-import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 
-const { scrim } = themes()
+import { AnimatePresence, motion } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
+
+import { createPortal } from 'react-dom'
+import { tv } from 'tailwind-variants'
+import { useDrawer } from './DrawerContext'
+
+const scrim = tv({
+  base: 'z-50 bg-black/40'
+})
 
 const rootVariants = tv({
   base: scrim({
@@ -65,7 +68,7 @@ const contentVariants = tv({
   ]
 })
 
-interface DrawerContentProps extends React.ComponentProps<'div'> {}
+export interface DrawerContentProps extends React.ComponentProps<'div'> {}
 const DrawerContent = ({ style, className, children }: DrawerContentProps) => {
   const [container, setContainer] = useState<HTMLElement>()
   const { open, placement, setOpen } = useDrawer()
@@ -152,10 +155,10 @@ const DrawerContent = ({ style, className, children }: DrawerContentProps) => {
     <AnimatePresence mode="wait" initial={false}>
       {open && (
         <motion.nav
+          style={style}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          style={style}
           className={rootVariants({ open })}
         >
           <motion.div
@@ -165,10 +168,7 @@ const DrawerContent = ({ style, className, children }: DrawerContentProps) => {
             {children}
           </motion.div>
           {/* scrim */}
-          <div
-            onClick={() => setOpen?.(false)}
-            className="w-screen h-screen"
-          ></div>
+          <div onClick={() => setOpen?.(false)} className="w-screen h-screen" />
         </motion.nav>
       )}
     </AnimatePresence>,

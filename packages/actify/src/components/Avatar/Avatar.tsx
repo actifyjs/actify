@@ -1,8 +1,10 @@
 'use client'
-import React, { forwardRef } from 'react'
-import { tv, VariantProps } from 'tailwind-variants'
 
-const variants = tv({
+import { VariantProps, tv } from 'tailwind-variants'
+
+import React from 'react'
+
+const root = tv({
   base: 'hover:z-10 inline-block relative object-cover object-center',
   variants: {
     rounded: {
@@ -34,26 +36,22 @@ const variants = tv({
 })
 
 export interface AvatarProps
-  extends VariantProps<typeof variants>,
-    React.ImgHTMLAttributes<HTMLImageElement> {}
+  extends React.ComponentProps<'img'>,
+    VariantProps<typeof root> {}
 
-const Avatar: React.FC<AvatarProps> = forwardRef(
-  (props, ref?: React.Ref<HTMLImageElement>) => {
-    const { style, className, size, square, rounded, alt, src, ...rest } = props
+const Avatar = (props: AvatarProps) => {
+  const { className, size, square, rounded, alt, src, ...rest } = props
 
-    return (
-      <img
-        ref={ref}
-        {...rest}
-        style={style}
-        alt={alt || 'avatar'}
-        className={variants({ size, square, rounded, className })}
-        src={src || 'https://avatars.githubusercontent.com/u/15228321?v=4'}
-      />
-    )
-  }
-)
+  return (
+    <img
+      {...rest}
+      alt={alt || 'avatar'}
+      className={root({ size, square, rounded, className })}
+      src={src || 'https://avatars.githubusercontent.com/u/15228321?v=4'}
+    />
+  )
+}
 
 Avatar.displayName = 'Actify.Avatar'
 
-export default Avatar
+export { Avatar }

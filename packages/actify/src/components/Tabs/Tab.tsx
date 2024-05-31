@@ -1,9 +1,10 @@
 'use client'
-import React, { forwardRef } from 'react'
+
+import { Button } from './../Button'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
-import { Button } from './../Button'
 
 const root = tv({
   base: [
@@ -27,7 +28,7 @@ export interface TabProps extends React.ComponentProps<'li'> {
   index?: number
 }
 
-const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
+const Tab = (props: TabProps) => {
   const { index, className, children, ...rest } = props
 
   const { layoutId, activeTabIndex, scrollToTab } = useTabs()
@@ -39,12 +40,21 @@ const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
   return (
     <li
       role="tab"
-      ref={ref}
       {...rest}
       className={root({ className })}
       onClick={() => handleClick(index!)}
     >
-      <Button variant="text" className="rounded-none">
+      <Button
+        variant="text"
+        style={
+          {
+            '--_container-shape-start-start': 0,
+            '--_container-shape-start-end': 0,
+            '--_container-shape-end-start': 0,
+            '--_container-shape-end-end': 0
+          } as React.CSSProperties
+        }
+      >
         {children}
       </Button>
       {activeTabIndex == index && (
@@ -57,6 +67,6 @@ const Tab = forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       )}
     </li>
   )
-})
+}
 
 export { Tab }

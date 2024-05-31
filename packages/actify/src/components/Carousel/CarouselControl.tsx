@@ -1,9 +1,10 @@
 'use client'
-import React from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+import { Icon } from './../Icon'
 import { IconButton } from './../Button/IconButton'
-import useInterval from './../../hooks/useInterval'
+import React from 'react'
 import { useCarousel } from './CarouselContext'
+import { useInterval } from './../../hooks'
 
 type CarouselControlProps = {
   control?: boolean
@@ -11,11 +12,11 @@ type CarouselControlProps = {
   infinite?: boolean
 }
 
-const CarouselControl: React.FC<CarouselControlProps> = ({
+const CarouselControl = ({
   control,
   autoPlay,
   infinite
-}) => {
+}: CarouselControlProps) => {
   const { total, page, setPage, current, interval } = useCarousel()
 
   const prev = () => {
@@ -35,22 +36,22 @@ const CarouselControl: React.FC<CarouselControlProps> = ({
 
   return (
     control && (
-      <>
+      <React.Fragment>
         <IconButton
           onClick={prev}
-          className="bg-inverse-surface absolute z-30 left-4 top-1/2 -translate-y-1/2"
+          className="bg-primary absolute z-30 left-4 top-1/2 -translate-y-1/2"
         >
-          <ChevronLeft />
+          <Icon className="text-white">chevron_backward</Icon>
           <span className="sr-only">Previous</span>
         </IconButton>
         <IconButton
           onClick={next}
-          className="bg-inverse-surface absolute z-30 right-4 top-1/2 -translate-y-1/2"
+          className="bg-primary absolute z-30 right-4 top-1/2 -translate-y-1/2"
         >
-          <ChevronRight />
+          <Icon className="text-white">chevron_forward</Icon>
           <span className="sr-only">Next</span>
         </IconButton>
-      </>
+      </React.Fragment>
     )
   )
 }

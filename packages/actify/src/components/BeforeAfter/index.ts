@@ -1,1 +1,1 @@
-export { default as BeforeAfter } from './BeforeAfter'
+export { BeforeAfter } from './BeforeAfter'

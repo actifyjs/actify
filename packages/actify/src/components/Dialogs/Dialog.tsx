@@ -1,23 +1,17 @@
-'use client'
+import { MdDialog } from '@material/web/all'
 import React from 'react'
-import { DialogClose } from './DialogClose'
-import { DialogHeading } from './DialogHeading'
-import { DialogContent } from './DialogContent'
-import { DialogActivator } from './DialogActivator'
-import { DialogDescription } from './DialogDescription'
-import { DialogProvider } from './DialogContext'
+import { createComponent } from '@lit/react'
 
-interface DialogProps extends React.ComponentProps<'div'> {}
+const DialogWebComponent = createComponent({
+  react: React,
+  tagName: 'md-dialog',
+  elementClass: MdDialog
+})
 
-const Dialog = (props: DialogProps) => {
-  const { children, ...rest } = props
-  return <DialogProvider {...rest}>{children}</DialogProvider>
+const Dialog = ({
+  ...rest
+}: React.ComponentProps<typeof DialogWebComponent>) => {
+  return <DialogWebComponent {...rest} />
 }
 
-export default Object.assign(Dialog, {
-  Close: DialogClose,
-  Heading: DialogHeading,
-  Content: DialogContent,
-  Activator: DialogActivator,
-  Description: DialogDescription
-})
+export { Dialog }

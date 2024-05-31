@@ -1,88 +1,73 @@
 'use client'
-import { tv } from 'tailwind-variants'
-import { ChevronDown } from 'lucide-react'
-import { useAccordion } from './AccordionContext'
 
-import React, { useMemo, forwardRef } from 'react'
+import React, { useMemo } from 'react'
 
-import { Text } from './../Text'
+import { Icon } from './../Icon'
 import { Slot } from './../Slot'
-
-const variants = tv({
-  base: 'font-black cursor-pointer flex items-center justify-between',
-  variants: {
-    active: {
-      true: 'text-primary',
-      false: '',
-      undefined: ''
-    }
-  }
-})
+import { Text } from './../Text'
+import clsx from 'clsx'
+import { useAccordion } from './AccordionContext'
 
 export type AccordionHeaderProps = {
   index?: number
   asChild?: boolean
   children?: ((_?: any) => React.ReactNode) | React.ReactNode
-} & React.HTMLAttributes<HTMLElement>
+} & React.ComponentProps<'div'>
 
-const AccordionHeader: React.FC<AccordionHeaderProps> = forwardRef(
-  (props, ref?: React.Ref<HTMLDivElement>) => {
-    const { index, asChild, className, ...rest } = props
-    const { multiple, open, setOpen } = useAccordion()
+const AccordionHeader = (props: AccordionHeaderProps) => {
+  const { index, asChild, className, children, ...rest } = props
+  const { multiple, open, setOpen } = useAccordion()
 
-    const active = useMemo(() => {
-      if (open !== undefined) {
-        return open[index as number]
-      }
-    }, [open, index])
-
-    const handleClick = () => {
-      let arr: boolean[] = []
-      if (multiple) {
-        arr = [...(open as boolean[])]
-        arr[index as number] = !arr[index as number]
-      } else {
-        arr[index as number] = !open?.[index as number]
-      }
-      setOpen?.([...arr])
+  const active = useMemo(() => {
+    if (open !== undefined) {
+      return open[index as number]
     }
+  }, [open, index])
 
-    if (asChild) {
-      return (
-        <Slot
-          ref={ref}
-          onClick={handleClick}
-          {...{
-            active,
-            ...rest
-          }}
-          className={variants({ className })}
-        >
-          {typeof rest.children === 'function'
-            ? rest.children({ active })
-            : rest.children}
-        </Slot>
-      )
+  const handleClick = () => {
+    let arr: boolean[] = []
+    if (multiple) {
+      arr = [...(open as boolean[])]
+      arr[index as number] = !arr[index as number]
+    } else {
+      arr[index as number] = !open?.[index as number]
     }
+    setOpen?.([...arr])
+  }
 
+  if (asChild) {
     return (
-      <div
-        ref={ref}
-        {...rest}
+      <Slot
         onClick={handleClick}
-        className={variants({ active, className })}
+        {...{
+          active,
+          ...rest
+        }}
+        className={clsx('a-accordion-header', className)}
       >
-        <Text>{rest.children}</Text>
-        <div
-          className={`transition-transform duration-300 ${
-            active ? 'rotate-90' : 'rotate-0'
-          }`}
-        >
-          <ChevronDown />
-        </div>
-      </div>
+        {typeof children === 'function' ? children({ active }) : children}
+      </Slot>
     )
   }
-)
+
+  return (
+    <div
+      {...rest}
+      onClick={handleClick}
+      className={clsx('a-accordion-header', className)}
+    >
+      <Text>{children}</Text>
+      <div
+        style={{
+          transitionDuration: '300ms',
+          transitionProperty: 'rotate',
+          rotate: active ? '90deg' : 'none'
+        }}
+      >
+        <Icon>keyboard_arrow_down</Icon>
+      </div>
+    </div>
+  )
+}
 
 export { AccordionHeader }

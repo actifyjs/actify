@@ -1,9 +1,8 @@
 'use client'
+
 import React from 'react'
 
-const Action: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  children
-}) => {
+const Action = ({ children }: React.ComponentProps<'div'>) => {
   return <div className="pt-6 pl-6">{children}</div>
 }
 

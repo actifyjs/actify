@@ -1,1 +1,1 @@
-export { default as Elevation, type ElevationProps } from './Elevation'
+export { Elevation } from './Elevation'

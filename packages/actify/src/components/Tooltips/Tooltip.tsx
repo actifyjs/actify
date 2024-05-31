@@ -1,36 +1,34 @@
 'use client'
 
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import {
-  flip,
+  FloatingArrow,
+  FloatingDelayGroup,
+  FloatingPortal,
+  Placement,
   arrow,
-  shift,
+  autoUpdate,
+  flip,
   offset,
-  useRole,
+  shift,
+  useDelayGroup,
+  useDelayGroupContext,
+  useDismiss,
+  useFloating,
   useFocus,
   useHover,
-  Placement,
-  useDismiss,
-  autoUpdate,
-  useFloating,
-  FloatingArrow,
-  useDelayGroup,
-  FloatingPortal,
   useInteractions,
-  FloatingDelayGroup,
-  useDelayGroupContext
+  useRole
 } from '@floating-ui/react'
-
 import React, {
-  useId,
-  useRef,
-  useState,
-  useContext,
   cloneElement,
   createContext,
-  useLayoutEffect
+  useContext,
+  useId,
+  useLayoutEffect,
+  useRef,
+  useState
 } from 'react'
-
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 
 const TooltipGroupContext = createContext<{
   placement: Placement | undefined
@@ -45,7 +43,7 @@ type TooltipGroupProps = {
   showDelay?: number
   hideDelay?: number
   placement?: Placement
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const TooltipGroup = ({
@@ -77,7 +75,7 @@ const Tooltip = ({
   showArrow = true,
   children
 }: {
-  content: string | React.ReactNode
+  content?: string | React.ReactNode
   showDelay?: number
   hideDelay?: number
   placement?: Placement
@@ -155,7 +153,7 @@ const Tooltip = ({
   ]
 
   return (
-    <>
+    <React.Fragment>
       {cloneElement(
         children,
         getReferenceProps({ ref: refs.setReference, ...children?.props })
@@ -167,7 +165,7 @@ const Tooltip = ({
             {...getFloatingProps({
               ref: refs.setFloating,
               className:
-                'bg-inverse-surface py-3 px-4 rounded max-w-xs grid grid-cols-[1fr_auto] items-center gap-2',
+                'bg-surface-container py-3 px-4 rounded max-w-xs grid grid-cols-[1fr_auto] items-center gap-2',
               style: {
                 top: 0,
                 left: 0,
@@ -196,7 +194,7 @@ const Tooltip = ({
               {...getFloatingProps({
                 ref: refs.setFloating,
                 className:
-                  'z-50 bg-inverse-surface py-3 px-4 rounded max-w-xs grid grid-cols-[1fr_auto] items-center gap-2',
+                  'z-50 bg-surface-container py-3 px-4 rounded max-w-xs grid grid-cols-[1fr_auto] items-center gap-2',
                 style: {
                   top: y ?? 0,
                   left: x ?? 0,
@@ -209,16 +207,16 @@ const Tooltip = ({
                 <FloatingArrow
                   ref={arrowRef}
                   context={context}
-                  className="fill-inverse-surface"
+                  className="fill-surface-container"
                 />
               )}
             </motion.div>
           )}
         </AnimatePresence>
       </FloatingPortal>
-    </>
+    </React.Fragment>
   )
 }
 
-export default Tooltip
+export { Tooltip }
 export { TooltipGroup }

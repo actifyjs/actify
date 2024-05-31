@@ -1,68 +1,49 @@
 'use client'
 
+import React, { useMemo } from 'react'
+
 import { Slot } from './../Slot'
+import clsx from 'clsx'
 import { useAccordion } from './AccordionContext'
-import React, { useMemo, forwardRef } from 'react'
-import { tv, VariantProps } from 'tailwind-variants'
 
-const variants = tv({
-  base: 'transition-all duration-300 ease-in-out grid',
-  variants: {
-    active: {
-      true: 'grid-rows-[1fr]',
-      false: 'grid-rows-[0fr]',
-      undefined: 'grid-rows-[0fr]'
-    }
-  }
-})
-
-export type AccordionContentProps = {
+export interface AccordionContentProps
+  extends Omit<React.ComponentProps<'div'>, 'children'> {
   index?: number
   asChild?: boolean
   children?: ((_?: any) => React.ReactNode) | React.ReactNode
-} & VariantProps<typeof variants> &
-  React.HTMLAttributes<HTMLDivElement>
+}
 
-const AccordionContent: React.FC<AccordionContentProps> = forwardRef(
-  (props, ref?: React.Ref<HTMLDivElement>) => {
-    const { index, style, className, asChild, ...rest } = props
-    const { open } = useAccordion()
+const AccordionContent = (props: AccordionContentProps) => {
+  const { index, className, asChild, children, ...rest } = props
+  const { open } = useAccordion()
 
-    const active = useMemo(() => {
-      if (open !== undefined) {
-        return open[index as number]
-      }
-    }, [open, index])
-
-    if (asChild) {
-      return (
-        <Slot
-          ref={ref}
-          style={style}
-          {...{
-            active,
-            ...rest
-          }}
-          className={variants({ className })}
-        >
-          {typeof rest.children === 'function'
-            ? rest.children({ active })
-            : rest.children}
-        </Slot>
-      )
-    } else {
-      return (
-        <div
-          {...rest}
-          ref={ref}
-          style={style}
-          className={variants({ className, active })}
-        >
-          <p className="overflow-hidden">{rest.children}</p>
-        </div>
-      )
+  const active = useMemo(() => {
+    if (open !== undefined) {
+      return open[index as number]
     }
+  }, [open, index])
+
+  const classes = clsx('a-accordion-content', { active }, className)
+
+  if (asChild) {
+    return (
+      <Slot
+        {...{
+          active,
+          ...rest
+        }}
+        className={classes}
+      >
+        {typeof children === 'function' ? children({ active }) : children}
+      </Slot>
+    )
   }
-)
+
+  return (
+    <div {...rest} className={classes}>
+      <p style={{ overflow: 'hidden' }}>{children as React.ReactNode}</p>
+    </div>
+  )
+}
 
 export { AccordionContent }

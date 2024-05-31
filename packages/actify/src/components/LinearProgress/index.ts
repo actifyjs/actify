@@ -1,1 +1,1 @@
-export { default as LinearProgress } from './LinearProgress'
+export { LinearProgress } from './LinearProgress'

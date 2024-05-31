@@ -1,13 +1,15 @@
 'use client'
 
-import themes from './../../themes'
-import { tv } from 'tailwind-variants'
-import { createPortal } from 'react-dom'
-import React, { useState, useEffect } from 'react'
-import { useBottomSheets } from './BottomSheetsContext'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
 
-const { scrim } = themes()
+import { createPortal } from 'react-dom'
+import { tv } from 'tailwind-variants'
+import { useBottomSheets } from './BottomSheetsContext'
+
+const scrim = tv({
+  base: 'z-50 bg-black/40 dark:bg-[rgba(3,3,3,.8)]'
+})
 
 const rootVariants = tv({
   base: scrim({
@@ -20,11 +22,12 @@ const innerVariants = tv({
   base: 'absolute flex flex-col bg-transparent left-10 right-10 bottom-0 translate-y-full transition-transform ease-in-out'
 })
 
-const Content: React.FC<React.ComponentProps<'div'>> = ({
+const Content = ({
+  ref,
   style,
   className,
   children
-}) => {
+}: React.ComponentProps<'div'>) => {
   const { open, setOpen } = useBottomSheets()
   const [container, setContainer] = useState<HTMLElement>()
 
@@ -57,6 +60,7 @@ const Content: React.FC<React.ComponentProps<'div'>> = ({
     <AnimatePresence mode="wait" initial={false}>
       {open && (
         <motion.div
+          ref={ref}
           style={style}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

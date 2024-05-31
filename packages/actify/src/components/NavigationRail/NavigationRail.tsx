@@ -1,24 +1,30 @@
 'use client'
-import React, { forwardRef } from 'react'
+
+import React from 'react'
 import { tv } from 'tailwind-variants'
 
 const variants = tv({
-  base: 'min-h-[540px] w-20 bg-surface flex items-center justify-center'
+  base: [
+    'w-20',
+    'flex',
+    'bg-surface',
+    'min-h-[540px]',
+    'items-center',
+    'justify-center'
+  ]
 })
 
-interface NavigationRailProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface NavigationRailProps extends React.ComponentProps<'div'> {}
 
-const NavigationRail = forwardRef<HTMLDivElement, NavigationRailProps>(
-  (props, ref) => {
-    const { children, className, ...rest } = props
-    return (
-      <div ref={ref} {...rest} className={variants({ className })}>
-        {children}
-      </div>
-    )
-  }
-)
+const NavigationRail = (props: NavigationRailProps) => {
+  const { children, className, ...rest } = props
+  return (
+    <div {...rest} className={variants({ className })}>
+      {children}
+    </div>
+  )
+}
 
 NavigationRail.displayName = 'Actify.NavigationRail'
 
-export default NavigationRail
+export { NavigationRail }

@@ -1,1 +1,1 @@
-export { default as NavigationRail } from './NavigationRail'
+export { NavigationRail } from './NavigationRail'

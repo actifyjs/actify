@@ -1,10 +1,19 @@
 'use client'
-import React, { forwardRef } from 'react'
-import { tv } from 'tailwind-variants'
-import { setColor } from './../../utils'
 
-const variants = tv({
-  base: 'h-1 relative overflow-hidden'
+import { VariantProps, tv } from 'tailwind-variants'
+
+import React from 'react'
+
+const root = tv({
+  base: 'h-1 w-full relative overflow-hidden',
+  variants: {
+    color: {
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      tertiary: 'text-tertiary',
+      error: 'text-error'
+    }
+  }
 })
 
 const barVariants = tv({
@@ -22,7 +31,7 @@ const barVariants = tv({
 })
 
 const barInnerVariants = tv({
-  base: 'absolute inset-0 animate-[auto_ease_0s_1_normal_none_running_none] bg-[--color]',
+  base: 'absolute inset-0 animate-[auto_ease_0s_1_normal_none_running_none] bg-primary',
   variants: {
     indeterminate: {
       primary:
@@ -33,27 +42,25 @@ const barInnerVariants = tv({
   }
 })
 
-interface LinearProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+interface LinearProgressProps extends React.ComponentProps<'div'> {
   value?: number | string
-  color?: string
   indeterminate?: boolean
+  color?: VariantProps<typeof root>['color']
 }
 
-const LinearProgress = forwardRef<HTMLDivElement, LinearProgressProps>(
-  (props, ref) => {
-    const {
-      value,
-      style,
-      color = 'primary',
-      indeterminate = false,
-      className,
-      ...rest
-    } = props
+const LinearProgress = (props: LinearProgressProps) => {
+  const {
+    value,
+    className,
+    color = 'primary',
+    indeterminate = false,
+    ...rest
+  } = props
 
-    return (
-      <>
-        <style>
-          {`@keyframes primary-indeterminate-scale {
+  return (
+    <React.Fragment>
+      <style>
+        {`@keyframes primary-indeterminate-scale {
   0% {
     transform: scaleX(0.08);
   }
@@ -136,66 +143,58 @@ const LinearProgress = forwardRef<HTMLDivElement, LinearProgressProps>(
   }
 }
 `}
-        </style>
+      </style>
+      <div {...rest} className={root({ color, className })}>
         <div
-          ref={ref}
-          {...rest}
-          style={
-            { ...style, '--color': setColor(color) } as React.CSSProperties
-          }
-          className={variants({ className })}
+          className="absolute inset-0 bg-surface"
+          style={{
+            transform: 'scaleX(1)',
+            transformOrigin: 'left center',
+            transition: 'transform 250ms cubic-bezier(0.4, 0, 0.6, 1) 0s'
+          }}
+        />
+        <div
+          className={barVariants({
+            indeterminate: indeterminate ? 'primary' : undefined
+          })}
+          style={{
+            blockSize: '100%',
+            inlineSize: '100%',
+            transition: 'none 0s ease 0s',
+            transformOrigin: 'left center',
+            insetInlineStart: indeterminate ? '-145.167%' : 0,
+            transform: `scaleX(${indeterminate ? 1 : Number(value) / 100})`
+          }}
         >
           <div
-            className="absolute inset-0 bg-surface"
-            style={{
-              transform: 'scaleX(1)',
-              transformOrigin: 'left center',
-              transition: 'transform 250ms cubic-bezier(0.4, 0, 0.6, 1) 0s'
-            }}
-          />
-          <div
-            className={barVariants({
+            className={barInnerVariants({
               indeterminate: indeterminate ? 'primary' : undefined
             })}
-            style={{
-              blockSize: '100%',
-              inlineSize: '100%',
-              transition: 'none 0s ease 0s',
-              transformOrigin: 'left center',
-              insetInlineStart: indeterminate ? '-145.167%' : 0,
-              transform: `scaleX(${indeterminate ? 1 : Number(value) / 100})`
-            }}
-          >
-            <div
-              className={barInnerVariants({
-                indeterminate: indeterminate ? 'primary' : undefined
-              })}
-            ></div>
-          </div>
-          <div
-            style={{
-              blockSize: '100%',
-              inlineSize: '100%',
-              transition: 'none 0s ease 0s',
-              transformOrigin: 'left center',
-              insetInlineStart: '-54.8889%'
-            }}
-            className={barVariants({
-              indeterminate: indeterminate ? 'secondary' : 'hidden'
-            })}
-          >
-            <div
-              className={barInnerVariants({
-                indeterminate: indeterminate ? 'secondary' : undefined
-              })}
-            ></div>
-          </div>
+          />
         </div>
-      </>
-    )
-  }
-)
+        <div
+          style={{
+            blockSize: '100%',
+            inlineSize: '100%',
+            transition: 'none 0s ease 0s',
+            transformOrigin: 'left center',
+            insetInlineStart: '-54.8889%'
+          }}
+          className={barVariants({
+            indeterminate: indeterminate ? 'secondary' : 'hidden'
+          })}
+        >
+          <div
+            className={barInnerVariants({
+              indeterminate: indeterminate ? 'secondary' : undefined
+            })}
+          />
+        </div>
+      </div>
+    </React.Fragment>
+  )
+}
 
 LinearProgress.displayName = 'Actify.LinearProgress'
 
-export default LinearProgress
+export { LinearProgress }

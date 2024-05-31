@@ -1,17 +1,17 @@
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
 import { mergeRefs } from './../../hooks/mergeRefs'
+import { twMerge } from 'tailwind-merge'
 
 /* -------------------------------------------------------------------------------------------------
  * Slot
  * -----------------------------------------------------------------------------------------------*/
 
-interface SlotProps extends React.HTMLAttributes<HTMLElement> {
+interface SlotProps extends React.ComponentProps<'div'> {
   children?: React.ReactNode
 }
 
-const Slot = React.forwardRef<HTMLElement, SlotProps>((props, forwardedRef) => {
-  const { children, ...slotProps } = props
+const Slot = (props: SlotProps) => {
+  const { ref: forwardedRef, children, ...slotProps } = props
   const childrenArray = React.Children.toArray(children)
   const slottable = childrenArray.find(isSlottable)
 
@@ -47,7 +47,7 @@ const Slot = React.forwardRef<HTMLElement, SlotProps>((props, forwardedRef) => {
       {children}
     </SlotClone>
   )
-})
+}
 
 Slot.displayName = 'Slot'
 
@@ -55,27 +55,26 @@ Slot.displayName = 'Slot'
  * SlotClone
  * -----------------------------------------------------------------------------------------------*/
 
-interface SlotCloneProps {
+interface SlotCloneProps extends React.ComponentPropsWithoutRef<'div'> {
+  ref?: any
   children: React.ReactNode
 }
 
-const SlotClone = React.forwardRef<any, SlotCloneProps>(
-  (props, forwardedRef) => {
-    const { children, ...slotProps } = props
+const SlotClone = (props: SlotCloneProps) => {
+  const { ref: forwardedRef, children, ...slotProps } = props
 
-    if (React.isValidElement(children)) {
-      return React.cloneElement(children, {
-        ...mergeProps(slotProps, children.props),
-        // @ts-ignore
-        ref: forwardedRef
-          ? mergeRefs(forwardedRef, (children as any).ref)
-          : (children as any).ref
-      })
-    }
-
-    return React.Children.count(children) > 1 ? React.Children.only(null) : null
+  if (React.isValidElement(children)) {
+    return React.cloneElement(children, {
+      ...mergeProps(slotProps, children.props),
+      // @ts-ignore
+      ref: forwardedRef
+        ? mergeRefs(forwardedRef, (children as any).ref)
+        : (children as any).ref
+    })
   }
-)
+
+  return React.Children.count(children) > 1 ? React.Children.only(null) : null
+}
 
 SlotClone.displayName = 'SlotClone'
 
@@ -84,7 +83,7 @@ SlotClone.displayName = 'SlotClone'
  * -----------------------------------------------------------------------------------------------*/
 
 const Slottable = ({ children }: { children: React.ReactNode }) => {
-  return <>{children}</>
+  return <React.Fragment>{children}</React.Fragment>
 }
 
 /* ---------------------------------------------------------------------------------------------- */

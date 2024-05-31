@@ -1,10 +1,12 @@
 'use client'
-import { Ripple } from './../Ripple'
-import React, { forwardRef } from 'react'
-import { tv, VariantProps } from 'tailwind-variants'
-import { Elevation, ElevationProps } from './../Elevation'
 
-const variants = tv({
+import { VariantProps, tv } from 'tailwind-variants'
+
+import { Elevation } from './../Elevation'
+import React from 'react'
+import { Ripple } from './../Ripple'
+
+const root = tv({
   base: 'relative inline-flex flex-col rounded-xl',
   variants: {
     type: {
@@ -19,33 +21,36 @@ const variants = tv({
 })
 
 interface CardProps
-  extends VariantProps<typeof variants>,
-    React.HTMLAttributes<HTMLDivElement> {
+  extends VariantProps<typeof root>,
+    React.ComponentProps<'div'> {
   ripple?: boolean
-  elevation?: ElevationProps['level']
+  elevation?: number
 }
 
-const Card: React.FC<CardProps> = forwardRef(
-  (props, ref?: React.Ref<HTMLDivElement>) => {
-    const {
-      ripple = false,
-      type = 'elevated',
-      elevation = '1',
-      children,
-      className,
-      ...rest
-    } = props
+const Card = (props: CardProps) => {
+  const {
+    id,
+    ripple = false,
+    type = 'elevated',
+    elevation = 1,
+    children,
+    className,
+    ...rest
+  } = props
 
-    return (
-      <div ref={ref} {...rest} className={variants({ type, className })}>
-        <div className="relative overflow-hidden rounded-t-xl">{children}</div>
-        {ripple && <Ripple />}
-        {type === 'elevated' && <Elevation level={elevation} />}
-      </div>
-    )
-  }
-)
+  const cardId = id || `actify-card${React.useId()}`
+
+  return (
+    <div {...rest} className={root({ type, className })}>
+      <div className="relative overflow-hidden rounded-t-xl">{children}</div>
+      {ripple && <Ripple id={cardId} />}
+      {type === 'elevated' && (
+        <Elevation className={`[--md-elevation-level:${elevation}]`} />
+      )}
+    </div>
+  )
+}
 
 Card.displayName = 'Actify.Card'
 
-export default Card
+export { Card }

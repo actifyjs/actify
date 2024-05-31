@@ -1,0 +1,26 @@
+.a-label {
+  box-sizing: border-box;
+  color: var(--_label-text-color);
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 1;
+  font-family: var(--_label-text-font);
+  font-size: var(--_label-text-size);
+  line-height: var(--_label-text-line-height);
+  font-weight: var(--_label-text-weight);
+  width: min-content;
+  &.resting {
+    position: absolute;
+    top: var(--_top-space);
+  }
+  &.floating {
+    font-size: var(--_label-text-populated-size);
+    line-height: var(--_label-text-populated-line-height);
+    transform-origin: top left;
+  }
+}
+.error .a-label {
+  color: var(--_error-label-text-color);
+}

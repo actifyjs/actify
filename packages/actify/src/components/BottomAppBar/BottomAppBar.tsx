@@ -1,24 +1,35 @@
 'use client'
-import React, { Children, isValidElement, cloneElement } from 'react'
+
+import React, { Children, cloneElement, isValidElement } from 'react'
+
 import { Elevation } from './../Elevation'
 import { tv } from 'tailwind-variants'
 
-const variants = tv({
-  base: 'relative flex h-20 w-full max-w-xs items-center justify-between bg-primary px-4'
+const root = tv({
+  base: [
+    'px-4',
+    'flex',
+    'h-20',
+    'w-full',
+    'relative',
+    'max-w-xs',
+    'bg-primary',
+    'items-center',
+    'justify-between'
+  ]
 })
 
-type DivProps = React.HTMLAttributes<HTMLDivElement>
-
-const BottomAppBar: React.FC<DivProps> = ({ className, children }) => {
+interface BottomAppBarProps extends React.ComponentProps<'div'> {}
+const BottomAppBar = ({ className, children }: BottomAppBarProps) => {
   return (
-    <div className={variants({ className })}>
+    <div className={root({ className })}>
       {children}
-      <Elevation level={2} />
+      <Elevation className="[--md-elevation-level:2]" />
     </div>
   )
 }
 
-const Icons: React.FC<DivProps> = ({ children }) => {
+const Icons = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="grow place-items-center grid grid-cols-[repeat(auto-fill,minmax(48px,1fr))]">
       {Children.map(
@@ -35,7 +46,7 @@ const Icons: React.FC<DivProps> = ({ children }) => {
   )
 }
 
-const Fab: React.FC<DivProps> = ({ children }) => {
+const Fab = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="me-1 min-w-[48px] flex h-full relative items-center justify-center">
       {children}

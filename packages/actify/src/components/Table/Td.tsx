@@ -1,21 +1,14 @@
 'use client'
+
 import React from 'react'
 import { tv } from 'tailwind-variants'
 
-const variants = tv({
+const root = tv({
   base: 'px-3 py-2'
 })
 
-const Td: React.FC<React.TableHTMLAttributes<HTMLTableElement>> = ({
-  style,
-  className,
-  children
-}) => {
-  return (
-    <td style={style} className={variants({ className })}>
-      {children}
-    </td>
-  )
+const Td = ({ className, children }: React.ComponentProps<'td'>) => {
+  return <td className={root({ className })}>{children}</td>
 }
 
 export { Td }

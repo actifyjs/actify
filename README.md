@@ -54,6 +54,29 @@ Refer to the [documentation](https://actifyjs.com/getting-started/installation) 
 
 Explore our [documentation](https://actifyjs.com/getting-started/installation) for detailed insights, examples, and customization options for each component in the Actify library.
 
+## 🚥 Roadmap
+
+Our goals is convert all [Material Web](https://github.com/material-components/material-web) components to React Componets,not just a React wrapper components.
+
+| Component           | Web component | React Component |
+| ------------------- | ------------- | --------------- |
+| Ripple              |               | ✅              |
+| Elevation           |               | ✅              |
+| Focus ring          |               | ✅              |
+| Icon                |               | ✅              |
+| Button              |               | ✅              |
+| Icon button         |               | ✅              |
+| Checkbox            |               | ✅              |
+| Slider              |               | ✅              |
+| Switch              |               | ✅              |
+| TextField           |               | ✅              |
+| Progress indicators |               | ✅              |
+| Divider             | ✅            |                 |
+| Radio               | ✅            |                 |
+| Dialog              | ✅            |                 |
+| Menu                | ✅            |                 |
+| Select              | ✅            |                 |
+
 ## 🤝 Contributing
 
 Contributions are always welcome!

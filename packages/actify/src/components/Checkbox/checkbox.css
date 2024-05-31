@@ -1,0 +1,151 @@
+.a-checkbox {
+  margin: max(0px, (48px - var(--md-checkbox-container-size, 18px)) / 2);
+  border-start-start-radius: var(
+    --md-checkbox-container-shape-start-start,
+    var(--md-checkbox-container-shape, 2px)
+  );
+  border-start-end-radius: var(
+    --md-checkbox-container-shape-start-end,
+    var(--md-checkbox-container-shape, 2px)
+  );
+  border-end-end-radius: var(
+    --md-checkbox-container-shape-end-end,
+    var(--md-checkbox-container-shape, 2px)
+  );
+  border-end-start-radius: var(
+    --md-checkbox-container-shape-end-start,
+    var(--md-checkbox-container-shape, 2px)
+  );
+  display: inline-flex;
+  height: var(--md-checkbox-container-size, 18px);
+  position: relative;
+  vertical-align: top;
+  width: var(--md-checkbox-container-size, 18px);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  &:has(.disabled) {
+    cursor: default;
+  }
+  &:where(.selected) :is(.a-checkbox-background, .a-checkbox-icon) {
+    opacity: 1;
+    transition-duration: 350ms, 50ms;
+    transition-timing-function: cubic-bezier(0.05, 0.7, 0.1, 1), linear;
+    transform: scale(1);
+  }
+}
+.a-checkbox-container {
+  border-radius: inherit;
+  display: flex;
+  height: 100%;
+  place-content: center;
+  place-items: center;
+  position: relative;
+  width: 100%;
+}
+.a-checkbox-input {
+  appearance: none;
+  height: 48px;
+  margin: 0;
+  opacity: 0;
+  outline: none;
+  position: absolute;
+  width: 48px;
+  z-index: 1;
+  cursor: inherit;
+}
+.a-checkbox-outline {
+  inset: 0;
+  position: absolute;
+  border-radius: inherit;
+  border-color: var(
+    --md-checkbox-outline-color,
+    var(--md-sys-color-on-surface-variant, #49454f)
+  );
+  border-style: solid;
+  border-width: var(--md-checkbox-outline-width, 2px);
+  box-sizing: border-box;
+  &.disabled {
+    border-color: var(
+      --md-checkbox-disabled-outline-color,
+      var(--md-sys-color-on-surface, #1d1b20)
+    );
+    border-width: var(--md-checkbox-disabled-outline-width, 2px);
+    opacity: var(--md-checkbox-disabled-container-opacity, 0.38);
+  }
+  &.disabled.selected {
+    visibility: hidden;
+  }
+}
+.a-checkbox-background {
+  inset: 0;
+  position: absolute;
+  border-radius: inherit;
+  background-color: var(
+    --md-checkbox-selected-container-color,
+    var(--md-sys-color-primary, #6750a4)
+  );
+  opacity: 0;
+  transition-duration: 150ms, 50ms;
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.3, 0, 0.8, 0.15), linear;
+  transform: scale(0.6);
+  &.selected {
+    opacity: 1;
+    transition-duration: 350ms, 50ms;
+    transition-timing-function: cubic-bezier(0.05, 0.7, 0.1, 1), linear;
+    transform: scale(1);
+  }
+  &.selected.disabled {
+    background: var(
+      --md-checkbox-selected-disabled-container-color,
+      var(--md-sys-color-on-surface, #1d1b20)
+    );
+    opacity: var(--md-checkbox-selected-disabled-container-opacity, 0.38);
+  }
+}
+.a-checkbox-icon {
+  inset: 0;
+  position: absolute;
+  fill: var(
+    --md-checkbox-selected-icon-color,
+    var(--md-sys-color-on-primary, #fff)
+  );
+  height: var(--md-checkbox-icon-size, 18px);
+  width: var(--md-checkbox-icon-size, 18px);
+  opacity: 0;
+  transition-duration: 150ms, 50ms;
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.3, 0, 0.8, 0.15), linear;
+  transform: scale(0.6);
+  &.selected {
+    opacity: 1;
+    transition-duration: 350ms, 50ms;
+    transition-timing-function: cubic-bezier(0.05, 0.7, 0.1, 1), linear;
+    transform: scale(1);
+  }
+}
+.a-checkbox-mark {
+  animation-duration: 150ms;
+  transition-duration: 150ms;
+  transform: scaleY(-1) translate(7px, -14px) rotate(45deg);
+  animation-timing-function: cubic-bezier(0.3, 0, 0.8, 0.15);
+  transition-timing-function: cubic-bezier(0.3, 0, 0.8, 0.15);
+  &.indeterminate,
+  &.prev-indeterminate.unselected {
+    transform: scaleY(-1) translate(4px, -10px) rotate(0deg);
+  }
+}
+.a-checkbox-mark-short {
+  width: 2px;
+  height: 2px;
+  transition-property: transform, height;
+  &.checked,
+  &.prev-checked.unselected {
+    height: 5.6568542495px;
+  }
+}
+.a-checkbox-mark-long {
+  height: 2px;
+  width: 11.313708499px;
+  transition-property: transform, width;
+}

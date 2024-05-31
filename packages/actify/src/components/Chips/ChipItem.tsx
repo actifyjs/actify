@@ -1,11 +1,12 @@
 'use client'
-import AssitChip from './AssistChip'
-import FilterChip from './FilterChip'
-import InputChip from './InputChip'
-import SuggestionChip from './SuggestionChip'
-import React, { forwardRef } from 'react'
 
-export interface ChipProps extends React.ComponentPropsWithRef<'div'> {
+import { AssitChip } from './AssistChip'
+import { FilterChip } from './FilterChip'
+import { InputChip } from './InputChip'
+import React from 'react'
+import { SuggestionChip } from './SuggestionChip'
+
+export interface ChipProps extends React.ComponentProps<'div'> {
   index?: number
   href?: string
   label?: string
@@ -17,17 +18,17 @@ export interface ChipProps extends React.ComponentPropsWithRef<'div'> {
   type?: 'assit' | 'filter' | 'input' | 'suggestion'
 }
 
-const ChipItem = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
+const ChipItem = (props: ChipProps) => {
   const { type = 'assit', ...rest } = props
 
   return (
-    <>
-      {type == 'assit' && <AssitChip {...rest} ref={ref} />}
-      {type == 'filter' && <FilterChip {...rest} ref={ref} />}
-      {type == 'input' && <InputChip {...rest} ref={ref} />}
-      {type == 'suggestion' && <SuggestionChip {...rest} ref={ref} />}
-    </>
+    <React.Fragment>
+      {type == 'assit' && <AssitChip {...rest} />}
+      {type == 'filter' && <FilterChip {...rest} />}
+      {type == 'input' && <InputChip {...rest} />}
+      {type == 'suggestion' && <SuggestionChip {...rest} />}
+    </React.Fragment>
   )
-})
+}
 
-export default ChipItem
+export { ChipItem }

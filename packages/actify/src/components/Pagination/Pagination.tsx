@@ -1,42 +1,38 @@
 'use client'
-import React, { forwardRef } from 'react'
-import { tv } from 'tailwind-variants'
-import { Button } from './../Button'
-import { generatePagination } from './../../utils'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import PaginationNumber from './PaginationNumber'
 
-const variants = tv({
-  base: 'bg-surface rounded-lg p-4 flex justify-center'
-})
+import { Icon } from './../Icon'
+import { IconButton } from './../Button'
+import { PaginationNumber } from './PaginationNumber'
+import React from 'react'
+import { generatePagination } from './generatePagination'
 
-const buttonVariants = tv({
-  base: 'p-2 w-10 rounded-lg'
-})
-
-interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
-  currentPage: number
-  totalPages: number
-  onPageChange: (page: number) => void
+interface PaginationProps extends React.ComponentProps<'nav'> {
+  currentPage?: number
+  totalPages?: number
+  onPageChange?: (page: number) => void
 }
 
-const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
-  const { currentPage, totalPages, onPageChange, style, className, ...rest } =
-    props
+const Pagination = (props: PaginationProps) => {
+  const {
+    currentPage = 1,
+    totalPages = 1,
+    onPageChange,
+    className,
+    ...rest
+  } = props
 
   const allPages = generatePagination(currentPage, totalPages)
 
   return (
-    <nav ref={ref} {...rest} className={variants({ className })}>
+    <nav {...rest} className="bg-surface rounded-lg p-4 flex justify-center">
       <ul className="flex gap-4">
         <li>
-          <Button
-            className={buttonVariants()}
+          <IconButton
             disabled={currentPage <= 1}
-            onClick={() => onPageChange(currentPage - 1)}
+            onClick={() => onPageChange?.(currentPage - 1)}
           >
-            <ChevronLeft />
-          </Button>
+            <Icon>chevron_left</Icon>
+          </IconButton>
         </li>
         {allPages.map((page, index) => {
           let position: 'first' | 'last' | 'single' | 'middle' | undefined
@@ -57,17 +53,16 @@ const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
           )
         })}
         <li>
-          <Button
-            className={buttonVariants()}
-            onClick={() => onPageChange(currentPage + 1)}
+          <IconButton
             disabled={currentPage >= totalPages}
+            onClick={() => onPageChange?.(currentPage + 1)}
           >
-            <ChevronRight />
-          </Button>
+            <Icon>chevron_right</Icon>
+          </IconButton>
         </li>
       </ul>
     </nav>
   )
-})
+}
 
-export default Pagination
+export { Pagination }

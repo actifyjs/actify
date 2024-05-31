@@ -1,0 +1,27 @@
+.a-label-wrapper {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  text-align: initial;
+}
+
+.a-field:not(.with-start) .a-field-filled .a-label-wrapper {
+  margin-inline-start: var(--_leading-space);
+}
+.a-field:not(.with-end) .a-field-filled .a-label-wrapper {
+  margin-inline-end: var(--_trailing-space);
+}
+
+.a-field:not(.with-start) .a-field-outlined .a-label-wrapper {
+  margin-inline-start: max(
+    var(--_leading-space),
+    max(var(--_container-shape-start-start), var(--_container-shape-end-start)) +
+      var(--_outline-label-padding)
+  );
+}
+.a-field:not(.with-end) .a-field-outlined .a-label-wrapper {
+  margin-inline-end: max(
+    var(--_trailing-space),
+    max(var(--_container-shape-start-end), var(--_container-shape-end-end))
+  );
+}

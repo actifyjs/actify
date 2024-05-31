@@ -1,3 +1,3 @@
-import AssitChip from './AssistChip'
+import { AssitChip } from './AssistChip'
 
-export default AssitChip
+export { AssitChip as SuggestionChip }

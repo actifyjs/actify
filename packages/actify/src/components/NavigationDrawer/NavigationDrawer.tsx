@@ -1,19 +1,20 @@
 'use client'
-import React from 'react'
-import { tv } from 'tailwind-variants'
-import { DrawerContent } from './DrawerContent'
-import { DrawerActivator } from './DrawerActivator'
+
 import { DrawerProvider, DrawerProviderProps } from './DrawerContext'
+
+import { DrawerActivator } from './DrawerActivator'
+import { DrawerContent } from './DrawerContent'
+import { tv } from 'tailwind-variants'
 
 const variants = tv({
   base: 'relative'
 })
 
-type DrawerProps = DrawerProviderProps & {
+interface DrawerProps extends DrawerProviderProps {
   className?: string
 }
 
-const Drawer: React.FC<DrawerProps> = (props) => {
+const Drawer = (props: DrawerProps) => {
   const { className, children, ...rest } = props
 
   return (

@@ -1,28 +1,40 @@
 'use client'
-import React, { forwardRef } from 'react'
-import { tv, VariantProps } from 'tailwind-variants'
-import { setColor } from './../../utils'
+
+import { VariantProps, tv } from 'tailwind-variants'
+
+import React from 'react'
 
 const ActiveIndicatorWidth = 25 / 3
 
-const variants = tv({
+const root = tv({
   variants: {
     indeterminate: {
       true: 'animate-[1568.24ms_linear_0s_infinite_normal_none_running_linear-rotate]'
     },
+    color: {
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      tertiary: 'text-tertiary',
+      error: 'text-error'
+    },
     size: {
-      xs: 'w-9 h-9',
-      sm: 'w-12 h-12',
-      md: 'w-[60px] h-[60px]',
-      lg: 'w-[72px] h-[72px]',
-      xl: 'w-[84px] h-[84px]',
-      '2xl': 'w-24 h-24'
+      xs: 'size-9',
+      sm: 'size-12',
+      md: 'size-[60px]',
+      lg: 'size-[72px]',
+      xl: 'size-[84px]',
+      '2xl': 'size-24'
     }
   }
 })
 
 const spinnerVariants = tv({
-  base: 'absolute animate-[1333ms_cubic-bezier(0.4,0,0.2,1)_0s_infinite_normal_both_running_expand-arc,5332ms] rounded-full border-[currentColor_currentColor_transparent_transparent]',
+  base: [
+    'absolute',
+    'rounded-full',
+    'border-[currentColor_currentColor_transparent_transparent]',
+    'animate-[1333ms_cubic-bezier(0.4,0,0.2,1)_0s_infinite_normal_both_running_expand-arc,5332ms]'
+  ],
   variants: {
     circle: {
       left: 'inset-[0_-100%_0_0] rotate-[135deg]',
@@ -40,29 +52,27 @@ const spinnerVariants = tv({
   }
 })
 
-interface CircularPropTypes
-  extends VariantProps<typeof variants>,
-    React.HTMLAttributes<HTMLDivElement> {
+interface CircularProgressProp extends React.ComponentProps<'div'> {
   value?: number | string
   indeterminate?: boolean
+  size?: VariantProps<typeof root>['size']
+  color?: VariantProps<typeof root>['color']
 }
 
-const CircularProgress = forwardRef<HTMLDivElement, CircularPropTypes>(
-  (props, ref) => {
-    const {
-      value,
-      style,
-      size = 'sm',
-      color = 'primary',
-      indeterminate = false,
-      className,
-      ...rest
-    } = props
+const CircularProgress = (props: CircularProgressProp) => {
+  const {
+    value,
+    size = 'sm',
+    color = 'primary',
+    indeterminate = false,
+    className,
+    ...rest
+  } = props
 
-    return (
-      <>
-        <style>
-          {`@keyframes linear-rotate {
+  return (
+    <React.Fragment>
+      <style>
+        {`@keyframes linear-rotate {
   100% {
     transform: rotate(360deg);
   }
@@ -107,51 +117,44 @@ const CircularProgress = forwardRef<HTMLDivElement, CircularPropTypes>(
   }
 }
 `}
-        </style>
-        <div
-          ref={ref}
-          {...rest}
-          style={{ ...style, color: setColor(color) }}
-          className={variants({ size, indeterminate, className })}
-        >
-          {indeterminate ? (
-            <div className="absolute inset-0 animate-[5332ms_cubic-bezier(0.4,0,0.2,1)_0s_infinite_normal_both_running_rotate-arc]">
-              <div className="absolute inset-[0_50%_0_0] overflow-hidden">
-                <div
-                  className={spinnerVariants({ size, circle: 'left' })}
-                ></div>
-              </div>
-              <div className="absolute inset-[0_0_0_50%] overflow-hidden">
-                <div
-                  className={spinnerVariants({ size, circle: 'right' })}
-                ></div>
-              </div>
+      </style>
+      <div
+        {...rest}
+        className={root({ size, color, indeterminate, className })}
+      >
+        {indeterminate ? (
+          <div className="absolute inset-0 animate-[5332ms_cubic-bezier(0.4,0,0.2,1)_0s_infinite_normal_both_running_rotate-arc]">
+            <div className="absolute inset-[0_50%_0_0] overflow-hidden">
+              <div className={spinnerVariants({ size, circle: 'left' })}></div>
             </div>
-          ) : (
-            <svg viewBox="0 0 4800 4800" className="rotate-arc -rotate-90">
-              <circle
-                pathLength="100"
-                style={
-                  {
-                    cx: '50%',
-                    cy: '50%',
-                    fill: 'transparent',
-                    stroke: 'currentColor',
-                    strokeDasharray: 100,
-                    strokeWidth: `${ActiveIndicatorWidth}%`,
-                    r: `${50 * (1 - ActiveIndicatorWidth * 0.01)}%`
-                  } as React.CSSProperties
-                }
-                strokeDashoffset={(1 - Number(value) / 100) * 100}
-              />
-            </svg>
-          )}
-        </div>
-      </>
-    )
-  }
-)
+            <div className="absolute inset-[0_0_0_50%] overflow-hidden">
+              <div className={spinnerVariants({ size, circle: 'right' })}></div>
+            </div>
+          </div>
+        ) : (
+          <svg viewBox="0 0 4800 4800" className="rotate-arc -rotate-90">
+            <circle
+              pathLength="100"
+              style={
+                {
+                  cx: '50%',
+                  cy: '50%',
+                  fill: 'transparent',
+                  stroke: 'currentColor',
+                  strokeDasharray: 100,
+                  strokeWidth: `${ActiveIndicatorWidth}%`,
+                  r: `${50 * (1 - ActiveIndicatorWidth * 0.01)}%`
+                } as React.CSSProperties
+              }
+              strokeDashoffset={(1 - Number(value) / 100) * 100}
+            />
+          </svg>
+        )}
+      </div>
+    </React.Fragment>
+  )
+}
 
 CircularProgress.displayName = 'Actify.CircularProgress'
 
-export default CircularProgress
+export { CircularProgress }

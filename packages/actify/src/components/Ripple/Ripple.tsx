@@ -1,8 +1,12 @@
 'use client'
-import { tv } from 'tailwind-variants'
+
+import './ripple.css'
+
+import React, { useEffect, useId, useRef, useState } from 'react'
+
 import { EASING } from './../../animations'
+import clsx from 'clsx'
 import { useAttachable } from './../../hooks'
-import React, { useState, useRef, useEffect } from 'react'
 
 const TOUCH_DELAY_MS = 150
 const PRESS_GROW_MS = 450
@@ -49,83 +53,6 @@ enum State {
   WAITING_FOR_CLICK
 }
 
-const root = tv({
-  base: [
-    'absolute',
-    'inset-0',
-    'overflow-hidden',
-    'rounded-[inherit]',
-    '[--md-ripple-hover-opacity:0.08]',
-    '[--md-ripple-pressed-opacity:0.12]'
-  ],
-  variants: {
-    color: {
-      primary: [
-        '[--md-ripple-hover-color:rgb(var(--color-primary))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-primary))]'
-      ],
-      secondary: [
-        '[--md-ripple-hover-color:rgb(var(--color-secondary))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-secondary))]'
-      ],
-      tertiary: [
-        '[--md-ripple-hover-color:rgb(var(--color-tertiary))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-tertiary))]'
-      ],
-      error: [
-        '[--md-ripple-hover-color:rgb(var(--color-error))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-error))]'
-      ],
-      undefined: [
-        '[--md-ripple-hover-color:rgb(var(--color-primary))]',
-        '[--md-ripple-pressed-color:rgb(var(--color-primary))]'
-      ]
-    }
-  },
-  defaultVariants: {
-    color: 'primary'
-  }
-})
-
-const surface = tv({
-  base: [
-    'flex',
-    'm-auto',
-    'absolute',
-    'inset-0',
-    'rounded-[inherit]',
-    'pointer-events-none',
-    '[-webkit-tap-highlight-color:rgba(0,0,0,0)]',
-    'before:absolute',
-    'before:opacity-0',
-    'before:inset-0',
-    'before:[background-color:var(--md-ripple-hover-color,rgb(var(--color-on-surface)))]',
-    'before:[transition:opacity_15ms_linear,background-color_15ms_linear]',
-    'after:absolute',
-    'after:z-50',
-    'after:opacity-0',
-    'after:origin-center',
-    'after:[background:radial-gradient(closest-side,var(--md-ripple-pressed-color,rgb(var(--color-on-surface)))_max(100%_-_70px,65%),transparent_100%)]',
-    'after:[transition:opacity_375ms_linear]'
-  ],
-  variants: {
-    hovered: {
-      true: [
-        'before:[background-color:var(--md-ripple-hover-color,rgb(var(--color-on-surface)))]',
-        'before:[opacity:var(--md-ripple-hover-opacity,0.08)]'
-      ],
-      false: ''
-    },
-    pressed: {
-      true: [
-        'after:duration-[105ms]',
-        'after:[opacity:var(--md-ripple-pressed-opacity,0.12)]'
-      ],
-      false: ''
-    }
-  }
-})
-
 const EVENTS = [
   'click',
   'contextmenu',
@@ -138,11 +65,11 @@ const EVENTS = [
 
 interface RippleProps extends React.ComponentProps<'label'> {
   disabled?: boolean
-  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
-const Ripple: React.FC<RippleProps> = (props) => {
-  const { id, disabled = false, color, className } = props
+const Ripple = (props: RippleProps) => {
+  const { id, disabled = false, style, className } = props
+  const rippleId = id || `$actify-ripple{useId()}`
 
   const [hovered, setHovered] = useState(false)
   const [pressed, setPressed] = useState(false)
@@ -422,21 +349,19 @@ const Ripple: React.FC<RippleProps> = (props) => {
     }
   }, [ref.current])
 
+  const classes = clsx('a-ripple', { hovered, pressed }, className)
+
   return (
-    <div className={root({ color, className })}>
-      <label
-        ref={ref}
-        htmlFor={id}
-        aria-hidden="true"
-        className={surface({
-          hovered,
-          pressed
-        })}
-      ></label>
-    </div>
+    <label
+      ref={ref}
+      style={style}
+      htmlFor={rippleId}
+      aria-hidden="true"
+      className={classes}
+    />
   )
 }
 
 Ripple.displayName = 'Actify.Ripple'
 
-export default Ripple
+export { Ripple }

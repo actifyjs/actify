@@ -1,30 +1,32 @@
 'use client'
-import React, { useId, forwardRef } from 'react'
-import { tv } from 'tailwind-variants'
-import { ListContext } from './ListContext'
-import { type Transition } from 'framer-motion'
 
-const variants = tv({
+import React, { useId } from 'react'
+
+import { ListContext } from './ListContext'
+import { Transition } from 'framer-motion'
+import { tv } from 'tailwind-variants'
+
+const root = tv({
   base: 'py-2 bg-surface overflow-hidden'
 })
 
-interface ListProps extends React.HTMLAttributes<HTMLUListElement> {
+interface ListProps extends React.ComponentProps<'ul'> {
   transition?: Transition
 }
 
-const List = forwardRef<HTMLUListElement, ListProps>((props, ref) => {
+const List = (props: ListProps) => {
   const { className, children, transition, ...rest } = props
   const layoutId = useId()
 
   return (
     <ListContext.Provider value={{ layoutId, transition }}>
-      <ul ref={ref} {...rest} className={variants({ className })}>
+      <ul {...rest} className={root({ className })}>
         {children}
       </ul>
     </ListContext.Provider>
   )
-})
+}
 
 List.displayName = 'Actify.List'
 
-export default List
+export { List }

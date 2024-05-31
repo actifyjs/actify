@@ -1,1 +1,3 @@
-export { default as Menu } from './Menu'
+export { Menu } from './Menu'
+export { SubMenu } from './SubMenu'
+export { MenuItem } from './MenuItem'

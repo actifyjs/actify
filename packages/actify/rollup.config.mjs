@@ -1,14 +1,14 @@
 import commonjs from '@rollup/plugin-commonjs'
-import resolve from '@rollup/plugin-node-resolve'
-import typescript from '@rollup/plugin-typescript'
-import terser from '@rollup/plugin-terser'
-import { exec } from 'child_process'
-
 import copy from 'rollup-plugin-copy'
+import css from 'rollup-plugin-import-css'
+import { exec } from 'child_process'
 import json from '@rollup/plugin-json'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
-import { typescriptPaths } from 'rollup-plugin-typescript-paths'
 import preserveDirectives from 'rollup-plugin-preserve-directives'
+import resolve from '@rollup/plugin-node-resolve'
+import terser from '@rollup/plugin-terser'
+import typescript from '@rollup/plugin-typescript'
+import { typescriptPaths } from 'rollup-plugin-typescript-paths'
 
 const outputOptions = {
   sourcemap: false,
@@ -51,18 +51,19 @@ export default [
       }
     ],
     external: [
-      'dayjs',
+      'clsx',
       'react',
       'tslib',
+      'date-fns',
       'react-dom',
       'popmotion',
       'framer-motion',
       '@babel/runtime',
-      'tailwind-variants',
       '@floating-ui/react'
     ],
     plugins: [
       peerDepsExternal(),
+      css(),
       json(),
       resolve(),
       commonjs(),

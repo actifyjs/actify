@@ -1,46 +1,17 @@
-'use client'
-import Root from './Root'
-import { forwardRef } from 'react'
-import { RootProps } from './Root'
-import { tv } from 'tailwind-variants'
-import { SegmentedButtonProvider } from './Context'
+import { MdOutlinedSegmentedButton } from '@material/web/labs/segmentedbutton/outlined-segmented-button'
+import React from 'react'
+import { createComponent } from '@lit/react'
 
-const root = tv({
-  base: ['flex', 'font-medium', 'tracking-wide']
+const SegmentedButtonWebComponent = createComponent({
+  react: React,
+  tagName: 'md-outlined-segmented-button',
+  elementClass: MdOutlinedSegmentedButton
 })
-interface SegmentedButtonProps extends Omit<RootProps, 'onChange'> {
-  multiple?: boolean
-  activeIndex?: number[]
-  onChange?: (_: number[]) => void
-  setMutiple?: (value: boolean) => void
-  setActiveIndex?: (value: number[]) => void
+
+const SegmentedButton = ({
+  ...rest
+}: React.ComponentProps<typeof SegmentedButtonWebComponent>) => {
+  return <SegmentedButtonWebComponent {...rest} />
 }
-
-const SegmentedButton = forwardRef<HTMLDivElement, SegmentedButtonProps>(
-  (props, ref?) => {
-    const {
-      color,
-      style,
-      variant,
-      multiple,
-      className,
-      children,
-      onChange,
-      activeIndex,
-      ripple = true,
-      ...rest
-    } = props
-
-    return (
-      <SegmentedButtonProvider {...{ activeIndex, multiple, onChange }}>
-        <div ref={ref} {...rest} style={style} className={root()}>
-          <Root {...{ color, ripple, variant }}>{children}</Root>
-        </div>
-      </SegmentedButtonProvider>
-    )
-  }
-)
-
-SegmentedButton.displayName = 'Actify.SegmentedButton'
 
 export { SegmentedButton }

@@ -1,10 +1,6 @@
 'use client'
-import { tv } from 'tailwind-variants'
-import { Button } from './../Button'
 
-const buttonVariants = tv({
-  base: 'p-2 w-10 rounded-lg'
-})
+import { Button } from './../Button'
 
 const PaginationNumber = ({
   page,
@@ -18,21 +14,12 @@ const PaginationNumber = ({
   position?: 'first' | 'last' | 'middle' | 'single'
 }) => {
   return isActive || position === 'middle' ? (
-    <Button
-      className={buttonVariants()}
-      variant={isActive ? 'filled' : 'tonal'}
-    >
-      {page}
-    </Button>
+    <Button variant={isActive ? 'filled' : 'tonal'}>{page}</Button>
   ) : (
-    <Button
-      variant="tonal"
-      onClick={() => onPageChange?.(page as number)}
-      className={buttonVariants()}
-    >
+    <Button variant="tonal" onClick={() => onPageChange?.(page as number)}>
       {page}
     </Button>
   )
 }
 
-export default PaginationNumber
+export { PaginationNumber }

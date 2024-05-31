@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.1.81",
+  "version": "0.2.1",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -8,26 +8,26 @@
     "react",
     "library",
     "components",
-    "tailwind css",
     "material design 3"
   ],
-  "description": "🌻React Tailwind CSS Material Design 3 Components Library",
   "homepage": "https://actifyjs.com",
+  "description": "🌻React Material Design 3 Components Library",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actifyjs/actify.git",
-    "directory": "packages/components"
+    "directory": "packages/components",
+    "url": "git+https://github.com/actifyjs/actify.git"
   },
   "files": [
     "dist/**"
   ],
-  "main": "src/index.ts",
   "sideEffects": false,
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup -c rollup.config.mjs"
   },
   "devDependencies": {
+    "@lit/react": "^1.0.5",
+    "@material/web": "^1.4.1",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -40,14 +40,14 @@
     "@typescript-eslint/parser": "^7.8.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "19.0.0-rc-81c5ff2e04-20240521",
+    "react-dom": "19.0.0-rc-81c5ff2e04-20240521",
     "rollup": "^3.29.4",
     "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-import-css": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-typescript-paths": "^1.4.0",
-    "tailwind-material-colors": "^3.0.0",
     "tailwind-variants": "^0.2.1",
     "tailwindcss": "^3.4.3",
     "tsc-alias": "^1.8.8",
@@ -56,20 +56,19 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.13",
-    "dayjs": "^1.11.11",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "framer-motion": "^11.1.7",
-    "lucide-react": "^0.378.0",
-    "popmotion": "^11.0.5",
-    "react-router-dom": "^6.23.0"
+    "popmotion": "^11.0.5"
   },
   "peerDependencies": {
-    "react": ">=18.3.0",
-    "react-dom": ">=18.3.0"
+    "react": ">=19",
+    "react-dom": ">=19"
   },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
-    "main": "dist/index.cjs",
-    "module": "dist/index.js",
-    "types": "dist/index.d.ts",
     "registry": "https://registry.npmjs.com"
   }
 }

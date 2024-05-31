@@ -1,10 +1,8 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function useAttachable(
-  ref: React.MutableRefObject<HTMLElement | null>
-) {
+const useAttachable = (ref: React.MutableRefObject<HTMLElement | null>) => {
   const [control, setControl] = useState<HTMLElement | null | undefined>(null)
   useEffect(() => {
     const htmlFor = ref.current?.getAttribute('for')
@@ -16,3 +14,5 @@ export default function useAttachable(
   }, [ref])
   return control
 }
+
+export { useAttachable }

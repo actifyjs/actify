@@ -1,17 +1,27 @@
 'use client'
-import React, { forwardRef } from 'react'
-import { tv } from 'tailwind-variants'
-import { CrouselItem } from './CarouselItem'
+
 import { CarouselContent } from './CarouselContent'
 import { CarouselControl } from './CarouselControl'
 import { CarouselIndicator } from './CarouselIndicator'
 import { CarouselProvider } from './CarouselContext'
+import { CrouselItem } from './CarouselItem'
+import React from 'react'
+import { tv } from 'tailwind-variants'
 
-const variants = tv({
-  base: 'relative overflow-hidden rounded-lg w-full min-h-[400px] flex items-center justify-center'
+const root = tv({
+  base: [
+    'flex',
+    'w-full',
+    'relative',
+    'rounded-lg',
+    'items-center',
+    'min-h-[400px]',
+    'justify-center',
+    'overflow-hidden'
+  ]
 })
 
-interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CarouselProps extends React.ComponentProps<'div'> {
   autoPlay?: boolean
   control?: boolean
   infinite?: boolean
@@ -19,9 +29,8 @@ interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode[]
 }
 
-const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
+const Carousel = (props: CarouselProps) => {
   const {
-    style,
     autoPlay,
     control,
     infinite,
@@ -33,19 +42,14 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
 
   return (
     <CarouselProvider {...{ total: children?.length, ...rest }}>
-      <div
-        ref={ref}
-        {...rest}
-        style={style}
-        className={variants({ className })}
-      >
+      <div {...rest} className={root({ className })}>
         <CarouselContent>{children}</CarouselContent>
         <CarouselControl {...{ control, autoPlay, infinite }} />
         {indicator && <CarouselIndicator />}
       </div>
     </CarouselProvider>
   )
-})
+}
 
 Carousel.displayName = 'Actify.Carousel'
 

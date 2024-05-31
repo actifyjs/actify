@@ -1,11 +1,18 @@
 'use client'
-import { tv } from 'tailwind-variants'
-import useInterval from './../../hooks/useInterval'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { IconButton } from './../Button/IconButton'
-import React, { Children, forwardRef, isValidElement, useState } from 'react'
 
-const variants = tv({
+import React, {
+  Children,
+  FunctionComponent,
+  isValidElement,
+  useState
+} from 'react'
+
+import { Icon } from './../Icon'
+import { IconButton } from './../Button/IconButton'
+import { tv } from 'tailwind-variants'
+import { useInterval } from './../../hooks'
+
+const root = tv({
   base: 'grid w-full place-items-center overflow-hidden'
 })
 
@@ -25,19 +32,18 @@ const itemVariants = tv({
   base: 'w-full h-full inline-block flex-none [transition:var(--transition)] [transform:translateX(var(--transform))]'
 })
 
-interface SwiperPropTypes extends React.HTMLAttributes<HTMLDivElement> {
+interface SwiperProps extends React.ComponentProps<'div'> {
   current?: number
   interval?: number
   autoPlay?: boolean
-  indicator?: React.FunctionComponent
+  indicator?: FunctionComponent
   children?: React.JSX.Element | React.JSX.Element[]
 }
 
-const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
+const Swiper = (props: SwiperProps) => {
   const {
     current: index,
     interval = 3000,
-    style,
     autoPlay,
     className,
     indicator,
@@ -126,7 +132,7 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
   autoPlay && useInterval(next, interval)
 
   return (
-    <div ref={ref} {...rest} style={style} className={variants({ className })}>
+    <div {...rest} className={root({ className })}>
       <div
         style={
           {
@@ -150,7 +156,7 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
             className={buttonVariants({ prev: true })}
             color="primary"
           >
-            <ArrowLeft />
+            <Icon>chevron_left</Icon>
           </IconButton>
         )}
         {/* next button */}
@@ -162,7 +168,7 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
             className={buttonVariants({ next: true })}
             color="primary"
           >
-            <ArrowRight />
+            <Icon>chevron_right</Icon>
           </IconButton>
         )}
 
@@ -174,7 +180,7 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
             {[...Array(count)].map((_, i) => (
               <li
                 key={i}
-                className={`w-5 h-5 rounded-full cursor-pointer ${
+                className={`size-5 rounded-full cursor-pointer ${
                   i == current ? 'bg-surface' : 'bg-inverse-surface'
                 }`}
                 onClick={() => setCurrent(i)}
@@ -185,23 +191,23 @@ const Swiper = forwardRef<HTMLDivElement, SwiperPropTypes>((props, ref) => {
       </div>
     </div>
   )
-})
+}
 
 Swiper.displayName = 'Actify.Swiper'
 
 export default Object.assign(Swiper, {
-  Item: (props: React.HTMLAttributes<HTMLDivElement>) => {
-    const { style, className, children, ...rest } = props
+  Item: (props: React.ComponentProps<'div'>) => {
+    const { className, children, ...rest } = props
     return (
-      <div {...rest} style={style} className={itemVariants({ className })}>
+      <div {...rest} className={itemVariants({ className })}>
         {children}
       </div>
     )
   },
-  PrevButton: (props: React.HTMLAttributes<HTMLDivElement>) => (
-    <>{props.children}</>
+  PrevButton: (props: React.ComponentProps<'div'>) => (
+    <React.Fragment>{props.children}</React.Fragment>
   ),
-  NextButton: (props: React.HTMLAttributes<HTMLDivElement>) => (
-    <>{props.children}</>
+  NextButton: (props: React.ComponentProps<'div'>) => (
+    <React.Fragment>{props.children}</React.Fragment>
   )
 })

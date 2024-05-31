@@ -1,38 +1,76 @@
 'use client'
-import React, { forwardRef } from 'react'
-import FilledButton from './FilledButton'
-import ElevatedButton from './ElevatedButton'
-import TonalButton from './TonalButton'
-import OutlinedButton from './OutlinedButton'
-import TextButton from './TextButton'
 
-export interface ButtonProps extends React.ComponentProps<'button'> {
-  href?: string
+import './styles/button.css'
+import './styles/elevated.css'
+import './styles/filled.css'
+import './styles/outlined.css'
+import './styles/text.css'
+import './styles/tonal.css'
+import './styles/background.css'
+import './styles/outline.css'
+import './styles/label.css'
+import './styles/touch.css'
+import './styles/color.css'
+
+import React, { useId } from 'react'
+
+import { Elevation } from './../Elevation'
+import { FocusRing } from './../FocusRing'
+import { Ripple } from './../Ripple'
+import clsx from 'clsx'
+
+interface ButtonProps extends React.ComponentProps<'button'> {
   ripple?: boolean
-  disabled?: boolean
   trailingIcon?: boolean
   type?: 'submit' | 'reset' | 'button'
-  target?: React.HTMLAttributeAnchorTarget
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
-  variant?: 'filled' | 'elevated' | 'outlined' | 'tonal' | 'text'
+  variant?: 'elevated' | 'filled' | 'tonal' | 'outlined' | 'text'
 }
 
-const Button = forwardRef(
-  (props: ButtonProps, ref?: React.Ref<HTMLButtonElement>) => {
-    const { variant = 'filled', ...rest } = props
+const Button = (props: ButtonProps) => {
+  const {
+    id,
+    style,
+    ripple = true,
+    type = 'button',
+    color = 'primary',
+    variant = 'elevated',
+    disabled = false,
+    className,
+    children,
+    ...rest
+  } = props
 
-    return (
-      <>
-        {variant === 'filled' && <FilledButton ref={ref} {...rest} />}
-        {variant === 'elevated' && <ElevatedButton ref={ref} {...rest} />}
-        {variant === 'tonal' && <TonalButton ref={ref} {...rest} />}
-        {variant === 'outlined' && <OutlinedButton ref={ref} {...rest} />}
-        {variant === 'text' && <TextButton ref={ref} {...rest} />}
-      </>
-    )
-  }
-)
+  const buttonId = id || `actify-button${useId()}`
+
+  const classes = clsx(
+    'a-btn',
+    `a-btn-${color}`,
+    `a-btn-${variant}`,
+    disabled && 'a-btn-disabled',
+    className
+  )
+
+  return (
+    <div role="presentation" style={style} className={classes}>
+      <Elevation disabled={disabled} />
+      {variant == 'outlined' && <div className="a-btn-outline" />}
+      <span className="a-btn-background" />
+      <FocusRing id={buttonId} />
+      {ripple && <Ripple id={buttonId} disabled={disabled} />}
+      <button
+        {...rest}
+        id={buttonId}
+        disabled={disabled}
+        className="a-btn-button"
+      >
+        <span className="a-btn-touch" />
+        <span className={'a-btn-label ' + className}>{children}</span>
+      </button>
+    </div>
+  )
+}
 
 Button.displayName = 'Actify.Button'
 
-export default Button
+export { Button }

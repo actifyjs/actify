@@ -1,7 +1,9 @@
 'use client'
-import ChipItem from './ChipItem'
-import { ChipProvider, ChipProps } from './ChipContext'
-import { Children, isValidElement, cloneElement } from 'react'
+
+import { Children, cloneElement, isValidElement } from 'react'
+import { ChipProps, ChipProvider } from './ChipContext'
+
+import { ChipItem } from './ChipItem'
 
 const Chip = (props: ChipProps) => {
   const { children, ...rest } = props

@@ -1,10 +1,12 @@
 'use client'
-import React, { forwardRef } from 'react'
-import { Spacer } from './../Spacer'
-import { Menu, User } from 'lucide-react'
-import { tv, VariantProps } from 'tailwind-variants'
 
-const variants = tv({
+import { VariantProps, tv } from 'tailwind-variants'
+
+import { Icon } from './../Icon'
+import React from 'react'
+import { Spacer } from './../Spacer'
+
+const root = tv({
   base: 'inline-flex w-full items-center justify-start bg-surface px-4 py-2',
   variants: {
     size: {
@@ -20,18 +22,18 @@ const variants = tv({
 })
 
 interface TopAppBarProps
-  extends VariantProps<typeof variants>,
-    React.HTMLAttributes<HTMLDivElement> {}
+  extends VariantProps<typeof root>,
+    React.ComponentProps<'div'> {}
 
-const TopAppBar = forwardRef<HTMLDivElement, TopAppBarProps>((props, ref) => {
+const TopAppBar = (props: TopAppBarProps) => {
   const { title, size, className, ...rest } = props
   return (
-    <div ref={ref} {...rest} className={variants({ size, className })}>
-      <div className="inline-flex h-12 w-12 flex-col items-center justify-center gap-2.5">
+    <div {...rest} className={root({ size, className })}>
+      <div className="inline-flex size-12 flex-col items-center justify-center gap-2.5">
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
             <div className="relative size-6 text-on-surface">
-              <Menu size={24} />
+              <Icon>menu</Icon>
             </div>
           </div>
         </div>
@@ -43,11 +45,11 @@ const TopAppBar = forwardRef<HTMLDivElement, TopAppBarProps>((props, ref) => {
           {title}
         </div>
       )}
-      <div className="inline-flex h-12 w-12 flex-col items-center justify-center gap-2.5">
+      <div className="inline-flex size-12 flex-col items-center justify-center gap-2.5">
         <div className="inline-flex items-center justify-center gap-2.5 rounded-[100px]">
           <div className="flex items-center justify-center gap-2.5 p-2">
             <div className="relative size-6 text-on-surface">
-              <User size={24} />
+              <Icon>person</Icon>
             </div>
           </div>
         </div>
@@ -62,8 +64,8 @@ const TopAppBar = forwardRef<HTMLDivElement, TopAppBarProps>((props, ref) => {
       ) : null}
     </div>
   )
-})
+}
 
 TopAppBar.displayName = 'Actify.TopAppBar'
 
-export default TopAppBar
+export { TopAppBar }

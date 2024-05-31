@@ -1,5 +1,6 @@
 'use client'
-import React, { forwardRef } from 'react'
+
+import React from 'react'
 import { tv } from 'tailwind-variants'
 import { useTabs } from './TabsContext'
 
@@ -11,20 +12,15 @@ export interface TabsPanelProps extends React.ComponentProps<'div'> {
   index?: number
 }
 
-const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>((props, ref) => {
+const TabsPanel = (props: TabsPanelProps) => {
   const { activeTabIndex } = useTabs()
   const { index, className, children, ...rest } = props
 
   return (
-    <div
-      ref={ref}
-      {...rest}
-      role="tabpanel"
-      className={variants({ className })}
-    >
+    <div {...rest} role="tabpanel" className={variants({ className })}>
       {activeTabIndex == index && children}
     </div>
   )
-})
+}
 
 export { TabsPanel }

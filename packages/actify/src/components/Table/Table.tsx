@@ -1,14 +1,15 @@
 'use client'
-import React, { forwardRef, Children, ComponentProps } from 'react'
-import { tv } from 'tailwind-variants'
-import { Thead } from './Thead'
-import { Tbody } from './Tbody'
-import { Th } from './Th'
-import { Tr } from './Tr'
-import { Td } from './Td'
 
-import { Delete, Pencil } from 'lucide-react'
+import React, { Children, ComponentProps } from 'react'
+
+import { Icon } from './../Icon'
 import { IconButton } from './../Button/IconButton'
+import { Tbody } from './Tbody'
+import { Td } from './Td'
+import { Th } from './Th'
+import { Thead } from './Thead'
+import { Tr } from './Tr'
+import { tv } from 'tailwind-variants'
 
 const variants = tv({
   base: 'w-full text-sm text-left rtl:text-right rounded-xl overflow-hidden bg-surface'
@@ -17,16 +18,15 @@ const variants = tv({
 type Headers = Record<string, any>[]
 type Items = Record<string, any>[]
 interface TableProps extends ComponentProps<'table'> {
-  headers: Headers
-  items: Items
+  headers?: Headers
+  items?: Items
   actions?: boolean
   onItemEdit?: (item: any) => void
   onItemDelete?: (item: any) => void
   children?: React.JSX.Element | React.JSX.Element[]
 }
-const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
+const Table = (props: TableProps) => {
   const {
-    style,
     className,
     headers,
     items,
@@ -48,7 +48,7 @@ const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
   const hasToby = tbody ? tbody.length > 0 : false
 
   return (
-    <table ref={ref} {...rest} className={variants({ className })}>
+    <table {...rest} className={variants({ className })}>
       {hasThead ? (
         thead
       ) : (
@@ -70,7 +70,7 @@ const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
               key={index}
               className="bg-surface border-b hover:bg-inverse-surface/10"
             >
-              {headers.map(({ value }) => (
+              {headers?.map(({ value }) => (
                 <Td key={value}>
                   <p className="font-normal">{item[value]}</p>
                 </Td>
@@ -81,13 +81,13 @@ const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
                     color="error"
                     onClick={() => onItemDelete?.(item)}
                   >
-                    <Delete />
+                    <Icon>delete</Icon>
                   </IconButton>
                   <IconButton
                     color="primary"
                     onClick={() => onItemEdit?.(item)}
                   >
-                    <Pencil />
+                    <Icon>edit</Icon>
                   </IconButton>
                 </Td>
               )}
@@ -97,7 +97,7 @@ const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
       )}
     </table>
   )
-})
+}
 
 Table.displayName = 'Actify.Table'
 

@@ -1,10 +1,7 @@
-import { withContentlayer } from 'next-contentlayer'
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: 'dist',
-  output: 'export',
-  transpilePackages: ['lucide-react']
+  output: 'export'
 }
 
-export default withContentlayer(nextConfig)
+export default nextConfig

@@ -1,18 +1,22 @@
-'use client'
 import React from 'react'
-import { tv } from 'tailwind-variants'
 
-const variants = tv({
-  base: 'ms-1 min-w-[48px] flex h-full relative items-center justify-center'
-})
-
-const TrailingIcon: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  style,
+const TrailingIcon = ({
   className,
-  children
-}) => {
+  children,
+  ...rest
+}: React.ComponentProps<'div'>) => {
   return (
-    <div style={style} className={variants({ className })}>
+    <div
+      {...rest}
+      style={{
+        display: 'flex',
+        height: '100%',
+        minWidth: '40px',
+        position: 'relative',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
       {children}
     </div>
   )

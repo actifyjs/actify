@@ -1,44 +1,20 @@
 'use client'
-import { tv } from 'tailwind-variants'
-import { useAttachable } from './../../hooks'
-import { EASING } from './../../animations'
-import React, { useState, useRef, useEffect } from 'react'
 
-const root = tv({
-  base: [
-    'absolute',
-    'rounded-[inherit]',
-    'pointer-events-none',
-    'text-[var(--md-focus-ring-color,rgb(var(--color-secondary)))]',
-    '[animation-delay:0s,calc(var(--md-focus-ring-duration,600ms)*.25)]',
-    '[animation-duration:calc(var(--md-focus-ring-duration,600ms)*.25),calc(var(--md-focus-ring-duration,600ms)*.75)]',
-    `[animation-timing-function:${EASING.STANDARD}]`,
-    '[animation-name:outward-grow,outward-shrink]',
-    'inset-[calc(-1*var(--md-focus-ring-outward-offset,2px))]',
-    '[outline:var(--md-focus-ring-width,3px)_solid_currentColor]'
-    // '[border-end-end-radius:calc(var(--md-focus-ring-shape-end-end,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]',
-    // '[border-end-start-radius:calc(var(--md-focus-ring-shape-end-start,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]',
-    // '[border-start-end-radius:calc(var(--md-focus-ring-shape-start-end,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]',
-    // '[border-start-start-radius:calc(var(--md-focus-ring-shape-start-start,var(--md-focus-ring-shape,9999px))_+_var(--md-focus-ring-outward-offset,2px))]'
-  ],
-  variants: {
-    visible: {
-      true: 'flex',
-      false: 'hidden'
-    }
-  }
-})
+import './focus-ring.css'
+
+import React from 'react'
+import { useAttachable } from './../../hooks'
 
 const EVENTS = ['focusin', 'focusout', 'pointerdown']
 interface FocusRingProps extends React.ComponentProps<'label'> {}
 
 const FocusRing = (props: FocusRingProps) => {
-  const { id, className, ...rest } = props
-  const [visible, setVisible] = useState(false)
-  const ref = useRef(null)
+  const ref = React.useRef<HTMLLabelElement>(null)
+  const { id, style } = props
   const control = useAttachable(ref)
+  const [visible, setVisible] = React.useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (control) {
       for (const event of EVENTS) {
         control.addEventListener(event, () => {
@@ -60,51 +36,19 @@ const FocusRing = (props: FocusRingProps) => {
   }, [ref.current])
 
   return (
-    <>
-      <style>
-        {`
-        @keyframes outward-grow {
-          from {
-            outline-width: 0
-          }
-          to {
-            outline-width: var(--md-focus-ring-active-width, 8px)
-          }
-        }
-        @keyframes outward-shrink {
-          from {
-            outline-width: var(--md-focus-ring-active-width, 8px)
-          }
-        }
-        @keyframes inward-grow {
-          from {
-            border-width: 0
-          }
-          to {
-            border-width: var(--md-focus-ring-active-width, 8px)
-          }
-        }
-        @keyframes inward-shrink {
-          from {
-            border-width: var(--md-focus-ring-active-width, 8px)
-          }
-        }           
-      `}
-      </style>
-      <label
-        ref={ref}
-        {...rest}
-        htmlFor={id}
-        aria-hidden="true"
-        className={root({
-          visible,
-          className
-        })}
-      ></label>
-    </>
+    <label
+      ref={ref}
+      htmlFor={id}
+      aria-hidden="true"
+      style={{
+        ...style,
+        display: visible ? 'flex' : 'none'
+      }}
+      className="a-focus-ring"
+    />
   )
 }
 
 FocusRing.displayName = 'Actify.FocusRing'
 
-export default FocusRing
+export { FocusRing }

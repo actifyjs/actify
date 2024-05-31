@@ -1,36 +1,44 @@
 {
   "name": "docs",
-  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "prebuild": "rm -rf dist",
-    "dev": "contentlayer dev && next dev",
-    "build": "contentlayer build && next build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@docsearch/react": "^3.6.0",
+    "@material/material-color-utilities": "^0.2.7",
     "actify": "workspace:*",
     "codesandbox": "^2.2.3",
-    "contentlayer": "^0.3.4",
-    "mdast-util-toc": "^7.0.1",
-    "next": "14.2.3",
-    "next-contentlayer": "^0.3.4",
+    "date-fns": "^3.6.0",
+    "gray-matter": "^4.0.3",
+    "next": "15.0.0-rc.0",
     "next-themes": "^0.3.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "19.0.0-rc-935180c7e0-20240524",
+    "react-dom": "19.0.0-rc-935180c7e0-20240524",
+    "react-markdown": "^8.0.7",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-raw": "^6.1.1",
     "rehype-slug": "^6.0.0",
-    "remark": "^15.0.1",
     "remark-gfm": "^3.0.1",
-    "shiki": "^1.4.0",
-    "tailwind-variants": "^0.2.1"
+    "shiki": "^1.6.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",
-    "@types/node": "^20.12.7",
-    "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.0",
+    "@types/node": "^20.12.12",
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc",
     "postcss": "^8.4.38",
+    "react-live": "^4.1.6",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "npm:types-react@rc",
+      "@types/react-dom": "npm:types-react-dom@rc"
+    }
   }
 }

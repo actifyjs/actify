@@ -1,4 +1,6 @@
-import React, { useState, useMemo, createContext, useContext } from 'react'
+'use client'
+
+import React, { createContext, useContext, useMemo, useState } from 'react'
 
 export interface ChipProps extends React.PropsWithChildren {
   // if there is a selected value, it means a controlled component, need onChange handler

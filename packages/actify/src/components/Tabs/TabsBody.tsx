@@ -1,11 +1,8 @@
 'use client'
+
+import React, { Children, cloneElement, isValidElement } from 'react'
+
 import { tv } from 'tailwind-variants'
-import React, {
-  forwardRef,
-  Children,
-  isValidElement,
-  cloneElement
-} from 'react'
 
 const variants = tv({
   base: ['block', 'w-full', 'relative', 'bg-transparent']
@@ -13,11 +10,11 @@ const variants = tv({
 
 export interface TabsBodyProps extends React.ComponentProps<'div'> {}
 
-const TabsBody = forwardRef<HTMLDivElement, TabsBodyProps>((props, ref) => {
+const TabsBody = (props: TabsBodyProps) => {
   const { className, children, ...rest } = props
 
   return (
-    <div ref={ref} {...rest} className={variants({ className })}>
+    <div {...rest} className={variants({ className })}>
       {Children.map(
         children,
         (child, index) =>
@@ -29,6 +26,6 @@ const TabsBody = forwardRef<HTMLDivElement, TabsBodyProps>((props, ref) => {
       )}
     </div>
   )
-})
+}
 
 export { TabsBody }

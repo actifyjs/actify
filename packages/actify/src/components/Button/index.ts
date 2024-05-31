@@ -1,3 +1,3 @@
-export { default as Button, type ButtonProps } from './Button'
+export { Button } from './Button'
 export { Fab } from './Fab'
 export { IconButton } from './IconButton'

@@ -1,35 +1,36 @@
 'use client'
+
 import React, {
-  useState,
   Children,
-  forwardRef,
-  useContext,
   cloneElement,
-  isValidElement
+  isValidElement,
+  useContext,
+  useState
 } from 'react'
+
+import { Icon } from './../Icon'
+import { ListContext } from './ListContext'
 import { motion } from 'framer-motion'
 import { tv } from 'tailwind-variants'
-import { ChevronDown } from 'lucide-react'
-import { ListContext } from './ListContext'
 
 const variants = tv({
   base: 'px-4 cursor-pointer relative isolate'
 })
 
-interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+interface ListItemProps extends React.ComponentProps<'li'> {
   label?: string
   icon?: React.ReactNode
 }
 
-const ListGroup = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
+const ListGroup = (props: ListItemProps) => {
   const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState(false)
-  const { style, className, label, icon, children, ...rest } = props
+  const { className, label, icon, children, ...rest } = props
 
   const { layoutId } = useContext(ListContext)
 
   return (
-    <li ref={ref} {...rest} style={style} className={variants({ className })}>
+    <li {...rest} className={variants({ className })}>
       <div
         className="h-14 flex items-center justify-between"
         onMouseOver={() => setHovered(true)}
@@ -39,13 +40,13 @@ const ListGroup = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
         {icon}
         {label}
         <div className={`transition-transform ${open ? 'rotate-90' : ''}`}>
-          <ChevronDown />
+          <Icon>keyboard_arrow_down</Icon>
         </div>
       </div>
       {hovered && (
         <motion.div
           layoutId={layoutId}
-          className="h-14 absolute inset-0 bg-secondary/25 z-[-1]"
+          className="h-14 absolute inset-0 bg-surface-variant z-[-1]"
         />
       )}
       <div
@@ -66,7 +67,7 @@ const ListGroup = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
       </div>
     </li>
   )
-})
+}
 
 ListGroup.displayName = 'Actify.ListGroup'
 

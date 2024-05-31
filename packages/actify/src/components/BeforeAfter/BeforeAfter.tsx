@@ -1,19 +1,16 @@
 'use client'
-import React, { useMemo } from 'react'
-import { MoveHorizontal } from 'lucide-react'
 
-type BeforeAfterProps = {
-  before: string
-  after: string
+import { Icon } from './../Icon'
+import React from 'react'
+
+interface BeforeAfterProps extends React.ComponentProps<'div'> {
+  before?: string
+  after?: string
   bgImage?: string
-} & React.HTMLAttributes<HTMLDivElement>
+}
 
-const BeforeAfter: React.FC<BeforeAfterProps> = ({
-  before,
-  after,
-  bgImage
-}) => {
-  const image = useMemo(
+const BeforeAfter = ({ before, after, bgImage }: BeforeAfterProps) => {
+  const image = React.useMemo(
     () =>
       `url('${
         bgImage ||
@@ -65,11 +62,11 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({
         />
         <div className="pointer-events-none absolute top-0 left-[--position] h-full w-1 bg-surface"></div>
         <div className="pointer-events-none absolute top-1/2 left-[--position] grid -translate-x-1/2 -translate-y-1/2 rounded-full bg-surface p-2 shadow">
-          <MoveHorizontal />
+          <Icon>arrow_range</Icon>
         </div>
       </div>
     </div>
   )
 }
 
-export default BeforeAfter
+export { BeforeAfter }

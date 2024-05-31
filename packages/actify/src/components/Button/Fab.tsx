@@ -1,10 +1,11 @@
 'use client'
-import React, { useId, forwardRef } from 'react'
-import { tv, VariantProps } from 'tailwind-variants'
-import { setColor } from './../../utils'
-import { Ripple } from './../Ripple'
-import { FocusRing } from './../FocusRing'
+
+import React, { useId } from 'react'
+import { VariantProps, tv } from 'tailwind-variants'
+
 import { Elevation } from './../Elevation'
+import { FocusRing } from './../FocusRing'
+import { Ripple } from './../Ripple'
 
 const root = tv({
   base: [
@@ -30,50 +31,43 @@ interface FabProps
   extends React.ComponentProps<'button'>,
     VariantProps<typeof root> {
   label?: string
-  icon?: JSX.Element
+  icon?: React.ReactNode
   variant?: 'surface' | 'primary' | 'secondary' | 'tertiary'
 }
 
-const Fab = forwardRef(
-  (props: FabProps, ref?: React.Ref<HTMLButtonElement>) => {
-    const {
-      type,
-      icon,
-      style,
-      label,
-      size = 'medium',
-      color = 'primary',
-      variant = 'primary',
-      disabled = false,
-      className,
-      children,
-      ...rest
-    } = props
+const Fab = (props: FabProps) => {
+  const {
+    id,
+    icon,
+    label,
+    type = 'button',
+    size = 'medium',
+    variant = 'primary',
+    disabled = false,
+    className,
+    children,
+    ...rest
+  } = props
 
-    const id = useId()
-    let styles = { ...style }
-    styles['color'] = setColor(color)
+  const fabId = id || `actify-fab${useId()}`
 
-    return (
-      <button
-        ref={ref}
-        {...rest}
-        id={id}
-        style={styles}
-        disabled={disabled}
-        type={type || 'button'}
-        className={root({ size, className })}
-      >
-        {icon}
-        {children}
-        {label}
-        <Elevation level={3} />
-        <FocusRing id={id} />
-        <Ripple id={id} disabled={disabled} />
-      </button>
-    )
-  }
-)
+  return (
+    <button
+      {...rest}
+      id={fabId}
+      type={type}
+      disabled={disabled}
+      className={root({ size, className })}
+    >
+      {icon}
+      {children}
+      {label}
+      <Elevation className="[--md-elevation-level:3]" />
+      <FocusRing id={fabId} />
+      <Ripple id={fabId} disabled={disabled} />
+    </button>
+  )
+}
 
 Fab.displayName = 'Actify.Fab'
 
