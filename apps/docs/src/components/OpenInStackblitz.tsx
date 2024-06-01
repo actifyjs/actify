@@ -1,6 +1,7 @@
-import { IconButton, Tooltip, name, version } from 'actify'
+import { IconButton, Tooltip } from 'actify'
 
 import React from 'react'
+import packageInfo from 'actify/package.json'
 
 interface OpenInStackblitzProps extends React.ComponentProps<'form'> {
   title: string
@@ -44,7 +45,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     "dev": "vite"
   },
   "dependencies": {
-    "${name}": "^${version}",
+    "actify": "^${packageInfo.version}",
     "react": "rc",
     "react-dom": "rc"
   },

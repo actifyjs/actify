@@ -52,5 +52,3 @@ export * from './utils'
 export * from './hooks'
 export * from './themes'
 export * from './animations'
-
-export { name, version } from '../package.json'

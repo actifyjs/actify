@@ -16,7 +16,7 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./src/*"],
-      "actify": ["./../../packages/actify/src/index"]
+      "actify": ["./../../packages/actify/src"]
     },
     "target": "ES2017"
   },

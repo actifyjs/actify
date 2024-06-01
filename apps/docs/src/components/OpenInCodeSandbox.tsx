@@ -1,7 +1,8 @@
-import { IconButton, Tooltip, name, version } from 'actify'
+import { IconButton, Tooltip } from 'actify'
 
 import React from 'react'
 import { getParameters } from 'codesandbox/lib/api/define'
+import packageInfo from 'actify/package.json'
 
 interface OpenInCodeSandboxProps extends React.ComponentProps<'form'> {
   title: string
@@ -21,7 +22,7 @@ const OpenInCodeSandbox = ({ title, code }: OpenInCodeSandboxProps) => {
               dev: 'vite'
             },
             dependencies: {
-              [name]: `^${version}`,
+              actify: `^${packageInfo.version}`,
               react: 'rc',
               'react-dom': 'rc'
             },
