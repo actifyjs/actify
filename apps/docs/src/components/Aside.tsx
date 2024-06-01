@@ -68,9 +68,6 @@ const components = [
     name: 'Focus Ring'
   },
   {
-    name: 'Swiper'
-  },
-  {
     name: 'Lists'
   },
   {
@@ -128,6 +125,9 @@ const components = [
     name: 'Sliders'
   },
   {
+    name: 'Swiper'
+  },
+  {
     name: 'Switch'
   },
   {
@@ -137,10 +137,10 @@ const components = [
     name: 'Table'
   },
   {
-    name: 'Text fields'
+    name: 'Terminal'
   },
   {
-    name: 'Terminal'
+    name: 'Text fields'
   },
   {
     name: 'Tooltips'
