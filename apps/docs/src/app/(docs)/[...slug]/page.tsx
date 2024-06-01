@@ -9,6 +9,17 @@ type PageProps = {
     slug: string[]
   }
 }
+
+export const generateMetadata = ({ params }: PageProps) => {
+  const { slug } = params
+  const docs = getDocData(slug)
+
+  return {
+    title: docs?.title,
+    description: docs?.description
+  }
+}
+
 export async function generateStaticParams() {
   const slugs = getAllDocSlugs()
   return slugs

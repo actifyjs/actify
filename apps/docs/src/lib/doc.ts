@@ -33,6 +33,6 @@ export function getDocData(slugs: string[]) {
 
   return {
     content: matterResult.content,
-    ...(matterResult.data as { title: string })
+    ...(matterResult.data as { title: string; description?: string })
   }
 }

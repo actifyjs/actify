@@ -4,6 +4,12 @@ import Link from 'next/link'
 import Logo from '@/components/Logo'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 
+export const generateMetadata = () => {
+  return {
+    title: 'Actify — 🌻React Material Design 3 Components Library'
+  }
+}
+
 export default function Page() {
   return (
     <main className="col-start-1 col-end-3 bg-surface">
