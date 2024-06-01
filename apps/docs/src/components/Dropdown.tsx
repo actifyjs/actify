@@ -21,7 +21,7 @@ const Dropdown = (props: DropdownProps) => {
         </div>
       </Button>
 
-      <div className="absolute hidden w-28 flex-col bg-surface drop-shadow-lg hover:flex peer-hover:flex">
+      <div className="absolute right-0 hidden w-28 flex-col bg-surface drop-shadow-lg hover:flex peer-hover:flex">
         {items?.map((item, index) => (
           <NavLink
             key={index}
