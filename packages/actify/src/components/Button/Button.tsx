@@ -65,7 +65,7 @@ const Button = (props: ButtonProps) => {
         className="a-btn-button"
       >
         <span className="a-btn-touch" />
-        <span className={'a-btn-label ' + className}>{children}</span>
+        <span className="a-btn-label">{children}</span>
       </button>
     </div>
   )
