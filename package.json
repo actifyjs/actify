@@ -11,5 +11,11 @@
     "prettier": "^3.1.1",
     "turbo": "^1.12.4"
   },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "npm:types-react@rc",
+      "@types/react-dom": "npm:types-react-dom@rc"
+    }
+  },
   "packageManager": "pnpm@8.11.0"
 }
