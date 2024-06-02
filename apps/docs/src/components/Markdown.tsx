@@ -3,6 +3,7 @@ import DocTabs from '@/components/DocTabs'
 import DocUsage from '@/components/DocUsage'
 import ReactMarkdown from 'react-markdown'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
+import Theme from '@/views/theme'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
@@ -60,7 +61,8 @@ export default function Markdown({ docs, usage }: MarkdownProps) {
           <DocUsage {...usage} {...rest} />
         ),
         // @ts-ignore
-        preview: ({ node, children, ...rest }) => <DocPreview {...rest} />
+        preview: ({ node, children, ...rest }) => <DocPreview {...rest} />,
+        theme: () => <Theme />
       }}
     >
       {`# ${docs.title} ${docs.description ? '\r\n>' + docs.description : ''}\r\n` +
