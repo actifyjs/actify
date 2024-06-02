@@ -15,4 +15,6 @@ const Elevation = ({ disabled = false }: ElevationProps) => {
   return <span aria-hidden="true" className={classes} />
 }
 
+Elevation.displayName = 'Actify.Elevation'
+
 export { Elevation }

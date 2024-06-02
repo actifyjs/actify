@@ -21,4 +21,6 @@ const Label = ({ ref, children, ...rest }: LabelProps) => {
   )
 }
 
+Label.displayName = 'Actify.Label'
+
 export { Label }

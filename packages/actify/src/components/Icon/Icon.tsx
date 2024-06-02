@@ -19,4 +19,6 @@ const Icon = ({ className, children, ...rest }: IconProps) => {
   )
 }
 
+Icon.displayName = 'Actify.Icon'
+
 export { Icon }

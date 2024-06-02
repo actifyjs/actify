@@ -11,4 +11,6 @@ const Text = (props: TextProps) => {
   )
 }
 
+Text.displayName = 'Actify.Text'
+
 export { Text }
