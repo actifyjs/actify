@@ -24,7 +24,7 @@
     border-width: var(--md-focus-ring-active-width, 8px);
   }
 }
-.a-focus-ring {
+.focus-ring {
   animation-delay: 0s, calc(var(--md-focus-ring-duration, 600ms) * 0.25);
   animation-duration: calc(var(--md-focus-ring-duration, 600ms) * 0.25),
     calc(var(--md-focus-ring-duration, 600ms) * 0.75);

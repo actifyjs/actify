@@ -1,4 +1,4 @@
-.a-elevation {
+.shadow {
   border-radius: inherit;
   inset: 0px;
   position: absolute;
@@ -66,7 +66,7 @@
   }
 }
 
-.a-elevation-disabled .a-elevation {
+.disabled .shadow {
   transition: none 0s ease 0s;
   --md-elevation-level: var(--_disabled-container-elevation);
 }

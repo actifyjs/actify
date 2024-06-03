@@ -74,9 +74,9 @@ const DocTabs = (props: ActifyTabsProps) => {
   return (
     <Tabs
       activeTabIndex={activeTabIndex}
-      className="not-prose rounded-lg bg-surface-variant"
+      className="not-prose rounded-lg bg-surface-variant shadow-lg"
     >
-      <div className="flex border-b border-outline">
+      <div className="flex">
         <Tabs.Header className="bg-transparent">
           {_tabs.map((tab) => (
             <Tabs.Tab key={tab.label} value={tab.label} className="">
@@ -86,7 +86,7 @@ const DocTabs = (props: ActifyTabsProps) => {
           ))}
         </Tabs.Header>
       </div>
-      <Tabs.Body className="p-2">
+      <Tabs.Body className="p-2 sm:p-4 bg-surface-container">
         {_tabs.map((tab) => (
           <Tabs.Panel key={tab.label}>
             <SyntaxHighlighter lang={`${language}` || 'jsx'}>

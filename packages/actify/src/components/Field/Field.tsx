@@ -1,20 +1,9 @@
-import './styles/field.css'
-import './styles/active-indicator.css'
-import './styles/background.css'
-import './styles/filled.css'
-import './styles/input-wrapper.css'
-import './styles/label-wrapper.css'
-import './styles/label.css'
-import './styles/outline.css'
-import './styles/outlined.css'
-import './styles/state-layer.css'
-import './styles/supporting-text.css'
-
 import { SupportingText, SupportingTextProps } from './SupportingText'
 import { cubicBezier, motion } from 'framer-motion'
 
 import React from 'react'
 import clsx from 'clsx'
+import styles from './styles/actify.module.css'
 
 export interface FieldProps extends SupportingTextProps {
   label?: string
@@ -80,7 +69,11 @@ const Field = (props: FieldProps) => {
           easings: [cubicBezier(0.2, 0, 0, 1)]
         }}
         aria-hidden={!visible}
-        className={`a-label ${isFloating ? 'floating' : 'resting'} ${visible ? '' : 'opacity-0'}`}
+        className={clsx(
+          styles['label'],
+          !visible && styles['visible'],
+          isFloating ? styles['floating'] : styles['resting']
+        )}
       >
         {labelText}
       </motion.span>
@@ -94,32 +87,33 @@ const Field = (props: FieldProps) => {
 
   const outline = renderOutline?.(floatingLabel)
 
-  const classes = clsx('a-field', {
-    error,
-    focused,
-    disabled,
-    populated,
-    'no-label': !label,
-    'with-start': !!leadingIcon,
-    'with-end': !!trailingIcon
-  })
+  const classes = clsx(
+    styles['field'],
+    error && styles['error'],
+    focused && styles['focused'],
+    disabled && styles['disabled'],
+    populated && styles['populated'],
+    !label && styles['no-label'],
+    !!leadingIcon && styles['with-start'],
+    !!trailingIcon && styles['with-end']
+  )
 
   return (
     <div className={classes}>
-      <div className={'a-container-overflow ' + className}>
+      <div className={clsx(styles['container-overflow'], className)}>
         {renderBackground?.()}
         {renderIndicator?.(focused)}
         {outline}
-        <div className="a-container">
-          <div className="a-start">{leadingIcon}</div>
-          <div className="a-middle">
-            <div className="a-label-wrapper">
+        <div className={styles['container']}>
+          <div className={styles['start']}>{leadingIcon}</div>
+          <div className={styles['middle']}>
+            <div className={styles['label-wrapper']}>
               {restingLabel}
               {outline ? '' : floatingLabel}
             </div>
-            <div className="a-content">{children}</div>
+            <div className={styles['content']}>{children}</div>
           </div>
-          <div className="a-end">{trailingIcon}</div>
+          <div className={styles['end']}>{trailingIcon}</div>
         </div>
       </div>
       <SupportingText

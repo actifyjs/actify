@@ -1,12 +1,11 @@
 'use client'
 
-import './checkbox.css'
-
 import React, { useId } from 'react'
 
 import { FocusRing } from './../FocusRing'
 import { Ripple } from './../Ripple'
 import clsx from 'clsx'
+import styles from './checkbox.module.css'
 
 interface CheckboxProps extends React.ComponentProps<'input'> {
   indeterminate?: boolean
@@ -36,27 +35,27 @@ const Checkbox = ({
   const containerClasses = React.useMemo(() => {
     let classes = []
     if (disabled) {
-      classes.push('disabled')
+      classes.push(styles['disabled'])
     }
     if (internalChecked || indeterminate.current) {
-      classes.push('selected')
+      classes.push(styles['selected'])
     }
     if (!internalChecked && !indeterminate.current) {
-      classes.push('unselected')
+      classes.push(styles['unselected'])
     }
     if (internalChecked) {
-      classes.push('checked')
+      classes.push(styles['checked'])
     }
     if (indeterminate.current) {
-      classes.push('indeterminate')
+      classes.push(styles['indeterminate'])
     }
 
     // prev status
-    if (classes.includes('selected')) {
-      prevStatus.current = 'prev-unselected'
+    if (classes.includes(styles['selected'])) {
+      prevStatus.current = styles['prev-unselected']
     }
-    if (classes.includes('unselected')) {
-      prevStatus.current = 'pre-checked'
+    if (classes.includes(styles['unselected'])) {
+      prevStatus.current = styles['pre-checked']
     }
 
     return classes.join(' ')
@@ -80,8 +79,8 @@ const Checkbox = ({
   }
 
   return (
-    <div role="presentation" className="a-checkbox">
-      <div className="a-checkbox-container">
+    <div role="presentation" className={styles['checkbox']}>
+      <div className={styles['container']}>
         <input
           {...rest}
           type={type}
@@ -89,19 +88,19 @@ const Checkbox = ({
           disabled={disabled}
           onChange={handleChange}
           checked={internalChecked}
-          className="a-checkbox-input"
+          className={styles['input']}
           aria-checked={indeterminate.current ? 'mixed' : undefined}
         />
         <span
           className={clsx(
-            'a-checkbox-outline',
+            styles['outline'],
             containerClasses,
             prevStatus.current
           )}
         />
         <span
           className={clsx(
-            'a-checkbox-background',
+            styles['background'],
             containerClasses,
             prevStatus.current
           )}
@@ -127,24 +126,20 @@ const Checkbox = ({
         <svg
           aria-hidden="true"
           viewBox="0 0 18 18"
-          className={clsx(
-            'a-checkbox-icon',
-            containerClasses,
-            prevStatus.current
-          )}
+          className={clsx(styles['icon'], containerClasses, prevStatus.current)}
         >
           <rect
             className={clsx(
-              'a-checkbox-mark',
-              'a-checkbox-mark-short',
+              styles['mark'],
+              styles['short'],
               containerClasses,
               prevStatus.current
             )}
           />
           <rect
             className={clsx(
-              'a-checkbox-mark',
-              'a-checkbox-mark-long',
+              styles['mark'],
+              styles['long'],
               containerClasses,
               prevStatus.current
             )}

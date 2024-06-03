@@ -1,7 +1,5 @@
 'use client'
 
-import './accordion.css'
-
 import { AccordionProps, AccordionProvider } from './AccordionContext'
 import {
   Children,
@@ -14,6 +12,7 @@ import {
 import { AccordionContent } from './AccordionContent'
 import { AccordionHeader } from './AccordionHeader'
 import { AccordionItem } from './AccordionItem'
+import styles from './accordion.module.css'
 
 interface AccordionRootProps extends AccordionProps, ComponentProps<'div'> {}
 
@@ -23,7 +22,7 @@ const AccordionRoot = (props: AccordionRootProps) => {
 
   return (
     <AccordionProvider {...{ open, setOpen, multiple }}>
-      <div {...rest} className="a-accordion">
+      <div {...rest} className={styles['a-accordion']}>
         {Children.map(
           children,
           (child, index) =>

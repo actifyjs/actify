@@ -1,4 +1,5 @@
 import React from 'react'
+import supporting from './styles/supporting.module.css'
 
 export interface SupportingTextProps {
   max?: number
@@ -32,9 +33,9 @@ const SupportingText = ({
 
   return (
     <React.Fragment>
-      <div role={role} className="a-supporting-text">
+      <div role={role} className={supporting['text']}>
         <span>{supportingOrErrorText()}</span>
-        <span className="a-counter">{counterText()}</span>
+        <span className={supporting['counter']}>{counterText()}</span>
       </div>
       <div hidden id="description">
         {`${supportingOrErrorText()} ${counterText()}`}

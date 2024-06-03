@@ -1,12 +1,11 @@
 'use client'
 
-import './switch.css'
-
-import React, { useId, useState } from 'react'
+import React, { useEffect, useId, useState } from 'react'
 
 import { FocusRing } from './../FocusRing'
 import { Ripple } from './../Ripple'
 import clsx from 'clsx'
+import styles from './actify.module.css'
 
 interface SwitchProps
   extends Omit<React.ComponentProps<'input'>, 'checked' | 'defaultChecked'> {
@@ -39,7 +38,7 @@ const Switch = (props: SwitchProps) => {
 
   const isControlled = selected !== undefined
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isControlled) {
       setInternalChecked(selected)
     }
@@ -59,13 +58,16 @@ const Switch = (props: SwitchProps) => {
 
   const renderIcons = () => {
     return (
-      <div className="a-switch-icons">
-        <svg viewBox="0 0 24 24" className={clsx('a-switch-icon', 'on')}>
+      <div className={styles['icons']}>
+        <svg viewBox="0 0 24 24" className={clsx(styles['icon'], styles['on'])}>
           <path d="M9.55 18.2 3.65 12.3 5.275 10.675 9.55 14.95 18.725 5.775 20.35 7.4Z" />
         </svg>
 
         {!showOnlySelectedIcon && (
-          <svg viewBox="0 0 24 24" className={clsx('a-switch-icon', 'off')}>
+          <svg
+            viewBox="0 0 24 24"
+            className={clsx(styles['icon'], styles['off'])}
+          >
             <path d="M6.4 19.2 4.8 17.6 10.4 12 4.8 6.4 6.4 4.8 12 10.4 17.6 4.8 19.2 6.4 13.6 12 19.2 17.6 17.6 19.2 12 13.6Z" />
           </svg>
         )}
@@ -76,17 +78,13 @@ const Switch = (props: SwitchProps) => {
   return (
     <div
       role="presentation"
-      className={clsx('a-switch-host', {
-        disabled
-      })}
+      className={clsx(styles['host'], disabled && styles['disabled'])}
     >
       <div
         className={clsx(
-          'a-switch',
-          {
-            disabled
-          },
-          internalChecked ? 'selected' : 'unselected'
+          styles['switch'],
+          disabled && styles['disabled'],
+          internalChecked ? styles['selected'] : styles['unselected']
         )}
       >
         <input
@@ -97,23 +95,25 @@ const Switch = (props: SwitchProps) => {
           disabled={disabled}
           checked={internalChecked}
           onChange={handleChange}
-          className="a-switch-touch"
+          className={styles['touch']}
         />
         <FocusRing id={switchId} />
-        <span className="a-switch-track">
-          <span className="a-switch-handle-container">
+        <span className={styles['track']}>
+          <span className={styles['handle-container']}>
             <Ripple
               id={switchId}
               disabled={disabled}
               style={{
+                inset: 'unset',
                 borderRadius:
                   'var(--md-switch-state-layer-shape,var(--md-sys-shape-corner-full, 9999px))',
                 width: 'var(--md-switch-state-layer-size, 40px)',
-                height: 'var(--md-switch-state-layer-size, 40px)',
-                inset: 'unset'
+                height: 'var(--md-switch-state-layer-size, 40px)'
               }}
             />
-            <span className={clsx([icons && 'with-icon', 'a-switch-handle'])}>
+            <span
+              className={clsx([icons && styles['with-icon'], styles['handle']])}
+            >
               {shouldShowIcons() && renderIcons()}
             </span>
           </span>

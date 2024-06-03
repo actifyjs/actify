@@ -1,11 +1,10 @@
 'use client'
 
-import './ripple.css'
-
 import React, { useEffect, useId, useRef, useState } from 'react'
 
 import { EASING } from './../../animations'
 import clsx from 'clsx'
+import styles from './actify.module.css'
 import { useAttachable } from './../../hooks'
 
 const TOUCH_DELAY_MS = 150
@@ -349,15 +348,18 @@ const Ripple = (props: RippleProps) => {
     }
   }, [ref.current])
 
-  const classes = clsx('a-ripple', { hovered, pressed }, className)
-
   return (
     <label
       ref={ref}
       style={style}
       htmlFor={rippleId}
       aria-hidden="true"
-      className={classes}
+      className={clsx(
+        styles['ripple'],
+        hovered && styles['hoverd'],
+        pressed && styles['pressed'],
+        className
+      )}
     />
   )
 }

@@ -1,9 +1,9 @@
-.a-btn-secondary {
+.secondary {
   --md-sys-color-primary: var(--md-sys-color-secondary);
 }
-.a-btn-tertiary {
+.tertiary {
   --md-sys-color-primary: var(--md-sys-color-tertiary);
 }
-.a-btn-error {
+.error {
   --md-sys-color-primary: var(--md-sys-color-error);
 }

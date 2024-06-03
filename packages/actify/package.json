@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -52,7 +52,8 @@
     "tailwindcss": "^3.4.3",
     "tsc-alias": "^1.8.8",
     "tslib": "^2.6.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "typescript-plugin-css-modules": "^5.1.0"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.13",

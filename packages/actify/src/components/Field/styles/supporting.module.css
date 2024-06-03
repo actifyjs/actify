@@ -1,4 +1,4 @@
-.a-supporting-text {
+.text {
   color: var(--_supporting-text-color);
   display: flex;
   font-family: var(--_supporting-text-font);
@@ -10,4 +10,7 @@
   padding-inline-start: var(--_supporting-text-leading-space);
   padding-inline-end: var(--_supporting-text-trailing-space);
   padding-top: var(--_supporting-text-top-space);
+}
+.counter {
+  flex-shrink: 0;
 }

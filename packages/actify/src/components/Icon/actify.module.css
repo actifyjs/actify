@@ -1,4 +1,4 @@
-.a-icon {
+.icon {
   display: inline-flex;
   & i {
     font-size: var(--md-icon-size, 24px);

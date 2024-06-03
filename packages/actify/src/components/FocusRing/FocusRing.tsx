@@ -1,20 +1,20 @@
 'use client'
 
-import './focus-ring.css'
+import React, { useEffect, useRef, useState } from 'react'
 
-import React from 'react'
+import styles from './actify.module.css'
 import { useAttachable } from './../../hooks'
 
 const EVENTS = ['focusin', 'focusout', 'pointerdown']
 interface FocusRingProps extends React.ComponentProps<'label'> {}
 
 const FocusRing = (props: FocusRingProps) => {
-  const ref = React.useRef<HTMLLabelElement>(null)
+  const ref = useRef<HTMLLabelElement>(null)
   const { id, style } = props
   const control = useAttachable(ref)
-  const [visible, setVisible] = React.useState(false)
+  const [visible, setVisible] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (control) {
       for (const event of EVENTS) {
         control.addEventListener(event, () => {
@@ -44,7 +44,7 @@ const FocusRing = (props: FocusRingProps) => {
         ...style,
         display: visible ? 'flex' : 'none'
       }}
-      className="a-focus-ring"
+      className={styles['focus-ring']}
     />
   )
 }

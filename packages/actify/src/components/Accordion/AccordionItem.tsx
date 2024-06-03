@@ -3,6 +3,7 @@
 import React, { Children, cloneElement, isValidElement } from 'react'
 
 import clsx from 'clsx'
+import styles from './accordion.module.css'
 
 export interface AccordionItemProps extends React.ComponentProps<'div'> {
   index?: number
@@ -13,7 +14,7 @@ const AccordionItem = (props: AccordionItemProps) => {
   const { index, className, children, ...rest } = props
 
   return (
-    <div {...rest} className={clsx('a-accordion-item', className)}>
+    <div {...rest} className={clsx(styles['a-accordion-item'], className)}>
       {Children.map(
         children,
         (child) =>

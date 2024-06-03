@@ -4,6 +4,10 @@ import { useState } from 'react'
 
 export default () => {
   const [showPassword, setShowPassword] = useState(false)
+  const handleClick = (event: Event) => {
+    event.preventDefault()
+    setShowPassword((prev) => !prev)
+  }
 
   return (
     <form className="grid gap-2 grid-cols-1 sm:grid-cols-2">
@@ -24,7 +28,7 @@ export default () => {
         </TextField.LeadingIcon>
 
         <TextField.TrailingIcon>
-          <IconButton onClick={() => setShowPassword((prev) => !prev)}>
+          <IconButton onClick={handleClick}>
             <Icon>{showPassword ? 'visibility_off' : 'visibility'}</Icon>
           </IconButton>
         </TextField.TrailingIcon>

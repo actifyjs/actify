@@ -22,10 +22,10 @@ const DocUsage = (props: DocUsageProps) => {
   return (
     <Tabs
       activeTabIndex={0}
-      className="not-prose rounded-lg text-on-surface-variant bg-surface-variant"
+      className="not-prose rounded-lg text-on-surface-variant bg-surface-variant shadow-lg"
     >
-      <div className="flex border-b border-outline w-full">
-        <Tabs.Header className="bg-transparent w-full">
+      <div className="flex">
+        <Tabs.Header className="bg-transparent">
           <Tabs.Tab value="preview">
             <Icon>visibility</Icon>
             Preview
@@ -58,7 +58,7 @@ const DocUsage = (props: DocUsageProps) => {
           </TooltipGroup>
         </Tabs.Header>
       </div>
-      <Tabs.Body className="p-2">
+      <Tabs.Body className="p-2 sm:p-4 bg-surface-container">
         <Tabs.Panel>
           <DynamicComponent />
         </Tabs.Panel>

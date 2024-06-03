@@ -1,23 +1,14 @@
 'use client'
 
-import './styles/button.css'
-import './styles/elevated.css'
-import './styles/filled.css'
-import './styles/outlined.css'
-import './styles/text.css'
-import './styles/tonal.css'
-import './styles/background.css'
-import './styles/outline.css'
-import './styles/label.css'
-import './styles/touch.css'
-import './styles/color.css'
-
 import React, { useId } from 'react'
 
 import { Elevation } from './../Elevation'
 import { FocusRing } from './../FocusRing'
 import { Ripple } from './../Ripple'
+import buttons from './styles/button.module.css'
 import clsx from 'clsx'
+import colors from './styles/color.module.css'
+import variants from './styles/variant.module.css'
 
 interface ButtonProps extends React.ComponentProps<'button'> {
   ripple?: boolean
@@ -44,28 +35,28 @@ const Button = (props: ButtonProps) => {
   const buttonId = id || `actify-button${useId()}`
 
   const classes = clsx(
-    'a-btn',
-    `a-btn-${color}`,
-    `a-btn-${variant}`,
-    disabled && 'a-btn-disabled',
+    buttons['btn'],
+    colors[color],
+    variants[variant],
+    disabled && buttons['disabled'],
     className
   )
 
   return (
     <div role="presentation" style={style} className={classes}>
       <Elevation disabled={disabled} />
-      {variant == 'outlined' && <div className="a-btn-outline" />}
-      <span className="a-btn-background" />
+      {variant == 'outlined' && <div className={buttons['outline']} />}
+      <span className={buttons['background']} />
       <FocusRing id={buttonId} />
       {ripple && <Ripple id={buttonId} disabled={disabled} />}
       <button
         {...rest}
         id={buttonId}
         disabled={disabled}
-        className="a-btn-button"
+        className={buttons['button']}
       >
-        <span className="a-btn-touch" />
-        <span className="a-btn-label">{children}</span>
+        <span className={buttons['touch']} />
+        <span className={buttons['label']}>{children}</span>
       </button>
     </div>
   )

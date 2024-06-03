@@ -63,7 +63,7 @@ const SyntaxHighlighter = (props: React.ComponentProps<'div'>) => {
 
   return (
     <div
-      className={`${fira_code.variable} group relative rounded-lg overflow-hidden`}
+      className={`${fira_code.variable} group relative rounded-lg shadow-lg overflow-hidden`}
     >
       <div className="absolute top-3 right-6 cursor-pointer opacity-0 transition-opacity group-hover:opacity-100">
         <IconButton variant="filled" onClick={copyCode} color="secondary">

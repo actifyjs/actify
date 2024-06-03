@@ -1,4 +1,4 @@
-.a-btn {
+.btn {
   border-start-start-radius: var(--_container-shape-start-start);
   border-start-end-radius: var(--_container-shape-start-end);
   border-end-start-radius: var(--_container-shape-end-start);
@@ -35,12 +35,12 @@
   --md-ripple-pressed-opacity: var(--_pressed-state-layer-opacity);
 }
 
-.a-btn-disabled {
+.disabled {
   cursor: default;
   pointer-events: none;
 }
 
-.a-btn-button {
+.button {
   text-overflow: inherit;
   border-radius: inherit;
   cursor: inherit;
@@ -62,4 +62,50 @@
   padding: 0px;
   gap: inherit;
   text-transform: inherit;
+}
+
+.touch {
+  position: absolute;
+  top: 50%;
+  height: 48px;
+  left: 0px;
+  right: 0px;
+  transform: translateY(-50%);
+}
+
+.outline {
+  outline-style: none;
+  border-width: var(--_outline-width);
+  inset: 0px;
+  border-style: solid;
+  position: absolute;
+  box-sizing: border-box;
+  border-color: var(--_outline-color);
+  border-start-start-radius: var(--_container-shape-start-start);
+  border-start-end-radius: var(--_container-shape-start-end);
+  border-end-start-radius: var(--_container-shape-end-start);
+  border-end-end-radius: var(--_container-shape-end-end);
+}
+
+.background {
+  background-color: var(--_container-color);
+  border-radius: inherit;
+  inset: 0;
+  position: absolute;
+}
+.disabled .background {
+  opacity: var(--_disabled-container-opacity);
+  background-color: var(--_disabled-container-color);
+}
+
+.label {
+  text-overflow: inherit;
+  overflow: hidden;
+  display: inherit;
+  gap: inherit;
+  align-items: inherit;
+}
+.disabled .label {
+  color: var(--_disabled-label-text-color);
+  opacity: var(--_disabled-label-text-opacity);
 }

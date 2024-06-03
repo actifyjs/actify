@@ -6,6 +6,7 @@ import { Icon } from './../Icon'
 import { Slot } from './../Slot'
 import { Text } from './../Text'
 import clsx from 'clsx'
+import styles from './accordion.module.css'
 import { useAccordion } from './AccordionContext'
 
 export type AccordionHeaderProps = {
@@ -43,7 +44,7 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
           active,
           ...rest
         }}
-        className={clsx('a-accordion-header', className)}
+        className={clsx(styles['a-accordion-header'], className)}
       >
         {typeof children === 'function' ? children({ active }) : children}
       </Slot>

@@ -1,4 +1,4 @@
-.a-switch-host {
+.host {
   display: inline-flex;
   outline: none;
   vertical-align: top;
@@ -9,7 +9,7 @@
     pointer-events: none;
   }
 }
-.a-switch-track {
+.track {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -32,7 +32,7 @@
   }
 }
 
-.a-switch-handle-container {
+.handle-container {
   display: flex;
   place-content: center;
   place-items: center;
@@ -40,7 +40,7 @@
   transition: margin 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
 }
 
-.a-switch-handle {
+.handle {
   border-start-start-radius: var(
     --md-switch-handle-shape-start-start,
     var(--md-switch-handle-shape, var(--md-sys-shape-corner-full, 9999px))
@@ -80,13 +80,13 @@
   }
 }
 
-.a-switch-icons {
+.icons {
   position: relative;
   height: 100%;
   width: 100%;
 }
 
-.a-switch-icon {
+.icon {
   position: absolute;
   inset: 0px;
   margin: auto;
@@ -117,7 +117,7 @@
   }
 }
 
-.a-switch {
+.switch {
   align-items: center;
   display: inline-flex;
   flex-shrink: 0;
@@ -140,18 +140,18 @@
     --md-switch-track-shape-end-start,
     var(--md-switch-track-shape, var(--md-sys-shape-corner-full, 9999px))
   );
-  &.selected .a-switch-track:before {
+  &.selected .track:before {
     background-color: var(
       --md-switch-selected-track-color,
       var(--md-sys-color-primary, #6750a4)
     );
   }
-  &.selected .a-switch-handle-container {
+  &.selected .handle-container {
     margin-inline-start: calc(
       var(--md-switch-track-width, 52px) - var(--md-switch-track-height, 32px)
     );
   }
-  &.selected .a-switch-ripple {
+  &.selected .ripple {
     --md-ripple-hover-color: var(
       --md-switch-selected-hover-state-layer-color,
       var(--md-sys-color-primary, #6750a4)
@@ -169,7 +169,7 @@
       0.12
     );
   }
-  &.selected .a-switch-handle {
+  &.selected .handle {
     height: var(--md-switch-selected-handle-height, 24px);
     width: var(--md-switch-selected-handle-width, 24px);
     &:before {
@@ -179,23 +179,23 @@
       );
     }
   }
-  &.selected .a-switch-icon.on,
-  &.unselected .a-switch-icon.off {
+  &.selected .icon.on,
+  &.unselected .icon.off {
     opacity: 1;
   }
-  &.selected:not(.disabled):active .a-switch-handle,
-  &.unselected:not(.disabled):active .a-switch-handle {
+  &.selected:not(.disabled):active .handle,
+  &.unselected:not(.disabled):active .handle {
     height: var(--md-switch-pressed-handle-height, 28px);
     width: var(--md-switch-pressed-handle-width, 28px);
     transition-timing-function: linear;
     transition-duration: 100ms;
   }
-  &.unselected .a-switch-handle-container {
+  &.unselected .handle-container {
     margin-inline-end: calc(
       var(--md-switch-track-width, 52px) - var(--md-switch-track-height, 32px)
     );
   }
-  &.unselected .a-switch-track:before {
+  &.unselected .track:before {
     background-color: var(
       --md-switch-track-color,
       var(--md-sys-color-surface-container-highest, #e6e0e9)
@@ -207,12 +207,12 @@
     border-style: solid;
     border-width: var(--md-switch-track-outline-width, 2px);
   }
-  &.unselected .a-switch-handle-container:before {
+  &.unselected .handle-container:before {
     margin-inline-end: calc(
       var(--md-switch-track-width, 52px) - var(--md-switch-track-height, 32px)
     );
   }
-  &.unselected .a-switch-ripple {
+  &.unselected .ripple {
     --md-ripple-hover-color: var(
       --md-switch-hover-state-layer-color,
       var(--md-sys-color-on-surface, #1d1b20)
@@ -227,27 +227,27 @@
       0.12
     );
   }
-  &.unselected .a-switch-handle:before {
+  &.unselected .handle:before {
     background-color: var(
       --md-switch-handle-color,
       var(--md-sys-color-outline, #79747e)
     );
   }
-  &.selected:hover .a-switch-handle:before,
-  &.selected:focus-within .a-switch-handle:before {
+  &.selected:hover .handle:before,
+  &.selected:focus-within .handle:before {
     background-color: var(
       --md-switch-selected-focus-handle-color,
       var(--md-sys-color-primary-container, #eaddff)
     );
   }
-  &.unselected:hover .a-switch-handle:before,
-  &.unselected:focus-within .a-switch-handle:before {
+  &.unselected:hover .handle:before,
+  &.unselected:focus-within .handle:before {
     background-color: var(
       --md-switch-focus-handle-color,
       var(--md-sys-color-on-surface-variant, #49454f)
     );
   }
-  &.disabled .a-switch-track {
+  &.disabled .track {
     background-color: rgba(0, 0, 0, 0);
     border-color: rgba(0, 0, 0, 0);
     &:before {
@@ -263,7 +263,7 @@
       opacity: var(--md-switch-disabled-track-opacity, 0.12);
     }
   }
-  &.unselected.disabled .a-switch-handle:before {
+  &.unselected.disabled .handle:before {
     background-color: var(
       --md-switch-disabled-handle-color,
       var(--md-sys-color-on-surface, #1d1b20)
@@ -272,7 +272,7 @@
   }
 }
 
-.a-switch-touch {
+.touch {
   appearance: none;
   height: 48px;
   outline: none;

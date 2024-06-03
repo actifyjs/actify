@@ -1,13 +1,11 @@
 'use client'
 
-import './styles/filled.css'
-import './styles/outlined.css'
-
 import { FilledField } from '../Field/FilledField'
 import { LeadingIcon } from './LeadingIcon'
 import { OutlinedField } from '../Field/OutlinedField'
 import React from 'react'
 import { TrailingIcon } from './TrailingIcon'
+import styles from './text-field.module.css'
 import { useInputState } from '../../hooks'
 
 /**
@@ -104,7 +102,7 @@ const TextField = (props: TextFieldProps) => {
   }
 
   return (
-    <div className={`a-${variant}-text-field`}>
+    <div className={styles[variant]}>
       <span
         style={{
           width: '100%',

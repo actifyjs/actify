@@ -1,12 +1,11 @@
 'use client'
 
-import './slider.css'
-
 import React, { useId, useMemo } from 'react'
 
 import { Elevation } from './../Elevation'
 import { FocusRing } from '../FocusRing'
 import { Ripple } from './../Ripple'
+import styles from './actify.module.css'
 import { useInputState } from '../../hooks'
 
 interface SliderProps extends React.ComponentProps<'input'> {
@@ -48,7 +47,7 @@ const Slider = (props: SliderProps) => {
   }, [inputValue])
 
   return (
-    <div className="a-slider" role="presentation">
+    <div className={styles['slider']} role="presentation">
       <div
         style={
           {
@@ -57,7 +56,7 @@ const Slider = (props: SliderProps) => {
             '--_end-fraction': percent
           } as React.CSSProperties
         }
-        className="a-container"
+        className={styles['container']}
       >
         <input
           {...rest}
@@ -66,31 +65,31 @@ const Slider = (props: SliderProps) => {
           step={step}
           type="range"
           id={sliderId}
-          className="a-input"
           value={inputValue}
           disabled={disabled}
           onChange={setInputValue}
+          className={styles['input']}
         />
-        <div className="a-track" />
-        <div className="a-handle-container-padded">
-          <div className="a-handle-container-block">
-            <div className="a-handle-container">
+        <div className={styles['track']} />
+        <div className={styles['handle-container-padded']}>
+          <div className={styles['handle-container-block']}>
+            <div className={styles['handle-container']}>
               <div
                 style={{
                   zIndex: 1,
                   insetInlineEnd: 'calc(0px - var(--_state-layer-size) / 2)'
                 }}
-                className="a-handle"
+                className={styles['handle']}
               >
                 <FocusRing id={sliderId} />
                 <Ripple id={sliderId} disabled={disabled} />
 
-                <div className="a-handle-nub">
+                <div className={styles['handle-nub']}>
                   <Elevation disabled={disabled} />
                 </div>
                 {/* labeled */}
                 {labeled && (
-                  <div className="a-label">
+                  <div className={styles['label']}>
                     <span style={{ zIndex: 1 }}>
                       {inputValue ? parseInt(inputValue.toString()) : 0}
                     </span>
