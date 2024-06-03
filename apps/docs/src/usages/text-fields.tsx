@@ -1,10 +1,9 @@
 import { Icon, IconButton, TextField } from 'actify'
-
-import { useState } from 'react'
+import { MouseEvent, useState } from 'react'
 
 export default () => {
   const [showPassword, setShowPassword] = useState(false)
-  const handleClick = (event: Event) => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     setShowPassword((prev) => !prev)
   }
