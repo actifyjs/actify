@@ -46,8 +46,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   },
   "dependencies": {
     "actify": "^${packageInfo.version}",
-    "react": "rc",
-    "react-dom": "rc"
+    "react": "19.0.0-rc-f994737d14-20240522",
+    "react-dom": "19.0.0-rc-f994737d14-20240522"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.3.0",
@@ -59,7 +59,46 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 }`,
       'main.css': `@tailwind base;
 @tailwind components;
-@tailwind utilities;`,
+@tailwind utilities;
+:root {
+  --md-sys-color-background: #fff8f3;
+  --md-sys-color-on-background: #201b12;
+  --md-sys-color-surface: #fff8f3;
+  --md-sys-color-surface-dim: #e4d8cb;
+  --md-sys-color-surface-bright: #fff8f3;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #fef2e4;
+  --md-sys-color-surface-container: #f8ecde;
+  --md-sys-color-surface-container-high: #f3e6d8;
+  --md-sys-color-surface-container-highest: #ede1d3;
+  --md-sys-color-on-surface: #201b12;
+  --md-sys-color-surface-variant: #f2e0c9;
+  --md-sys-color-on-surface-variant: #504534;
+  --md-sys-color-inverse-surface: #362f26;
+  --md-sys-color-inverse-on-surface: #fbefe1;
+  --md-sys-color-outline: #837562;
+  --md-sys-color-outline-variant: #d5c4ae;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-surface-tint: #7f5700;
+  --md-sys-color-primary: #7f5700;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #f7b337;
+  --md-sys-color-on-primary-container: #442d00;
+  --md-sys-color-inverse-primary: #ffba3e;
+  --md-sys-color-secondary: #765a2b;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #ffdca9;
+  --md-sys-color-on-secondary-container: #5c4316;
+  --md-sys-color-tertiary: #566500;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #b6ca54;
+  --md-sys-color-on-tertiary-container: #2d3600;
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
+}`,
       'postcss.config.js': `module.exports = {
   plugins: {
     tailwindcss: {},
