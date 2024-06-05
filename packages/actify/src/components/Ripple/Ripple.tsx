@@ -68,7 +68,7 @@ interface RippleProps extends React.ComponentProps<'label'> {
 
 const Ripple = (props: RippleProps) => {
   const { id, disabled = false, style, className } = props
-  const rippleId = id || `$actify-ripple{useId()}`
+  const rippleId = id || `actify-ripple${useId()}`
 
   const [hovered, setHovered] = useState(false)
   const [pressed, setPressed] = useState(false)
