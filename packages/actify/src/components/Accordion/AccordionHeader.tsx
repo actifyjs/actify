@@ -55,7 +55,7 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
     <div
       {...rest}
       onClick={handleClick}
-      className={clsx('a-accordion-header', className)}
+      className={clsx(styles['a-accordion-header'], className)}
     >
       <Text>{children}</Text>
       <div
