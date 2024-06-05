@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -40,20 +40,19 @@
     "@typescript-eslint/parser": "^7.8.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
-    "react": "19.0.0-rc-81c5ff2e04-20240521",
-    "react-dom": "19.0.0-rc-81c5ff2e04-20240521",
+    "react": "19.0.0-rc-f994737d14-20240522",
+    "react-dom": "19.0.0-rc-f994737d14-20240522",
     "rollup": "^3.29.4",
     "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-import-css": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-typescript-paths": "^1.4.0",
     "tailwind-variants": "^0.2.1",
     "tailwindcss": "^3.4.3",
     "tsc-alias": "^1.8.8",
     "tslib": "^2.6.2",
-    "typescript": "^5.4.5",
-    "typescript-plugin-css-modules": "^5.1.0"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.13",

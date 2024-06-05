@@ -6,7 +6,7 @@ import { Icon } from './../Icon'
 import { Slot } from './../Slot'
 import { Text } from './../Text'
 import clsx from 'clsx'
-import styles from './accordion.module.css'
+import styles from './actify.module.css'
 import { useAccordion } from './AccordionContext'
 
 export type AccordionHeaderProps = {
@@ -36,6 +36,8 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
     setOpen?.([...arr])
   }
 
+  const classes = clsx(styles['accordion-header'], className)
+
   if (asChild) {
     return (
       <Slot
@@ -44,7 +46,7 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
           active,
           ...rest
         }}
-        className={clsx(styles['a-accordion-header'], className)}
+        className={classes}
       >
         {typeof children === 'function' ? children({ active }) : children}
       </Slot>
@@ -52,11 +54,7 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
   }
 
   return (
-    <div
-      {...rest}
-      onClick={handleClick}
-      className={clsx(styles['a-accordion-header'], className)}
-    >
+    <div {...rest} onClick={handleClick} className={classes}>
       <Text>{children}</Text>
       <div
         style={{

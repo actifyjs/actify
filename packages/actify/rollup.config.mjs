@@ -1,9 +1,9 @@
 import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
-import css from 'rollup-plugin-import-css'
 import { exec } from 'child_process'
 import json from '@rollup/plugin-json'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import postcss from 'rollup-plugin-postcss'
 import preserveDirectives from 'rollup-plugin-preserve-directives'
 import resolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
@@ -63,13 +63,13 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
-      css(),
       json(),
       resolve(),
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json'
       }),
+      postcss(),
       typescriptPaths(),
       preserveDirectives(),
       terser({ compress: { directives: false } }),

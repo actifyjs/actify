@@ -4,7 +4,7 @@ import React, { useMemo } from 'react'
 
 import { Slot } from './../Slot'
 import clsx from 'clsx'
-import styles from './accordion.module.css'
+import styles from './actify.module.css'
 import { useAccordion } from './AccordionContext'
 
 export interface AccordionContentProps
@@ -25,7 +25,7 @@ const AccordionContent = (props: AccordionContentProps) => {
   }, [open, index])
 
   const classes = clsx(
-    styles['a-accordion-content'],
+    styles['accordion-content'],
     active && styles['active'],
     className
   )

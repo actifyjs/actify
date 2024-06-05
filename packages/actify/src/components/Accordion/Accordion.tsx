@@ -12,7 +12,7 @@ import {
 import { AccordionContent } from './AccordionContent'
 import { AccordionHeader } from './AccordionHeader'
 import { AccordionItem } from './AccordionItem'
-import styles from './accordion.module.css'
+import styles from './actify.module.css'
 
 interface AccordionRootProps extends AccordionProps, ComponentProps<'div'> {}
 
@@ -22,7 +22,7 @@ const AccordionRoot = (props: AccordionRootProps) => {
 
   return (
     <AccordionProvider {...{ open, setOpen, multiple }}>
-      <div {...rest} className={styles['a-accordion']}>
+      <div {...rest} className={styles['accordion']}>
         {Children.map(
           children,
           (child, index) =>

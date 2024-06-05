@@ -16,8 +16,8 @@
     "gray-matter": "^4.0.3",
     "next": "15.0.0-rc.0",
     "next-themes": "^0.3.0",
-    "react": "19.0.0-rc-935180c7e0-20240524",
-    "react-dom": "19.0.0-rc-935180c7e0-20240524",
+    "react": "19.0.0-rc-f994737d14-20240522",
+    "react-dom": "19.0.0-rc-f994737d14-20240522",
     "react-markdown": "^8.0.7",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-raw": "^6.1.1",
@@ -35,10 +35,8 @@
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "npm:types-react@rc",
-      "@types/react-dom": "npm:types-react-dom@rc"
-    }
+  "overrides": {
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc"
   }
 }

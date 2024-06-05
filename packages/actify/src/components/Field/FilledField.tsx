@@ -1,7 +1,6 @@
 import { Field, FieldProps } from './Field'
 
 import React from 'react'
-import field from './styles/field.module.css'
 import styles from './styles/actify.module.css'
 
 interface FilledFieldProps extends FieldProps, React.ComponentProps<'div'> {}
@@ -22,7 +21,7 @@ const FilledField = (props: FilledFieldProps) => {
   return (
     <Field
       {...rest}
-      className={field['filled']}
+      className={styles['filled']}
       renderBackground={renderBackground}
       renderIndicator={renderIndicator}
     >

@@ -1,6 +1,5 @@
 import { Field, FieldProps } from './Field'
 
-import field from './styles/field.module.css'
 import styles from './styles/actify.module.css'
 
 export interface OutlinedFieldProps
@@ -25,7 +24,7 @@ const OutlinedField = (props: OutlinedFieldProps) => {
   return (
     <Field
       {...rest}
-      className={field['outlined']}
+      className={styles['outlined']}
       renderOutline={renderOutline}
     >
       <div className={styles['input-wrapper']}>{children}</div>

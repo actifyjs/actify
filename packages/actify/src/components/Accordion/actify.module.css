@@ -1,4 +1,4 @@
-.a-accordion {
+.accordion {
   padding: 16px;
   display: flex;
   gap: 16px;
@@ -7,13 +7,13 @@
   background-color: var(--md-sys-color-surface);
 }
 
-.a-accordion-item {
+.accordion-item {
   padding: 16px;
   border-width: 1px;
   border-radius: 6px;
 }
 
-.a-accordion-header {
+.accordion-header {
   display: flex;
   font-weight: 900;
   cursor: pointer;
@@ -21,7 +21,7 @@
   justify-content: space-between;
 }
 
-.a-accordion-content {
+.accordion-content {
   display: grid;
   transition-duration: 300ms;
   grid-template-rows: 0fr;

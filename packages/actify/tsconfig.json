@@ -21,8 +21,7 @@
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
-    "strict": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "strict": true
   },
   "exclude": ["node_modules"]
 }
