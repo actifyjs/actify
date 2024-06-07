@@ -2,7 +2,7 @@ import { BottomAppBar, Fab, Icon } from 'actify'
 
 export default () => {
   return (
-    <BottomAppBar className="max-w-3xl">
+    <BottomAppBar className="max-w-3xl text-on-primary">
       <BottomAppBar.Icons>
         <Icon>home</Icon>
         <Icon>person</Icon>
