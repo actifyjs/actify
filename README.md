@@ -72,7 +72,7 @@ Our goals is convert all [Material Web](https://github.com/material-components/m
 | TextField           |               | ✅              |
 | Progress indicators |               | ✅              |
 | Radio               |               | ✅              |
-| Divider             | ✅            |                 |
+| Divider             |               | ✅              |
 | Dialog              | ✅            |                 |
 | Menu                | ✅            |                 |
 | Select              | ✅            |                 |
