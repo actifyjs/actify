@@ -2,6 +2,7 @@
 
 import { List, ListGroup, ListItem } from 'actify'
 
+import GettingStarted from './GettingStarted'
 import NavLink from './NavLink'
 import { tv } from 'tailwind-variants'
 
@@ -183,24 +184,7 @@ export default function Aside({ open, className }: AsideProps) {
   return (
     <aside className={base({ open, className })}>
       <List>
-        <ListGroup label="Getting started">
-          <NavLink
-            href="/getting-started/installation"
-            className={({ isActive }) =>
-              isActive ? 'block text-primary bg-surface-container-high' : ''
-            }
-          >
-            <ListItem>Installation</ListItem>
-          </NavLink>
-          <NavLink
-            href="/getting-started/theme"
-            className={({ isActive }) =>
-              isActive ? 'block text-primary bg-surface-container-high' : ''
-            }
-          >
-            <ListItem>Theme</ListItem>
-          </NavLink>
-        </ListGroup>
+        <GettingStarted />
         {components.map((component, index) =>
           component.children ? (
             <ListGroup key={index} label={component.label}>

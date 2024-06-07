@@ -1,6 +1,7 @@
 import DocPreview from '@/components/DocPreview'
 import DocTabs from '@/components/DocTabs'
 import DocUsage from '@/components/DocUsage'
+import Icon from '@/views/icon'
 import ReactMarkdown from 'react-markdown'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 import Theme from '@/views/theme'
@@ -62,7 +63,8 @@ export default function Markdown({ docs, usage }: MarkdownProps) {
         ),
         // @ts-ignore
         preview: ({ node, children, ...rest }) => <DocPreview {...rest} />,
-        theme: () => <Theme />
+        theme: () => <Theme />,
+        icon: () => <Icon />
       }}
     >
       {`# ${docs.title} ${docs.description ? '\r\n>' + docs.description : ''}\r\n` +
