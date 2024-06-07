@@ -74,6 +74,9 @@ importers:
       shiki:
         specifier: ^1.6.1
         version: 1.6.1
+      sonner:
+        specifier: ^1.4.41
+        version: 1.4.41(react-dom@19.0.0-rc-f994737d14-20240522)(react@19.0.0-rc-f994737d14-20240522)
     devDependencies:
       '@tailwindcss/typography':
         specifier: ^0.5.13
@@ -6788,6 +6791,16 @@ packages:
     dependencies:
       ip: 1.1.9
       smart-buffer: 1.1.15
+    dev: false
+
+  /sonner@1.4.41(react-dom@19.0.0-rc-f994737d14-20240522)(react@19.0.0-rc-f994737d14-20240522):
+    resolution: {integrity: sha512-uG511ggnnsw6gcn/X+YKkWPo5ep9il9wYi3QJxHsYe7yTZ4+cOd1wuodOUmOpFuXL+/RE3R04LczdNCDygTDgQ==, tarball: https://registry.npmjs.org/sonner/-/sonner-1.4.41.tgz}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 19.0.0-rc-f994737d14-20240522
+      react-dom: 19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522)
     dev: false
 
   /source-map-js@1.2.0:
