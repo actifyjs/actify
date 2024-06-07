@@ -103,7 +103,7 @@ const components = [
     ]
   },
   {
-    name: 'Radio button'
+    name: 'Radio'
   },
   {
     name: 'Ripple'
