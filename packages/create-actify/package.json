@@ -4,5 +4,17 @@
   "author": "Lerte Smith",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "node index.ts"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/prompts": "^2.4.9",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8"
   }
 }
