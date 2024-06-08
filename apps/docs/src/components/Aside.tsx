@@ -69,6 +69,9 @@ const components = [
     name: 'Focus Ring'
   },
   {
+    name: 'Label'
+  },
+  {
     name: 'Lists'
   },
   {
