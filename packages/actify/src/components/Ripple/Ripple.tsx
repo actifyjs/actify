@@ -356,7 +356,7 @@ const Ripple = (props: RippleProps) => {
       aria-hidden="true"
       className={clsx(
         styles['ripple'],
-        hovered && styles['hoverd'],
+        hovered && styles['hovered'],
         pressed && styles['pressed'],
         className
       )}
