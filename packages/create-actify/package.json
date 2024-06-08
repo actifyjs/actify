@@ -6,9 +6,7 @@
     "registry": "https://registry.npmjs.com/"
   },
   "type": "module",
-  "scripts": {
-    "dev": "node index.ts"
-  },
+  "scripts": {},
   "dependencies": {
     "prompts": "^2.4.2"
   },

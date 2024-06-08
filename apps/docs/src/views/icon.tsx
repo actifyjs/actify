@@ -26,13 +26,10 @@ const IconWrapper = ({ children }: { children: string }) => {
     <div
       ref={ref}
       title={children}
-      className="flex items-center justify-center cursor-pointer p-2 bg-inverse-surface-variant rounded"
+      className="flex items-center justify-center cursor-pointer p-2 text-primary bg-on-primary rounded hover:text-inverse-primary hover:outline"
     >
       {isInView ? (
-        <Icon
-          className="text-primary [--md-icon-size:36px]"
-          onClick={() => copy(children)}
-        >
+        <Icon className="[--md-icon-size:36px]" onClick={() => copy(children)}>
           {children}
         </Icon>
       ) : (
