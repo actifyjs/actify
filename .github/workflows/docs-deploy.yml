@@ -40,8 +40,6 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install dependencies
         run: pnpm install
-      - name: Build Actify
-        run: pnpm -F actify build
       - name: Build Next.js
         run: |
           cd apps/docs 
