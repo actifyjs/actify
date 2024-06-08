@@ -1,6 +1,6 @@
 ---
 title: Label
-description: Use orignal html label tag, but prevented text selection when double clicked
+description: Use original html label tag, but prevented text selection when double clicked
 ---
 
 ## Usage with Checkbox
