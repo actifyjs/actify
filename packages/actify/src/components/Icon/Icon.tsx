@@ -14,6 +14,7 @@ const Icon = ({ className, children, ...rest }: IconProps) => {
     >
       <link
         rel="stylesheet"
+        // @ts-ignore
         precedence="default"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
       />
