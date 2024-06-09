@@ -5,6 +5,7 @@ import { LeadingIcon } from './LeadingIcon'
 import { OutlinedField } from '../Field/OutlinedField'
 import React from 'react'
 import { TrailingIcon } from './TrailingIcon'
+import clsx from 'clsx'
 import styles from './text-field.module.css'
 import { useInputState } from '../../hooks'
 
@@ -55,6 +56,7 @@ const TextField = (props: TextFieldProps) => {
     prefixText = '',
     suffixText = '',
     variant = 'filled',
+    className,
     children,
     ...rest
   } = props
@@ -102,7 +104,7 @@ const TextField = (props: TextFieldProps) => {
   }
 
   return (
-    <div className={styles[variant]}>
+    <div className={clsx(styles[variant], className)}>
       <span
         style={{
           width: '100%',
