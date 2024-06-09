@@ -15,19 +15,24 @@ export default () => {
       </Accordion.Item>
       <Accordion.Item>
         <Accordion.Header asChild>
-          <div
-            // @ts-expect-error
-            className={({ active }) =>
-              `font-black cursor-pointer flex items-center justify-between ${
-                active ? 'text-error [&>div]:rotate-90' : '[&>div]:rotate-0'
-              }`
-            }
-          >
-            <p className="text-2xl font-bold">What is Actify?</p>
-            <div className="transition-transform duration-300">
-              <Icon>keyboard_arrow_down</Icon>
+          {({ active }) => (
+            <div
+              className={`text-2xl cursor-pointer ${
+                active
+                  ? 'text-error flex items-center justify-between'
+                  : 'flex items-center justify-between'
+              }`}
+            >
+              <p>What is Actify? (custom header style)</p>
+              <div
+                className={`transition-transform duration-300 ${
+                  active ? 'rotate-90' : 'rotate-0'
+                }`}
+              >
+                <Icon className="[--md-icon-size:36px]">arrow_downward</Icon>
+              </div>
             </div>
-          </div>
+          )}
         </Accordion.Header>
         <Accordion.Content>
           Actify is an open source react component library written in Vite +
@@ -36,34 +41,21 @@ export default () => {
         </Accordion.Content>
       </Accordion.Item>
       <Accordion.Item>
-        <Accordion.Header asChild>
-          {
-            // @ts-expect-error
-            ({ active }) => (
-              <div
-                className={
-                  active
-                    ? 'text-purple-500 flex items-center justify-between'
-                    : 'flex items-center justify-between'
-                }
-              >
-                <p>Why Actify?</p>
-                <div
-                  className={`transition-transform duration-300 ${
-                    active ? 'rotate-90' : 'rotate-0'
-                  }`}
-                >
-                  <Icon>keyboard_arrow_down</Icon>
-                </div>
-              </div>
-            )
-          }
-        </Accordion.Header>
-        <Accordion.Content>
-          Actify is a powerful React Component Library built from the ground up
-          to be easy to learn and rewarding to master. Our collection of UI
-          components maintain a consistent style throughout your application
-          with enough customization options to meet any use-case.
+        <Accordion.Header>Why Actify? (custom content style)</Accordion.Header>
+        <Accordion.Content asChild>
+          {({ active }) => (
+            <div
+              className={`grid duration-300 grid-rows-[0fr] transition-[grid-template-rows] ${active ? 'grid-rows-[1fr]' : ''}`}
+            >
+              <p className="overflow-hidden text-2xl text-primary">
+                Actify is a powerful React Component Library built from the
+                ground up to be easy to learn and rewarding to master. Our
+                collection of UI components maintain a consistent style
+                throughout your application with enough customization options to
+                meet any use-case.
+              </p>
+            </div>
+          )}
         </Accordion.Content>
       </Accordion.Item>
     </Accordion>

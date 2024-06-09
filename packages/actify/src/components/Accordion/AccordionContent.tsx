@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react'
 
 import { Slot } from './../Slot'
+import { Text } from './../Text'
 import clsx from 'clsx'
 import styles from './actify.module.css'
 import { useAccordion } from './AccordionContext'
@@ -11,7 +12,9 @@ export interface AccordionContentProps
   extends Omit<React.ComponentProps<'div'>, 'children'> {
   index?: number
   asChild?: boolean
-  children?: ((_?: any) => React.ReactNode) | React.ReactNode
+  children?:
+    | ((props: { active?: boolean }) => React.ReactNode)
+    | React.ReactNode
 }
 
 const AccordionContent = (props: AccordionContentProps) => {
@@ -46,7 +49,7 @@ const AccordionContent = (props: AccordionContentProps) => {
 
   return (
     <div {...rest} className={classes}>
-      {children as React.ReactNode}
+      <Text style={{ overflow: 'hidden' }}>{children as React.ReactNode}</Text>
     </div>
   )
 }

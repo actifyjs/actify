@@ -9,11 +9,14 @@ import clsx from 'clsx'
 import styles from './actify.module.css'
 import { useAccordion } from './AccordionContext'
 
-export type AccordionHeaderProps = {
+export interface AccordionHeaderProps
+  extends Omit<React.ComponentProps<'div'>, 'children'> {
   index?: number
   asChild?: boolean
-  children?: ((_?: any) => React.ReactNode) | React.ReactNode
-} & React.ComponentProps<'div'>
+  children?:
+    | ((props: { active?: boolean }) => React.ReactNode)
+    | React.ReactNode
+}
 
 const AccordionHeader = (props: AccordionHeaderProps) => {
   const { index, asChild, className, children, ...rest } = props
@@ -46,7 +49,6 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
           active,
           ...rest
         }}
-        className={classes}
       >
         {typeof children === 'function' ? children({ active }) : children}
       </Slot>
@@ -55,7 +57,7 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
 
   return (
     <div {...rest} onClick={handleClick} className={classes}>
-      <Text>{children}</Text>
+      <Text>{children as React.ReactNode}</Text>
       <div
         style={{
           transitionDuration: '300ms',

@@ -7,6 +7,10 @@ description: Accordion display a list of high-level options that can expand/coll
 
 <usage></usage>
 
+## Tips
+
+`asChild` prop can use to override `Header` style and `Content` style
+
 ## Props
 
 | Props      | Type      | Description                                                                  | Default     |
