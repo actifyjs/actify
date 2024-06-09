@@ -13,6 +13,8 @@ import variants from './styles/variant.module.css'
 interface ButtonProps extends React.ComponentProps<'button'> {
   ripple?: boolean
   trailingIcon?: boolean
+  popoverTarget?: string
+  popoverTargetAction?: 'show' | 'toggle' | 'hide'
   type?: 'submit' | 'reset' | 'button'
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
   variant?: 'elevated' | 'filled' | 'tonal' | 'outlined' | 'text'
