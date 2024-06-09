@@ -1,0 +1,7 @@
+- [x] radio component
+- [x] divider component
+- [ ] TailwindCSS -> css module
+- [ ] sub component -> render props
+- [ ] open in stackblitz use ts template
+- [ ] open in codesandbox use ts template
+- [ ] create-actify cli generate templates (vite[js,ts], next[js,ts])

@@ -56,7 +56,7 @@ Explore our [documentation](https://actifyjs.com/getting-started/installation) f
 
 ## 🚥 Roadmap
 
-Our goals is convert all [Material Web](https://github.com/material-components/material-web) components to React Componets,not just a React wrapper components.
+Our goals is convert all [Material Web](https://github.com/material-components/material-web) components to React Components, not just a React wrapped components.
 
 | Component           | Web component | React Component |
 | ------------------- | ------------- | --------------- |
