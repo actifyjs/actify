@@ -46,7 +46,7 @@ const AccordionContent = (props: AccordionContentProps) => {
 
   return (
     <div {...rest} className={classes}>
-      <p style={{ overflow: 'hidden' }}>{children as React.ReactNode}</p>
+      {children as React.ReactNode}
     </div>
   )
 }

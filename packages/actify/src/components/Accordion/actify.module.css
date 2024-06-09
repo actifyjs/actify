@@ -4,7 +4,6 @@
   gap: 16px;
   border-radius: 8px;
   flex-direction: column;
-  background-color: var(--md-sys-color-surface);
 }
 
 .accordion-item {
@@ -15,7 +14,7 @@
 
 .accordion-header {
   display: flex;
-  font-weight: 900;
+  font-weight: 500;
   cursor: pointer;
   align-items: center;
   justify-content: space-between;
@@ -27,6 +26,7 @@
   grid-template-rows: 0fr;
   transition-property: grid-template-rows;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 16px;
   &.active {
     grid-template-rows: 1fr;
   }
