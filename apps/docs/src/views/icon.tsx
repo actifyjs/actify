@@ -56,9 +56,8 @@ export default () => {
   }
 
   return (
-    <div>
+    <>
       <TextField
-        className="w-full mb-2"
         onChange={handleChange}
         label={`Search ${filterIcons.length} icons`}
       />
@@ -68,6 +67,6 @@ export default () => {
           <IconWrapper key={icon}>{icon}</IconWrapper>
         ))}
       </div>
-    </div>
+    </>
   )
 }
