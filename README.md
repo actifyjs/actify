@@ -82,6 +82,9 @@ Our goals is convert all [Material Web](https://github.com/material-components/m
 ## 🤝 Contributing
 
 Contributions are always welcome!
+Thanks to everyone who has already contributed to `actify` !
+
+<a href="https://github.com/actifyjs/actify/graphs/contributors"><img src="https://contributors.nn.ci/api?repo=actifyjs/actify" /></a>
 
 ## 📜 License
 
