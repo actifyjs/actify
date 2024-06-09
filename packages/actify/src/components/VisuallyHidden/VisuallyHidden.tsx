@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './actify.module.css'
 
 interface CompProps {
-  as?: keyof JSX.IntrinsicElements
+  as?: keyof React.JSX.IntrinsicElements
 }
 const VisuallyHidden: React.FC<
   CompProps & React.HTMLAttributes<HTMLOrSVGElement>
