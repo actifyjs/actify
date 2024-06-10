@@ -4,17 +4,14 @@ import React from 'react'
 import clsx from 'clsx'
 import elevation from './elevation.module.css'
 
-interface ElevationProps extends React.ComponentProps<'span'> {
+interface ElevationProps
+  extends Omit<React.ComponentProps<'span'>, 'children'> {
   disabled?: boolean
 }
 
-const Elevation = ({ disabled = false }: ElevationProps) => {
-  return (
-    <span
-      aria-hidden="true"
-      className={clsx(elevation['shadow'], disabled && elevation['disabled'])}
-    />
-  )
+const Elevation = ({ disabled = false, ...rest }: ElevationProps) => {
+  const classes = clsx(elevation['shadow'], disabled && elevation['disabled'])
+  return <span {...rest} aria-hidden="true" className={classes} />
 }
 
 Elevation.displayName = 'Actify.Elevation'
