@@ -1,1 +1,1 @@
-export { Item } from './Item'
+export { Item, type ItemProps } from './Item'

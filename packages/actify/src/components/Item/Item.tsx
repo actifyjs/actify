@@ -1,50 +1,41 @@
-import { FocusRing } from '../FocusRing'
 import React from 'react'
-import { Ripple } from '../Ripple'
+import styles from './actify.module.css'
 
-type ItemProps = {
-  id: HTMLElement['id']
-  multiline?: boolean
+export interface ItemProps extends React.ComponentProps<'div'> {
+  container?: React.ReactNode
+  start?: React.ReactNode
   overline?: React.ReactNode
   headline?: React.ReactNode
-  children?: React.ReactNode
   supportingText?: React.ReactNode
-  start?: React.ReactNode
-  end?: React.ReactNode
   trailingSupportingText?: React.ReactNode
+  end?: React.ReactNode
 }
-
-const Item = ({
-  id,
-  overline,
-  headline,
-  supportingText,
-  multiline = false,
-  start,
-  end,
-  trailingSupportingText,
-  children
-}: ItemProps) => {
+const Item = (props: ItemProps) => {
+  const {
+    container,
+    start,
+    overline,
+    headline,
+    supportingText,
+    trailingSupportingText,
+    end,
+    children,
+    ...rest
+  } = props
   return (
-    <React.Fragment>
-      {/* slot container */}
-      <slot name="container">
-        <Ripple id={id} aria-hidden="true" />
-        <FocusRing id={id} aria-hidden="true" />
-      </slot>
-      <slot className="non-text" name="start">
-        {start}
-      </slot>
-      <div className="text">
-        {overline}
-        {children}
-        {headline}
-        {supportingText}
-      </div>
-      <slot className="non-text">{trailingSupportingText}</slot>
-      <slot className="non-text">{end}</slot>
-    </React.Fragment>
+    <div {...rest} className={styles['item']}>
+      {container}
+      {start}
+      {end}
+      {children}
+      {overline}
+      {headline}
+      {supportingText}
+      {trailingSupportingText}
+    </div>
   )
 }
+
+Item.displayName = 'Actify.Item'
 
 export { Item }
