@@ -1,17 +1,44 @@
-import { MdMenuItem } from '@material/web/all'
+import { Item, ItemProps } from '../../components/Item'
+
+import { FocusRing } from '../../components/FocusRing'
+import { MenuContext } from './Menu'
 import React from 'react'
-import { createComponent } from '@lit/react'
+import { Ripple } from '../../components/Ripple'
+import styles from './actify.module.css'
 
-const MenuItemWebComponent = createComponent({
-  react: React,
-  tagName: 'md-menu-item',
-  elementClass: MdMenuItem
-})
+interface MenuItemProps extends Omit<ItemProps, 'container'> {}
 
-const MenuItem = ({
-  ...rest
-}: React.ComponentProps<typeof MenuItemWebComponent>) => {
-  return <MenuItemWebComponent {...rest} />
+const MenuItem = (props: MenuItemProps) => {
+  const { children, onClick, ...rest } = props
+  const context = React.useContext(MenuContext)
+  const itemId = React.useId()
+
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    onClick?.(event)
+    context?.setOpen(false)
+  }
+
+  const Container = () => (
+    <div className={styles['container']}>
+      <Ripple />
+      <FocusRing id={itemId} />
+    </div>
+  )
+
+  return (
+    <div className={styles['menu-item']} tabIndex={-1} role="presentation">
+      <li
+        tabIndex={0}
+        id={itemId}
+        role="menuitem"
+        className={styles['list-item']}
+      >
+        <Item onClick={handleClick} {...rest} container={<Container />}>
+          {children}
+        </Item>
+      </li>
+    </div>
+  )
 }
 
 export { MenuItem }
