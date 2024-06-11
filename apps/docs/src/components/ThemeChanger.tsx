@@ -26,7 +26,7 @@ import { useTheme } from 'next-themes'
 
 export const ThemeChanger = () => {
   const { setTheme } = useTheme()
-  const menuRef = React.useRef(null)
+  const [open, setOpen] = React.useState(false)
   const [hue, setHue] = React.useState<number>(0)
   const [chroma, setChroma] = React.useState<number>(0)
   const [tone, setTone] = React.useState<number>(0)
@@ -97,13 +97,12 @@ export const ThemeChanger = () => {
         title="change theme"
         id="theme-menu-anchor"
         onClick={() => {
-          // @ts-expect-error
-          menuRef.current!.open = !menuRef.current!.open
+          setOpen(!open)
         }}
       >
         <Icon>palette</Icon>
       </IconButton>
-      <Menu anchor="theme-menu-anchor" ref={menuRef}>
+      <Menu xOffset={-160} open={open} setOpen={setOpen}>
         <div className="flex flex-col w-56 my-3 mx-4 *:[margin-block-end:16px]">
           <section className="flex relative">
             <h2 className="text-2xl tracking-tighter leading-none">
