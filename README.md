@@ -74,8 +74,8 @@ Our goals is convert all [Material Web](https://github.com/material-components/m
 | Radio               |               | ✅              |
 | Divider             |               | ✅              |
 | Menu                |               | ✅              |
+| Dialog              |               | ✅              |
 | Select              | ✅            | 🟡              |
-| Dialog              | ✅            |                 |
 | SegmentedButton     | ✅            |                 |
 | SegmentedButtonSet  | ✅            |                 |
 

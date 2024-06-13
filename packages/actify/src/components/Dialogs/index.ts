@@ -1,1 +1,1 @@
-export { Dialog } from './Dialog'
+export { Dialog, type DialogRef } from './Dialog'
