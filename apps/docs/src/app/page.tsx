@@ -2,7 +2,7 @@ import { Button, Icon } from 'actify'
 
 import Link from 'next/link'
 import Logo from '@/components/Logo'
-import QzyLogo from '@/components/QzyLogo'
+import Sponsors from '@/components/Sponsors'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
 
 export const generateMetadata = () => {
@@ -81,16 +81,7 @@ export default function Page() {
         <div className="w-full max-w-md mx-auto">
           <SyntaxHighlighter lang="shell">pnpm add actify</SyntaxHighlighter>
         </div>
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-secondary text-2xl mb-4 text-center">Sponsors</h2>
-          <a
-            href="https://www.qzyidc.com"
-            target="_blank"
-            className="block hover:border-primary rounded-2xl border border-outline p-2"
-          >
-            <QzyLogo />
-          </a>
-        </div>
+        <Sponsors />
       </div>
     </main>
   )
