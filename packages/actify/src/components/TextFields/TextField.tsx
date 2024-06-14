@@ -50,7 +50,7 @@ const TextField = (props: TextFieldProps) => {
     label = '',
     maxLength = -1,
     required = false,
-    resizable = false,
+    resizable,
     supportingText = '',
 
     prefixText = '',
