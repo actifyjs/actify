@@ -41,7 +41,8 @@ const Field = (props: FieldProps) => {
     supportingText,
     renderOutline,
     renderIndicator,
-    renderBackground
+    renderBackground,
+    ...rest
   } = props
 
   const layoutId = React.useId()
@@ -99,7 +100,7 @@ const Field = (props: FieldProps) => {
   )
 
   return (
-    <div className={classes}>
+    <div className={classes} {...rest}>
       <div className={clsx(styles['container-overflow'], className)}>
         {renderBackground?.()}
         {renderIndicator?.(focused)}

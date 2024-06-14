@@ -668,6 +668,7 @@
   display: flex;
   resize: inherit;
   flex: 1;
+  outline: none;
   flex-direction: column;
   writing-mode: horizontal-tb;
   max-width: 100%;
@@ -722,6 +723,9 @@
   height: 100%;
   position: relative;
   color: var(--_trailing-content-color);
+}
+.focused .end {
+  color: var(--_focus-trailing-content-color);
 }
 
 .content {
