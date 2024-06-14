@@ -43,8 +43,9 @@ interface MenuProps extends Omit<React.ComponentProps<'div'>, 'ref'> {
 const Menu = (props: MenuProps) => {
   const {
     ref,
-    xOffset,
-    yOffset,
+    style,
+    xOffset = 0,
+    yOffset = 0,
     children,
     className,
     defaultOpen,
@@ -140,9 +141,13 @@ const Menu = (props: MenuProps) => {
   return (
     <div
       {...rest}
-      style={{ left: xOffset + 'px', top: yOffset + 'px' }}
       ref={menuRef}
       className={classes}
+      style={{
+        ...style,
+        left: xOffset + 'px',
+        top: `calc(100% + ${yOffset}px)`
+      }}
     >
       <Elevation style={{ '--md-elevation-level': 2 } as React.CSSProperties} />
       <MenuContext.Provider value={{ open, setOpen }}>
