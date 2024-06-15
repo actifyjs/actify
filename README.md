@@ -76,8 +76,8 @@ Our goals is convert all [Material Web](https://github.com/material-components/m
 | Menu                |               | ✅              |
 | Dialog              |               | ✅              |
 | Select              |               | ✅              |
-| SegmentedButton     | ✅            |                 |
-| SegmentedButtonSet  | ✅            |                 |
+| SegmentedButton     |               | ✅              |
+| SegmentedButtonSet  |               | ✅              |
 
 ## 🤝 Contributing
 

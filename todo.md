@@ -1,5 +1,7 @@
 - [x] radio component
 - [x] divider component
+- [ ] sub-memu component
+- [ ] segmented button with label styles
 - [ ] TailwindCSS -> css module
 - [ ] sub component -> render props
 - [ ] open in stackblitz use ts template
