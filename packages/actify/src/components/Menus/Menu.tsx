@@ -39,6 +39,7 @@ interface MenuProps extends Omit<React.ComponentProps<'div'>, 'ref'> {
   open?: boolean
   defaultOpen?: boolean
   setOpen?: (open: boolean) => void
+  setFocused?: (focus: boolean) => void
 }
 const Menu = (props: MenuProps) => {
   const {
@@ -48,6 +49,7 @@ const Menu = (props: MenuProps) => {
     yOffset = 0,
     children,
     className,
+    setFocused,
     defaultOpen,
     open: propOpen,
     setOpen: propSetOpen,
@@ -66,6 +68,7 @@ const Menu = (props: MenuProps) => {
 
   useOnClickOutside(menuRef, () => {
     setOpen(false)
+    setFocused?.(false)
   })
 
   React.useImperativeHandle(

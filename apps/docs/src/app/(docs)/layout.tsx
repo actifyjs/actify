@@ -25,9 +25,7 @@ export default function DocLayout({ children }: { children: React.ReactNode }) {
     <>
       <Aside />
       <main className={base()}>
-        <div className="p-4 lg:pr-64 flex flex-col overflow-hidden">
-          {children}
-        </div>
+        <div className="p-4 lg:pr-64 flex flex-col">{children}</div>
         <div className="w-fit pl-2 pb-2">
           <EditOnGitHub pathname={pathname} />
         </div>
