@@ -24,26 +24,24 @@ export default () => {
             className="rounded-l-full"
             selected={selectedColorMode == 'dark'}
             onClick={() => handleChangeColorMode('dark')}
-          >
-            <Icon slot="icon">dark_mode</Icon>
-          </SegmentedButton>
+            icon={<Icon>dark_mode</Icon>}
+          />
+
           <SegmentedButton
             title="auto"
             data-value="auto"
             selected={selectedColorMode == 'system'}
             onClick={() => handleChangeColorMode('system')}
-          >
-            <Icon slot="icon">brightness_medium</Icon>
-          </SegmentedButton>
+            icon={<Icon>brightness_medium</Icon>}
+          />
           <SegmentedButton
             title="light"
             data-value="light"
             className="rounded-r-full"
             selected={selectedColorMode == 'light'}
             onClick={() => handleChangeColorMode('light')}
-          >
-            <Icon slot="icon">light_mode</Icon>
-          </SegmentedButton>
+            icon={<Icon slot="icon">light_mode</Icon>}
+          />
         </div>
       </SegmentedButtonSet>
     </div>

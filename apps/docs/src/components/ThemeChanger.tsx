@@ -206,32 +206,23 @@ export const ThemeChanger = () => {
                   className="rounded-l-full"
                   selected={selectedColorMode == 'dark'}
                   onClick={() => handleChangeColorMode('dark')}
-                >
-                  <div slot="icon" className="[--md-icon-size:18px]">
-                    <Icon>dark_mode</Icon>
-                  </div>
-                </SegmentedButton>
+                  icon={<Icon>dark_mode</Icon>}
+                />
                 <SegmentedButton
                   title="auto"
                   data-value="auto"
                   selected={selectedColorMode == 'system'}
                   onClick={() => handleChangeColorMode('system')}
-                >
-                  <div slot="icon" className="[--md-icon-size:18px]">
-                    <Icon>brightness_medium</Icon>
-                  </div>
-                </SegmentedButton>
+                  icon={<Icon>brightness_medium</Icon>}
+                />
                 <SegmentedButton
                   title="light"
                   data-value="light"
                   className="rounded-r-full"
                   selected={selectedColorMode == 'light'}
                   onClick={() => handleChangeColorMode('light')}
-                >
-                  <div slot="icon" className="[--md-icon-size:18px]">
-                    <Icon>light_mode</Icon>
-                  </div>
-                </SegmentedButton>
+                  icon={<Icon>light_mode</Icon>}
+                />
               </div>
             </SegmentedButtonSet>
           </section>
