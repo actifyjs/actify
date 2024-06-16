@@ -60,6 +60,7 @@ const Tab = (props: TabProps) => {
       {activeTabIndex == index && (
         <motion.div
           layoutId={layoutId}
+          // @ts-ignore
           className="absolute -z-10 w-full bottom-0"
         >
           <div className="h-0.5 rounded-lg w-full bg-primary"></div>

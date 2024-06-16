@@ -26,6 +26,7 @@ const DrawerActivator = (props: DrawerActivatorProps) => {
     return cloneElement(children, {
       ref,
       ...rest,
+      // @ts-ignore
       ...children.props,
       role: 'button',
       onClick: handleClick

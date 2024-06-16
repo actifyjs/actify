@@ -352,6 +352,7 @@ const FilterChip = (props: FilterChipProps) => {
     >
       <motion.div
         layout
+        // @ts-ignore
         onClick={handleClick}
         className={container({ selected, disabled })}
       >

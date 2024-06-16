@@ -29,6 +29,7 @@ const AccordionRoot = (props: AccordionRootProps) => {
             isValidElement(child) &&
             cloneElement(child, {
               index,
+              // @ts-ignore
               ...child.props
             })
         )}

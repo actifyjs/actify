@@ -17,6 +17,7 @@ const Slot = (props: SlotProps) => {
 
   if (slottable) {
     // the new element to render is the one passed as a child of `Slottable`
+    // @ts-ignore
     const newElement = slottable.props.children as React.ReactNode
 
     const newChildren = childrenArray.map((child) => {
@@ -26,7 +27,8 @@ const Slot = (props: SlotProps) => {
         if (React.Children.count(newElement) > 1)
           return React.Children.only(null)
         return React.isValidElement(newElement)
-          ? (newElement.props.children as React.ReactNode)
+          ? // @ts-ignore
+            (newElement.props.children as React.ReactNode)
           : null
       } else {
         return child
@@ -65,6 +67,7 @@ const SlotClone = (props: SlotCloneProps) => {
 
   if (React.isValidElement(children)) {
     return React.cloneElement(children, {
+      // @ts-ignore
       ...mergeProps(slotProps, children.props),
       // @ts-ignore
       ref: forwardedRef

@@ -38,6 +38,7 @@ const Icons = ({ children }: { children: React.ReactNode }) => {
           isValidElement(child) &&
           index <= 3 &&
           cloneElement(child, {
+            // @ts-ignore
             ...child.props,
             className: 'cursor-pointer'
           })

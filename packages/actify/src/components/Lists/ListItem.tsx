@@ -63,6 +63,7 @@ const ListItem = (props: ListItemProps) => {
         <motion.div
           layoutId={layoutId}
           transition={transition}
+          // @ts-ignore
           className="absolute inset-0 bg-surface-variant z-[-1]"
         />
       )}

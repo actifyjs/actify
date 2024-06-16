@@ -70,6 +70,7 @@ const Field = (props: FieldProps) => {
           easings: [cubicBezier(0.2, 0, 0, 1)]
         }}
         aria-hidden={!visible}
+        // @ts-ignore
         className={clsx(
           styles['label'],
           !visible && styles['visible'],

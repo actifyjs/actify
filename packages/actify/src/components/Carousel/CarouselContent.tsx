@@ -1,9 +1,11 @@
 'use client'
-import { wrap } from 'popmotion'
+
+import { AnimatePresence, motion } from 'framer-motion'
+import React, { Children, isValidElement, useEffect } from 'react'
+
 import { twMerge } from 'tailwind-merge'
 import { useCarousel } from './CarouselContext'
-import { motion, AnimatePresence } from 'framer-motion'
-import React, { Children, useEffect, isValidElement } from 'react'
+import { wrap } from 'popmotion'
 
 const variants = {
   enter: (direction: number) => {
@@ -54,7 +56,9 @@ const CarouselContent = ({ children }: React.ComponentProps<'div'>) => {
           if (current == index) {
             return (
               <MotionComponent
+                // @ts-ignore
                 {...child.props}
+                // @ts-ignore
                 className={twMerge(child.props.className, 'absolute')}
                 variants={variants}
                 key={page}

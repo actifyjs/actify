@@ -46,6 +46,7 @@ const ListGroup = (props: ListItemProps) => {
       {hovered && (
         <motion.div
           layoutId={layoutId}
+          // @ts-ignore
           className="h-14 absolute inset-0 bg-surface-variant z-[-1]"
         />
       )}
@@ -60,6 +61,7 @@ const ListGroup = (props: ListItemProps) => {
             (child) =>
               isValidElement(child) &&
               cloneElement(child, {
+                // @ts-ignore
                 ...child.props
               })
           )}

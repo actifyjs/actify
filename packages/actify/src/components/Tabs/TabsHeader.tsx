@@ -27,6 +27,7 @@ const TabsHeader = (props: TabsHeaderProps) => {
             isValidElement(child) &&
             cloneElement(child, {
               index,
+              // @ts-ignore
               ...child.props
             })
         )}

@@ -8,7 +8,7 @@ import { tv } from 'tailwind-variants'
 import { useSideSheets } from './SideSheetsContext'
 
 const scrim = tv({
-  base: 'z-50 bg-black/40 dark:bg-[rgba(3,3,3,.8)]'
+  base: 'z-50 bg-[rgba(0,0,0,0.32)]'
 })
 
 const rootVariants = tv({
@@ -65,6 +65,7 @@ const Content = (props: ContentProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          // @ts-ignore
           onClick={() => setOpen?.(false)}
           className={rootVariants({ className })}
         >
@@ -78,8 +79,9 @@ const Content = (props: ContentProps) => {
             exit={{
               transform: 'translateX(100%)'
             }}
+            // @ts-ignore
             className={innerVariants()}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: Event) => e.stopPropagation()}
           >
             {children}
           </motion.div>
@@ -87,7 +89,7 @@ const Content = (props: ContentProps) => {
       )}
     </AnimatePresence>,
     container
-  )
+  ) as React.ReactNode
 }
 
 export { Content }

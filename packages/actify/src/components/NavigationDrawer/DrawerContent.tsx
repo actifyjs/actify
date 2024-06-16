@@ -8,7 +8,7 @@ import { tv } from 'tailwind-variants'
 import { useDrawer } from './DrawerContext'
 
 const scrim = tv({
-  base: 'z-50 bg-black/40'
+  base: 'z-50 bg-[rgba(0,0,0,0.32)]'
 })
 
 const rootVariants = tv({
@@ -159,10 +159,12 @@ const DrawerContent = ({ style, className, children }: DrawerContentProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          // @ts-ignore
           className={rootVariants({ open })}
         >
           <motion.div
             {...getAnimationProps()}
+            // @ts-ignore
             className={contentVariants({ placement, className })}
           >
             {children}
@@ -173,7 +175,7 @@ const DrawerContent = ({ style, className, children }: DrawerContentProps) => {
       )}
     </AnimatePresence>,
     container
-  )
+  ) as React.ReactNode
 }
 
 export { DrawerContent }

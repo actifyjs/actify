@@ -47,6 +47,7 @@ const ListItemLink = (props: ListItemProps) => {
         {children == current && (
           <motion.div
             layoutId={layoutId}
+            // @ts-ignore
             className="absolute inset-0 bg-secondary/25 z-[-1]"
           />
         )}

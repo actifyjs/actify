@@ -15,6 +15,7 @@ const Chip = (props: ChipProps) => {
           isValidElement(child) &&
           cloneElement(child, {
             index,
+            // @ts-ignore
             ...child.props
           })
       )}

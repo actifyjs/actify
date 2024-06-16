@@ -79,8 +79,8 @@ const Ripple = (props: RippleProps) => {
   const rippleSize = useRef('')
   const rippleScale = useRef('')
   const initialSize = useRef(0)
-  const growAnimation = useRef<Animation>()
-  const rippleStartEvent = useRef<PointerEvent>()
+  const growAnimation = useRef<Animation>(null)
+  const rippleStartEvent = useRef<PointerEvent>(null)
   const checkBoundsAfterContextMenu = useRef(false)
 
   const isTouch = ({ pointerType }: PointerEvent) => {
@@ -124,7 +124,7 @@ const Ripple = (props: RippleProps) => {
     return { x: pageX - documentX, y: pageY - documentY }
   }
 
-  const getTranslationCoordinates = (positionEvent?: Event) => {
+  const getTranslationCoordinates = (positionEvent?: Event | null) => {
     const { height, width } = ref.current!.getBoundingClientRect()
     // end in the center
     const endPoint = {
@@ -151,7 +151,7 @@ const Ripple = (props: RippleProps) => {
     return { startPoint, endPoint }
   }
 
-  const startPressAnimation = (positionEvent?: Event) => {
+  const startPressAnimation = (positionEvent?: Event | null) => {
     if (!ref.current) {
       return
     }
@@ -183,7 +183,7 @@ const Ripple = (props: RippleProps) => {
   }
 
   const endPressAnimation = async () => {
-    rippleStartEvent.current = undefined
+    rippleStartEvent.current = null
     state.current = State.INACTIVE
     const animation = growAnimation.current
     let pressAnimationPlayState = Infinity
