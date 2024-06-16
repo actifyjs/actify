@@ -102,7 +102,7 @@ export const ThemeChanger = () => {
       >
         <Icon>palette</Icon>
       </IconButton>
-      <Menu xOffset={-160} open={open} setOpen={setOpen}>
+      <Menu style={{ right: '0px' }} open={open} setOpen={setOpen}>
         <div className="flex flex-col w-56 my-3 mx-4 *:[margin-block-end:16px]">
           <section className="flex relative">
             <h2 className="text-2xl tracking-tighter leading-none">
