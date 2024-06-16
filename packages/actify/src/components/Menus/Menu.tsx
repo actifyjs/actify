@@ -24,8 +24,6 @@ interface MenuProps extends Omit<React.ComponentProps<'div'>, 'ref'> {
   positioning?: 'absolute' | 'popover' | 'fixed' | 'document'
   /** Skips the opening and closing animations */
   quick?: boolean
-  xOffset?: number
-  yOffset?: number
   typeaheadDelay?: number
   anchorCorner?: string
   menuCorner?: string
@@ -45,8 +43,6 @@ const Menu = (props: MenuProps) => {
   const {
     ref,
     style,
-    xOffset = 0,
-    yOffset = 0,
     children,
     className,
     setFocused,
@@ -142,16 +138,7 @@ const Menu = (props: MenuProps) => {
   const classes = clsx(styles['menu'], open && styles['open'], className)
 
   return (
-    <div
-      {...rest}
-      ref={menuRef}
-      className={classes}
-      style={{
-        ...style,
-        left: xOffset + 'px',
-        top: `calc(100% + ${yOffset}px)`
-      }}
-    >
+    <div {...rest} ref={menuRef} style={style} className={classes}>
       <Elevation style={{ '--md-elevation-level': 2 } as React.CSSProperties} />
       <MenuContext.Provider value={{ open, setOpen }}>
         <div className={styles['items']}>
