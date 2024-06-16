@@ -8,7 +8,8 @@ import { toast } from 'sonner'
 import { useInView } from 'framer-motion'
 
 const IconWrapper = ({ children }: { children: string }) => {
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
+  // @ts-ignore
   const isInView = useInView(ref)
 
   const copy = (icon: string) => {
