@@ -225,6 +225,7 @@
 .unselected .graphic {
   width: 0;
 }
+.with-label .graphic,
 .selected .graphic {
   width: calc(var(--_icon-size) + 8px);
 }
@@ -234,6 +235,10 @@
   width: var(--_icon-size);
   font-size: var(--_icon-size);
   transition: opacity 50ms ease-out;
+}
+.with-label .checkmark {
+  display: inline-flex;
+  position: absolute;
 }
 .unselected .checkmark {
   opacity: 0;
@@ -284,12 +289,20 @@
   width: var(--_icon-size);
   font-size: var(--_icon-size);
 }
+.selected.with-label .icon {
+  opacity: 0;
+}
 .label-text {
-  color: var(--_selected-label-text-color);
   font-family: var(--_label-text-font);
   font-size: var(--_label-text-size);
   line-height: var(--_label-text-line-height);
   font-weight: var(--_label-text-weight);
+}
+.selected .label-text {
+  color: var(--_selected-label-text-color);
+}
+.unselected .label-text {
+  color: var(--_unselected-label-text-color);
 }
 .touch {
   position: absolute;

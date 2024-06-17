@@ -20,6 +20,7 @@ export default () => {
         >
           <SegmentedButton
             title="dark"
+            label="dark"
             data-value="dark"
             className="rounded-l-full"
             selected={selectedColorMode == 'dark'}
@@ -36,6 +37,7 @@ export default () => {
           />
           <SegmentedButton
             title="light"
+            label="light"
             data-value="light"
             className="rounded-r-full"
             selected={selectedColorMode == 'light'}

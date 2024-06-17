@@ -64,10 +64,17 @@ const SegmentedButton = (props: SegmentedButtonProps) => {
                 d="M1.73,12.91 8.1,19.28 22.79,4.59"
               />
             </svg>
+            {label && (
+              <span className={styles['icon']} aria-hidden="true">
+                {icon}
+              </span>
+            )}
           </span>
-          <span className={styles['icon']} aria-hidden="true">
-            {icon}
-          </span>
+          {!label && (
+            <span className={styles['icon']} aria-hidden="true">
+              {icon}
+            </span>
+          )}
         </span>
         <span className={styles['label-text']}>{label}</span>
         <span className={styles['touch']} />
