@@ -117,11 +117,11 @@ const Select = (props: SelectProps) => {
     <div
       role="presentation"
       onClick={handleClick}
-      className={styles[`${variant}-select`]}
+      className={clsx(styles[`${variant}-select`], className)}
     >
       <span
         onFocus={() => setFocused(true)}
-        className={clsx(styles['select'], open && styles['open'], className)}
+        className={clsx(styles['select'], open && styles['open'])}
       >
         <FieldTag
           label={label}

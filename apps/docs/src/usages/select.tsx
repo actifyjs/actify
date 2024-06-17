@@ -4,8 +4,8 @@ import React from 'react'
 
 export default () => {
   return (
-    <div className="flex gap-4">
-      <Select label="FilledSelect">
+    <div className="max-sm:flex-wrap flex gap-4">
+      <Select label="FilledSelect" className="w-full">
         <SelectOption start={<Icon>home</Icon>} headline="React" />
         <SelectOption
           start={
@@ -30,7 +30,7 @@ export default () => {
           Actify
         </SelectOption>
       </Select>
-      <Select label="OutlinedSelect" variant="outlined">
+      <Select variant="outlined" label="OutlinedSelect" className="w-full">
         <SelectOption start={<Icon>home</Icon>} headline="React" />
         <SelectOption
           start={
