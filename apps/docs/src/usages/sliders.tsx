@@ -1,5 +1,5 @@
 import { Slider } from 'actify'
 
 export default () => {
-  return <Slider labeled defaultValue={50} />
+  return <Slider className="w-full" labeled defaultValue={50} />
 }

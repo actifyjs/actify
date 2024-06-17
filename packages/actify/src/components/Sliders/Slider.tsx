@@ -5,6 +5,7 @@ import React, { useId, useMemo } from 'react'
 import { Elevation } from './../Elevation'
 import { FocusRing } from '../FocusRing'
 import { Ripple } from './../Ripple'
+import clsx from 'clsx'
 import styles from './actify.module.css'
 import { useInputState } from '../../hooks'
 
@@ -47,7 +48,7 @@ const Slider = (props: SliderProps) => {
   }, [inputValue])
 
   return (
-    <div className={styles['slider']} role="presentation">
+    <div className={clsx(styles['slider'], className)} role="presentation">
       <div
         style={
           {
