@@ -1,1 +1,1 @@
-export { default as Drawer } from './NavigationDrawer'
+export { default as NavigationDrawer } from './NavigationDrawer'

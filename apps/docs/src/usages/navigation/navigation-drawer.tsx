@@ -1,72 +1,78 @@
-import { Drawer, Icon, IconButton, Tooltip, TooltipGroup } from 'actify'
+import {
+  Icon,
+  IconButton,
+  NavigationDrawer,
+  Tooltip,
+  TooltipGroup
+} from 'actify'
 
 export default () => {
   return (
     <div className="flex gap-2 items-center">
       <TooltipGroup>
-        <Drawer placement="left">
-          <Drawer.Activator>
+        <NavigationDrawer placement="left">
+          <NavigationDrawer.Activator>
             <Tooltip content="open from left">
               <IconButton>
                 <Icon>dock_to_right</Icon>
               </IconButton>
             </Tooltip>
-          </Drawer.Activator>
-          <Drawer.Content>
+          </NavigationDrawer.Activator>
+          <NavigationDrawer.Content>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
             dolore aliquid, voluptatibus sequi earum corporis cumque ab odio
             reiciendis eos possimus iure quidem molestias rem tempora itaque
             nihil maxime temporibus?
-          </Drawer.Content>
-        </Drawer>
+          </NavigationDrawer.Content>
+        </NavigationDrawer>
 
-        <Drawer placement="top">
-          <Drawer.Activator>
+        <NavigationDrawer placement="top">
+          <NavigationDrawer.Activator>
             <Tooltip content="open from top">
               <IconButton>
                 <Icon>toolbar</Icon>
               </IconButton>
             </Tooltip>
-          </Drawer.Activator>
-          <Drawer.Content>
+          </NavigationDrawer.Activator>
+          <NavigationDrawer.Content>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
             dolore aliquid, voluptatibus sequi earum corporis cumque ab odio
             reiciendis eos possimus iure quidem molestias rem tempora itaque
             nihil maxime temporibus?
-          </Drawer.Content>
-        </Drawer>
+          </NavigationDrawer.Content>
+        </NavigationDrawer>
 
-        <Drawer placement="right">
-          <Drawer.Activator>
+        <NavigationDrawer placement="right">
+          <NavigationDrawer.Activator>
             <Tooltip content="open from right">
               <IconButton>
                 <Icon>dock_to_left</Icon>
               </IconButton>
             </Tooltip>
-          </Drawer.Activator>
-          <Drawer.Content>
+          </NavigationDrawer.Activator>
+          <NavigationDrawer.Content>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
             dolore aliquid, voluptatibus sequi earum corporis cumque ab odio
             reiciendis eos possimus iure quidem molestias rem tempora itaque
             nihil maxime temporibus?
-          </Drawer.Content>
-        </Drawer>
+          </NavigationDrawer.Content>
+        </NavigationDrawer>
 
-        <Drawer placement="bottom">
-          <Drawer.Activator>
+        <NavigationDrawer placement="bottom">
+          <NavigationDrawer.Activator>
             <Tooltip content="open from bottom">
               <IconButton>
                 <Icon>dock_to_bottom</Icon>
               </IconButton>
             </Tooltip>
-          </Drawer.Activator>
-          <Drawer.Content>
+          </NavigationDrawer.Activator>
+          <NavigationDrawer.Content>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
             dolore aliquid, voluptatibus sequi earum corporis cumque ab odio
             reiciendis eos possimus iure quidem molestias rem tempora itaque
             nihil maxime temporibus?
-          </Drawer.Content>
-        </Drawer>
+          </NavigationDrawer.Content>
+        </NavigationDrawer>
       </TooltipGroup>
     </div>
   )

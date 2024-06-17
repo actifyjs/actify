@@ -10,11 +10,11 @@ const variants = tv({
   base: 'relative'
 })
 
-interface DrawerProps extends DrawerProviderProps {
+interface NavigationDrawerProps extends DrawerProviderProps {
   className?: string
 }
 
-const Drawer = (props: DrawerProps) => {
+const NavigationDrawer = (props: NavigationDrawerProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -24,7 +24,9 @@ const Drawer = (props: DrawerProps) => {
   )
 }
 
-export default Object.assign(Drawer, {
+NavigationDrawer.displayName = 'Actify.NavigationDrawer'
+
+export default Object.assign(NavigationDrawer, {
   Content: DrawerContent,
   Activator: DrawerActivator
 })
