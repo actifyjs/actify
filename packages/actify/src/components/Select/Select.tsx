@@ -152,6 +152,7 @@ const Select = (props: SelectProps) => {
               setFocused={setFocused}
               style={
                 {
+                  width: '100%',
                   '--__menu-min-width': '210px',
                   minWidth: 'var(--__menu-min-width)',
                   maxWidth: 'var(--__menu-max-width, inherit)'
