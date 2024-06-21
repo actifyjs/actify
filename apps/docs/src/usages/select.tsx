@@ -8,6 +8,7 @@ export default () => {
       <Select label="FilledSelect" className="w-full">
         <SelectOption start={<Icon>home</Icon>} headline="React" />
         <SelectOption
+          selected
           start={
             <Icon>
               <svg
