@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -38,8 +38,8 @@
     "@typescript-eslint/parser": "^7.8.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
-    "react": "19.0.0-rc-f994737d14-20240522",
-    "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "react": "rc",
+    "react-dom": "rc",
     "rollup": "^3.29.4",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -64,11 +64,11 @@
     "popmotion": "^11.0.5"
   },
   "peerDependencies": {
-    "react": "^19",
-    "react-dom": "^19"
+    "react": "rc",
+    "react-dom": "rc"
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "registry": "https://registry.npmjs.com"

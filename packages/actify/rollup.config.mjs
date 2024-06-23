@@ -39,14 +39,8 @@ export default [
     output: [
       {
         dir: 'dist',
-        format: 'cjs',
-        entryFileNames: '[name].cjs',
-        exports: 'auto',
-        ...outputOptions
-      },
-      {
-        dir: 'dist',
         format: 'esm',
+        entryFileNames: '[name].mjs',
         ...outputOptions
       }
     ],
