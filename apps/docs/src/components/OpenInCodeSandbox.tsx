@@ -113,7 +113,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       'tailwind.config.js': {
         content: `/** @type {import('tailwindcss').Config} */
   module.exports = {
-  content: ['*.{jsx,tsx}', './node_modules/actify/dist/**/*.{js,jsx}'],
+  content: ['*.{jsx,tsx}', './node_modules/actify/dist/**/*.{js,mjs,jsx}'],
   theme: {
     extend: {
       colors: {
