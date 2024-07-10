@@ -13,9 +13,9 @@
   top: 4%;
   position: absolute;
   right: 2%;
-  border-radius: 100%;
+  border-radius: 9999px;
   place-items: center;
-  transform: translate(-50%, -50%);
+  transform: translate(50%, -50%);
 }
 .primary {
   color: var(--md-sys-color-on-primary);
