@@ -1,0 +1,35 @@
+.root {
+  display: inline-flex;
+  position: relative;
+}
+.badge {
+  padding: 4px;
+  display: grid;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  top: 4%;
+  position: absolute;
+  right: 2%;
+  border-radius: 100%;
+  place-items: center;
+  transform: translate(-50%, -50%);
+}
+.primary {
+  color: var(--md-sys-color-on-primary);
+  background-color: var(--md-sys-color-primary);
+}
+.secondary {
+  color: var(--md-sys-color-on-secondary);
+  background-color: var(--md-sys-color-secondary);
+}
+.tertiary {
+  color: var(--md-sys-color-on-tertiary);
+  background-color: var(--md-sys-color-tertiary);
+}
+.error {
+  color: var(--md-sys-color-on-error);
+  background-color: var(--md-sys-color-error);
+}
