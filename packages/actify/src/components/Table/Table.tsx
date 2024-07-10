@@ -2,6 +2,7 @@
 
 import React, { Children, ComponentProps } from 'react'
 
+import { Elevation } from '../Elevation'
 import { Icon } from './../Icon'
 import { IconButton } from './../Button/IconButton'
 import { Tbody } from './Tbody'
@@ -11,8 +12,15 @@ import { Thead } from './Thead'
 import { Tr } from './Tr'
 import { tv } from 'tailwind-variants'
 
-const variants = tv({
-  base: 'w-full text-sm text-left rtl:text-right rounded-xl overflow-hidden bg-surface'
+const root = tv({
+  base: [
+    'w-full',
+    'text-sm',
+    'text-left',
+    'rtl:text-right',
+    'bg-surface',
+    'overflow-hidden'
+  ]
 })
 
 type Headers = Record<string, any>[]
@@ -48,54 +56,63 @@ const Table = (props: TableProps) => {
   const hasToby = tbody ? tbody.length > 0 : false
 
   return (
-    <table {...rest} className={variants({ className })}>
-      {hasThead ? (
-        thead
-      ) : (
-        <Thead>
-          <Tr className="h-11">
-            {headers?.map((head) => <Th key={head.value}>{head.text}</Th>)}
+    <div className="relative ">
+      <Elevation
+        style={
+          {
+            '--md-elevation-level': 4
+          } as React.CSSProperties
+        }
+      />
+      <table {...rest} className={root({ className })}>
+        {hasThead ? (
+          thead
+        ) : (
+          <Thead>
+            <Tr className="h-14">
+              {headers?.map((head) => <Th key={head.value}>{head.text}</Th>)}
 
-            {actions && <Th>Actions</Th>}
-          </Tr>
-        </Thead>
-      )}
-
-      {hasToby ? (
-        tbody
-      ) : (
-        <Tbody>
-          {items?.map((item, index) => (
-            <Tr
-              key={index}
-              className="bg-surface border-b hover:bg-inverse-surface/10"
-            >
-              {headers?.map(({ value }) => (
-                <Td key={value}>
-                  <p className="font-normal">{item[value]}</p>
-                </Td>
-              ))}
-              {actions && (
-                <Td>
-                  <IconButton
-                    color="error"
-                    onClick={() => onItemDelete?.(item)}
-                  >
-                    <Icon>delete</Icon>
-                  </IconButton>
-                  <IconButton
-                    color="primary"
-                    onClick={() => onItemEdit?.(item)}
-                  >
-                    <Icon>edit</Icon>
-                  </IconButton>
-                </Td>
-              )}
+              {actions && <Th>Actions</Th>}
             </Tr>
-          ))}
-        </Tbody>
-      )}
-    </table>
+          </Thead>
+        )}
+
+        {hasToby ? (
+          tbody
+        ) : (
+          <Tbody>
+            {items?.map((item, index) => (
+              <Tr
+                key={index}
+                className="h-[52px] bg-surface border-t border-outline hover:bg-inverse-surface/10"
+              >
+                {headers?.map(({ value }) => (
+                  <Td key={value}>
+                    <p className="font-normal">{item[value]}</p>
+                  </Td>
+                ))}
+                {actions && (
+                  <Td>
+                    <IconButton
+                      color="error"
+                      onClick={() => onItemDelete?.(item)}
+                    >
+                      <Icon>delete</Icon>
+                    </IconButton>
+                    <IconButton
+                      color="primary"
+                      onClick={() => onItemEdit?.(item)}
+                    >
+                      <Icon>edit</Icon>
+                    </IconButton>
+                  </Td>
+                )}
+              </Tr>
+            ))}
+          </Tbody>
+        )}
+      </table>
+    </div>
   )
 }
 

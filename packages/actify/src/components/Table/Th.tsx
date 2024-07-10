@@ -4,7 +4,7 @@ import React from 'react'
 import { tv } from 'tailwind-variants'
 
 const root = tv({
-  base: 'px-3 py-2'
+  base: 'px-4'
 })
 
 const Th = ({ className, children }: React.ComponentProps<'th'>) => {
