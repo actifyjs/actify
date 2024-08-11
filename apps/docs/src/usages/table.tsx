@@ -44,5 +44,5 @@ export default () => {
     }
   ]
 
-  return <Table headers={headers} items={items} actions pageSizes={[3, 10]}></Table>
+  return <Table headers={headers} items={items} actions pageSizes={[3, 10]} initialPaginationState={{page: 1, pageSize: 3}}></Table>
 }
