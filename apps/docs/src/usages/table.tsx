@@ -44,5 +44,5 @@ export default () => {
     }
   ]
 
-  return <Table headers={headers} items={items} actions></Table>
+  return <Table headers={headers} items={items} actions pageSizes={[3, 10]}></Table>
 }

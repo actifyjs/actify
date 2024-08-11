@@ -44,7 +44,7 @@ const IconButton = (props: IconButtonProps) => {
     disabled,
     children,
     className,
-    ripple = true,
+    ripple = !disabled && true,
     type = 'button',
     variant = 'standard',
     ...rest
@@ -57,7 +57,7 @@ const IconButton = (props: IconButtonProps) => {
       {...rest}
       id={iconButtonId}
       disabled={disabled}
-      className={root({ className })}
+      className={ (disabled ? "text-outline " : "") + root({ className })}
     >
       <FocusRing id={iconButtonId} />
       {ripple && <Ripple id={iconButtonId} disabled={disabled} />}
