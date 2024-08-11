@@ -3,7 +3,7 @@ import typography from '@tailwindcss/typography'
 
 const config: Config = {
   darkMode: ['selector', '[data-theme="dark"]'],
-  content: ['./src/**/*.{ts,tsx}', './../../packages/actify/**/*.{ts,tsx}'],
+  content: ['./src/**/*.{ts,tsx}', './../../packages/actify/src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
