@@ -100,6 +100,14 @@ export function themeFromSourceColor(color: string, isDark: boolean): Theme {
   return theme
 }
 
+function argbToRgb(argb: number) {
+  var red = (argb >> 16) & 0xff
+  var green = (argb >> 8) & 0xff
+  var blue = argb & 0xff
+
+  return `${red} ${green} ${blue}`
+}
+
 /**
  * Generates a stylesheet string of custom properties from the given theme, and
  * applies the styles to the given document or shadow root, and caches the value
