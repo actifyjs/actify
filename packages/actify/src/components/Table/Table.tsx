@@ -1,20 +1,20 @@
 'use client'
 
+import { Menu, MenuItem } from '../Menus'
 import React, { Children, ComponentProps, useState } from 'react'
 
+import { Button } from '../Button'
 import { Elevation } from '../Elevation'
 import { Icon } from './../Icon'
 import { IconButton } from './../Button/IconButton'
 import { Tbody } from './Tbody'
 import { Td } from './Td'
+import { Tfoot } from './Tfoot'
 import { Th } from './Th'
 import { Thead } from './Thead'
 import { Tr } from './Tr'
-import { tv } from 'tailwind-variants'
 import _ from 'lodash'
-import { Menu, MenuItem } from '../Menus'
-import { Button } from '../Button'
-import { Tfoot } from './Tfoot'
+import { tv } from 'tailwind-variants'
 
 const root = tv({
   base: [
@@ -39,8 +39,8 @@ interface TableProps extends ComponentProps<'table'> {
   actions?: boolean
   onItemEdit?: (item: any) => void
   onItemDelete?: (item: any) => void
-  pageSizes?: number[],
-  initialPaginationState?: InitialPaginationState,
+  pageSizes?: number[]
+  initialPaginationState?: InitialPaginationState
   children?: React.JSX.Element | React.JSX.Element[]
 }
 const Table = (props: TableProps) => {
@@ -56,9 +56,13 @@ const Table = (props: TableProps) => {
     children,
     ...rest
   } = props
-  const [selectedPageSize, setSelectedPageSize] = useState<number>(initialPaginationState?.pageSize ?? pageSizes?.[0] ?? 10)
+  const [selectedPageSize, setSelectedPageSize] = useState<number>(
+    initialPaginationState?.pageSize ?? pageSizes?.[0] ?? 10
+  )
   const [pageSizeOpen, setPageSizeOpen] = useState<boolean>(false)
-  const [currentPage, setCurrentPage] = useState<number>(initialPaginationState?.page ?? 0)
+  const [currentPage, setCurrentPage] = useState<number>(
+    initialPaginationState?.page ?? 0
+  )
 
   const thead = Children.map(children, (child) =>
     child?.type?.displayName === 'Thead' ? child : null
@@ -74,7 +78,7 @@ const Table = (props: TableProps) => {
   const hasToby = tbody ? tbody.length > 0 : false
   const hasTfoot = tfoot ? tfoot.length > 0 : false
 
-  const paginatedGroups = pageSizes ? _.chunk(items, selectedPageSize): [items]
+  const paginatedGroups = pageSizes ? _.chunk(items, selectedPageSize) : [items]
 
   return (
     <div className="relative ">
@@ -132,52 +136,68 @@ const Table = (props: TableProps) => {
             ))}
           </Tbody>
         )}
-        {hasTfoot ? (
-            tfoot
-          ): <></>}
+        {hasTfoot ? tfoot : <></>}
       </table>
       {pageSizes ? (
-          <div className="w-full flex flex-row px-3 py-1 bg-surface border-t border-outline-variant">
-            <div className="ml-auto flex flex-row items-center">
-              <p className="text-sm mr-2">Rows per page:</p>
+        <div className="w-full flex flex-row px-3 py-1 bg-surface border-t border-outline-variant">
+          <div className="ml-auto flex flex-row items-center">
+            <p className="text-sm mr-2">Rows per page:</p>
+            <div className="relative w-fit">
               <Button
-                onClick={() => setPageSizeOpen(!pageSizeOpen)}
-                className="mr-2"
                 variant="text"
+                className="mr-2"
                 color="secondary"
+                onClick={() => setPageSizeOpen(!pageSizeOpen)}
               >
                 <div className="flex flex-row items-center">
                   <p className="text-md mr-2">{selectedPageSize}</p>
                   <Icon>arrow_drop_down</Icon>
                 </div>
               </Button>
-              <Menu open={pageSizeOpen} setOpen={setPageSizeOpen} className="absolute">
+              <Menu
+                open={pageSizeOpen}
+                setOpen={setPageSizeOpen}
+                className="absolute"
+              >
                 {pageSizes?.map((size) => (
-                  <MenuItem key={size} onClick={(e) => {
-                    setSelectedPageSize(size)
-                    setCurrentPage(0)
-                  }}>{size}</MenuItem>
+                  <MenuItem
+                    key={size}
+                    onClick={(e) => {
+                      setSelectedPageSize(size)
+                      setCurrentPage(0)
+                    }}
+                  >
+                    {size}
+                  </MenuItem>
                 ))}
               </Menu>
-              <span className="text-sm mr-4">
-                {currentPage * selectedPageSize + 1}-{Math.min((currentPage + 1) * selectedPageSize, items?.length ?? 0)} of {items?.length ?? 0}
-              </span>
-              <IconButton
-                className="mr-1"
-                disabled={currentPage === 0}
-                onClick={() => setCurrentPage(currentPage - 1)}
-              >
-                <Icon>chevron_left</Icon>
-              </IconButton>
-              <IconButton
-                disabled={currentPage >= paginatedGroups.length - 1}
-                onClick={() => setCurrentPage(currentPage + 1)}
-              >
-                <Icon>chevron_right</Icon>
-              </IconButton>
             </div>
+            <span className="text-sm mr-4">
+              {currentPage * selectedPageSize + 1}-
+              {Math.min(
+                (currentPage + 1) * selectedPageSize,
+                items?.length ?? 0
+              )}{' '}
+              of {items?.length ?? 0}
+            </span>
+            <IconButton
+              className="mr-1"
+              disabled={currentPage === 0}
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >
+              <Icon>chevron_left</Icon>
+            </IconButton>
+            <IconButton
+              disabled={currentPage >= paginatedGroups.length - 1}
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >
+              <Icon>chevron_right</Icon>
+            </IconButton>
           </div>
-        ): <></>}
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   )
 }
