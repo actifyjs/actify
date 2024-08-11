@@ -14,6 +14,7 @@ import { tv } from 'tailwind-variants'
 import _ from 'lodash'
 import { Menu, MenuItem } from '../Menus'
 import { Button } from '../Button'
+import { Tfoot } from './Tfoot'
 
 const root = tv({
   base: [
@@ -131,10 +132,11 @@ const Table = (props: TableProps) => {
             ))}
           </Tbody>
         )}
+        {hasTfoot ? (
+            tfoot
+          ): <></>}
       </table>
-      {hasTfoot ? (
-          tfoot
-        ): pageSizes ? (
+      {pageSizes ? (
           <div className="w-full flex flex-row px-3 py-1 bg-surface border-t border-outline-variant">
             <div className="ml-auto flex flex-row items-center">
               <p className="text-sm mr-2">Rows per page:</p>
@@ -185,6 +187,7 @@ Table.displayName = 'Actify.Table'
 export default Object.assign(Table, {
   Thead,
   Tbody,
+  Tfoot,
   Th,
   Tr,
   Td
