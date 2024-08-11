@@ -13,6 +13,7 @@ description: Table is a component that allows you to display tabular data.
 | ----------- | ----------- |
 | Table.Thead | thead tag   |
 | Table.Tbody | tbody tag   |
+| Table.Tfoot | tfoot tag   |
 | Table.Th    | th tag      |
 | Table.Tr    | tr tag      |
 | Table.Td    | td tag      |
@@ -24,6 +25,8 @@ description: Table is a component that allows you to display tabular data.
 | `headers` | `array`   | table header | `undefined` |
 | `items`   | `array`   | table body   | `undefined` |
 | `actions` | `boolean` | actions      | `undefined` |
+| `pageSizes` | `array` | supported number of rows per page   | `undefined` |
+| `initialPaginationState` | `object` | initial pagination state | `undefined` |
 
 ## Events
 
