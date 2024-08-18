@@ -7,3 +7,5 @@
 - [ ] open in stackblitz use ts template
 - [ ] open in codesandbox use ts template
 - [ ] create-actify cli generate templates (vite[js,ts], next[js,ts])
+- [ ] [Dot notation client component breaks consuming RSC.](https://github.com/vercel/next.js/issues/51593)
+      Accordion.Item -> AccordionItem
