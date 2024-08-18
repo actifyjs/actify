@@ -95,7 +95,8 @@ export function themeFromSourceColor(color: string, isDark: boolean): Theme {
   const theme: { [key: string]: string } = {}
 
   for (const [key, value] of Object.entries(materialColors)) {
-    theme[key] = hexFromArgb(value.getArgb(scheme))
+    const argb = value.getArgb(scheme)
+    theme[key] = argbToRgb(argb)
   }
   return theme
 }

@@ -37,7 +37,7 @@ const root = tv({
     '[--disabled-outline-color:var(--md-assist-chip-disabled-outline-color,var(--md-sys-color-on-surface))]',
     '[--disabled-outline-opacity:var(--md-assist-chip-disabled-outline-opacity,0.12)]',
     '[--focus-outline-color:var(--md-assist-chip-focus-outline-color,var(--md-sys-color-on-surface))]',
-    '[--outline-color:var(--md-assist-chip-outline-color,var(--md-sys-color-outline))]',
+    '[--outline-color:var(--md-assist-chip-outline-color,rgb(var(--md-sys-color-outline)))]',
     '[--outline-width:var(--md-assist-chip-outline-width,1px)]',
     '[--disabled-leading-icon-color:var(--md-assist-chip-disabled-leading-icon-color,var(--md-sys-color-on-surface))]',
     '[--disabled-leading-icon-opacity:var(--md-assist-chip-disabled-leading-icon-opacity,0.38)]',

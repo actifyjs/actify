@@ -44,7 +44,7 @@ const root = tv({
     '[--disabled-trailing-icon-color:var(--md-filter-chip-disabled-trailing-icon-color,var(--md-sys-color-on-surface))]',
     '[--disabled-trailing-icon-opacity:var(--md-filter-chip-disabled-trailing-icon-opacity,0.38)]',
     '[--focus-outline-color:var(--md-filter-chip-focus-outline-color,var(--md-sys-color-on-surface))]',
-    '[--outline-color:var(--md-filter-chip-outline-color,var(--md-sys-color-outline))]',
+    '[--outline-color:var(--md-filter-chip-outline-color,rgb(var(--md-sys-color-outline)))]',
     '[--outline-width:var(--md-filter-chip-outline-width,1px)]',
 
     '[--disabled-leading-icon-color:var(--md-filter-chip-disabled-leading-icon-color,var(--md-sys-color-on-surface))]',
@@ -89,7 +89,7 @@ const root = tv({
     '[--md-ripple-pressed-color:var(--pressed-state-layer-color)]',
     '[--md-ripple-pressed-opacity:var(--pressed-state-layer-opacity)]',
     '[--selected-outline-width:var(--md-filter-chip-selected-outline-width,0px)]',
-    '[--selected-container-color:var(--md-filter-chip-selected-container-color,var(--md-sys-color-secondary-container))]',
+    '[--selected-container-color:var(--md-filter-chip-selected-container-color,rgb(var(--md-sys-color-secondary-container)))]',
     '[--selected-leading-icon-color:var(--md-filter-chip-selected-leading-icon-color,var(--md-sys-color-on-secondary-container,#1d192b))]'
   ],
   variants: {

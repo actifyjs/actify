@@ -9,7 +9,6 @@ description: Use original html label tag, but prevented text selection when doub
 
 ## Usage with Raido
 
-<preview code='<RadioGroup>
-  <Radio value="actify" id="radio-1" />
-  <Label htmlFor="radio-1">with radio</Label>
-</RadioGroup>'></preview>
+<preview code='<Label className="flex items-center gap-4">with radio
+<RadioGroup><Radio value="actify" /></RadioGroup></Label>'>
+</preview>

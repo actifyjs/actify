@@ -4,7 +4,7 @@ import React from 'react'
 import { tv } from 'tailwind-variants'
 
 const root = tv({
-  base: 'border-b text-xs bg-inverse-surface/25'
+  base: 'border-b text-xs bg-surface'
 })
 
 const Thead = ({ className, children }: React.ComponentProps<'thead'>) => {

@@ -31,7 +31,7 @@
   box-sizing: border-box;
   background-color: var(
     --md-menu-container-color,
-    var(--md-sys-color-surface-container, #f3edf7)
+    rgb(var(--md-sys-color-surface-container, 243 237 247))
   );
   height: inherit;
   max-height: inherit;
@@ -51,7 +51,7 @@
   display: flex;
   --md-ripple-hover-color: var(
     --md-menu-item-hover-state-layer-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --md-ripple-hover-opacity: var(
     --md-menu-item-hover-state-layer-opacity,
@@ -59,7 +59,7 @@
   );
   --md-ripple-pressed-color: var(
     --md-menu-item-pressed-state-layer-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --md-ripple-pressed-opacity: var(
     --md-menu-item-pressed-state-layer-opacity,

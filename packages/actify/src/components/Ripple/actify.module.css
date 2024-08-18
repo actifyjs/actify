@@ -1,9 +1,9 @@
 .ripple {
-  border-radius: inherit;
-  position: absolute;
   inset: 0;
   cursor: inherit;
   overflow: hidden;
+  position: absolute;
+  border-radius: inherit;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   &:before,
   &:after {
@@ -14,7 +14,7 @@
   &:before {
     background-color: var(
       --md-ripple-hover-color,
-      var(--md-sys-color-on-surface, #1d1b20)
+      rgb(var(--md-sys-color-on-surface))
     );
     inset: 0;
     transition:
@@ -24,7 +24,7 @@
   &:after {
     background: radial-gradient(
       closest-side,
-      var(--md-ripple-pressed-color, var(--md-sys-color-on-surface, #1d1b20))
+      var(--md-ripple-pressed-color, rgb(var(--md-sys-color-on-surface)))
         max(100% - 70px, 65%),
       transparent 100%
     );
@@ -34,7 +34,7 @@
   &.hovered:before {
     background-color: var(
       --md-ripple-hover-color,
-      var(--md-sys-color-on-surface, #1d1b20)
+      rgb(var(--md-sys-color-on-surface))
     );
     opacity: var(--md-ripple-hover-opacity, 0.08);
   }

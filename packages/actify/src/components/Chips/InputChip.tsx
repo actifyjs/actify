@@ -42,7 +42,7 @@ const root = tv({
     '[--disabled-trailing-icon-color:var(--md-filter-chip-disabled-trailing-icon-color,var(--md-sys-color-on-surface))]',
     '[--disabled-trailing-icon-opacity:var(--md-filter-chip-disabled-trailing-icon-opacity,0.38)]',
     '[--focus-outline-color:var(--md-input-chip-focus-outline-color,var(--md-sys-color-on-surface))]',
-    '[--outline-color:var(--md-input-chip-outline-color,var(--md-sys-color-outline))]',
+    '[--outline-color:var(--md-input-chip-outline-color,rgb(var(--md-sys-color-outline)))]',
     '[--outline-width:var(--md-input-chip-outline-width,1px)]',
 
     '[--disabled-leading-icon-color:var(--md-input-chip-disabled-leading-icon-color,var(--md-sys-color-on-surface))]',

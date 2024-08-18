@@ -1,18 +1,18 @@
 .filled {
   --_container-color: var(
     --md-filled-button-container-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_container-elevation: var(--md-filled-button-container-elevation, 0);
   --_container-height: var(--md-filled-button-container-height, 40px);
   --_container-shadow-color: var(
     --md-filled-button-container-shadow-color,
-    var(--md-sys-color-shadow, #000)
+    rgb(var(--md-sys-color-shadow, 0 0 0))
   );
   --_container-shape: var(--md-filled-button-container-shape, 9999px);
   --_disabled-container-color: var(
     --md-filled-button-disabled-container-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-container-elevation: var(
     --md-filled-button-disabled-container-elevation,
@@ -24,7 +24,7 @@
   );
   --_disabled-label-text-color: var(
     --md-filled-button-disabled-label-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-label-text-opacity: var(
     --md-filled-button-disabled-label-text-opacity,
@@ -36,7 +36,7 @@
   );
   --_focus-label-text-color: var(
     --md-filled-button-focus-label-text-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_hover-container-elevation: var(
     --md-filled-button-hover-container-elevation,
@@ -44,11 +44,11 @@
   );
   --_hover-label-text-color: var(
     --md-filled-button-hover-label-text-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_hover-state-layer-color: var(
     --md-filled-button-hover-state-layer-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_hover-state-layer-opacity: var(
     --md-filled-button-hover-state-layer-opacity,
@@ -56,7 +56,7 @@
   );
   --_label-text-color: var(
     --md-filled-button-label-text-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_label-text-font: var(
     --md-filled-button-label-text-font,
@@ -86,11 +86,11 @@
   );
   --_pressed-label-text-color: var(
     --md-filled-button-pressed-label-text-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_pressed-state-layer-color: var(
     --md-filled-button-pressed-state-layer-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_pressed-state-layer-opacity: var(
     --md-filled-button-pressed-state-layer-opacity,
@@ -98,25 +98,25 @@
   );
   --_disabled-icon-color: var(
     --md-filled-button-disabled-icon-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-icon-opacity: var(--md-filled-button-disabled-icon-opacity, 0.38);
   --_focus-icon-color: var(
     --md-filled-button-focus-icon-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_hover-icon-color: var(
     --md-filled-button-hover-icon-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_icon-color: var(
     --md-filled-button-icon-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_icon-size: var(--md-filled-button-icon-size, 18px);
   --_pressed-icon-color: var(
     --md-filled-button-pressed-icon-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary, 255 255 255))
   );
   --_leading-space: var(--md-filled-button-leading-space, 24px);
   --_trailing-space: var(--md-filled-button-trailing-space, 24px);
@@ -156,18 +156,18 @@
 .elevated {
   --_container-color: var(
     --md-elevated-button-container-color,
-    var(--md-sys-color-surface-container-low, #f7f2fa)
+    rgb(var(--md-sys-color-surface-container-low, 247 242 250))
   );
   --_container-elevation: var(--md-elevated-button-container-elevation, 1);
   --_container-height: var(--md-elevated-button-container-height, 40px);
   --_container-shadow-color: var(
     --md-elevated-button-container-shadow-color,
-    var(--md-sys-color-shadow, #000)
+    rgb(var(--md-sys-color-shadow, 0 0 0))
   );
   --_container-shape: var(--md-elevated-button-container-shape, 9999px);
   --_disabled-container-color: var(
     --md-elevated-button-disabled-container-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-container-elevation: var(
     --md-elevated-button-disabled-container-elevation,
@@ -179,7 +179,7 @@
   );
   --_disabled-label-text-color: var(
     --md-elevated-button-disabled-label-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-label-text-opacity: var(
     --md-elevated-button-disabled-label-text-opacity,
@@ -191,7 +191,7 @@
   );
   --_focus-label-text-color: var(
     --md-elevated-button-focus-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-container-elevation: var(
     --md-elevated-button-hover-container-elevation,
@@ -199,11 +199,11 @@
   );
   --_hover-label-text-color: var(
     --md-elevated-button-hover-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-state-layer-color: var(
     --md-elevated-button-hover-state-layer-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-state-layer-opacity: var(
     --md-elevated-button-hover-state-layer-opacity,
@@ -211,7 +211,7 @@
   );
   --_label-text-color: var(
     --md-elevated-button-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_label-text-font: var(
     --md-elevated-button-label-text-font,
@@ -241,11 +241,11 @@
   );
   --_pressed-label-text-color: var(
     --md-elevated-button-pressed-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_pressed-state-layer-color: var(
     --md-elevated-button-pressed-state-layer-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_pressed-state-layer-opacity: var(
     --md-elevated-button-pressed-state-layer-opacity,
@@ -253,7 +253,7 @@
   );
   --_disabled-icon-color: var(
     --md-elevated-button-disabled-icon-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-icon-opacity: var(
     --md-elevated-button-disabled-icon-opacity,
@@ -261,20 +261,20 @@
   );
   --_focus-icon-color: var(
     --md-elevated-button-focus-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-icon-color: var(
     --md-elevated-button-hover-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_icon-color: var(
     --md-elevated-button-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_icon-size: var(--md-elevated-button-icon-size, 18px);
   --_pressed-icon-color: var(
     --md-elevated-button-pressed-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_leading-space: var(--md-elevated-button-leading-space, 24px);
   --_trailing-space: var(--md-elevated-button-trailing-space, 24px);
@@ -316,7 +316,7 @@
   --_container-shape: var(--md-outlined-button-container-shape, 9999px);
   --_disabled-label-text-color: var(
     --md-outlined-button-disabled-label-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-label-text-opacity: var(
     --md-outlined-button-disabled-label-text-opacity,
@@ -324,7 +324,7 @@
   );
   --_disabled-outline-color: var(
     --md-outlined-button-disabled-outline-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-outline-opacity: var(
     --md-outlined-button-disabled-outline-opacity,
@@ -332,15 +332,15 @@
   );
   --_focus-label-text-color: var(
     --md-outlined-button-focus-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-label-text-color: var(
     --md-outlined-button-hover-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-state-layer-color: var(
     --md-outlined-button-hover-state-layer-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-state-layer-opacity: var(
     --md-outlined-button-hover-state-layer-opacity,
@@ -348,7 +348,7 @@
   );
   --_label-text-color: var(
     --md-outlined-button-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_label-text-font: var(
     --md-outlined-button-label-text-font,
@@ -374,20 +374,20 @@
   );
   --_outline-color: var(
     --md-outlined-button-outline-color,
-    var(--md-sys-color-outline, #79747e)
+    rgb(var(--md-sys-color-outline, 121 116 126))
   );
   --_outline-width: var(--md-outlined-button-outline-width, 1px);
   --_pressed-label-text-color: var(
     --md-outlined-button-pressed-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_pressed-outline-color: var(
     --md-outlined-button-pressed-outline-color,
-    var(--md-sys-color-outline, #79747e)
+    rgb(var(--md-sys-color-outline, 121 116 126))
   );
   --_pressed-state-layer-color: var(
     --md-outlined-button-pressed-state-layer-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_pressed-state-layer-opacity: var(
     --md-outlined-button-pressed-state-layer-opacity,
@@ -395,7 +395,7 @@
   );
   --_disabled-icon-color: var(
     --md-outlined-button-disabled-icon-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-icon-opacity: var(
     --md-outlined-button-disabled-icon-opacity,
@@ -403,20 +403,20 @@
   );
   --_focus-icon-color: var(
     --md-outlined-button-focus-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-icon-color: var(
     --md-outlined-button-hover-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_icon-color: var(
     --md-outlined-button-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_icon-size: var(--md-outlined-button-icon-size, 18px);
   --_pressed-icon-color: var(
     --md-outlined-button-pressed-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_leading-space: var(--md-outlined-button-leading-space, 24px);
   --_trailing-space: var(--md-outlined-button-trailing-space, 24px);
@@ -459,18 +459,18 @@
 .tonal {
   --_container-color: var(
     --md-filled-tonal-button-container-color,
-    var(--md-sys-color-secondary-container, #e8def8)
+    rgb(var(--md-sys-color-secondary-container, 232 222 248))
   );
   --_container-elevation: var(--md-filled-tonal-button-container-elevation, 0);
   --_container-height: var(--md-filled-tonal-button-container-height, 40px);
   --_container-shadow-color: var(
     --md-filled-tonal-button-container-shadow-color,
-    var(--md-sys-color-shadow, #000)
+    rgb(var(--md-sys-color-shadow, 0 0 0))
   );
   --_container-shape: var(--md-filled-tonal-button-container-shape, 9999px);
   --_disabled-container-color: var(
     --md-filled-tonal-button-disabled-container-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-container-elevation: var(
     --md-filled-tonal-button-disabled-container-elevation,
@@ -482,7 +482,7 @@
   );
   --_disabled-label-text-color: var(
     --md-filled-tonal-button-disabled-label-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-label-text-opacity: var(
     --md-filled-tonal-button-disabled-label-text-opacity,
@@ -494,7 +494,7 @@
   );
   --_focus-label-text-color: var(
     --md-filled-tonal-button-focus-label-text-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_hover-container-elevation: var(
     --md-filled-tonal-button-hover-container-elevation,
@@ -502,11 +502,11 @@
   );
   --_hover-label-text-color: var(
     --md-filled-tonal-button-hover-label-text-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_hover-state-layer-color: var(
     --md-filled-tonal-button-hover-state-layer-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_hover-state-layer-opacity: var(
     --md-filled-tonal-button-hover-state-layer-opacity,
@@ -514,7 +514,7 @@
   );
   --_label-text-color: var(
     --md-filled-tonal-button-label-text-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_label-text-font: var(
     --md-filled-tonal-button-label-text-font,
@@ -544,11 +544,11 @@
   );
   --_pressed-label-text-color: var(
     --md-filled-tonal-button-pressed-label-text-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_pressed-state-layer-color: var(
     --md-filled-tonal-button-pressed-state-layer-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_pressed-state-layer-opacity: var(
     --md-filled-tonal-button-pressed-state-layer-opacity,
@@ -556,7 +556,7 @@
   );
   --_disabled-icon-color: var(
     --md-filled-tonal-button-disabled-icon-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-icon-opacity: var(
     --md-filled-tonal-button-disabled-icon-opacity,
@@ -564,20 +564,20 @@
   );
   --_focus-icon-color: var(
     --md-filled-tonal-button-focus-icon-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_hover-icon-color: var(
     --md-filled-tonal-button-hover-icon-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_icon-color: var(
     --md-filled-tonal-button-icon-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_icon-size: var(--md-filled-tonal-button-icon-size, 18px);
   --_pressed-icon-color: var(
     --md-filled-tonal-button-pressed-icon-color,
-    var(--md-sys-color-on-secondary-container, #1d192b)
+    rgb(var(--md-sys-color-on-secondary-container, 29 25 43))
   );
   --_leading-space: var(--md-filled-tonal-button-leading-space, 24px);
   --_trailing-space: var(--md-filled-tonal-button-trailing-space, 24px);
@@ -619,7 +619,7 @@
   --_container-shape: var(--md-text-button-container-shape, 9999px);
   --_disabled-label-text-color: var(
     --md-text-button-disabled-label-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-label-text-opacity: var(
     --md-text-button-disabled-label-text-opacity,
@@ -627,15 +627,15 @@
   );
   --_focus-label-text-color: var(
     --md-text-button-focus-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-label-text-color: var(
     --md-text-button-hover-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-state-layer-color: var(
     --md-text-button-hover-state-layer-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-state-layer-opacity: var(
     --md-text-button-hover-state-layer-opacity,
@@ -643,7 +643,7 @@
   );
   --_label-text-color: var(
     --md-text-button-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_label-text-font: var(
     --md-text-button-label-text-font,
@@ -669,11 +669,11 @@
   );
   --_pressed-label-text-color: var(
     --md-text-button-pressed-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_pressed-state-layer-color: var(
     --md-text-button-pressed-state-layer-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_pressed-state-layer-opacity: var(
     --md-text-button-pressed-state-layer-opacity,
@@ -681,25 +681,25 @@
   );
   --_disabled-icon-color: var(
     --md-text-button-disabled-icon-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface, 29 27 32))
   );
   --_disabled-icon-opacity: var(--md-text-button-disabled-icon-opacity, 0.38);
   --_focus-icon-color: var(
     --md-text-button-focus-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_hover-icon-color: var(
     --md-text-button-hover-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_icon-color: var(
     --md-text-button-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_icon-size: var(--md-text-button-icon-size, 18px);
   --_pressed-icon-color: var(
     --md-text-button-pressed-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary, 103 80 164))
   );
   --_leading-space: var(--md-text-button-leading-space, 12px);
   --_trailing-space: var(--md-text-button-trailing-space, 12px);

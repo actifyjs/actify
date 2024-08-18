@@ -104,7 +104,7 @@
     height: var(--md-switch-selected-icon-size, 16px);
     color: var(
       --md-switch-selected-icon-color,
-      var(--md-sys-color-on-primary-container, #21005d)
+      rgb(var(--md-sys-color-on-primary-container))
     );
   }
   &.off {
@@ -112,7 +112,7 @@
     height: var(--md-switch-icon-size, 16px);
     color: var(
       --md-switch-icon-color,
-      var(--md-sys-color-surface-container-highest, #e6e0e9)
+      rgb(var(--md-sys-color-surface-container-highest))
     );
   }
 }
@@ -143,7 +143,7 @@
   &.selected .track:before {
     background-color: var(
       --md-switch-selected-track-color,
-      var(--md-sys-color-primary, #6750a4)
+      rgb(var(--md-sys-color-primary))
     );
   }
   &.selected .handle-container {
@@ -154,11 +154,11 @@
   &.selected .ripple {
     --md-ripple-hover-color: var(
       --md-switch-selected-hover-state-layer-color,
-      var(--md-sys-color-primary, #6750a4)
+      rgb(var(--md-sys-color-primary))
     );
     --md-ripple-pressed-color: var(
       --md-switch-selected-pressed-state-layer-color,
-      var(--md-sys-color-primary, #6750a4)
+      rgb(var(--md-sys-color-primary))
     );
     --md-ripple-hover-opacity: var(
       --md-switch-selected-hover-state-layer-opacity,
@@ -175,7 +175,7 @@
     &:before {
       background-color: var(
         --md-switch-selected-handle-color,
-        var(--md-sys-color-on-primary, #fff)
+        rgb(var(--md-sys-color-on-primary))
       );
     }
   }
@@ -198,11 +198,11 @@
   &.unselected .track:before {
     background-color: var(
       --md-switch-track-color,
-      var(--md-sys-color-surface-container-highest, #e6e0e9)
+      rgb(var(--md-sys-color-surface-container-highest))
     );
     border-color: var(
       --md-switch-track-outline-color,
-      var(--md-sys-color-outline, #79747e)
+      rgb(var(--md-sys-color-outline))
     );
     border-style: solid;
     border-width: var(--md-switch-track-outline-width, 2px);
@@ -215,11 +215,11 @@
   &.unselected .ripple {
     --md-ripple-hover-color: var(
       --md-switch-hover-state-layer-color,
-      var(--md-sys-color-on-surface, #1d1b20)
+      rgb(var(--md-sys-color-on-surface))
     );
     --md-ripple-pressed-color: var(
       --md-switch-pressed-state-layer-color,
-      var(--md-sys-color-on-surface, #1d1b20)
+      rgb(var(--md-sys-color-on-surface))
     );
     --md-ripple-hover-opacity: var(--md-switch-hover-state-layer-opacity, 0.08);
     --md-ripple-pressed-opacity: var(
@@ -230,21 +230,21 @@
   &.unselected .handle:before {
     background-color: var(
       --md-switch-handle-color,
-      var(--md-sys-color-outline, #79747e)
+      rgb(var(--md-sys-color-outline))
     );
   }
   &.selected:hover .handle:before,
   &.selected:focus-within .handle:before {
     background-color: var(
       --md-switch-selected-focus-handle-color,
-      var(--md-sys-color-primary-container, #eaddff)
+      rgb(var(--md-sys-color-primary-container))
     );
   }
   &.unselected:hover .handle:before,
   &.unselected:focus-within .handle:before {
     background-color: var(
       --md-switch-focus-handle-color,
-      var(--md-sys-color-on-surface-variant, #49454f)
+      rgb(var(--md-sys-color-on-surface-variant))
     );
   }
   &.disabled .track {
@@ -253,11 +253,11 @@
     &:before {
       background-color: var(
         --md-switch-disabled-track-color,
-        var(--md-sys-color-surface-container-highest, #e6e0e9)
+        rgb(var(--md-sys-color-surface-container-highest))
       );
       border-color: var(
         --md-switch-disabled-track-outline-color,
-        var(--md-sys-color-on-surface, #1d1b20)
+        rgb(var(--md-sys-color-on-surface))
       );
       transition: none 0s ease 0s;
       opacity: var(--md-switch-disabled-track-opacity, 0.12);
@@ -266,7 +266,7 @@
   &.unselected.disabled .handle:before {
     background-color: var(
       --md-switch-disabled-handle-color,
-      var(--md-sys-color-on-surface, #1d1b20)
+      rgb(var(--md-sys-color-on-surface))
     );
     opacity: var(--md-switch-disabled-handle-opacity, 0.38);
   }

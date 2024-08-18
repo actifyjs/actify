@@ -59,7 +59,7 @@
   border-radius: inherit;
   border-color: var(
     --md-checkbox-outline-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   border-style: solid;
   border-width: var(--md-checkbox-outline-width, 2px);
@@ -67,7 +67,7 @@
   &.disabled {
     border-color: var(
       --md-checkbox-disabled-outline-color,
-      var(--md-sys-color-on-surface, #1d1b20)
+      rgb(var(--md-sys-color-on-surface))
     );
     border-width: var(--md-checkbox-disabled-outline-width, 2px);
     opacity: var(--md-checkbox-disabled-container-opacity, 0.38);
@@ -82,7 +82,7 @@
   border-radius: inherit;
   background-color: var(
     --md-checkbox-selected-container-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary))
   );
   opacity: 0;
   transition-duration: 150ms, 50ms;
@@ -98,7 +98,7 @@
   &.selected.disabled {
     background: var(
       --md-checkbox-selected-disabled-container-color,
-      var(--md-sys-color-on-surface, #1d1b20)
+      rgb(var(--md-sys-color-on-surface))
     );
     opacity: var(--md-checkbox-selected-disabled-container-opacity, 0.38);
   }
@@ -108,7 +108,7 @@
   position: absolute;
   fill: var(
     --md-checkbox-selected-icon-color,
-    var(--md-sys-color-on-primary, #fff)
+    rgb(var(--md-sys-color-on-primary))
   );
   height: var(--md-checkbox-icon-size, 18px);
   width: var(--md-checkbox-icon-size, 18px);

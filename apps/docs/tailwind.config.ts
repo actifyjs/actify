@@ -7,51 +7,64 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--md-sys-color-background,#fff8f3)',
-        'on-background': 'var(--md-sys-color-on-background,#201b12)',
-        surface: 'var(--md-sys-color-surface,#fff8f3)',
-        'surface-dim': 'var(--md-sys-color-surface-dim,#e4d8cb)',
-        'surface-bright': 'var(--md-sys-color-surface-bright,#fff8f3)',
+        background: 'rgb(var(--md-sys-color-background) / <alpha-value>)',
+        'on-background':
+          'rgb(var(--md-sys-color-on-background) / <alpha-value>)',
+        surface: 'rgb(var(--md-sys-color-surface) / <alpha-value>)',
+        'surface-dim': 'rgb(var(--md-sys-color-surface-dim) / <alpha-value>)',
+        'surface-bright':
+          'rgb(var(--md-sys-color-surface-bright) / <alpha-value>)',
         'surface-container-lowest':
-          'var(--md-sys-color-surface-container-lowest,#ffffff)',
+          'rgb(var(--md-sys-color-surface-container-lowest) / <alpha-value>)',
         'surface-container-low':
-          'var(--md-sys-color-surface-container-low,#fef2e4)',
-        'surface-container': 'var(--md-sys-color-surface-container,#f8ecde)',
+          'rgb(var(--md-sys-color-surface-container-low) / <alpha-value>)',
+        'surface-container':
+          'rgb(var(--md-sys-color-surface-container) / <alpha-value>)',
         'surface-container-high':
-          'var(--md-sys-color-surface-container-high,#f3e6d8)',
+          'rgb(var(--md-sys-color-surface-container-high) / <alpha-value>)',
         'surface-container-highest':
-          'var(--md-sys-color-surface-container-highest,#ede1d3)',
-        'on-surface': 'var(--md-sys-color-on-surface,#201b12)',
-        'surface-variant': 'var(--md-sys-color-surface-variant,#f2e0c9)',
-        'on-surface-variant': 'var(--md-sys-color-on-surface-variant,#504534)',
-        'inverse-surface': 'var(--md-sys-color-inverse-surface,#362f26)',
-        'inverse-on-surface': 'var(--md-sys-color-inverse-on-surface,#fbefe1)',
-        outline: 'var(--md-sys-color-outline,#837562)',
-        'outline-variant': 'var(--md-sys-color-outline-variant,#d5c4ae)',
-        shadow: 'var(--md-sys-color-shadow,#000000)',
-        scrim: 'var(--md-sys-color-scrim,#000000)',
-        'surface-tint': 'var(--md-sys-color-surface-tint,#7f5700)',
-        primary: 'var(--md-sys-color-primary,#7f5700)',
-        'on-primary': 'var(--md-sys-color-on-primary,#ffffff)',
-        'primary-container': 'var(--md-sys-color-primary-container,#f7b337)',
+          'rgb(var(--md-sys-color-surface-container-highest) / <alpha-value>)',
+        'on-surface': 'rgb(var(--md-sys-color-on-surface) / <alpha-value>)',
+        'surface-variant':
+          'rgb(var(--md-sys-color-surface-variant) / <alpha-value>)',
+        'on-surface-variant':
+          'rgb(var(--md-sys-color-on-surface-variant) / <alpha-value>)',
+        'inverse-surface':
+          'rgb(var(--md-sys-color-inverse-surface) / <alpha-value>)',
+        'inverse-on-surface':
+          'rgb(var(--md-sys-color-inverse-on-surface) / <alpha-value>)',
+        outline: 'rgb(var(--md-sys-color-outline) / <alpha-value>)',
+        'outline-variant':
+          'rgb(var(--md-sys-color-outline-variant) / <alpha-value>)',
+        shadow: 'rgb(var(--md-sys-color-shadow) / <alpha-value>)',
+        scrim: 'rgb(var(--md-sys-color-scrim) / <alpha-value>)',
+        'surface-tint': 'rgb(var(--md-sys-color-surface-tint) / <alpha-value>)',
+        primary: 'rgb(var(--md-sys-color-primary) / <alpha-value>)',
+        'on-primary': 'rgb(var(--md-sys-color-on-primary) / <alpha-value>)',
+        'primary-container':
+          'rgb(var(--md-sys-color-primary-container) / <alpha-value>)',
         'on-primary-container':
-          'var(--md-sys-color-on-primary-container,#442d00)',
-        'inverse-primary': 'var(--md-sys-color-inverse-primary,#ffba3e)',
-        secondary: 'var(--md-sys-color-secondary,#765a2b)',
-        'on-secondary': 'var(--md-sys-color-on-secondary,#ffffff)',
+          'rgb(var(--md-sys-color-on-primary-container) / <alpha-value>)',
+        'inverse-primary':
+          'rgb(var(--md-sys-color-inverse-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--md-sys-color-secondary) / <alpha-value>)',
+        'on-secondary': 'rgb(var(--md-sys-color-on-secondary) / <alpha-value>)',
         'secondary-container':
-          'var(--md-sys-color-secondary-container,#ffdca9)',
+          'rgb(var(--md-sys-color-secondary-container) / <alpha-value>)',
         'on-secondary-container':
-          'var(--md-sys-color-on-secondary-container,#5c4316)',
-        tertiary: 'var(--md-sys-color-tertiary,#566500)',
-        'on-tertiary': 'var(--md-sys-color-on-tertiary,#ffffff)',
-        'tertiary-container': 'var(--md-sys-color-tertiary-container,#b6ca54)',
+          'rgb(var(--md-sys-color-on-secondary-container) / <alpha-value>)',
+        tertiary: 'rgb(var(--md-sys-color-tertiary) / <alpha-value>)',
+        'on-tertiary': 'rgb(var(--md-sys-color-on-tertiary) / <alpha-value>)',
+        'tertiary-container':
+          'rgb(var(--md-sys-color-tertiary-container) / <alpha-value>)',
         'on-tertiary-container':
-          'var(--md-sys-color-on-tertiary-container,#2d3600)',
-        error: 'var(--md-sys-color-error,#ba1a1a)',
-        'on-error': 'var(--md-sys-color-on-error,#ffffff)',
-        'error-container': 'var(--md-sys-color-error-container,#ffdad6)',
-        'on-error-container': 'var(--md-sys-color-on-error-container,#410002)'
+          'rgb(var(--md-sys-color-on-tertiary-container) / <alpha-value>)',
+        error: 'rgb(var(--md-sys-color-error) / <alpha-value>)',
+        'on-error': 'rgb(var(--md-sys-color-on-error) / <alpha-value>)',
+        'error-container':
+          'rgb(var(--md-sys-color-error-container) / <alpha-value>)',
+        'on-error-container':
+          'rgb(var(--md-sys-color-on-error-container) / <alpha-value>)'
       }
     }
   },

@@ -4,7 +4,7 @@
   min-width: 210px;
   --_text-field-active-indicator-color: var(
     --md-filled-select-text-field-active-indicator-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-active-indicator-height: var(
     --md-filled-select-text-field-active-indicator-height,
@@ -12,11 +12,11 @@
   );
   --_text-field-container-color: var(
     --md-filled-select-text-field-container-color,
-    var(--md-sys-color-surface-container-highest, #e6e0e9)
+    rgb(var(--md-sys-color-surface-container-highest))
   );
   --_text-field-disabled-active-indicator-color: var(
     --md-filled-select-text-field-disabled-active-indicator-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-active-indicator-height: var(
     --md-filled-select-text-field-disabled-active-indicator-height,
@@ -28,7 +28,7 @@
   );
   --_text-field-disabled-container-color: var(
     --md-filled-select-text-field-disabled-container-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-container-opacity: var(
     --md-filled-select-text-field-disabled-container-opacity,
@@ -36,7 +36,7 @@
   );
   --_text-field-disabled-input-text-color: var(
     --md-filled-select-text-field-disabled-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-input-text-opacity: var(
     --md-filled-select-text-field-disabled-input-text-opacity,
@@ -44,7 +44,7 @@
   );
   --_text-field-disabled-label-text-color: var(
     --md-filled-select-text-field-disabled-label-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-label-text-opacity: var(
     --md-filled-select-text-field-disabled-label-text-opacity,
@@ -52,7 +52,7 @@
   );
   --_text-field-disabled-leading-icon-color: var(
     --md-filled-select-text-field-disabled-leading-icon-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-leading-icon-opacity: var(
     --md-filled-select-text-field-disabled-leading-icon-opacity,
@@ -60,7 +60,7 @@
   );
   --_text-field-disabled-supporting-text-color: var(
     --md-filled-select-text-field-disabled-supporting-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-supporting-text-opacity: var(
     --md-filled-select-text-field-disabled-supporting-text-opacity,
@@ -68,7 +68,7 @@
   );
   --_text-field-disabled-trailing-icon-color: var(
     --md-filled-select-text-field-disabled-trailing-icon-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-trailing-icon-opacity: var(
     --md-filled-select-text-field-disabled-trailing-icon-opacity,
@@ -76,51 +76,51 @@
   );
   --_text-field-error-active-indicator-color: var(
     --md-filled-select-text-field-error-active-indicator-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-focus-active-indicator-color: var(
     --md-filled-select-text-field-error-focus-active-indicator-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-focus-input-text-color: var(
     --md-filled-select-text-field-error-focus-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-error-focus-label-text-color: var(
     --md-filled-select-text-field-error-focus-label-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-focus-leading-icon-color: var(
     --md-filled-select-text-field-error-focus-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-error-focus-supporting-text-color: var(
     --md-filled-select-text-field-error-focus-supporting-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-focus-trailing-icon-color: var(
     --md-filled-select-text-field-error-focus-trailing-icon-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-hover-active-indicator-color: var(
     --md-filled-select-text-field-error-hover-active-indicator-color,
-    var(--md-sys-color-on-error-container, #410e0b)
+    rgb(var(--md-sys-color-on-error-container))
   );
   --_text-field-error-hover-input-text-color: var(
     --md-filled-select-text-field-error-hover-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-error-hover-label-text-color: var(
     --md-filled-select-text-field-error-hover-label-text-color,
-    var(--md-sys-color-on-error-container, #410e0b)
+    rgb(var(--md-sys-color-on-error-container))
   );
   --_text-field-error-hover-leading-icon-color: var(
     --md-filled-select-text-field-error-hover-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-error-hover-state-layer-color: var(
     --md-filled-select-text-field-error-hover-state-layer-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-error-hover-state-layer-opacity: var(
     --md-filled-select-text-field-error-hover-state-layer-opacity,
@@ -128,35 +128,35 @@
   );
   --_text-field-error-hover-supporting-text-color: var(
     --md-filled-select-text-field-error-hover-supporting-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-hover-trailing-icon-color: var(
     --md-filled-select-text-field-error-hover-trailing-icon-color,
-    var(--md-sys-color-on-error-container, #410e0b)
+    rgb(var(--md-sys-color-on-error-container))
   );
   --_text-field-error-input-text-color: var(
     --md-filled-select-text-field-error-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-error-label-text-color: var(
     --md-filled-select-text-field-error-label-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-leading-icon-color: var(
     --md-filled-select-text-field-error-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-error-supporting-text-color: var(
     --md-filled-select-text-field-error-supporting-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-trailing-icon-color: var(
     --md-filled-select-text-field-error-trailing-icon-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-focus-active-indicator-color: var(
     --md-filled-select-text-field-focus-active-indicator-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary))
   );
   --_text-field-focus-active-indicator-height: var(
     --md-filled-select-text-field-focus-active-indicator-height,
@@ -164,27 +164,27 @@
   );
   --_text-field-focus-input-text-color: var(
     --md-filled-select-text-field-focus-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-focus-label-text-color: var(
     --md-filled-select-text-field-focus-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary))
   );
   --_text-field-focus-leading-icon-color: var(
     --md-filled-select-text-field-focus-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-focus-supporting-text-color: var(
     --md-filled-select-text-field-focus-supporting-text-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-focus-trailing-icon-color: var(
     --md-filled-select-text-field-focus-trailing-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary))
   );
   --_text-field-hover-active-indicator-color: var(
     --md-filled-select-text-field-hover-active-indicator-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-hover-active-indicator-height: var(
     --md-filled-select-text-field-hover-active-indicator-height,
@@ -192,19 +192,19 @@
   );
   --_text-field-hover-input-text-color: var(
     --md-filled-select-text-field-hover-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-hover-label-text-color: var(
     --md-filled-select-text-field-hover-label-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-hover-leading-icon-color: var(
     --md-filled-select-text-field-hover-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-hover-state-layer-color: var(
     --md-filled-select-text-field-hover-state-layer-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-hover-state-layer-opacity: var(
     --md-filled-select-text-field-hover-state-layer-opacity,
@@ -212,15 +212,15 @@
   );
   --_text-field-hover-supporting-text-color: var(
     --md-filled-select-text-field-hover-supporting-text-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-hover-trailing-icon-color: var(
     --md-filled-select-text-field-hover-trailing-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-input-text-color: var(
     --md-filled-select-text-field-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-input-text-font: var(
     --md-filled-select-text-field-input-text-font,
@@ -246,7 +246,7 @@
   );
   --_text-field-label-text-color: var(
     --md-filled-select-text-field-label-text-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-label-text-font: var(
     --md-filled-select-text-field-label-text-font,
@@ -280,7 +280,7 @@
   );
   --_text-field-leading-icon-color: var(
     --md-filled-select-text-field-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-leading-icon-size: var(
     --md-filled-select-text-field-leading-icon-size,
@@ -288,7 +288,7 @@
   );
   --_text-field-supporting-text-color: var(
     --md-filled-select-text-field-supporting-text-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-supporting-text-font: var(
     --md-filled-select-text-field-supporting-text-font,
@@ -314,7 +314,7 @@
   );
   --_text-field-trailing-icon-color: var(
     --md-filled-select-text-field-trailing-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-trailing-icon-size: var(
     --md-filled-select-text-field-trailing-icon-size,
@@ -568,7 +568,7 @@
   min-width: 210px;
   --_text-field-disabled-input-text-color: var(
     --md-outlined-select-text-field-disabled-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-input-text-opacity: var(
     --md-outlined-select-text-field-disabled-input-text-opacity,
@@ -576,7 +576,7 @@
   );
   --_text-field-disabled-label-text-color: var(
     --md-outlined-select-text-field-disabled-label-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-label-text-opacity: var(
     --md-outlined-select-text-field-disabled-label-text-opacity,
@@ -584,7 +584,7 @@
   );
   --_text-field-disabled-leading-icon-color: var(
     --md-outlined-select-text-field-disabled-leading-icon-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-leading-icon-opacity: var(
     --md-outlined-select-text-field-disabled-leading-icon-opacity,
@@ -592,7 +592,7 @@
   );
   --_text-field-disabled-outline-color: var(
     --md-outlined-select-text-field-disabled-outline-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-outline-opacity: var(
     --md-outlined-select-text-field-disabled-outline-opacity,
@@ -604,7 +604,7 @@
   );
   --_text-field-disabled-supporting-text-color: var(
     --md-outlined-select-text-field-disabled-supporting-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-supporting-text-opacity: var(
     --md-outlined-select-text-field-disabled-supporting-text-opacity,
@@ -612,7 +612,7 @@
   );
   --_text-field-disabled-trailing-icon-color: var(
     --md-outlined-select-text-field-disabled-trailing-icon-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-disabled-trailing-icon-opacity: var(
     --md-outlined-select-text-field-disabled-trailing-icon-opacity,
@@ -620,91 +620,91 @@
   );
   --_text-field-error-focus-input-text-color: var(
     --md-outlined-select-text-field-error-focus-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-error-focus-label-text-color: var(
     --md-outlined-select-text-field-error-focus-label-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-focus-leading-icon-color: var(
     --md-outlined-select-text-field-error-focus-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-error-focus-outline-color: var(
     --md-outlined-select-text-field-error-focus-outline-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-focus-supporting-text-color: var(
     --md-outlined-select-text-field-error-focus-supporting-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-focus-trailing-icon-color: var(
     --md-outlined-select-text-field-error-focus-trailing-icon-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-hover-input-text-color: var(
     --md-outlined-select-text-field-error-hover-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-error-hover-label-text-color: var(
     --md-outlined-select-text-field-error-hover-label-text-color,
-    var(--md-sys-color-on-error-container, #410e0b)
+    rgb(var(--md-sys-color-on-error-container))
   );
   --_text-field-error-hover-leading-icon-color: var(
     --md-outlined-select-text-field-error-hover-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-error-hover-outline-color: var(
     --md-outlined-select-text-field-error-hover-outline-color,
-    var(--md-sys-color-on-error-container, #410e0b)
+    rgb(var(--md-sys-color-on-error-container))
   );
   --_text-field-error-hover-supporting-text-color: var(
     --md-outlined-select-text-field-error-hover-supporting-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-hover-trailing-icon-color: var(
     --md-outlined-select-text-field-error-hover-trailing-icon-color,
-    var(--md-sys-color-on-error-container, #410e0b)
+    rgb(var(--md-sys-color-on-error-container))
   );
   --_text-field-error-input-text-color: var(
     --md-outlined-select-text-field-error-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-error-label-text-color: var(
     --md-outlined-select-text-field-error-label-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-leading-icon-color: var(
     --md-outlined-select-text-field-error-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-error-outline-color: var(
     --md-outlined-select-text-field-error-outline-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-supporting-text-color: var(
     --md-outlined-select-text-field-error-supporting-text-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-error-trailing-icon-color: var(
     --md-outlined-select-text-field-error-trailing-icon-color,
-    var(--md-sys-color-error, #b3261e)
+    rgb(var(--md-sys-color-error))
   );
   --_text-field-focus-input-text-color: var(
     --md-outlined-select-text-field-focus-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-focus-label-text-color: var(
     --md-outlined-select-text-field-focus-label-text-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary))
   );
   --_text-field-focus-leading-icon-color: var(
     --md-outlined-select-text-field-focus-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-focus-outline-color: var(
     --md-outlined-select-text-field-focus-outline-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary))
   );
   --_text-field-focus-outline-width: var(
     --md-outlined-select-text-field-focus-outline-width,
@@ -712,27 +712,27 @@
   );
   --_text-field-focus-supporting-text-color: var(
     --md-outlined-select-text-field-focus-supporting-text-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-focus-trailing-icon-color: var(
     --md-outlined-select-text-field-focus-trailing-icon-color,
-    var(--md-sys-color-primary, #6750a4)
+    rgb(var(--md-sys-color-primary))
   );
   --_text-field-hover-input-text-color: var(
     --md-outlined-select-text-field-hover-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-hover-label-text-color: var(
     --md-outlined-select-text-field-hover-label-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-hover-leading-icon-color: var(
     --md-outlined-select-text-field-hover-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-hover-outline-color: var(
     --md-outlined-select-text-field-hover-outline-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-hover-outline-width: var(
     --md-outlined-select-text-field-hover-outline-width,
@@ -740,15 +740,15 @@
   );
   --_text-field-hover-supporting-text-color: var(
     --md-outlined-select-text-field-hover-supporting-text-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-hover-trailing-icon-color: var(
     --md-outlined-select-text-field-hover-trailing-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-input-text-color: var(
     --md-outlined-select-text-field-input-text-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --_text-field-input-text-font: var(
     --md-outlined-select-text-field-input-text-font,
@@ -774,7 +774,7 @@
   );
   --_text-field-label-text-color: var(
     --md-outlined-select-text-field-label-text-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-label-text-font: var(
     --md-outlined-select-text-field-label-text-font,
@@ -808,7 +808,7 @@
   );
   --_text-field-leading-icon-color: var(
     --md-outlined-select-text-field-leading-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-leading-icon-size: var(
     --md-outlined-select-text-field-leading-icon-size,
@@ -816,7 +816,7 @@
   );
   --_text-field-outline-color: var(
     --md-outlined-select-text-field-outline-color,
-    var(--md-sys-color-outline, #79747e)
+    rgb(var(--md-sys-color-outline))
   );
   --_text-field-outline-width: var(
     --md-outlined-select-text-field-outline-width,
@@ -824,7 +824,7 @@
   );
   --_text-field-supporting-text-color: var(
     --md-outlined-select-text-field-supporting-text-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-supporting-text-font: var(
     --md-outlined-select-text-field-supporting-text-font,
@@ -850,7 +850,7 @@
   );
   --_text-field-trailing-icon-color: var(
     --md-outlined-select-text-field-trailing-icon-color,
-    var(--md-sys-color-on-surface-variant, #49454f)
+    rgb(var(--md-sys-color-on-surface-variant))
   );
   --_text-field-trailing-icon-size: var(
     --md-outlined-select-text-field-trailing-icon-size,
@@ -1089,7 +1089,7 @@
   display: flex;
   --md-ripple-hover-color: var(
     --md-menu-item-hover-state-layer-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --md-ripple-hover-opacity: var(
     --md-menu-item-hover-state-layer-opacity,
@@ -1097,7 +1097,7 @@
   );
   --md-ripple-pressed-color: var(
     --md-menu-item-pressed-state-layer-color,
-    var(--md-sys-color-on-surface, #1d1b20)
+    rgb(var(--md-sys-color-on-surface))
   );
   --md-ripple-pressed-opacity: var(
     --md-menu-item-pressed-state-layer-opacity,
@@ -1115,7 +1115,7 @@
   &.selected {
     background-color: var(
       --md-menu-item-selected-container-color,
-      var(--md-sys-color-secondary-container, #e8def8)
+      rgb(var(--md-sys-color-secondary-container))
     );
   }
   &:not(.disabled) {
