@@ -33,14 +33,14 @@
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/lodash": "^4.17.7",
     "@types/node": "^20.12.7",
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
-    "react": "rc",
-    "react-dom": "rc",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "rollup": "^3.29.4",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -54,8 +54,8 @@
     "typescript": "^5.4.5"
   },
   "overrides": {
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc"
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.13",

@@ -16,8 +16,8 @@
     "gray-matter": "^4.0.3",
     "next": "15.0.0-rc.0",
     "next-themes": "^0.3.0",
-    "react": "19.0.0-rc-f994737d14-20240522",
-    "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "react-markdown": "^8.0.7",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-raw": "^6.1.1",
@@ -29,15 +29,15 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20.12.12",
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "postcss": "^8.4.38",
     "react-live": "^4.1.6",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },
   "overrides": {
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc"
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:"
   }
 }
