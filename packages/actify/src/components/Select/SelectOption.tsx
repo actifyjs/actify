@@ -5,7 +5,7 @@ import React from 'react'
 import { Ripple } from '../Ripple'
 import { SelectContext } from './Select'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './select.module.css'
 
 interface MenuItemProps extends Omit<ItemProps, 'container'> {
   value?: string

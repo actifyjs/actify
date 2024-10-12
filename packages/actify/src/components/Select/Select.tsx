@@ -4,7 +4,7 @@ import { Menu } from '../Menus'
 import { OutlinedField } from '../Field'
 import React from 'react'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './select.module.css'
 
 interface SelectContextProps {
   open: boolean
@@ -130,6 +130,7 @@ const Select = (props: SelectProps) => {
           populated={populated}
           aria-haspopup="listbox"
           aria-controls="listbox"
+          style={{ cursor: 'pointer' }}
           tabIndex={disabled ? -1 : 0}
           aria-label={props['aria-label']}
           aria-describedby="description"
