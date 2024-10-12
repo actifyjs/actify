@@ -1,7 +1,7 @@
 import { Field, FieldProps } from './Field'
 
 import React from 'react'
-import styles from './styles/actify.module.css'
+import styles from './styles/field.module.css'
 
 interface FilledFieldProps extends FieldProps, React.ComponentProps<'div'> {}
 

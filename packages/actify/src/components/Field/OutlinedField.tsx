@@ -1,6 +1,6 @@
 import { Field, FieldProps } from './Field'
 
-import styles from './styles/actify.module.css'
+import styles from './styles/field.module.css'
 
 export interface OutlinedFieldProps
   extends FieldProps,

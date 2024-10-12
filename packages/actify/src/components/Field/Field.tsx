@@ -3,7 +3,7 @@ import { cubicBezier, motion } from 'framer-motion'
 
 import React from 'react'
 import clsx from 'clsx'
-import styles from './styles/actify.module.css'
+import styles from './styles/field.module.css'
 
 export interface FieldProps extends SupportingTextProps {
   label?: string
