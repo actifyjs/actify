@@ -279,7 +279,7 @@ const AssitChip = (props: AssitChipProps) => {
         ) : (
           <span className={outline({ disabled })} />
         )}
-        <FocusRing id={chipId} className={ring()} />
+        <FocusRing className={ring()} />
         <Ripple id={chipId} disabled={disabled} />
         {renderPrimaryAction({ href, primary: true })}
       </div>

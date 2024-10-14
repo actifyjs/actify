@@ -77,7 +77,7 @@ const RemoveButton = (props: RemoveButtonProps) => {
       onClick={handleClick}
       className={action()}
     >
-      <FocusRing id={id} />
+      <FocusRing />
       <Ripple
         id={id}
         disabled={disabled}

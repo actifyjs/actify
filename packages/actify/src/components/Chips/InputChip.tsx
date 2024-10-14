@@ -325,7 +325,7 @@ const InputChip = (props: InputChipProps) => {
         ) : (
           <span className={outline({ disabled })} />
         )}
-        <FocusRing id={chipId} className={ring()} />
+        <FocusRing className={ring()} />
         <Ripple id={chipId} disabled={disabled} />
         {renderPrimaryAction({ href, primary: true })}
         {removable && <RemoveButton disabled={disabled} setHide={setHide} />}

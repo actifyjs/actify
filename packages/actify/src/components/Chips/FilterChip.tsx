@@ -361,7 +361,7 @@ const FilterChip = (props: FilterChipProps) => {
         ) : (
           <span className={outline({ selected, disabled })}></span>
         )}
-        <FocusRing id={chipId} className={ring()} />
+        <FocusRing className={ring()} />
         <Ripple id={chipId} disabled={disabled} />
         {renderPrimaryAction({ href, primary: true })}
         {removable && (
