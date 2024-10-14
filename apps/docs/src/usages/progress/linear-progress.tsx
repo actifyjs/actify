@@ -3,7 +3,7 @@ import { Label, LinearProgress, Slider, Switch } from 'actify'
 import { useState } from 'react'
 
 export default () => {
-  const [value, setValue] = useState('50')
+  const [value, setValue] = useState(50)
   const [indeterminate, setIndeterminate] = useState(true)
 
   return (
@@ -15,8 +15,8 @@ export default () => {
         <Switch
           icons
           color="primary"
-          selected={indeterminate}
-          onChange={(e) => setIndeterminate(e.target.checked)}
+          isSelected={indeterminate}
+          onChange={setIndeterminate}
         />
       </Label>
       <Label className="flex flex-1 items-center gap-2">
@@ -24,7 +24,8 @@ export default () => {
         <Slider
           labeled
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          // @ts-ignore
+          onChange={setValue}
         />
       </Label>
     </div>
