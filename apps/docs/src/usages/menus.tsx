@@ -8,7 +8,7 @@ export default () => {
     <div className="relative w-fit">
       <Button
         id="usage-anchor"
-        onClick={() => {
+        onPress={() => {
           setOpen(!open)
         }}
       >

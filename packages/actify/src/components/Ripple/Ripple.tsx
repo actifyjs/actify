@@ -54,6 +54,7 @@ enum State {
 
 const EVENTS = [
   'click',
+  'keydown',
   'contextmenu',
   'pointercancel',
   'pointerdown',
@@ -318,30 +319,39 @@ const Ripple = (props: RippleProps) => {
     if (control) {
       for (const e of EVENTS) {
         control.addEventListener(e, async (event) => {
-          switch (event.type) {
-            case 'click':
-              handleClick()
-              break
-            case 'contextmenu':
-              handleContextmenu()
-              break
-            case 'pointercancel':
-              handlePointercancel(event as PointerEvent)
-              break
-            case 'pointerdown':
-              await handlePointerdown(event as PointerEvent)
-              break
-            case 'pointerenter':
-              handlePointerenter(event as PointerEvent)
-              break
-            case 'pointerleave':
-              handlePointerleave(event as PointerEvent)
-              break
-            case 'pointerup':
-              handlePointerup(event as PointerEvent)
-              break
-            default:
-              break
+          if (
+            event.type != 'keydown' ||
+            // @ts-ignore
+            event.code == 'Enter' ||
+            // @ts-ignore
+            event.code == 'Space'
+          ) {
+            switch (event.type) {
+              case 'click':
+              case 'keydown':
+                handleClick()
+                break
+              case 'contextmenu':
+                handleContextmenu()
+                break
+              case 'pointercancel':
+                handlePointercancel(event as PointerEvent)
+                break
+              case 'pointerdown':
+                await handlePointerdown(event as PointerEvent)
+                break
+              case 'pointerenter':
+                handlePointerenter(event as PointerEvent)
+                break
+              case 'pointerleave':
+                handlePointerleave(event as PointerEvent)
+                break
+              case 'pointerup':
+                handlePointerup(event as PointerEvent)
+                break
+              default:
+                break
+            }
           }
         })
       }

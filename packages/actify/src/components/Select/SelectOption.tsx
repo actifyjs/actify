@@ -41,7 +41,7 @@ const SelectOption = (props: MenuItemProps) => {
   const Container = () => (
     <div className={styles['container']}>
       <Ripple />
-      <FocusRing id={itemId} />
+      <FocusRing />
     </div>
   )
 

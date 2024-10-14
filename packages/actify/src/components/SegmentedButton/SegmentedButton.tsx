@@ -1,31 +1,31 @@
 'use client'
 
+import {
+  AriaButtonProps,
+  mergeProps,
+  useButton,
+  useFocusRing
+} from 'react-aria'
+
 import { FocusRing } from '../FocusRing'
 import React from 'react'
 import { Ripple } from '../Ripple'
 import clsx from 'clsx'
 import styles from './actify.module.css'
 
-interface SegmentedButtonProps
-  extends Omit<React.ComponentProps<'button'>, 'children'> {
+type SegmentedButtonProps = {
   label?: string
   selected?: boolean
   icon?: React.ReactNode
   noCheckmark?: boolean
-}
+} & Omit<React.ComponentProps<'button'>, 'children'> &
+  AriaButtonProps
 
 const SegmentedButton = (props: SegmentedButtonProps) => {
-  const {
-    id,
-    icon,
-    label,
-    disabled,
-    selected,
-    className,
-    noCheckmark,
-    ...rest
-  } = props
+  const { id, icon, label, disabled, selected, className, noCheckmark } = props
 
+  const buttonRef = React.useRef(null)
+  const { buttonProps } = useButton(props, buttonRef)
   const buttonId = id || `actify-segmented-button${React.useId()}`
 
   const animState = React.useMemo(
@@ -43,16 +43,18 @@ const SegmentedButton = (props: SegmentedButtonProps) => {
     className
   )
 
+  const { focusProps, isFocusVisible } = useFocusRing()
+
   return (
     <div role="presentation" className={styles['host']}>
       <button
-        {...rest}
         id={buttonId}
-        disabled={disabled}
+        ref={buttonRef}
         className={classes}
         tabIndex={disabled ? -1 : 0}
+        {...mergeProps(buttonProps, focusProps)}
       >
-        <FocusRing id={buttonId} />
+        {isFocusVisible && <FocusRing />}
         <Ripple id={buttonId} disabled={disabled} />
         <span className={styles['outline']} />
         <span className={styles['leading']} aria-hidden="true">

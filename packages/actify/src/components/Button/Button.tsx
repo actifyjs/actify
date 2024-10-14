@@ -1,5 +1,11 @@
 'use client'
 
+import {
+  AriaButtonProps,
+  mergeProps,
+  useButton,
+  useFocusRing
+} from 'react-aria'
 import React, { useId } from 'react'
 
 import { Elevation } from './../Elevation'
@@ -10,29 +16,30 @@ import clsx from 'clsx'
 import colors from './styles/color.module.css'
 import variants from './styles/variant.module.css'
 
-interface ButtonProps extends React.ComponentProps<'button'> {
+type ButtonProps = {
   ripple?: boolean
   trailingIcon?: boolean
   popoverTarget?: string
   popoverTargetAction?: 'show' | 'toggle' | 'hide'
-  type?: 'submit' | 'reset' | 'button'
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
   variant?: 'elevated' | 'filled' | 'tonal' | 'outlined' | 'text'
-}
+} & React.ComponentProps<'button'> &
+  AriaButtonProps
 
 const Button = (props: ButtonProps) => {
   const {
     id,
     style,
     ripple = true,
-    type = 'button',
     color = 'primary',
     variant = 'elevated',
     disabled = false,
     className,
-    children,
-    ...rest
+    children
   } = props
+
+  const buttonRef = React.useRef(null)
+  const { buttonProps } = useButton(props, buttonRef)
 
   const buttonId = id || `actify-button${useId()}`
 
@@ -44,21 +51,25 @@ const Button = (props: ButtonProps) => {
     className
   )
 
+  const { focusProps, isFocusVisible } = useFocusRing()
+
   return (
     <div role="presentation" style={style} className={classes}>
       <Elevation disabled={disabled} />
       {variant == 'outlined' && <div className={buttons['outline']} />}
       <span className={buttons['background']} />
-      <FocusRing id={buttonId} />
       {ripple && <Ripple id={buttonId} disabled={disabled} />}
       <button
-        {...rest}
         id={buttonId}
+        ref={buttonRef}
         disabled={disabled}
         className={buttons['button']}
+        {...mergeProps(buttonProps, focusProps)}
       >
         <span className={buttons['touch']} />
         <span className={buttons['label']}>{children}</span>
+        {/* FocusRing */}
+        {isFocusVisible && <FocusRing />}
       </button>
     </div>
   )

@@ -1,12 +1,11 @@
-import { FocusRing } from 'actify'
-import { useId } from 'react'
+import { FocusRing, useFocusRing } from 'actify'
 
 export default () => {
-  const id = useId()
+  const { isFocused, focusProps } = useFocusRing()
   return (
     <span className="relative">
-      <FocusRing id={id} />
-      <input className="outline-none text-primary" id={id} />
+      <input {...focusProps} className="outline-none text-primary" />
+      {isFocused && <FocusRing />}
     </span>
   )
 }

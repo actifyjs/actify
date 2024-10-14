@@ -8,7 +8,7 @@ export default () => {
         <Switch color="secondary" />
         <Switch color="tertiary" />
         <Switch defaultSelected color="error" />
-        <Switch disabled />
+        <Switch isDisabled />
       </div>
 
       <div className="mt-4 flex gap-2">

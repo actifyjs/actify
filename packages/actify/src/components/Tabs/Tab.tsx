@@ -38,13 +38,9 @@ const Tab = (props: TabProps) => {
   }
 
   return (
-    <li
-      role="tab"
-      {...rest}
-      className={root({ className })}
-      onClick={() => handleClick(index!)}
-    >
+    <li role="tab" {...rest} className={root({ className })}>
       <Button
+        onPress={() => handleClick(index!)}
         variant="text"
         style={
           {

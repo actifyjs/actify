@@ -4,7 +4,7 @@ import { EASING } from '../../animations'
 import { Elevation } from '../Elevation'
 import React from 'react'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './menu.module.css'
 import { useControllableState } from '../../hooks'
 import { useOnClickOutside } from '../../hooks'
 

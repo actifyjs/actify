@@ -1,54 +1,53 @@
 'use client'
 
-import React, { useId, useMemo } from 'react'
+import { AriaSliderProps, useNumberFormatter, useSlider } from 'react-aria'
+import React, { useId } from 'react'
 
 import { Elevation } from './../Elevation'
 import { FocusRing } from '../FocusRing'
 import { Ripple } from './../Ripple'
+import { Thumb } from './Thumb'
 import clsx from 'clsx'
-import styles from './actify.module.css'
-import { useInputState } from '../../hooks'
+import styles from './slider.module.css'
+import { useSliderState } from 'react-stately'
 
-interface SliderProps extends React.ComponentProps<'input'> {
+type SliderProps = {
   labeled?: boolean
+  className?: string
+  formatOptions?: Record<string, string>
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
-}
+} & AriaSliderProps
 
 const Slider = (props: SliderProps) => {
   const {
     id,
-    size,
-    min = 0,
-    max = 100,
-    step = 1,
-    color = 'primary',
-    value,
     labeled,
-    disabled,
-    children,
-    onChange,
     className,
-    defaultValue,
-    ...rest
+    minValue = 0,
+    maxValue = 100,
+    isDisabled
   } = props
 
   const sliderId = id || `actify-slider${useId()}`
+  const trackRef = React.useRef(null)
+  const numberFormatter = useNumberFormatter(props.formatOptions)
+  const state = useSliderState({ ...props, numberFormatter })
 
-  const [inputValue, setInputValue] = useInputState({
-    value,
-    defaultValue,
-    onChange
-  })
+  const { groupProps, trackProps, outputProps } = useSlider(
+    props,
+    state,
+    trackRef
+  )
 
-  const percent = useMemo(() => {
-    if (inputValue) {
-      return Number(inputValue) / (Number(max) - Number(min))
-    }
-    return 0
-  }, [inputValue])
+  const percent =
+    Number(state.getThumbValueLabel(0)) / (Number(maxValue) - Number(minValue))
 
   return (
-    <div className={clsx(styles['slider'], className)} role="presentation">
+    <div
+      {...groupProps}
+      role="presentation"
+      className={clsx(styles['slider'], className)}
+    >
       <div
         style={
           {
@@ -59,19 +58,18 @@ const Slider = (props: SliderProps) => {
         }
         className={styles['container']}
       >
-        <input
-          {...rest}
-          min={min}
-          max={max}
-          step={step}
-          type="range"
-          id={sliderId}
-          value={inputValue}
-          disabled={disabled}
-          onChange={setInputValue}
-          className={styles['input']}
-        />
-        <div className={styles['track']} />
+        <div
+          {...trackProps}
+          ref={trackRef}
+          style={{
+            position: 'absolute',
+            inset: 0
+          }}
+          className={clsx(state.isDisabled && 'disabled')}
+        >
+          <Thumb index={0} state={state} trackRef={trackRef} />
+        </div>
+        <div className={styles['track']}></div>
         <div className={styles['handle-container-padded']}>
           <div className={styles['handle-container-block']}>
             <div className={styles['handle-container']}>
@@ -82,19 +80,19 @@ const Slider = (props: SliderProps) => {
                 }}
                 className={styles['handle']}
               >
-                <FocusRing id={sliderId} />
-                <Ripple id={sliderId} disabled={disabled} />
+                <FocusRing />
+                <Ripple id={sliderId} disabled={isDisabled} />
 
                 <div className={styles['handle-nub']}>
-                  <Elevation disabled={disabled} />
+                  <Elevation disabled={isDisabled} />
                 </div>
                 {/* labeled */}
                 {labeled && (
-                  <div className={styles['label']}>
+                  <output className={styles['label']} {...outputProps}>
                     <span style={{ zIndex: 1 }}>
-                      {inputValue ? parseInt(inputValue.toString()) : 0}
+                      {state.getThumbValueLabel(0)}
                     </span>
-                  </div>
+                  </output>
                 )}
               </div>
             </div>

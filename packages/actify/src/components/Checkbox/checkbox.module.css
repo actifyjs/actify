@@ -146,6 +146,10 @@
 }
 .long {
   height: 2px;
-  width: 11.313708499px;
+  width: 10px;
   transition-property: transform, width;
+  &.checked,
+  &.prev-checked.unselected {
+    width: 11.313708499px;
+  }
 }

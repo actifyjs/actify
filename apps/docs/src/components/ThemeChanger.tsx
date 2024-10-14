@@ -25,6 +25,7 @@ import { useAutoTheme } from '../hooks/useAutoTheme'
 import { useTheme } from 'next-themes'
 
 export const ThemeChanger = () => {
+  useAutoTheme()
   const { setTheme } = useTheme()
   const [open, setOpen] = React.useState(false)
   const [hue, setHue] = React.useState<number>(0)
@@ -33,23 +34,14 @@ export const ThemeChanger = () => {
   const [hexColor, setHexColor] = React.useState<string>('')
   const [selectedColorMode, setSelectedColorMode] =
     React.useState<ColorMode | null>(null)
-  useAutoTheme()
 
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = event.target
-    if (name == 'hue') {
-      setHue(parseInt(value))
+  React.useLayoutEffect(() => {
+    if (hue > 0 || chroma > 0 || tone > 0) {
+      const hexColor = hexFromHct(hue, chroma, tone)
+      setHexColor(hexColor)
+      changeColor(hexColor)
     }
-    if (name == 'chroma') {
-      setChroma(parseInt(value))
-    }
-    if (name == 'tone') {
-      setTone(parseInt(value))
-    }
-    const hexColor = hexFromHct(hue, chroma, tone)
-    setHexColor(hexColor)
-    changeColor(hexColor)
-  }
+  }, [hue, chroma, tone])
 
   const handleChangeColor = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value: color } = event.target
@@ -139,10 +131,11 @@ export const ThemeChanger = () => {
               <Label className="block leading-tight ms-2.5 me-2.5">Hue</Label>
               <Slider
                 labeled
-                max={360}
-                name="hue"
                 value={hue}
-                onChange={handleInput}
+                maxValue={360}
+                aria-label="hue"
+                // @ts-ignore
+                onChange={setHue}
               />
               <div
                 className="ms-2.5 ml-2.5 h-6 rounded-xl border border-current"
@@ -158,10 +151,11 @@ export const ThemeChanger = () => {
               </Label>
               <Slider
                 labeled
-                max={150}
-                name="chroma"
+                maxValue={150}
                 value={chroma}
-                onChange={handleInput}
+                aria-label="chroma"
+                // @ts-ignore
+                onChange={setChroma}
               />
               <div
                 className="ms-2.5 ml-2.5 h-6 rounded-xl border border-current"
@@ -175,10 +169,11 @@ export const ThemeChanger = () => {
               <Label className="block leading-tight ms-2.5 me-2.5">Tone</Label>
               <Slider
                 labeled
-                max={100}
-                name="tone"
                 value={tone}
-                onChange={handleInput}
+                maxValue={100}
+                aria-label="tone"
+                // @ts-ignore
+                onChange={setTone}
               />
               <div
                 className="ms-2.5 me-2.5 h-6 rounded-xl border border-current"

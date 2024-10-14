@@ -2,7 +2,7 @@ import { FocusRing } from '../FocusRing'
 import React from 'react'
 import { Ripple } from '../Ripple'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './radio.module.css'
 import { useRadioContext } from './RadioGroupContext'
 
 interface RadioProps
@@ -43,15 +43,16 @@ const Radio = ({
             height: 'var(--md-radio-state-layer-size, 40px)'
           }}
         />
-        <FocusRing
-          id={radioId}
-          style={{
-            height: '44px',
-            inset: 'unset',
-            width: '44px',
-            borderRadius: '50%'
-          }}
-        />
+        {checked && (
+          <FocusRing
+            style={{
+              height: '44px',
+              inset: 'unset',
+              width: '44px',
+              borderRadius: '50%'
+            }}
+          />
+        )}
         <svg className={styles['icon']} viewBox="0 0 20 20">
           <mask id={cutoutId}>
             <rect width="100%" height="100%" fill="white" />

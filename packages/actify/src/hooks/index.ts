@@ -1,3 +1,5 @@
+export { useFocusRing } from 'react-aria'
+
 export { usePrevious } from './usePrevious'
 export { useInterval } from './useInterval'
 export { useDebounce } from './useDebounce'

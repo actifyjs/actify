@@ -1,56 +1,35 @@
 'use client'
 
-import React, { useEffect, useId, useState } from 'react'
+import {
+  AriaCheckboxProps,
+  mergeProps,
+  useFocusRing,
+  useSwitch
+} from 'react-aria'
+import React, { useId } from 'react'
 
 import { FocusRing } from './../FocusRing'
 import { Ripple } from './../Ripple'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './switch.module.css'
+import { useToggleState } from 'react-stately'
 
-interface SwitchProps
-  extends Omit<React.ComponentProps<'input'>, 'checked' | 'defaultChecked'> {
+type SwitchProps = {
   icons?: boolean
-  selected?: boolean
-  defaultSelected?: boolean
   showOnlySelectedIcon?: boolean
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
-}
+} & AriaCheckboxProps
 
 const Switch = (props: SwitchProps) => {
-  const {
-    id,
-    icons,
-    color,
-    onChange,
-    className,
-    disabled = false,
-    selected,
-    defaultSelected,
-    showOnlySelectedIcon,
-    ...rest
-  } = props
+  const { id, icons, isDisabled, showOnlySelectedIcon } = props
+
+  const state = useToggleState(props)
+  const inputRef = React.useRef(null)
+
+  const { inputProps } = useSwitch(props, state, inputRef)
+  const { isFocusVisible, focusProps } = useFocusRing()
 
   const switchId = id || `actify-switch${useId()}`
-
-  const [internalChecked, setInternalChecked] = useState(
-    defaultSelected ?? false
-  )
-
-  const isControlled = selected !== undefined
-
-  useEffect(() => {
-    if (isControlled) {
-      setInternalChecked(selected)
-    }
-  }, [selected, isControlled])
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newChecked = event.target.checked
-    if (!isControlled) {
-      setInternalChecked(newChecked)
-    }
-    onChange?.(event)
-  }
 
   const shouldShowIcons = () => {
     return icons || showOnlySelectedIcon
@@ -78,31 +57,28 @@ const Switch = (props: SwitchProps) => {
   return (
     <div
       role="presentation"
-      className={clsx(styles['host'], disabled && styles['disabled'])}
+      className={clsx(styles['host'], isDisabled && styles['disabled'])}
     >
       <div
         className={clsx(
           styles['switch'],
-          disabled && styles['disabled'],
-          internalChecked ? styles['selected'] : styles['unselected']
+          isDisabled && styles['disabled'],
+          state.isSelected ? styles['selected'] : styles['unselected']
         )}
       >
         <input
-          {...rest}
           role="switch"
           id={switchId}
-          type="checkbox"
-          disabled={disabled}
-          checked={internalChecked}
-          onChange={handleChange}
+          ref={inputRef}
           className={styles['touch']}
+          {...mergeProps(inputProps, focusProps)}
         />
-        <FocusRing id={switchId} />
+        {isFocusVisible && <FocusRing />}
         <span className={styles['track']}>
           <span className={styles['handle-container']}>
             <Ripple
               id={switchId}
-              disabled={disabled}
+              disabled={isDisabled}
               style={{
                 inset: 'unset',
                 borderRadius:

@@ -1,5 +1,11 @@
 'use client'
 
+import {
+  AriaButtonProps,
+  mergeProps,
+  useButton,
+  useFocusRing
+} from 'react-aria'
 import React, { useId } from 'react'
 import { VariantProps, tv } from 'tailwind-variants'
 
@@ -27,13 +33,13 @@ const root = tv({
   }
 })
 
-interface FabProps
-  extends React.ComponentProps<'button'>,
-    VariantProps<typeof root> {
+type FabProps = {
   label?: string
   icon?: React.ReactNode
   variant?: 'surface' | 'primary' | 'secondary' | 'tertiary'
-}
+} & React.ComponentProps<'button'> &
+  VariantProps<typeof root> &
+  AriaButtonProps
 
 const Fab = (props: FabProps) => {
   const {
@@ -42,28 +48,30 @@ const Fab = (props: FabProps) => {
     label,
     type = 'button',
     size = 'medium',
-    variant = 'primary',
     disabled = false,
     className,
-    children,
-    ...rest
+    children
   } = props
 
+  const fabRef = React.useRef(null)
+  const { buttonProps } = useButton(props, fabRef)
   const fabId = id || `actify-fab${useId()}`
+  const { focusProps, isFocusVisible } = useFocusRing()
 
   return (
     <button
-      {...rest}
       id={fabId}
       type={type}
+      ref={fabRef}
       disabled={disabled}
       className={root({ size, className })}
+      {...mergeProps(buttonProps, focusProps)}
     >
       {icon}
       {children}
       {label}
       <Elevation className="[--md-elevation-level:3]" />
-      <FocusRing id={fabId} />
+      {isFocusVisible && <FocusRing />}
       <Ripple id={fabId} disabled={disabled} />
     </button>
   )
