@@ -2,11 +2,9 @@ import { Badge, Button, Icon, IconButton, Slider } from 'actify'
 
 import { useState } from 'react'
 
-type Color = 'primary' | 'secondary' | 'tertiary' | 'error'
-
 export default () => {
+  const color = 'error'
   const [value, setValue] = useState(99)
-  const [color, setColor] = useState<Color>('error')
 
   return (
     <>
@@ -23,11 +21,10 @@ export default () => {
       <div className="mt-4 flex gap-4 flex-wrap">
         <Slider
           labeled
-          max={999}
           value={value}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setValue(parseInt(e.target.value))
-          }
+          maxValue={999}
+          // @ts-ignore
+          onChange={setValue}
         />
       </div>
     </>
