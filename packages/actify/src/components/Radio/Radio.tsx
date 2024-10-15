@@ -1,41 +1,38 @@
-import { FocusRing } from '../FocusRing'
+import { AriaRadioProps, mergeProps, useFocusRing, useRadio } from 'react-aria'
+
+import { FocusRing } from '../FocusRing/FocusRing'
+import { Label } from '../Label'
+import { RadioContext } from './RadioGroup'
+import { RadioGroupState } from 'react-stately'
 import React from 'react'
-import { Ripple } from '../Ripple'
+import { Ripple } from '../Ripple/Ripple'
 import clsx from 'clsx'
 import styles from './radio.module.css'
-import { useRadioContext } from './RadioGroupContext'
 
-interface RadioProps
-  extends Omit<
-    React.ComponentProps<'input'>,
-    'checked' | 'defaultValue' | 'name' | 'onChange'
-  > {}
+type RadioProps = {} & AriaRadioProps & React.ComponentProps<'input'>
+const Radio = (props: RadioProps) => {
+  const { children } = props
+  const state = React.useContext(RadioContext) as RadioGroupState
+  const inputRef = React.useRef(null)
+  const { inputProps, isSelected } = useRadio(props, state, inputRef)
 
-const Radio = ({
-  id,
-  value,
-  disabled,
-  className,
-  type = 'radio',
-  ...rest
-}: RadioProps) => {
-  const { name, value: contextValue, onChange } = useRadioContext()
-  const radioId = id || `actify-radio${React.useId()}`
+  const { isFocusVisible, focusProps } = useFocusRing()
   const cutoutId = `radio-cutout${React.useId()}`
 
-  const checked = React.useMemo(
-    () => value == contextValue,
-    [value, contextValue]
-  )
-
   return (
-    <div className={styles['radio']}>
+    <Label className={styles['radio']}>
       <div
-        aria-hidden="true"
-        className={clsx(styles['container'], checked && styles['checked'])}
+        role="presentation"
+        className={clsx(styles['container'], isSelected && styles['checked'])}
       >
+        <input
+          ref={inputRef}
+          {...mergeProps(inputProps, focusProps)}
+          className={clsx(styles['input'], props.className)}
+        />
+
         <Ripple
-          id={radioId}
+          id={inputProps.id}
           style={{
             inset: 'unset',
             borderRadius: '50%',
@@ -43,7 +40,7 @@ const Radio = ({
             height: 'var(--md-radio-state-layer-size, 40px)'
           }}
         />
-        {checked && (
+        {isFocusVisible && (
           <FocusRing
             style={{
               height: '44px',
@@ -72,20 +69,11 @@ const Radio = ({
             className={clsx(styles['inner'], styles['circle'])}
           />
         </svg>
-        <input
-          {...rest}
-          name={name}
-          type="radio"
-          id={radioId}
-          value={value}
-          checked={checked}
-          onChange={onChange}
-          disabled={disabled}
-          className={clsx(styles['input'], className)}
-        />
       </div>
-    </div>
+      {children}
+    </Label>
   )
 }
 
+Radio.displayName = 'Actify.Radio'
 export { Radio }
