@@ -1,11 +1,6 @@
-'use client'
-
 import { AriaSliderProps, useNumberFormatter, useSlider } from 'react-aria'
-import React, { useId } from 'react'
 
-import { Elevation } from './../Elevation'
-import { FocusRing } from '../FocusRing'
-import { Ripple } from './../Ripple'
+import React from 'react'
 import { Thumb } from './Thumb'
 import clsx from 'clsx'
 import styles from './slider.module.css'
@@ -19,21 +14,12 @@ type SliderProps = {
 } & AriaSliderProps
 
 const Slider = (props: SliderProps) => {
-  const {
-    id,
-    labeled,
-    className,
-    minValue = 0,
-    maxValue = 100,
-    isDisabled
-  } = props
+  const { labeled, minValue = 0, maxValue = 100 } = props
 
-  const sliderId = id || `actify-slider${useId()}`
   const trackRef = React.useRef(null)
   const numberFormatter = useNumberFormatter(props.formatOptions)
   const state = useSliderState({ ...props, numberFormatter })
-
-  const { groupProps, trackProps, outputProps } = useSlider(
+  const { groupProps, trackProps, labelProps, outputProps } = useSlider(
     props,
     state,
     trackRef
@@ -45,64 +31,41 @@ const Slider = (props: SliderProps) => {
   return (
     <div
       {...groupProps}
-      role="presentation"
-      className={clsx(styles['slider'], className)}
+      style={
+        {
+          '--_tick-count': 100,
+          '--_start-fraction': 0,
+          '--_end-fraction': percent
+        } as React.CSSProperties
+      }
+      className={clsx(styles['slider'], styles[state.orientation])}
     >
+      {/* Create a container for the label and output element. */}
+      {props.label && (
+        <div className={styles['label-container']}>
+          <label {...labelProps}>{props.label}</label>
+          <output {...outputProps}>{state.getThumbValueLabel(0)}</output>
+        </div>
+      )}
+      {/* The track element holds the visible track line and the thumb. */}
       <div
-        style={
-          {
-            '--_tick-count': 100,
-            '--_start-fraction': 0,
-            '--_end-fraction': percent
-          } as React.CSSProperties
-        }
-        className={styles['container']}
+        {...trackProps}
+        ref={trackRef}
+        className={clsx(
+          styles['track'],
+          state.isDisabled && styles['disabled']
+        )}
       >
-        <div
-          {...trackProps}
-          ref={trackRef}
-          style={{
-            position: 'absolute',
-            inset: 0
-          }}
-          className={clsx(state.isDisabled && 'disabled')}
-        >
-          <Thumb index={0} state={state} trackRef={trackRef} />
-        </div>
-        <div className={styles['track']}></div>
-        <div className={styles['handle-container-padded']}>
-          <div className={styles['handle-container-block']}>
-            <div className={styles['handle-container']}>
-              <div
-                style={{
-                  zIndex: 1,
-                  insetInlineEnd: 'calc(0px - var(--_state-layer-size) / 2)'
-                }}
-                className={styles['handle']}
-              >
-                <FocusRing />
-                <Ripple id={sliderId} disabled={isDisabled} />
-
-                <div className={styles['handle-nub']}>
-                  <Elevation disabled={isDisabled} />
-                </div>
-                {/* labeled */}
-                {labeled && (
-                  <output className={styles['label']} {...outputProps}>
-                    <span style={{ zIndex: 1 }}>
-                      {state.getThumbValueLabel(0)}
-                    </span>
-                  </output>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+        <Thumb
+          index={0}
+          state={state}
+          labeled={labeled}
+          trackRef={trackRef}
+          outputProps={outputProps}
+        />
       </div>
     </div>
   )
 }
-
-Slider.displayName = 'Actify.Slider'
 
 export { Slider }
