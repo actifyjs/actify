@@ -1,5 +1,6 @@
 import { AriaSliderProps, useNumberFormatter, useSlider } from 'react-aria'
 
+import { Label } from '../Label/Label'
 import React from 'react'
 import { Thumb } from './Thumb'
 import clsx from 'clsx'
@@ -43,7 +44,7 @@ const Slider = (props: SliderProps) => {
       {/* Create a container for the label and output element. */}
       {props.label && (
         <div className={styles['label-container']}>
-          <label {...labelProps}>{props.label}</label>
+          <Label {...labelProps}>{props.label}</Label>
           <output {...outputProps}>{state.getThumbValueLabel(0)}</output>
         </div>
       )}
