@@ -1,8 +1,16 @@
 import { Icon, IconButton, Tooltip } from 'actify'
 
+const hyphenToPascalCase = (str: string) => {
+  return str
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join('')
+}
+
 const ViewSource = ({ name }: { name: string }) => {
-  const capitalize = name.charAt(0).toUpperCase() + name.slice(1)
-  const sourceUrl = `https://github.com/actifyjs/actify/tree/main/packages/actify/src/components/${capitalize}`
+  const pascalCase = hyphenToPascalCase(name)
+
+  const sourceUrl = `https://github.com/actifyjs/actify/tree/main/packages/actify/src/components/${pascalCase}`
   return (
     <Tooltip placement="top" content="View source on Github">
       <a tabIndex={-1} target="_blank" href={sourceUrl}>
