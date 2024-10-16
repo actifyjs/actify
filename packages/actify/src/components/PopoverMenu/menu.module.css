@@ -1,0 +1,86 @@
+.menu {
+  border-radius: var(
+    --md-menu-container-shape,
+    var(--md-sys-shape-corner-extra-small, 4px)
+  );
+  display: none;
+  inset: auto;
+  border: none;
+  padding: 0px;
+  overflow: visible;
+  background-color: rgba(0, 0, 0, 0);
+  color: inherit;
+  opacity: 1;
+  z-index: 20;
+  position: absolute;
+  user-select: none;
+  max-height: inherit;
+  height: inherit;
+  min-width: inherit;
+  max-width: inherit;
+  scrollbar-width: inherit;
+  &.open {
+    display: block;
+  }
+}
+.items {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+  background-color: var(
+    --md-menu-container-color,
+    rgb(var(--md-sys-color-surface-container, 243 237 247))
+  );
+  height: inherit;
+  max-height: inherit;
+  overflow: auto;
+  min-width: inherit;
+  max-width: inherit;
+  border-radius: inherit;
+  scrollbar-width: inherit;
+}
+.animating .items {
+  overflow: hidden;
+}
+.item-padding {
+  padding-block: 8px;
+}
+.menu-item {
+  display: flex;
+  --md-ripple-hover-color: var(
+    --md-menu-item-hover-state-layer-color,
+    rgb(var(--md-sys-color-on-surface))
+  );
+  --md-ripple-hover-opacity: var(
+    --md-menu-item-hover-state-layer-opacity,
+    0.08
+  );
+  --md-ripple-pressed-color: var(
+    --md-menu-item-pressed-state-layer-color,
+    rgb(var(--md-sys-color-on-surface))
+  );
+  --md-ripple-pressed-opacity: var(
+    --md-menu-item-pressed-state-layer-opacity,
+    0.12
+  );
+}
+.list-item {
+  list-style: none;
+  background-color: var(--md-menu-item-container-color, transparent);
+  border-radius: inherit;
+  display: flex;
+  flex: 1;
+  max-width: inherit;
+  min-width: inherit;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  &:not(.disabled) {
+    cursor: pointer;
+  }
+}
+.container {
+  position: absolute;
+  inset: 0;
+}

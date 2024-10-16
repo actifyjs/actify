@@ -1,43 +1,39 @@
-import { Button, Icon, Menu, MenuItem } from 'actify'
+import { Icon, IconButton, Menu, MenuItem, MenuItems } from 'actify'
 
 import React from 'react'
 
 export default () => {
-  const [open, setOpen] = React.useState(false)
   return (
-    <div className="relative w-fit">
-      <Button
-        id="usage-anchor"
-        onPress={() => {
-          setOpen(!open)
-        }}
+    <div className="flex gap-8">
+      <Menu
+        className="p-2"
+        label="Open with label"
+        onAction={(key) => alert(key)}
       >
-        Open Menu
-      </Button>
-      <Menu open={open} setOpen={setOpen}>
-        <MenuItem start={<Icon>home</Icon>}>React</MenuItem>
-        <MenuItem
-          start={
-            <Icon>
-              <svg
-                width="33.455"
-                height="36.987"
-                fill="#fff"
-                viewBox="0 0 33.455 36.987"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeWidth="2.5"
-                  stroke="currentColor"
-                  transform="translate(-28.272 365)"
-                  d="M55.047-328.513l-5.238-13.822-14.323,5.317-3.243,8.5H29L42.821-364.5h4.359L61-328.513Zm-6.067-15.969.829,2.147-.829-2.147-5.308-13.745-7.123,18.445"
-                />
-              </svg>
-            </Icon>
-          }
-        >
-          Actify
-        </MenuItem>
+        <MenuItems>
+          <MenuItem key="edit">Edit…</MenuItem>
+          <MenuItem key="duplicate">Duplicate</MenuItem>
+        </MenuItems>
+        <MenuItems>
+          <MenuItem key="move">Move…</MenuItem>
+          <MenuItem key="rename">Rename…</MenuItem>
+        </MenuItems>
+        <MenuItems>
+          <MenuItem key="archive">Archive</MenuItem>
+          <MenuItem key="delete">Delete…</MenuItem>
+        </MenuItems>
+      </Menu>
+      <Menu
+        activator={(ref, menuTriggerProps) => (
+          <IconButton ref={ref} {...menuTriggerProps}>
+            <Icon>More_Horiz</Icon>
+          </IconButton>
+        )}
+        onAction={(key) => alert(key)}
+      >
+        <MenuItem key="copy">Copy</MenuItem>
+        <MenuItem key="cut">Cut</MenuItem>
+        <MenuItem key="paste">Paste</MenuItem>
       </Menu>
     </div>
   )

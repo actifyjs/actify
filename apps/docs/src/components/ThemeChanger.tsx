@@ -13,7 +13,7 @@ import {
   Icon,
   IconButton,
   Label,
-  Menu,
+  PopoverMenu,
   SegmentedButton,
   SegmentedButtonSet,
   Slider
@@ -94,7 +94,7 @@ export const ThemeChanger = () => {
       >
         <Icon>palette</Icon>
       </IconButton>
-      <Menu style={{ right: '0px' }} open={open} setOpen={setOpen}>
+      <PopoverMenu style={{ right: '0px' }} open={open} setOpen={setOpen}>
         <div className="flex flex-col w-56 my-3 mx-4 *:[margin-block-end:16px]">
           <section className="flex relative">
             <h2 className="text-2xl tracking-tighter leading-none">
@@ -222,7 +222,7 @@ export const ThemeChanger = () => {
             </SegmentedButtonSet>
           </section>
         </div>
-      </Menu>
+      </PopoverMenu>
     </div>
   )
 }

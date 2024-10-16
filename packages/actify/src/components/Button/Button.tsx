@@ -29,6 +29,7 @@ type ButtonProps = {
 const Button = (props: ButtonProps) => {
   const {
     id,
+    ref,
     style,
     ripple = true,
     color = 'primary',
@@ -38,7 +39,7 @@ const Button = (props: ButtonProps) => {
     children
   } = props
 
-  const buttonRef = React.useRef(null)
+  const buttonRef = React.useRef<HTMLButtonElement>(null)
   const { buttonProps } = useButton(props, buttonRef)
 
   const buttonId = id || `actify-button${useId()}`
@@ -61,8 +62,8 @@ const Button = (props: ButtonProps) => {
       {ripple && <Ripple id={buttonId} disabled={disabled} />}
       <button
         id={buttonId}
-        ref={buttonRef}
         disabled={disabled}
+        ref={ref || buttonRef}
         className={buttons['button']}
         {...mergeProps(buttonProps, focusProps)}
       >

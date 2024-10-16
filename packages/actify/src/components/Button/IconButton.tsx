@@ -48,6 +48,7 @@ type IconButtonProps = {
 const IconButton = (props: IconButtonProps) => {
   const {
     id,
+    ref,
     disabled,
     children,
     className,
@@ -62,7 +63,7 @@ const IconButton = (props: IconButtonProps) => {
 
   return (
     <button
-      ref={buttonRef}
+      ref={ref || buttonRef}
       id={iconButtonId}
       disabled={disabled}
       {...mergeProps(buttonProps, focusProps)}

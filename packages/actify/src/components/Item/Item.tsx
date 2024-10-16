@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './actify.module.css'
+import styles from './item.module.css'
 
 export interface ItemProps extends React.ComponentProps<'div'> {
   container?: React.ReactNode
