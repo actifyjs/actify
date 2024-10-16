@@ -168,35 +168,35 @@ export default defineConfig({
   }
 
   return (
-    <form
-      method="post"
-      target="_target"
-      className="flex"
-      action="https://stackblitz.com/run"
-    >
-      {Object.keys(project).map((item) =>
-        item != 'files' ? (
-          <input
-            key={item}
-            type="hidden"
-            name={`project[${item}]`}
-            // @ts-expect-error
-            value={project[item]}
-          />
-        ) : (
-          Object.keys(project[item]).map((file) => (
+    <Tooltip placement="top" content="Open in Stackblitz">
+      <form
+        method="post"
+        target="_target"
+        className="flex"
+        action="https://stackblitz.com/run"
+      >
+        {Object.keys(project).map((item) =>
+          item != 'files' ? (
             <input
-              key={file}
+              key={item}
               type="hidden"
-              name={`project[files][${file}]`}
+              name={`project[${item}]`}
               // @ts-expect-error
-              value={project[item][file]}
+              value={project[item]}
             />
-          ))
-        )
-      )}
+          ) : (
+            Object.keys(project[item]).map((file) => (
+              <input
+                key={file}
+                type="hidden"
+                name={`project[files][${file}]`}
+                // @ts-expect-error
+                value={project[item][file]}
+              />
+            ))
+          )
+        )}
 
-      <Tooltip placement="top" content="Open in Stackblitz">
         <IconButton type="submit">
           <svg
             viewBox="0 0 28 28"
@@ -206,8 +206,8 @@ export default defineConfig({
             <path d="M12.747 16.273h-7.46L18.925 1.5l-3.671 10.227h7.46L9.075 26.5l3.671-10.227z"></path>
           </svg>
         </IconButton>
-      </Tooltip>
-    </form>
+      </form>
+    </Tooltip>
   )
 }
 

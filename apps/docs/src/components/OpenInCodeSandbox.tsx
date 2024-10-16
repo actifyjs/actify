@@ -191,13 +191,13 @@ export default defineConfig({
   })
 
   return (
-    <form
-      method="POST"
-      target="_blank"
-      action="https://codesandbox.io/api/v1/sandboxes/define"
-    >
-      <input type="hidden" name="parameters" value={parameters} />
-      <Tooltip placement="top" content="Open in CodeSandbox">
+    <Tooltip placement="top" content="Open in CodeSandbox">
+      <form
+        method="POST"
+        target="_blank"
+        action="https://codesandbox.io/api/v1/sandboxes/define"
+      >
+        <input type="hidden" name="parameters" value={parameters} />
         <IconButton type="submit">
           <svg
             width="24"
@@ -218,8 +218,8 @@ export default defineConfig({
             <line x1="12" x2="12" y1="22.08" y2="12" />
           </svg>
         </IconButton>
-      </Tooltip>
-    </form>
+      </form>
+    </Tooltip>
   )
 }
 
