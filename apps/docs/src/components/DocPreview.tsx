@@ -13,31 +13,52 @@ type CodePreviewProps = {
 const DocPreview = ({ code = '' }: CodePreviewProps) => {
   return (
     <LiveProvider code={code} scope={Actify}>
-      <Actify.Tabs
-        activeTabIndex={0}
-        className="not-prose rounded-lg bg-surface-variant shadow-lg"
-      >
-        <div className="flex">
-          <Actify.Tabs.Header className="bg-transparent">
-            <Actify.Tabs.Tab key="preview" className="min-w-[120px]">
-              <Actify.Icon>visibility</Actify.Icon>
-              Preview
-            </Actify.Tabs.Tab>
-            <Actify.Tabs.Tab key="code" className="min-w-[120px]">
-              <Actify.Icon>code</Actify.Icon>
-              Code
-            </Actify.Tabs.Tab>
-          </Actify.Tabs.Header>
-        </div>
-        <Actify.Tabs.Body className="p-2 sm:p-4 bg-surface-container">
-          <Actify.Tabs.Panel key="preview">
-            <LivePreview className="flex gap-2" />
-          </Actify.Tabs.Panel>
-          <Actify.Tabs.Panel key="code">
-            <SyntaxHighlighter lang="jsx">{code}</SyntaxHighlighter>
-          </Actify.Tabs.Panel>
-        </Actify.Tabs.Body>
-      </Actify.Tabs>
+      <div className="not-prose rounded-lg bg-surface-variant shadow-lg">
+        <Actify.Tabs>
+          <Actify.TabItem
+            key="preview"
+            title={
+              <>
+                <Actify.Icon>visibility</Actify.Icon>
+                Preview
+              </>
+            }
+          >
+            <div className="p-2 sm:p-4 bg-surface-container">
+              <LivePreview className="flex gap-2" />
+            </div>
+          </Actify.TabItem>
+          <Actify.TabItem
+            key="code"
+            title={
+              <>
+                <Actify.Icon>
+                  <svg
+                    fill="none"
+                    width="24"
+                    height="24"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="m18 16 4-4-4-4" />
+                    <path d="m6 8-4 4 4 4" />
+                    <path d="m14.5 4-5 16" />
+                  </svg>
+                </Actify.Icon>
+                Code
+              </>
+            }
+          >
+            <div className="p-2 sm:p-4 bg-surface-container">
+              <SyntaxHighlighter lang="tsx">{code}</SyntaxHighlighter>
+            </div>
+          </Actify.TabItem>
+        </Actify.Tabs>
+      </div>
     </LiveProvider>
   )
 }
