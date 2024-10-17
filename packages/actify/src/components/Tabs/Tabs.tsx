@@ -1,14 +1,25 @@
 'use client'
 
+import {
+  AriaTabListProps,
+  mergeProps,
+  useFocusRing,
+  useTabList
+} from 'react-aria'
 import React, { useEffect, useState } from 'react'
-import { mergeProps, useFocusRing, useTabList, useTabPanel } from 'react-aria'
+import { TabListProps, useTabListState } from 'react-stately'
 
 import { Tab } from './Tab'
+import { TabPanel } from './TabPanel'
 import clsx from 'clsx'
 import styles from './tabs.module.css'
-import { useTabListState } from 'react-stately'
 
-export function Tabs(props: any) {
+interface TabsProps<T> extends AriaTabListProps<T>, TabListProps<T> {
+  style?: React.CSSProperties
+  className?: string
+}
+
+const Tabs = <T extends object>(props: TabsProps<T>) => {
   const state = useTabListState(props)
   const ref = React.useRef<HTMLDivElement>(null)
   const { tabListProps } = useTabList(props, state, ref)
@@ -54,13 +65,6 @@ export function Tabs(props: any) {
   )
 }
 
-function TabPanel({ state, ...props }: any) {
-  const ref = React.useRef(null)
-  const { tabPanelProps } = useTabPanel(props, state, ref)
+Tabs.displayName = 'Actify.Tabs'
 
-  return (
-    <div role="tabpanel" {...tabPanelProps} ref={ref}>
-      {state.selectedItem?.props.children}
-    </div>
-  )
-}
+export { Tabs }
