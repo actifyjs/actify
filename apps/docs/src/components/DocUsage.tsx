@@ -1,6 +1,6 @@
 'use client'
 
-import { Icon, Spacer, TabItem, Tabs, TooltipGroup } from 'actify'
+import { Icon, TabItem, Tabs, TooltipGroup } from 'actify'
 
 import OpenInCodeSandbox from '@/components/OpenInCodeSandbox'
 import OpenInStackblitz from '@/components/OpenInStackblitz'
