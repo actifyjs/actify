@@ -25,6 +25,7 @@
   }
 }
 .focus-ring {
+  z-index: 1;
   animation-delay: 0s, calc(var(--md-focus-ring-duration, 600ms) * 0.25);
   animation-duration: calc(var(--md-focus-ring-duration, 600ms) * 0.25),
     calc(var(--md-focus-ring-duration, 600ms) * 0.75);
