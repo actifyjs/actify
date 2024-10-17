@@ -2,7 +2,7 @@
   "name": "docs",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,7 +14,7 @@
     "codesandbox": "^2.2.3",
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
-    "next": "15.0.0-rc.0",
+    "next": "rc",
     "next-themes": "^0.3.0",
     "react": "catalog:",
     "react-dom": "catalog:",

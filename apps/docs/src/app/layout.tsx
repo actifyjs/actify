@@ -1,15 +1,11 @@
 import './globals.css'
 
 import { Metadata } from 'next'
-import { config } from '@/lib/config'
 import { poppins } from './fonts'
 
 export const metadata: Metadata = {
-  title: {
-    default: config.metadata.title,
-    template: '%s | Actify'
-  },
-  description: config.metadata.description,
+  title: 'Actify',
+  description: 'React Material Design 3 Components Library',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/short-cut-icon.png',

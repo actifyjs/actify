@@ -10,7 +10,8 @@ type PageProps = {
   }
 }
 
-export const generateMetadata = ({ params }: PageProps) => {
+export const generateMetadata = async (props: PageProps) => {
+  const params = await props.params;
   const { slug } = params
   const docs = getDocData(slug)
 
@@ -25,7 +26,8 @@ export async function generateStaticParams() {
   return slugs
 }
 
-export default async function PageLayout({ params }: PageProps) {
+export default async function PageLayout(props: PageProps) {
+  const params = await props.params;
   const { slug } = params
   const docs = getDocData(slug)
 
