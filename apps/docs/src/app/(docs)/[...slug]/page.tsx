@@ -5,13 +5,11 @@ import TableOfContents from '@/components/TableOfContents'
 import { getFileRaw } from '@/lib/raw'
 
 type PageProps = {
-  params: {
-    slug: string[]
-  }
+  params: Promise<{ slug: string[] }>
 }
 
 export const generateMetadata = async (props: PageProps) => {
-  const params = await props.params;
+  const params = await props.params
   const { slug } = params
   const docs = getDocData(slug)
 
@@ -27,7 +25,7 @@ export async function generateStaticParams() {
 }
 
 export default async function PageLayout(props: PageProps) {
-  const params = await props.params;
+  const params = await props.params
   const { slug } = params
   const docs = getDocData(slug)
 
