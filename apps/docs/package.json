@@ -2,7 +2,7 @@
   "name": "docs",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -31,8 +31,10 @@
     "@types/node": "^20.12.12",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "clsx": "^2.1.1",
     "postcss": "^8.4.38",
     "react-live": "^4.1.6",
+    "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },

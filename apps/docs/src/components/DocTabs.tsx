@@ -1,14 +1,17 @@
+'use client'
+
+import { TabItem, Tabs } from 'actify'
+
 import React from 'react'
 import SyntaxHighlighter from '@/components/SyntaxHighlighter'
-import { Tabs } from 'actify'
 
 interface ActifyTabsProps extends React.ComponentProps<'html'> {
-  tabs?: string
+  items?: string
   language?: string
   activeTabIndex?: number
 }
 
-type TypeTab = [{ label: string; icon: string; content: string }]
+type TypeTab = { label: string; icon: string; content: string }
 
 type IconProps = {
   name: 'pnpm' | 'yarn' | 'npm'
@@ -67,35 +70,33 @@ const IconMap = {
 }
 
 const DocTabs = (props: ActifyTabsProps) => {
-  const { activeTabIndex, language, tabs = '' } = props
+  const { language, items = '' } = props
 
-  const _tabs: TypeTab = JSON.parse(tabs)
+  const tabs: TypeTab[] = JSON.parse(items)
 
   return (
-    <Tabs
-      activeTabIndex={activeTabIndex}
-      className="not-prose rounded-lg bg-surface-variant shadow-lg"
-    >
-      <div className="flex">
-        <Tabs.Header className="bg-transparent">
-          {_tabs.map((tab) => (
-            <Tabs.Tab key={tab.label} value={tab.label} className="">
-              {IconMap[tab.icon as IconProps['name']]}
-              {tab.label}
-            </Tabs.Tab>
-          ))}
-        </Tabs.Header>
-      </div>
-      <Tabs.Body className="p-2 sm:p-4 bg-surface-container">
-        {_tabs.map((tab) => (
-          <Tabs.Panel key={tab.label}>
-            <SyntaxHighlighter lang={`${language}` || 'jsx'}>
+    <div className="not-prose rounded-lg bg-surface-variant shadow-lg">
+      <Tabs>
+        {tabs.map((tab) => (
+          <TabItem
+            key={tab.label}
+            title={
+              <>
+                {IconMap[tab.icon as IconProps['name']]}
+                {tab.label}
+              </>
+            }
+          >
+            <SyntaxHighlighter
+              lang={`${language}` || 'jsx'}
+              className="rounded-t-none"
+            >
               {tab.content}
             </SyntaxHighlighter>
-          </Tabs.Panel>
+          </TabItem>
         ))}
-      </Tabs.Body>
-    </Tabs>
+      </Tabs>
+    </div>
   )
 }
 

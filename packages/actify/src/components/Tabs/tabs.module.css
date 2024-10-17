@@ -1,0 +1,40 @@
+.tabs {
+  padding: 8px;
+  --_active-indicator-height: var(
+    --md-secondary-tab-active-indicator-height,
+    2px
+  );
+  --_active-indicator-color: var(
+    --md-secondary-tab-active-indicator-color,
+    var(--md-sys-color-primary, #6750a4)
+  );
+}
+.tab {
+  position: relative;
+}
+.tab-selection {
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: var(--_active-indicator-height);
+  will-change: transform, width;
+  transition:
+    transform 150ms,
+    width 100ms;
+  background: rgb(var(--_active-indicator-color));
+}
+.tab-list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.tab-item {
+  padding: 10px 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &:focus-visible {
+    outline: none;
+  }
+}

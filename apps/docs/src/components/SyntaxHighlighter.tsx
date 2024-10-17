@@ -3,6 +3,7 @@
 import { Icon, IconButton } from 'actify'
 import React, { useState } from 'react'
 
+import { cn } from '@/utils/cn'
 import { fira_code } from '@/app/fonts'
 import { useMounted } from '@/hooks/useMounted'
 import { useTheme } from 'next-themes'
@@ -14,7 +15,7 @@ const SyntaxHighlighter = (props: React.ComponentProps<'div'>) => {
   const mounted = useMounted()
   const { theme, systemTheme } = useTheme()
 
-  const { lang, children } = props
+  const { lang, children, className } = props
   const [code, setCode] = useState('')
   const [iconName, setIconName] = useState('content_copy')
 
@@ -63,7 +64,11 @@ const SyntaxHighlighter = (props: React.ComponentProps<'div'>) => {
 
   return (
     <div
-      className={`${fira_code.variable} group relative rounded-lg shadow-lg overflow-hidden`}
+      className={cn(
+        fira_code.variable,
+        ['group', 'relative', 'rounded-lg', 'shadow-lg', 'overflow-hidden'],
+        className
+      )}
     >
       <div className="absolute top-3 right-6 cursor-pointer opacity-0 transition-opacity group-hover:opacity-100">
         <IconButton variant="filled" onClick={copyCode} color="secondary">

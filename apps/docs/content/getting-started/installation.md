@@ -8,7 +8,7 @@ title: Installation
 
 ## Install
 
-<tabs activeTabIndex={0} language="shell" tabs='[{"label":"pnpm","icon":"pnpm","content":"pnpm add actify"},{"label":"yarn","icon":"yarn","content":"yarn add actify"},{"label":"npm","icon":"npm","content":"npm i actify"}]'>
+<tabs language="shell" items='[{"label":"pnpm","icon":"pnpm","content":"pnpm add actify"},{"label":"yarn","icon":"yarn","content":"yarn add actify"},{"label":"npm","icon":"npm","content":"npm i actify"}]'>
 </tabs>
 
 ## tailwind.config.js
