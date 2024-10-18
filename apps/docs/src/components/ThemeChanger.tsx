@@ -197,24 +197,24 @@ export const ThemeChanger = () => {
                   title="dark"
                   data-value="dark"
                   className="rounded-l-full"
-                  selected={selectedColorMode == 'dark'}
-                  onClick={() => handleChangeColorMode('dark')}
                   icon={<Icon>dark_mode</Icon>}
+                  selected={selectedColorMode == 'dark'}
+                  onPress={() => handleChangeColorMode('dark')}
                 />
                 <SegmentedButton
                   title="auto"
                   data-value="auto"
-                  selected={selectedColorMode == 'system'}
-                  onClick={() => handleChangeColorMode('system')}
                   icon={<Icon>brightness_medium</Icon>}
+                  selected={selectedColorMode == 'system'}
+                  onPress={() => handleChangeColorMode('system')}
                 />
                 <SegmentedButton
                   title="light"
                   data-value="light"
                   className="rounded-r-full"
-                  selected={selectedColorMode == 'light'}
-                  onClick={() => handleChangeColorMode('light')}
                   icon={<Icon>light_mode</Icon>}
+                  selected={selectedColorMode == 'light'}
+                  onPress={() => handleChangeColorMode('light')}
                 />
               </div>
             </SegmentedButtonSet>
