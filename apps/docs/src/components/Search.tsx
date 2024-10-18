@@ -66,7 +66,7 @@ const DocSearch = ({ appId, apiKey, indexName }: DocSearchProps) => {
       </style>
       <Button
         variant="text"
-        onClick={onOpen}
+        onPress={onOpen}
         ref={searchButtonRef}
         className="ml-0 md:ml-2 lg:ml-4"
       >
