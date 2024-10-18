@@ -29,7 +29,7 @@ const DrawerActivator = (props: DrawerActivatorProps) => {
       // @ts-ignore
       ...children.props,
       role: 'button',
-      onClick: handleClick
+      onPress: handleClick
     })
   }
 

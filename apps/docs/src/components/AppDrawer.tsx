@@ -15,7 +15,7 @@ export default function AppDrawer() {
       placement="left"
       className="overflow-hidden"
     >
-      <NavigationDrawer.Activator className="md:hidden">
+      <NavigationDrawer.Activator asChild className="md:hidden">
         <IconButton color="primary">
           <Icon>menu</Icon>
         </IconButton>
