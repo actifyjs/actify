@@ -88,9 +88,7 @@ export const ThemeChanger = () => {
       <IconButton
         title="change theme"
         id="theme-menu-anchor"
-        onClick={() => {
-          setOpen(!open)
-        }}
+        onPress={() => setOpen(!open)}
       >
         <Icon>palette</Icon>
       </IconButton>
