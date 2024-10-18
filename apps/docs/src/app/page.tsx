@@ -28,6 +28,7 @@ export default function Page() {
             href="/getting-started/installation"
           >
             <Button
+              asLink
               variant="filled"
               className="max-sm:w-full flex justify-center"
             >
@@ -41,6 +42,7 @@ export default function Page() {
             href="/getting-started/why-actify"
           >
             <Button
+              asLink
               variant="tonal"
               className="max-sm:w-full flex justify-center"
             >
@@ -55,6 +57,7 @@ export default function Page() {
             href="https://github.com/actifyjs/actify"
           >
             <Button
+              asLink
               variant="outlined"
               className="max-sm:w-full flex justify-center"
             >

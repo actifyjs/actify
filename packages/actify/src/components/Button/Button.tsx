@@ -18,6 +18,7 @@ import variants from './styles/variant.module.css'
 
 type ButtonProps = {
   ripple?: boolean
+  asLink?: boolean
   trailingIcon?: boolean
   popoverTarget?: string
   popoverTargetAction?: 'show' | 'toggle' | 'hide'
@@ -31,6 +32,7 @@ const Button = (props: ButtonProps) => {
     id,
     ref,
     style,
+    asLink,
     ripple = true,
     color = 'primary',
     variant = 'elevated',
@@ -65,7 +67,7 @@ const Button = (props: ButtonProps) => {
         disabled={disabled}
         ref={ref || buttonRef}
         className={buttons['button']}
-        {...mergeProps(buttonProps, focusProps)}
+        {...mergeProps(asLink ? null : buttonProps, focusProps)}
       >
         <span className={buttons['touch']} />
         <span className={buttons['label']}>{children}</span>

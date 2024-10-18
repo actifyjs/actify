@@ -9,6 +9,7 @@ const Sponsors = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 items-center">
         <a tabIndex={-1} target="_blank" href="https://www.taildoor.com">
           <Button
+            asLink
             variant="text"
             className="[--md-text-button-container-height:64px] [--md-text-button-container-shape:0]"
           >
@@ -17,6 +18,7 @@ const Sponsors = () => {
         </a>
         <a tabIndex={-1} target="_blank" href="https://ngroker.com">
           <Button
+            asLink
             variant="text"
             className="[--md-text-button-container-height:64px] [--md-text-button-container-shape:0]"
           >
