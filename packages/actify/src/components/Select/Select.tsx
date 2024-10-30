@@ -1,172 +1,86 @@
-import { FilledField } from '../Field'
-import { Icon } from '../Icon'
-import { Menu } from '../Menus'
-import { OutlinedField } from '../Field'
+import { AriaSelectOptions, HiddenSelect, useSelect } from 'react-aria'
+import { SelectStateOptions, useSelectState } from 'react-stately'
+
+import { FilledField } from './FilledField'
+import { Label } from '../Label/Label'
+import { ListBox } from '../ListBox'
+import { OutlinedField } from './OutlinedField'
+import { Popover } from '../Popover/Popover'
 import React from 'react'
+import { TrailingIcon } from './TrailingIcon'
 import clsx from 'clsx'
 import styles from './select.module.css'
 
-interface SelectContextProps {
-  open: boolean
-  setOpen: (open: boolean) => void
-  displayText: string
-  setDisplayText: (text: string) => void
-  onChange?: (event: React.MouseEvent<HTMLDivElement>) => void
-}
-export const SelectContext = React.createContext<SelectContextProps | null>(
-  null
-)
-
-interface SelectProps extends React.ComponentProps<'div'> {
-  label?: string
-  disabled?: boolean
-  variant?: 'filled' | 'outlined'
+interface SelectProps<T> extends AriaSelectOptions<T>, SelectStateOptions<T> {
+  className?: string
+  style?: React.CSSProperties
   leadingIcon?: React.ReactNode
   trailingIcon?: React.ReactNode
+  variant?: 'filled' | 'outlined'
 }
 
-const Select = (props: SelectProps) => {
-  const {
-    label,
-    disabled,
-    onChange,
-    children,
-    className,
-    leadingIcon,
-    trailingIcon,
-    variant = 'filled'
-  } = props
+const Select = <T extends object>(props: SelectProps<T>) => {
+  const state = useSelectState(props)
+  const ref = React.useRef(null)
 
-  const labelId = `label${React.useId()}`
-  const [open, setOpen] = React.useState(false)
-  const [focused, setFocused] = React.useState(false)
-  const [displayText, setDisplayText] = React.useState('')
+  const { labelProps, triggerProps, valueProps, menuProps } = useSelect(
+    props,
+    state,
+    ref
+  )
 
-  const populated = React.useMemo(() => !!displayText, [displayText])
-
-  const renderLeadingIcon = () => {
-    return leadingIcon ? <>{leadingIcon}</> : null
-  }
-
-  const renderTrailingIcon = () => {
-    return (
-      <span className={clsx(styles['icon'], styles['trailing'])}>
-        {trailingIcon ? (
-          <>{trailingIcon}</>
-        ) : (
-          <Icon>{open ? 'arrow_drop_up' : 'arrow_drop_down'}</Icon>
-        )}
-      </span>
-    )
-  }
-
-  const renderLabel = () => {
-    // need to render &nbsp; so that line-height can apply and give it a
-    // non-zero height
-    return <div id={labelId}>{displayText || ' '}</div>
-  }
-
-  const handleKeydown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (open || disabled) {
-      return
-    }
-
-    const isOpenKey =
-      event.code === 'Space' ||
-      event.code === 'ArrowDown' ||
-      event.code === 'ArrowUp' ||
-      event.code === 'End' ||
-      event.code === 'Home' ||
-      event.code === 'Enter'
-    // Do not open if currently typing ahead because the user may be typing the
-    // spacebar to match a word with a space
-    if (isOpenKey) {
-      event.preventDefault()
-      setOpen(true)
-      // https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/#kbd_label
-      switch (event.code) {
-        case 'Space':
-        case 'ArrowDown':
-        case 'Enter':
-          break
-        case 'End':
-          break
-        case 'ArrowUp':
-        case 'Home':
-          break
-        default:
-          break
-      }
-      return
-    }
-  }
-
-  const handleClick = () => {
-    setOpen(!open)
-  }
-
-  let FieldTag = FilledField
-  if (variant == 'filled') {
-    FieldTag = FilledField
-  }
-  if (variant == 'outlined') {
-    FieldTag = OutlinedField
-  }
+  const { variant = 'filled' } = props
+  const label = state.selectedItem
+    ? state.selectedItem.rendered
+    : 'Select an option'
 
   return (
     <div
-      role="presentation"
-      onClick={handleClick}
-      className={clsx(styles[`${variant}-select`], className)}
+      style={{ display: 'inline-flex', ...props.style }}
+      className={clsx(styles['outlined-select'], props.className)}
     >
-      <span
-        onFocus={() => setFocused(true)}
-        className={clsx(styles['select'], open && styles['open'])}
-      >
-        <FieldTag
-          label={label}
-          role="combobox"
-          focused={focused}
-          populated={populated}
-          aria-haspopup="listbox"
-          aria-controls="listbox"
-          style={{ cursor: 'pointer' }}
-          tabIndex={disabled ? -1 : 0}
-          aria-label={props['aria-label']}
-          aria-describedby="description"
-          aria-expanded={open ? 'true' : 'false'}
-          onClick={handleClick}
-          onKeyDown={handleKeydown}
-          leadingIcon={renderLeadingIcon()}
-          trailingIcon={renderTrailingIcon()}
-        >
-          {renderLabel()}
-        </FieldTag>
+      {props.label && <Label {...labelProps}>{props.label}</Label>}
+      <HiddenSelect
+        state={state}
+        triggerRef={ref}
+        name={props.name}
+        label={props.label}
+        isDisabled={props.isDisabled}
+      />
 
-        <div className="menu-wrapper">
-          <SelectContext.Provider
-            value={{ open, setOpen, displayText, setDisplayText, onChange }}
+      {variant == 'filled' && (
+        <FilledField ref={ref} {...triggerProps}>
+          <Label
+            aria-label={label?.toString()}
+            {...valueProps}
+            style={{ lineHeight: '24px' }}
           >
-            <Menu
-              open={open}
-              setOpen={setOpen}
-              setFocused={setFocused}
-              style={
-                {
-                  width: '100%',
-                  '--__menu-min-width': '210px',
-                  minWidth: 'var(--__menu-min-width)',
-                  maxWidth: 'var(--__menu-max-width, inherit)'
-                } as React.CSSProperties
-              }
-            >
-              <>{children}</>
-            </Menu>
-          </SelectContext.Provider>
-        </div>
-      </span>
+            {label}
+          </Label>
+          <TrailingIcon isOpen={state.isOpen} />
+        </FilledField>
+      )}
+      {variant == 'outlined' && (
+        <OutlinedField ref={ref} {...triggerProps}>
+          <Label
+            {...valueProps}
+            aria-label={label?.toString()}
+            style={{ lineHeight: '24px' }}
+          >
+            {label}
+          </Label>
+          <TrailingIcon isOpen={state.isOpen} />
+        </OutlinedField>
+      )}
+      {state.isOpen && (
+        <Popover state={state} triggerRef={ref} placement="bottom start">
+          <ListBox {...menuProps} state={state} />
+        </Popover>
+      )}
     </div>
   )
 }
+
+Select.displayName = 'Actify.Select'
 
 export { Select }

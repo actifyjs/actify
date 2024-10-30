@@ -1,0 +1,45 @@
+.ripple {
+  inset: 0;
+  cursor: inherit;
+  overflow: hidden;
+  position: absolute;
+  border-radius: inherit;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  &:before,
+  &:after {
+    content: '';
+    opacity: 0;
+    position: absolute;
+  }
+  &:before {
+    background-color: var(
+      --md-ripple-hover-color,
+      rgb(var(--md-sys-color-on-surface))
+    );
+    inset: 0;
+    transition:
+      opacity 15ms linear,
+      background-color 15ms linear;
+  }
+  &:after {
+    background: radial-gradient(
+      closest-side,
+      var(--md-ripple-pressed-color, rgb(var(--md-sys-color-on-surface)))
+        max(100% - 70px, 65%),
+      transparent 100%
+    );
+    transform-origin: center center;
+    transition: opacity 375ms linear;
+  }
+  &.hovered:before {
+    background-color: var(
+      --md-ripple-hover-color,
+      rgb(var(--md-sys-color-on-surface))
+    );
+    opacity: var(--md-ripple-hover-opacity, 0.08);
+  }
+  &.pressed:after {
+    opacity: var(--md-ripple-pressed-opacity, 0.12);
+    transition-duration: 105ms;
+  }
+}

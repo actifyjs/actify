@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 
-const useAttachable = (ref: React.MutableRefObject<HTMLElement | null>) => {
+const useAttachable = (ref: React.RefObject<HTMLElement | null>) => {
   const [control, setControl] = useState<HTMLElement | null | undefined>(null)
   useEffect(() => {
     const htmlFor = ref.current?.getAttribute('for')

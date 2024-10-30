@@ -1,0 +1,61 @@
+.item {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  --md-ripple-hover-color: var(
+    --md-menu-item-hover-state-layer-color,
+    rgb(var(--md-sys-color-on-surface))
+  );
+  --md-ripple-hover-opacity: var(
+    --md-menu-item-hover-state-layer-opacity,
+    0.08
+  );
+  --md-ripple-pressed-color: var(
+    --md-menu-item-pressed-state-layer-color,
+    rgb(var(--md-sys-color-on-surface))
+  );
+  --md-ripple-pressed-opacity: var(
+    --md-menu-item-pressed-state-layer-opacity,
+    0.12
+  );
+  background-color: var(--md-menu-item-container-color, transparent);
+  border-radius: inherit;
+  flex: 1;
+  color: var(
+    --md-menu-item-label-text-color,
+    rgb(var(--md-sys-color-on-surface))
+  );
+  font-family: var(
+    --md-menu-item-label-text-font,
+    var(
+      --md-sys-typescale-body-large-font,
+      var(--md-ref-typeface-plain, Roboto)
+    )
+  );
+  font-size: var(
+    --md-menu-item-label-text-size,
+    var(--md-sys-typescale-body-large-size, 1rem)
+  );
+  line-height: var(
+    --md-menu-item-label-text-line-height,
+    var(--md-sys-typescale-body-large-line-height, 1.5rem)
+  );
+  font-weight: var(
+    --md-menu-item-label-text-weight,
+    var(
+      --md-sys-typescale-body-large-weight,
+      var(--md-ref-typeface-weight-regular, 400)
+    )
+  );
+  min-height: var(--md-menu-item-one-line-container-height, 56px);
+  padding-top: var(--md-menu-item-top-space, 12px);
+  padding-bottom: var(--md-menu-item-bottom-space, 12px);
+  padding-inline-start: var(--md-menu-item-leading-space, 16px);
+  padding-inline-end: var(--md-menu-item-trailing-space, 16px);
+}
+.item.selected {
+  background-color: var(
+    --md-menu-item-selected-container-color,
+    rgb(var(--md-sys-color-secondary-container))
+  );
+}

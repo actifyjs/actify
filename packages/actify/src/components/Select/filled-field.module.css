@@ -1,0 +1,139 @@
+.filled-field {
+  position: relative;
+  min-height: 56px;
+  min-width: 210px;
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+  --_active-indicator-color: var(
+    --md-filled-field-active-indicator-color,
+    rgb(var(--md-sys-color-on-surface-variant))
+  );
+  --_active-indicator-height: var(
+    --md-filled-field-active-indicator-height,
+    1px
+  );
+  --_focus-active-indicator-color: var(
+    --md-filled-field-focus-active-indicator-color,
+    rgb(var(--md-sys-color-primary))
+  );
+  --_focus-active-indicator-height: var(
+    --md-filled-field-focus-active-indicator-height,
+    3px
+  );
+  --_content-space: var(--md-outlined-field-content-space, 16px);
+  --_with-trailing-content-trailing-space: var(
+    --md-outlined-field-with-trailing-content-trailing-space,
+    12px
+  );
+  --_outline-label-padding: var(--md-outlined-field-outline-label-padding, 4px);
+  --_leading-space: var(--md-outlined-field-leading-space, 16px);
+  --_container-shape-start-start: var(
+    --md-filled-field-container-shape-start-start,
+    var(
+      --md-filled-field-container-shape,
+      var(--md-sys-shape-corner-extra-small, 4px)
+    )
+  );
+  --_container-shape-start-end: var(
+    --md-filled-field-container-shape-start-end,
+    var(
+      --md-filled-field-container-shape,
+      var(--md-sys-shape-corner-extra-small, 4px)
+    )
+  );
+  --_container-shape-end-end: var(
+    --md-filled-field-container-shape-end-end,
+    var(--md-filled-field-container-shape, var(--md-sys-shape-corner-none, 0px))
+  );
+  --_container-shape-end-start: var(
+    --md-filled-field-container-shape-end-start,
+    var(--md-filled-field-container-shape, var(--md-sys-shape-corner-none, 0px))
+  );
+
+  --_hover-state-layer-color: var(
+    --md-filled-field-hover-state-layer-color,
+    rgb(var(--md-sys-color-on-surface))
+  );
+  --_hover-state-layer-opacity: var(
+    --md-filled-field-hover-state-layer-opacity,
+    0.08
+  );
+}
+.field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  writing-mode: horizontal-tb;
+  max-width: 100%;
+}
+.trigger-button {
+  z-index: 1;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline-start: max(
+    var(--_leading-space),
+    max(var(--_container-shape-start-start), var(--_container-shape-end-start)) +
+      var(--_outline-label-padding)
+  );
+}
+
+.trigger-button:focus-visible {
+  outline: none;
+}
+
+.container-overflow {
+  border-start-start-radius: var(--_container-shape-start-start);
+  border-start-end-radius: var(--_container-shape-start-end);
+  border-end-end-radius: var(--_container-shape-end-end);
+  border-end-start-radius: var(--_container-shape-end-start);
+  display: flex;
+  height: 100%;
+  position: relative;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background: rgb(59 52 42);
+}
+
+.state-layer {
+  position: absolute;
+  inset: 0;
+  visibility: visible;
+}
+.filled-field:hover .state-layer {
+  background: var(--_hover-state-layer-color);
+  opacity: var(--_hover-state-layer-opacity);
+}
+
+.active-indicator {
+  inset: auto 0 0 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+.active-indicator::before,
+.active-indicator::after {
+  border-bottom: var(--_active-indicator-height) solid
+    var(--_active-indicator-color);
+  inset: auto 0 0 0;
+  content: '';
+  position: absolute;
+  width: 100%;
+}
+.active-indicator::after {
+  opacity: 0;
+  transition: opacity 150ms cubic-bezier(0.2, 0, 0, 1);
+  border-bottom-color: var(--_focus-active-indicator-color);
+  border-bottom-width: var(--_focus-active-indicator-height);
+}
+.focused.active-indicator:after {
+  opacity: 1;
+}

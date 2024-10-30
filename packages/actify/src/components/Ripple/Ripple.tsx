@@ -4,7 +4,7 @@ import React, { useEffect, useId, useRef, useState } from 'react'
 
 import { EASING } from './../../animations'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './ripple.module.css'
 import { useAttachable } from './../../hooks'
 
 const TOUCH_DELAY_MS = 150

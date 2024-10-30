@@ -1,0 +1,19 @@
+.items {
+  display: block;
+  padding-block: 8px;
+  list-style-type: none;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+  background-color: var(
+    --md-menu-container-color,
+    var(--md-sys-color-surface-container, #f3edf7)
+  );
+  height: inherit;
+  max-height: inherit;
+  overflow: auto;
+  min-width: inherit;
+  max-width: inherit;
+  border-radius: inherit;
+  scrollbar-width: inherit;
+}

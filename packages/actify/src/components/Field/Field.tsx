@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import styles from './styles/field.module.css'
 
 export interface FieldProps extends SupportingTextProps {
-  label?: string
+  label?: React.ReactNode
 
   focused?: boolean
   populated?: boolean

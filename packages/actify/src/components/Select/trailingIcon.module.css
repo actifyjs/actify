@@ -1,0 +1,19 @@
+.trailing-icon {
+  display: inline-flex;
+  margin-inline: var(--_content-space)
+    var(--_with-trailing-content-trailing-space);
+}
+
+.trailing-icon svg {
+  fill: currentColor;
+}
+
+.up,
+.open.down {
+  opacity: 0;
+  transition: opacity 75ms linear 75ms;
+}
+
+.open.up {
+  opacity: 1;
+}

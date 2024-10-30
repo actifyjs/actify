@@ -1,0 +1,95 @@
+.outlined-field {
+  position: relative;
+  min-height: 56px;
+  min-width: 210px;
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 4px;
+  --_top-space: var(--md-filled-field-top-space, 16px);
+  --_bottom-space: var(--md-filled-field-bottom-space, 16px);
+  --_content-space: var(--md-outlined-field-content-space, 16px);
+  --_with-trailing-content-trailing-space: var(
+    --md-outlined-field-with-trailing-content-trailing-space,
+    12px
+  );
+  --_outline-label-padding: var(--md-outlined-field-outline-label-padding, 4px);
+  --_leading-space: var(--md-outlined-field-leading-space, 16px);
+  --_container-shape-start-start: var(
+    --md-outlined-field-container-shape-start-start,
+    var(
+      --md-outlined-field-container-shape,
+      var(--md-sys-shape-corner-extra-small, 4px)
+    )
+  );
+  --_container-shape-start-end: var(
+    --md-outlined-field-container-shape-start-end,
+    var(
+      --md-outlined-field-container-shape,
+      var(--md-sys-shape-corner-extra-small, 4px)
+    )
+  );
+  --_container-shape-end-end: var(
+    --md-outlined-field-container-shape-end-end,
+    var(
+      --md-outlined-field-container-shape,
+      var(--md-sys-shape-corner-extra-small, 4px)
+    )
+  );
+  --_container-shape-end-start: var(
+    --md-outlined-field-container-shape-end-start,
+    var(
+      --md-outlined-field-container-shape,
+      var(--md-sys-shape-corner-extra-small, 4px)
+    )
+  );
+  --_outline-color: var(
+    --md-outlined-field-outline-color,
+    var(--md-sys-color-outline, #79747e)
+  );
+  --_hover-outline-color: var(
+    --md-outlined-field-hover-outline-color,
+    var(--md-sys-color-on-surface, #1d1b20)
+  );
+  --_focus-outline-color: var(
+    --md-outlined-field-focus-outline-color,
+    var(--md-sys-color-primary, #6750a4)
+  );
+  --_focus-outline-width: var(--md-outlined-field-focus-outline-width, 3px);
+}
+
+.outline {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-width: 1px;
+  pointer-events: none;
+  border-radius: inherit;
+  border-color: var(--_outline-color);
+}
+.hovered.outline {
+  color: var(--_hover-outline-color);
+  border-color: var(--_hover-outline-color);
+}
+.focused.outline {
+  border-width: var(--_focus-outline-width);
+  color: var(--_focus-outline-color);
+  border-color: var(--_focus-outline-color);
+}
+
+.trigger-button {
+  padding-top: var(--_top-space);
+  padding-bottom: var(--_bottom-space);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline-start: max(
+    var(--_leading-space),
+    max(var(--_container-shape-start-start), var(--_container-shape-end-start)) +
+      var(--_outline-label-padding)
+  );
+}
+
+.trigger-button:focus-visible {
+  outline: none;
+}
