@@ -34,6 +34,14 @@ const Select = <T extends object>(props: SelectProps<T>) => {
     ? state.selectedItem.rendered
     : 'Select an option'
 
+  let Tag = FilledField
+  if (variant == 'filled') {
+    Tag = FilledField
+  }
+  if (variant == 'outlined') {
+    Tag = OutlinedField
+  }
+
   return (
     <div
       style={{ display: 'inline-flex', ...props.style }}
@@ -48,30 +56,17 @@ const Select = <T extends object>(props: SelectProps<T>) => {
         isDisabled={props.isDisabled}
       />
 
-      {variant == 'filled' && (
-        <FilledField ref={ref} {...triggerProps}>
-          <Label
-            aria-label={label?.toString()}
-            {...valueProps}
-            style={{ lineHeight: '24px' }}
-          >
-            {label}
-          </Label>
-          <TrailingIcon isOpen={state.isOpen} />
-        </FilledField>
-      )}
-      {variant == 'outlined' && (
-        <OutlinedField ref={ref} {...triggerProps}>
-          <Label
-            {...valueProps}
-            aria-label={label?.toString()}
-            style={{ lineHeight: '24px' }}
-          >
-            {label}
-          </Label>
-          <TrailingIcon isOpen={state.isOpen} />
-        </OutlinedField>
-      )}
+      <Tag ref={ref} {...triggerProps}>
+        <Label
+          aria-label={label?.toString()}
+          {...valueProps}
+          style={{ lineHeight: '24px' }}
+        >
+          {label}
+        </Label>
+        <TrailingIcon isOpen={state.isOpen} />
+      </Tag>
+
       {state.isOpen && (
         <Popover state={state} triggerRef={ref} placement="bottom start">
           <ListBox {...menuProps} state={state} />
