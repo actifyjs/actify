@@ -31,7 +31,7 @@ export const ThemeChanger = () => {
   const [hue, setHue] = React.useState<number>(0)
   const [chroma, setChroma] = React.useState<number>(0)
   const [tone, setTone] = React.useState<number>(0)
-  const [hexColor, setHexColor] = React.useState<string>('')
+  const [hexColor, setHexColor] = React.useState<string>('#ecaa2e')
   const [selectedColorMode, setSelectedColorMode] =
     React.useState<ColorMode | null>(null)
 
@@ -75,7 +75,10 @@ export const ThemeChanger = () => {
       const _selectedColorMode = getCurrentMode()
       setSelectedColorMode(_selectedColorMode)
     }
-    if (!hexColor) {
+    if (hexColor) {
+      updateHctFromHex(hexColor)
+      changeColor(hexColor)
+    } else {
       const _hexColor = getCurrentSeedColor()!
       setHexColor(_hexColor)
       updateHctFromHex(_hexColor)
