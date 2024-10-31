@@ -14,7 +14,7 @@
     "codesandbox": "^2.2.3",
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
-    "next": "rc",
+    "next": "^15.0.2",
     "next-themes": "^0.3.0",
     "react": "catalog:",
     "react-dom": "catalog:",
