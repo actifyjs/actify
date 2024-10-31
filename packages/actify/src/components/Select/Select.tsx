@@ -23,16 +23,9 @@ const Select = <T extends object>(props: SelectProps<T>) => {
   const state = useSelectState(props)
   const ref = React.useRef(null)
 
-  const { labelProps, triggerProps, valueProps, menuProps } = useSelect(
-    props,
-    state,
-    ref
-  )
+  const { triggerProps, valueProps, menuProps } = useSelect(props, state, ref)
 
   const { variant = 'filled' } = props
-  const label = state.selectedItem
-    ? state.selectedItem.rendered
-    : 'Select an option'
 
   let Tag = FilledField
   if (variant == 'filled') {
@@ -44,10 +37,9 @@ const Select = <T extends object>(props: SelectProps<T>) => {
 
   return (
     <div
-      style={{ display: 'inline-flex', ...props.style }}
-      className={clsx(styles['outlined-select'], props.className)}
+      style={props.style}
+      className={clsx(styles['select'], props.className)}
     >
-      {props.label && <Label {...labelProps}>{props.label}</Label>}
       <HiddenSelect
         state={state}
         triggerRef={ref}
@@ -57,12 +49,8 @@ const Select = <T extends object>(props: SelectProps<T>) => {
       />
 
       <Tag ref={ref} {...triggerProps}>
-        <Label
-          aria-label={label?.toString()}
-          {...valueProps}
-          style={{ lineHeight: '24px' }}
-        >
-          {label}
+        <Label {...valueProps} style={{ lineHeight: '24px' }}>
+          {state.selectedItem ? state.selectedItem.rendered : props.label}
         </Label>
         <TrailingIcon isOpen={state.isOpen} />
       </Tag>

@@ -12,10 +12,10 @@ export default () => {
 
   return (
     <div className="max-sm:flex-wrap flex gap-4">
-      <Select items={options}>
+      <Select label="Select Project" items={options}>
         {(item) => <SelectOption>{item.name}</SelectOption>}
       </Select>
-      <Select variant="outlined" items={options}>
+      <Select label="Select Project" variant="outlined" items={options}>
         {(item) => <SelectOption>{item.name}</SelectOption>}
       </Select>
     </div>
