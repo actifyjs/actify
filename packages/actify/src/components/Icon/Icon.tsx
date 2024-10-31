@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './icon.module.css'
 
 interface IconProps extends React.ComponentProps<'span'> {}
 const Icon = ({ className, children, ...rest }: IconProps) => {
@@ -8,7 +8,13 @@ const Icon = ({ className, children, ...rest }: IconProps) => {
     <React.Suspense
       fallback={
         <span className={clsx(styles['icon'], className)}>
-          <span className="block size-[var(--md-icon-size,24px)]" />
+          <span
+            style={{
+              display: 'block',
+              width: 'var(--md-icon-size,24px)',
+              height: 'var(--md-icon-size,24px)'
+            }}
+          />
         </span>
       }
     >
