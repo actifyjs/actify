@@ -1,29 +1,44 @@
-import { Button, Dialog, DialogRef } from 'actify'
+import {
+  Button,
+  Dialog,
+  DialogActivator,
+  Modal,
+  TextField,
+  useDialogState
+} from 'actify'
 
 import React from 'react'
 
 export default () => {
-  const formId = React.useId()
-  const dialogRef = React.useRef<DialogRef>(null)
-
+  const state = useDialogState({})
   return (
-    <>
-      <Button
-        onClick={() => {
-          dialogRef?.current?.show()
-        }}
-      >
-        Open Dialog
+    <div className="flex gap-4">
+      <DialogActivator label="Open Dialog with activator">
+        {(close) => (
+          <Dialog title="Enter your name">
+            <form className="mt-4 flex flex-col gap-2">
+              <TextField label="username" />
+              <TextField label="password" />
+              <Button onPress={close}>Submit</Button>
+            </form>
+          </Dialog>
+        )}
+      </DialogActivator>
+      <Button variant="outlined" onPress={state.open}>
+        Open Dialog with button
       </Button>
-      <Dialog
-        ref={dialogRef}
-        headline="Dialog title"
-        actions={<Button form={formId}>Ok</Button>}
-      >
-        <form id={formId} method="dialog">
-          A simple dialog with free-form content.
-        </form>
-      </Dialog>
-    </>
+      <Modal state={state}>
+        <Dialog title="Enter your name">
+          <form className="mt-4 flex flex-col gap-2">
+            <TextField label="username" variant="outlined" />
+            <TextField label="password" variant="outlined" />
+            <Button color="error" onPress={state.close}>
+              Cancel
+            </Button>
+            <Button>Confirm</Button>
+          </form>
+        </Dialog>
+      </Modal>
+    </div>
   )
 }
