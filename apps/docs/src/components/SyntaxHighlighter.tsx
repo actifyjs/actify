@@ -23,8 +23,8 @@ const SyntaxHighlighter = (props: React.ComponentProps<'div'>) => {
     return null
   } else {
     const highlight = async () => {
-      const { getHighlighter } = await import('shiki')
-      const highlighter = await getHighlighter({
+      const { getSingletonHighlighter } = await import('shiki')
+      const highlighter = await getSingletonHighlighter({
         langs,
         themes: ['catppuccin-latte', 'catppuccin-mocha']
       })
