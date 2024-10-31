@@ -35,7 +35,6 @@ const TextField = (props: TextFieldProps) => {
   } = props
 
   const {
-    labelProps,
     inputProps,
     descriptionProps,
     errorMessageProps,
