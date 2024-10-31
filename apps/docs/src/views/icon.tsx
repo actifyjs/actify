@@ -48,8 +48,7 @@ export default () => {
     setFilterIcons(icons)
   }, [])
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
+  const handleChange = (value: string) => {
     const reg = new RegExp(value, 'i')
     startTransition(() => {
       setFilterIcons(icons.filter((icon) => reg.test(icon)))
