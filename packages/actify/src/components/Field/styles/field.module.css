@@ -701,12 +701,13 @@
 }
 
 .start {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  box-sizing: border-box;
   height: 100%;
+  display: flex;
+  min-width: 40px;
   position: relative;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
 }
 
 .middle {
@@ -720,12 +721,13 @@
 }
 
 .end {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  box-sizing: border-box;
   height: 100%;
+  display: flex;
+  min-width: 40px;
   position: relative;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
   color: var(--_trailing-content-color);
 }
 .focused .end {
@@ -794,7 +796,7 @@
   display: flex;
   padding-top: var(--_top-space);
   padding-bottom: var(--_bottom-space);
-  & > * {
+  & > input {
     all: inherit;
     padding: 0;
   }

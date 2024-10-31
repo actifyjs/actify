@@ -1,99 +1,52 @@
-'use client'
+import type { AriaTextFieldProps, TextFieldAria } from 'react-aria'
+import { FilledField, OutlinedField } from './../Field'
+import { mergeProps, useFocusRing, useTextField } from 'react-aria'
 
-import { FilledField } from '../Field/FilledField'
-import { LeadingIcon } from './LeadingIcon'
-import { OutlinedField } from '../Field/OutlinedField'
 import React from 'react'
-import { TrailingIcon } from './TrailingIcon'
-import clsx from 'clsx'
 import styles from './text-field.module.css'
-import { useInputState } from '../../hooks'
 
-/**
- * Input types that are compatible with the text field.
- */
-export type TextFieldType =
-  | 'email'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'text'
-  | 'url'
-  | 'textarea'
-
-export interface TextFieldProps extends React.ComponentProps<'input'> {
-  label?: string
-  count?: number
-  error?: boolean
-  errorText?: string
-  maxLength?: number
-  resizable?: boolean
-  prefixText?: string
-  suffixText?: string
-  type?: TextFieldType
-  supportingText?: string
+interface TextFieldProps extends AriaTextFieldProps {
   variant?: 'filled' | 'outlined'
+  suffixText?: string
+  prefixText?: string
+  children?: React.ReactNode
+  leadingIcon?: React.ReactNode
+  trailingIcon?: React.ReactNode
+  type?:
+    | 'text'
+    | 'email'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'url'
+    | 'textarea'
 }
-
 const TextField = (props: TextFieldProps) => {
+  const ref = React.useRef(null)
   const {
-    id,
-    value,
-    onChange,
-    defaultValue,
+    label,
+    suffixText,
+    prefixText,
+    leadingIcon,
+    trailingIcon,
     type = 'text',
-
-    disabled = false,
-    error = false,
-    errorText = '',
-    label = '',
-    maxLength = -1,
-    required = false,
-    resizable,
-    supportingText = '',
-
-    prefixText = '',
-    suffixText = '',
-    variant = 'filled',
-    className,
-    children,
-    ...rest
+    variant = 'filled'
   } = props
 
-  const [inputValue, setInputValue] = useInputState({
-    value,
-    defaultValue,
-    onChange
-  })
+  const {
+    labelProps,
+    inputProps,
+    descriptionProps,
+    errorMessageProps,
+    isInvalid,
+    validationErrors
+  } = useTextField(
+    { ...props, inputElementType: type == 'textarea' ? 'textarea' : 'input' },
+    ref
+  )
 
-  const inputId = id || `actify-input${React.useId()}`
-  const [focused, setFocused] = React.useState(false)
-
-  const populated = React.useMemo(() => {
-    if (inputValue) {
-      return inputValue.toString().length > 0
-    }
-    return false
-  }, [inputValue])
-
-  const count = React.useMemo(() => {
-    return inputValue.toString().length ?? -1
-  }, [inputValue])
-
-  let leadingIcon = null
-  let trailingIcon = null
-
-  React.Children.forEach(children, (child) => {
-    if (React.isValidElement(child)) {
-      if (child.type == LeadingIcon) {
-        leadingIcon = child
-      }
-      if (child.type == TrailingIcon) {
-        trailingIcon = child
-      }
-    }
-  })
+  const { focusProps, isFocused } = useFocusRing()
 
   let Tag = FilledField
   if (variant == 'filled') {
@@ -104,75 +57,52 @@ const TextField = (props: TextFieldProps) => {
   }
 
   return (
-    <div className={clsx(styles[variant], className)}>
-      <span
-        style={{
-          width: '100%',
-          resize: 'inherit',
-          display: 'inline-flex'
-        }}
-      >
+    <div>
+      <div className={styles[variant]}>
         <Tag
-          count={count}
-          disabled={disabled}
-          error={error}
-          errorText={errorText}
-          focused={focused}
-          label={label}
-          max={maxLength}
-          populated={populated}
-          required={required}
-          resizable={resizable}
-          supportingText={supportingText}
-          leadingIcon={leadingIcon}
-          trailingIcon={trailingIcon}
+          {...{
+            label,
+            leadingIcon,
+            trailingIcon,
+            focused: isFocused,
+            count: inputProps.value?.toString().length,
+            populated: inputProps.value ? true : false
+          }}
         >
-          {prefixText && (
-            <span
+          {prefixText && <span className={styles['prefix']}>{prefixText}</span>}
+          {type == 'textarea' ? (
+            <textarea
+              {...mergeProps(focusProps, inputProps as TextFieldAria)}
+              ref={ref}
+            />
+          ) : (
+            <input
+              {...mergeProps(focusProps, inputProps as TextFieldAria)}
               style={{
-                textWrap: 'nowrap',
-                width: 'min-content',
-                paddingInlineEnd: 'var(--_input-text-prefix-trailing-space)'
+                overflowX: 'hidden',
+                textAlign: 'inherit',
+                caretColor: 'var(--_caret-color)'
               }}
-            >
-              {prefixText}
-            </span>
+              ref={ref}
+            />
           )}
-          <input
-            count={count}
-            {...rest}
-            type={type}
-            id={inputId}
-            value={inputValue}
-            style={{
-              overflowX: 'hidden',
-              textAlign: 'inherit',
-              caretColor: 'var(--_caret-color)'
-            }}
-            onChange={setInputValue}
-            onBlur={() => setFocused(false)}
-            onFocus={() => setFocused(true)}
-          />
-          {suffixText && (
-            <span
-              style={{
-                textWrap: 'nowrap',
-                width: 'min-content',
-                paddingInlineStart: 'var(--_input-text-suffix-leading-space)'
-              }}
-            >
-              {suffixText}
-            </span>
-          )}
+          {suffixText && <span className={styles['suffix']}>{suffixText}</span>}
         </Tag>
-      </span>
+        {props.description && (
+          <div {...descriptionProps} style={{ fontSize: 12 }}>
+            {props.description}
+          </div>
+        )}
+        {isInvalid && (
+          <div {...errorMessageProps} style={{ color: 'red', fontSize: 12 }}>
+            {validationErrors.join(' ')}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
 
 TextField.displayName = 'Actify.TextField'
 
-export default Object.assign(TextField, {
-  LeadingIcon,
-  TrailingIcon
-})
+export { TextField }

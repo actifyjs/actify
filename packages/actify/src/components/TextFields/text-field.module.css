@@ -1060,3 +1060,14 @@
   --md-outlined-field-trailing-content-color: var(--_trailing-icon-color);
   --md-outlined-field-trailing-space: var(--_trailing-space);
 }
+.prefix {
+  text-wrap: nowrap;
+  width: min-content;
+  color: var(--_input-text-prefix-color);
+  padding-inline-end: var(--_input-text-prefix-trailing-space);
+}
+.suffix {
+  text-wrap: nowrap;
+  width: min-content;
+  padding-inline-start: var(--_input-text-suffix-leading-space);
+}
