@@ -1,6 +1,9 @@
 'use client'
 
-import { Menu, MenuItem } from '../Menus'
+import {
+  PopoverMenu as Menu,
+  PopoverMenuItem as MenuItem
+} from '../PopoverMenu'
 import React, { Children, ComponentProps, useState } from 'react'
 
 import { Button } from '../Button'
