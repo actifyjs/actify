@@ -48,7 +48,7 @@
   padding-block: 8px;
 }
 .menu-item {
-  display: flex;
+  padding: 8px;
   --md-ripple-hover-color: var(
     --md-menu-item-hover-state-layer-color,
     rgb(var(--md-sys-color-on-surface))
@@ -65,8 +65,12 @@
     --md-menu-item-pressed-state-layer-opacity,
     0.12
   );
+  &:focus-visible {
+    outline: none;
+  }
 }
 .list-item {
+  position: relative; /* for focus ring */
   list-style: none;
   background-color: var(--md-menu-item-container-color, transparent);
   border-radius: inherit;

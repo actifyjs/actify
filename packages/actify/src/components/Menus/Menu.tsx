@@ -1,154 +1,98 @@
-'use client'
+import { AriaButtonProps, Placement, useMenu, useMenuTrigger } from 'react-aria'
+import type { AriaMenuProps, MenuTriggerProps } from '@react-types/menu'
+import { useMenuTriggerState, useTreeState } from 'react-stately'
 
-import { EASING } from '../../animations'
-import { Elevation } from '../Elevation'
+import { Button } from './../Button'
+import { MenuItem } from './MenuItem'
+import { MenuItems } from './MenuItems'
+import { Popover } from './../Popover'
 import React from 'react'
 import clsx from 'clsx'
 import styles from './menu.module.css'
-import { useControllableState } from '../../hooks'
-import { useOnClickOutside } from '../../hooks'
 
-interface MenuContextProps {
-  open: boolean
-  setOpen: (open: boolean) => void
+interface MenuButtonProps<T extends object>
+  extends AriaMenuProps<T>,
+    MenuTriggerProps {
+  style?: React.CSSProperties
+  className?: string
+  label?: string
+  placement?: Placement
+  activator?: (
+    ref: React.RefObject<null>,
+    menuTriggerProps: AriaButtonProps<'button'>
+  ) => React.JSX.Element
 }
-export const MenuContext = React.createContext<MenuContextProps | null>(null)
 
-export interface MenuRef {
-  show: () => void
-  close: () => void
-  toggle: () => void
-}
-interface MenuProps extends Omit<React.ComponentProps<'div'>, 'ref'> {
-  anchor?: string
-  positioning?: 'absolute' | 'popover' | 'fixed' | 'document'
-  /** Skips the opening and closing animations */
-  quick?: boolean
-  typeaheadDelay?: number
-  anchorCorner?: string
-  menuCorner?: string
-  stayOpenOnOutsideClick?: boolean
-  stayOpenOnFocusout?: boolean
-  skipRestoreFocus?: boolean
-  defaultFocus?: string
-  noNavigationWrap?: boolean
-  isSubmenu?: boolean
-  ref?: React.Ref<MenuRef>
-  open?: boolean
-  defaultOpen?: boolean
-  setOpen?: (open: boolean) => void
-  setFocused?: (focus: boolean) => void
-}
-const Menu = (props: MenuProps) => {
-  const {
-    ref,
-    style,
-    children,
-    className,
-    setFocused,
-    defaultOpen,
-    open: propOpen,
-    setOpen: propSetOpen,
-    positioning = 'absolute',
-    ...rest
-  } = props
+export function Menu<T extends object>(props: MenuButtonProps<T>) {
+  // Create state based on the incoming props
+  const state = useMenuTriggerState(props)
 
-  const menuRef = React.useRef<HTMLDivElement>(null)
-  const slotRef = React.useRef<HTMLDivElement>(null)
-
-  const [open, setOpen] = useControllableState({
-    value: propOpen,
-    onChange: propSetOpen,
-    defaultValue: defaultOpen
-  })
-
-  useOnClickOutside(menuRef, () => {
-    setOpen(false)
-    setFocused?.(false)
-  })
-
-  React.useImperativeHandle(
-    ref,
-    () => ({
-      show: () => setOpen(true),
-      close: () => setOpen(false),
-      toggle: () => setOpen(!open)
-    }),
-    []
-  )
-
-  const animateOpen = async () => {
-    const surfaceEl = menuRef.current
-    const slotEl = slotRef.current
-    if (!surfaceEl || !slotEl) return true
-    const openingUpwards = false
-    // needs to be imperative because we don't want to mix animation and Lit
-    // render timing
-    surfaceEl.classList.toggle(styles['animating'], true)
-    const height = surfaceEl.offsetHeight
-    const items = React.Children.toArray(children)
-
-    const FULL_DURATION = 500
-    const SURFACE_OPACITY_DURATION = 50
-    const ITEM_OPACITY_DURATION = 250
-    // We want to fit every child fade-in animation within the full duration of
-    // the animation.
-    const DELAY_BETWEEN_ITEMS =
-      (FULL_DURATION - ITEM_OPACITY_DURATION) / items.length
-    const surfaceHeightAnimation = surfaceEl.animate(
-      [{ height: '0px' }, { height: `${height}px` }],
-      {
-        duration: FULL_DURATION,
-        easing: EASING.EMPHASIZED
-      }
-    )
-    // When we are opening upwards, we want to make sure the last item is always
-    // in view, so we need to translate it upwards the opposite direction of the
-    // height animation
-    const upPositionCorrectionAnimation = slotEl.animate(
-      [
-        { transform: openingUpwards ? `translateY(-${height}px)` : '' },
-        { transform: '' }
-      ],
-      { duration: FULL_DURATION, easing: EASING.EMPHASIZED }
-    )
-    const surfaceOpacityAnimation = surfaceEl.animate(
-      [{ opacity: 0 }, { opacity: 1 }],
-      SURFACE_OPACITY_DURATION
-    )
-
-    let resolveAnimation = (_: boolean) => {}
-    const animationFinished = new Promise((resolve) => {
-      resolveAnimation = resolve
-    })
-
-    surfaceHeightAnimation.addEventListener('finish', () => {
-      surfaceEl.classList.toggle(styles['animating'], false)
-      resolveAnimation(false)
-    })
-    return await animationFinished
-  }
-
-  React.useEffect(() => {
-    if (open) {
-      animateOpen()
-    }
-  }, [open])
-
-  const classes = clsx(styles['menu'], open && styles['open'], className)
+  // Get props for the menu trigger and menu elements
+  const ref = React.useRef(null)
+  const { menuTriggerProps, menuProps } = useMenuTrigger<T>({}, state, ref)
 
   return (
-    <div {...rest} ref={menuRef} style={style} className={classes}>
-      <Elevation style={{ '--md-elevation-level': 2 } as React.CSSProperties} />
-      <MenuContext.Provider value={{ open, setOpen }}>
-        <div className={styles['items']}>
-          <div className={styles['item-padding']} ref={slotRef}>
-            {children}
-          </div>
-        </div>
-      </MenuContext.Provider>
-    </div>
+    <>
+      {props.label && (
+        <Button {...menuTriggerProps} ref={ref}>
+          {props.label}
+        </Button>
+      )}
+      {props?.activator?.(ref, menuTriggerProps)}
+      {state.isOpen && (
+        <Popover state={state} triggerRef={ref} placement={props.placement}>
+          <MenuRoot
+            {...props}
+            {...menuProps}
+            autoFocus={state.focusStrategy || true}
+            onClose={() => state.close()}
+          />
+        </Popover>
+      )}
+    </>
   )
 }
 
-export { Menu }
+interface MenuProps<T extends object> extends AriaMenuProps<T> {
+  onClose: () => void
+  style?: React.CSSProperties
+  className?: string
+}
+
+function MenuRoot<T extends object>(props: MenuProps<T>) {
+  // Create state based on the incoming props
+  const state = useTreeState(props)
+
+  // Get props for the menu element
+  const ref = React.useRef(null)
+  const { menuProps } = useMenu(props, state, ref)
+
+  return (
+    <ul
+      ref={ref}
+      {...menuProps}
+      style={props.style}
+      className={clsx(styles['menu-item'], props.className)}
+    >
+      {[...state.collection].map((item) =>
+        item.type == 'section' ? (
+          <MenuItems
+            key={item.key}
+            section={item}
+            state={state}
+            onClose={props.onClose}
+            onAction={() => props.onAction}
+          />
+        ) : (
+          <MenuItem
+            key={item.key}
+            item={item}
+            state={state}
+            onClose={props.onClose}
+            onAction={() => props.onAction}
+          />
+        )
+      )}
+    </ul>
+  )
+}

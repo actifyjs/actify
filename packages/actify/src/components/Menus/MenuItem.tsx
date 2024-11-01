@@ -1,21 +1,39 @@
-import { Item, ItemProps } from '../../components/Item'
+import { mergeProps, useFocusRing, useMenuItem } from 'react-aria'
 
-import { FocusRing } from '../../components/FocusRing'
-import { MenuContext } from './Menu'
+import { FocusRing } from './../FocusRing'
+import { Item } from './../Item'
+import type { Node } from '@react-types/shared'
 import React from 'react'
-import { Ripple } from '../../components/Ripple'
+import { Ripple } from './../Ripple'
+import { TreeState } from 'react-stately'
 import styles from './menu.module.css'
 
-interface MenuItemProps extends Omit<ItemProps, 'container'> {}
+interface MenuItemProps<T> {
+  item: Node<T>
+  state: TreeState<T>
+  onAction: (key: React.Key) => void
+  onClose: () => void
+}
 
-const MenuItem = (props: MenuItemProps) => {
-  const { children, onClick, ...rest } = props
-  const context = React.useContext(MenuContext)
+export function MenuItem<T>({
+  item,
+  state,
+  onAction,
+  onClose
+}: MenuItemProps<T>) {
+  // Get props for the menu item element
+  const ref = React.useRef(null)
+  const { focusProps, isFocusVisible } = useFocusRing()
 
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    onClick?.(event)
-    context?.setOpen(false)
-  }
+  const { menuItemProps } = useMenuItem(
+    {
+      key: item.key,
+      onAction,
+      onClose
+    },
+    state,
+    ref
+  )
 
   const Container = () => (
     <div className={styles['container']}>
@@ -25,14 +43,13 @@ const MenuItem = (props: MenuItemProps) => {
   )
 
   return (
-    <div className={styles['menu-item']} tabIndex={-1} role="presentation">
-      <li tabIndex={0} role="menuitem" className={styles['list-item']}>
-        <Item onClick={handleClick} {...rest} container={<Container />}>
-          {children}
-        </Item>
-      </li>
-    </div>
+    <li
+      ref={ref}
+      className={styles['list-item']}
+      {...mergeProps(menuItemProps, focusProps)}
+    >
+      <Item container={<Container />}>{item.rendered}</Item>
+      {isFocusVisible && <FocusRing />}
+    </li>
   )
 }
-
-export { MenuItem }

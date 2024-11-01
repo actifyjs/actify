@@ -1,2 +1,3 @@
-export { Menu } from './Menu'
-export { MenuItem } from './MenuItem'
+export * from './Menu'
+
+export { Item as MenuItem, Section as MenuItems } from 'react-stately'
