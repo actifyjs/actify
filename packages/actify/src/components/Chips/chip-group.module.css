@@ -1,0 +1,11 @@
+.chip-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chip-group [role='grid'] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
