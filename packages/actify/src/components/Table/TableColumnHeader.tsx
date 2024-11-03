@@ -1,43 +1,42 @@
-import { mergeProps, useFocusRing, useTableColumnHeader } from 'react-aria'
+import {
+  AriaTableCellProps,
+  mergeProps,
+  useFocusRing,
+  useTableColumnHeader
+} from 'react-aria'
 
 import { FocusRing } from '../FocusRing'
-import { GridNode } from '@react-types/grid'
 import { Icon } from '../Icon'
 import React from 'react'
 import { TableState } from 'react-stately'
 import styles from './table.module.css'
 
-interface TableColumnHeaderProps<T> extends React.ComponentProps<'th'> {
-  column: GridNode<T>
+interface TableColumnHeaderProps<T> extends AriaTableCellProps {
   state: TableState<T>
 }
 const TableColumnHeader = <T extends object>({
-  column,
+  node,
   state
 }: TableColumnHeaderProps<T>) => {
   const ref = React.useRef<HTMLTableCellElement | null>(null)
-  const { columnHeaderProps } = useTableColumnHeader(
-    { node: column },
-    state,
-    ref
-  )
-  const isSortVisible = state.sortDescriptor?.column === column.key
+  const { columnHeaderProps } = useTableColumnHeader({ node }, state, ref)
+  const isSortVisible = state.sortDescriptor?.column === node.key
   const { isFocusVisible, focusProps } = useFocusRing()
 
   return (
     <th
       ref={ref}
-      colSpan={column.colspan}
+      colSpan={node.colspan}
       className={styles['th']}
       style={{
-        textAlign: column.colspan! > 1 ? 'center' : 'left',
-        cursor: column.props.allowsSorting ? 'pointer' : 'default'
+        textAlign: node.colspan! > 1 ? 'center' : 'left',
+        cursor: node.props.allowsSorting ? 'pointer' : 'default'
       }}
       {...mergeProps(columnHeaderProps, focusProps)}
     >
       {isFocusVisible && <FocusRing />}
-      {column.rendered}
-      {column.props.allowsSorting && (
+      {node.rendered}
+      {node.props.allowsSorting && (
         <span
           aria-hidden="true"
           style={{

@@ -1,4 +1,5 @@
 import {
+  AriaTableCellProps,
   VisuallyHidden,
   useTableColumnHeader,
   useTableSelectAllCheckbox
@@ -6,11 +7,18 @@ import {
 
 import { Checkbox } from '../Checkbox'
 import React from 'react'
+import { TableState } from 'react-stately'
 
-const TableSelectAllCell = ({ column, state }) => {
-  let ref = React.useRef<HTMLTableCellElement | null>(null)
-  let { columnHeaderProps } = useTableColumnHeader({ node: column }, state, ref)
-  let { checkboxProps } = useTableSelectAllCheckbox(state)
+interface TableSelectAllCellProps<T> extends AriaTableCellProps {
+  state: TableState<T>
+}
+const TableSelectAllCell = <T extends object>({
+  node,
+  state
+}: TableSelectAllCellProps<T>) => {
+  const ref = React.useRef<HTMLTableCellElement | null>(null)
+  const { columnHeaderProps } = useTableColumnHeader({ node }, state, ref)
+  const { checkboxProps } = useTableSelectAllCheckbox(state)
 
   return (
     <th {...columnHeaderProps} ref={ref}>

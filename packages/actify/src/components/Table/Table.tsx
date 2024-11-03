@@ -42,13 +42,13 @@ const Table = <T extends object>(props: TableComponentProps<T>) => {
                 column.props.isSelectionCell ? (
                   <TableSelectAllCell
                     key={column.key}
-                    column={column}
+                    node={column}
                     state={state}
                   />
                 ) : (
                   <TableColumnHeader
                     key={column.key}
-                    column={column}
+                    node={column}
                     state={state}
                   />
                 )
