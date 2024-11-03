@@ -5,7 +5,7 @@ import styles from './focusring.module.css'
 type FocusRingProps = {
   style?: CSSProperties
   className?: string
-  as: keyof HTMLElementTagNameMap
+  as?: keyof HTMLElementTagNameMap
 }
 
 const FocusRing = ({ as = 'span', style, className }: FocusRingProps) => {
