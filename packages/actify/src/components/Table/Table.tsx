@@ -1,217 +1,79 @@
 'use client'
 
-import {
-  PopoverMenu as Menu,
-  PopoverMenuItem as MenuItem
-} from '../PopoverMenu'
-import React, { Children, ComponentProps, useState } from 'react'
+import { AriaTableProps, useTable } from 'react-aria'
+import { SelectionBehavior, useTableState } from 'react-stately'
 
-import { Button } from '../Button'
-import { Elevation } from '../Elevation'
-import { Icon } from './../Icon'
-import { IconButton } from './../Button/IconButton'
-import { Tbody } from './Tbody'
-import { Td } from './Td'
-import { Tfoot } from './Tfoot'
-import { Th } from './Th'
-import { Thead } from './Thead'
-import { Tr } from './Tr'
-import _ from 'lodash'
-import { tv } from 'tailwind-variants'
+import { TableCell } from './TableCell'
+import { TableCheckboxCell } from './TableCheckboxCell'
+import { TableColumnHeader } from './TableColumnHeader'
+import { TableHeaderRow } from './TableHeaderRow'
+import type { TableProps } from '@react-types/table'
+import { TableRow } from './TableRow'
+import { TableRowGroup } from './TableRowGroup'
+import { TableSelectAllCell } from './TableSelectAllCell'
+import styles from './table.module.css'
+import { useRef } from 'react'
 
-const root = tv({
-  base: [
-    'w-full',
-    'text-sm',
-    'text-left',
-    'rtl:text-right',
-    'bg-surface',
-    'overflow-hidden'
-  ]
-})
-
-type Headers = Record<string, any>[]
-type Items = Record<string, any>[]
-interface InitialPaginationState {
-  page: number
-  pageSize: number
+interface TableComponentProps<T> extends AriaTableProps, TableProps<T> {
+  children: any
+  paginator?: React.ReactNode
+  style?: React.CSSProperties
+  selectionBehavior?: SelectionBehavior
 }
-interface TableProps extends ComponentProps<'table'> {
-  headers?: Headers
-  items?: Items
-  actions?: boolean
-  onItemEdit?: (item: any) => void
-  onItemDelete?: (item: any) => void
-  pageSizes?: number[]
-  initialPaginationState?: InitialPaginationState
-  children?: React.JSX.Element | React.JSX.Element[]
-}
-const Table = (props: TableProps) => {
-  const {
-    className,
-    headers,
-    items,
-    actions,
-    onItemEdit,
-    onItemDelete,
-    pageSizes,
-    initialPaginationState,
-    children,
-    ...rest
-  } = props
-  const [selectedPageSize, setSelectedPageSize] = useState<number>(
-    initialPaginationState?.pageSize ?? pageSizes?.[0] ?? 10
-  )
-  const [pageSizeOpen, setPageSizeOpen] = useState<boolean>(false)
-  const [currentPage, setCurrentPage] = useState<number>(
-    initialPaginationState?.page ?? 0
-  )
+const Table = <T extends object>(props: TableComponentProps<T>) => {
+  const { paginator, selectionMode, selectionBehavior } = props
+  const state = useTableState({
+    ...props,
+    showSelectionCheckboxes:
+      selectionMode === 'multiple' && selectionBehavior !== 'replace'
+  })
 
-  const thead = Children.map(children, (child) =>
-    child?.type?.displayName === 'Thead' ? child : null
-  )
-  const tbody = Children.map(children, (child) =>
-    child?.type?.displayName === 'Tbody' ? child : null
-  )
-  const tfoot = Children.map(children, (child) =>
-    child?.type?.displayName === 'Tfoot' ? child : null
-  )
-
-  const hasThead = thead ? thead.length > 0 : false
-  const hasToby = tbody ? tbody.length > 0 : false
-  const hasTfoot = tfoot ? tfoot.length > 0 : false
-
-  const paginatedGroups = pageSizes ? _.chunk(items, selectedPageSize) : [items]
+  const ref = useRef<HTMLTableElement | null>(null)
+  const { collection } = state
+  const { gridProps } = useTable(props, state, ref)
 
   return (
-    <div className="relative ">
-      <Elevation
-        style={
-          {
-            '--md-elevation-level': 4
-          } as React.CSSProperties
-        }
-      />
-      <table {...rest} className={root({ className })}>
-        {hasThead ? (
-          thead
-        ) : (
-          <Thead>
-            <Tr className="h-14">
-              {headers?.map((head) => <Th key={head.value}>{head.text}</Th>)}
-
-              {actions && <Th>Actions</Th>}
-            </Tr>
-          </Thead>
-        )}
-
-        {hasToby ? (
-          tbody
-        ) : (
-          <Tbody>
-            {paginatedGroups[currentPage]?.map((item, index) => (
-              <Tr
-                key={index}
-                className="h-[52px] bg-surface border-t border-outline-variant hover:bg-inverse-surface/10"
-              >
-                {headers?.map(({ value }) => (
-                  <Td key={value}>
-                    <p className="font-normal">{item[value]}</p>
-                  </Td>
-                ))}
-                {actions && (
-                  <Td>
-                    <IconButton
-                      color="error"
-                      onClick={() => onItemDelete?.(item)}
-                    >
-                      <Icon>delete</Icon>
-                    </IconButton>
-                    <IconButton
-                      color="primary"
-                      onClick={() => onItemEdit?.(item)}
-                    >
-                      <Icon>edit</Icon>
-                    </IconButton>
-                  </Td>
-                )}
-              </Tr>
-            ))}
-          </Tbody>
-        )}
-        {hasTfoot ? tfoot : <></>}
+    <>
+      <table {...gridProps} ref={ref} className={styles['table']}>
+        <TableRowGroup type="thead">
+          {collection.headerRows.map((headerRow) => (
+            <TableHeaderRow key={headerRow.key} item={headerRow} state={state}>
+              {[...headerRow.childNodes].map((column) =>
+                column.props.isSelectionCell ? (
+                  <TableSelectAllCell
+                    key={column.key}
+                    column={column}
+                    state={state}
+                  />
+                ) : (
+                  <TableColumnHeader
+                    key={column.key}
+                    column={column}
+                    state={state}
+                  />
+                )
+              )}
+            </TableHeaderRow>
+          ))}
+        </TableRowGroup>
+        <TableRowGroup type="tbody">
+          {[...collection.body.childNodes].map((row) => (
+            <TableRow node={row} key={row.key} state={state}>
+              {[...row.childNodes].map((cell) =>
+                cell.props.isSelectionCell ? (
+                  <TableCheckboxCell key={cell.key} node={cell} state={state} />
+                ) : (
+                  <TableCell key={cell.key} node={cell} state={state} />
+                )
+              )}
+            </TableRow>
+          ))}
+        </TableRowGroup>
       </table>
-      {pageSizes ? (
-        <div className="w-full flex flex-row px-3 py-1 bg-surface border-t border-outline-variant">
-          <div className="ml-auto flex flex-row items-center">
-            <p className="text-sm mr-2">Rows per page:</p>
-            <div className="relative w-fit">
-              <Button
-                variant="text"
-                className="mr-2"
-                color="secondary"
-                onClick={() => setPageSizeOpen(!pageSizeOpen)}
-              >
-                <div className="flex flex-row items-center">
-                  <p className="text-md mr-2">{selectedPageSize}</p>
-                  <Icon>arrow_drop_down</Icon>
-                </div>
-              </Button>
-              <Menu
-                open={pageSizeOpen}
-                setOpen={setPageSizeOpen}
-                className="absolute"
-              >
-                {pageSizes?.map((size) => (
-                  <MenuItem
-                    key={size}
-                    onClick={(e) => {
-                      setSelectedPageSize(size)
-                      setCurrentPage(0)
-                    }}
-                  >
-                    {size}
-                  </MenuItem>
-                ))}
-              </Menu>
-            </div>
-            <span className="text-sm mr-4">
-              {currentPage * selectedPageSize + 1}-
-              {Math.min(
-                (currentPage + 1) * selectedPageSize,
-                items?.length ?? 0
-              )}{' '}
-              of {items?.length ?? 0}
-            </span>
-            <IconButton
-              className="mr-1"
-              disabled={currentPage === 0}
-              onClick={() => setCurrentPage(currentPage - 1)}
-            >
-              <Icon>chevron_left</Icon>
-            </IconButton>
-            <IconButton
-              disabled={currentPage >= paginatedGroups.length - 1}
-              onClick={() => setCurrentPage(currentPage + 1)}
-            >
-              <Icon>chevron_right</Icon>
-            </IconButton>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
-    </div>
+      {paginator}
+    </>
   )
 }
 
 Table.displayName = 'Actify.Table'
-
-export default Object.assign(Table, {
-  Thead,
-  Tbody,
-  Tfoot,
-  Th,
-  Tr,
-  Td
-})
+export { Table }

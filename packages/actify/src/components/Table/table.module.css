@@ -1,0 +1,40 @@
+.table {
+  width: 100%;
+  position: relative;
+  border-collapse: collapse;
+  background-color: rgb(var(--md-sys-color-surface));
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
+    rgba(0, 0, 0, 0.14) 0px 8px 10px 1px,
+    rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
+}
+.th:focus-visible,
+.tr:focus-visible,
+.td:focus-visible {
+  outline: none;
+}
+
+.th {
+  position: relative;
+  padding: 0 1rem;
+}
+.tr {
+  position: relative;
+  height: 52px;
+  border-style: solid;
+  border-top-width: 1px;
+  border-color: rgb(
+    var(--md-sys-color-outline-variant) / var(--tw-border-opacity)
+  );
+}
+.tr.hovered {
+  background-color: rgb(var(--md-sys-color-inverse-surface) / 0.1);
+}
+.tr.selected {
+  color: rgb(var(--md-sys-color-on-secondary-container));
+  background-color: rgb(var(--md-sys-color-secondary-container));
+}
+.td {
+  position: relative;
+  padding: 0 1rem;
+}
