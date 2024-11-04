@@ -5,12 +5,11 @@ import styles from './focusring.module.css'
 type FocusRingProps = {
   style?: CSSProperties
   className?: string
-  as?: keyof HTMLElementTagNameMap
+  as?: keyof HTMLElementTagNameMap | React.ElementType
 }
 
-const FocusRing = ({ as = 'span', style, className }: FocusRingProps) => {
-  const Tag = as
-  return <Tag style={style} className={clsx(styles['focus-ring'], className)} />
+const FocusRing = ({ as: As = 'span', style, className }: FocusRingProps) => {
+  return <As style={style} className={clsx(styles['focus-ring'], className)} />
 }
 
 FocusRing.displayName = 'Actify.FocusRing'
