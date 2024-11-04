@@ -1,7 +1,6 @@
 import {
   Cell,
   Column,
-  Pagination,
   Row,
   Table,
   TableBody,
@@ -65,13 +64,7 @@ export default () => {
         sortDescriptor={list.sortDescriptor}
         aria-label="Example static collection table"
         style={{ height: '210px', maxWidth: '400px' }}
-        paginator={
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            onPageChange={handlePageChange}
-          />
-        }
+        paginator={{ pageSizes: [5, 10, 20] }}
       >
         <TableHeader>
           <Column key="name" allowsSorting>
