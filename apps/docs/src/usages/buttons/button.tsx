@@ -17,7 +17,7 @@ export default () => {
         <Button variant="elevated" color="error">
           error
         </Button>
-        <Button variant="elevated" disabled>
+        <Button variant="elevated" isDisabled>
           disabled
         </Button>
       </div>
@@ -33,7 +33,7 @@ export default () => {
         <Button variant="filled" color="error">
           error
         </Button>
-        <Button variant="filled" disabled>
+        <Button variant="filled" isDisabled>
           disabled
         </Button>
       </div>
@@ -49,7 +49,7 @@ export default () => {
         <Button variant="tonal" color="error">
           error
         </Button>
-        <Button variant="tonal" disabled>
+        <Button variant="tonal" isDisabled>
           disabled
         </Button>
       </div>
@@ -65,7 +65,7 @@ export default () => {
         <Button variant="outlined" color="error">
           error
         </Button>
-        <Button variant="outlined" disabled>
+        <Button variant="outlined" isDisabled>
           disabled
         </Button>
       </div>
@@ -81,7 +81,7 @@ export default () => {
         <Button variant="text" color="error">
           error
         </Button>
-        <Button variant="text" disabled>
+        <Button variant="text" isDisabled>
           disabled
         </Button>
       </div>

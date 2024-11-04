@@ -24,7 +24,7 @@ type ButtonProps = {
   popoverTargetAction?: 'show' | 'toggle' | 'hide'
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
   variant?: 'elevated' | 'filled' | 'tonal' | 'outlined' | 'text'
-} & React.ComponentProps<'button'> &
+} & Omit<React.ComponentProps<'button'>, 'disabled'> &
   AriaButtonProps
 
 const Button = (props: ButtonProps) => {
@@ -36,7 +36,7 @@ const Button = (props: ButtonProps) => {
     ripple = true,
     color = 'primary',
     variant = 'elevated',
-    disabled = false,
+    isDisabled = false,
     className,
     children
   } = props
@@ -50,7 +50,7 @@ const Button = (props: ButtonProps) => {
     buttons['btn'],
     colors[color],
     variants[variant],
-    disabled && buttons['disabled'],
+    isDisabled && buttons['disabled'],
     className
   )
 
@@ -58,13 +58,12 @@ const Button = (props: ButtonProps) => {
 
   return (
     <div role="presentation" style={style} className={classes}>
-      <Elevation disabled={disabled} />
+      <Elevation disabled={isDisabled} />
       {variant == 'outlined' && <div className={buttons['outline']} />}
       <span className={buttons['background']} />
-      {ripple && <Ripple id={buttonId} disabled={disabled} />}
+      {ripple && <Ripple id={buttonId} disabled={isDisabled} />}
       <button
         id={buttonId}
-        disabled={disabled}
         ref={ref || buttonRef}
         className={buttons['button']}
         {...mergeProps(asLink ? null : buttonProps, focusProps)}

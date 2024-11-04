@@ -37,7 +37,7 @@ type FabProps = {
   label?: string
   icon?: React.ReactNode
   variant?: 'surface' | 'primary' | 'secondary' | 'tertiary'
-} & React.ComponentProps<'button'> &
+} & Omit<React.ComponentProps<'button'>, 'disabled'> &
   VariantProps<typeof root> &
   AriaButtonProps
 
@@ -46,9 +46,8 @@ const Fab = (props: FabProps) => {
     id,
     icon,
     label,
-    type = 'button',
     size = 'medium',
-    disabled = false,
+    isDisabled = false,
     className,
     children
   } = props
@@ -61,9 +60,7 @@ const Fab = (props: FabProps) => {
   return (
     <button
       id={fabId}
-      type={type}
       ref={fabRef}
-      disabled={disabled}
       className={root({ size, className })}
       {...mergeProps(buttonProps, focusProps)}
     >
@@ -72,7 +69,7 @@ const Fab = (props: FabProps) => {
       {label}
       <Elevation className="[--md-elevation-level:3]" />
       {isFocusVisible && <FocusRing />}
-      <Ripple id={fabId} disabled={disabled} />
+      <Ripple id={fabId} disabled={isDisabled} />
     </button>
   )
 }

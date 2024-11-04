@@ -11,6 +11,7 @@ import { VariantProps, tv } from 'tailwind-variants'
 
 import { FocusRing } from './../FocusRing'
 import { Ripple } from './../Ripple'
+import clsx from 'clsx'
 
 const root = tv({
   base: [
@@ -39,21 +40,13 @@ const root = tv({
 
 type IconButtonProps = {
   ripple?: boolean
-  disabled?: boolean
   type?: 'submit' | 'reset' | 'button'
   variant?: VariantProps<typeof root>['variant']
-} & React.ComponentProps<'button'> &
+} & Omit<React.ComponentProps<'button'>, 'disabled'> &
   AriaButtonProps
 
 const IconButton = (props: IconButtonProps) => {
-  const {
-    id,
-    ref,
-    disabled,
-    children,
-    className,
-    ripple = !disabled && true
-  } = props
+  const { id, ref, ripple, children, className, isDisabled } = props
 
   const buttonRef = React.useRef(null)
   const { buttonProps } = useButton(props, buttonRef)
@@ -63,15 +56,14 @@ const IconButton = (props: IconButtonProps) => {
 
   return (
     <button
-      ref={ref || buttonRef}
       id={iconButtonId}
-      disabled={disabled}
+      ref={ref || buttonRef}
       {...mergeProps(buttonProps, focusProps)}
-      className={(disabled ? 'text-outline ' : '') + root({ className })}
+      className={clsx(isDisabled && 'text-outline', root({ className }))}
     >
       {/* FocusRing */}
       {isFocusVisible && <FocusRing />}
-      {ripple && <Ripple id={iconButtonId} disabled={disabled} />}
+      {ripple && <Ripple id={iconButtonId} disabled={isDisabled} />}
       {children}
       <span className="absolute size-[max(48px,100%)]" />
     </button>
