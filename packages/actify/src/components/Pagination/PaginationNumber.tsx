@@ -16,7 +16,7 @@ const PaginationNumber = ({
   return isActive || position === 'middle' ? (
     <Button variant={isActive ? 'filled' : 'tonal'}>{page}</Button>
   ) : (
-    <Button variant="tonal" onClick={() => onPageChange?.(page as number)}>
+    <Button variant="tonal" onPress={() => onPageChange?.(page as number)}>
       {page}
     </Button>
   )
