@@ -23,14 +23,21 @@ const OpenInCodeSandbox = ({ title, code }: OpenInCodeSandboxProps) => {
             },
             dependencies: {
               actify: `^${packageInfo.version}`,
-              react: '19.0.0-rc-f994737d14-20240522',
-              'react-dom': '19.0.0-rc-f994737d14-20240522'
+              react: 'rc',
+              'react-dom': 'rc'
             },
             devDependencies: {
-              '@vitejs/plugin-react': '^1.3.0',
-              autoprefixer: '^10.4.5',
-              postcss: '^8.4.13',
+              '@eslint/js': '^9.13.0',
+              '@vitejs/plugin-react': '^4.3.3',
+              autoprefixer: '^10.4.20',
+              eslint: '^9.13.0',
+              'eslint-plugin-react-hooks': '^5.0.0',
+              'eslint-plugin-react-refresh': '^0.4.14',
+              globals: '^15.11.0',
+              postcss: '^8.4.47',
               tailwindcss: 'latest',
+              typescript: '~5.6.2',
+              'typescript-eslint': '^8.11.0',
               vite: '^4.5.1'
             }
           },
@@ -39,137 +46,229 @@ const OpenInCodeSandbox = ({ title, code }: OpenInCodeSandboxProps) => {
         ),
         isBinary: false
       },
-      'App.jsx': {
+      'src/App.tsx': {
         content: code,
         isBinary: false
       },
-      'main.jsx': {
+      'src/main.tsx': {
         content: `import './main.css'
-import ReactDOM from 'react-dom/client'
-import { StrictMode } from 'react'
-import App from './App'
+import App from "./App.tsx";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
   </StrictMode>
-)`,
+);`,
         isBinary: false
       },
-      'main.css': {
+      'src/main.css': {
         content: `@tailwind base;
 @tailwind components;
 @tailwind utilities;
 :root {
-  --md-sys-color-background: #fff8f3;
-  --md-sys-color-on-background: #201b12;
-  --md-sys-color-surface: #fff8f3;
-  --md-sys-color-surface-dim: #e4d8cb;
-  --md-sys-color-surface-bright: #fff8f3;
-  --md-sys-color-surface-container-lowest: #ffffff;
-  --md-sys-color-surface-container-low: #fef2e4;
-  --md-sys-color-surface-container: #f8ecde;
-  --md-sys-color-surface-container-high: #f3e6d8;
-  --md-sys-color-surface-container-highest: #ede1d3;
-  --md-sys-color-on-surface: #201b12;
-  --md-sys-color-surface-variant: #f2e0c9;
-  --md-sys-color-on-surface-variant: #504534;
-  --md-sys-color-inverse-surface: #362f26;
-  --md-sys-color-inverse-on-surface: #fbefe1;
-  --md-sys-color-outline: #837562;
-  --md-sys-color-outline-variant: #d5c4ae;
-  --md-sys-color-shadow: #000000;
-  --md-sys-color-scrim: #000000;
-  --md-sys-color-surface-tint: #7f5700;
-  --md-sys-color-primary: #7f5700;
-  --md-sys-color-on-primary: #ffffff;
-  --md-sys-color-primary-container: #f7b337;
-  --md-sys-color-on-primary-container: #442d00;
-  --md-sys-color-inverse-primary: #ffba3e;
-  --md-sys-color-secondary: #765a2b;
-  --md-sys-color-on-secondary: #ffffff;
-  --md-sys-color-secondary-container: #ffdca9;
-  --md-sys-color-on-secondary-container: #5c4316;
-  --md-sys-color-tertiary: #566500;
-  --md-sys-color-on-tertiary: #ffffff;
-  --md-sys-color-tertiary-container: #b6ca54;
-  --md-sys-color-on-tertiary-container: #2d3600;
-  --md-sys-color-error: #ba1a1a;
-  --md-sys-color-on-error: #ffffff;
-  --md-sys-color-error-container: #ffdad6;
-  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-background: 255 248 243;
+  --md-sys-color-on-background: 32 27 18;
+  --md-sys-color-surface: 255 248 243;
+  --md-sys-color-surface-dim: 228 216 203;
+  --md-sys-color-surface-bright: 255 248 243;
+  --md-sys-color-surface-container-lowest: 255 255 255;
+  --md-sys-color-surface-container-low: 254 242 228;
+  --md-sys-color-surface-container: 248 236 222;
+  --md-sys-color-surface-container-high: 243 230 216;
+  --md-sys-color-surface-container-highest: 237 225 211;
+  --md-sys-color-on-surface: 32 27 18;
+  --md-sys-color-surface-variant: 242 225 201;
+  --md-sys-color-on-surface-variant: 80 69 52;
+  --md-sys-color-inverse-surface: 54 47 38;
+  --md-sys-color-inverse-on-surface: 251 239 225;
+  --md-sys-color-outline: 131 117 98;
+  --md-sys-color-outline-variant: 213 196 174;
+  --md-sys-color-shadow: 0 0 0;
+  --md-sys-color-scrim: 0 0 0;
+  --md-sys-color-surface-tint: 127 87 0;
+  --md-sys-color-primary: 127 87 0;
+  --md-sys-color-on-primary: 255 255 255;
+  --md-sys-color-primary-container: 247 179 55;
+  --md-sys-color-on-primary-container: 68 45 0;
+  --md-sys-color-inverse-primary: 255 186 62;
+  --md-sys-color-secondary: 118 90 43;
+  --md-sys-color-on-secondary: 255 255 255;
+  --md-sys-color-secondary-container: 255 220 169;
+  --md-sys-color-on-secondary-container: 92 67 22;
+  --md-sys-color-tertiary: 86 101 0;
+  --md-sys-color-on-tertiary: 255 255 255;
+  --md-sys-color-tertiary-container: 182 202 84;
+  --md-sys-color-on-tertiary-container: 45 54 0;
+  --md-sys-color-error: 186 26 26;
+  --md-sys-color-on-error: 255 255 255;
+  --md-sys-color-error-container: 255 218 214;
+  --md-sys-color-on-error-container: 65 0 2;
 }`,
         isBinary: false
       },
-      'postcss.config.js': {
-        content: `module.exports = {
+      'postcss.config.mts': {
+        content: `export default {
   plugins: {
     tailwindcss: {},
-    autoprefixer: {}
-  }
+    autoprefixer: {},
+  },
 }`,
         isBinary: false
       },
-      'tailwind.config.js': {
-        content: `/** @type {import('tailwindcss').Config} */
-  module.exports = {
-  content: ['*.{jsx,tsx}', './node_modules/actify/dist/**/*.{js,mjs,jsx}'],
+      'tailwind.config.ts': {
+        content: `import { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "src/**/*.tsx",
+  ],
   theme: {
     extend: {
       colors: {
-        background: 'var(--md-sys-color-background,#fff8f3)',
-        'on-background': 'var(--md-sys-color-on-background,#201b12)',
-        surface: 'var(--md-sys-color-surface,#fff8f3)',
-        'surface-dim': 'var(--md-sys-color-surface-dim,#e4d8cb)',
-        'surface-bright': 'var(--md-sys-color-surface-bright,#fff8f3)',
-        'surface-container-lowest':
-          'var(--md-sys-color-surface-container-lowest,#ffffff)',
-        'surface-container-low': 'var(--md-sys-color-surface-container-low,#fef2e4)',
-        'surface-container': 'var(--md-sys-color-surface-container,#f8ecde)',
-        'surface-container-high': 'var(--md-sys-color-surface-container-high,#f3e6d8)',
-        'surface-container-highest':
-          'var(--md-sys-color-surface-container-highest,#ede1d3)',
-        'on-surface': 'var(--md-sys-color-on-surface,#201b12)',
-        'surface-variant': 'var(--md-sys-color-surface-variant,#f2e0c9)',
-        'on-surface-variant': 'var(--md-sys-color-on-surface-variant,#504534)',
-        'inverse-surface': 'var(--md-sys-color-inverse-surface,#362f26)',
-        'inverse-on-surface': 'var(--md-sys-color-inverse-on-surface,#fbefe1)',
-        outline: 'var(--md-sys-color-outline,#837562)',
-        'outline-variant': 'var(--md-sys-color-outline-variant,#d5c4ae)',
-        shadow: 'var(--md-sys-color-shadow,#000000)',
-        scrim: 'var(--md-sys-color-scrim,#000000)',
-        'surface-tint': 'var(--md-sys-color-surface-tint,#7f5700)',
-        primary: 'var(--md-sys-color-primary,#7f5700)',
-        'on-primary': 'var(--md-sys-color-on-primary,#ffffff)',
-        'primary-container': 'var(--md-sys-color-primary-container,#f7b337)',
-        'on-primary-container': 'var(--md-sys-color-on-primary-container,#442d00)',
-        'inverse-primary': 'var(--md-sys-color-inverse-primary,#ffba3e)',
-        secondary: 'var(--md-sys-color-secondary,#765a2b)',
-        'on-secondary': 'var(--md-sys-color-on-secondary,#ffffff)',
-        'secondary-container': 'var(--md-sys-color-secondary-container,#ffdca9)',
-        'on-secondary-container': 'var(--md-sys-color-on-secondary-container,#5c4316)',
-        tertiary: 'var(--md-sys-color-tertiary,#566500)',
-        'on-tertiary': 'var(--md-sys-color-on-tertiary,#ffffff)',
-        'tertiary-container': 'var(--md-sys-color-tertiary-container,#b6ca54)',
-        'on-tertiary-container': 'var(--md-sys-color-on-tertiary-container,#2d3600)',
-        error: 'var(--md-sys-color-error,#ba1a1a)',
-        'on-error': 'var(--md-sys-color-on-error,#ffffff)',
-        'error-container': 'var(--md-sys-color-error-container,#ffdad6)',
-        'on-error-container': 'var(--md-sys-color-on-error-container,#410002)'
-      }
-    }
+        background: "rgb(var(--md-sys-color-background) / <alpha-value>)",
+        "on-background":
+          "rgb(var(--md-sys-color-on-background) / <alpha-value>)",
+        surface: "rgb(var(--md-sys-color-surface) / <alpha-value>)",
+        "surface-dim": "rgb(var(--md-sys-color-surface-dim) / <alpha-value>)",
+        "surface-bright":
+          "rgb(var(--md-sys-color-surface-bright) / <alpha-value>)",
+        "surface-container-lowest":
+          "rgb(var(--md-sys-color-surface-container-lowest) / <alpha-value>)",
+        "surface-container-low":
+          "rgb(var(--md-sys-color-surface-container-low) / <alpha-value>)",
+        "surface-container":
+          "rgb(var(--md-sys-color-surface-container) / <alpha-value>)",
+        "surface-container-high":
+          "rgb(var(--md-sys-color-surface-container-high) / <alpha-value>)",
+        "surface-container-highest":
+          "rgb(var(--md-sys-color-surface-container-highest) / <alpha-value>)",
+        "on-surface": "rgb(var(--md-sys-color-on-surface) / <alpha-value>)",
+        "surface-variant":
+          "rgb(var(--md-sys-color-surface-variant) / <alpha-value>)",
+        "on-surface-variant":
+          "rgb(var(--md-sys-color-on-surface-variant) / <alpha-value>)",
+        "inverse-surface":
+          "rgb(var(--md-sys-color-inverse-surface) / <alpha-value>)",
+        "inverse-on-surface":
+          "rgb(var(--md-sys-color-inverse-on-surface) / <alpha-value>)",
+        outline: "rgb(var(--md-sys-color-outline) / <alpha-value>)",
+        "outline-variant":
+          "rgb(var(--md-sys-color-outline-variant) / <alpha-value>)",
+        shadow: "rgb(var(--md-sys-color-shadow) / <alpha-value>)",
+        scrim: "rgb(var(--md-sys-color-scrim) / <alpha-value>)",
+        "surface-tint": "rgb(var(--md-sys-color-surface-tint) / <alpha-value>)",
+        primary: "rgb(var(--md-sys-color-primary) / <alpha-value>)",
+        "on-primary": "rgb(var(--md-sys-color-on-primary) / <alpha-value>)",
+        "primary-container":
+          "rgb(var(--md-sys-color-primary-container) / <alpha-value>)",
+        "on-primary-container":
+          "rgb(var(--md-sys-color-on-primary-container) / <alpha-value>)",
+        "inverse-primary":
+          "rgb(var(--md-sys-color-inverse-primary) / <alpha-value>)",
+        secondary: "rgb(var(--md-sys-color-secondary) / <alpha-value>)",
+        "on-secondary": "rgb(var(--md-sys-color-on-secondary) / <alpha-value>)",
+        "secondary-container":
+          "rgb(var(--md-sys-color-secondary-container) / <alpha-value>)",
+        "on-secondary-container":
+          "rgb(var(--md-sys-color-on-secondary-container) / <alpha-value>)",
+        tertiary: "rgb(var(--md-sys-color-tertiary) / <alpha-value>)",
+        "on-tertiary": "rgb(var(--md-sys-color-on-tertiary) / <alpha-value>)",
+        "tertiary-container":
+          "rgb(var(--md-sys-color-tertiary-container) / <alpha-value>)",
+        "on-tertiary-container":
+          "rgb(var(--md-sys-color-on-tertiary-container) / <alpha-value>)",
+        error: "rgb(var(--md-sys-color-error) / <alpha-value>)",
+        "on-error": "rgb(var(--md-sys-color-on-error) / <alpha-value>)",
+        "error-container":
+          "rgb(var(--md-sys-color-error-container) / <alpha-value>)",
+        "on-error-container":
+          "rgb(var(--md-sys-color-on-error-container) / <alpha-value>)",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
+};
+
+export default config;`,
+        isBinary: false
+      },
+      'vite.config.ts': {
+        content: `import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+`,
+        isBinary: false
+      },
+      'tsconfig.app.json': {
+        content: `{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src"]
 }`,
         isBinary: false
       },
-      'vite.config.js': {
-        content: `import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()]
-})`,
+      'tsconfig.json': {
+        content: `{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}`,
+        isBinary: false
+      },
+      'tsconfig.node.json': {
+        content: `{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
+}`,
         isBinary: false
       },
       'index.html': {
@@ -182,7 +281,7 @@ export default defineConfig({
   </head>
   <body class="p-5">
     <div id="root"></div>
-    <script type="module" src="main.jsx"></script>
+    <script type="module" src="src/main.tsx"></script>
   </body>
 </html>`,
         isBinary: false
