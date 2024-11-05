@@ -56,49 +56,47 @@ const TextField = (props: TextFieldProps) => {
   }
 
   return (
-    <div>
-      <div className={styles[variant]}>
-        <Tag
-          {...{
-            label,
-            leadingIcon,
-            trailingIcon,
-            focused: isFocused,
-            count: inputProps.value?.toString().length,
-            populated: inputProps.value ? true : false
-          }}
-        >
-          {prefixText && <span className={styles['prefix']}>{prefixText}</span>}
-          {type == 'textarea' ? (
-            <textarea
-              {...mergeProps(focusProps, inputProps as TextFieldAria)}
-              ref={ref}
-            />
-          ) : (
-            <input
-              {...mergeProps(focusProps, inputProps as TextFieldAria)}
-              style={{
-                overflowX: 'hidden',
-                textAlign: 'inherit',
-                caretColor: 'var(--_caret-color)'
-              }}
-              ref={ref}
-            />
-          )}
-          {suffixText && <span className={styles['suffix']}>{suffixText}</span>}
-        </Tag>
-        {props.description && (
-          <div {...descriptionProps} style={{ fontSize: 12 }}>
-            {props.description}
-          </div>
+    <label className={styles[variant]}>
+      <Tag
+        {...{
+          label,
+          leadingIcon,
+          trailingIcon,
+          focused: isFocused,
+          count: inputProps.value?.toString().length,
+          populated: inputProps.value ? true : false
+        }}
+      >
+        {prefixText && <span className={styles['prefix']}>{prefixText}</span>}
+        {type == 'textarea' ? (
+          <textarea
+            ref={ref}
+            {...mergeProps(focusProps, inputProps as TextFieldAria)}
+          />
+        ) : (
+          <input
+            ref={ref}
+            style={{
+              overflowX: 'hidden',
+              textAlign: 'inherit',
+              caretColor: 'var(--_caret-color)'
+            }}
+            {...mergeProps(focusProps, inputProps as TextFieldAria)}
+          />
         )}
-        {isInvalid && (
-          <div {...errorMessageProps} style={{ color: 'red', fontSize: 12 }}>
-            {validationErrors.join(' ')}
-          </div>
-        )}
-      </div>
-    </div>
+        {suffixText && <span className={styles['suffix']}>{suffixText}</span>}
+      </Tag>
+      {props.description && (
+        <div {...descriptionProps} style={{ fontSize: 12 }}>
+          {props.description}
+        </div>
+      )}
+      {isInvalid && (
+        <div {...errorMessageProps} style={{ color: 'red', fontSize: 12 }}>
+          {validationErrors.join(' ')}
+        </div>
+      )}
+    </label>
   )
 }
 
