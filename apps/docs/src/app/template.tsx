@@ -1,6 +1,7 @@
 'use client'
 
 import App from '@/components/App'
+import Console from '@/components/Console'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { ThemeProvider } from 'next-themes'
@@ -11,8 +12,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
     <ThemeProvider storageKey="color-mode">
       <App>
         <Header />
-        <>{children}</>
+        {children}
         <Footer />
+        <Console />
         <Toaster richColors position="top-center" />
       </App>
     </ThemeProvider>
