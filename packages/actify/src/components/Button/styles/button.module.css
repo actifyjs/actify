@@ -103,6 +103,7 @@
   overflow: hidden;
   display: inherit;
   gap: inherit;
+  z-index: 1;
   align-items: inherit;
 }
 .disabled .label {

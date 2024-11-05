@@ -2,6 +2,7 @@
 
 import {
   AriaButtonProps,
+  AriaLinkOptions,
   mergeProps,
   useButton,
   useFocusRing
@@ -41,39 +42,43 @@ const Button = (props: ButtonProps) => {
     children
   } = props
 
-  const buttonRef = React.useRef<HTMLButtonElement>(null)
-  const { buttonProps } = useButton(props, buttonRef)
+  const buttonRef = ref || React.useRef<HTMLButtonElement>(null)
+  const { buttonProps } = useButton(
+    props,
+    buttonRef as React.RefObject<HTMLButtonElement>
+  )
 
   const buttonId = id || `actify-button${useId()}`
-
-  const classes = clsx(
-    buttons['btn'],
-    colors[color],
-    variants[variant],
-    isDisabled && buttons['disabled'],
-    className
-  )
 
   const { focusProps, isFocusVisible } = useFocusRing()
 
   return (
-    <div role="presentation" style={style} className={classes}>
-      <Elevation disabled={isDisabled} />
-      {variant == 'outlined' && <div className={buttons['outline']} />}
-      <span className={buttons['background']} />
-      {ripple && <Ripple id={buttonId} disabled={isDisabled} />}
-      <button
-        id={buttonId}
-        ref={ref || buttonRef}
-        className={buttons['button']}
-        {...mergeProps(asLink ? null : buttonProps, focusProps)}
-      >
+    <button
+      id={buttonId}
+      style={style}
+      className={clsx(
+        buttons['btn'],
+        colors[color],
+        variants[variant],
+        isDisabled && buttons['disabled'],
+        className
+      )}
+      ref={buttonRef}
+      {...mergeProps(asLink ? null : buttonProps, focusProps)}
+    >
+      <div className={buttons['button']}>
+        <span className={buttons['background']} />
         <span className={buttons['touch']} />
         <span className={buttons['label']}>{children}</span>
+        {variant == 'outlined' && <div className={buttons['outline']} />}
+        {/* Elevation */}
+        <Elevation disabled={isDisabled} />
         {/* FocusRing */}
         {isFocusVisible && <FocusRing />}
-      </button>
-    </div>
+        {/* Ripple */}
+        {ripple && <Ripple id={buttonId} disabled={isDisabled} />}
+      </div>
+    </button>
   )
 }
 

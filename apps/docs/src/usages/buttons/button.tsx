@@ -5,7 +5,12 @@ export default () => {
     <div className="flex flex-col gap-4 *:text-xl">
       <p>Elevated Button</p>
       <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(160px,1fr))]">
-        <Button variant="elevated" color="primary">
+        <Button
+          variant="elevated"
+          color="primary"
+          asLink
+          href="https://baidu.com"
+        >
           primary
         </Button>
         <Button variant="elevated" color="secondary">

@@ -44,6 +44,7 @@ type FabProps = {
 const Fab = (props: FabProps) => {
   const {
     id,
+    ref,
     icon,
     label,
     size = 'medium',
@@ -52,8 +53,11 @@ const Fab = (props: FabProps) => {
     children
   } = props
 
-  const fabRef = React.useRef(null)
-  const { buttonProps } = useButton(props, fabRef)
+  const fabRef = ref || React.useRef(null)
+  const { buttonProps } = useButton(
+    props,
+    fabRef as React.RefObject<HTMLButtonElement>
+  )
   const fabId = id || `actify-fab${useId()}`
   const { focusProps, isFocusVisible } = useFocusRing()
 

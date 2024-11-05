@@ -48,16 +48,19 @@ type IconButtonProps = {
 const IconButton = (props: IconButtonProps) => {
   const { id, ref, ripple, children, className, isDisabled } = props
 
-  const buttonRef = React.useRef(null)
-  const { buttonProps } = useButton(props, buttonRef)
+  const buttonRef = ref || React.useRef(null)
+  const { buttonProps } = useButton(
+    props,
+    buttonRef as React.RefObject<HTMLButtonElement>
+  )
   const iconButtonId = id || `actify-icon-button${useId()}`
 
   const { focusProps, isFocusVisible } = useFocusRing()
 
   return (
     <button
+      ref={buttonRef}
       id={iconButtonId}
-      ref={ref || buttonRef}
       {...mergeProps(buttonProps, focusProps)}
       className={clsx(isDisabled && 'text-outline', root({ className }))}
     >
