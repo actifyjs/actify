@@ -38,19 +38,14 @@ const Select = <T extends object>(props: SelectProps<T>) => {
     Tag = OutlinedField
   }
 
-  React.useLayoutEffect(() => {
-    const width = ref?.current?.getBoundingClientRect().width
-    setReferenceWidth(width)
-  }, [])
-
   React.useEffect(() => {
-    const updateWidth = () => {
+    const resizeObserver = new ResizeObserver(() => {
       const width = ref?.current?.getBoundingClientRect().width
       setReferenceWidth(width)
-    }
-    window.addEventListener('resize', updateWidth)
+    })
+    resizeObserver.observe(ref?.current as Element)
     return () => {
-      window.removeEventListener('resize', updateWidth)
+      resizeObserver.disconnect()
     }
   }, [])
 
