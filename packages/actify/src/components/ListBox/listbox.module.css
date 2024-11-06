@@ -1,4 +1,7 @@
 .items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: block;
   padding-block: 8px;
   list-style-type: none;
@@ -9,6 +12,7 @@
     --md-menu-container-color,
     var(--md-sys-color-surface-container, #f3edf7)
   );
+  width: var(--reference-width);
   height: inherit;
   max-height: inherit;
   overflow: auto;

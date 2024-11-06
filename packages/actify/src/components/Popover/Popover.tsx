@@ -11,11 +11,18 @@ import type { OverlayTriggerState } from 'react-stately'
 import React from 'react'
 
 interface PopoverProps extends Omit<AriaPopoverProps, 'popoverRef'> {
+  referenceWidth?: number
   children: React.ReactNode
   state: OverlayTriggerState
 }
 
-const Popover = ({ children, state, offset = 8, ...props }: PopoverProps) => {
+const Popover = ({
+  children,
+  state,
+  offset = 8,
+  referenceWidth,
+  ...props
+}: PopoverProps) => {
   const popoverRef = React.useRef(null)
   const { popoverProps, underlayProps, arrowProps, placement } = usePopover(
     {
@@ -25,6 +32,11 @@ const Popover = ({ children, state, offset = 8, ...props }: PopoverProps) => {
     },
     state
   )
+
+  popoverProps.style = {
+    ...popoverProps.style,
+    '--reference-width': referenceWidth + 'px'
+  } as React.CSSProperties
 
   return (
     <Overlay>
