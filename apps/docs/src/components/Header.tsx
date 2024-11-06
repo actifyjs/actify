@@ -20,6 +20,7 @@ const Header = () => {
           className="hidden md:flex items-center text-primary"
         >
           <Button
+            asLink
             variant="text"
             className="self-center whitespace-nowrap text-2xl font-semibold"
           >
