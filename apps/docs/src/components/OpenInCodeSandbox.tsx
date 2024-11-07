@@ -108,7 +108,7 @@ createRoot(document.getElementById("root")!).render(
 }`,
         isBinary: false
       },
-      'postcss.config.mts': {
+      'postcss.config.mjs': {
         content: `export default {
   plugins: {
     tailwindcss: {},

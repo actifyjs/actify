@@ -134,7 +134,7 @@ createRoot(document.getElementById("root")!).render(
   --md-sys-color-error-container: 255 218 214;
   --md-sys-color-on-error-container: 65 0 2;
 }`,
-      'postcss.config.mts': `export default {
+      'postcss.config.mjs': `export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
