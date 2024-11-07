@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CrouselItem = (props: React.ComponentProps<'div'>) => {
+const CarouselItem = (props: React.ComponentProps<'div'>) => {
   const { className, children, ...rest } = props
 
   return (
@@ -10,4 +10,4 @@ const CrouselItem = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export { CrouselItem }
+export { CarouselItem }

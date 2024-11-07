@@ -1,4 +1,9 @@
 .btn {
+  border: 0 solid #e5e7eb;
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+
   border-start-start-radius: var(--_container-shape-start-start);
   border-start-end-radius: var(--_container-shape-start-end);
   border-end-start-radius: var(--_container-shape-end-start);

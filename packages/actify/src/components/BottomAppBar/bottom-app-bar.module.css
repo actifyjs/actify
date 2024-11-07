@@ -1,0 +1,28 @@
+.root {
+  display: flex;
+  padding-left: 1rem /* 16px */;
+  padding-right: 1rem /* 16px */;
+  height: 5rem /* 80px */;
+  width: 100%;
+  position: relative;
+  align-items: center;
+  max-width: 20rem /* 320px */;
+  justify-content: center;
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--md-sys-color-primary) / var(--tw-bg-opacity));
+}
+.icons {
+  flex-grow: 1;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+}
+.fab {
+  margin-inline-end: 0.25rem /* 4px */;
+  min-width: 3rem /* 48px*/;
+  display: flex;
+  height: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}

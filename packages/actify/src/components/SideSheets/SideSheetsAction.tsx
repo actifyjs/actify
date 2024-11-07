@@ -1,9 +1,8 @@
-'use client'
-
 import React from 'react'
+import styles from './side-sheets.module.css'
 
-const Action = ({ children }: React.ComponentProps<'div'>) => {
-  return <div className="pt-6 pl-6">{children}</div>
+const SideSheetsAction = ({ children }: React.ComponentProps<'div'>) => {
+  return <div className={styles['action']}>{children}</div>
 }
 
-export { Action }
+export { SideSheetsAction }

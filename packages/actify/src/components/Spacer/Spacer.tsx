@@ -1,14 +1,9 @@
-'use client'
-
 import React from 'react'
-import { tv } from 'tailwind-variants'
 
-const root = tv({
-  base: 'flex-1'
-})
-
-const Spacer = ({ className }: React.ComponentProps<'div'>) => {
-  return <div className={root({ className })} />
+const Spacer = ({ style, className, ...rest }: React.ComponentProps<'div'>) => {
+  return (
+    <div {...rest} style={{ ...style, flex: '1 1 0%' }} className={className} />
+  )
 }
 
 Spacer.displayName = 'Actify.Spacer'

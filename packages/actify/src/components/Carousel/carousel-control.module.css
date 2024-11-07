@@ -1,0 +1,17 @@
+.control {
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--md-sys-color-primary) / var(--tw-bg-opacity));
+  position: absolute;
+  z-index: 30;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.left {
+  left: 1rem;
+}
+.right {
+  right: 1rem;
+}
+.icon {
+  color: white;
+}

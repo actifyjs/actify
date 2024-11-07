@@ -1,0 +1,44 @@
+.fab {
+  border: 0 solid #e5e7eb;
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+
+  width: fit-content;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.fab:focus-visible {
+  outline: none;
+}
+.small {
+  height: 2.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.75rem /* 12px */;
+  --md-focus-ring-shape: 0.75rem;
+}
+
+.medium {
+  height: 3.5rem /* 56px */;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 1rem /* 16px */;
+  --md-focus-ring-shape: 1rem;
+}
+
+.large {
+  height: 6rem /* 96px */;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 1.75rem /* 12px */;
+  --md-focus-ring-shape: 1.75rem;
+}

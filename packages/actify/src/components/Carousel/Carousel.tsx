@@ -4,22 +4,9 @@ import { CarouselContent } from './CarouselContent'
 import { CarouselControl } from './CarouselControl'
 import { CarouselIndicator } from './CarouselIndicator'
 import { CarouselProvider } from './CarouselContext'
-import { CrouselItem } from './CarouselItem'
 import React from 'react'
-import { tv } from 'tailwind-variants'
-
-const root = tv({
-  base: [
-    'flex',
-    'w-full',
-    'relative',
-    'rounded-lg',
-    'items-center',
-    'min-h-[400px]',
-    'justify-center',
-    'overflow-hidden'
-  ]
-})
+import clsx from 'clsx'
+import styles from './carousel.module.css'
 
 interface CarouselProps extends React.ComponentProps<'div'> {
   autoPlay?: boolean
@@ -42,7 +29,7 @@ const Carousel = (props: CarouselProps) => {
 
   return (
     <CarouselProvider {...{ total: children?.length, ...rest }}>
-      <div {...rest} className={root({ className })}>
+      <div {...rest} className={clsx(styles['carousel'], className)}>
         <CarouselContent>{children}</CarouselContent>
         <CarouselControl {...{ control, autoPlay, infinite }} />
         {indicator && <CarouselIndicator />}
@@ -53,6 +40,4 @@ const Carousel = (props: CarouselProps) => {
 
 Carousel.displayName = 'Actify.Carousel'
 
-export default Object.assign(Carousel, {
-  Item: CrouselItem
-})
+export { Carousel }

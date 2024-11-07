@@ -9,14 +9,11 @@ import {
   useState
 } from 'react'
 
-import { AccordionContent } from './AccordionContent'
-import { AccordionHeader } from './AccordionHeader'
-import { AccordionItem } from './AccordionItem'
-import styles from './actify.module.css'
+import styles from './accordion.module.css'
 
 interface AccordionRootProps extends AccordionProps, ComponentProps<'div'> {}
 
-const AccordionRoot = (props: AccordionRootProps) => {
+const Accordion = (props: AccordionRootProps) => {
   const { multiple, children, className, open: openProp, ...rest } = props
   const [open, setOpen] = useState<AccordionProps['open']>(openProp ?? [])
 
@@ -38,12 +35,6 @@ const AccordionRoot = (props: AccordionRootProps) => {
   )
 }
 
-AccordionRoot.displayName = 'Acitfy.Accordion'
-
-const Accordion = Object.assign(AccordionRoot, {
-  Item: AccordionItem,
-  Header: AccordionHeader,
-  Content: AccordionContent
-})
+Accordion.displayName = 'Acitfy.Accordion'
 
 export { Accordion }

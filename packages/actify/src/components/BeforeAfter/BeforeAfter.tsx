@@ -2,6 +2,7 @@
 
 import { Icon } from './../Icon'
 import React from 'react'
+import styles from './before-after.module.css'
 
 interface BeforeAfterProps extends React.ComponentProps<'div'> {
   before?: string
@@ -9,7 +10,7 @@ interface BeforeAfterProps extends React.ComponentProps<'div'> {
   bgImage?: string
 }
 
-const BeforeAfter = ({ before, after, bgImage }: BeforeAfterProps) => {
+const BeforeAfter = ({ before, after, bgImage, ...rest }: BeforeAfterProps) => {
   const image = React.useMemo(
     () =>
       `url('${
@@ -20,39 +21,31 @@ const BeforeAfter = ({ before, after, bgImage }: BeforeAfterProps) => {
   )
 
   return (
-    <div className="h-fit grid place-content-center">
+    <div {...rest} className={styles['root']}>
       <div
         style={
           {
             '--position': '50%'
           } as React.CSSProperties
         }
-        className="relative grid place-content-center overflow-hidden rounded-lg"
+        className={styles['inner']}
       >
         <div
-          className="w-full"
           style={
             {
+              width: '100%',
               '--bg-url': image
             } as React.CSSProperties
           }
         >
-          <img
-            alt="before"
-            src={before}
-            className="absolute top-0 w-[--position] h-full object-cover object-left"
-          />
-          <img
-            alt="after"
-            src={after}
-            className="h-full w-full bg-[image:--bg-url] object-cover object-left bg-transparent"
-          />
+          <img alt="before" src={before} className={styles['before']} />
+          <img alt="after" src={after} className={styles['after']} />
         </div>
         <input
           min="0"
           max="100"
           type="range"
-          className="absolute top-0 h-full w-full cursor-pointer opacity-0"
+          className={styles['control']}
           onInput={({ target }: React.ChangeEvent<HTMLInputElement>) =>
             target.parentElement?.style.setProperty(
               '--position',
@@ -60,8 +53,8 @@ const BeforeAfter = ({ before, after, bgImage }: BeforeAfterProps) => {
             )
           }
         />
-        <div className="pointer-events-none absolute top-0 left-[--position] h-full w-1 bg-surface"></div>
-        <div className="pointer-events-none absolute top-1/2 left-[--position] grid -translate-x-1/2 -translate-y-1/2 rounded-full bg-surface p-2 shadow">
+        <div className={styles['divider']} />
+        <div className={styles['icon']}>
           <Icon>arrow_range</Icon>
         </div>
       </div>

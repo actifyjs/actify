@@ -1,20 +1,26 @@
-import { Accordion, Icon } from 'actify'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+  AccordionItem,
+  Icon
+} from 'actify'
 
 export default () => {
   return (
     <Accordion open={[, true]}>
-      <Accordion.Item>
-        <Accordion.Header>Overview</Accordion.Header>
-        <Accordion.Content>
+      <AccordionItem>
+        <AccordionHeader>Overview</AccordionHeader>
+        <AccordionContent>
           Welcome to Actify, an open-source React Components Library designed to
           accelerate your React application development. Actify leverages
           TypeScript, Tailwind CSS, Floating-UI, Framer Motion, Material Design
           3, and more to provide a comprehensive set of modern and customizable
           UI components.
-        </Accordion.Content>
-      </Accordion.Item>
-      <Accordion.Item>
-        <Accordion.Header asChild>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionHeader asChild>
           {({ active }) => (
             <div
               className={`text-2xl cursor-pointer ${
@@ -33,16 +39,16 @@ export default () => {
               </div>
             </div>
           )}
-        </Accordion.Header>
-        <Accordion.Content>
+        </AccordionHeader>
+        <AccordionContent>
           Actify is an open source react component library written in Vite +
           React + Tailwind CSS based on Google's Material Design 3. Highly
           inspired by Vuetify. You can use it for write react pages.
-        </Accordion.Content>
-      </Accordion.Item>
-      <Accordion.Item>
-        <Accordion.Header>Why Actify? (custom content style)</Accordion.Header>
-        <Accordion.Content asChild>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionHeader>Why Actify? (custom content style)</AccordionHeader>
+        <AccordionContent asChild>
           {({ active }) => (
             <div
               className={`grid duration-300 grid-rows-[0fr] transition-[grid-template-rows] ${active ? 'grid-rows-[1fr]' : ''}`}
@@ -56,8 +62,8 @@ export default () => {
               </p>
             </div>
           )}
-        </Accordion.Content>
-      </Accordion.Item>
+        </AccordionContent>
+      </AccordionItem>
     </Accordion>
   )
 }

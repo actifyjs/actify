@@ -1,0 +1,63 @@
+.root {
+  height: fit-content;
+  display: grid;
+  place-content: center;
+}
+.inner {
+  position: relative;
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+  border-radius: 0.5rem /* 8px */;
+}
+.before {
+  position: absolute;
+  top: 0;
+  width: var(--position);
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+}
+.after {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+  background-color: transparent;
+  background-image: var(--bg-url);
+}
+.control {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.divider {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  left: var(--position);
+  width: 0.25rem /* 4px */;
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--md-sys-color-surface) / var(--tw-bg-opacity));
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  pointer-events: none;
+  border-radius: 9999px;
+  left: var(--position);
+  padding: 0.5rem /* 8px */;
+  transform: translate(-50%, -50%);
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--md-sys-color-surface) / var(--tw-bg-opacity));
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color),
+    0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}

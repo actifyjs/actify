@@ -8,6 +8,10 @@
   background-color: rgb(var(--md-sys-color-surface) / var(--tw-bg-opacity));
 }
 .ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
   display: flex;
   gap: 1rem;
 }

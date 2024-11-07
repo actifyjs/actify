@@ -2,12 +2,7 @@
 
 import React, { cloneElement, isValidElement } from 'react'
 
-import { tv } from 'tailwind-variants'
 import { useDrawer } from './DrawerContext'
-
-const root = tv({
-  base: ''
-})
 
 export interface DrawerActivatorProps extends React.ComponentProps<'div'> {
   asChild?: boolean
@@ -17,7 +12,7 @@ const DrawerActivator = (props: DrawerActivatorProps) => {
   const { setOpen } = useDrawer()
   const { ref, className, asChild, children, ...rest } = props
 
-  const handleClick = () => {
+  const handlePress = () => {
     setOpen?.(true)
   }
 
@@ -29,17 +24,12 @@ const DrawerActivator = (props: DrawerActivatorProps) => {
       // @ts-ignore
       ...children.props,
       role: 'button',
-      onPress: handleClick
+      onPress: handlePress
     })
   }
 
   return (
-    <div
-      {...rest}
-      role="button"
-      onClick={handleClick}
-      className={root({ className })}
-    >
+    <div {...rest} role="button" onClick={handlePress}>
       {children}
     </div>
   )

@@ -2,32 +2,21 @@
 
 import { Divider } from './../Divider'
 import React from 'react'
-import { tv } from 'tailwind-variants'
+import clsx from 'clsx'
+import styles from './side-sheets.module.css'
 import { useSideSheets } from './SideSheetsContext'
 
-const root = tv({
-  base: [
-    'pt-6',
-    'pl-6',
-    'flex',
-    'flex-col',
-    'min-h-[120px]',
-    'overflow-y-auto',
-    'h-[calc(100vh-176px)]'
-  ]
-})
-
-const Body = (props: React.ComponentProps<'div'>) => {
+const SideSheetsBody = (props: React.ComponentProps<'div'>) => {
   const { divider } = useSideSheets()
   const { className, children } = props
 
   return (
     <React.Fragment>
       {divider && <Divider />}
-      <div className={root({ className })}>{children}</div>
+      <div className={clsx(styles['body'], className)}>{children}</div>
       {divider && <Divider />}
     </React.Fragment>
   )
 }
 
-export { Body }
+export { SideSheetsBody }

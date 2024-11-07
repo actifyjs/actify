@@ -1,4 +1,9 @@
 .table {
+  text-indent: 0;
+  box-sizing: border-box;
+  border-color: inherit;
+  border: 0 solid #e5e7eb;
+
   width: 100%;
   position: relative;
   border-collapse: collapse;
@@ -19,6 +24,9 @@
   padding: 0 1rem;
 }
 .tr {
+  border-color: inherit;
+  border: 0 solid #e5e7eb;
+
   position: relative;
   height: 52px;
   border-style: solid;

@@ -3,30 +3,16 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 
+import clsx from 'clsx'
 import { createPortal } from 'react-dom'
-import { tv } from 'tailwind-variants'
+import styles from './side-sheets.module.css'
 import { useSideSheets } from './SideSheetsContext'
-
-const scrim = tv({
-  base: 'z-50 bg-[rgba(0,0,0,0.32)]'
-})
-
-const rootVariants = tv({
-  base: scrim({
-    className:
-      'fixed overflow-hidden inset-0 transform ease-in-out transition-opacity opacity-0 duration-500'
-  })
-})
-
-const innerVariants = tv({
-  base: 'absolute h-screen max-w-xs w-full bg-surface rounded-l-2xl overflow-hidden top-0 right-0 translate-x-full transition-transform ease-in-out'
-})
 
 export interface ContentProps extends React.ComponentProps<'div'> {
   divider?: boolean
 }
 
-const Content = (props: ContentProps) => {
+const SideSheetsContent = (props: ContentProps) => {
   const { style, className, children } = props
 
   const { open, setOpen } = useSideSheets()
@@ -67,7 +53,7 @@ const Content = (props: ContentProps) => {
           exit={{ opacity: 0 }}
           // @ts-ignore
           onClick={() => setOpen?.(false)}
-          className={rootVariants({ className })}
+          className={clsx(styles['content'], className)}
         >
           <motion.div
             initial={{
@@ -80,7 +66,7 @@ const Content = (props: ContentProps) => {
               transform: 'translateX(100%)'
             }}
             // @ts-ignore
-            className={innerVariants()}
+            className={styles['content-inner']}
             onClick={(e: Event) => e.stopPropagation()}
           >
             {children}
@@ -92,4 +78,4 @@ const Content = (props: ContentProps) => {
   ) as React.ReactNode
 }
 
-export { Content }
+export { SideSheetsContent }

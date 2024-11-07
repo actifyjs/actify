@@ -4,22 +4,9 @@ import React, { useContext, useId, useMemo, useState } from 'react'
 
 import { ListContext } from './ListContext'
 import { Ripple } from './../Ripple'
+import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import { tv } from 'tailwind-variants'
-
-const root = tv({
-  base: [
-    'flex',
-    'pl-4',
-    'py-2',
-    'isolate',
-    'min-h-14',
-    'relative',
-    'items-center',
-    'leading-normal',
-    'cursor-pointer'
-  ]
-})
+import styles from './list-item.module.css'
 
 interface ListItemProps extends React.ComponentProps<'li'> {
   index?: number
@@ -54,9 +41,9 @@ const ListItem = (props: ListItemProps) => {
     <li
       {...rest}
       id={listItemId}
-      className={root({ className })}
       onMouseOver={handleMouseOver}
       onMouseOut={() => setCurrent(undefined)}
+      className={clsx(styles['root'], className)}
     >
       {children}
       {isHovered && (
@@ -64,7 +51,7 @@ const ListItem = (props: ListItemProps) => {
           layoutId={layoutId}
           transition={transition}
           // @ts-ignore
-          className="absolute inset-0 bg-surface-variant z-[-1]"
+          className={styles['hovered']}
         />
       )}
       <Ripple id={listItemId} />

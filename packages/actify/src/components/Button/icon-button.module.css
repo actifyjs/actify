@@ -1,0 +1,33 @@
+.btn {
+  border: 0 solid #e5e7eb;
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+
+  width: 2.5rem /* 40px */;
+  height: 2.5rem /* 40px */;
+  position: relative;
+  color: currentColor;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  justify-content: center;
+}
+.btn:focus-visible {
+  outline: none;
+}
+.text-outline {
+  --tw-text-opacity: 1;
+  color: rgb(var(--md-sys-color-outline) / var(--tw-text-opacity));
+}
+.icon-button {
+  position: absolute;
+  width: max(48px, 100%);
+  height: max(48px, 100%);
+}

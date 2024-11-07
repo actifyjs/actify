@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  padding-left: 1rem /* 16px */;
+  padding-top: 0.5rem /* 8px */;
+  padding-bottom: 0.5rem /* 8px */;
+  isolation: isolate;
+  min-height: 3.5rem /* 56px */;
+  position: relative;
+  align-items: center;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.hovered {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  --tw-bg-opacity: 1;
+  background-color: rgb(
+    var(--md-sys-color-surface-variant) / var(--tw-bg-opacity)
+  );
+}

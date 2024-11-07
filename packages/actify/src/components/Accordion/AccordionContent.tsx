@@ -5,7 +5,7 @@ import React, { useMemo } from 'react'
 import { Slot } from './../Slot'
 import { Text } from './../Text'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './accordion.module.css'
 import { useAccordion } from './AccordionContext'
 
 export interface AccordionContentProps
@@ -13,8 +13,8 @@ export interface AccordionContentProps
   index?: number
   asChild?: boolean
   children?:
-    | ((props: { active?: boolean }) => React.ReactNode)
     | React.ReactNode
+    | ((props: { active?: boolean }) => React.ReactNode)
 }
 
 const AccordionContent = (props: AccordionContentProps) => {

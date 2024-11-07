@@ -1,4 +1,4 @@
-import { Swiper } from 'actify'
+import { Swiper, SwiperItem } from 'actify'
 
 export default () => {
   const items = [
@@ -18,13 +18,13 @@ export default () => {
   return (
     <Swiper autoPlay className="h-[320px]">
       {items.map((item, index) => (
-        <Swiper.Item key={index}>
+        <SwiperItem key={index}>
           <img
             src={item.src}
             alt={item.title}
             className="h-full w-full object-cover"
           />
-        </Swiper.Item>
+        </SwiperItem>
       ))}
     </Swiper>
   )

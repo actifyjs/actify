@@ -3,26 +3,12 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 
+import clsx from 'clsx'
 import { createPortal } from 'react-dom'
-import { tv } from 'tailwind-variants'
+import styles from './bottom-sheets.module.css'
 import { useBottomSheets } from './BottomSheetsContext'
 
-const scrim = tv({
-  base: 'z-50 bg-[rgba(0,0,0,0.32)]'
-})
-
-const rootVariants = tv({
-  base: scrim({
-    className:
-      'fixed overflow-hidden inset-0 transform ease-in-out transition-opacity opacity-0 duration-500'
-  })
-})
-
-const innerVariants = tv({
-  base: 'absolute flex flex-col bg-transparent left-10 right-10 bottom-0 translate-y-full transition-transform ease-in-out'
-})
-
-const Content = ({
+const BottomSheetsContent = ({
   ref,
   style,
   className,
@@ -67,7 +53,7 @@ const Content = ({
           exit={{ opacity: 0 }}
           // @ts-ignore
           onClick={() => setOpen?.(false)}
-          className={rootVariants({ className })}
+          className={clsx(styles['root'], className)}
         >
           <motion.div
             initial={{
@@ -80,14 +66,14 @@ const Content = ({
               transform: 'translateY(100%)'
             }}
             // @ts-ignore
-            className={innerVariants()}
+            className={styles['inner']}
             onClick={(e: Event) => e.stopPropagation()}
           >
-            <div className="inline-flex h-9 w-full cursor-grab flex-col items-center justify-start gap-3 p-4 bg-surface rounded-t-[100px]">
-              <div className="h-1 w-8 bg-outline/40 rounded-[100px]"></div>
+            <div className={styles['grab']}>
+              <div className={styles['grab-item']} />
             </div>
-            <div className="flex-1 max-h-[calc(100vh-72px)] overflow-y-auto">
-              <p className="bg-surface p-2">{children}</p>
+            <div className={styles['content']}>
+              <p className={styles['content-inner']}>{children}</p>
             </div>
           </motion.div>
         </motion.div>
@@ -97,4 +83,4 @@ const Content = ({
   ) as React.ReactNode
 }
 
-export { Content }
+export { BottomSheetsContent }

@@ -2,12 +2,9 @@
 
 import React, { useMemo } from 'react'
 
+import clsx from 'clsx'
 import { format } from 'date-fns'
-import { tv } from 'tailwind-variants'
-
-const root = tv({
-  base: 'mx-auto h-64 overflow-hidden rounded shadow-2xl bg-black'
-})
+import styles from './terminal.module.css'
 
 interface TerminalProps extends React.ComponentProps<'div'> {
   title?: string
@@ -33,8 +30,8 @@ const Terminal = (props: TerminalProps) => {
   )
 
   return (
-    <div {...rest} className={root({ className })}>
-      <div className="flex h-6 items-center border-b bg-surface">
+    <div {...rest} className={clsx(styles['root'], className)}>
+      <div className={styles['traffic-light']}>
         <div className="ml-2 size-3 rounded-full border-red-900 bg-red-500 shadow-inner"></div>
         <div className="ml-2 size-3 rounded-full border-yellow-900 bg-yellow-500 shadow-inner"></div>
         <div className="ml-2 size-3 rounded-full border-green-900 bg-green-500 shadow-inner"></div>

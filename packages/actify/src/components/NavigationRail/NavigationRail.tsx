@@ -1,25 +1,15 @@
 'use client'
 
 import React from 'react'
-import { tv } from 'tailwind-variants'
-
-const variants = tv({
-  base: [
-    'w-20',
-    'flex',
-    'bg-surface',
-    'min-h-[540px]',
-    'items-center',
-    'justify-center'
-  ]
-})
+import clsx from 'clsx'
+import styles from './navigation-rail.module.css'
 
 interface NavigationRailProps extends React.ComponentProps<'div'> {}
 
 const NavigationRail = (props: NavigationRailProps) => {
   const { children, className, ...rest } = props
   return (
-    <div {...rest} className={variants({ className })}>
+    <div {...rest} className={clsx(styles['root'], className)}>
       {children}
     </div>
   )

@@ -6,7 +6,7 @@ import { Icon } from './../Icon'
 import { Slot } from './../Slot'
 import { Text } from './../Text'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './accordion.module.css'
 import { useAccordion } from './AccordionContext'
 
 export interface AccordionHeaderProps

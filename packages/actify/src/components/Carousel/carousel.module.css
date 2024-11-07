@@ -1,0 +1,10 @@
+.carousel {
+  display: inline-flex;
+  width: 100%;
+  min-height: 25rem /* 400px */;
+  position: relative;
+  border-radius: 0.5rem /* 8px */;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}

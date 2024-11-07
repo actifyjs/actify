@@ -47,7 +47,16 @@
 .item-padding {
   padding-block: 8px;
 }
+.group {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .menu-item {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
   padding: 8px;
   --md-ripple-hover-color: var(
     --md-menu-item-hover-state-layer-color,

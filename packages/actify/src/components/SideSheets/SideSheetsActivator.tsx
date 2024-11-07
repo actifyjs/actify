@@ -7,7 +7,7 @@ import { useSideSheets } from './SideSheetsContext'
 export interface ActivatorProps extends React.ComponentProps<'div'> {
   asChild?: boolean
 }
-const Activator = ({
+const SideSheetsActivator = ({
   asChild,
   className,
   children,
@@ -34,4 +34,4 @@ const Activator = ({
   )
 }
 
-export { Activator }
+export { SideSheetsActivator }

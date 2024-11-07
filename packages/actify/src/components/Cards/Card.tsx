@@ -1,29 +1,14 @@
 'use client'
 
-import { VariantProps, tv } from 'tailwind-variants'
-
 import { Elevation } from './../Elevation'
 import React from 'react'
 import { Ripple } from './../Ripple'
+import clsx from 'clsx'
+import styles from './card.module.css'
 
-const root = tv({
-  base: 'relative inline-flex flex-col rounded-xl',
-  variants: {
-    type: {
-      elevated: '',
-      filled: 'bg-inverse-surface',
-      outlined: 'border border-outline'
-    }
-  },
-  defaultVariants: {
-    type: 'elevated'
-  }
-})
-
-interface CardProps
-  extends VariantProps<typeof root>,
-    React.ComponentProps<'div'> {
+interface CardProps extends React.ComponentProps<'div'> {
   ripple?: boolean
+  variant: 'elevated' | 'filled' | 'outlined'
   elevation?: number
 }
 
@@ -31,7 +16,7 @@ const Card = (props: CardProps) => {
   const {
     id,
     ripple = false,
-    type = 'elevated',
+    variant = 'elevated',
     elevation = 1,
     children,
     className,
@@ -41,10 +26,10 @@ const Card = (props: CardProps) => {
   const cardId = id || `actify-card${React.useId()}`
 
   return (
-    <div {...rest} className={root({ type, className })}>
-      <div className="relative overflow-hidden rounded-t-xl">{children}</div>
+    <div {...rest} className={clsx(styles['root'], styles[variant], className)}>
+      <div className={styles['card']}>{children}</div>
       {ripple && <Ripple id={cardId} />}
-      {type === 'elevated' && (
+      {variant === 'elevated' && (
         <Elevation className={`[--md-elevation-level:${elevation}]`} />
       )}
     </div>

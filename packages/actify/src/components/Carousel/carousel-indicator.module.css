@@ -1,0 +1,39 @@
+.carousel-indicator {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  z-index: 30;
+  display: flex;
+  transform: translateX(-50%);
+  gap: 0.75rem;
+}
+.button {
+  border: 0 solid #e5e7eb;
+  appearance: button;
+  background-image: none;
+  cursor: pointer;
+
+  width: 0.75rem /* 12px */;
+  height: 0.75rem /* 12px */;
+  border-radius: 9999px;
+}
+.inicator {
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--md-sys-color-primary) / var(--tw-bg-opacity));
+}
+.inicator:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--md-sys-color-on-primary) / var(--tw-bg-opacity));
+}
+.active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(
+    var(--md-sys-color-primary-container) / var(--tw-bg-opacity)
+  );
+}
+.active:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(
+    var(--md-sys-color-on-primary-container) / var(--tw-bg-opacity)
+  );
+}

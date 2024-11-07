@@ -3,6 +3,8 @@
 import { Icon } from './../Icon'
 import { IconButton } from './../Button/IconButton'
 import React from 'react'
+import clsx from 'clsx'
+import styles from './carousel-control.module.css'
 import { useCarousel } from './CarouselContext'
 import { useInterval } from './../../hooks'
 
@@ -39,16 +41,16 @@ const CarouselControl = ({
       <React.Fragment>
         <IconButton
           onClick={prev}
-          className="bg-primary absolute z-30 left-4 top-1/2 -translate-y-1/2"
+          className={clsx(styles['control'], styles['left'])}
         >
-          <Icon className="text-white">chevron_backward</Icon>
+          <Icon className={styles['icon']}>chevron_backward</Icon>
           <span className="sr-only">Previous</span>
         </IconButton>
         <IconButton
           onClick={next}
-          className="bg-primary absolute z-30 right-4 top-1/2 -translate-y-1/2"
+          className={clsx(styles['control'], styles['right'])}
         >
-          <Icon className="text-white">chevron_forward</Icon>
+          <Icon className={styles['icon']}>chevron_forward</Icon>
           <span className="sr-only">Next</span>
         </IconButton>
       </React.Fragment>

@@ -1,1 +1,4 @@
-export { default as BottomSheets } from './BottomSheets'
+export { BottomSheets } from './BottomSheets'
+
+export { BottomSheetsActivator } from './BottomSheetsActivator'
+export { BottomSheetsContent } from './BottomSheetsContent'

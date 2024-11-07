@@ -1,0 +1,23 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 0.75rem /* 12px */;
+}
+.filled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(
+    var(--md-sys-color-inverse-surface) / var(--tw-bg-opacity)
+  );
+}
+.outlined {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(var(--md-sys-color-outline) / var(--tw-border-opacity));
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 0.75rem /* 12px */;
+  border-top-right-radius: 0.75rem /* 12px */;
+}

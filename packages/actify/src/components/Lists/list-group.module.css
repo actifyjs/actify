@@ -1,0 +1,44 @@
+.root {
+  position: relative;
+  cursor: pointer;
+  isolation: isolate;
+  padding-left: 1rem /* 16px */;
+  padding-right: 1rem /* 16px */;
+}
+.item {
+  display: flex;
+  align-items: center;
+  height: 3.5rem /* 56px */;
+  justify-content: space-between;
+}
+.icon {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.icon-open {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hovered {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  height: 3.5rem /* 56px */;
+  --tw-bg-opacity: 1;
+  background-color: rgb(
+    var(--md-sys-color-surface-variant) / var(--tw-bg-opacity)
+  );
+}
+.content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.content-open {
+  grid-template-rows: 1fr;
+}

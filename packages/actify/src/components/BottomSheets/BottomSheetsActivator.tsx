@@ -4,35 +4,36 @@ import React from 'react'
 import { Slot } from './../Slot'
 import { useBottomSheets } from './BottomSheetsContext'
 
-export interface ActivatorProps extends React.ComponentProps<'div'> {
+export interface BottomSheetsActivatorProps
+  extends React.ComponentProps<'div'> {
   asChild?: boolean
 }
 
-const Activator = ({
+const BottomSheetsActivator = ({
   asChild,
   className,
   children,
   ...rest
-}: ActivatorProps) => {
+}: BottomSheetsActivatorProps) => {
   const { open, setOpen } = useBottomSheets()
 
-  const handleClick = () => {
+  const handlePress = () => {
     setOpen?.(!open)
   }
 
   if (asChild) {
     return (
-      <Slot className={className} {...{ ...rest, open, onClick: handleClick }}>
+      <Slot className={className} {...{ ...rest, open, onPress: handlePress }}>
         {children}
       </Slot>
     )
   }
 
   return (
-    <div {...rest} role="button" className={className} onClick={handleClick}>
+    <div {...rest} role="button" className={className} onClick={handlePress}>
       {children}
     </div>
   )
 }
 
-export { Activator }
+export { BottomSheetsActivator }

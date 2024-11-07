@@ -3,7 +3,7 @@
 import React, { Children, cloneElement, isValidElement } from 'react'
 
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './accordion.module.css'
 
 export interface AccordionItemProps extends React.ComponentProps<'div'> {
   index?: number

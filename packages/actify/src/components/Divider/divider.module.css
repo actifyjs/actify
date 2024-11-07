@@ -1,0 +1,20 @@
+.divider {
+  color: var(--md-divider-color, rgb(var(--md-sys-color-outline-variant)));
+  display: flex;
+  height: var(--md-divider-thickness, 1px);
+  width: 100%;
+  &:before {
+    background: currentcolor;
+    content: '';
+    height: 100%;
+    width: 100%;
+  }
+}
+.divider.inset,
+.divider.inset-start {
+  padding-inline-start: 16px;
+}
+.divider.inset,
+.divider.inset-end {
+  padding-inline-end: 16px;
+}

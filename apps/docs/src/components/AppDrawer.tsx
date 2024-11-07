@@ -1,6 +1,12 @@
 'use client'
 
-import { Icon, IconButton, NavigationDrawer } from 'actify'
+import {
+  DrawerActivator,
+  DrawerContent,
+  Icon,
+  IconButton,
+  NavigationDrawer
+} from 'actify'
 
 import Aside from '@/components/Aside'
 import { useState } from 'react'
@@ -15,14 +21,14 @@ export default function AppDrawer() {
       placement="left"
       className="overflow-hidden"
     >
-      <NavigationDrawer.Activator asChild className="md:hidden">
+      <DrawerActivator asChild className="md:hidden">
         <IconButton color="primary">
           <Icon>menu</Icon>
         </IconButton>
-      </NavigationDrawer.Activator>
-      <NavigationDrawer.Content className="w-60">
+      </DrawerActivator>
+      <DrawerContent style={{ width: '15rem' }}>
         <Aside open={open} />
-      </NavigationDrawer.Content>
+      </DrawerContent>
     </NavigationDrawer>
   )
 }

@@ -2,16 +2,11 @@
 
 import { DrawerProvider, DrawerProviderProps } from './DrawerContext'
 
-import { DrawerActivator } from './DrawerActivator'
-import { DrawerContent } from './DrawerContent'
-import { tv } from 'tailwind-variants'
-
-const variants = tv({
-  base: 'relative'
-})
+import React from 'react'
 
 interface NavigationDrawerProps extends DrawerProviderProps {
   className?: string
+  style?: React.CSSProperties
 }
 
 const NavigationDrawer = (props: NavigationDrawerProps) => {
@@ -19,14 +14,13 @@ const NavigationDrawer = (props: NavigationDrawerProps) => {
 
   return (
     <DrawerProvider {...rest}>
-      <div className={variants({ className })}>{children}</div>
+      <div className={className} style={{ position: 'relative' }}>
+        {children}
+      </div>
     </DrawerProvider>
   )
 }
 
 NavigationDrawer.displayName = 'Actify.NavigationDrawer'
 
-export default Object.assign(NavigationDrawer, {
-  Content: DrawerContent,
-  Activator: DrawerActivator
-})
+export { NavigationDrawer }

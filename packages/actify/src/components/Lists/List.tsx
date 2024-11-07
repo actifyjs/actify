@@ -4,11 +4,8 @@ import React, { useId } from 'react'
 
 import { ListContext } from './ListContext'
 import { Transition } from 'framer-motion'
-import { tv } from 'tailwind-variants'
-
-const root = tv({
-  base: 'py-2 bg-surface overflow-hidden'
-})
+import clsx from 'clsx'
+import styles from './list.module.css'
 
 interface ListProps extends React.ComponentProps<'ul'> {
   transition?: Transition
@@ -20,7 +17,7 @@ const List = (props: ListProps) => {
 
   return (
     <ListContext.Provider value={{ layoutId, transition }}>
-      <ul {...rest} className={root({ className })}>
+      <ul {...rest} className={clsx(styles['ul'], className)}>
         {children}
       </ul>
     </ListContext.Provider>

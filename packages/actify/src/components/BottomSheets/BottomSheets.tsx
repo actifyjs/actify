@@ -5,9 +5,6 @@ import {
   BottomSheetsProviderProps
 } from './BottomSheetsContext'
 
-import { Activator } from './BottomSheetsActivator'
-import { Content } from './BottomSheetsContent'
-
 const BottomSheets = (props: BottomSheetsProviderProps) => {
   const { children, ...rest } = props
   return <BottomSheetsProvider {...rest}>{children}</BottomSheetsProvider>
@@ -15,7 +12,4 @@ const BottomSheets = (props: BottomSheetsProviderProps) => {
 
 BottomSheets.displayName = 'Actify.BottomSheets'
 
-export default Object.assign(BottomSheets, {
-  Activator,
-  Content
-})
+export { BottomSheets }

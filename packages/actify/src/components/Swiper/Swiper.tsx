@@ -1,36 +1,12 @@
 'use client'
 
-import React, {
-  Children,
-  FunctionComponent,
-  isValidElement,
-  useState
-} from 'react'
+import React, { Children, FunctionComponent, useState } from 'react'
 
 import { Icon } from './../Icon'
 import { IconButton } from './../Button/IconButton'
-import { tv } from 'tailwind-variants'
+import clsx from 'clsx'
+import styles from './swiper.module.css'
 import { useInterval } from './../../hooks'
-
-const root = tv({
-  base: 'grid w-full place-items-center overflow-hidden'
-})
-
-const buttonVariants = tv({
-  base: 'absolute top-1/2 -translate-y-1/2 bg-surface',
-  variants: {
-    prev: {
-      true: 'left-4'
-    },
-    next: {
-      true: 'right-4'
-    }
-  }
-})
-
-const itemVariants = tv({
-  base: 'w-full h-full inline-block flex-none [transition:var(--transition)] [transform:translateX(var(--transform))]'
-})
 
 interface SwiperProps extends React.ComponentProps<'div'> {
   current?: number
@@ -52,7 +28,7 @@ const Swiper = (props: SwiperProps) => {
   } = props
 
   const items = Children.map(children, (child) =>
-    child?.type?.name === 'Item' ? child : null
+    child?.type?.name === 'SwiperItem' ? child : null
   )
   const count = items?.length
 
@@ -87,52 +63,10 @@ const Swiper = (props: SwiperProps) => {
     }
   }
 
-  const prevButton = Children.map(children, (child) => {
-    if (child?.type?.name === 'PrevButton') {
-      if (isValidElement(child)) {
-        return (
-          <button
-            onClick={prev}
-            // @ts-expect-error
-            {...child.props}
-            className={buttonVariants({
-              prev: true,
-              // @ts-expect-error
-              className: child.props.className
-            })}
-          >
-            {child}
-          </button>
-        )
-      }
-    }
-  })
-
-  const nextButton = Children.map(children, (child) => {
-    if (child?.type?.name === 'NextButton') {
-      if (isValidElement(child)) {
-        return (
-          <button
-            onClick={next}
-            // @ts-expect-error
-            {...child.props}
-            className={buttonVariants({
-              next: true,
-              // @ts-expect-error
-              className: child.props.className
-            })}
-          >
-            {child}
-          </button>
-        )
-      }
-    }
-  })
-
   autoPlay && useInterval(next, interval)
 
   return (
-    <div {...rest} className={root({ className })}>
+    <div {...rest} className={clsx(styles['root'], className)}>
       <div
         style={
           {
@@ -140,7 +74,7 @@ const Swiper = (props: SwiperProps) => {
             '--transform': transform || `-${current + 1}00%`
           } as React.CSSProperties
         }
-        className="relative h-full overflow-hidden rounded-lg flex"
+        className={styles['root-inner']}
       >
         {items?.[count! - 1]}
         {items}
@@ -148,43 +82,39 @@ const Swiper = (props: SwiperProps) => {
 
         {/* controls */}
         {/* prev button */}
-        {prevButton?.length ? (
-          prevButton
-        ) : (
-          <IconButton
-            onClick={prev}
-            className={buttonVariants({ prev: true })}
-            color="primary"
-          >
-            <Icon>chevron_left</Icon>
-          </IconButton>
-        )}
+
+        <IconButton
+          onClick={prev}
+          color="primary"
+          className={clsx(styles['button'], styles['button-prev'])}
+        >
+          <Icon>chevron_left</Icon>
+        </IconButton>
+
         {/* next button */}
-        {nextButton?.length ? (
-          nextButton
-        ) : (
-          <IconButton
-            onClick={next}
-            className={buttonVariants({ next: true })}
-            color="primary"
-          >
-            <Icon>chevron_right</Icon>
-          </IconButton>
-        )}
+
+        <IconButton
+          onClick={next}
+          color="primary"
+          className={clsx(styles['button'], styles['button-next'])}
+        >
+          <Icon>chevron_right</Icon>
+        </IconButton>
 
         {/* indicators */}
         {indicator ? (
           indicator({ setCurrent, current, count })
         ) : (
-          <ul className="absolute bottom-4 flex w-full justify-center gap-2">
+          <ul className={styles['indicator']}>
             {[...Array(count)].map((_, i) => (
               <li
                 key={i}
-                className={`size-5 rounded-full cursor-pointer ${
-                  i == current ? 'bg-surface' : 'bg-inverse-surface'
-                }`}
                 onClick={() => setCurrent(i)}
-              ></li>
+                className={clsx(
+                  styles['indicator-item'],
+                  i == current && styles['indicator-active']
+                )}
+              />
             ))}
           </ul>
         )}
@@ -195,19 +125,4 @@ const Swiper = (props: SwiperProps) => {
 
 Swiper.displayName = 'Actify.Swiper'
 
-export default Object.assign(Swiper, {
-  Item: (props: React.ComponentProps<'div'>) => {
-    const { className, children, ...rest } = props
-    return (
-      <div {...rest} className={itemVariants({ className })}>
-        {children}
-      </div>
-    )
-  },
-  PrevButton: (props: React.ComponentProps<'div'>) => (
-    <React.Fragment>{props.children}</React.Fragment>
-  ),
-  NextButton: (props: React.ComponentProps<'div'>) => (
-    <React.Fragment>{props.children}</React.Fragment>
-  )
-})
+export { Swiper }

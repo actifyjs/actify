@@ -10,12 +10,9 @@ import React, {
 
 import { Icon } from './../Icon'
 import { ListContext } from './ListContext'
+import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import { tv } from 'tailwind-variants'
-
-const variants = tv({
-  base: 'px-4 cursor-pointer relative isolate'
-})
+import styles from './list-group.module.css'
 
 interface ListItemProps extends React.ComponentProps<'li'> {
   label?: string
@@ -30,16 +27,16 @@ const ListGroup = (props: ListItemProps) => {
   const { layoutId } = useContext(ListContext)
 
   return (
-    <li {...rest} className={variants({ className })}>
+    <li {...rest} className={clsx(styles['root'], className)}>
       <div
-        className="h-14 flex items-center justify-between"
+        className={styles['item']}
         onMouseOver={() => setHovered(true)}
         onMouseOut={() => setHovered(false)}
         onClick={() => setOpen(!open)}
       >
         {icon}
         {label}
-        <div className={`transition-transform ${open ? 'rotate-90' : ''}`}>
+        <div className={clsx(styles['icon'], open && styles['icon-open'])}>
           <Icon>keyboard_arrow_down</Icon>
         </div>
       </div>
@@ -47,15 +44,15 @@ const ListGroup = (props: ListItemProps) => {
         <motion.div
           layoutId={layoutId}
           // @ts-ignore
-          className="h-14 absolute inset-0 bg-surface-variant z-[-1]"
+          className={styles['hovered']}
         />
       )}
-      <div
-        className={`transition-all duration-300 ease-in-out grid ${
-          open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-        }`}
-      >
-        <ul className="overflow-hidden">
+      <div className={clsx(styles['content'], open && styles['content-open'])}>
+        <ul
+          style={{
+            overflow: 'hidden'
+          }}
+        >
           {Children.map(
             children,
             (child) =>
