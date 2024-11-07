@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { Children, isValidElement, useEffect } from 'react'
 
-import { twMerge } from 'tailwind-merge'
+import clsx from 'clsx'
 import { useCarousel } from './CarouselContext'
 import { wrap } from 'popmotion'
 
@@ -58,8 +58,7 @@ const CarouselContent = ({ children }: React.ComponentProps<'div'>) => {
               <MotionComponent
                 // @ts-ignore
                 {...child.props}
-                // @ts-ignore
-                className={twMerge(child.props.className, 'absolute')}
+                style={{ position: 'absolute' }}
                 variants={variants}
                 key={page}
                 custom={direction}

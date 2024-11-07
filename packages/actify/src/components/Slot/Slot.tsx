@@ -1,6 +1,6 @@
 import React from 'react'
+import clsx from 'clsx'
 import { mergeRefs } from './../../hooks/mergeRefs'
-import { twMerge } from 'tailwind-merge'
 
 /* -------------------------------------------------------------------------------------------------
  * Slot
@@ -140,7 +140,7 @@ function mergeProps(slotProps: AnyProps, childProps: AnyProps) {
       if (typeof overrideProps[propName] == 'function') {
         overrideProps[propName] = overrideProps[propName]({ ...parentProps })
       } else {
-        overrideProps[propName] = twMerge(slotPropValue, childPropValue)
+        overrideProps[propName] = clsx(slotPropValue, childPropValue)
       }
     }
   }

@@ -1,5 +1,4 @@
 import commonjs from '@rollup/plugin-commonjs'
-import copy from 'rollup-plugin-copy'
 import { exec } from 'child_process'
 import json from '@rollup/plugin-json'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
@@ -67,12 +66,6 @@ export default [
       typescriptPaths(),
       preserveDirectives(),
       terser({ compress: { directives: false } }),
-      copy({
-        targets: [
-          { src: './../../README.md', dest: 'dist' },
-          { src: './../../LICENSE.md', dest: 'dist' }
-        ]
-      }),
       tscAlias()
     ],
     onwarn(warning, warn) {
