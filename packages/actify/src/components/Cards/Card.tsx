@@ -8,8 +8,8 @@ import styles from './card.module.css'
 
 interface CardProps extends React.ComponentProps<'div'> {
   ripple?: boolean
-  variant: 'elevated' | 'filled' | 'outlined'
   elevation?: number
+  variant?: 'elevated' | 'filled' | 'outlined'
 }
 
 const Card = (props: CardProps) => {

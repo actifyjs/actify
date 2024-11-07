@@ -14,7 +14,7 @@ export default () => {
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
       </Card>
-      <Card type="filled">
+      <Card variant="filled">
         <img
           alt=""
           className="w-full object-fit"
@@ -28,7 +28,7 @@ export default () => {
           </p>
         </div>
       </Card>
-      <Card type="outlined">
+      <Card variant="outlined">
         <img
           alt=""
           className="w-full object-fit"
