@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 
 import { cn } from '@/utils/cn'
 import { fira_code } from '@/app/fonts'
+import { getSingletonHighlighter } from 'shiki'
 import { useMounted } from '@/hooks/useMounted'
 import { useTheme } from 'next-themes'
 
@@ -19,11 +20,8 @@ const SyntaxHighlighter = (props: React.ComponentProps<'div'>) => {
   const [code, setCode] = useState('')
   const [iconName, setIconName] = useState('content_copy')
 
-  if (!mounted) {
-    return null
-  } else {
+  if (mounted) {
     const highlight = async () => {
-      const { getSingletonHighlighter } = await import('shiki')
       const highlighter = await getSingletonHighlighter({
         langs,
         themes: ['catppuccin-latte', 'catppuccin-mocha']
