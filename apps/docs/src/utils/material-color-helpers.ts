@@ -125,11 +125,14 @@ export function applyMaterialTheme(
   theme: Theme,
   ssName = 'material-theme'
 ) {
+  let styleObject: Record<string, string> = {}
   let styleString = ':root,:host{'
   for (const [key, value] of Object.entries(theme)) {
     styleString += `--md-sys-color-${key}:${value};`
+    styleObject[`--md-sys-color-${key}`] = value
   }
   styleString += '}'
 
+  localStorage.setItem('actify-theme', JSON.stringify(styleObject))
   applyThemeString(doc, styleString, ssName)
 }
