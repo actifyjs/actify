@@ -1,8 +1,4 @@
 .menu {
-  border-radius: var(
-    --md-menu-container-shape,
-    var(--md-sys-shape-corner-extra-small, 4px)
-  );
   display: none;
   inset: auto;
   border: none;
@@ -82,7 +78,10 @@
   position: relative; /* for focus ring */
   list-style: none;
   background-color: var(--md-menu-item-container-color, transparent);
-  border-radius: inherit;
+  border-radius: var(
+    --md-menu-container-shape,
+    var(--md-sys-shape-corner-extra-small, 4px)
+  );
   display: flex;
   flex: 1;
   max-width: inherit;

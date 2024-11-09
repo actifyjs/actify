@@ -53,6 +53,9 @@
   padding-inline-start: var(--md-menu-item-leading-space, 16px);
   padding-inline-end: var(--md-menu-item-trailing-space, 16px);
 }
+.item:focus-visible {
+  outline: none;
+}
 .item.selected {
   background-color: var(
     --md-menu-item-selected-container-color,

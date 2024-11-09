@@ -1,11 +1,11 @@
 .items {
   list-style: none;
   margin: 0;
-  padding: 0;
   display: block;
+  padding-left: 8px;
   padding-block: 8px;
+  padding-right: 8px;
   list-style-type: none;
-  margin: 0;
   outline: none;
   box-sizing: border-box;
   background-color: var(

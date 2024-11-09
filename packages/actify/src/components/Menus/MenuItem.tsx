@@ -49,7 +49,13 @@ export function MenuItem<T>({
       {...mergeProps(menuItemProps, focusProps)}
     >
       <Item container={<Container />}>{item.rendered}</Item>
-      {isFocusVisible && <FocusRing />}
+      {isFocusVisible && (
+        <FocusRing
+          style={{
+            color: 'rgb(var(--md-sys-color-primary))'
+          }}
+        />
+      )}
     </li>
   )
 }
