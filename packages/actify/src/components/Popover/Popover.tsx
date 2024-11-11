@@ -14,16 +14,19 @@ interface PopoverProps extends Omit<AriaPopoverProps, 'popoverRef'> {
   referenceWidth?: number
   children: React.ReactNode
   state: OverlayTriggerState
+  popoverRef?: React.RefObject<Element | null>
 }
 
 const Popover = ({
-  children,
   state,
-  offset = 8,
+  children,
+  offset = 16,
   referenceWidth,
+  popoverRef: propRef,
   ...props
 }: PopoverProps) => {
-  const popoverRef = React.useRef(null)
+  const popoverRef =
+    (propRef as React.RefObject<HTMLDivElement>) || React.useRef(null)
   const { popoverProps, underlayProps, arrowProps, placement } = usePopover(
     {
       ...props,

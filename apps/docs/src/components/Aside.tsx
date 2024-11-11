@@ -112,6 +112,9 @@ const components = [
     name: 'Ripple'
   },
   {
+    name: 'Autocomplete'
+  },
+  {
     name: 'Select'
   },
   {
