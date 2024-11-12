@@ -1,11 +1,16 @@
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria'
 import { RadioGroupState, useRadioGroupState } from 'react-stately'
 
+import { Label } from '../Label'
 import React from 'react'
 
 export const RadioContext = React.createContext<RadioGroupState | {}>({})
 
-type RadioGroupProps = {} & AriaRadioGroupProps & React.ComponentProps<'div'>
+interface RadioGroupProps extends AriaRadioGroupProps {
+  style?: React.CSSProperties
+  className?: string
+  children?: React.ReactNode
+}
 
 const RadioGroup = (props: RadioGroupProps) => {
   const { style, className, children, label, description, errorMessage } = props
@@ -15,7 +20,7 @@ const RadioGroup = (props: RadioGroupProps) => {
 
   return (
     <div {...radioGroupProps} style={style} className={className}>
-      <span {...labelProps}>{label}</span>
+      {label && <Label {...labelProps}>{label}</Label>}
       <RadioContext value={state}>{children}</RadioContext>
       {description && (
         <div {...descriptionProps} style={{ fontSize: 12 }}>
