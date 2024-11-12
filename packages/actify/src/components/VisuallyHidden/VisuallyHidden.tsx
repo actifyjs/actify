@@ -6,10 +6,14 @@ import styles from './visually-hidden.module.css'
 interface Props extends VisuallyHiddenProps {
   as?: keyof HTMLElementTagNameMap | React.ElementType
 }
-const VisuallyHidden = ({ as: Tag = 'span', ...props }: Props) => {
+const VisuallyHidden = ({ as: Tag = 'span', children, ...props }: Props) => {
   const { visuallyHiddenProps } = useVisuallyHidden(props)
 
-  return <Tag className={styles['visually-hidden']} {...visuallyHiddenProps} />
+  return (
+    <Tag className={styles['visually-hidden']} {...visuallyHiddenProps}>
+      {children}
+    </Tag>
+  )
 }
 
 export { VisuallyHidden }

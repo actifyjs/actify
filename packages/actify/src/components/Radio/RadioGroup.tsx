@@ -13,15 +13,15 @@ interface RadioGroupProps extends AriaRadioGroupProps {
 }
 
 const RadioGroup = (props: RadioGroupProps) => {
-  const { style, className, children, label, description, errorMessage } = props
+  const { style, className, description, errorMessage } = props
   const state = useRadioGroupState(props)
   const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } =
     useRadioGroup(props, state)
 
   return (
     <div {...radioGroupProps} style={style} className={className}>
-      {label && <Label {...labelProps}>{label}</Label>}
-      <RadioContext value={state}>{children}</RadioContext>
+      {props.label && <Label {...labelProps}>{props.label}</Label>}
+      <RadioContext value={state}>{props.children}</RadioContext>
       {description && (
         <div {...descriptionProps} style={{ fontSize: 12 }}>
           {description}

@@ -9,69 +9,81 @@ import { Ripple } from '../Ripple/Ripple'
 import clsx from 'clsx'
 import styles from './radio.module.css'
 
-type RadioProps = {} & AriaRadioProps & React.ComponentProps<'input'>
+interface RadioProps extends AriaRadioProps {
+  style?: React.CSSProperties
+  className?: string
+}
+
 const Radio = (props: RadioProps) => {
-  const { children } = props
   const state = React.useContext(RadioContext) as RadioGroupState
   const inputRef = React.useRef(null)
-  const { inputProps, isSelected } = useRadio(props, state, inputRef)
+  const { inputProps, labelProps, isSelected } = useRadio(
+    props,
+    state,
+    inputRef
+  )
 
   const { isFocusVisible, focusProps } = useFocusRing()
   const cutoutId = `radio-cutout${React.useId()}`
 
   return (
-    <Label className={styles['radio']}>
-      <div
-        role="presentation"
-        className={clsx(styles['container'], isSelected && styles['checked'])}
+    <div className={styles['radio-wrapper']}>
+      <Label
+        style={props.style}
+        className={clsx(styles['radio'], props.className)}
       >
-        <input
-          ref={inputRef}
-          {...mergeProps(inputProps, focusProps)}
-          className={clsx(styles['input'], props.className)}
-        />
+        <div
+          role="presentation"
+          className={clsx(styles['container'], isSelected && styles['checked'])}
+        >
+          <input
+            ref={inputRef}
+            className={styles['input']}
+            {...mergeProps(inputProps, focusProps)}
+          />
 
-        <Ripple
-          id={inputProps.id}
-          style={{
-            inset: 'unset',
-            borderRadius: '50%',
-            width: 'var(--md-radio-state-layer-size, 40px)',
-            height: 'var(--md-radio-state-layer-size, 40px)'
-          }}
-        />
-        {isFocusVisible && (
-          <FocusRing
+          <Ripple
+            id={inputProps.id}
             style={{
-              height: '44px',
               inset: 'unset',
-              width: '44px',
-              borderRadius: '50%'
+              borderRadius: '50%',
+              width: 'var(--md-radio-state-layer-size, 40px)',
+              height: 'var(--md-radio-state-layer-size, 40px)'
             }}
           />
-        )}
-        <svg className={styles['icon']} viewBox="0 0 20 20">
-          <mask id={cutoutId}>
-            <rect width="100%" height="100%" fill="white" />
-            <circle cx="10" cy="10" r="8" fill="black" />
-          </mask>
-          <circle
-            r="10"
-            cx="10"
-            cy="10"
-            mask={`url(#${cutoutId})`}
-            className={clsx(styles['outer'], styles['circle'])}
-          />
-          <circle
-            r="5"
-            cx="10"
-            cy="10"
-            className={clsx(styles['inner'], styles['circle'])}
-          />
-        </svg>
-      </div>
-      {children}
-    </Label>
+          {isFocusVisible && (
+            <FocusRing
+              style={{
+                height: '44px',
+                inset: 'unset',
+                width: '44px',
+                borderRadius: '50%'
+              }}
+            />
+          )}
+          <svg className={styles['icon']} viewBox="0 0 20 20">
+            <mask id={cutoutId}>
+              <rect width="100%" height="100%" fill="white" />
+              <circle cx="10" cy="10" r="8" fill="black" />
+            </mask>
+            <circle
+              r="10"
+              cx="10"
+              cy="10"
+              mask={`url(#${cutoutId})`}
+              className={clsx(styles['outer'], styles['circle'])}
+            />
+            <circle
+              r="5"
+              cx="10"
+              cy="10"
+              className={clsx(styles['inner'], styles['circle'])}
+            />
+          </svg>
+        </div>
+      </Label>
+      <Label {...labelProps}>{props.children}</Label>
+    </div>
   )
 }
 

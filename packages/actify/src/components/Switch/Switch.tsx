@@ -9,24 +9,26 @@ import {
 import React, { useId } from 'react'
 
 import { FocusRing } from './../FocusRing'
+import { Label } from '../Label'
 import { Ripple } from './../Ripple'
+import { VisuallyHidden } from '../VisuallyHidden'
 import clsx from 'clsx'
 import styles from './switch.module.css'
 import { useToggleState } from 'react-stately'
 
-type SwitchProps = {
+interface SwitchProps extends AriaCheckboxProps {
   icons?: boolean
   showOnlySelectedIcon?: boolean
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
-} & AriaCheckboxProps
+}
 
 const Switch = (props: SwitchProps) => {
-  const { id, icons, isDisabled, showOnlySelectedIcon } = props
+  const { id, icons, isDisabled, showOnlySelectedIcon, children } = props
 
   const state = useToggleState(props)
   const inputRef = React.useRef(null)
 
-  const { inputProps } = useSwitch(props, state, inputRef)
+  const { inputProps, labelProps } = useSwitch(props, state, inputRef)
   const { isFocusVisible, focusProps } = useFocusRing()
 
   const switchId = id || `actify-switch${useId()}`
@@ -66,13 +68,15 @@ const Switch = (props: SwitchProps) => {
           state.isSelected ? styles['selected'] : styles['unselected']
         )}
       >
-        <input
-          role="switch"
-          id={switchId}
-          ref={inputRef}
-          className={styles['touch']}
-          {...mergeProps(inputProps, focusProps)}
-        />
+        <VisuallyHidden>
+          <input
+            role="switch"
+            id={switchId}
+            ref={inputRef}
+            className={styles['touch']}
+            {...mergeProps(inputProps, focusProps)}
+          />
+        </VisuallyHidden>
         {isFocusVisible && <FocusRing />}
         <span className={styles['track']}>
           <span className={styles['handle-container']}>
@@ -95,6 +99,9 @@ const Switch = (props: SwitchProps) => {
           </span>
         </span>
       </div>
+      <Label {...labelProps} id={switchId}>
+        {children}
+      </Label>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { SupportingText, SupportingTextProps } from './SupportingText'
 import { cubicBezier, motion } from 'framer-motion'
 
+import { LabelAria } from 'react-aria'
 import React from 'react'
 import clsx from 'clsx'
 import styles from './styles/field.module.css'
@@ -109,10 +110,10 @@ const Field = (props: FieldProps) => {
         <div className={styles['container']}>
           <div className={styles['start']}>{leadingIcon}</div>
           <div className={styles['middle']}>
-            <div className={styles['label-wrapper']}>
+            <span className={styles['label-wrapper']}>
               {restingLabel}
               {outline ? '' : floatingLabel}
-            </div>
+            </span>
             <div className={styles['content']}>{children}</div>
           </div>
           <div className={styles['end']}>{trailingIcon}</div>

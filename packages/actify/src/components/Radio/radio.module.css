@@ -1,7 +1,13 @@
+.radio-wrapper {
+  gap: 8px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
 .radio {
+  outline: none;
   display: inline-flex;
   height: var(--md-radio-icon-size, 20px);
-  outline: none;
   position: relative;
   vertical-align: top;
   width: var(--md-radio-icon-size, 20px);
@@ -34,6 +40,8 @@
 .icon {
   fill: var(--md-radio-icon-color, rgb(var(--md-sys-color-on-surface-variant)));
   inset: 0;
+  width: 100%;
+  height: 100%;
   position: absolute;
 }
 .outer.circle {

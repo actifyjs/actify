@@ -1,6 +1,7 @@
 .host {
-  display: inline-flex;
+  gap: 4px;
   outline: none;
+  display: inline-flex;
   vertical-align: top;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   cursor: pointer;

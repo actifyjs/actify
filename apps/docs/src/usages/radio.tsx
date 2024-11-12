@@ -1,36 +1,33 @@
-import { Label, Radio, RadioGroup } from 'actify'
+import { Radio, RadioGroup } from 'actify'
 
 export default () => {
   return (
     <div className="flex flex-col gap-4">
       <h2>RadioGroup With label</h2>
-
       <RadioGroup
         label="project"
         name="project"
         defaultValue="taildoor"
         className="flex items-center gap-4"
       >
-        <Radio value="actify" />
-        <Radio value="ngroker" />
-        <Radio value="taildoor" />
+        <Radio value="actify" aria-label="actify" />
+        <Radio value="ngroker" aria-label="ngroker" />
+        <Radio value="taildoor" aria-label="taildoor" />
+        <Radio value="hugola" aria-label="hugola" />
       </RadioGroup>
 
       <h2>Radio With label</h2>
 
-      <RadioGroup name="project" defaultValue="actify">
-        <Label className="flex items-center gap-4">
-          <Radio value="actify" />
-          <span>Actify</span>
-        </Label>
-        <Label className="flex items-center gap-4">
-          <Radio value="ngroker" />
-          <span>Ngroker</span>
-        </Label>
-        <Label className="flex items-center gap-4">
-          <Radio value="taildoor" />
-          <span>Taildoor</span>
-        </Label>
+      <RadioGroup
+        orientation="vertical"
+        aria-label="project"
+        name="project"
+        defaultValue="actify"
+      >
+        <Radio value="actify">Actify</Radio>
+        <Radio value="ngroker">Ngroker</Radio>
+        <Radio value="taildoor">Taildoor</Radio>
+        <Radio value="hugola">Hugola</Radio>
       </RadioGroup>
     </div>
   )

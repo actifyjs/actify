@@ -26,7 +26,6 @@ interface TextFieldProps extends AriaTextFieldProps {
     | 'textarea'
 }
 const TextField = ({
-  label,
   suffixText,
   prefixText,
   leadingIcon,
@@ -44,6 +43,7 @@ const TextField = ({
 
   const {
     inputProps: _inputProps,
+    labelProps,
     descriptionProps,
     errorMessageProps,
     isInvalid,
@@ -67,14 +67,14 @@ const TextField = ({
   const populated = mergeProps(_inputProps, inputProps).value ? true : false
 
   return (
-    <label className={styles[variant]}>
+    <label {...labelProps} className={styles[variant]}>
       <Tag
         {...{
-          label,
           leadingIcon,
           trailingIcon,
           count,
           populated,
+          label: props.label,
           focused: isFocused
         }}
       >
