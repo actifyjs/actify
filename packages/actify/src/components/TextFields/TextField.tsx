@@ -7,8 +7,8 @@ import styles from './text-field.module.css'
 
 interface TextFieldProps extends AriaTextFieldProps {
   ref?: React.RefObject<HTMLElement | null>
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>
   inputRef?: React.RefObject<Element | null>
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>
   variant?: 'filled' | 'outlined'
   suffixText?: string
   prefixText?: string
@@ -25,33 +25,32 @@ interface TextFieldProps extends AriaTextFieldProps {
     | 'url'
     | 'textarea'
 }
-const TextField = (props: TextFieldProps) => {
-  const {
-    label,
-    suffixText,
-    prefixText,
-    leadingIcon,
-    trailingIcon,
-    type = 'text',
-    variant = 'filled',
-    inputRef: propInputRef,
-    inputProps: propInputProps
-  } = props
-
-  const inputRef =
-    (propInputRef as
+const TextField = ({
+  label,
+  suffixText,
+  prefixText,
+  leadingIcon,
+  trailingIcon,
+  type = 'text',
+  variant = 'filled',
+  inputRef,
+  inputProps,
+  ...props
+}: TextFieldProps) => {
+  const _inputRef =
+    (inputRef as
       | React.RefObject<HTMLInputElement>
       | React.RefObject<HTMLTextAreaElement>) || React.useRef(null)
 
   const {
-    inputProps,
+    inputProps: _inputProps,
     descriptionProps,
     errorMessageProps,
     isInvalid,
     validationErrors
   } = useTextField(
     { ...props, inputElementType: type == 'textarea' ? 'textarea' : 'input' },
-    inputRef
+    _inputRef
   )
 
   const { focusProps, isFocused } = useFocusRing()
@@ -64,6 +63,9 @@ const TextField = (props: TextFieldProps) => {
     Tag = OutlinedField
   }
 
+  const count = mergeProps(_inputProps, inputProps).value?.toString().length
+  const populated = mergeProps(_inputProps, inputProps).value ? true : false
+
   return (
     <label className={styles[variant]}>
       <Tag
@@ -71,13 +73,9 @@ const TextField = (props: TextFieldProps) => {
           label,
           leadingIcon,
           trailingIcon,
-          focused: isFocused,
-          count: inputProps.value?.toString().length,
-          populated: propInputProps
-            ? !!propInputProps.value
-            : inputProps.value
-              ? true
-              : false
+          count,
+          populated,
+          focused: isFocused
         }}
       >
         {prefixText && <span className={styles['prefix']}>{prefixText}</span>}
@@ -85,8 +83,8 @@ const TextField = (props: TextFieldProps) => {
           <textarea
             {...mergeProps(
               focusProps,
-              inputProps as TextFieldAria,
-              propInputProps
+              _inputProps as TextFieldAria,
+              inputProps
             )}
             ref={inputRef as React.RefObject<HTMLTextAreaElement>}
           />
@@ -99,8 +97,8 @@ const TextField = (props: TextFieldProps) => {
             }}
             {...mergeProps(
               focusProps,
-              inputProps as TextFieldAria,
-              propInputProps
+              _inputProps as TextFieldAria,
+              inputProps
             )}
             ref={inputRef as React.RefObject<HTMLInputElement>}
           />
