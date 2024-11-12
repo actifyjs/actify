@@ -7,12 +7,12 @@ import clsx from 'clsx'
 import styles from './slider.module.css'
 import { useSliderState } from 'react-stately'
 
-type SliderProps = {
+interface SliderProps extends AriaSliderProps {
   labeled?: boolean
   className?: string
   formatOptions?: Record<string, string>
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
-} & AriaSliderProps
+}
 
 const Slider = (props: SliderProps) => {
   const { labeled, minValue = 0, maxValue = 100 } = props

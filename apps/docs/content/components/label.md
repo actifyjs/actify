@@ -5,10 +5,9 @@ description: Use original html label tag, but prevented text selection when doub
 
 ## Usage with Checkbox
 
-<preview code='<Label className="flex items-center">with checkbox <Checkbox /></Label>'></preview>
+<preview code='<Label className="flex items-center">with checkbox <Checkbox aria-label="with checkbox" /></Label>'></preview>
 
 ## Usage with Raido
 
-<preview code='<Label className="flex items-center gap-4">with radio
-<RadioGroup><Radio value="actify" /></RadioGroup></Label>'>
+<preview code='<RadioGroup label="with radio"><Radio value="actify">actify</Radio></RadioGroup>'>
 </preview>

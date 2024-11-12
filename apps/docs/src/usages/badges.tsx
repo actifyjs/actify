@@ -6,6 +6,10 @@ export default () => {
   const color = 'error'
   const [value, setValue] = useState(99)
 
+  const handleChange = (value: number | number[]) => {
+    setValue(value as number)
+  }
+
   return (
     <>
       <div className="flex gap-8">
@@ -23,8 +27,8 @@ export default () => {
           labeled
           value={value}
           maxValue={999}
-          // @ts-ignore
-          onChange={setValue}
+          aria-label="badge"
+          onChange={handleChange}
         />
       </div>
     </>

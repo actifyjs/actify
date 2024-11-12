@@ -6,6 +6,10 @@ export default () => {
   const [value, setValue] = useState(50)
   const [indeterminate, setIndeterminate] = useState(true)
 
+  const handleChange = (value: number | number[]) => {
+    setValue(value as number)
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <LinearProgress indeterminate={indeterminate} value={value} />
@@ -15,6 +19,7 @@ export default () => {
         <Switch
           icons
           color="primary"
+          aria-label="indeterminate"
           isSelected={indeterminate}
           onChange={setIndeterminate}
         />
@@ -24,8 +29,8 @@ export default () => {
         <Slider
           labeled
           value={value}
-          // @ts-ignore
-          onChange={setValue}
+          aria-label="linear progress"
+          onChange={handleChange}
         />
       </Label>
     </div>
