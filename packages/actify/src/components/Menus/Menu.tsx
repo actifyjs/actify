@@ -40,7 +40,7 @@ export function Menu<T extends object>(props: MenuButtonProps<T>) {
       )}
       {props?.activator?.(ref, menuTriggerProps)}
       {state.isOpen && (
-        <Popover state={state} triggerRef={ref} placement={props.placement}>
+        <Popover state={state} triggerRef={ref}>
           <MenuRoot
             {...props}
             {...menuProps}

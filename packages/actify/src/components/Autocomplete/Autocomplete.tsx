@@ -40,6 +40,7 @@ const Autocomplete = <T extends object>(props: AutocompleteProps<T>) => {
         variant={props.variant}
         inputRef={inputRef}
         inputProps={inputProps}
+        onFocus={() => state.setOpen(true)}
         trailingIcon={
           <Icon
             style={{ cursor: 'pointer' }}
@@ -59,6 +60,7 @@ const Autocomplete = <T extends object>(props: AutocompleteProps<T>) => {
 
       {state.isOpen && (
         <Popover
+          offset={16}
           state={state}
           triggerRef={inputRef}
           popoverRef={popoverRef}

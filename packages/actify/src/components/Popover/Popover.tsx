@@ -17,25 +17,19 @@ interface PopoverProps extends Omit<AriaPopoverProps, 'popoverRef'> {
   popoverRef?: React.RefObject<Element | null>
 }
 
-const Popover = ({
-  state,
-  children,
-  offset = 16,
-  referenceWidth,
-  popoverRef: propRef,
-  ...props
-}: PopoverProps) => {
-  const popoverRef =
-    (propRef as React.RefObject<HTMLDivElement>) || React.useRef(null)
-  const { popoverProps, underlayProps, arrowProps, placement } = usePopover(
+const Popover = ({ children, referenceWidth, ...props }: PopoverProps) => {
+  const _popoverRef = React.useRef(null)
+  const { popoverRef = _popoverRef, state } = props
+
+  const { popoverProps, underlayProps } = usePopover(
     {
       ...props,
-      offset,
       popoverRef
     },
     state
   )
 
+  // make the width of the popover the same as the reference element
   popoverProps.style = {
     ...popoverProps.style,
     '--reference-width': referenceWidth + 'px'
@@ -44,8 +38,11 @@ const Popover = ({
   return (
     <Overlay>
       <div {...underlayProps} className={styles['underlay']} />
-      <div {...popoverProps} ref={popoverRef} className={styles['popover']}>
-        <DismissButton onDismiss={state.close} />
+      <div
+        {...popoverProps}
+        className={styles['popover']}
+        ref={popoverRef as React.RefObject<HTMLDivElement>}
+      >
         {children}
         <DismissButton onDismiss={state.close} />
       </div>
