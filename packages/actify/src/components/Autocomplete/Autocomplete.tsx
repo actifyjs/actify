@@ -6,6 +6,8 @@ import { ListBox } from '../ListBox'
 import { Popover } from '../Popover'
 import React from 'react'
 import { TextField } from '../TextFields'
+import styles from './autocomplete.module.css'
+import { useResizeObserver } from './../../hooks'
 
 interface AutocompleteProps<T>
   extends Omit<AriaComboBoxProps<T>, 'children'>,
@@ -19,9 +21,12 @@ const Autocomplete = <T extends object>(props: AutocompleteProps<T>) => {
   const state = useComboBoxState({ ...props, defaultFilter: contains })
 
   // Setup refs and get props for child elements.
+  const ref = React.useRef<HTMLDivElement>(null)
   const inputRef = React.useRef<HTMLInputElement>(null)
   const listBoxRef = React.useRef(null)
   const popoverRef = React.useRef<HTMLDivElement>(null)
+
+  const referenceWidth = useResizeObserver(ref as React.RefObject<HTMLElement>)
 
   const { inputProps, listBoxProps } = useComboBox(
     {
@@ -34,11 +39,11 @@ const Autocomplete = <T extends object>(props: AutocompleteProps<T>) => {
   )
 
   return (
-    <div style={{ display: 'inline-flex', flexDirection: 'column' }}>
+    <div className={styles['autocomplete']} ref={ref}>
       <TextField
         label={props.label}
-        variant={props.variant}
         inputRef={inputRef}
+        variant={props.variant}
         inputProps={inputProps}
         onFocus={() => state.setOpen(true)}
         trailingIcon={
@@ -60,11 +65,11 @@ const Autocomplete = <T extends object>(props: AutocompleteProps<T>) => {
 
       {state.isOpen && (
         <Popover
-          offset={16}
           state={state}
-          triggerRef={inputRef}
+          triggerRef={ref}
           popoverRef={popoverRef}
           placement="bottom start"
+          referenceWidth={referenceWidth}
         >
           <ListBox
             state={state}

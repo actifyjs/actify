@@ -10,6 +10,7 @@ import React from 'react'
 import { TrailingIcon } from './TrailingIcon'
 import clsx from 'clsx'
 import styles from './select.module.css'
+import { useResizeObserver } from '../../hooks'
 
 interface SelectProps<T> extends AriaSelectOptions<T>, SelectStateOptions<T> {
   className?: string
@@ -21,9 +22,6 @@ interface SelectProps<T> extends AriaSelectOptions<T>, SelectStateOptions<T> {
 
 const Select = <T extends object>(props: SelectProps<T>) => {
   const state = useSelectState(props)
-  const [referenceWidth, setReferenceWidth] = React.useState<
-    number | undefined
-  >(0)
   const ref = React.useRef<HTMLButtonElement>(null)
 
   const { triggerProps, valueProps, menuProps } = useSelect(props, state, ref)
@@ -38,16 +36,7 @@ const Select = <T extends object>(props: SelectProps<T>) => {
     Tag = OutlinedField
   }
 
-  React.useEffect(() => {
-    const resizeObserver = new ResizeObserver(() => {
-      const width = ref?.current?.getBoundingClientRect().width
-      setReferenceWidth(width)
-    })
-    resizeObserver.observe(ref?.current as Element)
-    return () => {
-      resizeObserver.disconnect()
-    }
-  }, [])
+  const referenceWidth = useResizeObserver(ref as React.RefObject<HTMLElement>)
 
   return (
     <div
