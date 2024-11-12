@@ -71,6 +71,7 @@ const Select = <T extends object>(props: SelectProps<T>) => {
 
       {state.isOpen && (
         <Popover
+          offset={2}
           state={state}
           triggerRef={ref}
           placement="bottom start"
