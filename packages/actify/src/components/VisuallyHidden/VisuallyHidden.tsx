@@ -1,13 +1,15 @@
-import React from 'react'
-import styles from './actify.module.css'
+import { VisuallyHiddenProps, useVisuallyHidden } from 'react-aria'
 
-interface CompProps {
-  as?: keyof React.JSX.IntrinsicElements
+import React from 'react'
+import styles from './visually-hidden.module.css'
+
+interface Props extends VisuallyHiddenProps {
+  as?: keyof HTMLElementTagNameMap | React.ElementType
 }
-const VisuallyHidden: React.FC<
-  CompProps & React.HTMLAttributes<HTMLOrSVGElement>
-> = ({ as: Tag = 'span', ...rest }) => {
-  return <Tag className={styles['visually-hidden']} {...rest} />
+const VisuallyHidden = ({ as: Tag = 'span', ...props }: Props) => {
+  const { visuallyHiddenProps } = useVisuallyHidden(props)
+
+  return <Tag className={styles['visually-hidden']} {...visuallyHiddenProps} />
 }
 
 export { VisuallyHidden }
