@@ -12,8 +12,13 @@
   margin: 0;
   padding: 0;
 
-  display: flex;
+  display: none;
   gap: 1rem;
+}
+@media (min-width: 1024px) {
+  .ul {
+    display: flex;
+  }
 }
 .page-size {
   width: 100%;
