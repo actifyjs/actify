@@ -15,7 +15,7 @@ description: Text fields let users enter text into a UI
 | `value`          | `string`                                  | The value of text field                                     | `null`    |
 | `defaultValue`   | `string`                                  | The defaultValue of text field                              | `null`    |
 | `variant`        | `filled` `outlined`                       | The variant of text field                                   | `filled`  |
-| `disabled`       | `boolean`                                 | Disables the text field                                     | `false`   |
+| `isDisabled`     | `boolean`                                 | Disables the text field                                     | `false`   |
 | `prefixText`     | `string`                                  | Prefix text of text field                                   | `null`    |
 | `suffixText`     | `string`                                  | Suffix text of text field                                   | `null`    |
 | `supportingText` | `string`                                  | Supporting text of text field                               | `null`    |

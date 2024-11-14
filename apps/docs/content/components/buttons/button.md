@@ -13,3 +13,9 @@ description: Buttons have label text that describes the action that will occur i
 | ------- | ------------------------------------------------- | ----------- | --------- |
 | color   | `primary \| secondary \| tertiary \| error`       | -           | `primary` |
 | variant | `elevated \| filled \| tonal \| outlined \| text` | -           | `filled`  |
+
+## Events
+
+| Events    | Description                                                                                               |
+| --------- | --------------------------------------------------------------------------------------------------------- |
+| `onPress` | This is similar to the standard onClick event, but normalized to support all interaction methods equally. |
