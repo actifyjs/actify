@@ -7,23 +7,60 @@ import {
   type AriaPopoverProps
 } from 'react-aria'
 
-import type { OverlayTriggerState } from 'react-stately'
-import React from 'react'
+import type {
+  OverlayTriggerProps,
+  PlacementAxis,
+  PositionProps
+} from '@react-types/overlays'
 
-interface PopoverProps extends Omit<AriaPopoverProps, 'popoverRef'> {
-  referenceWidth?: number
-  children: React.ReactNode
-  state: OverlayTriggerState
+import React from 'react'
+import { RenderProps, SlotProps } from './../../utils'
+import { PopoverContext } from './PopoverContext'
+
+interface PopoverRenderProps {
+  /**
+   * The name of the component that triggered the popover, e.g. "DialogTrigger" or "ComboBox".
+   * @selector [data-trigger="..."]
+   */
+  trigger: string | null
+  /**
+   * The placement of the popover relative to the trigger.
+   * @selector [data-placement="left | right | top | bottom"]
+   */
+  placement: PlacementAxis
+  /**
+   * Whether the popover is currently entering. Use this to apply animations.
+   * @selector [data-entering]
+   */
+  isEntering: boolean
+  /**
+   * Whether the popover is currently exiting. Use this to apply animations.
+   * @selector [data-exiting]
+   */
+  isExiting: boolean
+}
+
+export interface PopoverProps
+  extends PositionProps,
+    Omit<AriaPopoverProps, 'triggerRef' | 'popoverRef'>,
+    OverlayTriggerProps,
+    RenderProps<PopoverRenderProps>,
+    SlotProps {
+  triggerRef?: React.RefObject<Element | null>
   popoverRef?: React.RefObject<Element | null>
 }
 
-const Popover = ({ children, referenceWidth, ...props }: PopoverProps) => {
-  const _popoverRef = React.useRef(null)
-  const { popoverRef = _popoverRef, state } = props
+const Popover = (props: PopoverProps & React.RefAttributes<HTMLElement>) => {
+  const _triggerRef = React.useRef<HTMLDivElement>(null)
+  const _popoverRef = React.useRef<HTMLDivElement>(null)
+
+  const { triggerRef = _triggerRef, popoverRef = _popoverRef, children } = props
+  const { state, referenceWidth } = React.useContext(PopoverContext)
 
   const { popoverProps, underlayProps } = usePopover(
     {
       ...props,
+      triggerRef,
       popoverRef
     },
     state
@@ -43,8 +80,7 @@ const Popover = ({ children, referenceWidth, ...props }: PopoverProps) => {
         className={styles['popover']}
         ref={popoverRef as React.RefObject<HTMLDivElement>}
       >
-        {children}
-        <DismissButton onDismiss={state.close} />
+        <>{children}</>
       </div>
     </Overlay>
   )

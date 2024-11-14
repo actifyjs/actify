@@ -4,4 +4,3 @@ export {
   //
   Root
 } from './Slot'
-export type { SlotProps } from './Slot'

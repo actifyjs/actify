@@ -1,5 +1,6 @@
 import { Button } from '../Button'
 import { Popover } from './Popover'
+import { PopoverContext } from './PopoverContext'
 import React from 'react'
 import { useOverlayTrigger } from 'react-aria'
 import { useOverlayTriggerState } from 'react-stately'
@@ -22,16 +23,16 @@ const PopoverActivator = ({
   )
 
   return (
-    <>
+    <PopoverContext.Provider value={{ state }}>
       <Button {...triggerProps} ref={ref}>
         {label}
       </Button>
       {state.isOpen && (
-        <Popover {...props} triggerRef={ref} state={state}>
+        <Popover {...props} triggerRef={ref}>
           {React.cloneElement(children, overlayProps)}
         </Popover>
       )}
-    </>
+    </PopoverContext.Provider>
   )
 }
 

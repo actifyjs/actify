@@ -4,6 +4,7 @@ import { ComboBoxStateOptions, useComboBoxState } from 'react-stately'
 import { Icon } from '../Icon'
 import { ListBox } from '../ListBox'
 import { Popover } from '../Popover'
+import { PopoverContext } from '../Popover/PopoverContext'
 import React from 'react'
 import { TextField } from '../TextFields'
 import styles from './autocomplete.module.css'
@@ -39,46 +40,46 @@ const Autocomplete = <T extends object>(props: AutocompleteProps<T>) => {
   )
 
   return (
-    <div className={styles['autocomplete']} ref={ref}>
-      <TextField
-        label={props.label}
-        inputRef={inputRef}
-        variant={props.variant}
-        inputProps={inputProps}
-        onFocus={() => state.setOpen(true)}
-        trailingIcon={
-          <Icon
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              state.setOpen(!state.isOpen)
-              // If the input is focused, move the cursor to the end
-              inputRef.current?.setSelectionRange(
-                inputRef.current.value.length,
-                inputRef.current.value.length
-              )
-            }}
-          >
-            Arrow_Drop_Down
-          </Icon>
-        }
-      />
+    <PopoverContext.Provider value={{ state, referenceWidth }}>
+      <div className={styles['autocomplete']} ref={ref}>
+        <TextField
+          label={props.label}
+          inputRef={inputRef}
+          variant={props.variant}
+          inputProps={inputProps}
+          onFocus={() => state.setOpen(true)}
+          trailingIcon={
+            <Icon
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                state.setOpen(!state.isOpen)
+                // If the input is focused, move the cursor to the end
+                inputRef.current?.setSelectionRange(
+                  inputRef.current.value.length,
+                  inputRef.current.value.length
+                )
+              }}
+            >
+              Arrow_Drop_Down
+            </Icon>
+          }
+        />
 
-      {state.isOpen && (
-        <Popover
-          state={state}
-          triggerRef={ref}
-          popoverRef={popoverRef}
-          placement="bottom start"
-          referenceWidth={referenceWidth}
-        >
-          <ListBox
-            state={state}
-            listBoxRef={listBoxRef}
-            listBoxProps={listBoxProps}
-          />
-        </Popover>
-      )}
-    </div>
+        {state.isOpen && (
+          <Popover
+            triggerRef={ref}
+            popoverRef={popoverRef}
+            placement="bottom start"
+          >
+            <ListBox
+              state={state}
+              listBoxRef={listBoxRef}
+              listBoxProps={listBoxProps}
+            />
+          </Popover>
+        )}
+      </div>
+    </PopoverContext.Provider>
   )
 }
 

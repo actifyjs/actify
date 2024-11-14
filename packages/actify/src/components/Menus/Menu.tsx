@@ -6,6 +6,7 @@ import { Button } from './../Button'
 import { MenuItem } from './MenuItem'
 import { MenuItems } from './MenuItems'
 import { Popover } from './../Popover'
+import { PopoverContext } from '../Popover/PopoverContext'
 import React from 'react'
 import clsx from 'clsx'
 import styles from './menu.module.css'
@@ -32,7 +33,7 @@ export function Menu<T extends object>(props: MenuButtonProps<T>) {
   const { menuTriggerProps, menuProps } = useMenuTrigger<T>({}, state, ref)
 
   return (
-    <>
+    <PopoverContext.Provider value={{ state }}>
       {props.label && (
         <Button {...menuTriggerProps} ref={ref}>
           {props.label}
@@ -40,7 +41,7 @@ export function Menu<T extends object>(props: MenuButtonProps<T>) {
       )}
       {props?.activator?.(ref, menuTriggerProps)}
       {state.isOpen && (
-        <Popover state={state} triggerRef={ref}>
+        <Popover triggerRef={ref}>
           <MenuRoot
             {...props}
             {...menuProps}
@@ -49,7 +50,7 @@ export function Menu<T extends object>(props: MenuButtonProps<T>) {
           />
         </Popover>
       )}
-    </>
+    </PopoverContext.Provider>
   )
 }
 
