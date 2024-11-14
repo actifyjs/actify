@@ -2,8 +2,10 @@ import React from 'react'
 import clsx from 'clsx'
 import styles from './icon.module.css'
 
-interface IconProps extends React.ComponentProps<'span'> {}
-const Icon = ({ className, children, ...rest }: IconProps) => {
+interface IconProps extends React.ComponentProps<'span'> {
+  fill?: boolean
+}
+const Icon = ({ className, children, fill, ...rest }: IconProps) => {
   return (
     <React.Suspense
       fallback={
@@ -20,11 +22,18 @@ const Icon = ({ className, children, ...rest }: IconProps) => {
     >
       <link
         rel="stylesheet"
-        // @ts-ignore
+        // @ts-expect-error
         precedence="default"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap"
       />
-      <span {...rest} className={clsx(styles['icon'], className)}>
+      <span
+        {...rest}
+        className={clsx(
+          styles['icon'],
+          fill ? styles['icon-filled'] : undefined,
+          className
+        )}
+      >
         <i aria-hidden="true">{children}</i>
       </span>
     </React.Suspense>
