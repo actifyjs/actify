@@ -24,3 +24,7 @@
     text-rendering: optimizelegibility;
   }
 }
+
+.icon-filled i {
+  font-variation-settings: 'FILL' 1;
+}
