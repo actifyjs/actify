@@ -13,7 +13,7 @@ description: Switches toggle the state of an item on or off
 | ----------------- | ----------------------------------------- | ------------------------------ | --------- |
 | `icons`           | `boolean`                                 | Show x or √ icon               | `false`   |
 | `color`           | `primary` `secondary` `tertiaray` `error` | The color of the switch        | `primary` |
-| `disabled`        | `boolean`                                 | Whether the switch is disabled | `false`   |
+| `isDisabled`      | `boolean`                                 | Whether the switch is disabled | `false`   |
 | `selected`        | `boolean`                                 | Whether the switch is checked  | `null`    |
 | `defaultSelected` | `boolean`                                 | The switch default selected    | `false`   |
 

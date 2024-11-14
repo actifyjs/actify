@@ -7,13 +7,6 @@ description: Bottom sheets show secondary content anchored to the bottom of the 
 
 <usage></usage>
 
-## Sub components
-
-| Name                   | Description                        |
-| ---------------------- | ---------------------------------- |
-| BottomSheets.Activator | The activator of the bottom sheets |
-| BottomSheets.Content   | The content of the bottom sheets   |
-
 ## Activator Props
 
 | Props     | Type      | Description                                | Default |

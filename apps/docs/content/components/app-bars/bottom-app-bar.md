@@ -6,10 +6,3 @@ description: Bottom app bars display navigation and key actions at the bottom of
 ## Usage
 
 <usage></usage>
-
-## Sub components
-
-| Name               | Description  |
-| ------------------ | ------------ |
-| BottomAppBar.Icons | Icon buttons |
-| BottomAppBar.Fab   | FAB          |

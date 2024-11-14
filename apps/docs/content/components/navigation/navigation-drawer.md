@@ -7,13 +7,6 @@ description: Navigation drawers let people switch between UI views on larger dev
 
 <usage></usage>
 
-## Sub Components
-
-| Name             | Description                            |
-| ---------------- | -------------------------------------- |
-| Drawer.Activator | The activator of the navigation drawer |
-| Drawer.Content   | The content of the navigation drawer   |
-
 ## Props
 
 | Props       | Type                          | Description                                | Default |

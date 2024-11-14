@@ -13,16 +13,6 @@ description: Side sheets are surfaces containing supplementary content or action
 | --------- | --------- | ---------------------------- | ------- |
 | `divider` | `boolean` | show divider in body content | `false` |
 
-## Sub components
-
-| Name                 | Description                      |
-| -------------------- | -------------------------------- |
-| SideSheets.Activator | The activator of the side sheets |
-| SideSheets.Content   | The content of the side sheets   |
-| SideSheets.Header    | The header of the side sheets    |
-| SideSheets.Body      | The body of the side sheets      |
-| SideSheets.Action    | The action of the side sheets    |
-
 ## Activator Props
 
 | Props     | Type      | Description                                | Default |

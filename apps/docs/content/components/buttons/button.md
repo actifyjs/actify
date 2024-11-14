@@ -9,10 +9,11 @@ description: Buttons have label text that describes the action that will occur i
 
 ## Props
 
-| Props   | Type                                              | Description | Default   |
-| ------- | ------------------------------------------------- | ----------- | --------- |
-| color   | `primary \| secondary \| tertiary \| error`       | -           | `primary` |
-| variant | `elevated \| filled \| tonal \| outlined \| text` | -           | `filled`  |
+| Props      | Type                                              | Description                    | Default     |
+| ---------- | ------------------------------------------------- | ------------------------------ | ----------- |
+| color      | `primary \| secondary \| tertiary \| error`       | -                              | `primary`   |
+| variant    | `elevated \| filled \| tonal \| outlined \| text` | -                              | `filled`    |
+| isDisabled | `boolean`                                         | whether the button is disabled | `undefined` |
 
 ## Events
 
