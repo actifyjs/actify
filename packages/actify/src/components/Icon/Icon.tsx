@@ -30,7 +30,7 @@ const Icon = ({ className, children, fill, ...rest }: IconProps) => {
         {...rest}
         className={clsx(
           styles['icon'],
-          fill ? styles['icon-filled'] : undefined,
+          fill && styles['icon-filled'],
           className
         )}
       >

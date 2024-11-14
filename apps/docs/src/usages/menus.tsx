@@ -1,4 +1,4 @@
-import { Icon, IconButton, Item, Menu, Section } from 'actify'
+import { Icon, IconButton, Menu, MenuItem, MenuSection } from 'actify'
 
 import React from 'react'
 
@@ -10,18 +10,18 @@ export default () => {
         label="Open with label"
         onAction={(key) => alert(key)}
       >
-        <Section>
-          <Item key="edit">Edit…</Item>
-          <Item key="duplicate">Duplicate</Item>
-        </Section>
-        <Section>
-          <Item key="move">Move…</Item>
-          <Item key="rename">Rename…</Item>
-        </Section>
-        <Section>
-          <Item key="archive">Archive</Item>
-          <Item key="delete">Delete…</Item>
-        </Section>
+        <MenuSection>
+          <MenuItem key="edit">Edit…</MenuItem>
+          <MenuItem key="duplicate">Duplicate</MenuItem>
+        </MenuSection>
+        <MenuSection>
+          <MenuItem key="move">Move…</MenuItem>
+          <MenuItem key="rename">Rename…</MenuItem>
+        </MenuSection>
+        <MenuSection>
+          <MenuItem key="archive">Archive</MenuItem>
+          <MenuItem key="delete">Delete…</MenuItem>
+        </MenuSection>
       </Menu>
       <Menu
         activator={(ref, menuTriggerProps) => (
@@ -31,9 +31,9 @@ export default () => {
         )}
         onAction={(key) => alert(key)}
       >
-        <Item key="copy">Copy</Item>
-        <Item key="cut">Cut</Item>
-        <Item key="paste">Paste</Item>
+        <MenuItem key="copy">Copy</MenuItem>
+        <MenuItem key="cut">Cut</MenuItem>
+        <MenuItem key="paste">Paste</MenuItem>
       </Menu>
     </div>
   )
