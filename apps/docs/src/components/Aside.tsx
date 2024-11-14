@@ -132,6 +132,9 @@ const components = [
     name: 'Sliders'
   },
   {
+    name: 'Snackbar'
+  },
+  {
     name: 'Swiper'
   },
   {

@@ -31,6 +31,8 @@ export * from './components/Ripple'
 export * from './components/FocusRing'
 export * from './components/Select'
 export * from './components/Autocomplete'
+
+export * from './components/Snackbar'
 export * from './components/Sliders'
 export * from './components/Switch'
 export * from './components/Tabs'
