@@ -213,7 +213,7 @@ export default () => {
             />
           </label>
         </div>
-        <Button onClick={exportColors}>Export Colors</Button>
+        <Button onPress={exportColors}>Export Colors</Button>
       </div>
       <SyntaxHighlighter lang="css">{cssString}</SyntaxHighlighter>
     </>
