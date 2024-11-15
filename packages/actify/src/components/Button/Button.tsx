@@ -2,7 +2,6 @@
 
 import {
   AriaButtonProps,
-  AriaLinkOptions,
   mergeProps,
   useButton,
   useFocusRing
@@ -12,12 +11,14 @@ import React, { useId } from 'react'
 import { Elevation } from './../Elevation'
 import { FocusRing } from './../FocusRing'
 import { Ripple } from './../Ripple'
+import { StyleProps } from '../../utils'
 import buttons from './styles/button.module.css'
 import clsx from 'clsx'
 import colors from './styles/color.module.css'
 import variants from './styles/variant.module.css'
 
-type ButtonProps = {
+interface ButtonProps extends AriaButtonProps, StyleProps {
+  ref?: React.RefObject<HTMLButtonElement | null>
   ripple?: boolean
   asLink?: boolean
   trailingIcon?: boolean
@@ -25,13 +26,13 @@ type ButtonProps = {
   popoverTargetAction?: 'show' | 'toggle' | 'hide'
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
   variant?: 'elevated' | 'filled' | 'tonal' | 'outlined' | 'text'
-} & Omit<React.ComponentProps<'button'>, 'disabled'> &
-  AriaButtonProps
+}
 
 const Button = (props: ButtonProps) => {
+  const _buttonRef = React.useRef<HTMLButtonElement>(null)
   const {
     id,
-    ref,
+    ref = _buttonRef,
     style,
     asLink,
     ripple = true,
@@ -42,11 +43,7 @@ const Button = (props: ButtonProps) => {
     children
   } = props
 
-  const buttonRef = ref || React.useRef<HTMLButtonElement>(null)
-  const { buttonProps } = useButton(
-    props,
-    buttonRef as React.RefObject<HTMLButtonElement>
-  )
+  const { buttonProps } = useButton(props, ref)
 
   const buttonId = id || `actify-button${useId()}`
 
@@ -63,7 +60,7 @@ const Button = (props: ButtonProps) => {
         isDisabled && buttons['disabled'],
         className
       )}
-      ref={buttonRef}
+      ref={ref}
       {...mergeProps(asLink ? null : buttonProps, focusProps)}
     >
       <div className={buttons['button']}>

@@ -80,7 +80,9 @@ const Popover = (props: PopoverProps & React.RefAttributes<HTMLElement>) => {
         className={styles['popover']}
         ref={popoverRef as React.RefObject<HTMLDivElement>}
       >
+        <DismissButton onDismiss={state.close} />
         <>{children}</>
+        <DismissButton onDismiss={state.close} />
       </div>
     </Overlay>
   )
