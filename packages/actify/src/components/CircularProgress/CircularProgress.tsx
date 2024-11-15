@@ -1,40 +1,44 @@
 'use client'
 
+import { AriaProgressBarProps, useProgressBar } from 'react-aria'
+
 import React from 'react'
+import { StyleProps } from '../../utils'
 import clsx from 'clsx'
 import styles from './circular-progress.module.css'
 
 const ActiveIndicatorWidth = 25 / 3
 
-interface CircularProgressProp extends React.ComponentProps<'div'> {
-  value?: number | string
-  indeterminate?: boolean
+interface CircularProgressProp extends AriaProgressBarProps, StyleProps {
   size?: 'xs' | 'md' | 'lg' | 'xl' | '2xl'
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
 const CircularProgress = (props: CircularProgressProp) => {
   const {
-    value,
+    value = 0,
+    minValue = 0,
+    maxValue = 100,
     size = 'sm',
     color = 'primary',
-    indeterminate,
-    className,
-    ...rest
+    isIndeterminate,
+    className
   } = props
+
+  const { progressBarProps } = useProgressBar(props)
 
   return (
     <React.Fragment>
       <div
-        {...rest}
+        {...progressBarProps}
         className={clsx(
           styles[`size-${size}`],
           styles[`color-${color}`],
-          indeterminate && styles['animating'],
+          isIndeterminate && styles['animating'],
           className
         )}
       >
-        {indeterminate ? (
+        {isIndeterminate ? (
           <div className={styles['indeterminate']}>
             <div className={styles['spinner-wrapper-left']}>
               <div
@@ -70,7 +74,7 @@ const CircularProgress = (props: CircularProgressProp) => {
                   r: `${50 * (1 - ActiveIndicatorWidth * 0.01)}%`
                 } as React.CSSProperties
               }
-              strokeDashoffset={(1 - Number(value) / 100) * 100}
+              strokeDashoffset={(1 - value / (maxValue - minValue)) * 100}
             />
           </svg>
         )}

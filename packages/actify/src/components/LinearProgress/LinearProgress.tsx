@@ -1,27 +1,31 @@
 'use client'
 
+import { AriaProgressBarProps, useProgressBar } from 'react-aria'
+
 import React from 'react'
+import { StyleProps } from '../../utils'
 import clsx from 'clsx'
 import styles from './linear-progress.module.css'
 
-interface LinearProgressProps extends React.ComponentProps<'div'> {
-  value?: number | string
-  indeterminate?: boolean
+interface LinearProgressProps extends AriaProgressBarProps, StyleProps {
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
 const LinearProgress = (props: LinearProgressProps) => {
   const {
-    value,
+    value = 0,
     className,
+    minValue = 0,
+    maxValue = 100,
     color = 'primary',
-    indeterminate = false,
-    ...rest
+    isIndeterminate = false
   } = props
+
+  const { progressBarProps } = useProgressBar(props)
 
   return (
     <div
-      {...rest}
+      {...progressBarProps}
       className={clsx(
         styles['progress'],
         styles[`progress-${color}`],
@@ -43,20 +47,23 @@ const LinearProgress = (props: LinearProgressProps) => {
         }
       />
       <div
-        className={clsx(styles['bar'], indeterminate && styles['bar-primary'])}
+        className={clsx(
+          styles['bar'],
+          isIndeterminate && styles['bar-primary']
+        )}
         style={{
           blockSize: '100%',
           inlineSize: '100%',
           transition: 'none 0s ease 0s',
           transformOrigin: 'left center',
-          insetInlineStart: indeterminate ? '-145.167%' : 0,
-          transform: `scaleX(${indeterminate ? 1 : Number(value) / 100})`
+          insetInlineStart: isIndeterminate ? '-145.167%' : 0,
+          transform: `scaleX(${isIndeterminate ? 1 : value / (maxValue - minValue)})`
         }}
       >
         <div
           className={clsx(
             styles['bar-inner'],
-            indeterminate && styles['bar-inner-primary']
+            isIndeterminate && styles['bar-inner-primary']
           )}
         />
       </div>
@@ -70,13 +77,13 @@ const LinearProgress = (props: LinearProgressProps) => {
         }}
         className={clsx(
           styles['bar'],
-          indeterminate ? styles['bar-secondary'] : styles['bar-hidden']
+          isIndeterminate ? styles['bar-secondary'] : styles['bar-hidden']
         )}
       >
         <div
           className={clsx(
             styles['bar-inner'],
-            indeterminate && styles['bar-inner-secondary']
+            isIndeterminate && styles['bar-inner-secondary']
           )}
         />
       </div>
