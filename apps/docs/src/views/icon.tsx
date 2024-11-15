@@ -88,7 +88,7 @@ export default () => {
         label={`Search ${filterIcons.length} icons`}
       />
 
-      <LinearProgress indeterminate={isPending} value={0} />
+      <LinearProgress isIndeterminate={isPending} />
       <div className="mt-2 gap-2 grid grid-cols-[repeat(auto-fill,minmax(52px,1fr))]">
         {filterIcons.map((icon) => (
           <IconWrapper key={icon} fill={selected}>
