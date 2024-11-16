@@ -26,8 +26,7 @@ const Slider = (props: SliderProps) => {
     trackRef
   )
 
-  const percent =
-    Number(state.getThumbValueLabel(0)) / (Number(maxValue) - Number(minValue))
+  const percent = Number(state.getThumbValueLabel(0)) / (maxValue - minValue)
 
   return (
     <div
@@ -45,7 +44,11 @@ const Slider = (props: SliderProps) => {
       {props.label && (
         <div className={styles['label-container']}>
           <Label {...labelProps}>{props.label}</Label>
-          <output {...outputProps}>{state.getThumbValueLabel(0)}</output>
+          <output {...outputProps}>
+            {state.values
+              .map((_, index) => `${state.getThumbValueLabel(index)}`)
+              .join(' - ')}
+          </output>
         </div>
       )}
       {/* The track element holds the visible track line and the thumb. */}
@@ -57,13 +60,15 @@ const Slider = (props: SliderProps) => {
           state.isDisabled && styles['disabled']
         )}
       >
-        <Thumb
-          index={0}
-          state={state}
-          labeled={labeled}
-          trackRef={trackRef}
-          outputProps={outputProps}
-        />
+        {state.values.map((_, index) => (
+          <Thumb
+            key={index}
+            index={index}
+            state={state}
+            labeled={labeled}
+            trackRef={trackRef}
+          />
+        ))}
       </div>
     </div>
   )

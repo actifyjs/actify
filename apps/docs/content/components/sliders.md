@@ -9,13 +9,14 @@ description: Sliders let users make selections from a range of values
 
 ## Props
 
-| Props          | Type                                      | Description          | Default   |
-| -------------- | ----------------------------------------- | -------------------- | --------- |
-| `color`        | `primary` `secondary` `tertiaray` `error` | color                | `primary` |
-| `value`        | `number`                                  | slider value         | `null`    |
-| `labeled `     | `boolean`                                 | show label           | `true`    |
-| `isDisabled`   | `boolean`                                 | disable slider       | `false`   |
-| `defaultValue` | `number`                                  | default slider value | `0`       |
+| Props          | Type                                      | Description          | Default     |
+| -------------- | ----------------------------------------- | -------------------- | ----------- |
+| `color`        | `primary` `secondary` `tertiaray` `error` | color                | `primary`   |
+| `label`        | `string`                                  | label                | `undefined` |
+| `value`        | `number` `number[]`                       | slider value         | `undefined` |
+| `labeled `     | `boolean`                                 | show label on thumb  | `undefined` |
+| `isDisabled`   | `boolean`                                 | disable slider       | `undefined` |
+| `defaultValue` | `number` `number[]`                       | default slider value | `undefined` |
 
 ## Events
 

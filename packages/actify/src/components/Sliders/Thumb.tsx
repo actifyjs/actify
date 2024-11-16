@@ -14,15 +14,15 @@ import { SliderState } from 'react-stately'
 import clsx from 'clsx'
 import styles from './slider.module.css'
 
-type ThumbProps = {
+interface ThumbProps extends AriaSliderThumbProps {
   labeled?: boolean
   state: SliderState
-  outputProps: React.OutputHTMLAttributes<HTMLOutputElement>
+  outputProps?: React.OutputHTMLAttributes<HTMLOutputElement>
   trackRef: React.RefObject<null>
-} & AriaSliderThumbProps
+}
 
-export function Thumb(props: ThumbProps) {
-  const { labeled, outputProps, state, trackRef, index, name } = props
+const Thumb = (props: ThumbProps) => {
+  const { labeled, outputProps, state, trackRef, index = 0, name } = props
   const inputRef = React.useRef(null)
   const { thumbProps, inputProps, isDragging } = useSliderThumb(
     {
@@ -61,10 +61,12 @@ export function Thumb(props: ThumbProps) {
               transform: `translateX(-50%) scale(${isFocused ? 1 : 0})`
             }}
           >
-            <span style={{ zIndex: 1 }}>{state.getThumbValueLabel(0)}</span>
+            <span style={{ zIndex: 1 }}>{state.getThumbValueLabel(index)}</span>
           </output>
         )}
       </div>
     </div>
   )
 }
+
+export { Thumb }
