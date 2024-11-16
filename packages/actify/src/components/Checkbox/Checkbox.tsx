@@ -1,36 +1,55 @@
 'use client'
 
 import {
+  AriaCheckboxGroupItemProps,
   AriaCheckboxProps,
   mergeProps,
   useCheckbox,
   useFocusRing
 } from 'react-aria'
+import { CheckboxGroupState, useToggleState } from 'react-stately'
 import React, { useId } from 'react'
+import { useCheckboxGroup, useCheckboxGroupItem } from 'react-aria'
 
+import { CheckboxGroupContext } from './CheckboxGroup'
 import { FocusRing } from './../FocusRing'
 import { Label } from './../Label'
 import { Ripple } from './../Ripple'
 import clsx from 'clsx'
 import styles from './checkbox.module.css'
-import { useToggleState } from 'react-stately'
 
-type CheckboxProps = {
+interface CheckboxProps extends AriaCheckboxProps {
+  ref?: React.RefObject<HTMLInputElement>
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
-} & AriaCheckboxProps
+}
 
 const Checkbox = (props: CheckboxProps) => {
-  const { id, isDisabled } = props
+  const _id = `actify-checkbox${useId()}`
+  const _inputRef = React.useRef(null)
 
-  const state = useToggleState(props)
-  const inputRef = React.useRef(null)
+  const { id = _id, ref: inputRef = _inputRef } = props
 
-  const { inputProps } = useCheckbox(props, state, inputRef)
+  const groupState = React.useContext(CheckboxGroupContext)
+  const toggleState = useToggleState(props)
+
+  const state = groupState ?? toggleState
+
+  const { inputProps } = groupState
+    ? useCheckboxGroupItem(
+        props as AriaCheckboxGroupItemProps,
+        state as CheckboxGroupState,
+        inputRef
+      )
+    : useCheckbox(props, toggleState, inputRef)
+
+  const isSelected = groupState
+    ? (state as CheckboxGroupState).isSelected(props.value as string)
+    : state.isSelected && !props.isIndeterminate
+  const isDisabled = groupState
+    ? (state as CheckboxGroupState).isDisabled
+    : props.isDisabled
+
   const { isFocusVisible, focusProps } = useFocusRing()
-
-  const isSelected = state.isSelected && !props.isIndeterminate
-
-  const checkboxId = id || `actify-checkbox${useId()}`
 
   return (
     <Label
@@ -42,8 +61,8 @@ const Checkbox = (props: CheckboxProps) => {
       <div role="presentation" className={styles['checkbox']}>
         <div className={styles['container']}>
           <input
+            id={id}
             ref={inputRef}
-            id={checkboxId}
             role="checkbox"
             className={styles['input']}
             {...mergeProps(inputProps, focusProps)}
@@ -74,7 +93,7 @@ const Checkbox = (props: CheckboxProps) => {
             />
           )}
           <Ripple
-            id={checkboxId}
+            id={id}
             disabled={isDisabled}
             style={{
               width: '40px',

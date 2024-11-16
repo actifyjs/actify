@@ -8,9 +8,8 @@ import { Label } from '../Label'
 import React from 'react'
 import { useCheckboxGroup } from 'react-aria'
 
-const CheckboxGroupContext = React.createContext<CheckboxGroupState | null>(
-  null
-)
+export const CheckboxGroupContext =
+  React.createContext<CheckboxGroupState | null>(null)
 
 interface Props extends CheckboxGroupProps {
   children?: React.ReactNode
