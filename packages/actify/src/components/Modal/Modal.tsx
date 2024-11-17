@@ -2,6 +2,7 @@ import { AriaModalOverlayProps, Overlay, useModalOverlay } from 'react-aria'
 
 import { OverlayTriggerState } from 'react-stately'
 import React from 'react'
+import styles from './modal.module.css'
 
 interface ModalProps extends AriaModalOverlayProps {
   children: React.ReactNode
@@ -19,29 +20,9 @@ export function Modal({ state, children, ...props }: ModalProps) {
 
   return (
     <Overlay>
-      <div
-        style={{
-          position: 'fixed',
-          zIndex: 100,
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0,
-          background: 'rgba(0, 0, 0, 0.5)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-        {...underlayProps}
-      >
-        <div
-          ref={ref}
-          {...modalProps}
-          style={{
-            background: 'var(--page-background)',
-            border: '1px solid gray'
-          }}
-        >
+      <div className={styles['modal']} {...underlayProps}>
+        <div className={styles['scrim']} />
+        <div ref={ref} className={styles['content']} {...modalProps}>
           {children}
         </div>
       </div>
