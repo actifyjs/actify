@@ -1,10 +1,12 @@
 import { AriaTabPanelProps, useTabPanel } from 'react-aria'
 
 import React from 'react'
+import { StyleProps } from '../../utils'
 import { TabListState } from 'react-stately'
+import clsx from 'clsx'
 import styles from './tabs.module.css'
 
-interface TabPanelProps<T> extends AriaTabPanelProps {
+interface TabPanelProps<T> extends AriaTabPanelProps, StyleProps {
   state: TabListState<T>
 }
 const TabPanel = <T extends object>({ state, ...props }: TabPanelProps<T>) => {
@@ -16,7 +18,7 @@ const TabPanel = <T extends object>({ state, ...props }: TabPanelProps<T>) => {
       ref={ref}
       role="tabpanel"
       {...tabPanelProps}
-      className={styles['tabpanel']}
+      className={clsx(styles['tabpanel'], props.className)}
     >
       {state.selectedItem?.props.children}
     </div>

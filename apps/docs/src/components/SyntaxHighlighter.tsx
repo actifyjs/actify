@@ -76,7 +76,7 @@ const SyntaxHighlighter = (props: React.ComponentProps<'div'>) => {
 
       <div
         dangerouslySetInnerHTML={{ __html: code }}
-        className="[&_code]:[fontFamily:var(--font-fira-code)] [&_code]:block [&_code]:w-full overflow-x-hidden max-h-72 [&_pre]:p-4 [&_pre]:!my-0"
+        className="[&_code]:[fontFamily:var(--font-fira-code)] [&_code]:block [&_code]:w-full overflow-x-hidden h-fit max-h-[calc(100vh-234px)] [&_pre]:p-4 [&_pre]:!my-0"
       />
     </div>
   )

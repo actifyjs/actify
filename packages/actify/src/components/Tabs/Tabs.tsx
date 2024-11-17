@@ -18,14 +18,16 @@ import styles from './tabs.module.css'
 interface TabsProps<T>
   extends AriaTabListProps<T>,
     TabListProps<T>,
-    StyleProps {}
+    StyleProps {
+  contentClassName?: string
+}
 
 const Tabs = <T extends object>(props: TabsProps<T>) => {
   const state = useTabListState(props)
   const ref = React.useRef<HTMLDivElement>(null)
   const { tabListProps } = useTabList(props, state, ref)
 
-  const { orientation = 'horizontal' } = props
+  const { contentClassName, orientation = 'horizontal' } = props
 
   const [activeTabStyle, setActiveTabStyle] = useState<{
     width?: number
@@ -90,7 +92,11 @@ const Tabs = <T extends object>(props: TabsProps<T>) => {
           ))}
         </div>
       </div>
-      <TabPanel key={state.selectedItem?.key} state={state} />
+      <TabPanel
+        className={contentClassName}
+        key={state.selectedItem?.key}
+        state={state}
+      />
     </nav>
   )
 }
