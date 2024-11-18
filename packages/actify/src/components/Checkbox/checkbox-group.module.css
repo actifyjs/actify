@@ -1,0 +1,14 @@
+.checkbox-group[aria-orientation='horizontal'] {
+  gap: 14px;
+  align-items: center;
+}
+.checkbox-group[aria-orientation='vertical'] {
+  flex-direction: column;
+}
+.description {
+  font-size: 12px;
+}
+.error-message {
+  font-size: 12px;
+  color: rgb(var(--md-sys-color-error));
+}

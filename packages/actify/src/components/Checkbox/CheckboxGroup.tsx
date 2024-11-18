@@ -1,21 +1,19 @@
-import {
-  CheckboxGroupProps,
-  CheckboxGroupState,
-  useCheckboxGroupState
-} from 'react-stately'
+import { AriaCheckboxGroupProps, useCheckboxGroup } from 'react-aria'
+import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately'
 
 import { Label } from '../Label'
 import React from 'react'
-import { useCheckboxGroup } from 'react-aria'
+import { StyleProps } from '../../utils'
+import styles from './checkbox-group.module.css'
 
 export const CheckboxGroupContext =
   React.createContext<CheckboxGroupState | null>(null)
 
-interface Props extends CheckboxGroupProps {
+interface Props extends AriaCheckboxGroupProps, StyleProps {
   children?: React.ReactNode
 }
 const CheckboxGroup = (props: Props) => {
-  const { children, label, description } = props
+  const { children, label, description, style, className } = props
   const state = useCheckboxGroupState(props)
   const {
     groupProps,
@@ -27,18 +25,16 @@ const CheckboxGroup = (props: Props) => {
   } = useCheckboxGroup(props, state)
 
   return (
-    <div {...groupProps}>
-      <Label {...labelProps}>{label}</Label>
-      <CheckboxGroupContext.Provider value={state}>
-        {children}
-      </CheckboxGroupContext.Provider>
+    <div {...groupProps} style={style} className={className}>
+      {label && <Label {...labelProps}>{label}</Label>}
+      <CheckboxGroupContext value={state}>{children}</CheckboxGroupContext>
       {description && (
-        <div {...descriptionProps} style={{ fontSize: 12 }}>
+        <div {...descriptionProps} className={styles['description']}>
           {description}
         </div>
       )}
       {isInvalid && (
-        <div {...errorMessageProps} style={{ color: 'red', fontSize: 12 }}>
+        <div {...errorMessageProps} className={styles['error-message']}>
           {validationErrors.join(' ')}
         </div>
       )}

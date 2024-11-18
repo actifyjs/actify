@@ -1,4 +1,10 @@
-import { AriaButtonProps, Placement, useMenu, useMenuTrigger } from 'react-aria'
+import {
+  AriaButtonProps,
+  Placement,
+  useMenu,
+  useMenuTrigger,
+  useSubmenuTrigger
+} from 'react-aria'
 import type { AriaMenuProps, MenuTriggerProps } from '@react-types/menu'
 import { useMenuTriggerState, useTreeState } from 'react-stately'
 

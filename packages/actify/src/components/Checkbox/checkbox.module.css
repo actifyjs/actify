@@ -1,3 +1,8 @@
+.checkbox-wrapper {
+  gap: 8px;
+  display: flex;
+  align-items: center;
+}
 .checkbox {
   margin: max(0px, (48px - var(--md-checkbox-container-size, 18px)) / 2);
   border-start-start-radius: var(

@@ -7,7 +7,7 @@ import { StyleProps } from '../../utils'
 import clsx from 'clsx'
 import styles from './radio-group.module.css'
 
-export const RadioContext = React.createContext<RadioGroupState | {}>({})
+export const RadioGroupContext = React.createContext<RadioGroupState | {}>({})
 
 interface RadioGroupProps extends AriaRadioGroupProps, StyleProps {
   children?: React.ReactNode
@@ -32,7 +32,7 @@ const RadioGroup = (props: RadioGroupProps) => {
       className={clsx(styles['radio-group'], className)}
     >
       {props.label && <Label {...labelProps}>{props.label}</Label>}
-      <RadioContext value={state}>{props.children}</RadioContext>
+      <RadioGroupContext value={state}>{props.children}</RadioGroupContext>
       {description && (
         <div {...descriptionProps} className={styles['description']}>
           {description}

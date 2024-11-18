@@ -2,21 +2,24 @@ import { AriaRadioProps, mergeProps, useFocusRing, useRadio } from 'react-aria'
 
 import { FocusRing } from '../FocusRing/FocusRing'
 import { Label } from '../Label'
-import { RadioContext } from './RadioGroup'
+import { RadioGroupContext } from './RadioGroup'
 import { RadioGroupState } from 'react-stately'
 import React from 'react'
 import { Ripple } from '../Ripple/Ripple'
+import { StyleProps } from '../../utils'
 import clsx from 'clsx'
 import styles from './radio.module.css'
 
-interface RadioProps extends AriaRadioProps {
-  style?: React.CSSProperties
-  className?: string
+interface RadioProps extends AriaRadioProps, StyleProps {
+  ref?: React.RefObject<HTMLInputElement>
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
 const Radio = (props: RadioProps) => {
-  const state = React.useContext(RadioContext) as RadioGroupState
-  const inputRef = React.useRef(null)
+  const _inputRef = React.useRef(null)
+  const { ref: inputRef = _inputRef } = props
+
+  const state = React.useContext(RadioGroupContext) as RadioGroupState
   const { inputProps, labelProps, isSelected } = useRadio(
     props,
     state,
@@ -33,7 +36,6 @@ const Radio = (props: RadioProps) => {
         className={clsx(styles['radio'], props.className)}
       >
         <div
-          role="presentation"
           className={clsx(styles['container'], isSelected && styles['checked'])}
         >
           <input
@@ -54,9 +56,9 @@ const Radio = (props: RadioProps) => {
           {isFocusVisible && (
             <FocusRing
               style={{
+                width: '44px',
                 height: '44px',
                 inset: 'unset',
-                width: '44px',
                 borderRadius: '50%'
               }}
             />

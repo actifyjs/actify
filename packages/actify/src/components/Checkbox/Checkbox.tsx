@@ -9,32 +9,32 @@ import {
 } from 'react-aria'
 import { CheckboxGroupState, useToggleState } from 'react-stately'
 import React, { useId } from 'react'
-import { useCheckboxGroup, useCheckboxGroupItem } from 'react-aria'
 
 import { CheckboxGroupContext } from './CheckboxGroup'
 import { FocusRing } from './../FocusRing'
 import { Label } from './../Label'
 import { Ripple } from './../Ripple'
+import { StyleProps } from '../../utils'
 import clsx from 'clsx'
 import styles from './checkbox.module.css'
+import { useCheckboxGroupItem } from 'react-aria'
 
-interface CheckboxProps extends AriaCheckboxProps {
+interface CheckboxProps extends AriaCheckboxProps, StyleProps {
   ref?: React.RefObject<HTMLInputElement>
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
 const Checkbox = (props: CheckboxProps) => {
-  const _id = `actify-checkbox${useId()}`
   const _inputRef = React.useRef(null)
 
-  const { id = _id, ref: inputRef = _inputRef } = props
+  const { ref: inputRef = _inputRef } = props
 
   const groupState = React.useContext(CheckboxGroupContext)
   const toggleState = useToggleState(props)
 
   const state = groupState ?? toggleState
 
-  const { inputProps } = groupState
+  const { inputProps, labelProps } = groupState
     ? useCheckboxGroupItem(
         props as AriaCheckboxGroupItemProps,
         state as CheckboxGroupState,
@@ -52,18 +52,14 @@ const Checkbox = (props: CheckboxProps) => {
   const { isFocusVisible, focusProps } = useFocusRing()
 
   return (
-    <Label
-      style={{
-        display: 'flex',
-        alignItems: 'center'
-      }}
-    >
-      <div role="presentation" className={styles['checkbox']}>
+    <div className={styles['checkbox-wrapper']}>
+      <Label
+        style={props.style}
+        className={clsx(styles['checkbox'], props.className)}
+      >
         <div className={styles['container']}>
           <input
-            id={id}
             ref={inputRef}
-            role="checkbox"
             className={styles['input']}
             {...mergeProps(inputProps, focusProps)}
             aria-checked={props.isIndeterminate ? 'mixed' : undefined}
@@ -83,25 +79,27 @@ const Checkbox = (props: CheckboxProps) => {
                 : styles['unselected']
             ])}
           />
+
+          <Ripple
+            id={inputProps.id}
+            disabled={isDisabled}
+            style={{
+              inset: 'unset',
+              borderRadius: '50%',
+              width: 'var(--md-checkbox-state-layer-size, 40px)',
+              height: 'var(--md-checkbox-state-layer-size, 40px)'
+            }}
+          />
           {isFocusVisible && (
             <FocusRing
               style={{
                 width: '44px',
                 height: '44px',
-                inset: 'unset'
+                inset: 'unset',
+                borderRadius: '50%'
               }}
             />
           )}
-          <Ripple
-            id={id}
-            disabled={isDisabled}
-            style={{
-              width: '40px',
-              height: '40px',
-              inset: 'unset',
-              borderRadius: '50%'
-            }}
-          />
           <svg
             aria-hidden="true"
             viewBox="0 0 18 18"
@@ -130,9 +128,9 @@ const Checkbox = (props: CheckboxProps) => {
             />
           </svg>
         </div>
-      </div>
-      {props.children}
-    </Label>
+      </Label>
+      <Label {...labelProps}>{props.children}</Label>
+    </div>
   )
 }
 
