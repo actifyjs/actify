@@ -1,7 +1,7 @@
 .radio-wrapper {
   gap: 8px;
   height: 48px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
 .radio {

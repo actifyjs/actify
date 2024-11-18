@@ -1,0 +1,17 @@
+.radio-group {
+  display: flex;
+}
+.radio-group[aria-orientation='horizontal'] {
+  gap: 8px;
+  align-items: center;
+}
+.radio-group[aria-orientation='vertical'] {
+  flex-direction: column;
+}
+.description {
+  font-size: 12px;
+}
+.error-message {
+  font-size: 12px;
+  color: rgb(var(--md-sys-color-error));
+}
