@@ -2,7 +2,7 @@
   display: flex;
 }
 .radio-group[aria-orientation='horizontal'] {
-  gap: 8px;
+  gap: 14px;
   align-items: center;
 }
 .radio-group[aria-orientation='vertical'] {
