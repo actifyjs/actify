@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { Children, isValidElement, useEffect } from 'react'
 
-import clsx from 'clsx'
 import { useCarousel } from './CarouselContext'
 import { wrap } from 'popmotion'
 
@@ -52,11 +51,12 @@ const CarouselContent = ({ children }: React.ComponentProps<'div'>) => {
     <AnimatePresence initial={false} custom={direction}>
       {Children.map(children, (child, index) => {
         if (isValidElement(child)) {
+          // @ts-expect-error
           const MotionComponent = motion(child.type)
           if (current == index) {
             return (
               <MotionComponent
-                // @ts-ignore
+                // @ts-expect-error
                 {...child.props}
                 style={{ position: 'absolute' }}
                 variants={variants}
