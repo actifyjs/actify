@@ -1,0 +1,10 @@
+.trailing-icon {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  margin-inline: var(--_content-space)
+    var(--_with-trailing-content-trailing-space);
+}
+.open {
+  rotate: 180deg;
+}

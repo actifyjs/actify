@@ -18,7 +18,7 @@ interface OptionProps<T> extends AriaOptionProps, AriaFocusRingProps {
   state: ListState<T>
 }
 
-const Option = <T extends object>({
+const ListBoxOption = <T extends object>({
   item,
   state,
   ...props
@@ -46,4 +46,4 @@ const Option = <T extends object>({
   )
 }
 
-export { Option }
+export { ListBoxOption }

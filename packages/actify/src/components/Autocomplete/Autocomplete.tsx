@@ -2,7 +2,7 @@ import { AriaComboBoxProps, useComboBox, useFilter } from 'react-aria'
 import { ComboBoxStateOptions, useComboBoxState } from 'react-stately'
 
 import { Icon } from '../Icon'
-import { ListBox } from './ListBox'
+import { ListBox } from '../ListBox'
 import { Popover } from '../Popover'
 import React from 'react'
 import { TextField } from '../TextFields'

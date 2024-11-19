@@ -1,29 +1,46 @@
 'use client'
 
 import {
-  Button as AriaButton,
-  ButtonProps as AriaButtonProps
-} from 'react-aria-components'
+  AriaButtonProps,
+  mergeProps,
+  useButton,
+  useFocusRing,
+  useHover
+} from 'react-aria'
 
 import React from 'react'
 import clsx from 'clsx'
 import styles from './outlined-field.module.css'
 
-interface ButtonProps extends AriaButtonProps {
-  ref?: React.RefObject<HTMLButtonElement | null>
-}
+type OutlinedFieldProps = React.ComponentProps<'button'> & AriaButtonProps
 
-const OutlinedField = (props: ButtonProps) => {
+const OutlinedField = (props: OutlinedFieldProps) => {
   const { ref, children } = props
+
+  const buttonRef = React.useRef<HTMLButtonElement>(null)
+  const { buttonProps } = useButton(props, buttonRef)
+  const { hoverProps, isHovered } = useHover(props)
+  const { focusProps, isFocused } = useFocusRing()
 
   return (
     <div className={styles['outlined-field']}>
-      {/* trigger button */}
-      <AriaButton ref={ref} {...props} className={styles['trigger-button']}>
-        <>{children}</>
-      </AriaButton>
       {/* outline */}
-      <span className={clsx(styles['outline'])} />
+      <span
+        className={clsx(
+          styles['outline'],
+          isHovered && styles['hovered'],
+          isFocused && styles['focused']
+        )}
+      />
+
+      {/* trigger button */}
+      <button
+        ref={ref || buttonRef}
+        className={styles['trigger-button']}
+        {...mergeProps(buttonProps, hoverProps, focusProps)}
+      >
+        {children}
+      </button>
     </div>
   )
 }

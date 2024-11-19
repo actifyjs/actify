@@ -1,17 +1,26 @@
 'use client'
 
 import {
-  Button as AriaButton,
-  ButtonProps as AriaButtonProps
-} from 'react-aria-components'
+  AriaButtonProps,
+  mergeProps,
+  useButton,
+  useFocusRing,
+  useHover
+} from 'react-aria'
 
+import React from 'react'
+import clsx from 'clsx'
 import styles from './filled-field.module.css'
 
-interface ButtonProps extends AriaButtonProps {
-  ref?: React.RefObject<HTMLButtonElement | null>
-}
-const FilledField = (props: ButtonProps) => {
+type OutlinedFieldProps = React.ComponentProps<'button'> & AriaButtonProps
+
+const FilledField = (props: OutlinedFieldProps) => {
   const { ref, children } = props
+
+  const buttonRef = React.useRef<HTMLButtonElement>(null)
+  const { buttonProps } = useButton(props, buttonRef)
+  const { hoverProps, isHovered } = useHover(props)
+  const { focusProps, isFocused } = useFocusRing()
 
   return (
     <div className={styles['filled-field']}>
@@ -19,16 +28,30 @@ const FilledField = (props: ButtonProps) => {
       <div className={styles['field']}>
         {/* container-overflow */}
         <div className={styles['container-overflow']}>
-          <AriaButton ref={ref} {...props} className={styles['trigger-button']}>
-            <>{children}</>
-          </AriaButton>
-
+          {/* trigger button */}
+          <button
+            ref={ref || buttonRef}
+            className={styles['trigger-button']}
+            {...mergeProps(buttonProps, hoverProps, focusProps)}
+          >
+            {children}
+          </button>
           {/* background */}
-          <span className={styles['background']} />
+          <span
+            className={clsx(
+              styles['background'],
+              isHovered && styles['hovered']
+            )}
+          />
           {/* state-layer */}
           <span className={styles['state-layer']} />
           {/* active-indicator */}
-          <span className={styles['active-indicator']} />
+          <span
+            className={clsx(
+              styles['active-indicator'],
+              isFocused && styles['focused']
+            )}
+          />
         </div>
       </div>
     </div>
