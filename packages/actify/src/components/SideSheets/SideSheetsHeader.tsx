@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from './../Icon'
-import { IconButton } from './../Button/IconButton'
+import { IconButton } from './../Buttons'
 import React from 'react'
 import clsx from 'clsx'
 import styles from './side-sheets.module.css'

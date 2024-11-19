@@ -3,7 +3,7 @@
 import React, { Children, FunctionComponent, useState } from 'react'
 
 import { Icon } from './../Icon'
-import { IconButton } from './../Button/IconButton'
+import { IconButton } from './../Buttons'
 import clsx from 'clsx'
 import styles from './swiper.module.css'
 import { useInterval } from './../../hooks'

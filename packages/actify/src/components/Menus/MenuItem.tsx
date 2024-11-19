@@ -1,61 +1,53 @@
-import { mergeProps, useFocusRing, useMenuItem } from 'react-aria'
+'use client'
+
+import { MenuItem as AriaMenuItem, MenuItemProps } from 'react-aria-components'
+import { mergeProps, useFocusRing } from 'react-aria'
 
 import { FocusRing } from './../FocusRing'
+import { Icon } from './../Icon'
 import { Item } from './../Item'
-import type { Node } from '@react-types/shared'
-import React from 'react'
 import { Ripple } from './../Ripple'
-import { TreeState } from 'react-stately'
 import styles from './menu.module.css'
 
-interface MenuItemProps<T> {
-  item: Node<T>
-  state: TreeState<T>
-  onAction: (key: React.Key) => void
-  onClose: () => void
-}
+const Container = () => (
+  <div className={styles['container']}>
+    <Ripple />
+    <FocusRing />
+  </div>
+)
 
-export function MenuItem<T>({
-  item,
-  state,
-  onAction,
-  onClose
-}: MenuItemProps<T>) {
-  // Get props for the menu item element
-  const ref = React.useRef(null)
+const MenuItem = (props: MenuItemProps) => {
+  const textValue =
+    props.textValue ||
+    (typeof props.children === 'string' ? props.children : undefined)
+
   const { focusProps, isFocusVisible } = useFocusRing()
 
-  const { menuItemProps } = useMenuItem(
-    {
-      key: item.key,
-      onAction,
-      onClose
-    },
-    state,
-    ref
-  )
-
-  const Container = () => (
-    <div className={styles['container']}>
-      <Ripple />
-      <FocusRing />
-    </div>
-  )
-
   return (
-    <li
-      ref={ref}
-      className={styles['list-item']}
-      {...mergeProps(menuItemProps, focusProps)}
+    <AriaMenuItem
+      {...mergeProps(props, focusProps)}
+      className={styles['menu-item']}
+      textValue={textValue}
     >
-      <Item container={<Container />}>{item.rendered}</Item>
-      {isFocusVisible && (
-        <FocusRing
-          style={{
-            color: 'rgb(var(--md-sys-color-primary))'
-          }}
-        />
+      {({ hasSubmenu }) => (
+        <>
+          <Item container={<Container />}>
+            <>
+              {props.children}
+              {hasSubmenu && <Icon>Chevron_Right</Icon>}
+            </>
+          </Item>
+          {isFocusVisible && (
+            <FocusRing
+              style={{
+                color: 'rgb(var(--md-sys-color-primary))'
+              }}
+            />
+          )}
+        </>
       )}
-    </li>
+    </AriaMenuItem>
   )
 }
+
+export { MenuItem }

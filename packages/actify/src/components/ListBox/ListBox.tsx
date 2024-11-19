@@ -1,31 +1,19 @@
-import { AriaListBoxOptions, useListBox } from 'react-aria'
+'use client'
 
-import { ListState } from 'react-stately'
-import { Option } from './Option'
-import React from 'react'
+import {
+  ListBox as AriaListBox,
+  ListBoxItem as AriaListBoxItem,
+  ListBoxItemProps,
+  ListBoxProps
+} from 'react-aria-components'
+
 import styles from './listbox.module.css'
 
-interface ListBoxProps<T> extends AriaListBoxOptions<T> {
-  state: ListState<T>
-  listBoxProps?: AriaListBoxOptions<T>
-  listBoxRef?: React.RefObject<HTMLElement | null>
-}
-
-const ListBox = <T extends object>(props: ListBoxProps<T>) => {
-  const ref = React.useRef(null)
-  const { listBoxRef = ref, state } = props
-  const { listBoxProps } = useListBox(props, state, listBoxRef)
-
+const ListBox = <T extends object>({ children, ...props }: ListBoxProps<T>) => {
   return (
-    <ul
-      {...listBoxProps}
-      className={styles['items']}
-      ref={listBoxRef as React.RefObject<HTMLUListElement>}
-    >
-      {[...state.collection].map((item) => (
-        <Option key={item.key} item={item} state={state} />
-      ))}
-    </ul>
+    <AriaListBox {...props} className={styles['items']}>
+      {children}
+    </AriaListBox>
   )
 }
 

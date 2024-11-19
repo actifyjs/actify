@@ -1,7 +1,7 @@
 import type { AriaToastProps } from '@react-aria/toast'
 import { Elevation } from '../Elevation'
 import { Icon } from '../Icon'
-import { IconButton } from '../Button'
+import { IconButton } from '../Buttons'
 import React from 'react'
 import type { ToastState } from '@react-stately/toast'
 import styles from './toast.module.css'

@@ -1,40 +1,38 @@
-import { Icon, IconButton, Menu, MenuItem, MenuSection } from 'actify'
+import { Menu, MenuButton, MenuItem, MenuPopover, Submenu } from 'actify'
 
 import React from 'react'
 
 export default () => {
   return (
     <div className="flex gap-8">
-      <Menu
-        className="p-2"
-        label="Open with label"
-        onAction={(key) => alert(key)}
-      >
-        <MenuSection>
-          <MenuItem key="edit">Edit…</MenuItem>
-          <MenuItem key="duplicate">Duplicate</MenuItem>
-        </MenuSection>
-        <MenuSection>
-          <MenuItem key="move">Move…</MenuItem>
-          <MenuItem key="rename">Rename…</MenuItem>
-        </MenuSection>
-        <MenuSection>
-          <MenuItem key="archive">Archive</MenuItem>
-          <MenuItem key="delete">Delete…</MenuItem>
-        </MenuSection>
-      </Menu>
-      <Menu
-        activator={(ref, menuTriggerProps) => (
-          <IconButton ref={ref} {...menuTriggerProps}>
-            <Icon>More_Horiz</Icon>
-          </IconButton>
-        )}
-        onAction={(key) => alert(key)}
-      >
-        <MenuItem key="copy">Copy</MenuItem>
-        <MenuItem key="cut">Cut</MenuItem>
-        <MenuItem key="paste">Paste</MenuItem>
-      </Menu>
+      <MenuButton label="Open with label">
+        <MenuItem>Edit</MenuItem>
+        <MenuItem>Duplicate</MenuItem>
+      </MenuButton>
+
+      <MenuButton label="Actions">
+        <MenuItem>Cut</MenuItem>
+        <MenuItem>Copy</MenuItem>
+        <MenuItem>Delete</MenuItem>
+        <Submenu>
+          <MenuItem>Share</MenuItem>
+          <MenuPopover>
+            <Menu>
+              <MenuItem>SMS</MenuItem>
+              <MenuItem>Twitter</MenuItem>
+              <Submenu>
+                <MenuItem>Email</MenuItem>
+                <MenuPopover>
+                  <Menu>
+                    <MenuItem>Work</MenuItem>
+                    <MenuItem>Personal</MenuItem>
+                  </Menu>
+                </MenuPopover>
+              </Submenu>
+            </Menu>
+          </MenuPopover>
+        </Submenu>
+      </MenuButton>
     </div>
   )
 }

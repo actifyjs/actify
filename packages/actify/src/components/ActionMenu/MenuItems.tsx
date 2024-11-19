@@ -12,12 +12,12 @@ interface MenuSectionProps<T> {
   onClose: () => void
 }
 
-export function MenuItems<T>({
+const MenuItems = <T extends object>({
   section,
   state,
   onAction,
   onClose
-}: MenuSectionProps<T>) {
+}: MenuSectionProps<T>) => {
   const { itemProps, groupProps } = useMenuSection({
     heading: section.rendered,
     'aria-label': section['aria-label']
@@ -39,3 +39,5 @@ export function MenuItems<T>({
     </li>
   )
 }
+
+export { MenuItems }

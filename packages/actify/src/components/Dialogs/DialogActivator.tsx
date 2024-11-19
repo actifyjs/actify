@@ -1,6 +1,6 @@
 import { OverlayTriggerProps, useOverlayTriggerState } from 'react-stately'
 
-import { Button } from '../Button'
+import { Button } from '../Buttons'
 import { Modal } from '../Modal'
 import React from 'react'
 import { useOverlayTrigger } from 'react-aria'

@@ -1,4 +1,4 @@
-import { Button, Icon } from 'actify'
+import { Icon, LinkButton } from 'actify'
 
 import Link from 'next/link'
 import Logo from '@/components/Logo'
@@ -27,28 +27,26 @@ export default function Page() {
             className="max-sm:w-full"
             href="/getting-started/installation"
           >
-            <Button
-              asLink
+            <LinkButton
               variant="filled"
               className="max-sm:w-full flex justify-center"
             >
               Get Started
               <Icon>arrow_forward</Icon>
-            </Button>
+            </LinkButton>
           </Link>
           <Link
             tabIndex={-1}
             className="max-sm:w-full text-center"
             href="/getting-started/why-actify"
           >
-            <Button
-              asLink
+            <LinkButton
               variant="tonal"
               className="max-sm:w-full flex justify-center"
             >
               <Icon>help</Icon>
               Why Actify
-            </Button>
+            </LinkButton>
           </Link>
           <a
             tabIndex={-1}
@@ -56,8 +54,7 @@ export default function Page() {
             className="max-sm:w-full"
             href="https://github.com/actifyjs/actify"
           >
-            <Button
-              asLink
+            <LinkButton
               variant="outlined"
               className="max-sm:w-full flex justify-center"
             >
@@ -78,7 +75,7 @@ export default function Page() {
                 </svg>
               </Icon>
               GitHub
-            </Button>
+            </LinkButton>
           </a>
         </div>
         <div className="w-full max-w-md mx-auto">

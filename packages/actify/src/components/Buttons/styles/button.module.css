@@ -1,0 +1,117 @@
+.btn {
+  border: 0 solid #e5e7eb;
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+
+  border-start-start-radius: var(--_container-shape-start-start);
+  border-start-end-radius: var(--_container-shape-start-end);
+  border-end-start-radius: var(--_container-shape-end-start);
+  border-end-end-radius: var(--_container-shape-end-end);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  min-height: var(--_container-height);
+  outline: none;
+  padding-block: calc(
+    (
+        var(--_container-height) -
+          max(var(--_label-text-line-height), var(--_icon-size))
+      ) / 2
+  );
+  padding-inline-start: var(--_leading-space);
+  padding-inline-end: var(--_trailing-space);
+  place-content: center;
+  place-items: center;
+  position: relative;
+  font-family: var(--_label-text-font);
+  font-size: var(--_label-text-size);
+  line-height: var(--_label-text-line-height);
+  font-weight: var(--_label-text-weight);
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  vertical-align: top;
+  --md-ripple-hover-color: var(--_hover-state-layer-color);
+  --md-ripple-pressed-color: var(--_pressed-state-layer-color);
+  --md-ripple-hover-opacity: var(--_hover-state-layer-opacity);
+  --md-ripple-pressed-opacity: var(--_pressed-state-layer-opacity);
+}
+
+.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.button {
+  text-overflow: inherit;
+  border-radius: inherit;
+  cursor: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  appearance: none;
+  vertical-align: middle;
+  background: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  min-width: calc(64px - var(--_leading-space) - var(--_trailing-space));
+  width: 100%;
+  z-index: 0;
+  height: 100%;
+  font: inherit;
+  color: var(--_label-text-color);
+  padding: 0px;
+  gap: inherit;
+  text-transform: inherit;
+}
+
+.touch {
+  position: absolute;
+  top: 50%;
+  height: 48px;
+  left: 0px;
+  right: 0px;
+  transform: translateY(-50%);
+}
+
+.outline {
+  outline-style: none;
+  border-width: var(--_outline-width);
+  inset: 0px;
+  border-style: solid;
+  position: absolute;
+  box-sizing: border-box;
+  border-color: var(--_outline-color);
+  border-start-start-radius: var(--_container-shape-start-start);
+  border-start-end-radius: var(--_container-shape-start-end);
+  border-end-start-radius: var(--_container-shape-end-start);
+  border-end-end-radius: var(--_container-shape-end-end);
+}
+
+.background {
+  background-color: var(--_container-color);
+  border-radius: inherit;
+  inset: 0;
+  position: absolute;
+}
+.disabled .background {
+  opacity: var(--_disabled-container-opacity);
+  background-color: var(--_disabled-container-color);
+}
+
+.label {
+  text-overflow: inherit;
+  overflow: hidden;
+  display: inherit;
+  gap: inherit;
+  z-index: 1;
+  align-items: inherit;
+}
+.disabled .label {
+  color: var(--_disabled-label-text-color);
+  opacity: var(--_disabled-label-text-opacity);
+}

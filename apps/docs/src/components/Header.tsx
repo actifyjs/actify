@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Icon, IconButton, Spacer } from 'actify'
+import { Icon, IconButton, LinkButton, Spacer } from 'actify'
 
 import AppDrawer from '@/components/AppDrawer'
 import Dropdown from '@/components/Dropdown'
@@ -19,14 +19,13 @@ const Header = () => {
           tabIndex={-1}
           className="hidden md:flex items-center text-primary"
         >
-          <Button
-            asLink
+          <LinkButton
             variant="text"
             className="self-center whitespace-nowrap text-2xl font-semibold"
           >
             <Logo height={36} />
             ctify
-          </Button>
+          </LinkButton>
         </NavLink>
         <div className="inline-flex md:hidden">
           <AppDrawer />

@@ -1,2 +1,2 @@
 export { ListBox } from './ListBox'
-export { Option } from './Option'
+export { ListBoxItem } from './ListBoxItem'

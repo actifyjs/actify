@@ -1,8 +1,8 @@
-import { AriaTagProps, TagAria, useFocusRing, useTag } from 'react-aria'
+import { AriaTagProps, useFocusRing, useTag } from 'react-aria'
 
 import { FocusRing } from '../FocusRing'
 import { Icon } from '../Icon'
-import { IconButton } from './../Button'
+import { IconButton } from './../Buttons'
 import { ListState } from 'react-stately'
 import React from 'react'
 import { Ripple } from '../Ripple'

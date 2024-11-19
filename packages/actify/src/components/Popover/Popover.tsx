@@ -15,7 +15,7 @@ import type {
 
 import React from 'react'
 import { RenderProps, SlotProps } from './../../utils'
-import { PopoverContext } from './PopoverContext'
+import { OverlayTriggerState } from 'react-stately'
 
 interface PopoverRenderProps {
   /**
@@ -48,14 +48,22 @@ export interface PopoverProps
     SlotProps {
   triggerRef?: React.RefObject<Element | null>
   popoverRef?: React.RefObject<Element | null>
+
+  state: OverlayTriggerState
+  referenceWidth?: number
 }
 
 const Popover = (props: PopoverProps & React.RefAttributes<HTMLElement>) => {
   const _triggerRef = React.useRef<HTMLDivElement>(null)
   const _popoverRef = React.useRef<HTMLDivElement>(null)
 
-  const { triggerRef = _triggerRef, popoverRef = _popoverRef, children } = props
-  const { state, referenceWidth } = React.useContext(PopoverContext)
+  const {
+    state,
+    children,
+    referenceWidth,
+    triggerRef = _triggerRef,
+    popoverRef = _popoverRef
+  } = props
 
   const { popoverProps, underlayProps } = usePopover(
     {

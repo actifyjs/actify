@@ -1,3 +1,5 @@
 export { Menu } from './Menu'
-
-export { Item as MenuItem, Section as MenuSection } from 'react-stately'
+export { Submenu } from './Submenu'
+export { MenuItem } from './MenuItem'
+export { MenuButton } from './MenuButton'
+export { MenuPopover } from './MenuPopover'

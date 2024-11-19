@@ -1,0 +1,30 @@
+.popover:focus-visible {
+  outline: none;
+}
+
+.underlay {
+  position: fixed;
+  inset: 0;
+}
+
+.dialog {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+  background-color: var(
+    --md-menu-container-color,
+    rgb(var(--md-sys-color-surface-container, 243 237 247))
+  );
+  height: inherit;
+  max-height: inherit;
+  overflow: auto;
+  min-width: inherit;
+  max-width: inherit;
+  border-radius: var(
+    --md-menu-container-shape,
+    var(--md-sys-shape-corner-extra-small, 4px)
+  );
+  scrollbar-width: inherit;
+}

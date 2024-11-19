@@ -42,6 +42,7 @@
     "postcss": "^8.4.38",
     "react": "catalog:",
     "react-aria": "^3.35.0",
+    "react-aria-components": "^1.4.1",
     "react-dom": "catalog:",
     "react-stately": "^3.33.0",
     "rollup": "^3.29.4",
@@ -62,7 +63,7 @@
     "@floating-ui/react": "^0.26.13",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
-    "framer-motion": "^11.1.7",
+    "framer-motion": "^11.11.17",
     "lodash": "^4.17.21",
     "popmotion": "^11.0.5"
   },

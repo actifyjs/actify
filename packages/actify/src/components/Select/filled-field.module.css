@@ -138,6 +138,6 @@
   border-bottom-color: var(--_focus-active-indicator-color);
   border-bottom-width: var(--_focus-active-indicator-height);
 }
-.focused.active-indicator:after {
+[data-focused='true'] .active-indicator:after {
   opacity: 1;
 }

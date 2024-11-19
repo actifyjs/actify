@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, IconButton } from './../Button'
-import { Menu, MenuItem } from './../Menus'
+import { ActionMenu, MenuItem } from '../ActionMenu'
+import { Button, IconButton } from './../Buttons'
 
 import { Icon } from './../Icon'
 import { PaginationNumber } from './PaginationNumber'
@@ -77,12 +77,13 @@ const Pagination = (props: PaginationProps) => {
         <div className={styles['page-size']}>
           <div className={styles['page-size-wrapper']}>
             <p className={styles['item-per-page']}>Items per page:</p>
-            <Menu
+
+            <ActionMenu
               activator={(ref, menuTriggerProps) => (
                 <Button
                   ref={ref}
-                  style={{ margin: '0 .625rem' }}
                   {...menuTriggerProps}
+                  style={{ margin: '0 .625rem' }}
                 >
                   <div className="flex flex-row items-center">
                     <p className="text-md mr-2">{selectedPageSize}</p>
@@ -95,7 +96,7 @@ const Pagination = (props: PaginationProps) => {
               {pageSizes.map((page) => (
                 <MenuItem key={page}>{page.toString()}</MenuItem>
               ))}
-            </Menu>
+            </ActionMenu>
             <span>
               {1 + (currentPage - 1) * selectedPageSize!} of{' '}
               {currentPage * selectedPageSize!}

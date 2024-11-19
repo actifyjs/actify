@@ -1,14 +1,9 @@
-import React from 'react'
+'use client'
 
-interface TextProps extends React.ComponentProps<'p'> {}
+import { Text as AriaText, TextProps } from 'react-aria-components'
 
 const Text = (props: TextProps) => {
-  const { className, children, ...rest } = props
-  return (
-    <p {...rest} className={className}>
-      {children}
-    </p>
-  )
+  return <AriaText {...props} />
 }
 
 Text.displayName = 'Actify.Text'

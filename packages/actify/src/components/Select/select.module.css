@@ -8,6 +8,19 @@
   position: relative;
   flex-direction: column;
 }
+
+.trailing-icon {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  margin-inline: var(--_content-space)
+    var(--_with-trailing-content-trailing-space);
+  transition: rotate 300ms ease-in-out;
+}
+[data-open='true'] .trailing-icon {
+  rotate: 180deg;
+}
+
 .filled-select {
   display: inline-flex;
   color: unset;

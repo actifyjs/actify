@@ -1,2 +1,2 @@
 export { Autocomplete } from './Autocomplete'
-export { Item } from 'react-stately'
+export { Item as AutocompleteItem } from 'react-stately'
