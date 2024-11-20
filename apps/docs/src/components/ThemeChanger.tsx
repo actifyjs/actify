@@ -88,11 +88,7 @@ export const ThemeChanger = () => {
 
   return (
     <div className="relative text-on-surface">
-      <IconButton
-        title="change theme"
-        id="theme-menu-anchor"
-        onPress={() => setOpen(!open)}
-      >
+      <IconButton id="theme-menu-anchor" onPress={() => setOpen(!open)}>
         <Icon>palette</Icon>
       </IconButton>
       <PopoverMenu style={{ right: '0px' }} open={open} setOpen={setOpen}>
@@ -102,10 +98,7 @@ export const ThemeChanger = () => {
               Theme Controls
             </h2>
             <div className="static h-6">
-              <IconButton
-                className="absolute inset-[-8px_0_auto_auto]"
-                title="Copy current theme to clipboard"
-              >
+              <IconButton className="absolute inset-[-8px_0_auto_auto]">
                 <Icon>content_copy</Icon>
               </IconButton>
             </div>

@@ -40,14 +40,14 @@ const CarouselControl = ({
     control && (
       <React.Fragment>
         <IconButton
-          onClick={prev}
+          onPress={prev}
           className={clsx(styles['control'], styles['left'])}
         >
           <Icon className={styles['icon']}>chevron_backward</Icon>
           <span className="sr-only">Previous</span>
         </IconButton>
         <IconButton
-          onClick={next}
+          onPress={next}
           className={clsx(styles['control'], styles['right'])}
         >
           <Icon className={styles['icon']}>chevron_forward</Icon>

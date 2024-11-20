@@ -15,6 +15,7 @@ import styles from './icon-button.module.css'
 interface IconButtonProps extends AriaButtonProps {
   ref?: React.RefObject<HTMLButtonElement | null>
   ripple?: boolean
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error'
   variant?: 'standard' | 'outlined' | 'filled' | 'filled-tonal'
 }
 

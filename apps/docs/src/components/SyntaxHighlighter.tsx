@@ -69,7 +69,7 @@ const SyntaxHighlighter = (props: React.ComponentProps<'div'>) => {
       )}
     >
       <div className="absolute top-3 right-6 cursor-pointer opacity-0 transition-opacity group-hover:opacity-100">
-        <IconButton variant="filled" onClick={copyCode} color="secondary">
+        <IconButton variant="filled" onPress={copyCode} color="secondary">
           <Icon>{iconName}</Icon>
         </IconButton>
       </div>

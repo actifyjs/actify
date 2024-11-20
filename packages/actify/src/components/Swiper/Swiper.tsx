@@ -84,7 +84,7 @@ const Swiper = (props: SwiperProps) => {
         {/* prev button */}
 
         <IconButton
-          onClick={prev}
+          onPress={prev}
           color="primary"
           className={clsx(styles['button'], styles['button-prev'])}
         >
@@ -94,7 +94,7 @@ const Swiper = (props: SwiperProps) => {
         {/* next button */}
 
         <IconButton
-          onClick={next}
+          onPress={next}
           color="primary"
           className={clsx(styles['button'], styles['button-next'])}
         >

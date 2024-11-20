@@ -16,7 +16,7 @@ const SideSheetsHeader = ({
   return (
     <div className={styles['header']}>
       <div className={clsx(styles['header-inner'], className)}>{children}</div>
-      <IconButton onClick={() => setOpen?.(false)}>
+      <IconButton onPress={() => setOpen?.(false)}>
         <Icon>close</Icon>
       </IconButton>
     </div>

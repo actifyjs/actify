@@ -1,10 +1,10 @@
 import { Icon, IconButton, TextField } from 'actify'
-import { MouseEvent, useState } from 'react'
+
+import { useState } from 'react'
 
 export default () => {
   const [showPassword, setShowPassword] = useState(false)
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
+  const handleClick = () => {
     setShowPassword((prev) => !prev)
   }
 
@@ -23,7 +23,7 @@ export default () => {
         type={showPassword ? 'text' : 'password'}
         leadingIcon={<Icon>lock</Icon>}
         trailingIcon={
-          <IconButton onClick={handleClick}>
+          <IconButton onPress={handleClick}>
             <Icon>{showPassword ? 'visibility_off' : 'visibility'}</Icon>
           </IconButton>
         }
