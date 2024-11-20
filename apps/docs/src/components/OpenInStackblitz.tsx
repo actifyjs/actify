@@ -1,4 +1,4 @@
-import { IconButton, Tooltip } from 'actify'
+import { IconButton, Tooltip, TooltipTrigger } from 'actify'
 
 import React from 'react'
 import packageInfo from 'actify/package.json'
@@ -286,7 +286,7 @@ export default defineConfig({
   }
 
   return (
-    <Tooltip placement="top" content="Open in Stackblitz">
+    <TooltipTrigger delay={50} closeDelay={50}>
       <form
         method="post"
         target="_target"
@@ -325,7 +325,8 @@ export default defineConfig({
           </svg>
         </IconButton>
       </form>
-    </Tooltip>
+      <Tooltip placement="top">Open in Stackblitz</Tooltip>
+    </TooltipTrigger>
   )
 }
 

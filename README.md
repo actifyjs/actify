@@ -15,13 +15,13 @@
 
 ## 🌟Overview
 
-Welcome to Actify, an open-source React Components Library designed to accelerate your React application development. Actify leverages TypeScript, Tailwind CSS, Floating-UI, Framer Motion, Material Design 3, and more to provide a comprehensive set of modern and customizable UI components.
+Welcome to Actify, an open-source React Components Library designed to accelerate your React application development. Actify leverages TypeScript, Tailwind CSS, Reat-Aria, Framer Motion, Material Design 3, and more to provide a comprehensive set of modern and customizable UI components.
 
 ## ✨ Features
 
 - **TypeScript**: Benefit from enhanced developer experience and static typing.
 - **Tailwind CSS**: Embrace a utility-first CSS framework for effortless and flexible styling.
-- **Floating-UI**: Elevate your UI with floating elements for a modern and dynamic user experience.
+- **React-Aria**: React Aria implements accessibility support according to the WAI-ARIA specification, published by the W3C.
 - **Framer Motion**: Bring fluid animations and transitions to your components with Framer Motion.
 - **Material Design 3**: Implement the latest Material Design principles for a cohesive and visually appealing interface.
 

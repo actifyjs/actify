@@ -51,8 +51,7 @@ export default [
       'react-dom',
       'popmotion',
       'framer-motion',
-      '@babel/runtime',
-      '@floating-ui/react'
+      '@babel/runtime'
     ],
     plugins: [
       peerDepsExternal(),

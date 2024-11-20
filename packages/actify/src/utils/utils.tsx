@@ -8,7 +8,6 @@ import {
 import React, {
   CSSProperties,
   Context,
-  ForwardedRef,
   JSX,
   ReactNode,
   RefCallback,
@@ -247,7 +246,7 @@ export function composeRenderProps<T, U, V extends T>(
     wrap(typeof value === 'function' ? value(renderProps) : value, renderProps)
 }
 
-export type WithRef<T, E> = T & { ref?: ForwardedRef<E> }
+export type WithRef<T, E> = T & { ref?: RefObject<E | null> }
 
 export interface SlotProps {
   /**
@@ -292,7 +291,7 @@ export function useSlottedContext<T>(
 
 export function useContextProps<T, U extends SlotProps, E extends Element>(
   props: T & SlotProps,
-  ref: ForwardedRef<E>,
+  ref: RefObject<E | null>,
   context: Context<ContextValue<U, E>>
 ): [T, RefObject<E | null>] {
   let ctx = useSlottedContext(context, props.slot) || {}

@@ -1,4 +1,4 @@
-import { Icon, IconButton, Tooltip } from 'actify'
+import { Icon, IconButton, Tooltip, TooltipTrigger } from 'actify'
 
 const hyphenToPascalCase = (str: string) => {
   return str
@@ -12,7 +12,7 @@ const ViewSource = ({ name }: { name: string }) => {
 
   const sourceUrl = `https://github.com/actifyjs/actify/tree/main/packages/actify/src/components/${pascalCase}`
   return (
-    <Tooltip placement="top" content="View source on Github">
+    <TooltipTrigger delay={50} closeDelay={50}>
       <a tabIndex={-1} target="_blank" href={sourceUrl}>
         <IconButton>
           <Icon>
@@ -33,7 +33,8 @@ const ViewSource = ({ name }: { name: string }) => {
           </Icon>
         </IconButton>
       </a>
-    </Tooltip>
+      <Tooltip placement="top">View source on Github</Tooltip>
+    </TooltipTrigger>
   )
 }
 

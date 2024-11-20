@@ -66,7 +66,7 @@ const DocUsage = (props: DocUsageProps) => {
         </TabItem>
       </Tabs>
       <div className="absolute top-3 right-4 flex">
-        <TooltipGroup>
+        <TooltipGroup placement="bottom">
           <ViewSource name={component} />
           <OpenInCodeSandbox title={component} code={content} />
           <OpenInStackblitz title={component} code={content} />

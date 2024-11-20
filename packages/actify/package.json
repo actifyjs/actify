@@ -60,7 +60,6 @@
     "@types/react-dom": "catalog:"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.13",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.11.17",

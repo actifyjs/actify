@@ -1,4 +1,4 @@
-import { IconButton, Tooltip } from 'actify'
+import { IconButton, Tooltip, TooltipTrigger } from 'actify'
 
 import React from 'react'
 import { getParameters } from 'codesandbox/lib/api/define'
@@ -290,7 +290,7 @@ export default defineConfig({
   })
 
   return (
-    <Tooltip placement="top" content="Open in CodeSandbox">
+    <TooltipTrigger delay={50} closeDelay={50}>
       <form
         method="POST"
         target="_blank"
@@ -318,7 +318,8 @@ export default defineConfig({
           </svg>
         </IconButton>
       </form>
-    </Tooltip>
+      <Tooltip placement="top">Open in CodeSandbox</Tooltip>
+    </TooltipTrigger>
   )
 }
 
