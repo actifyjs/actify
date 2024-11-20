@@ -100,6 +100,7 @@ const TextField = ({
               _inputProps as TextFieldAria,
               inputProps
             )}
+            type={type}
             ref={inputRef as React.RefObject<HTMLInputElement>}
           />
         )}
