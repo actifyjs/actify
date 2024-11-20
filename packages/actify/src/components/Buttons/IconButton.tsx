@@ -1,42 +1,32 @@
 'use client'
 
 import {
-  AriaButtonProps,
-  mergeProps,
-  useButton,
-  useFocusRing
-} from 'react-aria'
+  Button as AriaButton,
+  ButtonProps as AriaButtonProps
+} from 'react-aria-components'
 import React, { useId } from 'react'
+import { mergeProps, useButton, useFocusRing } from 'react-aria'
 
 import { FocusRing } from './../FocusRing'
 import { Ripple } from './../Ripple'
 import clsx from 'clsx'
 import styles from './icon-button.module.css'
 
-type IconButtonProps = {
+interface IconButtonProps extends AriaButtonProps {
+  ref?: React.RefObject<HTMLButtonElement | null>
   ripple?: boolean
-  type?: 'submit' | 'reset' | 'button'
   variant?: 'standard' | 'outlined' | 'filled' | 'filled-tonal'
-} & Omit<React.ComponentProps<'button'>, 'disabled'> &
-  AriaButtonProps
+}
 
 const IconButton = (props: IconButtonProps) => {
-  const { id, ref, ripple = true, children, className, isDisabled } = props
-
-  const buttonRef = ref || React.useRef(null)
-  const { buttonProps } = useButton(
-    props,
-    buttonRef as React.RefObject<HTMLButtonElement>
-  )
-  const iconButtonId = id || `actify-icon-button${useId()}`
+  const { ref, ripple = true, children, className, isDisabled } = props
 
   const { focusProps, isFocusVisible } = useFocusRing()
 
   return (
-    <button
-      ref={buttonRef}
-      id={iconButtonId}
-      {...mergeProps(buttonProps, focusProps)}
+    <AriaButton
+      ref={ref}
+      {...mergeProps(props, focusProps)}
       className={clsx(
         styles['btn'],
         isDisabled && styles['text-outline'],
@@ -45,10 +35,11 @@ const IconButton = (props: IconButtonProps) => {
     >
       {/* FocusRing */}
       {isFocusVisible && <FocusRing />}
-      {ripple && <Ripple id={iconButtonId} disabled={isDisabled} />}
-      {children}
+      {/* Ripple */}
+      {ripple && <Ripple id={props.id} disabled={isDisabled} />}
+      <>{children}</>
       <span className={styles['icon-button']} />
-    </button>
+    </AriaButton>
   )
 }
 
