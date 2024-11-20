@@ -17,7 +17,6 @@ import variants from './styles/variant.module.css'
 interface ButtonProps extends AriaButtonProps {
   ref?: React.RefObject<HTMLButtonElement | null>
   ripple?: boolean
-  asLink?: boolean
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
   variant?: 'elevated' | 'filled' | 'tonal' | 'outlined' | 'text'
 }
@@ -26,7 +25,6 @@ const Button = (props: ButtonProps) => {
   const {
     ref,
     style,
-    asLink,
     children,
     className,
     ripple = true,
@@ -40,8 +38,7 @@ const Button = (props: ButtonProps) => {
   return (
     <AriaButton
       ref={ref}
-      {...mergeProps(asLink ? null : props, focusProps)}
-      type={undefined}
+      {...mergeProps(props, focusProps)}
       style={style}
       className={clsx(
         buttons['btn'],
