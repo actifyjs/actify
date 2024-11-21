@@ -7,6 +7,7 @@ import clsx from 'clsx'
 import styles from './carousel-control.module.css'
 import { useCarousel } from './CarouselContext'
 import { useInterval } from './../../hooks'
+import { PressEvent } from 'react-aria-components'
 
 type CarouselControlProps = {
   control?: boolean
@@ -20,21 +21,26 @@ const CarouselControl = ({
   infinite
 }: CarouselControlProps) => {
   const { total, page, setPage, current, interval } = useCarousel()
+  const [pressCount, setPressCount] = React.useState(0)
 
-  const prev = () => {
+  const prev = (e?: PressEvent) => {
     if (!infinite && current == 0) {
       return
     }
-    setPage?.([(page ? Number(page[0]) : 0) - 1, -1])
+    setPage?.([(page?.[0] ?? 0) - 1, -1])
+    if (e) setPressCount((old) => old + 1)
   }
-  const next = () => {
+  const next = (e?: PressEvent) => {
     if (!infinite && current == (total ?? 0) - 1) {
       return
     }
-    setPage?.([(page ? Number(page[0]) : 0) + 1, 1])
+    setPage?.([(page?.[0] ?? 0) + 1, 1])
+    if (e) setPressCount((old) => old + 1)
   }
 
-  autoPlay && useInterval(next, interval ?? 0)
+  if (autoPlay) {
+    useInterval(next, interval ?? 0, [pressCount])
+  }
 
   return (
     control && (
