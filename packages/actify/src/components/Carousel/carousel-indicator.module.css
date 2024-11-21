@@ -17,11 +17,11 @@
   height: 0.75rem /* 12px */;
   border-radius: 9999px;
 }
-.inicator {
+.indicator {
   --tw-bg-opacity: 1;
-  background-color: rgb(var(--md-sys-color-primary) / var(--tw-bg-opacity));
+  background-color: rgb(var(--md-sys-color-background) / var(--tw-bg-opacity));
 }
-.inicator:hover {
+.indicator:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(var(--md-sys-color-on-primary) / var(--tw-bg-opacity));
 }

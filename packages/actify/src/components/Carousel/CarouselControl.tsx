@@ -2,12 +2,12 @@
 
 import { Icon } from './../Icon'
 import { IconButton } from './../Buttons'
+import { PressEvent } from 'react-aria'
 import React from 'react'
 import clsx from 'clsx'
 import styles from './carousel-control.module.css'
 import { useCarousel } from './CarouselContext'
 import { useInterval } from './../../hooks'
-import { PressEvent } from 'react-aria-components'
 
 type CarouselControlProps = {
   control?: boolean
