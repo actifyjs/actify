@@ -32,18 +32,24 @@ description: Buttons have label text that describes the action that will occur i
 
 ## Events
 
-| Name            | Type                            | Description                                                                                                             |
-| --------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `onPress`       | (e: PressEvent) => void         | Handler that is called when the press is released over the target.                                                      |
-| `onPressStart`  | (e: PressEvent) => void         | Handler that is called when a press interaction starts.                                                                 |
-| `onPressEnd`    | (e: PressEvent) => void         | Handler that is called when a press interaction ends, either over the target or when the pointer leaves the target.     |
-| `onPressChange` | (e: PressEvent) => void         | Handler that is called when the press state changes.                                                                    |
-| `onPressUp`     | (e: PressEvent) => void         | Handler that is called when a press is released over the target, regardless of whether it started on the target or not. |
-| `onFocus`       | (e: FocusEvent<Target>) => void | Handler that is called when the element receives focus.                                                                 |
-| `onBlur`        | (e: FocusEvent<Target>) => void | Handler that is called when the element loses focus.                                                                    |
-| `onFocusChange` | (isFocused: boolean) => void    | Handler that is called when the element's focus status changes.                                                         |
-| `onKeyDown`     | (e: KeyboardEvent) => void      | Handler that is called when a key is pressed.                                                                           |
-| `onKeyUp`       | (e: KeyboardEvent) => void      | Handler that is called when a key is released.                                                                          |
-| `onHoverStart`  | (e: HoverEvent) => void         | Handler that is called when a hover interaction starts.                                                                 |
-| `onHoverEnd`    | (e: HoverEvent) => void         | Handler that is called when a hover interaction ends.                                                                   |
-| `onHoverChange` | (isHovering: boolean) => void   | Handler that is called when the hover state changes.                                                                    |
+| Name            | Type                              | Description                                                                                                             |
+| --------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `onPress`       | `(e: PressEvent) => void`         | Handler that is called when the press is released over the target.                                                      |
+| `onPressStart`  | `(e: PressEvent) => void`         | Handler that is called when a press interaction starts.                                                                 |
+| `onPressEnd`    | `(e: PressEvent) => void`         | Handler that is called when a press interaction ends, either over the target or when the pointer leaves the target.     |
+| `onPressChange` | `(e: PressEvent) => void`         | Handler that is called when the press state changes.                                                                    |
+| `onPressUp`     | `(e: PressEvent) => void`         | Handler that is called when a press is released over the target, regardless of whether it started on the target or not. |
+| `onFocus`       | `(e: FocusEvent<Target>) => void` | Handler that is called when the element receives focus.                                                                 |
+| `onBlur`        | `(e: FocusEvent<Target>) => void` | Handler that is called when the element loses focus.                                                                    |
+| `onFocusChange` | `(isFocused: boolean) => void`    | Handler that is called when the element's focus status changes.                                                         |
+| `onKeyDown`     | `(e: KeyboardEvent) => void`      | Handler that is called when a key is pressed.                                                                           |
+| `onKeyUp`       | `(e: KeyboardEvent) => void`      | Handler that is called when a key is released.                                                                          |
+| `onHoverStart`  | `(e: HoverEvent) => void`         | Handler that is called when a hover interaction starts.                                                                 |
+| `onHoverEnd`    | `(e: HoverEvent) => void`         | Handler that is called when a hover interaction ends.                                                                   |
+| `onHoverChange` | `(isHovering: boolean) => void`   | Handler that is called when the hover state changes.                                                                    |
+
+### Layout
+
+| Name   | Type            | Description                                                                                                                                                                                                    |
+| ------ | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `slot` | `string` `null` | A slot name for the component. Slots allow the component to receive props from a parent component. An explicit null value indicates that the local props completely override all props received from a parent. |
