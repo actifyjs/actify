@@ -19,7 +19,7 @@
   );
   height: inherit;
   max-height: inherit;
-  overflow: auto;
+  overflow: hidden;
   min-width: inherit;
   max-width: inherit;
   border-radius: var(

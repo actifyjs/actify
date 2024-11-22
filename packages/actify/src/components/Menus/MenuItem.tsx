@@ -39,9 +39,12 @@ const MenuItem = (props: MenuItemProps) => {
           </Item>
           {isFocusVisible && (
             <FocusRing
-              style={{
-                color: 'rgb(var(--md-sys-color-primary))'
-              }}
+              style={
+                {
+                  color: 'rgb(var(--md-sys-color-primary))',
+                  '--md-focus-ring-outward-offset': '-3px'
+                } as React.CSSProperties
+              }
             />
           )}
         </>
