@@ -1,5 +1,6 @@
 import styles from './popover.module.css'
 
+import { motion } from 'framer-motion'
 import {
   DismissButton,
   Overlay,
@@ -75,23 +76,35 @@ const Popover = (props: PopoverProps & React.RefAttributes<HTMLElement>) => {
   )
 
   // make the width of the popover the same as the reference element
-  popoverProps.style = {
-    ...popoverProps.style,
-    '--reference-width': referenceWidth + 'px'
-  } as React.CSSProperties
+  if (referenceWidth) {
+    popoverProps.style = {
+      ...popoverProps.style,
+      '--reference-width': referenceWidth + 'px'
+    } as React.CSSProperties
+  }
 
   return (
     <Overlay>
       <div {...underlayProps} className={styles['underlay']} />
-      <div
+      <motion.div
         {...popoverProps}
+        // @ts-expect-error
         className={styles['popover']}
+        initial={{
+          height: 0
+        }}
+        animate={{
+          height: 'auto'
+        }}
+        transition={{
+          duration: 0.3
+        }}
         ref={popoverRef as React.RefObject<HTMLDivElement>}
       >
         <DismissButton onDismiss={state.close} />
         <>{children}</>
         <DismissButton onDismiss={state.close} />
-      </div>
+      </motion.div>
     </Overlay>
   )
 }

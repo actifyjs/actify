@@ -15,7 +15,6 @@
   );
   height: inherit;
   max-height: inherit;
-  overflow: auto;
   min-width: inherit;
   max-width: inherit;
   border-radius: var(
@@ -23,4 +22,7 @@
     var(--md-sys-shape-corner-extra-small, 4px)
   );
   scrollbar-width: inherit;
+}
+.popover > ul {
+  overflow: hidden;
 }
