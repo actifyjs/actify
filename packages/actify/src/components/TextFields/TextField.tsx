@@ -82,6 +82,7 @@ const TextField = ({
         {type == 'textarea' ? (
           <textarea
             {...mergeProps(
+              props,
               focusProps,
               _inputProps as TextFieldAria,
               inputProps
@@ -96,6 +97,7 @@ const TextField = ({
               caretColor: 'var(--_caret-color)'
             }}
             {...mergeProps(
+              props,
               focusProps,
               _inputProps as TextFieldAria,
               inputProps
