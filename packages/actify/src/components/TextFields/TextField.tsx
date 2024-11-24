@@ -49,7 +49,7 @@ const TextField = ({
     isInvalid,
     validationErrors
   } = useTextField(
-    { ...props, inputElementType: type == 'textarea' ? 'textarea' : 'input' },
+    { inputElementType: type == 'textarea' ? 'textarea' : 'input' },
     _inputRef
   )
 

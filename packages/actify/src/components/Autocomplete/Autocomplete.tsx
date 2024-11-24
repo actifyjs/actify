@@ -68,7 +68,6 @@ const Autocomplete = <T extends object>(props: AutocompleteProps<T>) => {
           state={state}
           triggerRef={ref}
           popoverRef={popoverRef}
-          placement="bottom start"
           referenceWidth={referenceWidth}
         >
           <ListBox
