@@ -41,8 +41,8 @@ const Autocomplete = <T extends object>(props: AutocompleteProps<T>) => {
   return (
     <div className={styles['autocomplete']} ref={ref}>
       <TextField
+        ref={inputRef}
         label={props.label}
-        inputRef={inputRef}
         variant={props.variant}
         inputProps={inputProps}
         onFocus={() => state.setOpen(true)}

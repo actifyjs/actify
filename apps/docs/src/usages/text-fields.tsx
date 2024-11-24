@@ -1,6 +1,5 @@
 import { Icon, IconButton, TextField } from 'actify'
-
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default () => {
   const [showPassword, setShowPassword] = useState(false)
