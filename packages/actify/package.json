@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -40,10 +40,7 @@
     "@typescript-eslint/parser": "^8.12.2",
     "postcss": "^8.4.38",
     "react": "catalog:",
-    "react-aria": "^3.36.0",
-    "react-aria-components": "^1.5.0",
     "react-dom": "catalog:",
-    "react-stately": "^3.34.0",
     "rollup": "^3.29.4",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -63,7 +60,10 @@
     "date-fns": "^3.6.0",
     "framer-motion": "^11.11.17",
     "lodash": "^4.17.21",
-    "popmotion": "^11.0.5"
+    "popmotion": "^11.0.5",
+    "react-aria": "^3.36.0",
+    "react-aria-components": "^1.5.0",
+    "react-stately": "^3.34.0"
   },
   "peerDependencies": {
     "react": "19.0.0-rc-66855b96-20241106",

@@ -144,6 +144,15 @@ importers:
       popmotion:
         specifier: ^11.0.5
         version: 11.0.5
+      react-aria:
+        specifier: ^3.36.0
+        version: 3.36.0(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
+      react-aria-components:
+        specifier: ^1.5.0
+        version: 1.5.0(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
+      react-stately:
+        specifier: ^3.34.0
+        version: 3.34.0(react@19.0.0-rc-02c0e824-20241028)
     devDependencies:
       '@react-aria/toast':
         specifier: 3.0.0-beta.17
@@ -187,18 +196,9 @@ importers:
       react:
         specifier: 'catalog:'
         version: 19.0.0-rc-02c0e824-20241028
-      react-aria:
-        specifier: ^3.36.0
-        version: 3.36.0(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
-      react-aria-components:
-        specifier: ^1.5.0
-        version: 1.5.0(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
       react-dom:
         specifier: 'catalog:'
         version: 19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028)
-      react-stately:
-        specifier: ^3.34.0
-        version: 3.34.0(react@19.0.0-rc-02c0e824-20241028)
       rollup:
         specifier: ^3.29.4
         version: 3.29.5
