@@ -11,12 +11,13 @@ import React, { useId } from 'react'
 import { FocusRing } from './../FocusRing'
 import { Label } from '../Label'
 import { Ripple } from './../Ripple'
+import { StyleProps } from '../../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
 import clsx from 'clsx'
 import styles from './switch.module.css'
 import { useToggleState } from 'react-stately'
 
-interface SwitchProps extends AriaCheckboxProps {
+interface SwitchProps extends AriaCheckboxProps, StyleProps {
   ref?: React.RefObject<HTMLInputElement>
   icons?: boolean
   showOnlySelectedIcon?: boolean
@@ -28,12 +29,14 @@ const Switch = (props: SwitchProps) => {
   const _id = `actify-switch${useId()}`
 
   const {
-    ref = _ref,
-    id = _id,
     icons,
+    style,
+    className,
+    children,
     isDisabled,
     showOnlySelectedIcon,
-    children
+    id = _id,
+    ref = _ref
   } = props
 
   const state = useToggleState(props)
@@ -70,10 +73,12 @@ const Switch = (props: SwitchProps) => {
       className={clsx(styles['host'], isDisabled && styles['disabled'])}
     >
       <Label
+        style={style}
         className={clsx(
           styles['switch'],
           isDisabled && styles['disabled'],
-          state.isSelected ? styles['selected'] : styles['unselected']
+          state.isSelected ? styles['selected'] : styles['unselected'],
+          className
         )}
       >
         <VisuallyHidden>

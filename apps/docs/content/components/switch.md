@@ -9,13 +9,19 @@ description: Switches toggle the state of an item on or off
 
 ## Props
 
-| Props             | Type                                      | Description                    | Default   |
-| ----------------- | ----------------------------------------- | ------------------------------ | --------- |
-| `icons`           | `boolean`                                 | Show x or √ icon               | `false`   |
-| `color`           | `primary` `secondary` `tertiaray` `error` | The color of the switch        | `primary` |
-| `isDisabled`      | `boolean`                                 | Whether the switch is disabled | `false`   |
-| `selected`        | `boolean`                                 | Whether the switch is checked  | `null`    |
-| `defaultSelected` | `boolean`                                 | The switch default selected    | `false`   |
+| Name              | Type                                                                                        | Default | Description                                                                                                                                                   |
+| ----------------- | ------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `icons`           | `boolean`                                                                                   | —       | Show x or √ icon                                                                                                                                              |
+| `color`           | `primary` `secondary` `tertiaray` `error`                                                   | —       | The color of the switch                                                                                                                                       |
+| `defaultSelected` | `boolean`                                                                                   | —       | Whether the Switch should be selected (uncontrolled).                                                                                                         |
+| `isSelected`      | `boolean`                                                                                   | —       | Whether the Switch should be selected (controlled).                                                                                                           |
+| `isDisabled`      | `boolean`                                                                                   | —       | Whether the input is disabled.                                                                                                                                |
+| `isReadOnly`      | `boolean`                                                                                   | —       | Whether the input can be selected but not changed by the user.                                                                                                |
+| `autoFocus`       | `boolean`                                                                                   | —       | Whether the element should receive focus on render.                                                                                                           |
+| `name`            | `string`                                                                                    | —       | The name of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname). |
+| `children`        | `string` `React.ReactNode`                                                                  | —       | The children of the component. A function may be provided to alter the children based on component state.                                                     |
+| `className`       | `string` `(values: SwitchRenderProps & { defaultClassName: string \| undefined}) => string` | —       | The CSS className for the element. A function may be provided to compute the class based on component state.                                                  |
+| `style`           | `React.CSSProperties`                                                                       | —       | The inline style for the element. A function may be provided to compute the style based on component state.                                                   |
 
 ## Events
 
