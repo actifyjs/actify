@@ -17,21 +17,29 @@ import styles from './switch.module.css'
 import { useToggleState } from 'react-stately'
 
 interface SwitchProps extends AriaCheckboxProps {
+  ref?: React.RefObject<HTMLInputElement>
   icons?: boolean
   showOnlySelectedIcon?: boolean
   color?: 'primary' | 'secondary' | 'tertiary' | 'error'
 }
 
 const Switch = (props: SwitchProps) => {
-  const { id, icons, isDisabled, showOnlySelectedIcon, children } = props
+  const _ref = React.useRef(null)
+  const _id = `actify-switch${useId()}`
+
+  const {
+    ref = _ref,
+    id = _id,
+    icons,
+    isDisabled,
+    showOnlySelectedIcon,
+    children
+  } = props
 
   const state = useToggleState(props)
-  const inputRef = React.useRef(null)
 
-  const { inputProps, labelProps } = useSwitch(props, state, inputRef)
+  const { inputProps, labelProps } = useSwitch(props, state, ref)
   const { isFocusVisible, focusProps } = useFocusRing()
-
-  const switchId = id || `actify-switch${useId()}`
 
   const shouldShowIcons = () => {
     return icons || showOnlySelectedIcon
@@ -61,7 +69,7 @@ const Switch = (props: SwitchProps) => {
       role="presentation"
       className={clsx(styles['host'], isDisabled && styles['disabled'])}
     >
-      <div
+      <Label
         className={clsx(
           styles['switch'],
           isDisabled && styles['disabled'],
@@ -70,9 +78,9 @@ const Switch = (props: SwitchProps) => {
       >
         <VisuallyHidden>
           <input
+            id={id}
+            ref={ref}
             role="switch"
-            id={switchId}
-            ref={inputRef}
             className={styles['touch']}
             {...mergeProps(inputProps, focusProps)}
           />
@@ -81,7 +89,7 @@ const Switch = (props: SwitchProps) => {
         <span className={styles['track']}>
           <span className={styles['handle-container']}>
             <Ripple
-              id={switchId}
+              id={id}
               disabled={isDisabled}
               style={{
                 inset: 'unset',
@@ -98,8 +106,8 @@ const Switch = (props: SwitchProps) => {
             </span>
           </span>
         </span>
-      </div>
-      <Label {...labelProps} id={switchId}>
+      </Label>
+      <Label {...labelProps} id={id}>
         {children}
       </Label>
     </div>
