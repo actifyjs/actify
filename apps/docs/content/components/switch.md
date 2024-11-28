@@ -25,6 +25,14 @@ description: Switches toggle the state of an item on or off
 
 ## Events
 
-| Events     | Description                 |
-| ---------- | --------------------------- |
-| `onChange` | fired when selected changed |
+| Name            | Type                            | Description                                                       |
+| --------------- | ------------------------------- | ----------------------------------------------------------------- |
+| `onChange`      | (isSelected: boolean) => void   | Handler that is called when the Switch's selection state changes. |
+| `onFocus`       | (e: FocusEvent<Target>) => void | Handler that is called when the element receives focus.           |
+| `onBlur`        | (e: FocusEvent<Target>) => void | Handler that is called when the element loses focus.              |
+| `onFocusChange` | (isFocused: boolean) => void    | Handler that is called when the element's focus status changes.   |
+| `onKeyDown`     | (e: KeyboardEvent) => void      | Handler that is called when a key is pressed.                     |
+| `onKeyUp`       | (e: KeyboardEvent) => void      | Handler that is called when a key is released.                    |
+| `onHoverStart`  | (e: HoverEvent) => void         | Handler that is called when a hover interaction starts.           |
+| `onHoverEnd`    | (e: HoverEvent) => void         | Handler that is called when a hover interaction ends.             |
+| `onHoverChange` | (isHovering: boolean) => void   | Handler that is called when the hover state changes.              |
