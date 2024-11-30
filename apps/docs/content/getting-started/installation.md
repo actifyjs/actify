@@ -13,7 +13,7 @@ title: Installation
 
 ## globals.css
 
-````css
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -134,7 +134,7 @@ const config: Config = {
 }
 
 export default config
-````
+```
 
 ## Example
 
