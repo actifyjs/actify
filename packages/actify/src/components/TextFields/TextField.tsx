@@ -3,9 +3,10 @@ import { FilledField, OutlinedField } from './../Field'
 import { mergeProps, useFocusRing, useTextField } from 'react-aria'
 
 import React from 'react'
+import { StyleProps } from '../../utils'
 import styles from './text-field.module.css'
 
-interface TextFieldProps extends AriaTextFieldProps {
+interface TextFieldProps extends AriaTextFieldProps, StyleProps {
   ref?: React.RefObject<Element | null>
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>
   variant?: 'filled' | 'outlined'
@@ -28,14 +29,19 @@ const TextField = (props: TextFieldProps) => {
   const _ref = React.useRef(null)
 
   const {
+    style,
+    onFocus,
+    onBlur,
+    className,
     suffixText,
     prefixText,
     leadingIcon,
     trailingIcon,
-    inputProps,
     ref = _ref,
     type = 'text',
     variant = 'filled',
+    inputProps,
+    children,
     ...rest
   } = props
 
@@ -49,8 +55,8 @@ const TextField = (props: TextFieldProps) => {
   } = useTextField(
     {
       ...rest,
-      inputElementType: type == 'textarea' ? 'textarea' : 'input'
-    } as any,
+      inputElementType: props.type == 'textarea' ? 'textarea' : 'input'
+    },
     ref as React.RefObject<HTMLInputElement>
   )
 
@@ -64,8 +70,8 @@ const TextField = (props: TextFieldProps) => {
     Tag = OutlinedField
   }
 
-  const count = mergeProps(_inputProps, inputProps).value?.toString().length
-  const populated = mergeProps(_inputProps, inputProps).value ? true : false
+  const count = (inputProps ?? _inputProps).value?.toString().length
+  const populated = !!(inputProps ?? _inputProps).value
 
   return (
     <label {...labelProps} className={styles[variant]}>
@@ -82,27 +88,21 @@ const TextField = (props: TextFieldProps) => {
         {prefixText && <span className={styles['prefix']}>{prefixText}</span>}
         {type == 'textarea' ? (
           <textarea
-            {...mergeProps(
-              rest,
-              focusProps,
-              _inputProps as TextFieldAria,
-              inputProps
-            )}
+            style={{
+              resize: 'vertical',
+              overflowX: 'hidden',
+              wordBreak: 'break-word',
+              ...style
+            }}
+            className={className}
+            {...mergeProps(focusProps, inputProps ?? _inputProps)}
             ref={ref as React.RefObject<HTMLTextAreaElement>}
           />
         ) : (
           <input
-            style={{
-              overflowX: 'hidden',
-              textAlign: 'inherit',
-              caretColor: 'var(--_caret-color)'
-            }}
-            {...mergeProps(
-              rest,
-              focusProps,
-              _inputProps as TextFieldAria,
-              inputProps
-            )}
+            style={style}
+            className={className}
+            {...mergeProps(focusProps, inputProps ?? _inputProps)}
             type={type}
             ref={ref as React.RefObject<HTMLInputElement>}
           />

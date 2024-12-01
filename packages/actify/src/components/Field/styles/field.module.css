@@ -813,7 +813,8 @@
   display: flex;
   padding-top: var(--_top-space);
   padding-bottom: var(--_bottom-space);
-  & > input {
+  & > input,
+  & > textarea {
     all: inherit;
     padding: 0;
   }
