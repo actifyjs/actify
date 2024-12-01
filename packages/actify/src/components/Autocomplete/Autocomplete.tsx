@@ -72,8 +72,10 @@ const Autocomplete = <T extends object>(props: AutocompleteProps<T>) => {
         >
           <ListBox
             state={state}
+            label={props.label}
             listBoxRef={listBoxRef}
             listBoxProps={listBoxProps}
+            aria-label={props['aria-label']}
           />
         </Popover>
       )}
