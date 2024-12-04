@@ -7,6 +7,11 @@ description: Buttons have label text that describes the action that will occur i
 
 <usage></usage>
 
+> Notice! Button component under react-router Link component will cause refresh page.
+
+- Solution 1: add onPress(e=>e.preventDefault()) to Button component
+- Solution 2: put Link component under Button component
+
 ## Props
 
 | Name                | Type                                          | Default   | Description                                                                                                                                                     |
