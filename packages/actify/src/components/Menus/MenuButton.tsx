@@ -9,7 +9,7 @@ import { MenuPopover } from './MenuPopover'
 export interface MenuButtonProps<T>
   extends MenuProps<T>,
     Omit<MenuTriggerProps, 'children'> {
-  label?: string
+  label?: React.ReactNode
 }
 
 const MenuButton = <T extends object>({
