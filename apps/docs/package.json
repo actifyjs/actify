@@ -8,13 +8,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@docsearch/react": "^3.6.0",
+    "@docsearch/react": "^3.8.0",
     "@material/material-color-utilities": "^0.2.7",
     "actify": "workspace:*",
     "codesandbox": "^2.2.3",
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
-    "next": "^15.0.2",
+    "next": "^15.0.4",
     "next-themes": "^0.4.3",
     "react": "catalog:",
     "react-dom": "catalog:",

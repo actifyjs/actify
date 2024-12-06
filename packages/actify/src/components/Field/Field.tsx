@@ -1,7 +1,6 @@
 import { SupportingText, SupportingTextProps } from './SupportingText'
 import { cubicBezier, motion } from 'framer-motion'
 
-import { LabelAria } from 'react-aria'
 import React from 'react'
 import clsx from 'clsx'
 import styles from './styles/field.module.css'
@@ -20,9 +19,9 @@ export interface FieldProps extends SupportingTextProps {
   leadingIcon?: React.ReactNode
   trailingIcon?: React.ReactNode
 
-  renderBackground?: () => JSX.Element
-  renderIndicator?: (focused: boolean) => JSX.Element
-  renderOutline?: (floatingLabel: JSX.Element | '') => JSX.Element
+  renderBackground?: () => React.JSX.Element
+  renderIndicator?: (focused: boolean) => React.JSX.Element
+  renderOutline?: (floatingLabel: React.JSX.Element | '') => React.JSX.Element
 }
 const Field = (props: FieldProps) => {
   const {

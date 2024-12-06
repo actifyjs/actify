@@ -22,7 +22,6 @@ const Icon = ({ className, children, fill, ...rest }: IconProps) => {
     >
       <link
         rel="stylesheet"
-        // @ts-expect-error
         precedence="default"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap"
       />

@@ -88,7 +88,7 @@ export default () => {
         label={`Search ${filterIcons.length} icons`}
       />
 
-      <LinearProgress isIndeterminate={isPending} />
+      <LinearProgress aria-label="loading" isIndeterminate={isPending} />
       <div className="mt-2 gap-2 grid grid-cols-[repeat(auto-fill,minmax(52px,1fr))]">
         {filterIcons.map((icon) => (
           <IconWrapper key={icon} fill={selected}>
