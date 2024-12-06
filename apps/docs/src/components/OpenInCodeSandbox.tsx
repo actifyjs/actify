@@ -23,12 +23,14 @@ const OpenInCodeSandbox = ({ title, code }: OpenInCodeSandboxProps) => {
             },
             dependencies: {
               actify: `^${packageInfo.version}`,
-              react: 'rc',
-              'react-dom': 'rc'
+              react: '^19.0.0',
+              'react-dom': '^19.0.0'
             },
             devDependencies: {
               '@eslint/js': '^9.13.0',
               '@vitejs/plugin-react': '^4.3.3',
+              '@types/react': '^19.0.0',
+              '@types/react-dom': '^19.0.0',
               autoprefixer: '^10.4.20',
               eslint: '^9.13.0',
               'eslint-plugin-react-hooks': '^5.0.0',

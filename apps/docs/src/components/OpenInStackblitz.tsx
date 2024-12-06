@@ -72,13 +72,13 @@ createRoot(document.getElementById("root")!).render(
   },
   "dependencies": {
     "actify": "^${packageInfo.version}",
-    "react": "rc",
-    "react-dom": "rc"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.13.0",
@@ -89,7 +89,7 @@ createRoot(document.getElementById("root")!).render(
     "tailwindcss": "latest",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
-    "vite": "^5.4.10"
+    "vite": "latest"
   }
 }`,
       'src/main.css': `@tailwind base;
