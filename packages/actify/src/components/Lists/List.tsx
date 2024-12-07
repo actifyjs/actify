@@ -16,11 +16,11 @@ const List = (props: ListProps) => {
   const layoutId = useId()
 
   return (
-    <ListContext.Provider value={{ layoutId, transition }}>
+    <ListContext value={{ layoutId, transition }}>
       <ul {...rest} className={clsx(styles['ul'], className)}>
         {children}
       </ul>
-    </ListContext.Provider>
+    </ListContext>
   )
 }
 

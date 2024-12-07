@@ -143,13 +143,13 @@ export const PopoverMenu = (props: PopoverMenuProps) => {
   return (
     <div {...rest} ref={menuRef} style={style} className={classes}>
       <Elevation style={{ '--md-elevation-level': 2 } as React.CSSProperties} />
-      <PopoverMenuContext.Provider value={{ open, setOpen }}>
+      <PopoverMenuContext value={{ open, setOpen }}>
         <div className={styles['items']}>
           <div className={styles['item-padding']} ref={slotRef}>
             {children}
           </div>
         </div>
-      </PopoverMenuContext.Provider>
+      </PopoverMenuContext>
     </div>
   )
 }

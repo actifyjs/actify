@@ -123,8 +123,8 @@ export function Provider<A, B, C, D, E, F, G, H, I, J, K>({
   children
 }: ProviderProps<A, B, C, D, E, F, G, H, I, J, K>): JSX.Element {
   for (let [Context, value] of values) {
-    // @ts-ignore
-    children = <Context.Provider value={value}>{children}</Context.Provider>
+    // @ts-expect-error
+    children = <Context value={value}>{children}</Context>
   }
 
   return children as JSX.Element

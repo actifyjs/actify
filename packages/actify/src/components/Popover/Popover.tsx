@@ -1,6 +1,6 @@
 import styles from './popover.module.css'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import {
   DismissButton,
   Overlay,
@@ -86,9 +86,9 @@ const Popover = (props: PopoverProps & React.RefAttributes<HTMLElement>) => {
   return (
     <Overlay>
       <div {...underlayProps} className={styles['underlay']} />
+      {/* @ts-expect-error */}
       <motion.div
         {...popoverProps}
-        // @ts-expect-error
         className={styles['popover']}
         initial={{
           height: 0

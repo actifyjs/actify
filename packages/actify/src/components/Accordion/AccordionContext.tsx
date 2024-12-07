@@ -1,4 +1,5 @@
 'use client'
+
 import React, { createContext, useContext } from 'react'
 
 export type AccordionProps = {
@@ -17,9 +18,9 @@ export const AccordionProvider = ({
   ...props
 }: AccordionProviderProps) => {
   return (
-    <AccordionContext.Provider value={{ ...props }}>
+    <AccordionContext value={{ ...props }}>
       {children}
-    </AccordionContext.Provider>
+    </AccordionContext>
   )
 }
 

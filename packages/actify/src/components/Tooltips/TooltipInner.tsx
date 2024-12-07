@@ -67,11 +67,11 @@ const TooltipInner = (
       data-exiting={props.isExiting || undefined}
       style={{ ...overlayProps.style, ...renderProps.style }}
     >
-      <OverlayArrowContext.Provider
+      <OverlayArrowContext
         value={{ ...arrowProps, placement, ref: arrowRef }}
       >
         {renderProps.children}
-      </OverlayArrowContext.Provider>
+      </OverlayArrowContext>
     </div>
   )
 }

@@ -44,7 +44,7 @@ export const CarouselProvider = ({
   const [intervalValue, setIntervalValue] = useState(interval)
 
   return (
-    <CarouselContext.Provider
+    <CarouselContext
       value={{
         control,
         infinite,
@@ -61,7 +61,7 @@ export const CarouselProvider = ({
       }}
     >
       {children}
-    </CarouselContext.Provider>
+    </CarouselContext>
   )
 }
 

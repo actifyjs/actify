@@ -28,11 +28,11 @@ export const DrawerProvider = ({ children, ...props }: DrawerProviderProps) => {
   })
 
   return (
-    <DrawerContext.Provider
+    <DrawerContext
       value={{ placement, open: value, setOpen: setValue }}
     >
       {children}
-    </DrawerContext.Provider>
+    </DrawerContext>
   )
 }
 

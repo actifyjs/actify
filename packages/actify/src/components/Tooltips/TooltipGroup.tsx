@@ -23,9 +23,9 @@ const TooltipGroup = (props: TooltipGroupProps) => {
   const { children, placement } = props
 
   return (
-    <TooltipGroupContext.Provider value={{ groupId, placement }}>
+    <TooltipGroupContext value={{ groupId, placement }}>
       <LayoutGroup>{children}</LayoutGroup>
-    </TooltipGroupContext.Provider>
+    </TooltipGroupContext>
   )
 }
 

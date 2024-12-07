@@ -29,9 +29,9 @@ export const BottomSheetsProvider = ({
   })
 
   return (
-    <BottomSheetsContext.Provider value={{ open: value, setOpen: setValue }}>
+    <BottomSheetsContext value={{ open: value, setOpen: setValue }}>
       {children}
-    </BottomSheetsContext.Provider>
+    </BottomSheetsContext>
   )
 }
 

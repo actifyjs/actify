@@ -28,11 +28,11 @@ export const SideSheetsProvider = ({
   })
 
   return (
-    <SideSheetsContext.Provider
+    <SideSheetsContext
       value={{ divider, open: value, setOpen: setValue }}
     >
       {children}
-    </SideSheetsContext.Provider>
+    </SideSheetsContext>
   )
 }
 

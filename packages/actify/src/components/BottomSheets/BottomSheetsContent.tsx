@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import React, { useEffect, useState } from 'react'
 
 import clsx from 'clsx'
@@ -65,8 +65,8 @@ const BottomSheetsContent = ({
             exit={{
               transform: 'translateY(100%)'
             }}
-            // @ts-ignore
             className={styles['inner']}
+            // @ts-expect-error
             onClick={(e: Event) => e.stopPropagation()}
           >
             <div className={styles['grab']}>
