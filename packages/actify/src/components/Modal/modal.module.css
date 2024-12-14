@@ -14,6 +14,7 @@
 }
 
 .content {
+  z-index: 1;
   background: var(
     --md-dialog-container-color,
     rgb(var(--md-sys-color-surface-container-high, 236, 230, 240))
