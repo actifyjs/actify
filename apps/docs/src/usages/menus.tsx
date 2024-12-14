@@ -1,4 +1,12 @@
-import { Menu, MenuButton, MenuItem, MenuPopover, Submenu } from 'actify'
+import {
+  Icon,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuPopover,
+  Submenu
+} from 'actify'
 
 import React from 'react'
 
@@ -10,7 +18,13 @@ export default () => {
         <MenuItem>Duplicate</MenuItem>
       </MenuButton>
 
-      <MenuButton label="Actions">
+      <MenuButton
+        label={
+          <IconButton>
+            <Icon>More_Horiz</Icon>
+          </IconButton>
+        }
+      >
         <MenuItem>Cut</MenuItem>
         <MenuItem>Copy</MenuItem>
         <MenuItem>Delete</MenuItem>

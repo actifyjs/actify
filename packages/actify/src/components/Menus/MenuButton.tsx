@@ -5,6 +5,7 @@ import { MenuProps, MenuTrigger, MenuTriggerProps } from 'react-aria-components'
 import { Button } from '../Buttons'
 import { Menu } from './Menu'
 import { MenuPopover } from './MenuPopover'
+import React from 'react'
 
 export interface MenuButtonProps<T>
   extends MenuProps<T>,
@@ -19,9 +20,9 @@ const MenuButton = <T extends object>({
 }: MenuButtonProps<T>) => {
   return (
     <MenuTrigger {...props}>
-      <Button>{label}</Button>
+      {typeof label == 'string' ? <Button>{label}</Button> : label}
       <MenuPopover>
-        <Menu {...props}>{children}</Menu>
+        <Menu>{children}</Menu>
       </MenuPopover>
     </MenuTrigger>
   )
