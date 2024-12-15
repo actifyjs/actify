@@ -8,7 +8,7 @@ import {
 } from 'react-aria-components'
 
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import styles from './menu-popover.module.css'
 
 export interface PopoverProps extends Omit<AriaPopoverProps, 'children'> {

@@ -3,7 +3,7 @@
 import React, { useId } from 'react'
 
 import { ListContext } from './ListContext'
-import { Transition } from 'framer-motion'
+import { Transition } from 'motion/react'
 import clsx from 'clsx'
 import styles from './list.module.css'
 

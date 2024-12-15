@@ -2,7 +2,7 @@
 
 import { createContext, useId } from 'react'
 
-import { LayoutGroup } from 'framer-motion'
+import { LayoutGroup } from 'motion/react'
 import { Placement } from 'react-aria'
 
 export const TooltipGroupContext = createContext<{

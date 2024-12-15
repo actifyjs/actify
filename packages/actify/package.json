@@ -58,8 +58,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "es-toolkit": "^1.29.0",
-    "motion": "12.0.0-alpha.2",
-    "popmotion": "^11.0.5",
+    "motion": "^11.14.4",
     "react-aria": "^3.36.0",
     "react-aria-components": "^1.5.0",
     "react-stately": "^3.34.0"

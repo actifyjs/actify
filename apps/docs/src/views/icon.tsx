@@ -6,7 +6,7 @@ import { RefObject, useEffect, useRef, useState, useTransition } from 'react'
 import DocPreview from '@/components/DocPreview'
 import icons from './icons.json'
 import { toast } from 'sonner'
-import { useInView } from 'framer-motion'
+import { useInView } from 'motion/react'
 
 const IconWrapper = ({
   children,

@@ -1,5 +1,5 @@
 import { SupportingText, SupportingTextProps } from './SupportingText'
-import { cubicBezier, motion } from 'framer-motion'
+import { cubicBezier, motion } from 'motion/react'
 
 import React from 'react'
 import clsx from 'clsx'

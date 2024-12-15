@@ -1,10 +1,9 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, wrap } from 'motion/react'
 import React, { Children, isValidElement, useEffect } from 'react'
 
 import { useCarousel } from './CarouselContext'
-import { wrap } from 'popmotion'
 
 const variants = {
   enter: (direction: number) => {
@@ -51,7 +50,6 @@ const CarouselContent = ({ children }: React.ComponentProps<'div'>) => {
     <AnimatePresence initial={false} custom={direction}>
       {Children.map(children, (child, index) => {
         if (isValidElement(child)) {
-          // @ts-expect-error
           const MotionComponent = motion(child.type)
           if (current == index) {
             return (

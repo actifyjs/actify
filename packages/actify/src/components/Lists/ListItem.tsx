@@ -5,7 +5,7 @@ import React, { useContext, useId, useMemo, useState } from 'react'
 import { ListContext } from './ListContext'
 import { Ripple } from './../Ripple'
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import styles from './list-item.module.css'
 
 interface ListItemProps extends React.ComponentProps<'li'> {

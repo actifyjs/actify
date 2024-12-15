@@ -11,7 +11,7 @@ import React, {
 import { Icon } from './../Icon'
 import { ListContext } from './ListContext'
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import styles from './list-group.module.css'
 
 interface ListItemProps extends React.ComponentProps<'li'> {

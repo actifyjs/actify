@@ -139,11 +139,8 @@ importers:
         specifier: ^1.29.0
         version: 1.29.0
       motion:
-        specifier: 12.0.0-alpha.2
-        version: 12.0.0-alpha.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      popmotion:
-        specifier: ^11.0.5
-        version: 11.0.5
+        specifier: ^11.14.4
+        version: 11.14.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-aria:
         specifier: ^3.36.0
         version: 3.36.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2191,12 +2188,12 @@ packages:
     resolution: {integrity: sha512-Ld2g8rrAyMYFXBhEqMz8ZAHBi4J4uS1i/CxGMDnjyFWddMXLVcDp051DZfu+t7+ab7Wv6SMqpWmyFIj5UbfFvg==}
     engines: {node: '>=14'}
 
-  framer-motion@12.0.0-alpha.2:
-    resolution: {integrity: sha512-s603YLhCoX3GKaPDZnywwoFdd1T6gDFCfevVRek+TCpbvazUkITh+YZ3a6kqTvn4Aj7qQWT3vAmzWIjl/LsCFA==}
+  framer-motion@11.14.4:
+    resolution: {integrity: sha512-NQuzr9JbeJDMQmy0FFLhLzk9h1kAjVC1tGE/HY4ubF02B95EBm2lpA21LE3Od/OpXqXgp0zl5Hdqu25hliBRsA==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
-      react: ^19.0.0-rc.1
-      react-dom: ^19.0.0-rc.1
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
     peerDependenciesMeta:
       '@emotion/is-prop-valid':
         optional: true
@@ -2204,9 +2201,6 @@ packages:
         optional: true
       react-dom:
         optional: true
-
-  framesync@6.1.2:
-    resolution: {integrity: sha512-jBTqhX6KaQVDyus8muwZbBeGGP0XgujBRbQ7gM7BRdS3CadCZIHiawyzYLnafYcvZIh5j8WE7cxZKFn7dXhu9g==}
 
   from2@2.3.0:
     resolution: {integrity: sha512-OMcX/4IC/uqEPVgGeyfN22LJk6AZrMkRZHxcHBMBvHScDGgwTm2GT2Wkgtocyd3JfZffjj2kYUDXXII0Fk9W0g==}
@@ -2376,9 +2370,6 @@ packages:
 
   hastscript@9.0.0:
     resolution: {integrity: sha512-jzaLBGavEDKHrc5EfFImKN7nZKKBdSLIdGvCwDZ9TfzbF2ffXiov8CKE445L2Z1Ek2t/m4SKQ2j6Ipv7NyUolw==}
-
-  hey-listen@1.0.8:
-    resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
 
   homedir-polyfill@1.0.3:
     resolution: {integrity: sha512-eSmmWE5bZTK2Nou4g0AI3zZ9rswp7GRKoKXS1BLUkvPviOqs4YTN1djQIqrXy9k5gEtdLPy86JjRwsNM9tnDcA==}
@@ -2933,12 +2924,18 @@ packages:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
     hasBin: true
 
-  motion@12.0.0-alpha.2:
-    resolution: {integrity: sha512-pslRUURjyS1Xb6lSdyc4LzOKhaCRj0PIqstb5dDIB/RxNO3MqSMU43o1rGtZs5h8DgRzRSPHE+E7yhh2NpwI8A==}
+  motion-dom@11.14.3:
+    resolution: {integrity: sha512-lW+D2wBy5vxLJi6aCP0xyxTxlTfiu+b+zcpVbGVFUxotwThqhdpPRSmX8xztAgtZMPMeU0WGVn/k1w4I+TbPqA==}
+
+  motion-utils@11.14.3:
+    resolution: {integrity: sha512-Xg+8xnqIJTpr0L/cidfTTBFkvRw26ZtGGuIhA94J9PQ2p4mEa06Xx7QVYZH0BP+EpMSaDlu+q0I0mmvwADPsaQ==}
+
+  motion@11.14.4:
+    resolution: {integrity: sha512-ZIaw6ko88B8rSmBEFzqbTCQMbo9xMu8f4PSXSGdb9DTDy8R0sXcbwMEKmTEYkrj9TmZ4n+Ebd0KYjtqHgzRkRQ==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
-      react: ^19.0.0-rc.1
-      react-dom: ^19.0.0-rc.1
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
     peerDependenciesMeta:
       '@emotion/is-prop-valid':
         optional: true
@@ -3240,9 +3237,6 @@ packages:
   plimit-lit@1.6.1:
     resolution: {integrity: sha512-B7+VDyb8Tl6oMJT9oSO2CW8XC/T4UcJGrwOVoNGwOQsQYhlpfajmrMj5xeejqaASq3V/EqThyOeATEOMuSEXiA==}
     engines: {node: '>=12'}
-
-  popmotion@11.0.5:
-    resolution: {integrity: sha512-la8gPM1WYeFznb/JqF4GiTkRRPZsfaj2+kCxqQgr2MJylMmIKUwBfWW8Wa5fml/8gmtlD5yI01MP1QCZPWmppA==}
 
   postcss-calc@8.2.4:
     resolution: {integrity: sha512-SmWMSJmB8MRnnULldx0lQIyhSNvuDl9HfrZkaqqE/WHAhToYsAvDq+yAsA/kIyINDszOp3Rh0GFoNuH5Ypsm3Q==}
@@ -3991,9 +3985,6 @@ packages:
   style-to-object@1.0.8:
     resolution: {integrity: sha512-xT47I/Eo0rwJmaXC4oilDGDWLohVhR6o/xAQcPQN8q6QBuZVL8qMYL85kLmST5cPjAorwvqIA4qXTRQoYHaL6g==}
 
-  style-value-types@5.1.2:
-    resolution: {integrity: sha512-Vs9fNreYF9j6W2VvuDTP7kepALi7sk0xtk2Tu8Yxi9UoajJdEVpNpCov0HsLTqXvNGKX+Uv09pkozVITi1jf3Q==}
-
   styled-jsx@5.1.6:
     resolution: {integrity: sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA==}
     engines: {node: '>= 12.0.0'}
@@ -4128,9 +4119,6 @@ packages:
 
   tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
-
-  tslib@2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
   tslib@2.7.0:
     resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
@@ -4615,7 +4603,7 @@ snapshots:
 
   '@emnapi/runtime@1.2.0':
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.1
     optional: true
 
   '@eslint-community/eslint-utils@4.4.0(eslint@9.13.0(jiti@1.21.6))':
@@ -4661,26 +4649,26 @@ snapshots:
     dependencies:
       '@formatjs/fast-memoize': 2.2.3
       '@formatjs/intl-localematcher': 0.5.8
-      tslib: 2.7.0
+      tslib: 2.8.1
 
   '@formatjs/fast-memoize@2.2.3':
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.1
 
   '@formatjs/icu-messageformat-parser@2.9.4':
     dependencies:
       '@formatjs/ecma402-abstract': 2.2.4
       '@formatjs/icu-skeleton-parser': 1.8.8
-      tslib: 2.7.0
+      tslib: 2.8.1
 
   '@formatjs/icu-skeleton-parser@1.8.8':
     dependencies:
       '@formatjs/ecma402-abstract': 2.2.4
-      tslib: 2.7.0
+      tslib: 2.8.1
 
   '@formatjs/intl-localematcher@0.5.8':
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.1
 
   '@humanfs/core@0.19.1': {}
 
@@ -6916,16 +6904,14 @@ snapshots:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
 
-  framer-motion@12.0.0-alpha.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  framer-motion@11.14.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      tslib: 2.7.0
+      motion-dom: 11.14.3
+      motion-utils: 11.14.3
+      tslib: 2.8.1
     optionalDependencies:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
-
-  framesync@6.1.2:
-    dependencies:
-      tslib: 2.4.0
 
   from2@2.3.0:
     dependencies:
@@ -7191,8 +7177,6 @@ snapshots:
       property-information: 6.5.0
       space-separated-tokens: 2.0.2
 
-  hey-listen@1.0.8: {}
-
   homedir-polyfill@1.0.3:
     dependencies:
       parse-passwd: 1.0.0
@@ -7298,7 +7282,7 @@ snapshots:
       '@formatjs/ecma402-abstract': 2.2.4
       '@formatjs/fast-memoize': 2.2.3
       '@formatjs/icu-messageformat-parser': 2.9.4
-      tslib: 2.7.0
+      tslib: 2.8.1
 
   ip@1.1.9: {}
 
@@ -7929,10 +7913,14 @@ snapshots:
     dependencies:
       minimist: 1.2.8
 
-  motion@12.0.0-alpha.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  motion-dom@11.14.3: {}
+
+  motion-utils@11.14.3: {}
+
+  motion@11.14.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      framer-motion: 12.0.0-alpha.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      tslib: 2.7.0
+      framer-motion: 11.14.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      tslib: 2.8.1
     optionalDependencies:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
@@ -8241,13 +8229,6 @@ snapshots:
   plimit-lit@1.6.1:
     dependencies:
       queue-lit: 1.5.2
-
-  popmotion@11.0.5:
-    dependencies:
-      framesync: 6.1.2
-      hey-listen: 1.0.8
-      style-value-types: 5.1.2
-      tslib: 2.4.0
 
   postcss-calc@8.2.4(postcss@8.4.41):
     dependencies:
@@ -9137,11 +9118,6 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.4
 
-  style-value-types@5.1.2:
-    dependencies:
-      hey-listen: 1.0.8
-      tslib: 2.4.0
-
   styled-jsx@5.1.6(react@19.0.0):
     dependencies:
       client-only: 0.0.1
@@ -9300,8 +9276,6 @@ snapshots:
       plimit-lit: 1.6.1
 
   tslib@1.14.1: {}
-
-  tslib@2.4.0: {}
 
   tslib@2.7.0: {}
 

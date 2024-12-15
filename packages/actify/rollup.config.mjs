@@ -46,11 +46,10 @@ export default [
     external: [
       'clsx',
       'react',
+      'motion',
       'tslib',
       'date-fns',
       'react-dom',
-      'popmotion',
-      'framer-motion',
       '@babel/runtime'
     ],
     plugins: [
