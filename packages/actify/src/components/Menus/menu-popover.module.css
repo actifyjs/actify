@@ -28,3 +28,7 @@
   );
   scrollbar-width: inherit;
 }
+
+.dialog.open {
+  overflow: auto;
+}

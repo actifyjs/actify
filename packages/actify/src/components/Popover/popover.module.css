@@ -23,6 +23,11 @@
   );
   scrollbar-width: inherit;
 }
+
 .popover > ul {
   overflow: hidden;
+}
+
+.popover.open > ul {
+  overflow: auto;
 }

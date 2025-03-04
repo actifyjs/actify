@@ -83,6 +83,11 @@ const Popover = (props: PopoverProps & React.RefAttributes<HTMLElement>) => {
     } as React.CSSProperties
   }
 
+  // apply a class that enables scrolling if necessary
+  const onAnimationComplete = React.useCallback(() => {
+    popoverRef.current?.classList.add(styles['open']);
+  }, [popoverRef])
+
   return (
     <Overlay>
       <div {...underlayProps} className={styles['underlay']} />
@@ -91,8 +96,10 @@ const Popover = (props: PopoverProps & React.RefAttributes<HTMLElement>) => {
         {...popoverProps}
         className={styles['popover']}
         initial={{
-          height: 0
+          height: 0,
+          overflow: 'hidden'
         }}
+        onAnimationComplete={onAnimationComplete}
         animate={{
           height: 'auto'
         }}
