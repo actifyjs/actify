@@ -1,3 +1,9 @@
+.popover {
+  box-shadow: 0 2px 6px 2px rgb(0, 0, 0, .15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
 .popover:focus-visible {
   outline: none;
 }

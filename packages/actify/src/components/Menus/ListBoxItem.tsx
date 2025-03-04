@@ -18,7 +18,7 @@ const ListBoxItem = ({ style, className, ...props }: ListBoxItemProps) => {
       className={clsx(styles['item'], className)}
     >
       <>{props.children}</>
-      <FocusRing className={styles['focus-ring']} />
+      <FocusRing className={styles['focus-ring']} type="inward" />
       <Ripple />
     </AriaListBoxItem>
   )
