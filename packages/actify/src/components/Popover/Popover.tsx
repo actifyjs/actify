@@ -17,6 +17,7 @@ import type {
 import React from 'react'
 import { RenderProps, SlotProps } from './../../utils'
 import { OverlayTriggerState } from 'react-stately'
+import clsx from 'clsx'
 
 interface PopoverRenderProps {
   /**
@@ -94,7 +95,7 @@ const Popover = (props: PopoverProps & React.RefAttributes<HTMLElement>) => {
       {/* @ts-expect-error */}
       <motion.div
         {...popoverProps}
-        className={styles['popover']}
+        className={clsx(styles['popover'], props.className)}
         initial={{
           height: 0,
           overflow: 'hidden'

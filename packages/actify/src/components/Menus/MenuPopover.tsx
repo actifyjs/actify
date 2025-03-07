@@ -10,6 +10,7 @@ import {
 import React from 'react'
 import { motion } from 'motion/react'
 import styles from './menu-popover.module.css'
+import clsx from 'clsx'
 
 export interface PopoverProps extends Omit<AriaPopoverProps, 'children'> {
   children: React.ReactNode
@@ -32,7 +33,7 @@ const MenuPopover = ({ children, ...props }: PopoverProps) => {
   }
 
   return (
-    <AriaPopover {...props} style={props.style} className={styles['popover']}>
+    <AriaPopover {...props} style={props.style} className={clsx(styles['popover'], props.className)}>
       <motion.div
         initial={{
           height: 0,
