@@ -17,6 +17,7 @@ import type {
 import React from 'react'
 import { RenderProps, SlotProps } from './../../utils'
 import { OverlayTriggerState } from 'react-stately'
+import clsx from 'clsx'
 
 interface PopoverRenderProps {
   /**
@@ -83,16 +84,23 @@ const Popover = (props: PopoverProps & React.RefAttributes<HTMLElement>) => {
     } as React.CSSProperties
   }
 
+  // apply a class that enables scrolling if necessary
+  const onAnimationComplete = React.useCallback(() => {
+    popoverRef.current?.classList.add(styles['open']);
+  }, [popoverRef])
+
   return (
     <Overlay>
       <div {...underlayProps} className={styles['underlay']} />
       {/* @ts-expect-error */}
       <motion.div
         {...popoverProps}
-        className={styles['popover']}
+        className={clsx(styles['popover'], props.className)}
         initial={{
-          height: 0
+          height: 0,
+          overflow: 'hidden'
         }}
+        onAnimationComplete={onAnimationComplete}
         animate={{
           height: 'auto'
         }}

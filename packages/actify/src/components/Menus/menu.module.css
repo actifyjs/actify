@@ -53,7 +53,7 @@
   box-sizing: border-box;
   list-style: none;
   margin: 0;
-  padding: 8px;
+  padding-block: 8px;
   --md-ripple-hover-color: var(
     --md-menu-item-hover-state-layer-color,
     rgb(var(--md-sys-color-on-surface))

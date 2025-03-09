@@ -10,6 +10,7 @@ import {
 import React from 'react'
 import { motion } from 'motion/react'
 import styles from './menu-popover.module.css'
+import clsx from 'clsx'
 
 export interface PopoverProps extends Omit<AriaPopoverProps, 'children'> {
   children: React.ReactNode
@@ -17,6 +18,12 @@ export interface PopoverProps extends Omit<AriaPopoverProps, 'children'> {
 }
 
 const MenuPopover = ({ children, ...props }: PopoverProps) => {
+  const dialogRef = React.useRef<HTMLDivElement>(null);
+
+  const onAnimationComplete = React.useCallback(() => {
+    dialogRef.current?.classList.add(styles['open']);
+  }, [dialogRef])
+
   // make the width of the popover the same as the reference element
   if (props.referenceWidth) {
     props.style = {
@@ -26,21 +33,23 @@ const MenuPopover = ({ children, ...props }: PopoverProps) => {
   }
 
   return (
-    <AriaPopover {...props} style={props.style} className={styles['popover']}>
+    <AriaPopover {...props} style={props.style} className={clsx(styles['popover'], props.className)}>
       <motion.div
         initial={{
           height: 0,
           overflow: 'hidden'
         }}
         animate={{
-          height: 'auto'
+          height: 'auto',
+          maxHeight: 'inherit',
         }}
         transition={{
           duration: 0.3
         }}
+        onAnimationComplete={onAnimationComplete}
       >
         <OverlayArrow className={styles['underlay']} />
-        <Dialog aria-label="dialog" className={styles['dialog']}>
+        <Dialog aria-label="dialog" className={styles['dialog']} ref={dialogRef}>
           {children}
         </Dialog>
       </motion.div>

@@ -1,11 +1,11 @@
-import { AriaSelectOptions, HiddenSelect, useSelect } from 'react-aria'
+import { AriaSelectOptions, HiddenSelect, Placement, useSelect } from 'react-aria'
 import { SelectStateOptions, useSelectState } from 'react-stately'
 
 import { FilledField } from './FilledField'
 import { Label } from '../Label/Label'
 import { ListBox } from '../ListBox'
 import { OutlinedField } from './OutlinedField'
-import { Popover } from '../Popover/Popover'
+import { Popover, PopoverProps } from '../Popover/Popover'
 import React from 'react'
 import { TrailingIcon } from './TrailingIcon'
 import clsx from 'clsx'
@@ -17,6 +17,7 @@ interface SelectProps<T> extends AriaSelectOptions<T>, SelectStateOptions<T> {
   style?: React.CSSProperties
   leadingIcon?: React.ReactNode
   trailingIcon?: React.ReactNode
+  popoverProps?: Omit<PopoverProps, 'state'>
   variant?: 'filled' | 'outlined'
 }
 
@@ -26,7 +27,7 @@ const Select = <T extends object>(props: SelectProps<T>) => {
 
   const { triggerProps, valueProps, menuProps } = useSelect(props, state, ref)
 
-  const { variant = 'filled' } = props
+  const { variant = 'filled', popoverProps } = props;
 
   let Tag = FilledField
   if (variant == 'filled') {
@@ -63,8 +64,9 @@ const Select = <T extends object>(props: SelectProps<T>) => {
           offset={2}
           state={state}
           triggerRef={ref}
-          placement="bottom start"
           referenceWidth={referenceWidth}
+          placement={popoverProps?.placement ?? 'bottom start'}
+          {...popoverProps}
         >
           <ListBox {...menuProps} state={state} />
         </Popover>

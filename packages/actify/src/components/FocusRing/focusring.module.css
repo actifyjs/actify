@@ -45,21 +45,8 @@
   }
   &[inward] {
     animation-name: inward-grow, inward-shrink;
-    border-end-end-radius: calc(
-      var(--md-focus-ring-shape-end-end, var(--md-focus-ring-shape, 9999px)) -
-        var(--md-focus-ring-inward-offset, 0px)
-    );
-    border-end-start-radius: calc(
-      var(--md-focus-ring-shape-end-start, var(--md-focus-ring-shape, 9999px)) -
-        var(--md-focus-ring-inward-offset, 0px)
-    );
-    border-start-end-radius: calc(
-      var(--md-focus-ring-shape-start-end, var(--md-focus-ring-shape, 9999px)) -
-        var(--md-focus-ring-inward-offset, 0px)
-    );
-    border-start-start-radius: calc(
-      var(--md-focus-ring-shape-start-start, var(--md-focus-ring-shape, 9999px)) -
-        var(--md-focus-ring-inward-offset, 0px)
+    border-radius: calc(
+      var(--md-focus-ring-shape, inherit) - var(--md-focus-ring-inward-offset, 0px)
     );
     border: var(--md-focus-ring-width, 3px) solid currentColor;
     inset: var(--md-focus-ring-inward-offset, 0px);

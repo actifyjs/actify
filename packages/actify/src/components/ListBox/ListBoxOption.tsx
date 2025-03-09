@@ -36,10 +36,11 @@ const ListBoxOption = <T extends object>({
       {item.rendered}
       {isFocusVisible && (
         <FocusRing
+          type="inward"
           style={
             {
               color: 'rgb(var(--md-sys-color-primary))',
-              '--md-focus-ring-outward-offset': '-3px'
+              '--md-focus-ring-shape': "8px"
             } as React.CSSProperties
           }
         />
