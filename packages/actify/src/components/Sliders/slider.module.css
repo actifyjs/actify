@@ -167,7 +167,7 @@
 
 .slider.horizontal .track {
   height: 40px;
-  width: 100%;
+  width: calc(100% - var(--_state-layer-size));
 }
 
 /* track full */
@@ -267,6 +267,58 @@
 
 .track.disabled {
   opacity: 0.4;
+}
+
+.track:before {
+  background-color: var(--_inactive-track-color);
+  block-size: var(--_inactive-track-height);
+  border-radius: var(--_inactive-track-shape);
+  position: absolute;
+  content: '';
+  inset-inline-start: calc(
+    var(--_state-layer-size) / 2 - var(--_with-tick-marks-container-size)
+  );
+  inset-inline-end: calc(
+    var(--_state-layer-size) / 2 - var(--_with-tick-marks-container-size)
+  );
+  background-size: calc(
+      (100% - var(--_with-tick-marks-container-size) * 2) / var(--_tick-count)
+    )
+    100%;
+}
+
+.track:after {
+  background: var(--_active-track-color);
+  block-size: var(--_active-track-height);
+  border-radius: var(--_active-track-shape);
+  clip-path: inset(
+    0
+      calc(
+        var(--_with-tick-marks-container-size) *
+          min((1 - var(--_end-fraction)) * 1000000000, 1) +
+          (100% - var(--_with-tick-marks-container-size) * 2) *
+          (1 - var(--_end-fraction))
+      )
+      0
+      calc(
+        var(--_with-tick-marks-container-size) *
+          min(var(--_start-fraction) * 1000000000, 1) +
+          (100% - var(--_with-tick-marks-container-size) * 2) *
+          var(--_start-fraction)
+      )
+  );
+  position: absolute;
+  content: '';
+  inset-inline-start: calc(
+    var(--_state-layer-size) / 2 - var(--_with-tick-marks-container-size)
+  );
+  inset-inline-end: calc(
+    var(--_state-layer-size) / 2 - var(--_with-tick-marks-container-size)
+  );
+  background-size: calc(
+      (100% - var(--_with-tick-marks-container-size) * 2) / var(--_tick-count)
+    )
+    100%;
 }
 
 .slider .label {
