@@ -47,7 +47,11 @@ const Thumb = (props: ThumbProps) => {
     >
       <div className={styles['thumb']}>
         <VisuallyHidden>
-          <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />
+          <input
+            ref={inputRef}
+            className={styles['input']}
+            {...mergeProps(inputProps, focusProps)}
+          />
         </VisuallyHidden>
         {isFocusVisible && <FocusRing />}
         <Ripple id={inputProps.id} disabled={state.isDisabled} />
