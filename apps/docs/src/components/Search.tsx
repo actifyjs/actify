@@ -46,7 +46,6 @@ const DocSearch = ({ appId, apiKey, indexName }: DocSearchProps) => {
     onOpen,
     onClose,
     onInput,
-    // @ts-expect-error
     searchButtonRef
   })
 
