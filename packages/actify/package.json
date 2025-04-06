@@ -1,6 +1,6 @@
 {
   "name": "actify",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "license": "MIT",
   "author": "Lerte Smith",
   "keywords": [
@@ -26,7 +26,7 @@
     "build": "rollup -c rollup.config.mjs"
   },
   "devDependencies": {
-    "@react-aria/toast": "3.0.0-beta.17",
+    "@react-aria/toast": "^3.0.1",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -57,11 +57,11 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "es-toolkit": "^1.29.0",
-    "motion": "^11.14.4",
-    "react-aria": "^3.36.0",
-    "react-aria-components": "^1.5.0",
-    "react-stately": "^3.34.0"
+    "es-toolkit": "^1.34.1",
+    "motion": "^12.6.3",
+    "react-aria": "^3.38.1",
+    "react-aria-components": "^1.7.1",
+    "react-stately": "^3.36.1"
   },
   "peerDependencies": {
     "react": "^19.0.0",
