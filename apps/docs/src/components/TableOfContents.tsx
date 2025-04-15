@@ -31,7 +31,9 @@ const TableOfContents = ({ markdown }: { markdown?: string }) => {
   const [toc, setToc] = useState<TocProps>([])
 
   useEffect(() => {
-    const regXHeader = /#{1,6}.+/g
+    // #{1,6}\s+[^#\d\r\n]+/g
+    const regXHeader = /(#{1,6})\s+(.*)/gm
+
     if (markdown) {
       const matches = markdown.match(regXHeader) ?? []
       const headings = matches.map((heading) => {

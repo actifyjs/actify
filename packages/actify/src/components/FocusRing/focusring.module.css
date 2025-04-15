@@ -33,7 +33,7 @@
   box-sizing: border-box;
   color: var(
     --md-focus-ring-color,
-    rgb(var(--md-sys-color-secondary, 98 91 113))
+    var(--md-sys-color-secondary, #625b71)
   );
   pointer-events: none;
   position: absolute;

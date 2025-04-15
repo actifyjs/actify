@@ -38,7 +38,7 @@
   width: fit-content;
 }
 .scrim {
-  background: rgb(var(--md-sys-color-scrim));
+  background: var(--md-sys-color-scrim);
   display: none;
   inset: 0px;
   opacity: 0.32;
@@ -80,7 +80,7 @@
   &:before {
     background: var(
       --md-dialog-container-color,
-      rgb(var(--md-sys-color-surface-container-high))
+      var(--md-sys-color-surface-container-high)
     );
     border-radius: inherit;
     content: '';
@@ -90,7 +90,7 @@
 }
 .headline {
   align-items: center;
-  color: var(--md-dialog-headline-color, rgb(var(--md-sys-color-on-surface)));
+  color: var(--md-dialog-headline-color, var(--md-sys-color-on-surface));
   display: flex;
   flex-direction: column;
   font-family: var(
@@ -132,7 +132,7 @@
 .content {
   color: var(
     --md-dialog-supporting-text-color,
-    rgb(var(--md-sys-color-on-surface-variant))
+    var(--md-sys-color-on-surface-variant)
   );
   font-family: var(
     --md-dialog-supporting-text-font,

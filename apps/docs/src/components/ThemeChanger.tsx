@@ -120,7 +120,7 @@ export const ThemeChanger = () => {
             </div>
           </section>
 
-          <section className="px-3 rounded-2xl text-on-surface-variant bg-surface-variant [--md-slider-inactive-track-color:rgb(var(--md-sys-color-on-surface-variant))]">
+          <section className="px-3 rounded-2xl text-on-surface-variant bg-surface-variant [--md-slider-inactive-track-color: var(--md-sys-color-on-surface-variant)]">
             <div className="[margin-block:24px]">
               <Label className="block leading-tight ms-2.5 me-2.5">Hue</Label>
               <Slider

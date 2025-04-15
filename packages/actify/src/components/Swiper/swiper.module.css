@@ -15,7 +15,7 @@
   position: absolute;
   top: 50%;
   transform: traslateY(-50%);
-  background-color: rgb(var(--md-sys-color-surface));
+  background-color: var(--md-sys-color-surface);
 }
 .button-prev {
   left: 1rem;
@@ -44,8 +44,8 @@
   height: 1.25rem;
   border-radius: 9999px;
   cursor: pointer;
-  background-color: rgb(var(--md-sys-color-inverse-surface));
+  background-color: var(--md-sys-color-inverse-surface);
 }
 .indicator-active {
-  background-color: rgb(var(--md-sys-color-surface));
+  background-color: var(--md-sys-color-surface);
 }

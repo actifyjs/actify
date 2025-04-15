@@ -28,7 +28,7 @@
   transition:
     transform 150ms,
     width 100ms;
-  background: rgb(var(--_active-indicator-color));
+  background: var(--_active-indicator-color);
 }
 .tab-selection-horizontal {
   left: 0;

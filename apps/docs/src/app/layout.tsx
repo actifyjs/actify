@@ -1,4 +1,4 @@
-import './globals.css'
+import './app.css'
 
 import { Metadata } from 'next'
 import { poppins } from './fonts'

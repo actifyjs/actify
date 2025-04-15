@@ -39,8 +39,8 @@ const ListBoxOption = <T extends object>({
           type="inward"
           style={
             {
-              color: 'rgb(var(--md-sys-color-primary))',
-              '--md-focus-ring-shape': "8px"
+              color: 'var(--md-sys-color-primary)',
+              '--md-focus-ring-shape': '8px'
             } as React.CSSProperties
           }
         />

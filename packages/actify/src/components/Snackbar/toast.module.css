@@ -11,7 +11,7 @@
 
 .toast {
   --_container-elevation: 3;
-  --_container-shadow-color: rgb(var(--md-sys-color-shadow));
+  --_container-shadow-color: var(--md-sys-color-shadow);
   position: relative;
   display: flex;
   align-items: center;
@@ -19,8 +19,8 @@
   height: 48px;
   padding-inline-start: 16px;
   padding-inline-end: 16px;
-  background-color: rgb(var(--md-sys-color-inverse-surface));
-  color: rgb(var(--md-sys-color-inverse-on-surface));
+  background-color: var(--md-sys-color-inverse-surface);
+  color: var(--md-sys-color-inverse-on-surface);
   border-radius: 4px;
 }
 
@@ -35,5 +35,5 @@
 }
 
 .close-button {
-  color: rgb(var(--md-sys-color-inverse-on-surface));
+  color: var(--md-sys-color-inverse-on-surface);
 }

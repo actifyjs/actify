@@ -11,129 +11,94 @@ title: Installation
 <tabs language="shell" items='[{"label":"pnpm","icon":"pnpm","content":"pnpm add actify"},{"label":"yarn","icon":"yarn","content":"yarn add actify"},{"label":"npm","icon":"npm","content":"npm i actify"}]'>
 </tabs>
 
-## globals.css
+## app.css
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 :root {
-  --md-sys-color-background: 255 248 243;
-  --md-sys-color-on-background: 32 27 18;
-  --md-sys-color-surface: 255 248 243;
-  --md-sys-color-surface-dim: 228 216 203;
-  --md-sys-color-surface-bright: 255 248 243;
-  --md-sys-color-surface-container-lowest: 255 255 255;
-  --md-sys-color-surface-container-low: 254 242 228;
-  --md-sys-color-surface-container: 248 236 222;
-  --md-sys-color-surface-container-high: 243 230 216;
-  --md-sys-color-surface-container-highest: 237 225 211;
-  --md-sys-color-on-surface: 32 27 18;
-  --md-sys-color-surface-variant: 242 225 201;
-  --md-sys-color-on-surface-variant: 80 69 52;
-  --md-sys-color-inverse-surface: 54 47 38;
-  --md-sys-color-inverse-on-surface: 251 239 225;
-  --md-sys-color-outline: 131 117 98;
-  --md-sys-color-outline-variant: 213 196 174;
-  --md-sys-color-shadow: 0 0 0;
-  --md-sys-color-scrim: 0 0 0;
-  --md-sys-color-surface-tint: 127 87 0;
-  --md-sys-color-primary: 127 87 0;
-  --md-sys-color-on-primary: 255 255 255;
-  --md-sys-color-primary-container: 247 179 55;
-  --md-sys-color-on-primary-container: 68 45 0;
-  --md-sys-color-inverse-primary: 255 186 62;
-  --md-sys-color-secondary: 118 90 43;
-  --md-sys-color-on-secondary: 255 255 255;
-  --md-sys-color-secondary-container: 255 220 169;
-  --md-sys-color-on-secondary-container: 92 67 22;
-  --md-sys-color-tertiary: 86 101 0;
-  --md-sys-color-on-tertiary: 255 255 255;
-  --md-sys-color-tertiary-container: 182 202 84;
-  --md-sys-color-on-tertiary-container: 45 54 0;
-  --md-sys-color-error: 186 26 26;
-  --md-sys-color-on-error: 255 255 255;
-  --md-sys-color-error-container: 255 218 214;
-  --md-sys-color-on-error-container: 65 0 2;
-}
-```
-
-## tailwind.config.js
-
-```ts
-import { Config } from 'tailwindcss'
-
-const config: Config = {
-  content: ['./src/**/*.{ts,tsx}'],
-  theme: {
-    extend: {
-      colors: {
-        background: 'rgb(var(--md-sys-color-background) / <alpha-value>)',
-        'on-background':
-          'rgb(var(--md-sys-color-on-background) / <alpha-value>)',
-        surface: 'rgb(var(--md-sys-color-surface) / <alpha-value>)',
-        'surface-dim': 'rgb(var(--md-sys-color-surface-dim) / <alpha-value>)',
-        'surface-bright':
-          'rgb(var(--md-sys-color-surface-bright) / <alpha-value>)',
-        'surface-container-lowest':
-          'rgb(var(--md-sys-color-surface-container-lowest) / <alpha-value>)',
-        'surface-container-low':
-          'rgb(var(--md-sys-color-surface-container-low) / <alpha-value>)',
-        'surface-container':
-          'rgb(var(--md-sys-color-surface-container) / <alpha-value>)',
-        'surface-container-high':
-          'rgb(var(--md-sys-color-surface-container-high) / <alpha-value>)',
-        'surface-container-highest':
-          'rgb(var(--md-sys-color-surface-container-highest) / <alpha-value>)',
-        'on-surface': 'rgb(var(--md-sys-color-on-surface) / <alpha-value>)',
-        'surface-variant':
-          'rgb(var(--md-sys-color-surface-variant) / <alpha-value>)',
-        'on-surface-variant':
-          'rgb(var(--md-sys-color-on-surface-variant) / <alpha-value>)',
-        'inverse-surface':
-          'rgb(var(--md-sys-color-inverse-surface) / <alpha-value>)',
-        'inverse-on-surface':
-          'rgb(var(--md-sys-color-inverse-on-surface) / <alpha-value>)',
-        outline: 'rgb(var(--md-sys-color-outline) / <alpha-value>)',
-        'outline-variant':
-          'rgb(var(--md-sys-color-outline-variant) / <alpha-value>)',
-        shadow: 'rgb(var(--md-sys-color-shadow) / <alpha-value>)',
-        scrim: 'rgb(var(--md-sys-color-scrim) / <alpha-value>)',
-        'surface-tint': 'rgb(var(--md-sys-color-surface-tint) / <alpha-value>)',
-        primary: 'rgb(var(--md-sys-color-primary) / <alpha-value>)',
-        'on-primary': 'rgb(var(--md-sys-color-on-primary) / <alpha-value>)',
-        'primary-container':
-          'rgb(var(--md-sys-color-primary-container) / <alpha-value>)',
-        'on-primary-container':
-          'rgb(var(--md-sys-color-on-primary-container) / <alpha-value>)',
-        'inverse-primary':
-          'rgb(var(--md-sys-color-inverse-primary) / <alpha-value>)',
-        secondary: 'rgb(var(--md-sys-color-secondary) / <alpha-value>)',
-        'on-secondary': 'rgb(var(--md-sys-color-on-secondary) / <alpha-value>)',
-        'secondary-container':
-          'rgb(var(--md-sys-color-secondary-container) / <alpha-value>)',
-        'on-secondary-container':
-          'rgb(var(--md-sys-color-on-secondary-container) / <alpha-value>)',
-        tertiary: 'rgb(var(--md-sys-color-tertiary) / <alpha-value>)',
-        'on-tertiary': 'rgb(var(--md-sys-color-on-tertiary) / <alpha-value>)',
-        'tertiary-container':
-          'rgb(var(--md-sys-color-tertiary-container) / <alpha-value>)',
-        'on-tertiary-container':
-          'rgb(var(--md-sys-color-on-tertiary-container) / <alpha-value>)',
-        error: 'rgb(var(--md-sys-color-error) / <alpha-value>)',
-        'on-error': 'rgb(var(--md-sys-color-on-error) / <alpha-value>)',
-        'error-container':
-          'rgb(var(--md-sys-color-error-container) / <alpha-value>)',
-        'on-error-container':
-          'rgb(var(--md-sys-color-on-error-container) / <alpha-value>)'
-      }
-    }
-  },
-  plugins: []
+  --md-sys-color-background: #18130b;
+  --md-sys-color-on-background: #ede1d3;
+  --md-sys-color-surface: #18130b;
+  --md-sys-color-surface-dim: #18130b;
+  --md-sys-color-surface-bright: #3f382f;
+  --md-sys-color-surface-container-lowest: #120d06;
+  --md-sys-color-surface-container-low: #201b12;
+  --md-sys-color-surface-container: #251f16;
+  --md-sys-color-surface-container-high: #2f2920;
+  --md-sys-color-surface-container-highest: #3b342a;
+  --md-sys-color-on-surface: #ede1d3;
+  --md-sys-color-surface-variant: #504534;
+  --md-sys-color-on-surface-variant: #d5c4ae;
+  --md-sys-color-inverse-surface: #ede1d3;
+  --md-sys-color-inverse-on-surface: #362f26;
+  --md-sys-color-outline: #9d8f7b;
+  --md-sys-color-outline-variant: #504534;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-surface-tint: #ffba3e;
+  --md-sys-color-primary: #ffc971;
+  --md-sys-color-on-primary: #432c00;
+  --md-sys-color-primary-container: #ecaa2e;
+  --md-sys-color-on-primary-container: #614100;
+  --md-sys-color-inverse-primary: #7f5700;
+  --md-sys-color-secondary: #e6c188;
+  --md-sys-color-on-secondary: #432c02;
+  --md-sys-color-secondary-container: #5e4518;
+  --md-sys-color-on-secondary-container: #d7b37c;
+  --md-sys-color-tertiary: #c7dc64;
+  --md-sys-color-on-tertiary: #2c3400;
+  --md-sys-color-tertiary-container: #acc04b;
+  --md-sys-color-on-tertiary-container: #414d00;
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000a;
+  --md-sys-color-on-error-container: #ffdad6;
 }
 
-export default config
+@theme {
+  --color-background: var(--md-sys-color-background);
+  --color-on-background: var(--md-sys-color-on-background);
+  --color-surface: var(--md-sys-color-surface);
+  --color-surface-dim: var(--md-sys-color-surface-dim);
+  --color-surface-bright: var(--md-sys-color-surface-bright);
+  --color-surface-container-lowest: var(
+    --md-sys-color-surface-container-lowest
+  );
+  --color-surface-container-low: var(--md-sys-color-surface-container-low);
+  --color-surface-container: var(--md-sys-color-surface-container);
+  --color-surface-container-high: var(--md-sys-color-surface-container-high);
+  --color-surface-container-highest: var(
+    --md-sys-color-surface-container-highest
+  );
+  --color-on-surface: var(--md-sys-color-on-surface);
+  --color-surface-variant: var(--md-sys-color-surface-variant);
+  --color-on-surface-variant: var(--md-sys-color-on-surface-variant);
+  --color-inverse-surface: var(--md-sys-color-inverse-surface);
+  --color-inverse-on-surface: var(--md-sys-color-inverse-on-surface);
+  --color-outline: var(--md-sys-color-outline);
+  --color-outline-variant: var(--md-sys-color-outline-variant);
+  --color-shadow: var(--md-sys-color-shadow);
+  --color-scrim: var(--md-sys-color-scrim);
+  --color-surface-tint: var(--md-sys-color-surface-tint);
+  --color-primary: var(--md-sys-color-primary);
+  --color-on-primary: var(--md-sys-color-on-primary);
+  --color-primary-container: var(--md-sys-color-primary-container);
+  --color-on-primary-container: var(--md-sys-color-on-primary-container);
+  --color-inverse-primary: var(--md-sys-color-inverse-primary);
+  --color-secondary: var(--md-sys-color-secondary);
+  --color-on-secondary: var(--md-sys-color-on-secondary);
+  --color-secondary-container: var(--md-sys-color-secondary-container);
+  --color-on-secondary-container: var(--md-sys-color-on-secondary-container);
+  --color-tertiary: var(--md-sys-color-tertiary);
+  --color-on-tertiary: var(--md-sys-color-on-tertiary);
+  --color-tertiary-container: var(--md-sys-color-tertiary-container);
+  --color-on-tertiary-container: var(--md-sys-color-on-tertiary-container);
+  --color-error: var(--md-sys-color-error);
+  --color-on-error: var(--md-sys-color-on-error);
+  --color-error-container: var(--md-sys-color-error-container);
+  --color-on-error-container: var(--md-sys-color-on-error-container);
+}
 ```
 
 ## Example

@@ -7,11 +7,11 @@
   flex-direction: column;
   --_container-color: var(
     --md-filled-field-container-color,
-    rgb(var(--md-sys-color-surface-container-highest))
+    var(--md-sys-color-surface-container-highest)
   );
   --_active-indicator-color: var(
     --md-filled-field-active-indicator-color,
-    rgb(var(--md-sys-color-on-surface-variant))
+    var(--md-sys-color-on-surface-variant)
   );
   --_active-indicator-height: var(
     --md-filled-field-active-indicator-height,
@@ -19,7 +19,7 @@
   );
   --_focus-active-indicator-color: var(
     --md-filled-field-focus-active-indicator-color,
-    rgb(var(--md-sys-color-primary))
+    var(--md-sys-color-primary)
   );
   --_focus-active-indicator-height: var(
     --md-filled-field-focus-active-indicator-height,
@@ -57,7 +57,7 @@
 
   --_hover-state-layer-color: var(
     --md-filled-field-hover-state-layer-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_hover-state-layer-opacity: var(
     --md-filled-field-hover-state-layer-opacity,

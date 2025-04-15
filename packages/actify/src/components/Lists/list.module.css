@@ -4,7 +4,6 @@
   padding: 0;
   padding-top: 0.5rem /* 8px */;
   padding-bottom: 0.5rem /* 8px */;
-  --tw-bg-opacity: 1;
   overflow: hidden;
-  background-color: rgb(var(--md-sys-color-surface) / var(--tw-bg-opacity));
+  background-color: var(--md-sys-color-surface);
 }

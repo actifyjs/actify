@@ -54,12 +54,12 @@ const DocSearch = ({ appId, apiKey, indexName }: DocSearchProps) => {
       <style>
         {`
         :root{
-          --docsearch-primary-color: rgb(var(--md-sys-color-primary));
+          --docsearch-primary-color: var(--md-sys-color-primary);
         }
         .DocSearch-Modal{
-          --docsearch-modal-background: rgb(var(--md-sys-color-surface));
-          --docsearch-hit-active-color: rgb(var(--md-sys-color-on-primary));
-          --docsearch-footer-background: rgb(var(--md-sys-color-surface-container));
+          --docsearch-modal-background: var(--md-sys-color-surface);
+          --docsearch-hit-active-color: var(--md-sys-color-on-primary);
+          --docsearch-footer-background: var(--md-sys-color-surface-container);
         }
         `}
       </style>

@@ -37,11 +37,9 @@ const LinearProgress = (props: LinearProgressProps) => {
           {
             position: 'absolute',
             inset: 0,
-            '--tw-bg-opacity': 1,
-            backgroundColor:
-              'rgb(var(--md-sys-color-surface) / var(--tw-bg-opacity))',
             transform: 'scaleX(1)',
             transformOrigin: 'left center',
+            backgroundColor: 'var(--md-sys-color-surface)',
             transition: 'transform 250ms cubic-bezier(0.4, 0, 0.6, 1) 0s'
           } as React.CSSProperties
         }

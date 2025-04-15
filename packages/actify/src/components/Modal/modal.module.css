@@ -10,14 +10,14 @@
   position: absolute;
   inset: 0;
   opacity: 32%;
-  background: rgb(var(--md-sys-color-scrim, 0, 0, 0));
+  background: var(--md-sys-color-scrim, #000000);
 }
 
 .content {
   z-index: 1;
   background: var(
     --md-dialog-container-color,
-    rgb(var(--md-sys-color-surface-container-high, 236, 230, 240))
+    var(--md-sys-color-surface-container-high, #ece6f0)
   );
 }
 .content [role='dialog']:focus-visible {

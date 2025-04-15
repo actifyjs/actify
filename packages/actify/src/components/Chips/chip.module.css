@@ -2,7 +2,7 @@
   --_container-height: var(--md-assist-chip-container-height, 32px);
   --_disabled-label-text-color: var(
     --md-assist-chip-disabled-label-text-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_disabled-label-text-opacity: var(
     --md-assist-chip-disabled-label-text-opacity,
@@ -10,7 +10,7 @@
   );
   --_elevated-container-color: var(
     --md-assist-chip-elevated-container-color,
-    rgb(var(--md-sys-color-surface-container-low))
+    var(--md-sys-color-surface-container-low)
   );
   --_elevated-container-elevation: var(
     --md-assist-chip-elevated-container-elevation,
@@ -18,11 +18,11 @@
   );
   --_elevated-container-shadow-color: var(
     --md-assist-chip-elevated-container-shadow-color,
-    rgb(var(--md-sys-color-shadow))
+    var(--md-sys-color-shadow)
   );
   --_elevated-disabled-container-color: var(
     --md-assist-chip-elevated-disabled-container-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_elevated-disabled-container-elevation: var(
     --md-assist-chip-elevated-disabled-container-elevation,
@@ -46,15 +46,15 @@
   );
   --_focus-label-text-color: var(
     --md-assist-chip-focus-label-text-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_hover-label-text-color: var(
     --md-assist-chip-hover-label-text-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_hover-state-layer-color: var(
     --md-assist-chip-hover-state-layer-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_hover-state-layer-opacity: var(
     --md-assist-chip-hover-state-layer-opacity,
@@ -62,7 +62,7 @@
   );
   --_label-text-color: var(
     --md-assist-chip-label-text-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_label-text-font: var(
     --md-assist-chip-label-text-font,
@@ -88,11 +88,11 @@
   );
   --_pressed-label-text-color: var(
     --md-assist-chip-pressed-label-text-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_pressed-state-layer-color: var(
     --md-assist-chip-pressed-state-layer-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_pressed-state-layer-opacity: var(
     --md-assist-chip-pressed-state-layer-opacity,
@@ -100,7 +100,7 @@
   );
   --_disabled-outline-color: var(
     --md-assist-chip-disabled-outline-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_disabled-outline-opacity: var(
     --md-assist-chip-disabled-outline-opacity,
@@ -108,25 +108,25 @@
   );
   --_focus-outline-color: var(
     --md-assist-chip-focus-outline-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_outline-color: var(
     --md-assist-chip-outline-color,
-    rgb(var(--md-sys-color-outline))
+    var(--md-sys-color-outline)
   );
   --_outline-width: var(--md-assist-chip-outline-width, 1px);
   --_selected-container-color: var(
     --md-filter-chip-selected-container-color,
-    rgb(var(--md-sys-color-secondary-container))
+    var(--md-sys-color-secondary-container)
   );
   --_selected-outline-width: var(--md-filter-chip-selected-outline-width, 0px);
   --_selected-label-text-color: var(
     --md-filter-chip-selected-label-text-color,
-    rgb(var(--md-sys-color-on-secondary-container))
+    var(--md-sys-color-on-secondary-container)
   );
   --_disabled-leading-icon-color: var(
     --md-assist-chip-disabled-leading-icon-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --_disabled-leading-icon-opacity: var(
     --md-assist-chip-disabled-leading-icon-opacity,
@@ -134,20 +134,20 @@
   );
   --_focus-leading-icon-color: var(
     --md-assist-chip-focus-leading-icon-color,
-    rgb(var(--md-sys-color-primary))
+    var(--md-sys-color-primary)
   );
   --_hover-leading-icon-color: var(
     --md-assist-chip-hover-leading-icon-color,
-    rgb(var(--md-sys-color-primary))
+    var(--md-sys-color-primary)
   );
   --_leading-icon-color: var(
     --md-assist-chip-leading-icon-color,
-    rgb(var(--md-sys-color-primary))
+    var(--md-sys-color-primary)
   );
   --_icon-size: var(--md-assist-chip-icon-size, 18px);
   --_pressed-leading-icon-color: var(
     --md-assist-chip-pressed-leading-icon-color,
-    rgb(var(--md-sys-color-primary))
+    var(--md-sys-color-primary)
   );
   --_container-shape-start-start: var(
     --md-assist-chip-container-shape-start-start,

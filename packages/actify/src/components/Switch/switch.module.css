@@ -105,7 +105,7 @@
     height: var(--md-switch-selected-icon-size, 16px);
     color: var(
       --md-switch-selected-icon-color,
-      rgb(var(--md-sys-color-on-primary-container))
+      var(--md-sys-color-on-primary-container)
     );
   }
   &.off {
@@ -113,7 +113,7 @@
     height: var(--md-switch-icon-size, 16px);
     color: var(
       --md-switch-icon-color,
-      rgb(var(--md-sys-color-surface-container-highest))
+      var(--md-sys-color-surface-container-highest)
     );
   }
 }
@@ -144,7 +144,7 @@
   &.selected .track:before {
     background-color: var(
       --md-switch-selected-track-color,
-      rgb(var(--md-sys-color-primary))
+      var(--md-sys-color-primary)
     );
   }
   &.selected .handle-container {
@@ -155,11 +155,11 @@
   &.selected .ripple {
     --md-ripple-hover-color: var(
       --md-switch-selected-hover-state-layer-color,
-      rgb(var(--md-sys-color-primary))
+      var(--md-sys-color-primary)
     );
     --md-ripple-pressed-color: var(
       --md-switch-selected-pressed-state-layer-color,
-      rgb(var(--md-sys-color-primary))
+      var(--md-sys-color-primary)
     );
     --md-ripple-hover-opacity: var(
       --md-switch-selected-hover-state-layer-opacity,
@@ -176,7 +176,7 @@
     &:before {
       background-color: var(
         --md-switch-selected-handle-color,
-        rgb(var(--md-sys-color-on-primary))
+        var(--md-sys-color-on-primary)
       );
     }
   }
@@ -199,11 +199,11 @@
   &.unselected .track:before {
     background-color: var(
       --md-switch-track-color,
-      rgb(var(--md-sys-color-surface-container-highest))
+      var(--md-sys-color-surface-container-highest)
     );
     border-color: var(
       --md-switch-track-outline-color,
-      rgb(var(--md-sys-color-outline))
+      var(--md-sys-color-outline)
     );
     border-style: solid;
     border-width: var(--md-switch-track-outline-width, 2px);
@@ -216,11 +216,11 @@
   &.unselected .ripple {
     --md-ripple-hover-color: var(
       --md-switch-hover-state-layer-color,
-      rgb(var(--md-sys-color-on-surface))
+      var(--md-sys-color-on-surface)
     );
     --md-ripple-pressed-color: var(
       --md-switch-pressed-state-layer-color,
-      rgb(var(--md-sys-color-on-surface))
+      var(--md-sys-color-on-surface)
     );
     --md-ripple-hover-opacity: var(--md-switch-hover-state-layer-opacity, 0.08);
     --md-ripple-pressed-opacity: var(
@@ -231,21 +231,21 @@
   &.unselected .handle:before {
     background-color: var(
       --md-switch-handle-color,
-      rgb(var(--md-sys-color-outline))
+      var(--md-sys-color-outline)
     );
   }
   &.selected:hover .handle:before,
   &.selected:focus-within .handle:before {
     background-color: var(
       --md-switch-selected-focus-handle-color,
-      rgb(var(--md-sys-color-primary-container))
+      var(--md-sys-color-primary-container)
     );
   }
   &.unselected:hover .handle:before,
   &.unselected:focus-within .handle:before {
     background-color: var(
       --md-switch-focus-handle-color,
-      rgb(var(--md-sys-color-on-surface-variant))
+      var(--md-sys-color-on-surface-variant)
     );
   }
   &.disabled .track {
@@ -254,11 +254,11 @@
     &:before {
       background-color: var(
         --md-switch-disabled-track-color,
-        rgb(var(--md-sys-color-surface-container-highest))
+        var(--md-sys-color-surface-container-highest)
       );
       border-color: var(
         --md-switch-disabled-track-outline-color,
-        rgb(var(--md-sys-color-on-surface))
+        var(--md-sys-color-on-surface)
       );
       transition: none 0s ease 0s;
       opacity: var(--md-switch-disabled-track-opacity, 0.12);
@@ -267,7 +267,7 @@
   &.unselected.disabled .handle:before {
     background-color: var(
       --md-switch-disabled-handle-color,
-      rgb(var(--md-sys-color-on-surface))
+      var(--md-sys-color-on-surface)
     );
     opacity: var(--md-switch-disabled-handle-opacity, 0.38);
   }

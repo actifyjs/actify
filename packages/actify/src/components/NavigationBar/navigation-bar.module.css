@@ -4,8 +4,7 @@
   align-items: center;
   justify-content: center;
   min-height: 5rem /* 80px */;
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--md-sys-color-surface) / var(--tw-bg-opacity));
+  background-color: var(--md-sys-color-surface);
 }
 .list {
   display: grid;

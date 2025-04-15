@@ -7,7 +7,7 @@
   width: 100%;
   position: relative;
   border-collapse: collapse;
-  background-color: rgb(var(--md-sys-color-surface));
+  background-color: var(--md-sys-color-surface);
   box-shadow:
     rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
     rgba(0, 0, 0, 0.14) 0px 8px 10px 1px,
@@ -36,11 +36,11 @@
   );
 }
 .tr.hovered {
-  background-color: rgb(var(--md-sys-color-inverse-surface) / 0.1);
+  background-color: var(--md-sys-color-inverse-surface) / 0.1;
 }
 .tr.selected {
-  color: rgb(var(--md-sys-color-on-secondary-container));
-  background-color: rgb(var(--md-sys-color-secondary-container));
+  color: var(--md-sys-color-on-secondary-container);
+  background-color: var(--md-sys-color-secondary-container);
 }
 .td {
   position: relative;

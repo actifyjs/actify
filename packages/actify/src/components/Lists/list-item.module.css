@@ -14,8 +14,5 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  --tw-bg-opacity: 1;
-  background-color: rgb(
-    var(--md-sys-color-surface-variant) / var(--tw-bg-opacity)
-  );
+  background-color: var(--md-sys-color-surface-variant);
 }

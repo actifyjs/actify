@@ -42,8 +42,8 @@ const MenuItem = (props: MenuItemProps) => {
               type="inward"
               style={
                 {
-                  color: 'rgb(var(--md-sys-color-primary))',
-                  '--md-focus-ring-shape': "8px"
+                  color: 'var(--md-sys-color-primary)',
+                  '--md-focus-ring-shape': '8px'
                 } as React.CSSProperties
               }
             />

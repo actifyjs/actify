@@ -52,7 +52,7 @@ const MenuItem = <T extends object>({
       {isFocusVisible && (
         <FocusRing
           style={{
-            color: 'rgb(var(--md-sys-color-primary))'
+            color: 'var(--md-sys-color-primary)'
           }}
         />
       )}

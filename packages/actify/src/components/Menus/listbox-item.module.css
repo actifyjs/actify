@@ -4,7 +4,7 @@
   position: relative;
   --md-ripple-hover-color: var(
     --md-menu-item-hover-state-layer-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --md-ripple-hover-opacity: var(
     --md-menu-item-hover-state-layer-opacity,
@@ -12,7 +12,7 @@
   );
   --md-ripple-pressed-color: var(
     --md-menu-item-pressed-state-layer-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --md-ripple-pressed-opacity: var(
     --md-menu-item-pressed-state-layer-opacity,
@@ -23,7 +23,7 @@
   flex: 1;
   color: var(
     --md-menu-item-label-text-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   font-family: var(
     --md-menu-item-label-text-font,
@@ -59,12 +59,12 @@
 .item[data-selected='true'] {
   background-color: var(
     --md-menu-item-selected-container-color,
-    rgb(var(--md-sys-color-secondary-container))
+    var(--md-sys-color-secondary-container)
   );
 }
 .focus-ring {
   display: none;
-  color: rgb(var(--md-sys-color-primary));
+  color: var(--md-sys-color-primary);
 }
 
 .item[data-focus-visible='true'] .focus-ring {

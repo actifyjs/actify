@@ -21,7 +21,7 @@
   box-sizing: border-box;
   background-color: var(
     --md-menu-container-color,
-    rgb(var(--md-sys-color-surface-container, 243 237 247))
+    var(--md-sys-color-surface-container, #f3edf7)
   );
   height: inherit;
   max-height: inherit;

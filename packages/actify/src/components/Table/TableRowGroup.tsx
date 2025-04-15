@@ -16,7 +16,7 @@ const TableRowGroup = ({ type = 'thead', children }: TableRowGroupProps) => {
       style={{
         borderBottom:
           Element === 'thead'
-            ? '2px solid rgb(var(--md-sys-color-outline-variant))'
+            ? '2px solid var(--md-sys-color-outline-variant)'
             : ''
       }}
     >

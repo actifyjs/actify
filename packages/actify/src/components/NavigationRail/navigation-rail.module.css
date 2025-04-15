@@ -4,6 +4,5 @@
   justify-content: center;
   width: 5rem /* 80px */;
   min-height: 33.75rem /* 540px */;
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--md-sys-color-surface) / var(--tw-bg-opacity));
+  background-color: var(--md-sys-color-surface);
 }

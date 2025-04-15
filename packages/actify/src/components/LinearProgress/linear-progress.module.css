@@ -89,19 +89,19 @@
 }
 .progress-primary {
   --tw-text-opacity: 1;
-  color: rgb(var(--md-sys-color-primary) / var(--tw-text-opacity));
+  color: var(--md-sys-color-primary) / var(--tw-text-opacity);
 }
 .progress-secondary {
   --tw-text-opacity: 1;
-  color: rgb(var(--md-sys-color-secondary) / var(--tw-text-opacity));
+  color: var(--md-sys-color-secondary) / var(--tw-text-opacity);
 }
 .progress-tertiary {
   --tw-text-opacity: 1;
-  color: rgb(var(--md-sys-color-tertiary) / var(--tw-text-opacity));
+  color: var(--md-sys-color-tertiary) / var(--tw-text-opacity);
 }
 .progress-error {
   --tw-text-opacity: 1;
-  color: rgb(var(--md-sys-color-error) / var(--tw-text-opacity));
+  color: var(--md-sys-color-error) / var(--tw-text-opacity);
 }
 
 .bar {
@@ -126,8 +126,7 @@
 .bar-inner {
   position: absolute;
   inset: 0;
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--md-sys-color-primary) / var(--tw-bg-opacity));
+  background-color: var(--md-sys-color-primary);
   animation: auto ease 0s 1 normal none running none;
 }
 .bar-inner-primary {

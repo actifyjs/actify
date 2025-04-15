@@ -18,18 +18,18 @@
   transform: translate(50%, -50%);
 }
 .primary {
-  color: rgb(var(--md-sys-color-on-primary));
-  background-color: rgb(var(--md-sys-color-primary));
+  color: var(--md-sys-color-on-primary);
+  background-color: var(--md-sys-color-primary);
 }
 .secondary {
-  color: rgb(var(--md-sys-color-on-secondary));
-  background-color: rgb(var(--md-sys-color-secondary));
+  color: var(--md-sys-color-on-secondary);
+  background-color: var(--md-sys-color-secondary);
 }
 .tertiary {
-  color: rgb(var(--md-sys-color-on-tertiary));
-  background-color: rgb(var(--md-sys-color-tertiary));
+  color: var(--md-sys-color-on-tertiary);
+  background-color: var(--md-sys-color-tertiary);
 }
 .error {
-  color: rgb(var(--md-sys-color-on-error));
-  background-color: rgb(var(--md-sys-color-error));
+  color: var(--md-sys-color-on-error);
+  background-color: var(--md-sys-color-error);
 }

@@ -8,8 +8,7 @@
   align-items: center;
   max-width: 20rem /* 320px */;
   justify-content: center;
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--md-sys-color-primary) / var(--tw-bg-opacity));
+  background-color: var(--md-sys-color-primary);
 }
 .icons {
   flex-grow: 1;

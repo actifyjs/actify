@@ -15,12 +15,12 @@
   cursor: pointer;
   --md-ripple-hover-color: var(
     --md-radio-hover-state-layer-color,
-    rgb(var(--md-sys-color-on-surface))
+    var(--md-sys-color-on-surface)
   );
   --md-ripple-hover-opacity: var(--md-radio-hover-state-layer-opacity, 0.08);
   --md-ripple-pressed-color: var(
     --md-radio-pressed-state-layer-color,
-    rgb(var(--md-sys-color-primary))
+    var(--md-sys-color-primary)
   );
   --md-ripple-pressed-opacity: var(
     --md-radio-pressed-state-layer-opacity,
@@ -35,10 +35,10 @@
   width: 100%;
 }
 .checked .icon {
-  fill: var(--md-radio-selected-icon-color, rgb(var(--md-sys-color-primary)));
+  fill: var(--md-radio-selected-icon-color, var(--md-sys-color-primary));
 }
 .icon {
-  fill: var(--md-radio-icon-color, rgb(var(--md-sys-color-on-surface-variant)));
+  fill: var(--md-radio-icon-color, var(--md-sys-color-on-surface-variant));
   inset: 0;
   width: 100%;
   height: 100%;

@@ -45,15 +45,15 @@
   );
   --_outline-color: var(
     --md-outlined-field-outline-color,
-    rgb(var(--md-sys-color-outline, 121 116 126))
+    var(--md-sys-color-outline, #79747e)
   );
   --_hover-outline-color: var(
     --md-outlined-field-hover-outline-color,
-    rgb(var(--md-sys-color-on-surface, 29 27 32))
+    var(--md-sys-color-on-surface, #1d1b20)
   );
   --_focus-outline-color: var(
     --md-outlined-field-focus-outline-color,
-    rgb(var(--md-sys-color-primary, 103 80 164))
+    var(--md-sys-color-primary, #6750a4)
   );
   --_focus-outline-width: var(--md-outlined-field-focus-outline-width, 3px);
 }

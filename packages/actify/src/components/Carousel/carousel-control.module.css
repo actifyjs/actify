@@ -1,10 +1,9 @@
 .control {
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--md-sys-color-primary) / var(--tw-bg-opacity));
-  position: absolute;
-  z-index: 30;
   top: 50%;
+  z-index: 30;
+  position: absolute;
   transform: translateY(-50%);
+  background-color: var(--md-sys-color-primary);
 }
 .left {
   left: 1rem;

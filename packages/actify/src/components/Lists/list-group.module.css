@@ -27,10 +27,7 @@
   inset: 0;
   z-index: -1;
   height: 3.5rem /* 56px */;
-  --tw-bg-opacity: 1;
-  background-color: rgb(
-    var(--md-sys-color-surface-variant) / var(--tw-bg-opacity)
-  );
+  background-color: var(--md-sys-color-surface-variant);
 }
 .content {
   display: grid;

@@ -38,15 +38,14 @@
   justify-content: flex-start;
   gap: 0.75rem /* 12px */;
   padding: 1rem /* 16px */;
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--md-sys-color-surface) / var(--tw-bg-opacity));
+  background-color: var(--md-sys-color-surface);
   border-top-left-radius: 6.25rem /* 100px */;
   border-top-right-radius: 6.25rem /* 100px */;
 }
 .grab-item {
   height: 0.25rem /* 4px */;
   width: 2rem /* 32px */;
-  background-color: rgb(var(--md-sys-color-outline) / 0.4);
+  background-color: var(--md-sys-color-outline) / 0.4;
   border-radius: 6.25rem /* 100px */;
 }
 .content {
@@ -56,6 +55,5 @@
 }
 .content-inner {
   padding: 0.5rem /* 8px */;
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--md-sys-color-surface) / var(--tw-bg-opacity));
+  background-color: var(--md-sys-color-surface);
 }
