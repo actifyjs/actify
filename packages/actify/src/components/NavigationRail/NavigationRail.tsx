@@ -41,14 +41,23 @@ const Item = (props: Item) => {
 }
 
 const NavigationRail = (props: NavigationRailProps) => {
-  const { value, defaultValue, setValue } = props
+  const {
+    menu,
+    value,
+    children,
+    className,
+    items = [],
+    defaultValue,
+    setValue,
+    ...rest
+  } = props
+
   const [activeIndex, setActiveIndex] = useControllableState({
     value,
     defaultValue,
     onChange: setValue
   })
 
-  const { children, className, menu, items = [], ...rest } = props
   return (
     <div {...rest} className={clsx(styles['root'], className)}>
       {/* Menu icon (optional) */}

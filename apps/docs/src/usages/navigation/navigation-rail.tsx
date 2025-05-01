@@ -21,5 +21,12 @@ export default () => {
     }
   ]
 
-  return <NavigationRail items={items} />
+  return (
+    <NavigationRail
+      items={items}
+      value={1}
+      defaultValue={0}
+      setValue={(value) => console.log(value)}
+    />
+  )
 }
