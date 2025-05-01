@@ -11,9 +11,10 @@ interface BadgeProps extends React.ComponentProps<'div'> {
 }
 
 const Badge = (props: BadgeProps) => {
-  const { color = 'error', value = '', className, children, ...rest } = props
+  const { color = 'error', value, className, style, children, ...rest } = props
 
   const badge = useMemo(() => {
+    if (!value) return false
     if (parseInt(value.toString()) > 999) {
       return '999+'
     } else {
@@ -21,18 +22,18 @@ const Badge = (props: BadgeProps) => {
     }
   }, [value])
 
-  const classes = clsx(styles['badge'], styles[color], className)
+  const classes = clsx(styles['badge'], styles[color])
 
   return (
-    <div className={styles['root']}>
+    <div style={style} className={clsx(styles['root'], className)}>
       {children}
-      <span className={classes} {...rest}>
-        {badge}
-      </span>
+      {badge && (
+        <span className={classes} {...rest}>
+          {badge}
+        </span>
+      )}
     </div>
   )
 }
-
-Badge.displayName = 'Actify.Badge'
 
 export { Badge }
