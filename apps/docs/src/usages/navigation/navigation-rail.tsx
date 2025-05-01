@@ -1,35 +1,25 @@
-import { Icon, List, ListItem, NavigationRail } from 'actify'
+import { NavigationRail } from 'actify'
 
 export default () => {
-  const list = [
+  const items = [
     {
       label: 'Home',
-      icon: <Icon>home</Icon>
+      icon: 'home',
+      badge: 1234
     },
     {
       label: 'Camera',
-      icon: <Icon>photo_camera</Icon>
+      icon: 'photo_camera'
     },
     {
       label: 'User',
-      icon: <Icon>person</Icon>
+      icon: 'person'
     },
     {
       label: 'Settings',
-      icon: <Icon>settings</Icon>
+      icon: 'settings'
     }
   ]
 
-  return (
-    <NavigationRail>
-      <List className="py-3 w-full">
-        {list.map((item, index) => (
-          <ListItem key={index} className="pl-0 py-2 flex flex-col">
-            {item.icon}
-            <span className="text-xs font-semibold mt-1">{item.label}</span>
-          </ListItem>
-        ))}
-      </List>
-    </NavigationRail>
-  )
+  return <NavigationRail items={items} />
 }

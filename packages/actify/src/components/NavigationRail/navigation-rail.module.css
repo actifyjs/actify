@@ -1,8 +1,29 @@
 .root {
+  display: inline-flex;
+}
+.items {
+  width: 80px;
+  min-height: 540px;
   display: flex;
-  align-items: center;
+  gap: 12px;
   justify-content: center;
-  width: 5rem /* 80px */;
-  min-height: 33.75rem /* 540px */;
+  flex-direction: column;
   background-color: var(--md-sys-color-surface);
+}
+.item {
+  height: 56px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+}
+.active {
+  color: var(--md-sys-color-on-primary);
+  background-color: var(--md-sys-color-primary);
+}
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 4px;
 }
