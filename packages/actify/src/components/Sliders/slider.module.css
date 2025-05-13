@@ -1,5 +1,4 @@
 .slider {
-  display: flex;
   --_active-track-color: var(
     --md-slider-active-track-color,
     var(--md-sys-color-primary, #6750a4)
@@ -138,19 +137,15 @@
       var(--md-ref-typeface-weight-medium, 500)
     )
   );
-  --_start-fraction: 0;
-  --_end-fraction: 0;
-  --_tick-count: 0;
   display: inline-flex;
   vertical-align: middle;
-  min-inline-size: 200px;
   --md-elevation-level: var(--_handle-elevation);
   --md-elevation-shadow-color: var(--_handle-shadow-color);
 }
 
 .slider.horizontal {
+  min-inline-size: 200px;
   flex-direction: column;
-  width: 100%;
 }
 
 .slider.vertical {
