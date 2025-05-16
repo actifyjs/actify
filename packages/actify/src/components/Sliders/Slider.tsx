@@ -26,7 +26,8 @@ const Slider = (props: SliderProps) => {
     trackRef
   )
 
-  const percent = Number(state.getThumbValueLabel(0)) / (maxValue - minValue)
+  const percent =
+    (Number(state.getThumbValueLabel(0)) - minValue) / (maxValue - minValue)
 
   return (
     <div
