@@ -9,6 +9,7 @@ import {
   useState
 } from 'react'
 
+import clsx from 'clsx'
 import styles from './accordion.module.css'
 
 interface AccordionRootProps extends AccordionProps, ComponentProps<'div'> {}
@@ -19,7 +20,7 @@ const Accordion = (props: AccordionRootProps) => {
 
   return (
     <AccordionProvider {...{ open, setOpen, multiple }}>
-      <div {...rest} className={styles['accordion']}>
+      <div {...rest} className={clsx(styles['accordion'], className)}>
         {Children.map(
           children,
           (child, index) =>
