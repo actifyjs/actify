@@ -356,7 +356,7 @@ const Ripple = (props: RippleProps) => {
         })
       }
     }
-  }, [ref.current])
+  }, [ref.current, disabled])
 
   return (
     <label
