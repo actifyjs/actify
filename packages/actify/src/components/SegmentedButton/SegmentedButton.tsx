@@ -11,7 +11,7 @@ import { FocusRing } from '../FocusRing'
 import React from 'react'
 import { Ripple } from '../Ripple'
 import clsx from 'clsx'
-import styles from './actify.module.css'
+import styles from './segmented-buttont.module.css'
 
 type SegmentedButtonProps = {
   label?: string

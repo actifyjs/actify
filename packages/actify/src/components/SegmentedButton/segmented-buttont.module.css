@@ -1,0 +1,315 @@
+.host {
+	--_container-height: var(
+		--md-outlined-segmented-button-container-height,
+		40px
+	);
+	--_disabled-icon-color: var(
+		--md-outlined-segmented-button-disabled-icon-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_disabled-label-text-color: var(
+		--md-outlined-segmented-button-disabled-label-text-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_disabled-outline-color: var(
+		--md-outlined-segmented-button-disabled-outline-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_hover-state-layer-opacity: var(
+		--md-outlined-segmented-button-hover-state-layer-opacity,
+		0.08
+	);
+	--_label-text-font: var(
+		--md-outlined-segmented-button-label-text-font,
+		var(
+			--md-sys-typescale-label-large-font,
+			var(--md-ref-typeface-plain, Roboto)
+		)
+	);
+	--_label-text-line-height: var(
+		--md-outlined-segmented-button-label-text-line-height,
+		var(--md-sys-typescale-label-large-line-height, 1.25rem)
+	);
+	--_label-text-size: var(
+		--md-outlined-segmented-button-label-text-size,
+		var(--md-sys-typescale-label-large-size, 0.875rem)
+	);
+	--_label-text-weight: var(
+		--md-outlined-segmented-button-label-text-weight,
+		var(
+			--md-sys-typescale-label-large-weight,
+			var(--md-ref-typeface-weight-medium, 500)
+		)
+	);
+	--_outline-color: var(
+		--md-outlined-segmented-button-outline-color,
+		var(--md-sys-color-outline, #79747e)
+	);
+	--_pressed-state-layer-opacity: var(
+		--md-outlined-segmented-button-pressed-state-layer-opacity,
+		0.12
+	);
+	--_selected-container-color: var(
+		--md-outlined-segmented-button-selected-container-color,
+		var(--md-sys-color-secondary-container, #e8def8)
+	);
+	--_selected-focus-icon-color: var(
+		--md-outlined-segmented-button-selected-focus-icon-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_selected-focus-label-text-color: var(
+		--md-outlined-segmented-button-selected-focus-label-text-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_selected-hover-icon-color: var(
+		--md-outlined-segmented-button-selected-hover-icon-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_selected-hover-label-text-color: var(
+		--md-outlined-segmented-button-selected-hover-label-text-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_selected-hover-state-layer-color: var(
+		--md-outlined-segmented-button-selected-hover-state-layer-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_selected-label-text-color: var(
+		--md-outlined-segmented-button-selected-label-text-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_selected-pressed-icon-color: var(
+		--md-outlined-segmented-button-selected-pressed-icon-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_selected-pressed-label-text-color: var(
+		--md-outlined-segmented-button-selected-pressed-label-text-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_selected-pressed-state-layer-color: var(
+		--md-outlined-segmented-button-selected-pressed-state-layer-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_shape: var(
+		--md-outlined-segmented-button-shape,
+		var(--md-sys-shape-corner-full, 9999px)
+	);
+	--_unselected-focus-icon-color: var(
+		--md-outlined-segmented-button-unselected-focus-icon-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_unselected-focus-label-text-color: var(
+		--md-outlined-segmented-button-unselected-focus-label-text-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_unselected-hover-icon-color: var(
+		--md-outlined-segmented-button-unselected-hover-icon-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_unselected-hover-label-text-color: var(
+		--md-outlined-segmented-button-unselected-hover-label-text-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_unselected-hover-state-layer-color: var(
+		--md-outlined-segmented-button-unselected-hover-state-layer-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_unselected-label-text-color: var(
+		--md-outlined-segmented-button-unselected-label-text-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_unselected-pressed-icon-color: var(
+		--md-outlined-segmented-button-unselected-pressed-icon-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_unselected-pressed-label-text-color: var(
+		--md-outlined-segmented-button-unselected-pressed-label-text-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_unselected-pressed-state-layer-color: var(
+		--md-outlined-segmented-button-unselected-pressed-state-layer-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_icon-size: var(--md-outlined-segmented-button-icon-size, 18px);
+	--_selected-icon-color: var(
+		--md-outlined-segmented-button-selected-icon-color,
+		var(--md-sys-color-on-secondary-container, #1d192b)
+	);
+	--_unselected-icon-color: var(
+		--md-outlined-segmented-button-unselected-icon-color,
+		var(--md-sys-color-on-surface, #1d1b20)
+	);
+	--_shape-start-start: var(
+		--md-outlined-segmented-button-shape-start-start,
+		var(--md-sys-shape-corner-full, 9999px)
+	);
+	--_shape-start-end: var(
+		--md-outlined-segmented-button-shape-start-end,
+		var(--md-sys-shape-corner-full, 9999px)
+	);
+	--_shape-end-end: var(
+		--md-outlined-segmented-button-shape-end-end,
+		var(--md-sys-shape-corner-full, 9999px)
+	);
+	--_shape-end-start: var(
+		--md-outlined-segmented-button-shape-end-start,
+		var(--md-sys-shape-corner-full, 9999px)
+	);
+	--_spacing-leading: var(--md-outlined-segmented-button-spacing-leading, 12px);
+	--_spacing-trailing: var(
+		--md-outlined-segmented-button-spacing-trailing,
+		12px
+	);
+	display: inline-flex;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.segmented-button {
+	cursor: pointer;
+	--md-ripple-hover-color: var(--_unselected-hover-state-layer-color);
+	--md-ripple-hover-opacity: var(--_hover-state-layer-opacity);
+	--md-ripple-pressed-color: var(--_unselected-pressed-state-layer-color);
+	--md-ripple-pressed-opacity: var(--_pressed-state-layer-opacity);
+	align-items: center;
+	background: rgba(0, 0, 0, 0);
+	border: none;
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	outline: none;
+	position: relative;
+	vertical-align: middle;
+	padding-inline-start: var(--_spacing-leading);
+	padding-inline-end: var(--_spacing-trailing);
+	text-transform: inherit;
+	&.selected {
+		background-color: var(--_selected-container-color);
+		--md-ripple-hover-color: var(--_selected-hover-state-layer-color);
+		--md-ripple-hover-opacity: var(--_hover-state-layer-opacity);
+		--md-ripple-pressed-color: var(--_selected-pressed-state-layer-color);
+		--md-ripple-pressed-opacity: var(--_pressed-state-layer-opacity);
+	}
+	&.unselected {
+		--md-ripple-hover-color: var(--_unselected-hover-state-layer-color);
+		--md-ripple-hover-opacity: var(--_hover-state-layer-opacity);
+		--md-ripple-pressed-color: var(--_unselected-pressed-state-layer-color);
+		--md-ripple-pressed-opacity: var(--_pressed-state-layer-opacity);
+	}
+}
+
+.outline {
+	border-color: var(--_outline-color);
+	border-radius: inherit;
+	border-style: solid;
+	border-width: 1px;
+	inset: 0px -0.5px;
+	pointer-events: none;
+	position: absolute;
+}
+.leading {
+	display: inline-flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.graphic {
+	overflow: hidden;
+	position: relative;
+	height: var(--_icon-size);
+	width: var(--_icon-size);
+	font-size: var(--_icon-size);
+	display: inline-flex;
+	justify-content: flex-start;
+	align-items: center;
+	transition: width 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.unselected .graphic {
+	width: 0;
+}
+.with-label .graphic,
+.selected .graphic {
+	width: calc(var(--_icon-size) + 8px);
+}
+
+.checkmark {
+	height: var(--_icon-size);
+	width: var(--_icon-size);
+	font-size: var(--_icon-size);
+	transition: opacity 50ms ease-out;
+}
+.with-label .checkmark {
+	display: inline-flex;
+	position: absolute;
+}
+.unselected .checkmark {
+	opacity: 0;
+}
+.selected .checkmark {
+	stroke: var(--_selected-icon-color);
+}
+
+@keyframes md3-segmented-button-simple-fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+.deselecting .checkmark {
+	animation: md3-segmented-button-simple-fade-out;
+	animation-duration: 50ms;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+.checkmark-path {
+	stroke-width: 2px;
+	stroke-dasharray: 29.7833;
+}
+@keyframes md3-segmented-button-checkmark-selection-draw-in {
+	0% {
+		stroke-dashoffset: 29.7833385;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+.selecting .checkmark-path {
+	stroke-dashoffset: 29.7833385;
+	animation: md3-segmented-button-checkmark-selection-draw-in;
+	animation-duration: 150ms;
+	animation-delay: 50ms;
+	animation-fill-mode: forwards;
+	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon {
+	display: flex;
+	--md-icon-size: 18px;
+	height: var(--_icon-size);
+	width: var(--_icon-size);
+	font-size: var(--_icon-size);
+}
+.selected.with-label .icon {
+	opacity: 0;
+}
+.label-text {
+	font-family: var(--_label-text-font);
+	font-size: var(--_label-text-size);
+	line-height: var(--_label-text-line-height);
+	font-weight: var(--_label-text-weight);
+}
+.selected .label-text {
+	color: var(--_selected-label-text-color);
+}
+.unselected .label-text {
+	color: var(--_unselected-label-text-color);
+}
+.touch {
+	position: absolute;
+	top: 50%;
+	height: 48px;
+	left: 50%;
+	width: 100%;
+	transform: translate(-50%, -50%);
+}
